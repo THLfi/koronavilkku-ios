@@ -1,0 +1,126 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": [
+    {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "name": {
+          "type": "object",
+          "properties": {
+            "fi": {
+              "type": "string"
+            },
+            "sv": {
+              "type": "string"
+            },
+            "en": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "fi",
+            "sv",
+            "en"
+          ]
+        },
+        "omaolo": {
+          "type": "object",
+          "properties": {
+            "available": {
+              "type": "string"
+            },
+            "serviceLanguages": {
+              "type": "object",
+              "properties": {
+                "fi": {
+                  "type": "boolean"
+                },
+                "sv": {
+                  "type": "boolean"
+                },
+                "en": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "fi",
+                "sv",
+                "en"
+              ]
+            }
+          },
+          "required": [
+            "available",
+            "serviceLanguages"
+          ]
+        },
+        "contact": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "title": {
+                  "type": "object",
+                  "properties": {
+                    "fi": {
+                      "type": "string"
+                    },
+                    "sv": {
+                      "type": "string"
+                    },
+                    "en": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "fi",
+                    "sv",
+                    "en"
+                  ]
+                },
+                "phoneNumber": {
+                  "type": "string"
+                },
+                "info": {
+                  "type": "object",
+                  "properties": {
+                    "fi": {
+                      "type": "string"
+                    },
+                    "sv": {
+                      "type": "string"
+                    },
+                    "en": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "fi",
+                    "sv",
+                    "en"
+                  ]
+                }
+              },
+              "required": [
+                "title",
+                "phoneNumber",
+                "info"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "name",
+        "omaolo",
+        "contact"
+      ]
+    }
+  ]
+}

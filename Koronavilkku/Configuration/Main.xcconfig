@@ -1,0 +1,53 @@
+//
+// Koronavilkku environment configuration
+//
+// This file contains list of all configuration parameters and their default values
+// You can override these settings in LocalEnvironment.xcconfig
+//
+// You can configure per-sdk values with:
+// API_BASEURL[sdk=iphoneos*] = development.api.invalid:8080
+// API_BASEURL[sdk=iphonesimulator*] = local.api.invalid:8080
+//
+// Full xcconfig format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+// MARK: CODE SIGNING
+//
+// Team ID (from Apple Developer Membership page)
+DEVELOPMENT_TEAM =
+
+// Provisioning profile names (EN API entitlement requires manual provisioning)
+PROVISIONING_PROFILE_DEVELOPMENT =
+PROVISIONING_PROFILE_DISTRIBUTION =
+
+// MARK: ENVIRONMENT
+//
+// Expose current environment as a Swift preprocessor macro
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) $(ENVIRONMENT:default=DEVELOPMENT)
+
+// Backend API base URL `hostname:[port]`
+API_BASEURL = localhost:8080
+
+// Use HTTPS and enforce certificate pinning
+API_USE_HTTPS = false
+
+// Backend certificate pinning
+// Base64-encoded SHA-256 of the certificate's Subject Public Key Info
+// You need to supply values for both primary and backup certificate
+API_TSK_HASH_1 =
+API_TSK_HASH_2 =
+
+// CMS base URL `hostname:[port]`
+CMS_BASEURL = localhost
+CMS_USE_HTTPS = false
+
+// Omaolo environment base URL `hostname:[port]`
+OMAOLO_BASEURL = localhost
+
+// Different app icon for test builds
+APPICON_ASSET_NAME = AppIcon-Test
+
+// MARK: LOCAL SETTINGS
+//
+// Place local overrides in the following file:
+#include? "LocalEnvironment.xcconfig"

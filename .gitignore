@@ -1,0 +1,19 @@
+# Xcode gitignore
+
+## User settings
+xcuserdata/
+
+## Build generated
+build/
+DerivedData/
+**/swiftpm/Package.resolved
+
+## App packaging
+*.ipa
+*.dSYM
+*.dSYM.zip
+
+## Mac temporary files
+.DS_Store
+Koronavilkku/Koronavilkku.xcodeproj/xcshareddata/
+Koronavilkku/Configuration/LocalEnvironment.xcconfig
