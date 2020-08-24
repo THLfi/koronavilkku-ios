@@ -24,11 +24,13 @@ The team members are:
 - Tomi Lahtinen
 - Niklas Murtola
 - Esko Oramaa
+- Eetu Pajuoja
 - Pekko Tiitto
 - Alpertti Tirronen
 
 ## Authors
 - Henry Jalonen
 - Tomi Lahtinen
+- Eetu Pajuoja
 - Pekko Tiitto
 
