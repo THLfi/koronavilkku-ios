@@ -22,7 +22,7 @@ extension Environment {
     static func create() -> Environment {
         let config = LocalConfiguration()
         let urlSession = configureUrlSession(config: config)
-        let backend = Backend(config: config, urlSession: urlSession)
+        let backend = BackendRestApi(config: config, urlSession: urlSession)
         let cms = CMS(config: config, urlSession: urlSession)
         
         let batchRepository = BatchRepositoryImpl(backend: backend,

@@ -33,14 +33,12 @@ class BatchRepositoryImpl: BatchRepository {
                 return self.getNewBatchIds(previousBatchId: id)
             }
             .flatMap { ids -> AnyPublisher<String, Error> in
-                    let publishers = ids.map { id in
-                        return self.getBatchFile(id: id)
-                    }
-                    return publishers.publisher
-                        .setFailureType(to: Error.self)
-                        .flatMap { $0 }
-                        .eraseToAnyPublisher()
-            }.eraseToAnyPublisher()
+                ids.publisher
+                    .setFailureType(to: Error.self)
+                    .flatMap { self.getBatchFile(id: $0) }
+                    .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
     }
     
     func ensureCurrentBatchIdDefined() {
@@ -56,7 +54,7 @@ class BatchRepositoryImpl: BatchRepository {
             return Just(batchId).setFailureType(to: Error.self).eraseToAnyPublisher()
         } else {
             Log.d("Didn't find local batch id")
-            return backend.call(endpoint: .getCurrentBatchId).map { (id: CurrentBatchId) in
+            return backend.getCurrentBatchId().map { id in
                 self.storeBatchIdLocally(id: id.current)
                 return id.current
             }.eraseToAnyPublisher()
@@ -64,16 +62,13 @@ class BatchRepositoryImpl: BatchRepository {
     }
     
     private func getNewBatchIds(previousBatchId: String) -> AnyPublisher<[String], Error> {
-        return backend.call(endpoint: .getNewBatchIds(since: previousBatchId))
-            .map { (ids: BatchIds) in
-                return ids.batches
-            }
+        return backend.getNewBatchIds(since: previousBatchId)
+            .map { $0.batches }
             .eraseToAnyPublisher()
     }
     
     private func getBatchFile(id batchId: String) -> AnyPublisher<String, Error> {
-        return backend.call(endpoint: .getBatchFile(id: batchId)).tryMap { data in
-            
+        return backend.getBatchFile(id: batchId).tryMap { data in
             guard let fileUrl = self.fileHelper.createFile(name: "\(batchId)", extension: "zip", data: data) else {
                 Log.e("Writing zip to disk failed")
                 throw BatchError.writingZipFailed

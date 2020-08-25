@@ -1,10 +1,10 @@
 
 import Foundation
 
-struct BatchIds: Decodable {
+struct BatchIds: Codable {
     let batches: [String]
 }
 
-struct CurrentBatchId: Decodable {
+struct CurrentBatchId: Codable {
     let current: String
 }
