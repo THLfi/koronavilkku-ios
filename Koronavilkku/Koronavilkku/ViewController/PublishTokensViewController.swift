@@ -24,6 +24,7 @@ class PublishTokensViewController: UIViewController {
     private var errorLabel: UILabel!
     private var helperLabel = UILabel()
     private var progressIndicator = UIActivityIndicatorView(style: .large)
+    let wrapper = UIView()
     
     private var failure: NSError? = nil {
         didSet {
@@ -48,6 +49,9 @@ class PublishTokensViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: Translation.ButtonCancel.localized, style: .plain, target: self, action: #selector(close))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .plain, target: self, action: #selector(close))
         navigationItem.leftBarButtonItem?.accessibilityLabel = Translation.ButtonBack.localized
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         initUI()
     }
@@ -67,6 +71,18 @@ class PublishTokensViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .automatic
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+            
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+           return
+        }
+        wrapper.frame.origin.y = keyboardSize.height - wrapper.frame.height
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+          wrapper.frame.origin.y = 0
+    }
+    
     @objc
     func close() {
         self.dismiss(animated: true, completion: nil)
@@ -82,7 +98,7 @@ class PublishTokensViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         
-        let wrapper = UIView()
+        
         scrollView.addSubview(wrapper)
         wrapper.snp.makeConstraints { make in
             make.width.equalTo(view)
@@ -196,6 +212,7 @@ class PublishTokensViewController: UIViewController {
             self.progressIndicator.startAnimating()
             self.button.isEnabled = false
             self.button.isUserInteractionEnabled = false
+            self.view.endEditing(true)
         }
         exposureRepository.postExposureKeys(publishToken: tokenCodeField.text ?? nil)
             .receive(on: RunLoop.main)
