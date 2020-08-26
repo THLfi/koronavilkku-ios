@@ -22,9 +22,9 @@ class PublishTokensViewController: UIViewController {
     private let tokenCodeField = UITextField()
     private var errorView: UIView!
     private var errorLabel: UILabel!
-    private var helperLabel = UILabel()
     private var progressIndicator = UIActivityIndicatorView(style: .large)
-    let wrapper = UIView()
+    private let wrapper = UIView()
+    private lazy var infoLabel = createInfoLabel()
     
     private var failure: NSError? = nil {
         didSet {
@@ -75,15 +75,26 @@ class PublishTokensViewController: UIViewController {
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
-            
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
            return
         }
-        wrapper.frame.origin.y = keyboardSize.height - wrapper.frame.height
+        self.infoLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview().inset(keyboardSize.height)
+        }
+        
+        let rect = CGRect(x: tokenCodeField.frame.maxX,
+                          y: tokenCodeField.frame.maxY,
+                          width: tokenCodeField.frame.width,
+                          height: tokenCodeField.frame.height + (keyboardSize.height - tokenCodeField.frame.height))
+        
+        self.scrollView.scrollRectToVisible(rect, animated: false)
+        
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-          wrapper.frame.origin.y = 0
+        self.infoLabel.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+        }
     }
     
     @objc
@@ -98,15 +109,15 @@ class PublishTokensViewController: UIViewController {
         
         scrollView.backgroundColor = UIColor.Secondary.blueBackdrop
         scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaInsets)
+            make.left.right.equalTo(view)
+            make.bottom.equalTo(view.safeAreaInsets)
         }
-        
         
         scrollView.addSubview(wrapper)
         wrapper.snp.makeConstraints { make in
-            make.width.equalTo(view)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview()
+            make.top.bottom.left.right.equalTo(scrollView)
+            make.width.equalTo(scrollView)
         }
         
         wrapper.isUserInteractionEnabled = true
@@ -156,8 +167,6 @@ class PublishTokensViewController: UIViewController {
             make.left.right.equalToSuperview().inset(20)
         }
         
-        let infoLabel = createInfoLabel()
-        infoLabel.numberOfLines = 0
         wrapper.addSubview(infoLabel)
         infoLabel.snp.makeConstraints { make in
             make.top.equalTo(button.snp.bottom).offset(20)
@@ -176,6 +185,7 @@ class PublishTokensViewController: UIViewController {
                        font: UIFont.bodySmall,
                        color: UIColor.Greyscale.black)
         label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }
     
