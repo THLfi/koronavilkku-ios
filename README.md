@@ -1,21 +1,25 @@
-# Finnish National Institute for Health and Welfare iOS Application for Covid-19 tracing
+# Koronavilkku iOS app
 
-Based on the official Google/Apple Exposure Notifications API.
+Koronavilkku is the official COVID-19 Exposure Notifications app for Finland, maintained by the Finnish Institute for Health and Welfare (THL). It uses the ExposureNotification framework, a joint effort between Apple and Google to provide the core functionality for building iOS and Android apps to notify users of possible exposure to confirmed COVID-19 cases.
+
+https://developer.apple.com/exposure-notification/
 
 ## Setting up
 
-Clone the Git repository, open in Xcode and run. In order to use the Exposure Notifications API you need to install the provisioning profile with correct entitlements from Apple.
+Clone this Git repository, open _Koronavilkku.xcworkspace_ and run the app.
+
+We've included a mock ExposureManager that works in the Simulator, but in order to run the app on a real device with the real Exposure Notifications API, you need to have a provisioning profile with the [correct entitlements](https://developer.apple.com/contact/request/exposure-notification-entitlement) from Apple.
 
 ### Configure the local environment
 
-Under _./Configuration:_ you can find the default configuration _Main.xcconfig_. You can locally override the configuration values for your environment by placing them in _LocalEnvironment.xcconfig_, without the fear of committing your local settings to everyone else.
+Under _./Configuration_ you can find the default configuration file _Main.xcconfig_. You can locally override the configuration values to match your environment by placing them in _LocalEnvironment.xcconfig_ (which is not checked into the VCS).
 
 ## Requirements
 - Xcode 11.5 or higher
 - iOS 13.5 or higher
 
 ## External dependencies
-Dependencies are managed with Swift Package Manager through Xcode. Required packages should be downloaded by Xcode automatically but if not, select File > Swift packages > Resolve package versions
+Dependencies are managed with Swift Package Manager through Xcode. Required packages should be downloaded by Xcode automatically, but if not, select File → Swift Packages → Resolve Package Versions.
 
 ### [SnapKit](https://github.com/SnapKit/SnapKit) version 5.0.1
 DSL for adding autolayout constraints to UIKit components
@@ -25,3 +29,7 @@ Library for easy Zip-file handling
 
 ### [TrustKit](https://github.com/datatheorem/TrustKit) version 1.6.5
 Framework for SSL public key pinning and reporting
+
+## Backend
+
+See [koronavilkku-backend](https://github.com/THLfi/koronavilkku-backend) for information on application backend.

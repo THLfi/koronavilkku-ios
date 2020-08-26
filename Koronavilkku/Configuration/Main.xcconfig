@@ -1,8 +1,11 @@
 //
 // Koronavilkku environment configuration
 //
-// This file contains list of all configuration parameters and their default values
-// You can override these settings in LocalEnvironment.xcconfig
+// This file contains list of all configuration parameters and their default values.
+// Avoid making changes to this file – you can override these settings in LocalEnvironment.xcconfig.
+//
+// NOTE: Sometimes Xcode is not able to see the configuration changes until you run:
+//       Product -> Clean Build Folder
 //
 // You can configure per-sdk values with:
 // API_BASEURL[sdk=iphoneos*] = development.api.invalid:8080
@@ -10,6 +13,7 @@
 //
 // Full xcconfig format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
+
 
 // MARK: CODE SIGNING
 //
@@ -19,6 +23,7 @@ DEVELOPMENT_TEAM =
 // Provisioning profile names (EN API entitlement requires manual provisioning)
 PROVISIONING_PROFILE_DEVELOPMENT =
 PROVISIONING_PROFILE_DISTRIBUTION =
+
 
 // MARK: ENVIRONMENT
 //
@@ -47,7 +52,7 @@ OMAOLO_BASEURL = localhost
 // Different app icon for test builds
 APPICON_ASSET_NAME = AppIcon-Test
 
+
 // MARK: LOCAL SETTINGS
-//
-// Place local overrides in the following file:
+// Override with local settings
 #include? "LocalEnvironment.xcconfig"

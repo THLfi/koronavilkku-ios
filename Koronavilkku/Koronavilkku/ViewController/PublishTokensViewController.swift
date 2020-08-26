@@ -22,8 +22,9 @@ class PublishTokensViewController: UIViewController {
     private let tokenCodeField = UITextField()
     private var errorView: UIView!
     private var errorLabel: UILabel!
-    private var helperLabel = UILabel()
     private var progressIndicator = UIActivityIndicatorView(style: .large)
+    private let wrapper = UIView()
+    private lazy var infoLabel = createInfoLabel()
     
     private var failure: NSError? = nil {
         didSet {
@@ -48,6 +49,10 @@ class PublishTokensViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: Translation.ButtonCancel.localized, style: .plain, target: self, action: #selector(close))
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .plain, target: self, action: #selector(close))
         navigationItem.leftBarButtonItem?.accessibilityLabel = Translation.ButtonBack.localized
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         initUI()
     }
@@ -55,7 +60,10 @@ class PublishTokensViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         if tokenCodeField.text?.isEmpty == true {
             // No code was provided (not opened via link) -> show keyboard.
             tokenCodeField.becomeFirstResponder()
@@ -65,6 +73,45 @@ class PublishTokensViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationItem.largeTitleDisplayMode = .automatic
+        
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+           return
+        }
+
+        self.infoLabel.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().inset(keyboardSize.height + 20)
+        }
+    }
+    
+    @objc func keyboardDidShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+           return
+        }
+        
+        // if possible, scroll all the way to bottom
+        let rectHeight = wrapper.frame.height - tokenCodeField.frame.minY + keyboardSize.height
+
+        // but prevent the tokenCodeField from being scrolled over
+        let rectMaxHeight = view.frame.height - view.safeAreaInsets.top - 8
+
+        let rect = CGRect(x: tokenCodeField.frame.maxX,
+                          y: tokenCodeField.frame.minY,
+                          width: tokenCodeField.frame.width,
+                          height: rectHeight > rectMaxHeight ? rectMaxHeight : rectHeight)
+
+        self.scrollView.scrollRectToVisible(rect, animated: true)
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.infoLabel.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().inset(20)
+        }
     }
     
     @objc
@@ -79,15 +126,15 @@ class PublishTokensViewController: UIViewController {
         
         scrollView.backgroundColor = UIColor.Secondary.blueBackdrop
         scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.equalTo(view.safeAreaInsets)
+            make.left.right.equalTo(view)
+            make.bottom.equalTo(view.safeAreaInsets)
         }
         
-        let wrapper = UIView()
         scrollView.addSubview(wrapper)
         wrapper.snp.makeConstraints { make in
-            make.width.equalTo(view)
-            make.centerX.equalToSuperview()
-            make.top.equalToSuperview()
+            make.top.bottom.left.right.equalTo(scrollView)
+            make.width.equalTo(scrollView)
         }
         
         wrapper.isUserInteractionEnabled = true
@@ -137,13 +184,11 @@ class PublishTokensViewController: UIViewController {
             make.left.right.equalToSuperview().inset(20)
         }
         
-        let infoLabel = createInfoLabel()
-        infoLabel.numberOfLines = 0
         wrapper.addSubview(infoLabel)
         infoLabel.snp.makeConstraints { make in
             make.top.equalTo(button.snp.bottom).offset(20)
             make.left.right.equalToSuperview().inset(20)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(20)
         }
     }
     
@@ -157,6 +202,7 @@ class PublishTokensViewController: UIViewController {
                        font: UIFont.bodySmall,
                        color: UIColor.Greyscale.black)
         label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }
     
@@ -196,6 +242,7 @@ class PublishTokensViewController: UIViewController {
             self.progressIndicator.startAnimating()
             self.button.isEnabled = false
             self.button.isUserInteractionEnabled = false
+            self.view.endEditing(true)
         }
         exposureRepository.postExposureKeys(publishToken: tokenCodeField.text ?? nil)
             .receive(on: RunLoop.main)
