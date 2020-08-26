@@ -59,7 +59,10 @@ class PublishTokensViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.largeTitleDisplayMode = .never
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         if tokenCodeField.text?.isEmpty == true {
             // No code was provided (not opened via link) -> show keyboard.
             tokenCodeField.becomeFirstResponder()
