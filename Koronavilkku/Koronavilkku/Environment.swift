@@ -26,6 +26,7 @@ extension Environment {
         let cms = CMS(config: config, urlSession: urlSession)
         
         let batchRepository = BatchRepositoryImpl(backend: backend,
+                                                  cache: LocalStore.shared,
                                                   fileHelper: FileHelper())
         
         let exposureRepository = ExposureRepositoryImpl(exposureManager: ExposureManagerProvider.shared.manager,

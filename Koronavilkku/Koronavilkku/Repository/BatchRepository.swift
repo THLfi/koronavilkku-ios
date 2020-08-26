@@ -7,7 +7,11 @@ struct DiagnosisPublishRequest : Encodable {
 
 protocol BatchRepository {
     func getNewBatches() -> AnyPublisher<String, Error>
-    func ensureCurrentBatchIdDefined()
+    func getCurrentBatchId() -> AnyPublisher<String, Error>
+}
+
+protocol BatchIdCache {
+    var nextDiagnosisKeyFileIndex: String? { get set }
 }
 
 enum BatchError: Error {
@@ -18,12 +22,15 @@ enum BatchError: Error {
 
 class BatchRepositoryImpl: BatchRepository {
     private let backend: Backend
+    private var cache: BatchIdCache
     private let fileHelper: FileHelper
+    
     private let BATCH_ID_KEY = "BATCH_ID"
     private var tasks = [AnyCancellable]()
     
-    init(backend: Backend, fileHelper: FileHelper) {
+    init(backend: Backend, cache: BatchIdCache, fileHelper: FileHelper) {
         self.backend = backend
+        self.cache = cache
         self.fileHelper = fileHelper
     }
 
@@ -41,13 +48,7 @@ class BatchRepositoryImpl: BatchRepository {
             .eraseToAnyPublisher()
     }
     
-    func ensureCurrentBatchIdDefined() {
-        getCurrentBatchId()
-            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
-            .store(in: &tasks)
-    }
-    
-    private func getCurrentBatchId() -> AnyPublisher<String, Error> {
+    func getCurrentBatchId() -> AnyPublisher<String, Error> {
         Log.d("Get current batch id")
         if let batchId = getLocallyStoredBatchId() {
             Log.d("Found local batch id \(batchId)")
@@ -95,10 +96,10 @@ class BatchRepositoryImpl: BatchRepository {
         
     private func storeBatchIdLocally(id: String) {
         Log.d("Storing batch id: \(id)")
-        LocalStore.shared.nextDiagnosisKeyFileIndex = id
+        cache.nextDiagnosisKeyFileIndex = id
     }
     
     private func getLocallyStoredBatchId() -> String? {
-        return LocalStore.shared.nextDiagnosisKeyFileIndex
+        return cache.nextDiagnosisKeyFileIndex
     }
 }

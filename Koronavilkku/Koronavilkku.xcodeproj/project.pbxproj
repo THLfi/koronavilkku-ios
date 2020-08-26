@@ -86,6 +86,7 @@
 		EA1B814524F54AD20041DED1 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814424F54AD20041DED1 /* MockURLProtocol.swift */; };
 		EA1B814824F57CFC0041DED1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814724F57CFC0041DED1 /* Extensions.swift */; };
 		EA1B814A24F57DC40041DED1 /* MockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814924F57DC40041DED1 /* MockApi.swift */; };
+		EA1B814E24F7159B0041DED1 /* MockBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814D24F7159B0041DED1 /* MockBackend.swift */; };
 		EA1F5C8B24E1517000398EC8 /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F5C8A24E1517000398EC8 /* InstructionsView.swift */; };
 		EA1F5C8E24E2763E00398EC8 /* TrustKit in Frameworks */ = {isa = PBXBuildFile; productRef = EA1F5C8D24E2763E00398EC8 /* TrustKit */; };
 		EA30D71824A5C32200AF84B1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D71724A5C32200AF84B1 /* RootViewController.swift */; };
@@ -211,6 +212,7 @@
 		EA1B814424F54AD20041DED1 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		EA1B814724F57CFC0041DED1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EA1B814924F57DC40041DED1 /* MockApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApi.swift; sourceTree = "<group>"; };
+		EA1B814D24F7159B0041DED1 /* MockBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackend.swift; sourceTree = "<group>"; };
 		EA1F5C8A24E1517000398EC8 /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
 		EA30D71724A5C32200AF84B1 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EA30D71924A603E300AF84B1 /* ReportInfectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfectionViewController.swift; sourceTree = "<group>"; };
@@ -476,6 +478,7 @@
 				EA1B814424F54AD20041DED1 /* MockURLProtocol.swift */,
 				EA1B814724F57CFC0041DED1 /* Extensions.swift */,
 				EA1B814924F57DC40041DED1 /* MockApi.swift */,
+				EA1B814D24F7159B0041DED1 /* MockBackend.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -548,7 +551,6 @@
 		EA4F905324F4EFB40032D9D5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				EA1B814624F57CED0041DED1 /* Utils */,
 				EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */,
 				EA1B814224F54AA10041DED1 /* RestApiTest.swift */,
 			);
@@ -610,6 +612,7 @@
 				EA4F905324F4EFB40032D9D5 /* Network */,
 				56C2DBF524EFA8C50014F09D /* Scene */,
 				56C2DBF124EE66D10014F09D /* Repository */,
+				EA1B814624F57CED0041DED1 /* Utils */,
 				EA92A05D24A3958600CE7271 /* KoronavilkkuTests.swift */,
 				EA92A05F24A3958600CE7271 /* Info.plist */,
 			);
@@ -887,6 +890,7 @@
 				5695F6D624D82C9E008E06BC /* MunicipalityValidation.swift in Sources */,
 				EA1B814524F54AD20041DED1 /* MockURLProtocol.swift in Sources */,
 				EA4F905024F46E660032D9D5 /* BatchRepositoryTest.swift in Sources */,
+				EA1B814E24F7159B0041DED1 /* MockBackend.swift in Sources */,
 				560833C024B886D70078B75D /* LocalizationTests.swift in Sources */,
 				EA4F905224F4EFAD0032D9D5 /* BackendRestApiTest.swift in Sources */,
 				56C2DBF324EE67050014F09D /* ExposureRepositoryTest.swift in Sources */,

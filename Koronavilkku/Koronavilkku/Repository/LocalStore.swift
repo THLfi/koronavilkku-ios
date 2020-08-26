@@ -40,7 +40,7 @@ class Persisted<Value: Codable> {
     }
 }
 
-class LocalStore {
+class LocalStore : BatchIdCache {
     
     static let shared = LocalStore()
     
