@@ -51,6 +51,7 @@ class PublishTokensViewController: UIViewController {
         navigationItem.leftBarButtonItem?.accessibilityLabel = Translation.ButtonBack.localized
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         initUI()
@@ -73,27 +74,39 @@ class PublishTokensViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationItem.largeTitleDisplayMode = .automatic
     }
-    
+
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
            return
         }
-        self.infoLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().inset(keyboardSize.height)
+
+        self.infoLabel.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().inset(keyboardSize.height + 20)
+        }
+    }
+    
+    @objc func keyboardDidShow(notification: NSNotification) {
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
+           return
         }
         
+        // if possible, scroll all the way to bottom
+        let rectHeight = wrapper.frame.height - tokenCodeField.frame.minY + keyboardSize.height
+
+        // but prevent the tokenCodeField from being scrolled over
+        let rectMaxHeight = view.frame.height - view.safeAreaInsets.top - 8
+
         let rect = CGRect(x: tokenCodeField.frame.maxX,
-                          y: tokenCodeField.frame.maxY,
+                          y: tokenCodeField.frame.minY,
                           width: tokenCodeField.frame.width,
-                          height: tokenCodeField.frame.height + (keyboardSize.height - tokenCodeField.frame.height))
-        
-        self.scrollView.scrollRectToVisible(rect, animated: false)
-        
+                          height: rectHeight > rectMaxHeight ? rectMaxHeight : rectHeight)
+
+        self.scrollView.scrollRectToVisible(rect, animated: true)
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        self.infoLabel.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
+        self.infoLabel.snp.updateConstraints { make in
+            make.bottom.equalToSuperview().inset(20)
         }
     }
     
@@ -171,7 +184,7 @@ class PublishTokensViewController: UIViewController {
         infoLabel.snp.makeConstraints { make in
             make.top.equalTo(button.snp.bottom).offset(20)
             make.left.right.equalToSuperview().inset(20)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().inset(20)
         }
     }
     
