@@ -30,6 +30,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: DerivedData
+          key: koronavilkku-ios-build
           restore-keys: koronavilkku-ios-build
       - name: Cache vulnerability data cache
         uses: actions/cache@v2
