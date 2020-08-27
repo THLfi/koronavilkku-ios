@@ -92,6 +92,7 @@
 		EA30D71824A5C32200AF84B1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D71724A5C32200AF84B1 /* RootViewController.swift */; };
 		EA30D71A24A603E300AF84B1 /* ReportInfectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D71924A603E300AF84B1 /* ReportInfectionViewController.swift */; };
 		EA30D71F24A620C900AF84B1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D71E24A620C900AF84B1 /* Colors.swift */; };
+		EA3ED0E324F8315500635817 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ED0E224F8315500635817 /* FileStorage.swift */; };
 		EA47C5EC24A6AB0300EAC720 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47C5EB24A6AB0300EAC720 /* Fonts.swift */; };
 		EA47C5F224A6B3FC00EAC720 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5EE24A6B3FC00EAC720 /* SourceSansPro-Regular.otf */; };
 		EA47C5F324A6B3FC00EAC720 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5EF24A6B3FC00EAC720 /* SourceSansPro-Bold.otf */; };
@@ -217,6 +218,7 @@
 		EA30D71724A5C32200AF84B1 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EA30D71924A603E300AF84B1 /* ReportInfectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfectionViewController.swift; sourceTree = "<group>"; };
 		EA30D71E24A620C900AF84B1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		EA3ED0E224F8315500635817 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		EA47C5EB24A6AB0300EAC720 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		EA47C5EE24A6B3FC00EAC720 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
 		EA47C5EF24A6B3FC00EAC720 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 		32B5955F24AA273A00CC386E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				EA3ED0E224F8315500635817 /* FileStorage.swift */,
 				32B5956024AA27ED00CC386E /* BatchRepository.swift */,
 				EAD8619C24AE18A900809677 /* ExposureRepository.swift */,
 				561878AB24AC9952004B7563 /* LocalStore.swift */,
@@ -858,6 +861,7 @@
 				D98EDD3724CDF91F003E09A1 /* AttentionCard.swift in Sources */,
 				563D44AD24AA7840008FE2BB /* Comparable+Clamp.swift in Sources */,
 				EA30D71824A5C32200AF84B1 /* RootViewController.swift in Sources */,
+				EA3ED0E324F8315500635817 /* FileStorage.swift in Sources */,
 				EA92A04624A3958300CE7271 /* SceneDelegate.swift in Sources */,
 				EA92A07B24A4E59800CE7271 /* LivePreview.swift in Sources */,
 				EA07E41724E34C7D0097A9A0 /* URLSession.swift in Sources */,

@@ -7,7 +7,7 @@ class ExposureRepositoryTest: XCTestCase {
     let repository = ExposureRepositoryImpl(exposureManager: MockExposureManager(),
                                             backend: BackendRestApi(config: LocalConfiguration(),
                                                              urlSession: URLSession.shared),
-                                            fileHelper: FileHelper())
+                                            storage: MockFileStorage())
 
     func testKeyPadding() throws {
         let keys = repository.mapKeysToCorrectLength(enTemporaryExposureKeys: [])

@@ -15,17 +15,16 @@ protocol ExposureRepository {
 }
 
 struct ExposureRepositoryImpl : ExposureRepository {
-    
     static let keyCount = 14
     private static let dummyPostToken = "000000000000"
     private let exposureManager: ExposureManager
     private let backend: Backend
-    private let fileHelper: FileHelper
+    private let storage: FileStorage
     
-    init(exposureManager: ExposureManager, backend: Backend, fileHelper: FileHelper) {
+    init(exposureManager: ExposureManager, backend: Backend, storage: FileStorage) {
         self.exposureManager = exposureManager
         self.backend = backend
-        self.fileHelper = fileHelper
+        self.storage = storage
     }
     
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error> {
@@ -42,7 +41,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
         let cfg = config
         #endif
         
-        let urls = ids.map { self.fileHelper.getFileUrls(forBatchId: $0) }.flatMap { $0 }
+        let urls = ids.map { self.storage.getFileUrls(forBatchId: $0) }.flatMap { $0 }
         Log.d("Ids: \(ids), Config: \(config), Detecting with urls: \(urls)")
 
         return self.exposureManager.detectExposures(configuration: cfg, diagnosisKeyURLs: urls)
@@ -88,7 +87,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
     
     func deleteBatchFiles() {
         // Since we are only processing 1 batch set at a time, always clean up the entire batches directory.
-        fileHelper.deleteAllBatches()
+        storage.deleteAllBatches()
     }
     
     func postExposureKeys(publishToken: String?) -> AnyPublisher<Void, Error> {

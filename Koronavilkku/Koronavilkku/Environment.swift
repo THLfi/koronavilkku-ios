@@ -24,18 +24,19 @@ extension Environment {
         let urlSession = configureUrlSession(config: config)
         let backend = BackendRestApi(config: config, urlSession: urlSession)
         let cms = CMS(config: config, urlSession: urlSession)
+        let storage = FileStorageImpl()
         
         let batchRepository = BatchRepositoryImpl(backend: backend,
                                                   cache: LocalStore.shared,
-                                                  fileHelper: FileHelper())
+                                                  storage: storage)
         
         let exposureRepository = ExposureRepositoryImpl(exposureManager: ExposureManagerProvider.shared.manager,
                                                         backend: backend,
-                                                        fileHelper: FileHelper())
+                                                        storage: storage)
         
         let municipalityRepository = MunicipalityRepositoryImpl(cms: cms,
                                                                 omaoloBaseURL: config.omaoloBaseURL,
-                                                                fileHelper: FileHelper())
+                                                                storage: storage)
         
         return Environment(batchRepository: batchRepository,
                            exposureRepository: exposureRepository,

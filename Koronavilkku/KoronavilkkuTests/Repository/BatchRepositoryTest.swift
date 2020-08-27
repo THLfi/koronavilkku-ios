@@ -6,16 +6,39 @@ class MockBatchIdCache : BatchIdCache {
     var nextDiagnosisKeyFileIndex: String?
 }
 
+class MockFileStorage : FileStorage {
+    func `import`(batchId: String, data: Data) throws -> String {
+        return batchId
+    }
+    
+    func getFileUrls(forBatchId id: String) -> [URL] {
+        return []
+    }
+    
+    func deleteAllBatches() {
+    }
+    
+    func write<T: Codable>(object: T, to filename: String) -> Bool {
+        return true
+    }
+    
+    func read<T: Codable>(from filename: String) -> T? {
+        return nil
+    }
+}
+
 class BatchRepositoryTest: XCTestCase {
     private var batchRepository: BatchRepository!
     private var backend: MockBackend!
     private var cache: MockBatchIdCache!
+    private var storage: MockFileStorage!
     private var tasks = [AnyCancellable]()
     
     override func setUp() {
         backend = MockBackend()
         cache = MockBatchIdCache()
-        batchRepository = BatchRepositoryImpl(backend: backend, cache: cache, fileHelper: FileHelper())
+        storage = MockFileStorage()
+        batchRepository = BatchRepositoryImpl(backend: backend, cache: cache, storage: storage)
     }
     
     func testGetCurrentBatchId() {
@@ -61,7 +84,7 @@ class BatchRepositoryTest: XCTestCase {
             XCTAssertEqual("foo", value)
         })
 
-        // and definitely not modify the cache
+        // and definitively not modify the cache
         XCTAssertEqual(cache.nextDiagnosisKeyFileIndex, "foo")
     }
     

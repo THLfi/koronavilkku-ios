@@ -23,15 +23,15 @@ enum BatchError: Error {
 class BatchRepositoryImpl: BatchRepository {
     private let backend: Backend
     private var cache: BatchIdCache
-    private let fileHelper: FileHelper
+    private let storage: FileStorage
     
     private let BATCH_ID_KEY = "BATCH_ID"
     private var tasks = [AnyCancellable]()
     
-    init(backend: Backend, cache: BatchIdCache, fileHelper: FileHelper) {
+    init(backend: Backend, cache: BatchIdCache, storage: FileStorage) {
         self.backend = backend
         self.cache = cache
-        self.fileHelper = fileHelper
+        self.storage = storage
     }
 
     func getNewBatches() -> AnyPublisher<String, Error> {
@@ -70,27 +70,7 @@ class BatchRepositoryImpl: BatchRepository {
     
     private func getBatchFile(id batchId: String) -> AnyPublisher<String, Error> {
         return backend.getBatchFile(id: batchId).tryMap { data in
-            guard let fileUrl = self.fileHelper.createFile(name: "\(batchId)", extension: "zip", data: data) else {
-                Log.e("Writing zip to disk failed")
-                throw BatchError.writingZipFailed
-            }
-            
-            guard let unzipUrl = self.fileHelper.decompressZip(fileUrl: fileUrl) else {
-                Log.e("Unzipping failed")
-                throw BatchError.unzippingFailed
-            }
-            
-            guard let unzippedFileUrls = self.fileHelper.getListOfFileUrlsInDirectory(directoryUrl: unzipUrl) else {
-                Log.e("Couldn't find files in directory \(unzipUrl)")
-                throw BatchError.noFilesFound
-            }
-            
-            // Rename the files based on the batch id
-            unzippedFileUrls.forEach { url in
-                self.fileHelper.renameFile(newName: batchId, fileUrl: url)
-            }
-            
-            return batchId
+            try self.storage.`import`(batchId: batchId, data: data)
         }.eraseToAnyPublisher()
     }
         
