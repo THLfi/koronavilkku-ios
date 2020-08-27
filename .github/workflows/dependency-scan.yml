@@ -30,7 +30,7 @@ jobs:
         if: ${{ success() || failure() }}
         with:
           name: dependency-check-result
-          path: ./**/build/reports/dependency-check-report.html
+          path: ./dependency-check-report.html
       - name: Notify to slack
         if: ${{ failure() }}
         uses: ./.github/docker-slack
