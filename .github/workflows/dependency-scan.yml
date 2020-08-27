@@ -26,6 +26,7 @@ jobs:
           name: koronavilkku-ios-derived-data
           path: ./DerivedData
   dependency-scan:
+    needs: [build-app]
     name: Owasp Dependency Scanning
     runs-on: ubuntu-latest
     steps:
