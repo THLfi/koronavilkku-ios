@@ -56,7 +56,7 @@ jobs:
           text: "OWASP dependency check"
           status: ${{job.status}}
       - name: Notify by email
-        if: ${{ failure() || success }}
+        if: ${{ failure() || success() }}
         uses: ./.github/docker-notify-email
         env:
           API_KEY: ${{ secrets.EMAIL_SERVICE_API_KEY }}
