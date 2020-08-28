@@ -25,9 +25,6 @@ class BatchRepositoryImpl: BatchRepository {
     private var cache: BatchIdCache
     private let storage: FileStorage
     
-    private let BATCH_ID_KEY = "BATCH_ID"
-    private var tasks = [AnyCancellable]()
-    
     init(backend: Backend, cache: BatchIdCache, storage: FileStorage) {
         self.backend = backend
         self.cache = cache
@@ -42,7 +39,7 @@ class BatchRepositoryImpl: BatchRepository {
             .flatMap { ids -> AnyPublisher<String, Error> in
                 ids.publisher
                     .setFailureType(to: Error.self)
-                    .flatMap { self.getBatchFile(id: $0) }
+                    .flatMap(maxPublishers: .max(2)) { self.loadBatchFile(id: $0) }
                     .eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
@@ -68,7 +65,7 @@ class BatchRepositoryImpl: BatchRepository {
             .eraseToAnyPublisher()
     }
     
-    private func getBatchFile(id batchId: String) -> AnyPublisher<String, Error> {
+    private func loadBatchFile(id batchId: String) -> AnyPublisher<String, Error> {
         return backend.getBatchFile(id: batchId).tryMap { data in
             try self.storage.`import`(batchId: batchId, data: data)
         }.eraseToAnyPublisher()

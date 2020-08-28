@@ -2,9 +2,12 @@ import Combine
 import Foundation
 
 protocol FileStorage {
+    // batch file accessors
     func `import`(batchId: String, data: Data) throws -> String
     func getFileUrls(forBatchId id: String) -> [URL]
     func deleteAllBatches()
+    
+    // generic object storage
     func write<T: Codable>(object: T, to filename: String) -> Bool
     func read<T: Codable>(from filename: String) -> T?
 }
@@ -81,7 +84,7 @@ class FileStorageImpl : FileStorage {
                                                   extension: "json",
                                                   data: data,
                                                   relativeTo: Directories.objects.url) {
-                Log.d("Municipality contact info written to \(filename)")
+                Log.d("Object data (\(data.count) bytes) written to \(filename).json")
                 return true
             }
         }
