@@ -35,7 +35,7 @@ jobs:
       - name: Cache vulnerability data cache
         uses: actions/cache@v2
         with:
-          path: /github/workspace/owasp/dependency-check/data
+          path: /owasp/dependency-check/data
           key: ${{ runner.os }}-owasp-dependency-check
           restore-keys: ${{ runner.os }}-owasp-dependency-check
       - name: OWASP dependency check
