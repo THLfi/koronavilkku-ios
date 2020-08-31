@@ -7,6 +7,8 @@ struct TemporaryExposureKey : Codable {
         case errorGeneratingRandomData
     }
     
+    static let dataLength = 16
+    
     let keyData: String
     let transmissionRiskLevel: Int
     let rollingStartIntervalNumber: Int
@@ -16,7 +18,7 @@ struct TemporaryExposureKey : Codable {
         
         // A whole lot of magic numbers here, but this is according to Google's GAEN API specs
         TemporaryExposureKey(
-            keyData: randomData(ofLength: 16),
+            keyData: randomData(ofLength: dataLength),
             transmissionRiskLevel: index % 7,
             rollingStartIntervalNumber: 2650847,
             rollingPeriod: 144
@@ -24,16 +26,9 @@ struct TemporaryExposureKey : Codable {
     }
     
     static func randomData(ofLength length: Int) -> String {
-        var bytes = [UInt8](repeating: 0, count: length)
-        let status = SecRandomCopyBytes(kSecRandomDefault, length, &bytes)
-        if status == errSecSuccess {
-            return Data(bytes).base64EncodedString()
-        }
-        else {
-            // This should never happen but if random string generation fails,
-            // create fixed string for data.
-            return "AAAAAAAAAAAAAAAAAAAAAA=="
-        }
+        Data([UInt8](repeating: 0, count: length).map { _ in
+            UInt8.random(in: UInt8.min...UInt8.max)
+        }).base64EncodedString()
     }
 }
 

@@ -2,7 +2,7 @@
 "ButtonBack" = "Tillbaka";
 "ButtonCancel" = "Avbryt";
 "ButtonNext" = "Nästa";
-"ButtonStartUsing" = "Börja använd";
+"ButtonStartUsing" = "Börja använda";
 "ButtonTestUI" = "Verktyg";
 
 "TabHome" = "Hem";
@@ -152,7 +152,7 @@
 "OnboardingPrivacyText" = "Coronablinkern lagrar inte ditt namn, din födelsetid eller dina kontaktuppgifter. Den kan inte avslöja din identitet eller identiteten på personer du möter.\n\nAppen samlar inte in platsuppgifter.";
 "OnboardingUsageTitle" = "Användningsuppgifter som gäller appen";
 "OnboardingUsageText" = "Appen meddelar till en server att appen är påkopplad. Om du kontaktar hälso- och sjukvården via appen, förmedlar den dessutom information om huruvida du eventuellt blivit utsatt för viruset.\n\nAll datatrafik mellan Coronablinkern och servern är sekretessbelagda.\n\nInformationen lagras anonymt på en server som är belägen i Finland. Servern underhålls av myndigheter inom den offentliga förvaltningen. Uppgifterna avlägsnas då de inte längre behövs. Uppgifterna avlägsnas senast 31.3.2021.";
-"OnboardingVoluntaryTitle" = "Appen är inte oblikatorisk";
+"OnboardingVoluntaryTitle" = "Appen är inte obligatorisk";
 "OnboardingVoluntaryText" = "Det är frivilligt att använda Coronablinkern. Du kan när som helst sluta använda appen genom att avlägsna den från telefonen.";
 "OnboardingAcceptTerms" = "Jag har läst och godkänner användningsvillkoren för tjänsten.";
 "OnboardingReadTerms" = "Läs användningsvillkoren";
