@@ -63,7 +63,6 @@
 		56E3349224CB02C00017CD9A /* ExposureDetectionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E3349124CB02C00017CD9A /* ExposureDetectionSummary.swift */; };
 		56E3349424CB21760017CD9A /* MunicipalityContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E3349324CB21760017CD9A /* MunicipalityContactInfoViewController.swift */; };
 		56E3349624CCC0BB0017CD9A /* MunicipalityContactInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E3349524CCC0BB0017CD9A /* MunicipalityContactInformationView.swift */; };
-		56E3349824CEAFA00017CD9A /* MunicipalitiesWithContact.json in Resources */ = {isa = PBXBuildFile; fileRef = 56E3349724CEAFA00017CD9A /* MunicipalitiesWithContact.json */; };
 		56E3349A24CEC9290017CD9A /* ContactItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E3349924CEC9290017CD9A /* ContactItemCard.swift */; };
 		56EE9BD724F7DE9E0037A45D /* TemporaryExposureKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EE9BD624F7DE9E0037A45D /* TemporaryExposureKeyTests.swift */; };
 		D92F18AD24CEC0F300F3FBCE /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92F18AC24CEC0F300F3FBCE /* Log.swift */; };
@@ -420,14 +419,6 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		56C2DBF424EFA2D80014F09D /* Json */ = {
-			isa = PBXGroup;
-			children = (
-				56E3349724CEAFA00017CD9A /* MunicipalitiesWithContact.json */,
-			);
-			path = Json;
-			sourceTree = "<group>";
-		};
 		56C2DBF524EFA8C50014F09D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,7 +504,6 @@
 		EA47C5ED24A6B37800EAC720 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				56C2DBF424EFA2D80014F09D /* Json */,
 				EA47C5F624A6C1EE00EAC720 /* Fonts */,
 				EA92A04F24A3958500CE7271 /* Assets.xcassets */,
 				EA92A05124A3958500CE7271 /* LaunchScreen.storyboard */,
@@ -557,15 +547,15 @@
 		EA92A04224A3958300CE7271 /* Koronavilkku */ = {
 			isa = PBXGroup;
 			children = (
-				560833B124B850A80078B75D /* Localization */,
 				EAD8619924ADDCAB00809677 /* Exposure */,
-				563D44BC24ABB1DF008FE2BB /* Model */,
 				563D44A924AA326A008FE2BB /* Extension */,
+				560833B124B850A80078B75D /* Localization */,
+				563D44BC24ABB1DF008FE2BB /* Model */,
 				32E0350024AB0E6A00F48450 /* Network */,
 				32B5955F24AA273A00CC386E /* Repository */,
 				EA47C5ED24A6B37800EAC720 /* Resources */,
-				EA30D71D24A620BC00AF84B1 /* UI */,
 				EA92A07924A4E56F00CE7271 /* Tools */,
+				EA30D71D24A620BC00AF84B1 /* UI */,
 				56DB5AE024A4B4ED0019C1A1 /* View */,
 				EA30D71624A5C15000AF84B1 /* ViewController */,
 				EA92A04324A3958300CE7271 /* AppDelegate.swift */,
@@ -585,6 +575,7 @@
 				56EE9BD524F7DE720037A45D /* Model */,
 				56C2DBF524EFA8C50014F09D /* Scene */,
 				56C2DBF124EE66D10014F09D /* Repository */,
+				EACBF18524FE5AD500488B4E /* Resources */,
 				5695F6D424D82C8B008E06BC /* Json */,
 				560833BE24B886B70078B75D /* Localization */,
 				EA92A05D24A3958600CE7271 /* KoronavilkkuTests.swift */,
@@ -612,6 +603,14 @@
 				560833BC24B8677C0078B75D /* Translation.swift */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		EACBF18524FE5AD500488B4E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				56E3349724CEAFA00017CD9A /* MunicipalitiesWithContact.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		EAD8619924ADDCAB00809677 /* Exposure */ = {
@@ -747,7 +746,6 @@
 				D98C21D924C97673003A5662 /* Localizable.strings in Resources */,
 				EA47C5F424A6B3FC00EAC720 /* SourceSansPro-Black.otf in Resources */,
 				EA47C5F524A6B3FC00EAC720 /* SourceSansPro-Semibold.otf in Resources */,
-				56E3349824CEAFA00017CD9A /* MunicipalitiesWithContact.json in Resources */,
 				EA47C5F224A6B3FC00EAC720 /* SourceSansPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
