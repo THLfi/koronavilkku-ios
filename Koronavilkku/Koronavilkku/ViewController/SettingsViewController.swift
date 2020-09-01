@@ -130,7 +130,7 @@ class SettingsViewController: UIViewController {
     }
 
     private func updateLanguageItem() {
-        var value: Text = .StatusOff
+        var value: Text = .LanguageFi
         switch Bundle.main.preferredLocalizations.first {
         case "sv":
             value = .LanguageSv
