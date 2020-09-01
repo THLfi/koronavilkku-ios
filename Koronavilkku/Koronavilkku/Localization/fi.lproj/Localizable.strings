@@ -100,6 +100,10 @@
 "SettingsViewController.Text.StatusOn" = "Käytössä";
 "SettingsViewController.Text.StatusOff" = "Ei käytössä";
 "SettingsViewController.Text.StatusLocked" = "Lukittu";
+"SettingsViewController.Text.LanguageTitle" = "Vaihda kieli";
+"SettingsViewController.Text.LanguageFi" = "Suomi";
+"SettingsViewController.Text.LanguageSv" = "Svenska";
+"SettingsViewController.Text.LanguageEn" = "English";
 "SettingsViewController.Text.HowItWorksTitle" = "Näin Koronavilkku toimii";
 "SettingsViewController.Text.SettingsAboutTitle" = "Tietoa sovelluksesta";
 "SettingsViewController.Text.FAQLinkTitle" = "Usein kysyttyä";

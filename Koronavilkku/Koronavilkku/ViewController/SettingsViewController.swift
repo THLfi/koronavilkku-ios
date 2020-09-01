@@ -9,6 +9,10 @@ class SettingsViewController: UIViewController {
         case StatusOn
         case StatusOff
         case StatusLocked
+        case LanguageTitle
+        case LanguageFi
+        case LanguageSv
+        case LanguageEn
         case SettingsAboutTitle
         case FAQLinkTitle
         case FAQLinkName
@@ -24,6 +28,7 @@ class SettingsViewController: UIViewController {
     }
     
     private var statusItem: LinkItem!
+    private var languageItem: LinkItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +39,7 @@ class SettingsViewController: UIViewController {
 
         initUI()
         updateStatusItem()
+        updateLanguageItem()
         
         LocalStore.shared.$uiStatus.addObserver(using: {
             self.updateStatusItem()
@@ -47,6 +53,7 @@ class SettingsViewController: UIViewController {
         
         let items = [
             createStatusItem(),
+            createLanguageItem(),
             sectionTitleItem(text: Text.SettingsAboutTitle),
             aboutGroupItem(),
             appNameAndVersionItem()
@@ -59,6 +66,7 @@ class SettingsViewController: UIViewController {
         }
         
         statusItem.accessibilityTraits = .button
+        languageItem.accessibilityTraits = .button
     }
     
     private func sectionTitleItem(text: Text) -> InstructionItem {
@@ -115,6 +123,26 @@ class SettingsViewController: UIViewController {
         statusItem.setValue(value: value.localized)
     }
     
+    private func createLanguageItem() -> InstructionItem {
+        let item = linkCard(title: .LanguageTitle, value: .LanguageFi, tapped: { self.openIphoneSettings() })
+        self.languageItem = (item.view as! LinkItemCard).linkItem
+        return item
+    }
+
+    private func updateLanguageItem() {
+        var value: Text = .StatusOff
+        switch Bundle.main.preferredLocalizations.first {
+        case "sv":
+            value = .LanguageSv
+        case "en":
+            value = .LanguageEn
+        default:
+            value = .LanguageFi
+        }
+
+        languageItem.setValue(value: value.localized)
+    }
+
     private func aboutGroupItem() -> InstructionItem {
         let items = [
             linkItem(title: Text.FAQLinkTitle, linkName: Text.FAQLinkName, url: Text.FAQLinkURL),
@@ -129,5 +157,9 @@ class SettingsViewController: UIViewController {
     
     private func openChangeStatusView() {
         navigationController?.pushViewController(ChangeRadarStatusViewController(), animated: true)
+    }
+
+    private func openIphoneSettings() {
+        UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
     }
 }

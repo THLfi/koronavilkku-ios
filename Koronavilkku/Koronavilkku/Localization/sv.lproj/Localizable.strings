@@ -100,6 +100,10 @@
 "SettingsViewController.Text.StatusOn" = "I bruk";
 "SettingsViewController.Text.StatusOff" = "Ur bruk";
 "SettingsViewController.Text.StatusLocked" = "Låst";
+"SettingsViewController.Text.LanguageTitle" = "Byt språk";
+"SettingsViewController.Text.LanguageFi" = "Suomi";
+"SettingsViewController.Text.LanguageSv" = "Svenska";
+"SettingsViewController.Text.LanguageEn" = "English";
 "SettingsViewController.Text.HowItWorksTitle" = "Så fungerar Coronablinkern";
 "SettingsViewController.Text.SettingsAboutTitle" = "Info om appen";
 "SettingsViewController.Text.FAQLinkTitle" = "Vanliga frågor";
