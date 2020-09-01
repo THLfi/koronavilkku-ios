@@ -96,7 +96,7 @@
 
 // MARK: SettingsViewController
 "SettingsViewController.Text.Heading" = "Inställningar";
-"SettingsViewController.Text.StatusTitle" = "Exponeringsmeddelandena";
+"SettingsViewController.Text.StatusTitle" = "Exponeringsmeddelanden";
 "SettingsViewController.Text.StatusOn" = "I bruk";
 "SettingsViewController.Text.StatusOff" = "Ur bruk";
 "SettingsViewController.Text.StatusLocked" = "Låst";
@@ -136,7 +136,7 @@
 "HeaderContinueByAcceptingExposureLogging" = "Fortsätt aktiveringen genom att välja \"Tillåt\"";
 
 "ContactRequestItemTitle" = "Lämna en begäran att hälsovården kontaktar dig";
-"ContactRequestItemInfo" = "Avsätt ändast för 16 år fyllda, symtomfria personer";
+"ContactRequestItemInfo" = "Avsett endast för 16 år fyllda, symtomfria personer";
 
 "AlertErrorLoadingMunicipalities" = "Det gick inte att ladda kommunuppgifterna.";
 "AlertMessagePleaseTryAgainLater" = "Kontrollera anslutningen och försök på nytt.";
@@ -170,7 +170,7 @@ Om du har konstaterats ha coronavirusinfektion, kan du meddela om det här anony
 "GuideExchangeTitle" = "Telefonerna skickar åt varandra identifikationskoder";
 "GuideExchangeText" = "När du är nära en annan person som använder Coronablinkern delar era telefoner ut sina identifikationskoder till varandra via Bluetooth. På det här sättet kan appen följa med telefoner som bärs av mötande personer. Appen lagrar inte användarnas identitet eller plats.";
 "GuideCompareTitle" = "Appen jämför användarnas koder";
-"GuideCompareText" = "Coronablinkern laddar ner flera gånger per dag en förteckning över koder som skickats från smittade personers telefoner med motsvarande app. Coronablinkern jämför de här med de koder som din telefon har samlat in från andra användare. På det här sättet kan appen avgöra om du har varit i närheten av en person som har coronavirusinfektion.";
+"GuideCompareText" = "Coronablinkern laddar flera gånger per dag ner dag en förteckning över koder som skickats från smittade personers telefoner med motsvarande app. Coronablinkern jämför de här med de koder som din telefon har samlat in från andra användare. På det här sättet kan appen avgöra om du har varit i närheten av en person som har coronavirusinfektion.";
 "GuideNotificationTitle" = "Du får ett meddelande om eventuell virusexponering";
 "GuideNotificationText" = "Om koderna som din telefon samlat in motsvarar koderna som samlats in från personer som bär på smitta får du ett meddelande om eventuell exponering. I det här fallet kan du meddela dina kontaktuppgifter till hälso- och sjukvården som ger dig närmare anvisningar.\n\nOm du misstänker att du smittats med coronaviruset kan du när som helst göra en symtombedömning i tjänsten Omaolo.";
 "GuideDiagnosisTitle" = "Om du konstateras ha coronavirusinfektion";
