@@ -88,7 +88,7 @@
 "PublishTokensViewController.Text.FinishedButton" = "OK";
 
 // MARK: SymptomsViewController
-"SymptomsViewController.Text.Heading" = "Bedömning av coronasymptom";
+"SymptomsViewController.Text.Heading" = "Bedömning av coronasymtom";
 "SymptomsViewController.Text.Body" = "Gör en bedömning av dina symtom i Omaolo, om du misstänker att du smittats av coronaviruset. Du får ytterligare anvisningar på basen av dina svar. Det räcker cirka 5-10 minuter att fylla i bedömningen.";
 "SymptomsViewController.Text.LinkTitle" = "Gör en symtombedömning i Omaolo";
 "SymptomsViewController.Text.LinkName" = "omaolo.fi";
@@ -136,7 +136,7 @@
 "HeaderContinueByAcceptingExposureLogging" = "Fortsätt aktiveringen genom att välja \"Tillåt\"";
 
 "ContactRequestItemTitle" = "Lämna en begäran att hälsovården kontaktar dig";
-"ContactRequestItemInfo" = "Avsätt ändast för 16 år fyllda, symptomfria personer";
+"ContactRequestItemInfo" = "Avsätt ändast för 16 år fyllda, symtomfria personer";
 
 "AlertErrorLoadingMunicipalities" = "Det gick inte att ladda kommunuppgifterna.";
 "AlertMessagePleaseTryAgainLater" = "Kontrollera anslutningen och försök på nytt.";
