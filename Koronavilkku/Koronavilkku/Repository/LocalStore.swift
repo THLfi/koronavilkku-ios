@@ -66,6 +66,9 @@ class LocalStore {
     @Persisted(userDefaultsKey: "detectionSummaries", notificationName: .init("LocalStoreDetectionSummaries"), defaultValue: [])
     var detectionSummaries: [ExposureDetectionSummary]
     
+    @Persisted(userDefaultsKey: "language", notificationName: .init("LocalStoreLanguage"), defaultValue: Language.default)
+    var language: Language
+    
     func flush() {
         UserDefaults.standard.synchronize()
     }
