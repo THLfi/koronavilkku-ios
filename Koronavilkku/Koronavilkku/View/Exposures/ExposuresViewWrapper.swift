@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 import Combine
 
-protocol ExposuresViewDelegate {
+protocol ExposuresViewDelegate: NSObjectProtocol {
     func showHowItWorks()
     func makeContact()
 }
@@ -32,7 +32,7 @@ class ExposuresViewWrapper: UIView {
         case DisclaimerText
     }
     
-    var delegate: ExposuresViewDelegate?
+    weak var delegate: ExposuresViewDelegate?
     let lastCheckedView = ExposuresLastCheckedView()
     
     init() {
