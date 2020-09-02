@@ -59,7 +59,7 @@ class HowItWorksViewController: UIViewController {
 
         let topConstraint = InstructionsView.layoutItems(items, contentView: content)
         
-        let backButton = RoundedButton(title: Translation.GuideButtonBack.localized, action: close)
+        let backButton = RoundedButton(title: Translation.GuideButtonBack.localized, action: { [unowned self] in self.close() })
         content.addSubview(backButton)
         backButton.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
