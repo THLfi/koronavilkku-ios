@@ -36,7 +36,7 @@ class ChangeLanguageViewController: UIViewController {
     private func createLanguageItem(for language: Language) -> InstructionItem {
         let isSelected = language == LocalStore.shared.language
         
-        let view = LinkItemCard(title: language.displayName, value: nil, tapped: { self.languageSelected(language) })
+        let view = LinkItemCard(title: language.displayName.capitalized, value: nil, tapped: { self.languageSelected(language) })
         view.linkItem.indicator.image = isSelected ? UIImage(named: "check") : nil
         view.linkItem.indicator.snp.updateConstraints { make in
             make.size.equalTo(24)
