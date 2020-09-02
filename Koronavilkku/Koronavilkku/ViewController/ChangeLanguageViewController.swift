@@ -50,9 +50,11 @@ class ChangeLanguageViewController: UIViewController {
     }
     
     private func languageSelected(_ language: Language) {
-        LocalStore.shared.language = language
-        
-        initUI()
+        if language != LocalStore.shared.language {
+            LocalStore.shared.language = language
+            
+            initUI()
+        }
         
         navigationController?.popViewController(animated: true)
     }
