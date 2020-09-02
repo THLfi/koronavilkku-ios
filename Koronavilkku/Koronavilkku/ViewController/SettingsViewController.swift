@@ -88,7 +88,6 @@ class SettingsViewController: UIViewController {
     
     private func linkCard(title: Text, value: Text, tapped: TapHandler?) -> InstructionItem {
         let view = LinkItemCard(title: title.localized, value: value.localized, tapped: tapped)
-        view.linkItem.accessibilityTraits = .button
         return InstructionItem(view: view, spacing: 10)
     }
     
@@ -131,6 +130,7 @@ class SettingsViewController: UIViewController {
     private func createLanguageItem() -> InstructionItem {
         let language = LocalStore.shared.language
         let view = LinkItemCard(title: Text.LanguageTitle.localized, value: language.displayName, tapped: { self.openChangeLanguageView() })
+        view.linkItem.accessibilityTraits = .button
         return InstructionItem(view: view, spacing: 10)
     }
     
