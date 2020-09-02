@@ -42,7 +42,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         initUI()
         updateStatusItem()
         
-        LocalStore.shared.$uiStatus.addObserver(using: {
+        LocalStore.shared.$uiStatus.addObserver(using: { [unowned self] in
             self.updateStatusItem()
         })
     }

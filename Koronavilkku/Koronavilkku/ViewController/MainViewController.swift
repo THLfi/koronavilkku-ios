@@ -63,8 +63,8 @@ class MainViewController: UIViewController {
             make.left.right.equalToSuperview()
         }
         
-        headerView.openSettingsHandler = { type in
-            let viewController = OpenSettingsViewController.create(type: type) { [unowned self] in self.dismiss(animated: true) }
+        headerView.openSettingsHandler = { [unowned self] type in
+            let viewController = OpenSettingsViewController.create(type: type) { self.dismiss(animated: true) }
             self.present(viewController, animated: true)
         }
         

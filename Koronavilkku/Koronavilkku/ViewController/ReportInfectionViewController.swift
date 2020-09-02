@@ -19,7 +19,7 @@ class ReportInfectionViewController: UIViewController {
         super.viewDidLoad()
         initUI()
 
-        LocalStore.shared.$uiStatus.addObserver(using: {
+        LocalStore.shared.$uiStatus.addObserver(using: { [unowned self] in
             self.initUI()
         })
     }
@@ -97,7 +97,7 @@ class ReportInfectionViewController: UIViewController {
         top = contentView.appendView(text, top: top)
         
         let button = RoundedButton(title: Text.ReportButton.localized,
-                                   action: self.pushToPublishTokensVC)
+                                   action: { [unowned self] in self.pushToPublishTokensVC() })
         top = contentView.appendView(button, spacing: 30, top: top)
         
         button.snp.makeConstraints { make in
