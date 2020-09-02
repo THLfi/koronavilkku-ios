@@ -8,9 +8,13 @@ class LinkHandler {
     
     func open(_ url: URL) {
         let app = UIApplication.shared
-        guard let vc = app.windows.first?.rootViewController else {
+        guard var vc = app.windows.first?.rootViewController else {
             app.open(url)
             return
+        }
+        
+        while vc.presentedViewController != nil {
+            vc = vc.presentedViewController!
         }
         
         let safariController = SFSafariViewController(url: url)
