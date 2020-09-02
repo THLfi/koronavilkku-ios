@@ -22,7 +22,7 @@ class ChangeLanguageViewController: UIViewController {
             backgroundColor: UIColor.Secondary.blueBackdrop,
             margins: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
         
-        let items = Language.all.map { language in
+        let items = Language.allCases.map { language in
             createLanguageItem(for: language)
         }
         

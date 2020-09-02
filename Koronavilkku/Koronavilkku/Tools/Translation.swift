@@ -51,13 +51,9 @@ extension Localizable {
     }
 }
 
-enum Language: String, Codable {
+enum Language: String, Codable, CaseIterable {
     case fi
     case sv
-    
-    static var all: [Language] {
-        return [.fi, .sv]
-    }
     
     static var `default`: Language {
         let code = Bundle.main.preferredLocalizations.first ?? ""
