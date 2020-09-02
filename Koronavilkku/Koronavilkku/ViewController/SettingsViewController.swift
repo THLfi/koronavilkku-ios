@@ -24,6 +24,8 @@ class SettingsViewController: UIViewController {
         case AppInfoWithVersion
     }
     
+    private var contentView: UIView!
+    
     private var statusItem: LinkItem!
     
     override func viewDidLoad() {
@@ -40,18 +42,20 @@ class SettingsViewController: UIViewController {
         })
         
         LocalStore.shared.$language.addObserver(using: {
-            self.initUI()
+            self.reloadItems()
         })
     }
     
     private func initUI() {
-        navigationItem.title = Text.Heading.localized
-        
-        view.removeAllSubviews()
-        
-        let content = view.addScrollableContentView(
+        contentView = view.addScrollableContentView(
             backgroundColor: UIColor.Secondary.blueBackdrop,
             margins: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+        
+        reloadItems()
+    }
+    
+    private func reloadItems() {
+        navigationItem.title = Text.Heading.localized
         
         let items = [
             createStatusItem(),
@@ -61,13 +65,11 @@ class SettingsViewController: UIViewController {
             appNameAndVersionItem()
         ]
 
-        _ = InstructionsView.layoutItems(items, contentView: content)
+        _ = InstructionsView.layoutItems(items, contentView: contentView)
 
         items.last!.view.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
         }
-        
-        statusItem.accessibilityTraits = .button
     }
     
     private func sectionTitleItem(text: Text) -> InstructionItem {
@@ -101,6 +103,7 @@ class SettingsViewController: UIViewController {
     private func createStatusItem() -> InstructionItem {
         let item = linkCard(title: .StatusTitle, value: .StatusOff, tapped: { self.openChangeStatusView() })
         self.statusItem = (item.view as! LinkItemCard).linkItem
+        statusItem.accessibilityTraits = .button
         return item
     }
     
