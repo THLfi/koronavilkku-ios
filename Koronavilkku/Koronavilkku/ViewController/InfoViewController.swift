@@ -63,7 +63,7 @@ class InfoViewController: UIViewController {
             make.right.equalTo(view).offset(-40)
         }
         
-        let button = RoundedButton(title: buttonTitle, action: { self.buttonPressed?() })
+        let button = RoundedButton(title: buttonTitle, action: { [unowned self] in self.buttonPressed?() })
         view.addSubview(button)
         button.snp.makeConstraints { make in
             make.bottom.equalTo(view).offset(-40)

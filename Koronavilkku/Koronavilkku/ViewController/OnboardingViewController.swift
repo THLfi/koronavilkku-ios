@@ -276,8 +276,9 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
         self.button = nil
         
         if let buttonTitle = step.buttonTitle {
-            let button = RoundedButton(title: buttonTitle,
-                                       action: { self.performButtonAction(step: step) })
+            let button = RoundedButton(title: buttonTitle) { [unowned self] in
+                self.performButtonAction(step: step)
+            }
             viewController.view.addSubview(button)
             button.snp.makeConstraints { make in
                 make.bottom.left.right.equalToSuperview().inset(buttonMargin)
@@ -339,7 +340,7 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
         return InternalLinkLabel(label: Translation.HowItWorksButton.localized,
                                  font: UIFont.labelSecondary,
                                  color: UIColor.Primary.blue,
-                                 linkTapped: { self.showGuide() },
+                                 linkTapped: { [unowned self] in self.showGuide() },
                                  underline: false)
     }
     

@@ -66,7 +66,7 @@ class ExposuresViewWrapper: UIView {
                                              descriptionText: HasExposureText.ContactCardText.localized,
                                              buttonTitle: HasExposureText.ContactButtonTitle.localized,
                                              bottomText: nil,
-                                             buttonTapped: { self.delegate?.makeContact() })
+                                             buttonTapped: { [unowned self] in self.delegate?.makeContact() })
         top = appendView(contactView, spacing: 20, top: top)
 
         let instructionsTitle = UILabel(label: HasExposureText.InstructionsTitle.localized, font: .heading3, color: UIColor.Greyscale.black)
@@ -138,7 +138,7 @@ class ExposuresViewWrapper: UIView {
         let howItWorksLink = InternalLinkLabel(label: Translation.HowItWorksButton.localized,
                                            font: UIFont.labelSecondary,
                                            color: UIColor.Primary.blue,
-                                           linkTapped: { self.delegate?.showHowItWorks() },
+                                           linkTapped: { [unowned self] in self.delegate?.showHowItWorks() },
                                            underline: false)
         top = appendView(howItWorksLink, spacing: 8, top: top)
         
