@@ -18,6 +18,8 @@ struct InstructionItem {
 struct InstructionsView {
 
     static func layoutItems(_ items: [InstructionItem], contentView: UIView) -> ConstraintItem {
+        contentView.removeAllSubviews()
+        
         var topConstraint = contentView.snp.top
 
         items.forEach { item in
