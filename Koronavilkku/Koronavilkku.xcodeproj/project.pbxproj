@@ -17,6 +17,7 @@
 		32E0350224AB0E8100F48450 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0350124AB0E8100F48450 /* Configuration.swift */; };
 		32E0350624AB4AB000F48450 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0350524AB4AB000F48450 /* FileHelper.swift */; };
 		56009400251E08E100F1BE1B /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560093FF251E08E100F1BE1B /* UINavigationController.swift */; };
+		487466BE24FF92040031D96C /* LinkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487466BD24FF92040031D96C /* LinkHandler.swift */; };
 		560833BD24B8677C0078B75D /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560833BC24B8677C0078B75D /* Translation.swift */; };
 		560833C024B886D70078B75D /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560833BF24B886D70078B75D /* LocalizationTests.swift */; };
 		5612972C24C977420075161A /* HowItWorksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612972B24C977420075161A /* HowItWorksViewController.swift */; };
@@ -150,6 +151,7 @@
 		32E0350124AB0E8100F48450 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		32E0350524AB4AB000F48450 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
 		560093FF251E08E100F1BE1B /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
+		487466BD24FF92040031D96C /* LinkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkHandler.swift; sourceTree = "<group>"; };
 		560833BC24B8677C0078B75D /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		560833BF24B886D70078B75D /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
 		5612972B24C977420075161A /* HowItWorksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksViewController.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 			children = (
 				5695F6CD24D2AFB9008E06BC /* BackgroundTask.swift */,
 				32E0350524AB4AB000F48450 /* FileHelper.swift */,
+				487466BD24FF92040031D96C /* LinkHandler.swift */,
 				EA92A07A24A4E59800CE7271 /* LivePreview.swift */,
 				D92F18AC24CEC0F300F3FBCE /* Log.swift */,
 				560833BC24B8677C0078B75D /* Translation.swift */,
@@ -886,6 +889,7 @@
 				561878AC24AC9952004B7563 /* LocalStore.swift in Sources */,
 				EA47C5EC24A6AB0300EAC720 /* Fonts.swift in Sources */,
 				D98EDD3124CCAD15003E09A1 /* LinkItemGroupCard.swift in Sources */,
+				487466BE24FF92040031D96C /* LinkHandler.swift in Sources */,
 				563D44AB24AA327F008FE2BB /* UIView.swift in Sources */,
 				D98EDD2F24CCACF3003E09A1 /* LinkItemCard.swift in Sources */,
 				EAD8619B24ADDCC900809677 /* ExposureManager.swift in Sources */,
