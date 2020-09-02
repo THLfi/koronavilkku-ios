@@ -118,7 +118,7 @@ class OpenSettingsViewController: UIViewController {
 
     private func openSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-        LinkHandler.shared.open(url)
+        UIApplication.shared.open(url)
     }
 
     static func create(type: OpenSettingsType, userDismissable: Bool = true, dismisser: @escaping () -> Void) -> UIViewController {
