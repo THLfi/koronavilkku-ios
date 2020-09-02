@@ -6,6 +6,16 @@ protocol Localizable : CaseIterable {
     var key: String { get }
 }
 
+private var bundlesByLanguage: [Language: Bundle] = [:]
+
+private func getBundle(for language: Language) -> Bundle? {
+    guard let bundlePath = Bundle(for: AppDelegate.self).path(forResource: language.rawValue, ofType: "lproj"),
+        let bundle = Bundle(path: bundlePath) else {
+            return nil
+    }
+    return bundle
+}
+
 extension Localizable {
     var localized: String {
         localized()
@@ -17,7 +27,20 @@ extension Localizable {
     }
 
     func localized(with args: CVarArg...) -> String {
-        let localizedString = NSLocalizedString(key, comment: "")
+        let language = LocalStore.shared.language
+        var bundle: Bundle! = bundlesByLanguage[language]
+        if bundle == nil {
+            bundle = getBundle(for: language)
+            bundlesByLanguage[language] = bundle
+        }
+        
+        let localizedString: String
+        if let bundle = bundle {
+            localizedString = bundle.localizedString(forKey: key, value: "", table: nil)
+        } else {
+            localizedString = NSLocalizedString(key, comment: "")
+        }
+        
         return withVaList(args, { (args) -> String in
             return NSString(format: localizedString, locale: Locale.current, arguments: args) as String
         })
