@@ -41,8 +41,8 @@ class SettingsViewController: UIViewController {
             self.updateStatusItem()
         })
         
-        LocalStore.shared.$language.addObserver(using: { [unowned self] in
-            self.reloadItems()
+        LocalStore.shared.$language.addObserver(using: { [weak self] in
+            self?.reloadItems()
         })
     }
     

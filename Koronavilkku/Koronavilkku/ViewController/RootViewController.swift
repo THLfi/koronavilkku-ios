@@ -56,8 +56,8 @@ class RootViewController : UITabBarController {
             selectTab(selectedTab)
         }
         
-        LocalStore.shared.$language.addObserver(using: { [unowned self] in
-            self.reloadTabs()
+        LocalStore.shared.$language.addObserver(using: { [weak self] in
+            self?.reloadTabs()
         })
     }
     
