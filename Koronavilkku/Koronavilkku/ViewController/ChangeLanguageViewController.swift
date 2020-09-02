@@ -52,6 +52,8 @@ class ChangeLanguageViewController: UIViewController {
             initUI()
         }
         
-        navigationController?.popViewController(animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
