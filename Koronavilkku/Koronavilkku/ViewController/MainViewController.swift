@@ -23,6 +23,10 @@ class MainViewController: UIViewController {
                                                name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
         initUI()
+        
+        LocalStore.shared.$language.addObserver(using: {
+            self.initUI()
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -38,9 +38,15 @@ class SettingsViewController: UIViewController {
         LocalStore.shared.$uiStatus.addObserver(using: {
             self.updateStatusItem()
         })
+        
+        LocalStore.shared.$language.addObserver(using: {
+            self.initUI()
+        })
     }
     
     private func initUI() {
+        view.removeAllSubviews()
+        
         let content = view.addScrollableContentView(
             backgroundColor: UIColor.Secondary.blueBackdrop,
             margins: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))

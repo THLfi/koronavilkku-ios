@@ -22,6 +22,10 @@ class ReportInfectionViewController: UIViewController {
         LocalStore.shared.$uiStatus.addObserver(using: {
             self.initUI()
         })
+        
+        LocalStore.shared.$language.addObserver(using: {
+            self.initUI()
+        })
     }
     
     private func initUI() {
