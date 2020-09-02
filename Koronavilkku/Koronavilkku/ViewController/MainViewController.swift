@@ -1,5 +1,4 @@
 import UIKit
-import SafariServices
 import SnapKit
 
 class MainViewController: UIViewController {
@@ -179,8 +178,7 @@ class MainViewController: UIViewController {
             return
         }
         
-        let safariController = SFSafariViewController(url: url)
-        navigationController?.present(safariController, animated: true)
+        LinkHandler.shared.open(url)
     }
     
     private func openSituationWebView() {
@@ -188,8 +186,7 @@ class MainViewController: UIViewController {
             return
         }
         
-        let safariController = SFSafariViewController(url: url)
-        navigationController?.present(safariController, animated: true)
+        LinkHandler.shared.open(url)
     }
     
     private func openSymptomsViewController() {
@@ -211,7 +208,7 @@ class MainViewController: UIViewController {
     }
     
     @objc private func logoImageTapped() {
-        UIApplication.shared.open(URL(string: Translation.HomeLogoLinkURL.localized)!)
+        LinkHandler.shared.open(URL(string: Translation.HomeLogoLinkURL.localized)!)
     }
     
     @objc private func willEnterForeground() {

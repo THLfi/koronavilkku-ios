@@ -14,7 +14,9 @@ class LinkItem: UIButton {
     init(title: String, linkName: String? = nil, value: String? = nil, tapped: TapHandler? = nil, url: URL? = nil) {
         guard tapped != nil || url != nil else { fatalError("Either argument tapped or url must be defined") }
         
-        self.tapped = tapped ?? { UIApplication.shared.open(url!) }
+        self.tapped = tapped ?? {
+            LinkHandler.shared.open(url!)
+        }
         self.valueLabel = UILabel(label: value ?? "", font: UIFont.bodySmall, color: UIColor.Greyscale.darkGrey)
         
         super.init(frame: .zero)
