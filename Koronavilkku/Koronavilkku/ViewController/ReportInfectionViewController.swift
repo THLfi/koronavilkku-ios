@@ -19,8 +19,8 @@ class ReportInfectionViewController: UIViewController {
         super.viewDidLoad()
         initUI()
 
-        LocalStore.shared.$uiStatus.addObserver(using: { [unowned self] in
-            self.initUI()
+        LocalStore.shared.$uiStatus.addObserver(using: { [weak self] in
+            self?.initUI()
         })
     }
     

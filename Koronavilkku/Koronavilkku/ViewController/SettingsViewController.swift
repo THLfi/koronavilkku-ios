@@ -42,8 +42,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         initUI()
         updateStatusItem()
         
-        LocalStore.shared.$uiStatus.addObserver(using: { [unowned self] in
-            self.updateStatusItem()
+        LocalStore.shared.$uiStatus.addObserver(using: { [weak self] in
+            self?.updateStatusItem()
         })
     }
     
