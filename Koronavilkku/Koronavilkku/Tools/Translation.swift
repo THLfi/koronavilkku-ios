@@ -28,6 +28,28 @@ extension Localizable {
     }
 }
 
+enum Language: String, Codable {
+    case fi
+    case sv
+    
+    static var `default`: Language {
+        let code = Bundle.main.preferredLocalizations.first ?? ""
+        return Language(rawValue: code) ?? .fi
+    }
+    
+    var code: String {
+        return rawValue
+    }
+    
+    var locale: Locale {
+        return Locale(identifier: code)
+    }
+    
+    var displayName: String {
+        return (locale as NSLocale).displayName(forKey: .identifier, value: code) ?? code
+    }
+}
+
 /**
  Generic translations used globally in the app
  */
