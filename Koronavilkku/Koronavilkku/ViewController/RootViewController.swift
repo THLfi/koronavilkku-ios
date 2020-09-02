@@ -55,6 +55,10 @@ class RootViewController : UITabBarController {
         if let selectedTab = selectedTab {
             selectTab(selectedTab)
         }
+        
+        LocalStore.shared.$language.addObserver(using: {
+            self.reloadTabTitles()
+        })
     }
     
     private func createTab(for viewController: UIViewController, createBarItem: () -> UITabBarItem) -> UIViewController {
@@ -101,6 +105,22 @@ class RootViewController : UITabBarController {
     
     private func tabViewController(_ tab: RootTab) -> CustomNavigationController? {
         return viewControllers?[tab.rawValue] as? CustomNavigationController
+    }
+    
+    private func reloadTabTitles() {
+        let tabs: [RootTab] = [.home, .reportInfection, .settings]
+        tabs.forEach { tab in
+            let title: String
+            switch tab {
+            case .home:
+                title = Translation.TabHome.localized()
+            case .reportInfection:
+                title = Translation.TabReportInfection.localized()
+            case .settings:
+                title = Translation.TabSettings.localized()
+            }
+            tabViewController(tab)?.tabBarItem.title = title
+        }
     }
 }
 
