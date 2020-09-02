@@ -10,19 +10,21 @@ class LinkItem: UIButton {
     private let valueLabel: UILabel
     private var valueMarginConstraint: Constraint? = nil
     private var tapRecognizer: UITapGestureRecognizer!
-
+    
+    let indicator: UIImageView
+    
     init(title: String, linkName: String? = nil, value: String? = nil, tapped: TapHandler? = nil, url: URL? = nil) {
         guard tapped != nil || url != nil else { fatalError("Either argument tapped or url must be defined") }
         
         self.tapped = tapped ?? { UIApplication.shared.open(url!) }
         self.valueLabel = UILabel(label: value ?? "", font: UIFont.bodySmall, color: UIColor.Greyscale.darkGrey)
+        self.indicator = UIImageView(image: UIImage(named: "chevron-right")!)
         
         super.init(frame: .zero)
 
         self.tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGesture))
         accessibilityTraits = .link
 
-        let indicator = UIImageView(image: UIImage(named: "chevron-right")!)
         addSubview(indicator)
         indicator.snp.makeConstraints { make in
             make.centerY.equalToSuperview()

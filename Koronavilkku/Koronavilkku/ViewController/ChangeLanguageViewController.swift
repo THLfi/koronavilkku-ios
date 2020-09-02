@@ -9,12 +9,15 @@ class ChangeLanguageViewController: UIViewController {
         
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationItem.largeTitleDisplayMode = .automatic
-        navigationItem.title = SettingsViewController.Text.LanguageTitle.localized
-
+        
         initUI()
     }
     
     private func initUI() {
+        navigationItem.title = SettingsViewController.Text.LanguageTitle.localized
+        
+        view.removeAllSubviews()
+        
         let content = view.addScrollableContentView(
             backgroundColor: UIColor.Secondary.blueBackdrop,
             margins: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
@@ -31,14 +34,21 @@ class ChangeLanguageViewController: UIViewController {
     }
     
     private func createLanguageItem(for language: Language) -> InstructionItem {
+        let isSelected = language == LocalStore.shared.language
+        
         let view = LinkItemCard(title: language.displayName, value: nil, tapped: { self.languageSelected(language) })
+        view.linkItem.indicator.image = isSelected ? UIImage(named: "check") : nil
+        view.linkItem.indicator.snp.updateConstraints { make in
+            make.size.equalTo(24)
+        }
+        
         return InstructionItem(view: view, spacing: 10)
     }
     
     private func languageSelected(_ language: Language) {
         LocalStore.shared.language = language
         
-        navigationItem.title = SettingsViewController.Text.LanguageTitle.localized
+        initUI()
         
         navigationController?.popViewController(animated: true)
     }
