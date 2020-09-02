@@ -178,7 +178,7 @@ class MainViewController: UIViewController {
             return
         }
         
-        LinkHandler.shared.open(url)
+        LinkHandler.shared.open(url, inApp: true)
     }
     
     private func openSituationWebView() {
@@ -186,7 +186,7 @@ class MainViewController: UIViewController {
             return
         }
         
-        LinkHandler.shared.open(url)
+        LinkHandler.shared.open(url, inApp: true)
     }
     
     private func openSymptomsViewController() {
@@ -208,7 +208,7 @@ class MainViewController: UIViewController {
     }
     
     @objc private func logoImageTapped() {
-        LinkHandler.shared.open(URL(string: Translation.HomeLogoLinkURL.localized)!)
+        LinkHandler.shared.open(URL(string: Translation.HomeLogoLinkURL.localized)!, inApp: true)
     }
     
     @objc private func willEnterForeground() {

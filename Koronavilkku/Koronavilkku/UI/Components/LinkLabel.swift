@@ -34,7 +34,7 @@ class LinkLabel: UILabel {
     }
     
     @objc func openUrl() {
-        LinkHandler.shared.open(url)
+        LinkHandler.shared.open(url, inApp: true)
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
