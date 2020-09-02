@@ -31,8 +31,7 @@ class SettingsViewController: UIViewController {
 
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationItem.largeTitleDisplayMode = .automatic
-        navigationItem.title = Text.Heading.localized
-
+        
         initUI()
         updateStatusItem()
         
@@ -46,6 +45,8 @@ class SettingsViewController: UIViewController {
     }
     
     private func initUI() {
+        navigationItem.title = Text.Heading.localized
+        
         view.removeAllSubviews()
         
         let content = view.addScrollableContentView(
