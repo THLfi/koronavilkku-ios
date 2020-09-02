@@ -48,10 +48,6 @@ class SymptomsViewController: UIViewController {
         ]
 
         _ = InstructionsView.layoutItems(items, contentView: content)
-
-        items.last!.view.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-        }
     }
 
     private func linkItem(title: Text, linkName: Text, url: Text, spacing: CGFloat) -> InstructionItem {

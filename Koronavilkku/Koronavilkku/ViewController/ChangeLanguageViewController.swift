@@ -27,10 +27,6 @@ class ChangeLanguageViewController: UIViewController {
         }
         
         _ = InstructionsView.layoutItems(items, contentView: content)
-        
-        items.last!.view.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-        }
     }
     
     private func createLanguageItem(for language: Language) -> InstructionItem {

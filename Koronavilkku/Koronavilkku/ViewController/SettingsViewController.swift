@@ -66,10 +66,6 @@ class SettingsViewController: UIViewController {
         ]
 
         _ = InstructionsView.layoutItems(items, contentView: contentView)
-
-        items.last!.view.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
-        }
     }
     
     private func sectionTitleItem(text: Text) -> InstructionItem {

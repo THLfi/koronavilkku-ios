@@ -32,6 +32,10 @@ struct InstructionsView {
             topConstraint = item.view.snp.bottom
         }
         
+        items.last?.view.snp.makeConstraints { make in
+            make.bottom.lessThanOrEqualToSuperview()
+        }
+        
         return topConstraint
     }
 
