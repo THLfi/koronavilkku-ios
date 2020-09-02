@@ -55,6 +55,10 @@ enum Language: String, Codable {
     case fi
     case sv
     
+    static var all: [Language] {
+        return [.fi, .sv]
+    }
+    
     static var `default`: Language {
         let code = Bundle.main.preferredLocalizations.first ?? ""
         return Language(rawValue: code) ?? .fi
