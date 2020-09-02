@@ -9,6 +9,7 @@ class SettingsViewController: UIViewController {
         case StatusOn
         case StatusOff
         case StatusLocked
+        case LanguageTitle
         case SettingsAboutTitle
         case FAQLinkTitle
         case FAQLinkName
@@ -53,6 +54,7 @@ class SettingsViewController: UIViewController {
         
         let items = [
             createStatusItem(),
+            createLanguageItem(),
             sectionTitleItem(text: Text.SettingsAboutTitle),
             aboutGroupItem(),
             appNameAndVersionItem()
@@ -121,6 +123,12 @@ class SettingsViewController: UIViewController {
         statusItem.setValue(value: value.localized)
     }
     
+    private func createLanguageItem() -> InstructionItem {
+        let language = LocalStore.shared.language
+        let view = LinkItemCard(title: Text.LanguageTitle.localized, value: language.displayName, tapped: { self.openChangeLanguageView() })
+        return InstructionItem(view: view, spacing: 10)
+    }
+    
     private func aboutGroupItem() -> InstructionItem {
         let items = [
             linkItem(title: Text.FAQLinkTitle, linkName: Text.FAQLinkName, url: Text.FAQLinkURL),
@@ -135,5 +143,9 @@ class SettingsViewController: UIViewController {
     
     private func openChangeStatusView() {
         navigationController?.pushViewController(ChangeRadarStatusViewController(), animated: true)
+    }
+    
+    private func openChangeLanguageView() {
+        navigationController?.pushViewController(ChangeLanguageViewController(), animated: true)
     }
 }

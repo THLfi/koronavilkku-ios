@@ -16,6 +16,7 @@
 		32B5956124AA27ED00CC386E /* BatchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B5956024AA27ED00CC386E /* BatchRepository.swift */; };
 		32E0350224AB0E8100F48450 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0350124AB0E8100F48450 /* Configuration.swift */; };
 		32E0350624AB4AB000F48450 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0350524AB4AB000F48450 /* FileHelper.swift */; };
+		487466C024FF9DCF0031D96C /* ChangeLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 487466BF24FF9DCF0031D96C /* ChangeLanguageViewController.swift */; };
 		560833BD24B8677C0078B75D /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560833BC24B8677C0078B75D /* Translation.swift */; };
 		560833C024B886D70078B75D /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560833BF24B886D70078B75D /* LocalizationTests.swift */; };
 		5612972C24C977420075161A /* HowItWorksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612972B24C977420075161A /* HowItWorksViewController.swift */; };
@@ -137,6 +138,7 @@
 		32B5956024AA27ED00CC386E /* BatchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchRepository.swift; sourceTree = "<group>"; };
 		32E0350124AB0E8100F48450 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		32E0350524AB4AB000F48450 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
+		487466BF24FF9DCF0031D96C /* ChangeLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageViewController.swift; sourceTree = "<group>"; };
 		560833BC24B8677C0078B75D /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		560833BF24B886D70078B75D /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
 		5612972B24C977420075161A /* HowItWorksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksViewController.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 		EA30D71624A5C15000AF84B1 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				487466BF24FF9DCF0031D96C /* ChangeLanguageViewController.swift */,
 				D98EDD3224CDED29003E09A1 /* ChangeRadarStatusViewController.swift */,
 				563ACEAE24D0555500D396F0 /* ExposureLogsViewController.swift */,
 				561878B624ADCF53004B7563 /* ExposuresViewController.swift */,
@@ -842,6 +845,7 @@
 				D98EDD2F24CCACF3003E09A1 /* LinkItemCard.swift in Sources */,
 				EAD8619B24ADDCC900809677 /* ExposureManager.swift in Sources */,
 				32E0350624AB4AB000F48450 /* FileHelper.swift in Sources */,
+				487466C024FF9DCF0031D96C /* ChangeLanguageViewController.swift in Sources */,
 				D98EDD2D24CC9C93003E09A1 /* SettingsViewController.swift in Sources */,
 				56E3349A24CEC9290017CD9A /* ContactItemCard.swift in Sources */,
 				EA80A56E24ACAE0D0071E0EC /* REST.swift in Sources */,
