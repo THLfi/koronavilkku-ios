@@ -39,7 +39,7 @@ class BatchRepositoryImpl: BatchRepository {
             .flatMap { ids -> AnyPublisher<String, Error> in
                 ids.publisher
                     .setFailureType(to: Error.self)
-                    .flatMap(maxPublishers: .max(2)) { self.loadBatchFile(id: $0) }
+                    .flatMap(maxPublishers: .max(2)) { self.downloadBatchFile(id: $0) }
                     .eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
@@ -65,7 +65,7 @@ class BatchRepositoryImpl: BatchRepository {
             .eraseToAnyPublisher()
     }
     
-    private func loadBatchFile(id batchId: String) -> AnyPublisher<String, Error> {
+    private func downloadBatchFile(id batchId: String) -> AnyPublisher<String, Error> {
         return backend.getBatchFile(id: batchId).tryMap { data in
             try self.storage.`import`(batchId: batchId, data: data)
         }.eraseToAnyPublisher()
