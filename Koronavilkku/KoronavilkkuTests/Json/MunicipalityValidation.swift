@@ -47,10 +47,8 @@ class MunicipalityJsonTests: XCTestCase {
     }
     
     private func loadData() -> Municipalities {
-        if let path = Bundle.main.path(forResource: "MunicipalitiesWithContact", ofType: "json") {
+        if let path = Bundle(for: Self.self).path(forResource: "MunicipalitiesWithContact", ofType: "json") {
             do {
-                debugPrint(path)
-                // let data = try Data(contentsOf: URL(string: "https://repo.thl.fi/sites/koronavilkku/yhteystiedot.json")!, options: .mappedIfSafe)
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
                 return try JSONDecoder()
                     .decode(Municipalities.self, from: data)
@@ -59,7 +57,7 @@ class MunicipalityJsonTests: XCTestCase {
             }
         }
         else {
-            fatalError("No path")
+            fatalError("Unable to find test material from the bundle")
         }
     }
 }

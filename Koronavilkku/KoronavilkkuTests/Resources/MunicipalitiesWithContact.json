@@ -12,20 +12,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -63,20 +63,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -91,10 +91,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
       {
         "title": {
           "fi": "Päivystysapu"
@@ -152,27 +161,23 @@
       "sv": "Aura"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
         "title": {
-          "fi": "Riihikosken terveysasema, oireellisille"
+          "fi": "Riihikosken terveysasema"
         },
-        "phoneNumber": "0248641270",
+        "phoneNumber": "0248641398",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
       },
       {
         "title": {
-          "fi": "Riihikosken terveysasema"
+          "fi": "Riihikosken terveysasema, oireiset"
         },
-        "phoneNumber": "0248641398",
+        "phoneNumber": "0248641270",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
@@ -191,11 +196,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Akaan terveyskeskus, oireiset"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0403352615",
         "info": {
-          "fi": ""
+          "fi": "ma - to klo 8–16, pe klo 8–15:30"
         }
       }
     ]
@@ -310,7 +315,7 @@
       },
       {
         "title": {
-          "fi": "Muonion-Enontekiön päivystys, oireelliset"
+          "fi": "Muonion-Enontekiön päivystys, oireiset"
         },
         "phoneNumber": "0407142845 ",
         "info": {
@@ -326,11 +331,7 @@
       "sv": "Esbo"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -356,19 +357,10 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "Euran sote-keskus"
@@ -376,6 +368,15 @@
         "phoneNumber": "0283980400",
         "info": {
           "fi": "ma - pe klo 8–16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -387,22 +388,9 @@
       "sv": "Euraåminne"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "Keski-Satakunnan terveydenhuollon kuntayhtymän koronaneuvontapuhelin"
@@ -410,6 +398,15 @@
         "phoneNumber": "0447226699",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 14–16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -426,20 +423,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -488,7 +485,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -503,7 +500,7 @@
       },
       {
         "title": {
-          "fi": "KHKS yhteispäivystys, oireellisille"
+          "fi": "KHKS yhteispäivystys, oireiset"
         },
         "phoneNumber": "036294500",
         "info": {
@@ -643,7 +640,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Hailuodon Terveyskeskus, oireelliset"
+          "fi": "Hailuodon Terveyskeskus, oireiset"
         },
         "phoneNumber": "04578840910",
         "info": {
@@ -685,17 +682,41 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu"
+          "fi": "KYMSOTE Kotka koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kotka coronarådgivning (finska)"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0404807806",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE Kouvola koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kouvola coronarådgivning (finska)"
+        },
+        "phoneNumber": "0404833571",
+        "info": {
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE koronaneuvonta (ruotsi)",
+          "sv": "KYMSOTE coronarådgivning (svenska)"
+        },
+        "phoneNumber": "0404884741",
+        "info": {
+          "fi": "ma - pe klo 8–15:30",
+          "sv": "må - fre kl. 8–15:30"
         }
       }
     ]
@@ -744,17 +765,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -772,7 +795,7 @@
       {
         "title": {
           "fi": "Hangon terveyskeskus",
-          "sv": "Hangö  hälsovårdscentral"
+          "sv": "Hangö hälsovårdscentral"
         },
         "phoneNumber": "0401359585",
         "info": {
@@ -789,22 +812,9 @@
       "sv": "Harjavalta"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "Keski-Satakunnan terveydenhuollon kuntayhtymän koronaneuvontapuhelin"
@@ -812,6 +822,15 @@
         "phoneNumber": "0447226699",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 14–16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -826,10 +845,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
       {
         "title": {
           "fi": "Päivystysapu"
@@ -862,7 +890,7 @@
       },
       {
         "title": {
-          "fi": "KHKS yhteispäivystys, oireellisille"
+          "fi": "KHKS yhteispäivystys, oireiset"
         },
         "phoneNumber": "036294500",
         "info": {
@@ -881,7 +909,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -896,7 +924,7 @@
       },
       {
         "title": {
-          "fi": "KHKS yhteispäivystys, oireellisille"
+          "fi": "KHKS yhteispäivystys, oireiset"
         },
         "phoneNumber": "036294500",
         "info": {
@@ -915,13 +943,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -937,11 +965,7 @@
       "sv": "Helsingfors"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -988,7 +1012,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -1007,10 +1031,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
       {
         "title": {
           "fi": "Päivystysapu"
@@ -1032,19 +1065,10 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "PoSa, flunssapoli"
@@ -1052,6 +1076,15 @@
         "phoneNumber": "0445773396",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -1068,17 +1101,6 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu",
-          "sv": "Jourhjälpen"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina",
-          "sv": "dygnet runt"
-        }
-      },
-      {
-        "title": {
           "fi": "Tartuntatautihoitaja",
           "sv": "Coronarådgivning"
         },
@@ -1086,6 +1108,17 @@
         "info": {
           "fi": "ma - to klo 8–16, pe klo 8–15",
           "sv": "mån -  tor kl. 8–16, fri kl. 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu",
+          "sv": "Jourhjälpen"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina",
+          "sv": "dygnet runt"
         }
       }
     ]
@@ -1100,7 +1133,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -1115,7 +1148,7 @@
       },
       {
         "title": {
-          "fi": "KHKS yhteispäivystys, oireellisille"
+          "fi": "KHKS yhteispäivystys, oireiset"
         },
         "phoneNumber": "036294500",
         "info": {
@@ -1136,20 +1169,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "Hyrynsalmen terveysaseman vastaanoton päivystävä hoitaja"
         },
         "phoneNumber": "0861565423",
         "info": {
           "fi": "ma - to klo 8–16, pe klo 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -1187,11 +1220,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Koronaneuvontapuhelin"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0444860581",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–16"
         }
       }
     ]
@@ -1206,7 +1239,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -1221,7 +1254,7 @@
       },
       {
         "title": {
-          "fi": "KHKS yhteispäivystys, oireellisille"
+          "fi": "KHKS yhteispäivystys, oireiset"
         },
         "phoneNumber": "036294500",
         "info": {
@@ -1240,13 +1273,22 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -1325,10 +1367,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
       {
         "title": {
           "fi": "Päivystysapu"
@@ -1352,11 +1403,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Ikaalisten terveyskeskus, tartuntatautihoitaja"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0447301566",
         "info": {
-          "fi": ""
+          "fi": "ma - to klo 8–16, pe klo 8–13"
         }
       }
     ]
@@ -1373,20 +1424,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -1401,13 +1452,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -1458,11 +1509,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu"
+          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": ""
         }
       }
     ]
@@ -1479,20 +1530,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -1509,20 +1560,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -1537,7 +1588,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -1562,7 +1613,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -1577,7 +1628,7 @@
       },
       {
         "title": {
-          "fi": "KHKS yhteispäivystys, oireellisille"
+          "fi": "KHKS yhteispäivystys, oireiset"
         },
         "phoneNumber": "036294500",
         "info": {
@@ -1596,13 +1647,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -1621,7 +1672,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -1636,7 +1687,7 @@
       },
       {
         "title": {
-          "fi": "KHKS yhteispäivystys, oireellisille"
+          "fi": "KHKS yhteispäivystys, oireiset"
         },
         "phoneNumber": "036294500",
         "info": {
@@ -1721,11 +1772,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -1740,13 +1793,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -1767,11 +1820,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Mäntänvuoren Terveys Oy"
         },
-        "phoneNumber": "",
+        "phoneNumber": "032543320",
         "info": {
-          "fi": ""
+          "fi": "ma - to klo 8–16, pe klo 8–15"
         }
       }
     ]
@@ -1788,7 +1841,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -1807,17 +1860,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -1832,19 +1887,10 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "PoSa, flunssapoli"
@@ -1852,6 +1898,15 @@
         "phoneNumber": "0445773396",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -1868,11 +1923,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Jämsän Terveys"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0206306020",
         "info": {
-          "fi": ""
+          "fi": "ma - to klo 8–15:30, pe klo 8–15"
         }
       }
     ]
@@ -1908,7 +1963,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -1956,20 +2011,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "Vuolijoen terveysaseman vastaanoton päivystävä hoitaja"
         },
         "phoneNumber": "0861565529",
         "info": {
           "fi": "ma - to klo 8–15, pe klo 8–14"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -2002,20 +2057,16 @@
       "sv": "Kangasala"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kangasala koronapuhelin"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0356554030",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–15"
         }
       }
     ]
@@ -2032,7 +2083,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -2051,19 +2102,10 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "PoSa, flunssapoli"
@@ -2071,6 +2113,15 @@
         "phoneNumber": "0445773396",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -2087,11 +2138,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -2131,20 +2184,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -2161,11 +2214,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Koronaneuvonta"
+          "fi": "Karkkilan terveysasema, takaisinsoittojärjestelmä"
         },
         "phoneNumber": "0942582200",
         "info": {
-          "fi": "ma - pe klo 8–16, la - su klo 10 – 16"
+          "fi": "ma - pe klo 8–16, la - su klo 10 – 15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Nummelan terveysasema, takaisinsoittojärjestelmä"
+        },
+        "phoneNumber": "0942582400",
+        "info": {
+          "fi": "ma - pe klo 8–16, la - su klo 10 – 15"
         }
       }
     ]
@@ -2182,11 +2244,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -2201,19 +2265,10 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "PoSa, flunssapoli"
@@ -2221,6 +2276,15 @@
         "phoneNumber": "0445773396",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -2237,7 +2301,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
+          "fi": "Vaasan terveyskeskus, oireiset",
           "sv": "Vasa hälsovårdscentral"
         },
         "phoneNumber": "063251703",
@@ -2248,7 +2312,7 @@
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -2271,20 +2335,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -2301,20 +2365,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -2459,7 +2523,7 @@
         },
         "phoneNumber": "0500584200",
         "info": {
-          "fi": "Ei ilmoitettuja aikoja"
+          "fi": ""
         }
       },
       {
@@ -2468,7 +2532,7 @@
         },
         "phoneNumber": "0504636331",
         "info": {
-          "fi": "Ei ilmoitettuja aikoja"
+          "fi": ""
         }
       }
     ]
@@ -2485,20 +2549,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Koronaneuvonta, oireiset"
-        },
-        "phoneNumber": "0403183116",
-        "info": {
-          "fi": "Ei ilmoitettuja aikoja"
-        }
-      },
-      {
-        "title": {
           "fi": "Koronaneuvonta, oireettomat"
         },
         "phoneNumber": "0403183121",
         "info": {
-          "fi": "Ei ilmoitettuja aikoja"
+          "fi": ""
+        }
+      },
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireiset"
+        },
+        "phoneNumber": "0403183116",
+        "info": {
+          "fi": ""
         }
       }
     ]
@@ -2515,11 +2579,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -2536,11 +2602,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kolmostien Terveyden ajanvaraus ja neuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "034433400",
         "info": {
-          "fi": ""
+          "fi": "ma -  pe klo 8–16"
         }
       }
     ]
@@ -2557,11 +2623,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -2597,13 +2665,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -2693,11 +2761,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -2709,22 +2779,9 @@
       "sv": "Kumo"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "Keski-Satakunnan terveydenhuollon kuntayhtymän koronaneuvontapuhelin"
@@ -2732,6 +2789,15 @@
         "phoneNumber": "0447226699",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 14–16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -2780,7 +2846,7 @@
       },
       {
         "title": {
-          "fi": "Kolarin terveyskeskus, oireelliset"
+          "fi": "Kolarin terveyskeskus, oireiset"
         },
         "phoneNumber": "0404895090 ",
         "info": {
@@ -2801,11 +2867,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -2820,13 +2888,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -2847,18 +2915,29 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
-          "sv": "Vasa hälsovårdscentral"
+          "fi": "Hoidon tarpeen arviointi terveyskeskus",
+          "sv": "Vårdbedömning Hälsovårdscentralen"
         },
-        "phoneNumber": "063251703",
+        "phoneNumber": "063477645",
         "info": {
-          "fi": "ma - pe klo 8–15",
-          "sv": "må - fre kl. 8–15"
+          "fi": "ma - pe klo 8–16",
+          "sv": "må - fre kl. 8–16"
         }
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Hoidon tarpeen arviointi Korsnäsin terveystalo",
+          "sv": "Korsnäs hälsogård"
+        },
+        "phoneNumber": "0406508034",
+        "info": {
+          "fi": "ma - pe klo 8–9",
+          "sv": "må - fre kl. 8–9"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -2876,11 +2955,7 @@
       "sv": "Koski Tl"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -2904,17 +2979,41 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "KYMSOTE Kotka koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kotka coronarådgivning (finska)"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0404807806",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE Kouvola koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kouvola coronarådgivning (finska)"
+        },
+        "phoneNumber": "0404833571",
+        "info": {
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE koronaneuvonta (ruotsi)",
+          "sv": "KYMSOTE coronarådgivning (svenska)"
+        },
+        "phoneNumber": "0404884741",
+        "info": {
+          "fi": "ma - pe klo 8–15:30",
+          "sv": "må - fre kl. 8–15:30"
         }
       }
     ]
@@ -2929,17 +3028,41 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "KYMSOTE Kotka koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kotka coronarådgivning (finska)"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0404807806",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE Kouvola koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kouvola coronarådgivning (finska)"
+        },
+        "phoneNumber": "0404833571",
+        "info": {
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE koronaneuvonta (ruotsi)",
+          "sv": "KYMSOTE coronarådgivning (svenska)"
+        },
+        "phoneNumber": "0404884741",
+        "info": {
+          "fi": "ma - pe klo 8–15:30",
+          "sv": "må - fre kl. 8–15:30"
         }
       }
     ]
@@ -2956,7 +3079,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
+          "fi": "Vaasan terveyskeskus, oireiset",
           "sv": "Vasa hälsovårdscentral"
         },
         "phoneNumber": "063251703",
@@ -2967,7 +3090,7 @@
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -3013,20 +3136,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "Kuhmon terveysaseman vastaanoton päivystävä hoitaja"
         },
         "phoneNumber": "0861565635",
         "info": {
           "fi": "ma - to klo 8–15, pe klo 8–14, la - su 9–17"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -3043,11 +3166,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kuhmoisten terveysasema"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0206383251",
         "info": {
-          "fi": ""
+          "fi": "ma - to klo 8–15:30, pe klo 8–15"
         }
       }
     ]
@@ -3119,20 +3242,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -3149,20 +3272,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -3174,11 +3297,7 @@
       "sv": "Gustavs"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -3232,13 +3351,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -3259,11 +3378,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -3278,10 +3399,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
       {
         "title": {
           "fi": "Päivystysapu"
@@ -3305,20 +3435,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Koronaneuvonta, oireiset"
-        },
-        "phoneNumber": "0444456937",
-        "info": {
-          "fi": "ma - pe klo 8–16"
-        }
-      },
-      {
-        "title": {
           "fi": "Koronaneuvonta, oireettomat"
         },
         "phoneNumber": "0444456941",
         "info": {
           "fi": "ma - pe klo 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireiset"
+        },
+        "phoneNumber": "0444456937",
+        "info": {
+          "fi": "ma - pe klo 8–16"
         }
       }
     ]
@@ -3378,7 +3508,7 @@
       },
       {
         "title": {
-          "fi": "Hyvinvointikeskus Lapponian päivystys, oireellisille"
+          "fi": "Hyvinvointikeskus Lapponian päivystys, oireiset"
         },
         "phoneNumber": "020690870 ",
         "info": {
@@ -3387,7 +3517,7 @@
       },
       {
         "title": {
-          "fi": "Lapin keskussairaala/päivystys, oireellisille"
+          "fi": "Lapin keskussairaala/päivystys, oireiset"
         },
         "phoneNumber": "0163224800",
         "info": {
@@ -3403,11 +3533,7 @@
       "sv": "Kimitoön"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -3433,10 +3559,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
       {
         "title": {
           "fi": "Päivystysapu"
@@ -3460,7 +3595,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
+          "fi": "Vaasan terveyskeskus, oireiset",
           "sv": "Vasa hälsovårdscentral"
         },
         "phoneNumber": "063251703",
@@ -3471,7 +3606,7 @@
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -3489,11 +3624,7 @@
       "sv": "Laitila"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -3540,20 +3671,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -3568,13 +3699,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -3595,7 +3726,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Koronahoitaja, oireisille"
+          "fi": "Koronahoitaja, oireiset"
         },
         "phoneNumber": "0445051731",
         "info": {
@@ -3625,20 +3756,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -3655,11 +3786,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -3674,13 +3807,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -3735,11 +3868,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Lempäälän terveysasema"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0417303436",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–15, la-su klo 12–18"
         }
       }
     ]
@@ -3798,13 +3931,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -3820,11 +3953,7 @@
       "sv": "Lundo"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -3869,13 +3998,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -3891,11 +4020,7 @@
       "sv": "Loimaa"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -3919,7 +4044,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -3934,7 +4059,7 @@
       },
       {
         "title": {
-          "fi": "KHKS yhteispäivystys, oireellisille"
+          "fi": "KHKS yhteispäivystys, oireiset"
         },
         "phoneNumber": "036294500",
         "info": {
@@ -3955,7 +4080,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Koronahoitaja, oireellisille"
+          "fi": "Koronahoitaja, oireiset"
         },
         "phoneNumber": "0445051731",
         "info": {
@@ -3985,11 +4110,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -4061,7 +4188,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
+          "fi": "Vaasan terveyskeskus, oireiset",
           "sv": "Vasa hälsovårdscentral"
         },
         "phoneNumber": "063251703",
@@ -4072,7 +4199,7 @@
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -4093,13 +4220,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -4138,11 +4265,7 @@
       "sv": "Pargas"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -4192,18 +4315,29 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
-          "sv": "Vasa hälsovårdscentral"
+          "fi": "Hoidon tarpeen arviointi terveyskeskus",
+          "sv": "Vårdbedömning Hälsovårdscentralen"
         },
-        "phoneNumber": "063251703",
+        "phoneNumber": "063477645",
         "info": {
-          "fi": "ma - pe klo 8–15",
-          "sv": "må - fre kl. 8–15"
+          "fi": "ma - pe klo 8–16",
+          "sv": "må - fre kl. 8–16"
         }
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Hoidon tarpeen arviointi Korsnäsin terveystalo",
+          "sv": "Korsnäs hälsogård"
+        },
+        "phoneNumber": "0406508034",
+        "info": {
+          "fi": "ma - pe klo 8–9",
+          "sv": "må - fre kl. 8–9"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -4255,11 +4389,7 @@
       "sv": "Marttila"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -4280,27 +4410,23 @@
       "sv": "Masku"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
         "title": {
-          "fi": "Perusturvakunta-yhtymä Akseli, oireellisille"
+          "fi": "Perusturvakunta-yhtymä Akseli, Maskun terveyskeskus"
         },
-        "phoneNumber": "0401981354",
+        "phoneNumber": "024477500",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
       },
       {
         "title": {
-          "fi": "Perusturvakunta-yhtymä Akseli, Maskun terveyskeskus"
+          "fi": "Perusturvakunta-yhtymä Akseli, oireiset"
         },
-        "phoneNumber": "024477500",
+        "phoneNumber": "0401981354",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
@@ -4338,19 +4464,10 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "Koronaneuvonta"
@@ -4358,6 +4475,15 @@
         "phoneNumber": "026234333",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 9–13"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -4372,17 +4498,41 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "KYMSOTE Kotka koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kotka coronarådgivning (finska)"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0404807806",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE Kouvola koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kouvola coronarådgivning (finska)"
+        },
+        "phoneNumber": "0404833571",
+        "info": {
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE koronaneuvonta (ruotsi)",
+          "sv": "KYMSOTE coronarådgivning (svenska)"
+        },
+        "phoneNumber": "0404884741",
+        "info": {
+          "fi": "ma - pe klo 8–15:30",
+          "sv": "må - fre kl. 8–15:30"
         }
       }
     ]
@@ -4399,7 +4549,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -4441,11 +4591,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -4462,7 +4614,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Muonio-Enontekiön perusterveyden huolto, Muonion poliklinikka"
+          "fi": "Muonio-Enontekiön perusterveydenhuolto, Muonion poliklinikka"
         },
         "phoneNumber": "0407031147 ",
         "info": {
@@ -4471,7 +4623,7 @@
       },
       {
         "title": {
-          "fi": "Muonion-Enontekiön päivystys, oireelliset"
+          "fi": "Muonion-Enontekiön päivystys, oireiset"
         },
         "phoneNumber": "0407142845 ",
         "info": {
@@ -4492,7 +4644,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
+          "fi": "Vaasan terveyskeskus, oireiset",
           "sv": "Vasa hälsovårdscentral"
         },
         "phoneNumber": "063251703",
@@ -4503,7 +4655,7 @@
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -4526,11 +4678,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -4542,27 +4696,23 @@
       "sv": "Mynämäki"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
         "title": {
-          "fi": "Perusturvakunta-yhtymä Akseli, oireellisille"
+          "fi": "Perusturvakunta-yhtymä Akseli, Maskun terveyskeskus"
         },
-        "phoneNumber": "0401981354",
+        "phoneNumber": "024477500",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
       },
       {
         "title": {
-          "fi": "Perusturvakunta-yhtymä Akseli, Maskun terveyskeskus"
+          "fi": "Perusturvakunta-yhtymä Akseli, oireiset"
         },
-        "phoneNumber": "024477500",
+        "phoneNumber": "0401981354",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
@@ -4579,10 +4729,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
       {
         "title": {
           "fi": "Päivystysapu"
@@ -4627,7 +4786,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -4648,11 +4807,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Mäntänvuoren Terveys Oy"
         },
-        "phoneNumber": "",
+        "phoneNumber": "032543320",
         "info": {
-          "fi": ""
+          "fi": "ma - to klo 8–16, pe klo 8–15"
         }
       }
     ]
@@ -4667,7 +4826,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -4689,22 +4848,9 @@
       "sv": "Nakkila"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "Keski-Satakunnan terveydenhuollon kuntayhtymän koronaneuvontapuhelin"
@@ -4712,6 +4858,15 @@
         "phoneNumber": "0447226699",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 14–16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -4747,17 +4902,17 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Nokian kaupungin koronaneuvontanumero"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0356521105",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–20, la - su klo 9–20"
         }
       }
     ]
@@ -4769,27 +4924,23 @@
       "sv": "Nousis"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
         "title": {
-          "fi": "Perusturvakunta-yhtymä Akseli, oireellisille"
+          "fi": "Perusturvakunta-yhtymä Akseli, Maskun terveyskeskus"
         },
-        "phoneNumber": "0401981354",
+        "phoneNumber": "024477500",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
       },
       {
         "title": {
-          "fi": "Perusturvakunta-yhtymä Akseli, Maskun terveyskeskus"
+          "fi": "Perusturvakunta-yhtymä Akseli, oireiset"
         },
-        "phoneNumber": "024477500",
+        "phoneNumber": "0401981354",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
@@ -4806,13 +4957,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -4854,7 +5005,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
+          "fi": "Vaasan terveyskeskus, oireiset",
           "sv": "Vasa hälsovårdscentral"
         },
         "phoneNumber": "063251703",
@@ -4865,7 +5016,7 @@
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -4886,10 +5037,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
       {
         "title": {
           "fi": "Päivystysapu"
@@ -4908,11 +5068,7 @@
       "sv": "Oripää"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -4933,20 +5089,16 @@
       "sv": "Orivesi"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Tampereen kaupunki, terveyspalvelujen neuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0310023",
         "info": {
-          "fi": ""
+          "fi": "ma - su klo 7–22"
         }
       }
     ]
@@ -4982,7 +5134,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -5016,10 +5168,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
       {
         "title": {
           "fi": "Päivystysapu"
@@ -5038,22 +5199,9 @@
       "sv": "Pemar"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Paimion-Sauvon terveyskeskus, oireellisille"
-        },
-        "phoneNumber": "024746202",
-        "info": {
-          "fi": "ma - pe klo 8–15:30"
-        }
-      },
       {
         "title": {
           "fi": "Paimion-Sauvon koronaneuvonta"
@@ -5061,6 +5209,15 @@
         "phoneNumber": "024746400",
         "info": {
           "fi": "ma - pe klo 10–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "Paimion-Sauvon terveyskeskus, oireiset"
+        },
+        "phoneNumber": "024746202",
+        "info": {
+          "fi": "ma - pe klo 8–15:30"
         }
       }
     ]
@@ -5077,20 +5234,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "Paltamon terveysaseman vastaanoton päivystävä hoitaja"
         },
         "phoneNumber": "0861565322",
         "info": {
           "fi": "ma - to klo 8–16, pe klo 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -5105,13 +5262,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -5132,11 +5289,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kolmostien Terveyden ajanvaraus ja neuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "034433400",
         "info": {
-          "fi": ""
+          "fi": "ma -  pe klo 8–16"
         }
       }
     ]
@@ -5171,7 +5328,7 @@
       },
       {
         "title": {
-          "fi": "Lapin keskussairaala/päivystys, oireellisille"
+          "fi": "Lapin keskussairaala/päivystys, oireiset"
         },
         "phoneNumber": "0163224800",
         "info": {
@@ -5215,7 +5372,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -5236,11 +5393,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -5257,7 +5416,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -5299,7 +5458,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
+          "fi": "Vaasan terveyskeskus, oireiset",
           "sv": "Vasa hälsovårdscentral"
         },
         "phoneNumber": "063251703",
@@ -5310,7 +5469,7 @@
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -5333,7 +5492,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
+          "fi": "Vaasan terveyskeskus, oireiset",
           "sv": "Vasa hälsovårdscentral"
         },
         "phoneNumber": "063251703",
@@ -5344,7 +5503,7 @@
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -5367,11 +5526,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -5388,11 +5549,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Pirkkalan koronaneuvontapuhelin",
+          "sv": "Birkalas coronarådgivning"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0503133682",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–16, la - su klo 10–14",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 10–14"
+        }
+      },
+      {
+        "title": {
+          "fi": "Pirkkalan terveyskeskuspäivystys, oireiset",
+          "sv": "Birkalas hälsovårdscentral"
+        },
+        "phoneNumber": "0356525109",
+        "info": {
+          "fi": "ma - pe klo 8–20, la - su klo 10–18",
+          "sv": "må - fre kl. 8–20, lö - sö kl. 10–18"
         }
       }
     ]
@@ -5407,13 +5581,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -5432,19 +5606,10 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "PoSa, flunssapoli"
@@ -5452,6 +5617,15 @@
         "phoneNumber": "0445773396",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -5466,19 +5640,10 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "Koronaneuvonta"
@@ -5486,6 +5651,15 @@
         "phoneNumber": "026234333",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 9–13"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -5563,10 +5737,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
+      {
+        "title": {
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
       {
         "title": {
           "fi": "Päivystysapu"
@@ -5588,17 +5771,17 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": ""
         }
       }
     ]
@@ -5615,11 +5798,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": ""
         }
       }
     ]
@@ -5636,7 +5819,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -5655,17 +5838,41 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "KYMSOTE Kotka koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kotka coronarådgivning (finska)"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0404807806",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE Kouvola koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kouvola coronarådgivning (finska)"
+        },
+        "phoneNumber": "0404833571",
+        "info": {
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE koronaneuvonta (ruotsi)",
+          "sv": "KYMSOTE coronarådgivning (svenska)"
+        },
+        "phoneNumber": "0404884741",
+        "info": {
+          "fi": "ma - pe klo 8–15:30",
+          "sv": "må - fre kl. 8–15:30"
         }
       }
     ]
@@ -5749,11 +5956,7 @@
       "sv": "Pyhäranta"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -5774,20 +5977,16 @@
       "sv": "Pälkäne"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kangasala koronapuhelin"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0356554030",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–15"
         }
       }
     ]
@@ -5799,27 +5998,23 @@
       "sv": "Pöytyä"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
         "title": {
-          "fi": "Riihikosken terveysasema, oireellisille"
+          "fi": "Riihikosken terveysasema"
         },
-        "phoneNumber": "0248641270",
+        "phoneNumber": "0248641398",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
       },
       {
         "title": {
-          "fi": "Riihikosken terveysasema"
+          "fi": "Riihikosken terveysasema, oireiset"
         },
-        "phoneNumber": "0248641398",
+        "phoneNumber": "0248641270",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
@@ -5833,11 +6028,7 @@
       "sv": "Borgå"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -5897,11 +6088,7 @@
       "sv": "Reso"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -5927,11 +6114,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Terveysasemien keskitetty puhelinneuvonta ja ajanvaraus"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0155277112",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–15:30"
         }
       }
     ]
@@ -5976,17 +6163,17 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Rauman pandemiapoliklinikka"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0444035234",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - su klo 8–16"
         }
       }
     ]
@@ -6043,13 +6230,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -6089,7 +6276,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -6104,7 +6291,7 @@
       },
       {
         "title": {
-          "fi": "KHKS yhteispäivystys, oireellisille"
+          "fi": "KHKS yhteispäivystys, oireiset"
         },
         "phoneNumber": "036294500",
         "info": {
@@ -6125,20 +6312,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "Ristinjärven terveysaseman vastaanoton päivystävä hoitaja"
         },
         "phoneNumber": "0861565164",
         "info": {
           "fi": "ma - to klo 8–15, pe klo 8–14"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -6173,7 +6360,7 @@
       },
       {
         "title": {
-          "fi": "Lapin keskussairaala/päivystys, oireellisille"
+          "fi": "Lapin keskussairaala/päivystys, oireiset"
         },
         "phoneNumber": "0163224800 ",
         "info": {
@@ -6192,13 +6379,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -6219,11 +6406,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Ruoveden terveyskeskus"
         },
-        "phoneNumber": "",
+        "phoneNumber": "034861200",
         "info": {
-          "fi": ""
+          "fi": "ma - to klo 8–15:30, pe klo 8–15"
         }
       }
     ]
@@ -6235,11 +6422,7 @@
       "sv": "Rusko"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -6260,16 +6443,12 @@
       "sv": "Rääkkylä"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -6313,11 +6492,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -6352,7 +6533,7 @@
       },
       {
         "title": {
-          "fi": "Lapin keskussairaala/päivystys, oireellisille"
+          "fi": "Lapin keskussairaala/päivystys, oireiset"
         },
         "phoneNumber": "0163224800",
         "info": {
@@ -6368,22 +6549,9 @@
       "sv": "Salo"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Salon hengitystieinfektiovastaanotto, oireellisille"
-        },
-        "phoneNumber": "02772606",
-        "info": {
-          "fi": "ma - to klo 8–16, ma - pe klo 8–15"
-        }
-      },
       {
         "title": {
           "fi": "Salon terveyspalveluiden koronaneuvonta- ja infopuhelin"
@@ -6391,6 +6559,15 @@
         "phoneNumber": "027723023",
         "info": {
           "fi": "ma - to klo 8–16, pe klo 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Salon hengitystieinfektiovastaanotto, oireiset"
+        },
+        "phoneNumber": "02772606",
+        "info": {
+          "fi": "ma - to klo 8–16, ma - pe klo 8–15"
         }
       }
     ]
@@ -6436,22 +6613,9 @@
       "sv": "Sagu"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Paimion-Sauvon terveyskeskus, oireellisille"
-        },
-        "phoneNumber": "024746202",
-        "info": {
-          "fi": "ma - pe klo 8–15:30"
-        }
-      },
       {
         "title": {
           "fi": "Paimion-Sauvon koronaneuvonta"
@@ -6459,6 +6623,15 @@
         "phoneNumber": "024746400",
         "info": {
           "fi": "ma - pe klo 10–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "Paimion-Sauvon terveyskeskus, oireiset"
+        },
+        "phoneNumber": "024746202",
+        "info": {
+          "fi": "ma - pe klo 8–15:30"
         }
       }
     ]
@@ -6473,13 +6646,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -6539,7 +6712,7 @@
       },
       {
         "title": {
-          "fi": "Lapin keskussairaala/päivystys, oireellisille"
+          "fi": "Lapin keskussairaala/päivystys, oireiset"
         },
         "phoneNumber": "0163224800",
         "info": {
@@ -6560,20 +6733,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -6609,19 +6782,10 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "PoSa, flunssapoli"
@@ -6629,6 +6793,15 @@
         "phoneNumber": "0445773396",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -6761,7 +6934,7 @@
       },
       {
         "title": {
-          "fi": "Lapin keskussairaala/päivystys, oireellisille"
+          "fi": "Lapin keskussairaala/päivystys, oireiset"
         },
         "phoneNumber": "0163224800",
         "info": {
@@ -6782,20 +6955,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -6807,16 +6980,12 @@
       "sv": "Somero"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
         "title": {
-          "fi": "Someron terveyskeskus, oireisille"
+          "fi": "Someron terveyskeskus, oireiset"
         },
         "phoneNumber": "0447792629",
         "info": {
@@ -6876,20 +7045,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "Sotkamon terveysaseman vastaanoton päivystävä hoitaja"
         },
         "phoneNumber": "0861565009",
         "info": {
           "fi": "ma - to klo 8–16, pe klo 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -6940,11 +7109,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu"
+          "fi": "Terveysasemien keskitetty puhelinneuvonta ja ajanvaraus"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0155277112",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–15:30"
         }
       }
     ]
@@ -6995,20 +7164,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "Suomussalmen terveysaseman vastaanoton päivystävä hoitaja"
         },
         "phoneNumber": "0861566200",
         "info": {
           "fi": "ma - to klo 8–16, pe klo 8–15, la - su 9–17"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -7041,12 +7210,25 @@
       "sv": "Sysmä"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Koronaneuvonta, oireettomat"
+        },
+        "phoneNumber": "0444403492",
+        "info": {
+          "fi": ""
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -7062,22 +7244,9 @@
       "sv": "Säkylä"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "Koronaneuvonta"
@@ -7085,6 +7254,15 @@
         "phoneNumber": "0505171026",
         "info": {
           "fi": "ma - to klo 8–16, pe klo 8–14:15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -7120,17 +7298,26 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Sotesi / Vammalan pääterveysasema"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0352102020",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Sotesi / Vammalan pääterveysasema"
+        },
+        "phoneNumber": "0406474582",
+        "info": {
+          "fi": "ma - pe klo 16–19, la - su klo 8–19"
         }
       }
     ]
@@ -7147,18 +7334,18 @@
     "contact": [
       {
         "title": {
-          "fi": "Koronaneuvonta, oireiset"
+          "fi": "Koronaneuvonta"
         },
-        "phoneNumber": "0407133661",
+        "phoneNumber": "0407133660",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
       },
       {
         "title": {
-          "fi": "Koronaneuvonta"
+          "fi": "Koronaneuvonta, oireiset"
         },
-        "phoneNumber": "0407133660",
+        "phoneNumber": "0407133661",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
@@ -7175,13 +7362,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -7218,11 +7405,7 @@
       "sv": "Tövsala"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -7246,7 +7429,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -7261,7 +7444,7 @@
       },
       {
         "title": {
-          "fi": "KHKS yhteispäivystys, oireellisille"
+          "fi": "KHKS yhteispäivystys, oireiset"
         },
         "phoneNumber": "036294500",
         "info": {
@@ -7280,17 +7463,17 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Tampereen kaupunki, terveyspalvelujen neuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0310023",
         "info": {
-          "fi": ""
+          "fi": "ma - su klo 7–22"
         }
       }
     ]
@@ -7351,20 +7534,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -7379,13 +7562,13 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Tikkamäen neuvonta"
+          "fi": "Päivystysapu"
         },
         "phoneNumber": "116117",
         "info": {
@@ -7429,11 +7612,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -7591,19 +7776,10 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
-      {
-        "title": {
-          "fi": "Päivystysapu"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
       {
         "title": {
           "fi": "Koronaneuvonta"
@@ -7611,6 +7787,15 @@
         "phoneNumber": "026234333",
         "info": {
           "fi": "ma - pe klo 8–16, la - su klo 9–13"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -7627,11 +7812,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Akaan terveyskeskus, oireiset"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0403352615",
         "info": {
-          "fi": ""
+          "fi": "ma - to klo 8–16, pe klo 8–15:30"
         }
       }
     ]
@@ -7697,17 +7882,19 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -7724,7 +7911,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
+          "fi": "Vaasan terveyskeskus, oireiset",
           "sv": "Vasa hälsovårdscentral"
         },
         "phoneNumber": "063251703",
@@ -7735,7 +7922,7 @@
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -7753,11 +7940,7 @@
       "sv": "Nystad"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -7783,7 +7966,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
+          "fi": "Vaasan terveyskeskus, oireiset",
           "sv": "Vasa hälsovårdscentral"
         },
         "phoneNumber": "063251703",
@@ -7794,7 +7977,7 @@
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -7817,11 +8000,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Valkeakosken terveyskeskuksen koronaneuvontapuhelin",
+          "sv": "Valkeakoskis coronarådgivning"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0403357688",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–16",
+          "sv": "må - fre kl. 8–16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Valkeakosken terveyskeskuksen koronaneuvontapuhelin, oireiset",
+          "sv": "Valkeakoskis coronarådgivning"
+        },
+        "phoneNumber": "0403356880",
+        "info": {
+          "fi": "ma - pe klo 8–16",
+          "sv": "må - fre kl. 8–16"
         }
       }
     ]
@@ -7863,11 +8059,7 @@
       "sv": "Vehmaa"
     },
     "omaolo": {
-      "available": true,
-      "serviceLanguages": {
-        "fi": true,
-        "sv": true
-      }
+      "available": false
     },
     "contact": [
       {
@@ -7914,11 +8106,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Vesilahden tartuntataudeista vastaava hoitaja",
+          "sv": "Vesilahtis coronarådgivning"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0444861177",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–15:30",
+          "sv": "må - fre kl. 8–15:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "Vesilahden terveyskeskuksen hoidon tarpeen arviointi, oireiset",
+          "sv": "Vesilahtis hälsovårdscentral"
+        },
+        "phoneNumber": "0356527000",
+        "info": {
+          "fi": "ma - pe klo 8–15:30",
+          "sv": "må - fre kl. 8–15:30"
         }
       }
     ]
@@ -7997,11 +8202,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Koronaneuvonta"
+          "fi": "Nummelan terveysasema, takaisinsoittojärjestelmä"
         },
         "phoneNumber": "0942582400",
         "info": {
-          "fi": "ma - pe klo 8–16, la - su klo 10 – 16"
+          "fi": "ma - pe klo 8–16, la - su klo 10 – 15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Karkkilan terveysasema, takaisinsoittojärjestelmä"
+        },
+        "phoneNumber": "0942582200",
+        "info": {
+          "fi": "ma - pe klo 8–16, la - su klo 10 – 15"
         }
       }
     ]
@@ -8018,11 +8232,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]
@@ -8039,20 +8255,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -8067,17 +8283,41 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "KYMSOTE Kotka koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kotka coronarådgivning (finska)"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0404807806",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE Kouvola koronaneuvonta (suomi)",
+          "sv": "KYMSOTE Kouvola coronarådgivning (finska)"
+        },
+        "phoneNumber": "0404833571",
+        "info": {
+          "fi": "ma - pe klo 8–15:30, la - su klo 9–14:30",
+          "sv": "må - fre kl. 8–15:30, lö - sö kl. 9–14:30"
+        }
+      },
+      {
+        "title": {
+          "fi": "KYMSOTE koronaneuvonta (ruotsi)",
+          "sv": "KYMSOTE coronarådgivning (svenska)"
+        },
+        "phoneNumber": "0404884741",
+        "info": {
+          "fi": "ma - pe klo 8–15:30",
+          "sv": "må - fre kl. 8–15:30"
         }
       }
     ]
@@ -8094,11 +8334,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Virtain terveyskeskus"
         },
-        "phoneNumber": "",
+        "phoneNumber": "034853200",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–15:30"
         }
       }
     ]
@@ -8149,7 +8389,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Vaasan terveyskeskus, oireelliset",
+          "fi": "Vaasan terveyskeskus, oireiset",
           "sv": "Vasa hälsovårdscentral"
         },
         "phoneNumber": "063251703",
@@ -8160,7 +8400,7 @@
       },
       {
         "title": {
-          "fi": "Päivystysapu / Vaasan keskussairaalan koronakeskus",
+          "fi": "Päivystysapu",
           "sv": "Jourhjälpen"
         },
         "phoneNumber": "116117",
@@ -8227,11 +8467,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Ylöjärven terveyskeskuksen koronaneuvontanumero"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0504371300",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–20, la - su klo 10–18"
         }
       }
     ]
@@ -8246,7 +8486,7 @@
       "available": true,
       "serviceLanguages": {
         "fi": true,
-        "sv": true
+        "sv": false
       }
     },
     "contact": [
@@ -8261,7 +8501,7 @@
       },
       {
         "title": {
-          "fi": "KHKS yhteispäivystys, oireellisille"
+          "fi": "KHKS yhteispäivystys, oireiset"
         },
         "phoneNumber": "036294500",
         "info": {
@@ -8282,20 +8522,20 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
-        },
-        "phoneNumber": "116117",
-        "info": {
-          "fi": "Kaikkina aikoina"
-        }
-      },
-      {
-        "title": {
           "fi": "EPSHP:n Seinäjoen keskussairaalan koronaneuvonta"
         },
         "phoneNumber": "0504742905",
         "info": {
           "fi": "ma - pe klo 9–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystysapu, oireiset"
+        },
+        "phoneNumber": "116117",
+        "info": {
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -8312,11 +8552,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Päivystysapu, oireellisille"
+          "fi": "Keski-Suomen sairaanhoitopiiri, maakunnallinen koronaneuvonta",
+          "sv": "Coronarådgivning"
         },
-        "phoneNumber": "116117",
+        "phoneNumber": "0142660133",
         "info": {
-          "fi": "Kaikkina aikoina"
+          "fi": "ma - pe klo 8–16, la - su klo 9–15",
+          "sv": "må - fre kl. 8–16, lö - sö kl. 9–15"
         }
       }
     ]

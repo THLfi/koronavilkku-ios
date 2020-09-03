@@ -338,7 +338,7 @@ extension PublishTokensViewController: UITextFieldDelegate {
 #if DEBUG
 import SwiftUI
 
-struct InsertCoronaCodeViewControllerPreview: PreviewProvider {
+struct PublishTokensViewControllerPreview: PreviewProvider {
     static var previews: some View = createPreview(for: UINavigationController(rootViewController: PublishTokensViewController()))
 }
 #endif
