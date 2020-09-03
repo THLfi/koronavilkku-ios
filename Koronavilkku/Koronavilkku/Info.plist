@@ -40,6 +40,8 @@
 	<integer>1</integer>
 	<key>ENDeveloperRegion</key>
 	<string>FI</string>
+	<key>GIT_COMMIT_HASH</key>
+	<string>0000000000000000000000000000000000000000</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSHasLocalizedDisplayName</key>
