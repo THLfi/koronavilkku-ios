@@ -8,6 +8,7 @@ protocol Configuration {
     var cmsBaseURL: String { get }
     var omaoloBaseURL: String { get }
     var trustKit: TrustKitConfiguration? { get }
+    var version: String { get }
 }
 
 class LocalConfiguration : Configuration {
@@ -15,6 +16,7 @@ class LocalConfiguration : Configuration {
     let cmsBaseURL: String
     let omaoloBaseURL: String
     let trustKit: TrustKitConfiguration?
+    let version: String
     
     init() {
         var proto, base: String
@@ -28,8 +30,12 @@ class LocalConfiguration : Configuration {
         cmsBaseURL = "\(proto)://\(base)"
         
         omaoloBaseURL = LocalConfiguration.getValue(key: "OMAOLO_BASEURL")
-
         trustKit = LocalConfiguration.createTrustKitConfiguration()
+        
+        let versionName: String = LocalConfiguration.getValue(key: "CFBundleShortVersionString")
+        let commitHash: String = LocalConfiguration.getValue(key: "GIT_COMMIT_HASH")
+        let buildNumber: String = LocalConfiguration.getValue(key: "CFBundleVersion")
+        version = "\(versionName)+\(commitHash.prefix(7)) (\(buildNumber))"
     }
 }
 

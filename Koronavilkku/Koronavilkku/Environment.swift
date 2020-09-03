@@ -3,19 +3,12 @@ import Foundation
 import TrustKit
 
 struct Environment {
+    let configuration: Configuration
     let batchRepository: BatchRepository
     let exposureRepository: ExposureRepository
     let municipalityRepository: MunicipalityRepository
 
     static var `default` = Environment.create()
-    
-    private init(batchRepository: BatchRepository,
-                 exposureRepository: ExposureRepository,
-                 municipalityRepository: MunicipalityRepository) {
-        self.batchRepository = batchRepository
-        self.exposureRepository = exposureRepository
-        self.municipalityRepository = municipalityRepository
-    }
 }
 
 extension Environment {
@@ -36,7 +29,8 @@ extension Environment {
                                                                 omaoloBaseURL: config.omaoloBaseURL,
                                                                 fileHelper: FileHelper())
         
-        return Environment(batchRepository: batchRepository,
+        return Environment(configuration: config,
+                           batchRepository: batchRepository,
                            exposureRepository: exposureRepository,
                            municipalityRepository: municipalityRepository)
     }
