@@ -111,7 +111,7 @@
 "SettingsViewController.Text.PrivacyLinkTitle" = "Tietosuoja";
 "SettingsViewController.Text.PrivacyLinkName" = "koronavilkku.fi";
 "SettingsViewController.Text.PrivacyLinkURL" = "https://koronavilkku.fi/tietosuojaseloste/";
-"SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@ (%@)";
+"SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@";
 
 // MARK: LinkLanguageViewController
 "LinkLanguageViewController.Text.Title" = "Valitse asiointikieli";

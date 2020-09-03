@@ -6,6 +6,7 @@ struct MockConfiguration : Configuration {
     var cmsBaseURL: String = ""
     var omaoloBaseURL: String = ""
     var trustKit: TrustKitConfiguration? = nil
+    var version: String = ""
 }
 
 struct MockResponse {

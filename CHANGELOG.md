@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - REST API tests
 - BatchRepository test coverage
 - Implement TEK generation in MockExposureManager
+- git commit hash to version information
 
 ## 1.0.1
 
