@@ -110,9 +110,7 @@ final class BackgroundTaskForNotifications: BackgroundTask {
             batchRepository.getNewBatches().collect(),
             exposureRepository.getConfiguration(),
             municipalityRepository.updateMunicipalityList()
-
         ).flatMap { (ids, config, _) -> (AnyPublisher<Bool, Error>) in
-
             DispatchQueue.main.async {
                 LocalStore.shared.removeExpiredExposures()
             }

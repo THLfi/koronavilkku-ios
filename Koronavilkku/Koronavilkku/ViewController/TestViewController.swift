@@ -103,7 +103,7 @@ class TestViewController: UIViewController {
                     case .finished:
                         Log.d("batchDownloadPressed Finished")
                     }
-                    FileHelper().deleteAllBatches()
+                    Environment.default.exposureRepository.deleteBatchFiles()
                 },
                 receiveValue: { id in
                     Log.d("Received urls: \(id)")

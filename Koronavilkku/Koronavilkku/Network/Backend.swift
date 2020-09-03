@@ -1,30 +1,63 @@
 import Foundation
 import Combine
 
-struct Backend : RestApi {
-    typealias Resource = API
+protocol Backend {
+    func getCurrentBatchId() -> AnyPublisher<CurrentBatchId, Error>
+    func getNewBatchIds(since: String) -> AnyPublisher<BatchIds, Error>
+    func getBatchFile(id: String) -> AnyPublisher<Data, Error>
+    func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error>
+    func postDiagnosisKeys(publishToken: String?,
+                           publishRequest: DiagnosisPublishRequest,
+                           isDummyRequest: Bool) -> AnyPublisher<Data, Error>
+}
+
+struct BackendRestApi : Backend, RestApi {
+    typealias Resource = BackendEndpoint
+
     private var config: Configuration
     internal var urlSession: URLSession
+
+    var baseURL: URL {
+        get { URL(string: config.apiBaseURL)! }
+    }
 
     init(config: Configuration, urlSession: URLSession) {
         self.config = config
         self.urlSession = urlSession
     }
 
-    enum API {
-        case getCurrentBatchId
-        case getNewBatchIds(since: String)
-        case getBatchFile(id: String)
-        case getConfiguration
-        case postDiagnosisKeys(publishToken: String?, publishRequest: DiagnosisPublishRequest, isDummyRequest: Bool)
+    func getCurrentBatchId() -> AnyPublisher<CurrentBatchId, Error> {
+        call(endpoint: .getCurrentBatchId)
     }
-
-    var baseURL: URL {
-        get { URL(string: config.apiBaseURL)! }
+    
+    func getNewBatchIds(since: String) -> AnyPublisher<BatchIds, Error> {
+        call(endpoint: .getNewBatchIds(since: since))
+    }
+    
+    func getBatchFile(id: String) -> AnyPublisher<Data, Error> {
+        call(endpoint: .getBatchFile(id: id))
+    }
+    
+    func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error> {
+        call(endpoint: .getConfiguration)
+    }
+    
+    func postDiagnosisKeys(publishToken: String?,
+                           publishRequest: DiagnosisPublishRequest,
+                           isDummyRequest: Bool) -> AnyPublisher<Data, Error> {
+        call(endpoint: .postDiagnosisKeys(publishToken: publishToken,
+                                          publishRequest: publishRequest,
+                                          isDummyRequest: isDummyRequest))
     }
 }
 
-extension Backend.API : RestResource {
+enum BackendEndpoint : RestResource {
+    case getCurrentBatchId
+    case getNewBatchIds(since: String)
+    case getBatchFile(id: String)
+    case getConfiguration
+    case postDiagnosisKeys(publishToken: String?, publishRequest: DiagnosisPublishRequest, isDummyRequest: Bool)
+
     var path: String {
         switch self {
         case .getCurrentBatchId:
@@ -57,8 +90,6 @@ extension Backend.API : RestResource {
                 "KV-Fake-Request": dummyToken ? "1" : "0",
             ]
             if let publishToken = publishToken, !publishToken.isEmpty {
-                // TODO: Remove this when correct header is deployed
-                headers["KH-Publish-Token"] = publishToken
                 headers["KV-Publish-Token"] = publishToken
             }
             return headers

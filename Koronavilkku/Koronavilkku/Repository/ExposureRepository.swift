@@ -15,21 +15,20 @@ protocol ExposureRepository {
 }
 
 struct ExposureRepositoryImpl : ExposureRepository {
-    
     static let keyCount = 14
     private static let dummyPostToken = "000000000000"
     private let exposureManager: ExposureManager
     private let backend: Backend
-    private let fileHelper: FileHelper
+    private let storage: FileStorage
     
-    init(exposureManager: ExposureManager, backend: Backend, fileHelper: FileHelper) {
+    init(exposureManager: ExposureManager, backend: Backend, storage: FileStorage) {
         self.exposureManager = exposureManager
         self.backend = backend
-        self.fileHelper = fileHelper
+        self.storage = storage
     }
     
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error> {
-        return backend.call(endpoint: .getConfiguration)
+        return backend.getConfiguration()
     }
     
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error> {
@@ -42,7 +41,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
         let cfg = config
         #endif
         
-        let urls = ids.map { self.fileHelper.getFileUrls(forBatchId: $0) }.flatMap { $0 }
+        let urls = ids.map { self.storage.getFileUrls(forBatchId: $0) }.flatMap { $0 }
         Log.d("Ids: \(ids), Config: \(config), Detecting with urls: \(urls)")
 
         return self.exposureManager.detectExposures(configuration: cfg, diagnosisKeyURLs: urls)
@@ -88,7 +87,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
     
     func deleteBatchFiles() {
         // Since we are only processing 1 batch set at a time, always clean up the entire batches directory.
-        fileHelper.deleteAllBatches()
+        storage.deleteAllBatches()
     }
     
     func postExposureKeys(publishToken: String?) -> AnyPublisher<Void, Error> {
@@ -96,7 +95,9 @@ struct ExposureRepositoryImpl : ExposureRepository {
             .flatMap { enTemporaryExposureKeys -> AnyPublisher<Data, Error> in
                 let tempKeys = self.mapKeysToCorrectLength(enTemporaryExposureKeys: enTemporaryExposureKeys)
                 Log.d("Post \(tempKeys.count) keys")
-                return self.backend.call(endpoint: .postDiagnosisKeys(publishToken: publishToken, publishRequest: DiagnosisPublishRequest(keys: tempKeys), isDummyRequest: false))
+                return self.backend.postDiagnosisKeys(publishToken: publishToken,
+                                                      publishRequest: DiagnosisPublishRequest(keys: tempKeys),
+                                                      isDummyRequest: false)
             }
             .map { _ in
                 // strip away the response
@@ -113,9 +114,9 @@ struct ExposureRepositoryImpl : ExposureRepository {
         // Post 14 dummy keys to backend
         let keys = (0..<ExposureRepositoryImpl.keyCount).map { TemporaryExposureKey.createDummy(index: $0) }
         Log.d("Dummy post \(keys.count) dummy keys")
-        return self.backend.call(endpoint: .postDiagnosisKeys(publishToken: ExposureRepositoryImpl.dummyPostToken,
-                                                              publishRequest: DiagnosisPublishRequest(keys: keys),
-                                                              isDummyRequest: true))
+        return self.backend.postDiagnosisKeys(publishToken: ExposureRepositoryImpl.dummyPostToken,
+                                                            publishRequest: DiagnosisPublishRequest(keys: keys),
+                                                            isDummyRequest: true)
             .map { _ in
                 // strip away the response
             }

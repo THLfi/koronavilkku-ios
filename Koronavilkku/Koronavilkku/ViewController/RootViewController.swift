@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import UIKit
 
@@ -12,14 +13,17 @@ class RootViewController : UITabBarController {
         super.init(coder: coder)
     }
     
+    var ensureCurrentBatchIdTask: AnyCancellable?
+    
     init(initialTab selectedTab: RootTab? = nil) {
         super.init(nibName: nil, bundle: nil)
         
         BackgroundTaskManager.shared.scheduleTasks()
         
         // In case a considerable amount of time (batch id changes) elapses before
-        // the background task is run the first time, fetch the current batch identifier separately.
-        Environment.default.batchRepository.ensureCurrentBatchIdDefined()
+        // the background task is run the first time, attempt to fetch the current batch identifier separately.
+        ensureCurrentBatchIdTask = Environment.default.batchRepository.getCurrentBatchId()
+            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
         
         viewControllers = [
             createTab(for: MainViewController()) {

@@ -82,16 +82,24 @@
 		D98EDD3724CDF91F003E09A1 /* AttentionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD3624CDF91F003E09A1 /* AttentionCard.swift */; };
 		EA07E41724E34C7D0097A9A0 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07E41624E34C7D0097A9A0 /* URLSession.swift */; };
 		EA0D8B2124B33B25002F1BCD /* TemporaryExposureKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0D8B2024B33B25002F1BCD /* TemporaryExposureKey.swift */; };
+		EA1B814324F54AA10041DED1 /* RestApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814224F54AA10041DED1 /* RestApiTest.swift */; };
+		EA1B814524F54AD20041DED1 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814424F54AD20041DED1 /* MockURLProtocol.swift */; };
+		EA1B814824F57CFC0041DED1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814724F57CFC0041DED1 /* Extensions.swift */; };
+		EA1B814A24F57DC40041DED1 /* MockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814924F57DC40041DED1 /* MockApi.swift */; };
+		EA1B814E24F7159B0041DED1 /* MockBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814D24F7159B0041DED1 /* MockBackend.swift */; };
 		EA1F5C8B24E1517000398EC8 /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F5C8A24E1517000398EC8 /* InstructionsView.swift */; };
 		EA1F5C8E24E2763E00398EC8 /* TrustKit in Frameworks */ = {isa = PBXBuildFile; productRef = EA1F5C8D24E2763E00398EC8 /* TrustKit */; };
 		EA30D71824A5C32200AF84B1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D71724A5C32200AF84B1 /* RootViewController.swift */; };
 		EA30D71A24A603E300AF84B1 /* ReportInfectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D71924A603E300AF84B1 /* ReportInfectionViewController.swift */; };
 		EA30D71F24A620C900AF84B1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D71E24A620C900AF84B1 /* Colors.swift */; };
+		EA3ED0E324F8315500635817 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ED0E224F8315500635817 /* FileStorage.swift */; };
 		EA47C5EC24A6AB0300EAC720 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47C5EB24A6AB0300EAC720 /* Fonts.swift */; };
 		EA47C5F224A6B3FC00EAC720 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5EE24A6B3FC00EAC720 /* SourceSansPro-Regular.otf */; };
 		EA47C5F324A6B3FC00EAC720 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5EF24A6B3FC00EAC720 /* SourceSansPro-Bold.otf */; };
 		EA47C5F424A6B3FC00EAC720 /* SourceSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5F024A6B3FC00EAC720 /* SourceSansPro-Black.otf */; };
 		EA47C5F524A6B3FC00EAC720 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5F124A6B3FC00EAC720 /* SourceSansPro-Semibold.otf */; };
+		EA4F905024F46E660032D9D5 /* BatchRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F904F24F46E660032D9D5 /* BatchRepositoryTest.swift */; };
+		EA4F905224F4EFAD0032D9D5 /* BackendRestApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */; };
 		EA80A56C24AC71A60071E0EC /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = EA80A56B24AC71A60071E0EC /* ZIPFoundation */; };
 		EA80A56E24ACAE0D0071E0EC /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80A56D24ACAE0D0071E0EC /* REST.swift */; };
 		EA92357C24B26E4700B21B1B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92357B24B26E4700B21B1B /* Environment.swift */; };
@@ -202,15 +210,23 @@
 		EA07E41624E34C7D0097A9A0 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		EA0D8B2024B33B25002F1BCD /* TemporaryExposureKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryExposureKey.swift; sourceTree = "<group>"; };
 		EA0D8B2324B482CD002F1BCD /* Main.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Main.xcconfig; sourceTree = "<group>"; };
+		EA1B814224F54AA10041DED1 /* RestApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiTest.swift; sourceTree = "<group>"; };
+		EA1B814424F54AD20041DED1 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
+		EA1B814724F57CFC0041DED1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		EA1B814924F57DC40041DED1 /* MockApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApi.swift; sourceTree = "<group>"; };
+		EA1B814D24F7159B0041DED1 /* MockBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackend.swift; sourceTree = "<group>"; };
 		EA1F5C8A24E1517000398EC8 /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
 		EA30D71724A5C32200AF84B1 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EA30D71924A603E300AF84B1 /* ReportInfectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfectionViewController.swift; sourceTree = "<group>"; };
 		EA30D71E24A620C900AF84B1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		EA3ED0E224F8315500635817 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		EA47C5EB24A6AB0300EAC720 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		EA47C5EE24A6B3FC00EAC720 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
 		EA47C5EF24A6B3FC00EAC720 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		EA47C5F024A6B3FC00EAC720 /* SourceSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.otf"; sourceTree = "<group>"; };
 		EA47C5F124A6B3FC00EAC720 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
+		EA4F904F24F46E660032D9D5 /* BatchRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchRepositoryTest.swift; sourceTree = "<group>"; };
+		EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendRestApiTest.swift; sourceTree = "<group>"; };
 		EA80A56D24ACAE0D0071E0EC /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
 		EA92357B24B26E4700B21B1B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EA92A04024A3958300CE7271 /* Koronavilkku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koronavilkku.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -266,6 +282,7 @@
 		32B5955F24AA273A00CC386E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				EA3ED0E224F8315500635817 /* FileStorage.swift */,
 				32B5956024AA27ED00CC386E /* BatchRepository.swift */,
 				EAD8619C24AE18A900809677 /* ExposureRepository.swift */,
 				561878AB24AC9952004B7563 /* LocalStore.swift */,
@@ -415,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				56C2DBF224EE67050014F09D /* ExposureRepositoryTest.swift */,
+				EA4F904F24F46E660032D9D5 /* BatchRepositoryTest.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -456,6 +474,17 @@
 				EA0D8B2324B482CD002F1BCD /* Main.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		EA1B814624F57CED0041DED1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				EA1B814424F54AD20041DED1 /* MockURLProtocol.swift */,
+				EA1B814724F57CFC0041DED1 /* Extensions.swift */,
+				EA1B814924F57DC40041DED1 /* MockApi.swift */,
+				EA1B814D24F7159B0041DED1 /* MockBackend.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		EA30D71624A5C15000AF84B1 /* ViewController */ = {
@@ -522,6 +551,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		EA4F905324F4EFB40032D9D5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */,
+				EA1B814224F54AA10041DED1 /* RestApiTest.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		EA92A03724A3958300CE7271 = {
 			isa = PBXGroup;
 			children = (
@@ -572,12 +610,14 @@
 		EA92A05C24A3958600CE7271 /* KoronavilkkuTests */ = {
 			isa = PBXGroup;
 			children = (
+				5695F6D424D82C8B008E06BC /* Json */,
+				560833BE24B886B70078B75D /* Localization */,
 				56EE9BD524F7DE720037A45D /* Model */,
+				EA4F905324F4EFB40032D9D5 /* Network */,
 				56C2DBF524EFA8C50014F09D /* Scene */,
 				56C2DBF124EE66D10014F09D /* Repository */,
 				EACBF18524FE5AD500488B4E /* Resources */,
-				5695F6D424D82C8B008E06BC /* Json */,
-				560833BE24B886B70078B75D /* Localization */,
+				EA1B814624F57CED0041DED1 /* Utils */,
 				EA92A05D24A3958600CE7271 /* KoronavilkkuTests.swift */,
 				EA92A05F24A3958600CE7271 /* Info.plist */,
 			);
@@ -830,6 +870,7 @@
 				D98EDD3724CDF91F003E09A1 /* AttentionCard.swift in Sources */,
 				563D44AD24AA7840008FE2BB /* Comparable+Clamp.swift in Sources */,
 				EA30D71824A5C32200AF84B1 /* RootViewController.swift in Sources */,
+				EA3ED0E324F8315500635817 /* FileStorage.swift in Sources */,
 				EA92A04624A3958300CE7271 /* SceneDelegate.swift in Sources */,
 				EA92A07B24A4E59800CE7271 /* LivePreview.swift in Sources */,
 				EA07E41724E34C7D0097A9A0 /* URLSession.swift in Sources */,
@@ -858,12 +899,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1B814324F54AA10041DED1 /* RestApiTest.swift in Sources */,
 				5695F6D624D82C9E008E06BC /* MunicipalityValidation.swift in Sources */,
+				EA1B814524F54AD20041DED1 /* MockURLProtocol.swift in Sources */,
+				EA4F905024F46E660032D9D5 /* BatchRepositoryTest.swift in Sources */,
+				EA1B814E24F7159B0041DED1 /* MockBackend.swift in Sources */,
 				560833C024B886D70078B75D /* LocalizationTests.swift in Sources */,
+				EA4F905224F4EFAD0032D9D5 /* BackendRestApiTest.swift in Sources */,
 				56C2DBF324EE67050014F09D /* ExposureRepositoryTest.swift in Sources */,
 				EA92A05E24A3958600CE7271 /* KoronavilkkuTests.swift in Sources */,
+				EA1B814A24F57DC40041DED1 /* MockApi.swift in Sources */,
 				56EE9BD724F7DE9E0037A45D /* TemporaryExposureKeyTests.swift in Sources */,
 				5695F6D724D82D9B008E06BC /* MunicipalityModel.swift in Sources */,
+				EA1B814824F57CFC0041DED1 /* Extensions.swift in Sources */,
 				56C2DBF724EFA8E20014F09D /* SceneDelegateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1225,24 +1273,24 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/datatheorem/TrustKit.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				kind = exactVersion;
+				version = 1.6.5;
 			};
 		};
 		EA80A56A24AC71A60071E0EC /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.0;
+				kind = exactVersion;
+				version = 0.9.11;
 			};
 		};
 		EA92A07624A4982000CE7271 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				kind = exactVersion;
+				version = 5.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

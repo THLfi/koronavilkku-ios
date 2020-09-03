@@ -23,40 +23,28 @@ enum MunicipalityError: Error {
 }
 
 class MunicipalityRepositoryImpl: MunicipalityRepository {
-    let localFilename = "municipalities"
-    
     internal let omaoloBaseURL: String
 
     private let cms: CMS
-    private let fileHelper: FileHelper
+    private let storage: FileStorage
     private var tasks = [AnyCancellable]()
-    
-    init(cms: CMS, omaoloBaseURL: String, fileHelper: FileHelper) {
+
+    let localFilename = "municipalities"
+
+    init(cms: CMS, omaoloBaseURL: String, storage: FileStorage) {
         self.cms = cms
         self.omaoloBaseURL = omaoloBaseURL
-        self.fileHelper = fileHelper
+        self.storage = storage
     }
     
     @discardableResult
     func updateMunicipalityList() -> AnyPublisher<Bool, Error> {
-        return cms.call(endpoint: .getMunicipalityList)
-            .tryMap({ (municipalities: Municipalities) in
-                if let data = try? JSONEncoder().encode(municipalities) {
-                    guard let _ = self.fileHelper.createFile(name: self.localFilename,
-                                                             extension: "json",
-                                                             data: data,
-                                                             relativeTo: .municipalities) else {
-                        throw MunicipalityError.storingLocalCopyFailed
-                    }
-                    Log.d("Municipality contact info written to \(self.localFilename)")
-                } else {
-                    throw MunicipalityError.storingLocalCopyFailed
-                }
-                return true
-            }).catch({ _ in
-                Just(false).setFailureType(to: Error.self)
-            })
-        .eraseToAnyPublisher()
+        return cms.call(endpoint: .getMunicipalityList).map { (municipalities: Municipalities) in
+            if !self.storage.write(object: municipalities, to: self.localFilename) {
+                return false
+            }
+            return true
+        }.eraseToAnyPublisher()
     }
     
     func getMunicipalityList() -> AnyPublisher<Municipalities, Error> {
@@ -66,28 +54,11 @@ class MunicipalityRepositoryImpl: MunicipalityRepository {
     }
     
     private func readFromFile() -> AnyPublisher<Municipalities, Error> {
-        do {
-            guard let data = fileHelper.readFile(name: self.localFilename, extension: "json", relativeTo: .municipalities)
-            else { throw MunicipalityError.loadingLocalCopyFailed }
-            
-            let municipalities = try JSONDecoder().decode(Municipalities.self, from: data)
-            return Just(municipalities).setFailureType(to: Error.self).eraseToAnyPublisher()
-            
-        } catch {
-            Log.d("Error reading from file \(error)")
-            return Fail(error: error).eraseToAnyPublisher()
+        guard let municipalities: Municipalities = storage.read(from: localFilename) else {
+            Log.d("Error reading from file \(localFilename)")
+            return Fail(error: MunicipalityError.loadingLocalCopyFailed).eraseToAnyPublisher()
         }
-    }
-}
 
-class FakeMunicipalityRepository : MunicipalityRepository {
-    var omaoloBaseURL: String = "omaolo.invalid"
-    
-    func updateMunicipalityList() -> AnyPublisher<Bool, Error> {
-        return Just(true).setFailureType(to: Error.self).eraseToAnyPublisher()
-    }
-    
-    func getMunicipalityList() -> AnyPublisher<Municipalities, Error> {
-        return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
+        return Just(municipalities).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
 }

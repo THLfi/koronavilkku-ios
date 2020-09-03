@@ -1,34 +1,10 @@
 import Foundation
 import ZIPFoundation
 
-class FileHelper {
-    
-    enum Directories {
-        case batches
-        case municipalities
-        
-        var url: URL {
-            switch self {
-            case .batches:
-                return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("batches", isDirectory: true)
-            case .municipalities:
-                return FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("municipalities", isDirectory: true)
-            }
-        }
-    }
-    
-    init() {
-        try? FileManager.default.createDirectory(atPath: Directories.batches.url.path,
-                                                 withIntermediateDirectories: true,
-                                                 attributes: nil)
-        try? FileManager.default.createDirectory(atPath: Directories.municipalities.url.path,
-                                                 withIntermediateDirectories: true,
-                                                 attributes: nil)
-    }
-    
+struct FileHelper {
     @discardableResult
-    func createFile(name: String, extension ext: String, data: Data, relativeTo: Directories = .batches) -> URL? {
-        let fileURL = URL(fileURLWithPath: name, relativeTo: relativeTo.url).appendingPathExtension(ext)
+    func createFile(name: String, extension ext: String, data: Data, relativeTo: URL) -> URL? {
+        let fileURL = URL(fileURLWithPath: name, relativeTo: relativeTo).appendingPathExtension(ext)
         do {
             try data.write(to: fileURL)
             Log.d("File saved: \(fileURL.absoluteURL)")
@@ -39,16 +15,9 @@ class FileHelper {
         }
     }
     
-    func readFile(name: String, extension ext: String, relativeTo: Directories = .batches) -> Data? {
-        let fileURL = URL(fileURLWithPath: name, relativeTo: relativeTo.url).appendingPathExtension(ext)
+    func readFile(name: String, extension ext: String, relativeTo: URL) -> Data? {
+        let fileURL = URL(fileURLWithPath: name, relativeTo: relativeTo).appendingPathExtension(ext)
         return try? Data(contentsOf: fileURL)
-    }
-    
-    func getUrlsFor(batchId: String) -> [URL] {
-        return [
-            URL(fileURLWithPath: batchId, relativeTo: Directories.batches.url),
-            URL(fileURLWithPath: batchId, relativeTo: Directories.batches.url).appendingPathExtension("zip")
-        ]
     }
     
     func deleteFiles(urls: [URL]) {
@@ -100,14 +69,7 @@ class FileHelper {
             return nil
         }
     }
-    
-    func getFileUrls(forBatchId id: String) -> [URL] {
-        if let urls = getListOfFileUrlsInDirectory(directoryUrl: Directories.batches.url.appendingPathComponent(id)) {
-            return urls
-        }
-        return []
-    }
-    
+        
     func getListOfFileUrlsInDirectory(directoryUrl: URL) -> [URL]? {
         let fileManager = FileManager.default
         do {
@@ -119,23 +81,14 @@ class FileHelper {
         }
     }
     
-    func getListOfFileBatchUrls() -> [URL]? {
+    func getListOfFileBatchUrls(in directory: URL) -> [URL]? {
         let fileManager = FileManager.default
         do {
-            let fileURLs = try fileManager.contentsOfDirectory(at: Directories.batches.url, includingPropertiesForKeys: nil)
+            let fileURLs = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
             return fileURLs
         } catch {
-            Log.e("Error while enumerating files \(Directories.batches.url.path): \(error.localizedDescription)")
+            Log.e("Error while enumerating files \(directory.path): \(error.localizedDescription)")
             return nil
-        }
-    }
-    
-    func deleteAllBatches() {
-        if let files = getListOfFileBatchUrls() {
-            Log.d("Delete all batch files")
-            deleteFiles(urls: files)
-        } else {
-            Log.d("Nothing to delete")
         }
     }
 }

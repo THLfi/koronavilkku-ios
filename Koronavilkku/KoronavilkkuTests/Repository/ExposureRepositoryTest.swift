@@ -4,11 +4,10 @@ import Combine
 @testable import Koronavilkku
 
 class ExposureRepositoryTest: XCTestCase {
-    
     let repository = ExposureRepositoryImpl(exposureManager: MockExposureManager(),
-                                            backend: Backend(config: LocalConfiguration(),
+                                            backend: BackendRestApi(config: LocalConfiguration(),
                                                              urlSession: URLSession.shared),
-                                            fileHelper: FileHelper())
+                                            storage: MockFileStorage())
 
     func testKeyPadding() throws {
         let keys = repository.mapKeysToCorrectLength(enTemporaryExposureKeys: [])

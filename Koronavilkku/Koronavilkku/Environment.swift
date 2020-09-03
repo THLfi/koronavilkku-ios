@@ -22,19 +22,21 @@ extension Environment {
     static func create() -> Environment {
         let config = LocalConfiguration()
         let urlSession = configureUrlSession(config: config)
-        let backend = Backend(config: config, urlSession: urlSession)
+        let backend = BackendRestApi(config: config, urlSession: urlSession)
         let cms = CMS(config: config, urlSession: urlSession)
+        let storage = FileStorageImpl()
         
         let batchRepository = BatchRepositoryImpl(backend: backend,
-                                                  fileHelper: FileHelper())
+                                                  cache: LocalStore.shared,
+                                                  storage: storage)
         
         let exposureRepository = ExposureRepositoryImpl(exposureManager: ExposureManagerProvider.shared.manager,
                                                         backend: backend,
-                                                        fileHelper: FileHelper())
+                                                        storage: storage)
         
         let municipalityRepository = MunicipalityRepositoryImpl(cms: cms,
                                                                 omaoloBaseURL: config.omaoloBaseURL,
-                                                                fileHelper: FileHelper())
+                                                                storage: storage)
         
         return Environment(batchRepository: batchRepository,
                            exposureRepository: exposureRepository,

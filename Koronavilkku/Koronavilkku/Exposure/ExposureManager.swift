@@ -98,6 +98,11 @@ extension ENManager : ExposureManager {
 }
 
 class MockExposureManager : ExposureManager {
+    
+    enum MockExposureManagerError: Error {
+        case MissingTimezone
+    }
+    
     var systemDisabled: Bool = false {
         didSet {
             exposureNotificationStatus = systemDisabled ? .restricted : .active
@@ -115,8 +120,40 @@ class MockExposureManager : ExposureManager {
     
     var exposureNotificationStatus = ENStatus.active
     
+    /**
+     * Return Temporary Exposure Keys for the last 14 days
+     *
+     * The implementation should reflect the modern EN API where the same-day key is also given
+     * but the TEK rolling period is capped to the current moment
+     */
     func getDiagnosisKeys() -> AnyPublisher<[ENTemporaryExposureKey], Error> {
-        return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
+        guard let tz = TimeZone.init(identifier: "UTC") else {
+            return Fail(error: MockExposureManagerError.MissingTimezone).eraseToAnyPublisher()
+        }
+        
+        var cal = Calendar.init(identifier: .gregorian)
+        cal.timeZone = tz
+        let today = Date()
+        let numberOfDays = 14
+
+        return Just((0..<numberOfDays).compactMap { index in
+            guard let datetime = cal.date(byAdding: .day, value: 1 - numberOfDays + index, to: today),
+                let date = cal.date(bySettingHour: 0, minute: 0, second: 0, of: datetime),
+                let data = Data(base64Encoded: TemporaryExposureKey.randomData(ofLength: 16))
+                else {
+                    return nil
+            }
+            
+            let rollingPeriod = today.timeIntervalSince(date) / 600
+            let tek = ENTemporaryExposureKey()
+            tek.keyData = data
+            tek.rollingPeriod = rollingPeriod < 144 ? ENIntervalNumber(rollingPeriod) : 144
+            tek.rollingStartNumber = ENIntervalNumber(date.timeIntervalSince1970 / 600)
+            tek.transmissionRiskLevel = 0
+
+            Log.d("Generated TEK with rolling start number \(tek.rollingStartNumber) and period \(tek.rollingPeriod)")
+            return tek
+        }).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
     
     func detectExposures(configuration: ExposureConfiguration, diagnosisKeyURLs: [URL]) -> AnyPublisher<ENExposureDetectionSummary, Error> {
