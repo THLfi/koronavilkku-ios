@@ -6,9 +6,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Clean up projects file
+- Define the endpoint signatures in the backend API
+- Abstract file access behind a FileStorage provider
+- Use exact versions for SPM dependencies
+
 ### Added
-* Prefilling authorization code from SMS in case Koronavilkku is not running in background
+- REST API tests
+- BatchRepository test coverage
+- Implement TEK generation in MockExposureManager
+
+## 1.0.1
+
+### Added
+- Prefilling authorization code from SMS in case Koronavilkku is not running in background
+
+### Fixed
+- Fixed typos in Swedish localizations
 
 ### Changed
-* Fixed typos in Swedish localizations
-* Dummy code generation uses [Random Number Generator instead of Secure Random](https://github.com/THLfi/koronavilkku-ios/pull/5/commits/c0a872f4ea33cd1b29a8541552103939146acd7f)   
+- Dummy code generation uses
