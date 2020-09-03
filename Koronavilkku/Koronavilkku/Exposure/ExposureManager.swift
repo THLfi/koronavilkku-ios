@@ -98,6 +98,11 @@ extension ENManager : ExposureManager {
 }
 
 class MockExposureManager : ExposureManager {
+    
+    enum MockExposureManagerError: Error {
+        case MissingTimezone
+    }
+    
     var systemDisabled: Bool = false {
         didSet {
             exposureNotificationStatus = systemDisabled ? .restricted : .active
@@ -123,7 +128,7 @@ class MockExposureManager : ExposureManager {
      */
     func getDiagnosisKeys() -> AnyPublisher<[ENTemporaryExposureKey], Error> {
         guard let tz = TimeZone.init(identifier: "UTC") else {
-            return Fail(error: NSError(domain: "MockExposureManager", code: 0)).eraseToAnyPublisher()
+            return Fail(error: MockExposureManagerError.MissingTimezone).eraseToAnyPublisher()
         }
         
         var cal = Calendar.init(identifier: .gregorian)
