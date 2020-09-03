@@ -42,11 +42,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kallion pandemianeuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "084195140",
         "info": {
-          "fi": ""
+          "fi": "arkipäivisin klo 8 -16"
         }
       }
     ]
@@ -1509,11 +1509,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Inkoon terveyskeskus Koronaneuvonta",
+          "sv": "Ingå hälsocentral Coronarådgivning"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0929515500",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–18, la - su klo 10–16",
+          "sv": "må - fre kl. 8–18, lö - sö kl. 10–16"
         }
       }
     ]
@@ -4616,7 +4618,7 @@
         "title": {
           "fi": "Muonio-Enontekiön perusterveydenhuolto, Muonion poliklinikka"
         },
-        "phoneNumber": "0407031147 ",
+        "phoneNumber": "0406624565 ",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
@@ -4883,11 +4885,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kallion pandemianeuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "084195140",
         "info": {
-          "fi": ""
+          "fi": "arkipäivisin klo 8 -16"
         }
       }
     ]
@@ -5798,11 +5800,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Puolangan terveyskeskus (päivystys)"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0861565226",
         "info": {
-          "fi": ""
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -6093,7 +6095,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Raision terveyskeskus ajanvaraus, oireiset"
+          "fi": "Raision terveysasema ajanvaraus"
         },
         "phoneNumber": "024343183",
         "info": {
@@ -6427,7 +6429,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Ruskon terveyskeskus ajanvaraus, oireiset"
+          "fi": "Ruskon terveysasema ajanvaraus"
         },
         "phoneNumber": "024343150",
         "info": {
@@ -6763,11 +6765,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kallion pandemianeuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "084195140",
         "info": {
-          "fi": ""
+          "fi": "arkipäivisin klo 8 -16"
         }
       }
     ]
@@ -8446,11 +8448,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kallion pandemianeuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "084195140",
         "info": {
-          "fi": ""
+          "fi": "arkipäivisin klo 8 -16"
         }
       }
     ]
