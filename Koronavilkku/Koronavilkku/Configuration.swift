@@ -11,7 +11,7 @@ protocol Configuration {
     var version: String { get }
 }
 
-class LocalConfiguration : Configuration {
+struct LocalConfiguration : Configuration {
     let apiBaseURL: String
     let cmsBaseURL: String
     let omaoloBaseURL: String
