@@ -1,8 +1,6 @@
 name: Check latest release dependencies
 
 on:
-  push:
-    branches: 'run_owasp_on_latest_branch'
   schedule:
     - cron:  "30 5 * * *" # this is utc time
 
