@@ -1,30 +1,34 @@
-name: Check dependencies
+name: Check latest release dependencies
 
 on:
   push:
-    branches: '*'
-  pull_request:
-    branches: 'trunk'
+    branches: 'run_owasp_on_latest_branch'
   schedule:
-  - cron:  "0 5 * * *" # this is utc time
+    - cron:  "30 5 * * *" # this is utc time
 
 jobs:
-  build-app:
-    name: Build koronavilkku-ios
+  build-release-app:
+    name: Build Koronavilkku-ios Latest Release
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: '0'
+      - name: Checkout latest release
+        run: |
+          git fetch --all --tags --prune
+          git checkout tags/$(git tag | sed '/-/d' | sort -t "." -k1,1n -k2,2n -k3,3n | tail -1) -b latest_release
       - name: Cache Derived data
         uses: actions/cache@v2
         with:
           path: DerivedData
-          key: koronavilkku-ios-build-${{ hashFiles('**/*.pbxproj') }}
-          restore-keys: koronavilkku-ios-build
+          key: koronavilkku-ios-release-build-${{ hashFiles('**/*.pbxproj') }}
+          restore-keys: koronavilkku-ios-release-build
       - name: Build app
         run: xcodebuild build -workspace Koronavilkku.xcworkspace -scheme Koronavilkku -derivedDataPath DerivedData -configuration Debug CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
-  dependency-scan:
+  release-dependency-scan:
     needs: [build-app]
-    name: Owasp Dependency Scanning
+    name: Owasp Release Dependency Scanning
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -32,14 +36,14 @@ jobs:
         uses: actions/cache@v2
         with:
           path: DerivedData
-          key: koronavilkku-ios-build
-          restore-keys: koronavilkku-ios-build
+          key: koronavilkku-ios-release-build
+          restore-keys: koronavilkku-ios-release-build
       - name: Cache vulnerability data cache
         uses: actions/cache@v2
         with:
           path: owasp_dependency_check_data
-          key: ${{ runner.os }}-owasp-dependency-check-data
-          restore-keys: ${{ runner.os }}-owasp-dependency-check-data
+          key: ${{ runner.os }}-owasp-release-dependency-check-data
+          restore-keys: ${{ runner.os }}-owasp-release-dependency-check-data
       - name: OWASP dependency check
         uses: ./.github/docker-owasp-dependency-check-ios
         with:
