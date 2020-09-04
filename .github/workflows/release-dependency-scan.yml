@@ -27,7 +27,7 @@ jobs:
       - name: Build app
         run: xcodebuild build -workspace Koronavilkku.xcworkspace -scheme Koronavilkku -derivedDataPath DerivedData -configuration Debug CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
   release-dependency-scan:
-    needs: [build-app]
+    needs: [build-release-app]
     name: Owasp Release Dependency Scanning
     runs-on: ubuntu-latest
     steps:
