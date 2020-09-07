@@ -71,6 +71,10 @@ final class BackgroundTaskForNotifications: BackgroundTask {
 
     private var backgroundTask: AnyCancellable?
     
+    // ENAPIVersion 2 detectExposures() limited to 6 calls per day
+    // we're not using it yet, but it's a good starting point
+    let TASK_MINIMUM_DELAY: TimeInterval = 4 * 60 * 60
+    
     // To test the background tasks (this does not work on simulator, apparently)
     // 1. Pause the debugger after registering the task
     // 2. Type to the lldb console
@@ -93,6 +97,7 @@ final class BackgroundTaskForNotifications: BackgroundTask {
         guard ENManager.authorizationStatus == .authorized else { return }
         let taskRequest = BGProcessingTaskRequest(identifier: identifier)
         taskRequest.requiresNetworkConnectivity = true
+        taskRequest.earliestBeginDate = Date(timeIntervalSinceNow: TASK_MINIMUM_DELAY)
         do {
             Log.d("Try schedule new task \(taskRequest)")
             try BGTaskScheduler.shared.submit(taskRequest)
@@ -106,10 +111,19 @@ final class BackgroundTaskForNotifications: BackgroundTask {
         let exposureRepository = Environment.default.exposureRepository
         let municipalityRepository = Environment.default.municipalityRepository
 
+        // run all required async tasks concurrently
         return Publishers.Zip3(
+            // 1. download new batches from the backend
             batchRepository.getNewBatches().collect(),
+            
+            // 2. fetch the up-to-date risk parameter configuration
             exposureRepository.getConfiguration(),
-            municipalityRepository.updateMunicipalityList()
+            
+            // 3. update the municipality list to mask the traffic from exposure notifications
+            municipalityRepository.updateMunicipalityList().catch { _ in
+                // …but prevent possible errors from interfering with the real background task
+                return Empty(completeImmediately: true)
+            }
         ).flatMap { (ids, config, _) -> (AnyPublisher<Bool, Error>) in
             DispatchQueue.main.async {
                 LocalStore.shared.removeExpiredExposures()
@@ -187,7 +201,7 @@ fileprivate final class BackgroundTaskForDummyPosting: BackgroundTask {
         taskRequest.requiresNetworkConnectivity = true
         taskRequest.requiresExternalPower = false
         let randomHours = Double.random(in: 12...24)
-        taskRequest.earliestBeginDate = Date().addingTimeInterval(60 * 60 * randomHours)
+        taskRequest.earliestBeginDate = Date(timeIntervalSinceNow: 60 * 60 * randomHours)
         do {
             Log.d("Try schedule new task \(taskRequest)")
             try BGTaskScheduler.shared.submit(taskRequest)

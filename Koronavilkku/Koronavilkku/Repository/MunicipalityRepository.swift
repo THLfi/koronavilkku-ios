@@ -5,7 +5,7 @@ import Combine
 protocol MunicipalityRepository {
     var omaoloBaseURL: String { get }
 
-    func updateMunicipalityList() -> AnyPublisher<Bool, Error>
+    func updateMunicipalityList() -> AnyPublisher<Void, Error>
     func getMunicipalityList() -> AnyPublisher<Municipalities, Error>
     func getOmaoloLink(for: OmaoloTarget, in: Municipality, language: String) -> URL
 }
@@ -37,13 +37,11 @@ class MunicipalityRepositoryImpl: MunicipalityRepository {
         self.storage = storage
     }
     
-    @discardableResult
-    func updateMunicipalityList() -> AnyPublisher<Bool, Error> {
-        return cms.call(endpoint: .getMunicipalityList).map { (municipalities: Municipalities) in
+    func updateMunicipalityList() -> AnyPublisher<Void, Error> {
+        return cms.call(endpoint: .getMunicipalityList).tryMap { (municipalities: Municipalities) in
             if !self.storage.write(object: municipalities, to: self.localFilename) {
-                return false
+                throw MunicipalityError.storingLocalCopyFailed
             }
-            return true
         }.eraseToAnyPublisher()
     }
     
