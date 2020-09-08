@@ -65,10 +65,6 @@ final class BackgroundTaskForNotifications: BackgroundTask {
     let type: TaskType = .notifications
     var identifier: String = Bundle.main.bundleIdentifier! + ".exposure-notification"
 
-    private var batchRepository = Environment.default.batchRepository
-    private var exposureRepository = Environment.default.exposureRepository
-    private var municipalityRepository = Environment.default.municipalityRepository
-
     private var backgroundTask: AnyCancellable?
     
     // ENAPIVersion 2 detectExposures() limited to 6 calls per day
