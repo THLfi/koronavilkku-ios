@@ -661,13 +661,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Tunkkari",
+          "sv": "Tunkkari"
+        },
+        "phoneNumber": "0408045000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -2163,13 +2185,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Kannus",
+          "sv": "Kannus"
+        },
+        "phoneNumber": "0408042000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -2431,13 +2475,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Tunkkari",
+          "sv": "Tunkkari"
+        },
+        "phoneNumber": "0408045000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -2816,13 +2882,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
+          "fi": "ma-su klo 8-16",
           "sv": "må - sö kl. 8–16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -3115,13 +3192,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "ma-su klo 8-16",
+          "sv": "må-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -3304,11 +3392,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Uudenkaupungin terveysneuvola"
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
         },
-        "phoneNumber": "0445512520",
+        "phoneNumber": "024612516",
         "info": {
-          "fi": "ma - pe klo 8–15"
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
+        },
+        "phoneNumber": "024612516",
+        "info": {
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
         }
       }
     ]
@@ -3912,13 +4013,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Kannus",
+          "sv": "Kannus"
+        },
+        "phoneNumber": "0408042000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -5351,13 +5474,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Tunkkari",
+          "sv": "Tunkkari"
+        },
+        "phoneNumber": "0408045000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -5963,11 +6108,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Uudenkaupungin terveysneuvola"
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
         },
-        "phoneNumber": "0445512520",
+        "phoneNumber": "024612516",
         "info": {
-          "fi": "ma - pe klo 8–15"
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
+        },
+        "phoneNumber": "024612516",
+        "info": {
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
         }
       }
     ]
@@ -7412,11 +7570,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Uudenkaupungin terveysneuvola"
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
         },
-        "phoneNumber": "0445512520",
+        "phoneNumber": "024612516",
         "info": {
-          "fi": "ma - pe klo 8–15"
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
+        },
+        "phoneNumber": "024612516",
+        "info": {
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
         }
       }
     ]
@@ -7591,13 +7762,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Kannus",
+          "sv": "Kannus"
+        },
+        "phoneNumber": "0408042000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -7947,11 +8140,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Uudenkaupungin terveysneuvola"
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
         },
-        "phoneNumber": "0445512520",
+        "phoneNumber": "024612516",
         "info": {
-          "fi": "ma - pe klo 8–15"
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
+        },
+        "phoneNumber": "024612516",
+        "info": {
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
         }
       }
     ]
@@ -8066,11 +8272,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Uudenkaupungin terveysneuvola"
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
         },
-        "phoneNumber": "0445512520",
+        "phoneNumber": "024612516",
         "info": {
-          "fi": "ma - pe klo 8–15"
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
+        },
+        "phoneNumber": "024612516",
+        "info": {
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
         }
       }
     ]
@@ -8142,13 +8361,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Tunkkari",
+          "sv": "Tunkkari"
+        },
+        "phoneNumber": "0408045000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
