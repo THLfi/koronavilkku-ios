@@ -207,10 +207,12 @@ class MainViewController: UIViewController {
     }
 
     @objc private func infoButtonTapped() {
+        HapticEngine.selection.selectionChanged()
         showGuide()
     }
     
     @objc private func logoImageTapped() {
+        HapticEngine.result.notificationOccurred(.success)
         UIApplication.shared.open(URL(string: Translation.HomeLogoLinkURL.localized)!)
     }
     
