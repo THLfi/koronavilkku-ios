@@ -331,7 +331,11 @@
       "sv": "Esbo"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -388,7 +392,11 @@
       "sv": "Euraåminne"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -834,7 +842,11 @@
       "sv": "Harjavalta"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -1029,7 +1041,11 @@
       "sv": "Hirvensalmi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -1860,7 +1876,11 @@
       "sv": "Juva"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -2102,7 +2122,11 @@
       "sv": "Kangasniemi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -2762,7 +2786,7 @@
         "title": {
           "fi": "Kittilän terveyskeskuksen koronapuhelin"
         },
-        "phoneNumber": "0401851552",
+        "phoneNumber": "0407476102",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
@@ -2847,7 +2871,11 @@
       "sv": "Kumo"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -4669,7 +4697,11 @@
       "sv": "S:t Michel"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -4906,7 +4938,11 @@
       "sv": "Mäntyharju"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -4973,7 +5009,11 @@
       "sv": "Nakkila"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -5214,7 +5254,11 @@
       "sv": "Orivesi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -5514,7 +5558,11 @@
       "sv": "Pertunmaa"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -5961,7 +6009,11 @@
       "sv": "Puumala"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
