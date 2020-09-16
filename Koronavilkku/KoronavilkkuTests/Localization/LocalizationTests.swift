@@ -2,7 +2,7 @@ import XCTest
 @testable import Koronavilkku
 
 class LocalizationTests: XCTestCase {
-    private let supportedLanguages = ["fi"]
+    private let supportedLanguages = ["fi", "sv", "en"]
     
     func testLocalizationsDone() {
         verifyTranslations(from: Translation.self)

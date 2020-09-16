@@ -97,6 +97,7 @@
 		EA4F905224F4EFAD0032D9D5 /* BackendRestApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */; };
 		EA7B0556251248BE002941A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B0558251248BE002941A6 /* Localizable.strings */; };
 		EA7B055D251248EC002941A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B055F251248EC002941A6 /* InfoPlist.strings */; };
+		EA7B056425124C5C002941A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B0558251248BE002941A6 /* Localizable.strings */; };
 		EA80A56C24AC71A60071E0EC /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = EA80A56B24AC71A60071E0EC /* ZIPFoundation */; };
 		EA80A56E24ACAE0D0071E0EC /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80A56D24ACAE0D0071E0EC /* REST.swift */; };
 		EA92357C24B26E4700B21B1B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92357B24B26E4700B21B1B /* Environment.swift */; };
@@ -776,6 +777,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5695F6D324D82C40008E06BC /* MunicipalitiesWithContact.json in Resources */,
+				EA7B056425124C5C002941A6 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
