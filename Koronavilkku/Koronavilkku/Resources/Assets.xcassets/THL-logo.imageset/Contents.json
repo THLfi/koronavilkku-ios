@@ -1,7 +1,6 @@
 {
   "images" : [
     {
-      "filename" : "THL-logo.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,10 +11,67 @@
     {
       "idiom" : "universal",
       "scale" : "3x"
+    },
+    {
+      "filename" : "Logo only.png",
+      "idiom" : "universal",
+      "locale" : "en",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Logo only@2x.png",
+      "idiom" : "universal",
+      "locale" : "en",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Logo only@3x.png",
+      "idiom" : "universal",
+      "locale" : "en",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "Logo only-1.png",
+      "idiom" : "universal",
+      "locale" : "fi",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Logo only@2x-1.png",
+      "idiom" : "universal",
+      "locale" : "fi",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Logo only@3x-1.png",
+      "idiom" : "universal",
+      "locale" : "fi",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "Logo only-2.png",
+      "idiom" : "universal",
+      "locale" : "sv",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Logo only@2x-2.png",
+      "idiom" : "universal",
+      "locale" : "sv",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Logo only@3x-2.png",
+      "idiom" : "universal",
+      "locale" : "sv",
+      "scale" : "3x"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
   }
 }
