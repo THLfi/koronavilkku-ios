@@ -63,7 +63,7 @@
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku ei ole havainnut altistumista koronavirukselle viimeisten 14 päivän aikana.";
 "ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "Sovellus ei kuitenkaan tunnista kaikkia mahdollisia altistumistilanteita.";
 
-"ExposuresLastCheckedView.Text.Never" = "Ei milloinkaan";
+"ExposuresLastCheckedView.Text.NotCheckedYet" = "Tarkistusta ei vielä tehty";
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Tarkistettu viimeksi: %@";
 
 // MARK: ReportInfectionViewController
