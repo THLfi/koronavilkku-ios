@@ -7,7 +7,11 @@
       "sv": "Alajärvi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -58,7 +62,11 @@
       "sv": "Alavus"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -280,7 +288,11 @@
       "sv": "Enonkoski"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -426,7 +438,11 @@
       "sv": "Evijärvi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -1457,7 +1473,11 @@
       "sv": "Ilmajoki"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -1565,7 +1585,11 @@
       "sv": "Storå"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -1595,7 +1619,11 @@
       "sv": "Storkyro"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -2249,7 +2277,11 @@
       "sv": "Bötom"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -2400,7 +2432,11 @@
       "sv": "Kauhajoki"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -2430,7 +2466,11 @@
       "sv": "Kauhava"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -3355,7 +3395,11 @@
       "sv": "Kuortane"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -3385,7 +3429,11 @@
       "sv": "Kurikka"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -3797,7 +3845,11 @@
       "sv": "Lappajärvi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -3882,7 +3934,11 @@
       "sv": "Lappo"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -6321,7 +6377,11 @@
       "sv": "Rantasalmi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -6880,7 +6940,11 @@
       "sv": "Nyslott"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -6940,7 +7004,11 @@
       "sv": "Seinäjoki"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -7162,7 +7230,11 @@
       "sv": "Soini"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -7316,7 +7388,11 @@
       "sv": "Sulkava"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -7754,7 +7830,11 @@
       "sv": "Östermark"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -8545,7 +8625,11 @@
       "sv": "Vimpeli"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -8812,7 +8896,11 @@
       "sv": "Etseri"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
