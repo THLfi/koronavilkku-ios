@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use exact versions for SPM dependencies
 - Schedule the EN background task to run max 6 times a day to prevent it being run excessively by the system
 - Suppress any errors encountered while updating the municipality list in the background task
+- Ensure background task being rescheduled even if current task is unexpectedly terminated 
 
 ### Added
 - REST API tests
