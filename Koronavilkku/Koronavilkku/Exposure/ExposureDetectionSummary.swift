@@ -17,7 +17,7 @@ struct ExposureDetectionSummary: Codable, CustomStringConvertible {
     }
     
 
-    let creationTime = Date()
+    var creationTime = Date()
     let attenuationDurations: [Double]
     let daysSinceLastExposure: Int
     let matchedKeyCount: UInt64
