@@ -103,7 +103,7 @@ class TestViewController: UIViewController {
                     case .finished:
                         Log.d("batchDownloadPressed Finished")
                     }
-                    FileHelper().deleteAllBatches()
+                    Environment.default.exposureRepository.deleteBatchFiles()
                 },
                 receiveValue: { id in
                     Log.d("Received urls: \(id)")
@@ -185,15 +185,14 @@ class TestViewController: UIViewController {
         Environment.default.municipalityRepository.updateMunicipalityList()
             .receive(on: RunLoop.main)
             .sink(
-                receiveCompletion: { _ in  },
-                receiveValue: { success in
-                    Log.d("updateMunicipalityList, success=\(success)")
-                    if success {
+                receiveCompletion: { result in
+                    switch result {
+                    case .failure(let error):
+                        self.showDialog("Failed to update municipality list, error: \(error)")
+                    case .finished:
                         self.showDialog("Updated municipality list successfully", title: "")
-                    } else {
-                        self.showDialog("Failed to update municipality list")
                     }
-                }
+                }, receiveValue: { _ in }
             )
             .store(in: &tasks)
     }

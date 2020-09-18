@@ -7,7 +7,11 @@ struct DiagnosisPublishRequest : Encodable {
 
 protocol BatchRepository {
     func getNewBatches() -> AnyPublisher<String, Error>
-    func ensureCurrentBatchIdDefined()
+    func getCurrentBatchId() -> AnyPublisher<String, Error>
+}
+
+protocol BatchIdCache {
+    var nextDiagnosisKeyFileIndex: String? { get set }
 }
 
 enum BatchError: Error {
@@ -18,13 +22,13 @@ enum BatchError: Error {
 
 class BatchRepositoryImpl: BatchRepository {
     private let backend: Backend
-    private let fileHelper: FileHelper
-    private let BATCH_ID_KEY = "BATCH_ID"
-    private var tasks = [AnyCancellable]()
+    private var cache: BatchIdCache
+    private let storage: FileStorage
     
-    init(backend: Backend, fileHelper: FileHelper) {
+    init(backend: Backend, cache: BatchIdCache, storage: FileStorage) {
         self.backend = backend
-        self.fileHelper = fileHelper
+        self.cache = cache
+        self.storage = storage
     }
 
     func getNewBatches() -> AnyPublisher<String, Error> {
@@ -33,30 +37,22 @@ class BatchRepositoryImpl: BatchRepository {
                 return self.getNewBatchIds(previousBatchId: id)
             }
             .flatMap { ids -> AnyPublisher<String, Error> in
-                    let publishers = ids.map { id in
-                        return self.getBatchFile(id: id)
-                    }
-                    return publishers.publisher
-                        .setFailureType(to: Error.self)
-                        .flatMap { $0 }
-                        .eraseToAnyPublisher()
-            }.eraseToAnyPublisher()
+                ids.publisher
+                    .setFailureType(to: Error.self)
+                    .flatMap(maxPublishers: .max(2)) { self.downloadBatchFile(id: $0) }
+                    .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
     }
     
-    func ensureCurrentBatchIdDefined() {
-        getCurrentBatchId()
-            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
-            .store(in: &tasks)
-    }
-    
-    private func getCurrentBatchId() -> AnyPublisher<String, Error> {
+    func getCurrentBatchId() -> AnyPublisher<String, Error> {
         Log.d("Get current batch id")
         if let batchId = getLocallyStoredBatchId() {
             Log.d("Found local batch id \(batchId)")
             return Just(batchId).setFailureType(to: Error.self).eraseToAnyPublisher()
         } else {
             Log.d("Didn't find local batch id")
-            return backend.call(endpoint: .getCurrentBatchId).map { (id: CurrentBatchId) in
+            return backend.getCurrentBatchId().map { id in
                 self.storeBatchIdLocally(id: id.current)
                 return id.current
             }.eraseToAnyPublisher()
@@ -64,46 +60,23 @@ class BatchRepositoryImpl: BatchRepository {
     }
     
     private func getNewBatchIds(previousBatchId: String) -> AnyPublisher<[String], Error> {
-        return backend.call(endpoint: .getNewBatchIds(since: previousBatchId))
-            .map { (ids: BatchIds) in
-                return ids.batches
-            }
+        return backend.getNewBatchIds(since: previousBatchId)
+            .map { $0.batches }
             .eraseToAnyPublisher()
     }
     
-    private func getBatchFile(id batchId: String) -> AnyPublisher<String, Error> {
-        return backend.call(endpoint: .getBatchFile(id: batchId)).tryMap { data in
-            
-            guard let fileUrl = self.fileHelper.createFile(name: "\(batchId)", extension: "zip", data: data) else {
-                Log.e("Writing zip to disk failed")
-                throw BatchError.writingZipFailed
-            }
-            
-            guard let unzipUrl = self.fileHelper.decompressZip(fileUrl: fileUrl) else {
-                Log.e("Unzipping failed")
-                throw BatchError.unzippingFailed
-            }
-            
-            guard let unzippedFileUrls = self.fileHelper.getListOfFileUrlsInDirectory(directoryUrl: unzipUrl) else {
-                Log.e("Couldn't find files in directory \(unzipUrl)")
-                throw BatchError.noFilesFound
-            }
-            
-            // Rename the files based on the batch id
-            unzippedFileUrls.forEach { url in
-                self.fileHelper.renameFile(newName: batchId, fileUrl: url)
-            }
-            
-            return batchId
+    private func downloadBatchFile(id batchId: String) -> AnyPublisher<String, Error> {
+        return backend.getBatchFile(id: batchId).tryMap { data in
+            try self.storage.`import`(batchId: batchId, data: data)
         }.eraseToAnyPublisher()
     }
         
     private func storeBatchIdLocally(id: String) {
         Log.d("Storing batch id: \(id)")
-        LocalStore.shared.nextDiagnosisKeyFileIndex = id
+        cache.nextDiagnosisKeyFileIndex = id
     }
     
     private func getLocallyStoredBatchId() -> String? {
-        return LocalStore.shared.nextDiagnosisKeyFileIndex
+        return cache.nextDiagnosisKeyFileIndex
     }
 }

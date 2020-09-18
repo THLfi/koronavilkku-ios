@@ -81,11 +81,7 @@ class SettingsViewController: UIViewController {
     }
     
     private func appNameAndVersionItem() -> InstructionItem {
-        let versionText = Text.AppInfoWithVersion.localized(with:
-            Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String,
-            Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-        )
-        
+        let versionText = Text.AppInfoWithVersion.localized(with: Environment.default.configuration.version)
         return InstructionsView.labelItem(versionText, font: UIFont.labelTertiary, color: UIColor.Greyscale.darkGrey, spacing: 25)
     }
     

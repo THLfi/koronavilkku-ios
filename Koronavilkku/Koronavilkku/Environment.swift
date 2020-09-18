@@ -3,40 +3,36 @@ import Foundation
 import TrustKit
 
 struct Environment {
+    let configuration: Configuration
     let batchRepository: BatchRepository
     let exposureRepository: ExposureRepository
     let municipalityRepository: MunicipalityRepository
 
     static var `default` = Environment.create()
-    
-    private init(batchRepository: BatchRepository,
-                 exposureRepository: ExposureRepository,
-                 municipalityRepository: MunicipalityRepository) {
-        self.batchRepository = batchRepository
-        self.exposureRepository = exposureRepository
-        self.municipalityRepository = municipalityRepository
-    }
 }
 
 extension Environment {
     static func create() -> Environment {
         let config = LocalConfiguration()
         let urlSession = configureUrlSession(config: config)
-        let backend = Backend(config: config, urlSession: urlSession)
+        let backend = BackendRestApi(config: config, urlSession: urlSession)
         let cms = CMS(config: config, urlSession: urlSession)
+        let storage = FileStorageImpl()
         
         let batchRepository = BatchRepositoryImpl(backend: backend,
-                                                  fileHelper: FileHelper())
+                                                  cache: LocalStore.shared,
+                                                  storage: storage)
         
         let exposureRepository = ExposureRepositoryImpl(exposureManager: ExposureManagerProvider.shared.manager,
                                                         backend: backend,
-                                                        fileHelper: FileHelper())
+                                                        storage: storage)
         
         let municipalityRepository = MunicipalityRepositoryImpl(cms: cms,
                                                                 omaoloBaseURL: config.omaoloBaseURL,
-                                                                fileHelper: FileHelper())
+                                                                storage: storage)
         
-        return Environment(batchRepository: batchRepository,
+        return Environment(configuration: config,
+                           batchRepository: batchRepository,
                            exposureRepository: exposureRepository,
                            municipalityRepository: municipalityRepository)
     }

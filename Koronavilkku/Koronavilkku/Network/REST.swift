@@ -13,7 +13,6 @@ let KVRestErrorDomain = "Koronavilkku.RestError"
 enum RestError : Error {
     case unexpectedResponse
     case statusCode(Int)
-    case invalidUrl
 }
 
 protocol RestResource {
@@ -32,7 +31,6 @@ extension Encodable {
 }
 
 extension RestApi {
-    
     func url(for path: String) -> URL {
         if path.isEmpty { return baseURL }
         return URL(string: path, relativeTo: baseURL)!

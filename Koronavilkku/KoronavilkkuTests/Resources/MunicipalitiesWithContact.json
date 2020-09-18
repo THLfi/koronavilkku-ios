@@ -7,7 +7,11 @@
       "sv": "Alajärvi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -42,11 +46,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kallion pandemianeuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "084195140",
         "info": {
-          "fi": ""
+          "fi": "arkipäivisin klo 8 -16"
         }
       }
     ]
@@ -58,7 +62,11 @@
       "sv": "Alavus"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -280,7 +288,11 @@
       "sv": "Enonkoski"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -331,7 +343,11 @@
       "sv": "Esbo"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -388,7 +404,11 @@
       "sv": "Euraåminne"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -418,7 +438,11 @@
       "sv": "Evijärvi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -661,13 +685,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Tunkkari",
+          "sv": "Tunkkari"
+        },
+        "phoneNumber": "0408045000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -812,7 +858,11 @@
       "sv": "Harjavalta"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -1007,7 +1057,11 @@
       "sv": "Hirvensalmi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -1419,7 +1473,11 @@
       "sv": "Ilmajoki"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -1509,11 +1567,13 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Inkoon terveyskeskus Koronaneuvonta",
+          "sv": "Ingå hälsocentral Coronarådgivning"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0929515500",
         "info": {
-          "fi": ""
+          "fi": "ma - pe klo 8–18, la - su klo 10–16",
+          "sv": "må - fre kl. 8–18, lö - sö kl. 10–16"
         }
       }
     ]
@@ -1525,7 +1585,11 @@
       "sv": "Storå"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -1555,7 +1619,11 @@
       "sv": "Storkyro"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -1836,7 +1904,11 @@
       "sv": "Juva"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -2078,7 +2150,11 @@
       "sv": "Kangasniemi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -2161,13 +2237,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Kannus",
+          "sv": "Kannus"
+        },
+        "phoneNumber": "0408042000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -2179,7 +2277,11 @@
       "sv": "Bötom"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -2330,7 +2432,11 @@
       "sv": "Kauhajoki"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -2360,7 +2466,11 @@
       "sv": "Kauhava"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -2429,13 +2539,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Tunkkari",
+          "sv": "Tunkkari"
+        },
+        "phoneNumber": "0408045000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -2694,7 +2826,7 @@
         "title": {
           "fi": "Kittilän terveyskeskuksen koronapuhelin"
         },
-        "phoneNumber": "0401851552",
+        "phoneNumber": "0407476102",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
@@ -2779,7 +2911,11 @@
       "sv": "Kumo"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -2814,13 +2950,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
+          "fi": "ma-su klo 8-16",
           "sv": "må - sö kl. 8–16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -3113,13 +3260,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "ma-su klo 8-16",
+          "sv": "må-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -3237,7 +3395,11 @@
       "sv": "Kuortane"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -3267,7 +3429,11 @@
       "sv": "Kurikka"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -3302,11 +3468,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Uudenkaupungin terveysneuvola"
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
         },
-        "phoneNumber": "0445512520",
+        "phoneNumber": "024612516",
         "info": {
-          "fi": "ma - pe klo 8–15"
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
+        },
+        "phoneNumber": "024612516",
+        "info": {
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
         }
       }
     ]
@@ -3666,7 +3845,11 @@
       "sv": "Lappajärvi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -3751,7 +3934,11 @@
       "sv": "Lappo"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -3910,13 +4097,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Kannus",
+          "sv": "Kannus"
+        },
+        "phoneNumber": "0408042000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -4544,7 +4753,11 @@
       "sv": "S:t Michel"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -4616,7 +4829,7 @@
         "title": {
           "fi": "Muonio-Enontekiön perusterveydenhuolto, Muonion poliklinikka"
         },
-        "phoneNumber": "0407031147 ",
+        "phoneNumber": "0406624565 ",
         "info": {
           "fi": "ma - pe klo 8–16"
         }
@@ -4781,7 +4994,11 @@
       "sv": "Mäntyharju"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -4848,7 +5065,11 @@
       "sv": "Nakkila"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -4883,11 +5104,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kallion pandemianeuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "084195140",
         "info": {
-          "fi": ""
+          "fi": "arkipäivisin klo 8 -16"
         }
       }
     ]
@@ -5089,7 +5310,11 @@
       "sv": "Orivesi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -5349,13 +5574,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Tunkkari",
+          "sv": "Tunkkari"
+        },
+        "phoneNumber": "0408045000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -5367,7 +5614,11 @@
       "sv": "Pertunmaa"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -5798,11 +6049,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Puolangan terveyskeskus (päivystys)"
         },
-        "phoneNumber": "",
+        "phoneNumber": "0861565226",
         "info": {
-          "fi": ""
+          "fi": "Kaikkina aikoina"
         }
       }
     ]
@@ -5814,7 +6065,11 @@
       "sv": "Puumala"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -5961,11 +6216,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Uudenkaupungin terveysneuvola"
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
         },
-        "phoneNumber": "0445512520",
+        "phoneNumber": "024612516",
         "info": {
-          "fi": "ma - pe klo 8–15"
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
+        },
+        "phoneNumber": "024612516",
+        "info": {
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
         }
       }
     ]
@@ -6093,7 +6361,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Raision terveyskeskus ajanvaraus, oireiset"
+          "fi": "Raision terveysasema ajanvaraus"
         },
         "phoneNumber": "024343183",
         "info": {
@@ -6109,7 +6377,11 @@
       "sv": "Rantasalmi"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -6427,7 +6699,7 @@
     "contact": [
       {
         "title": {
-          "fi": "Ruskon terveyskeskus ajanvaraus, oireiset"
+          "fi": "Ruskon terveysasema ajanvaraus"
         },
         "phoneNumber": "024343150",
         "info": {
@@ -6668,7 +6940,11 @@
       "sv": "Nyslott"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -6728,7 +7004,11 @@
       "sv": "Seinäjoki"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -6763,11 +7043,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kallion pandemianeuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "084195140",
         "info": {
-          "fi": ""
+          "fi": "arkipäivisin klo 8 -16"
         }
       }
     ]
@@ -6950,7 +7230,11 @@
       "sv": "Soini"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -7104,7 +7388,11 @@
       "sv": "Sulkava"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -7410,11 +7698,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Uudenkaupungin terveysneuvola"
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
         },
-        "phoneNumber": "0445512520",
+        "phoneNumber": "024612516",
         "info": {
-          "fi": "ma - pe klo 8–15"
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
+        },
+        "phoneNumber": "024612516",
+        "info": {
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
         }
       }
     ]
@@ -7529,7 +7830,11 @@
       "sv": "Östermark"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -7589,13 +7894,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Kannus",
+          "sv": "Kannus"
+        },
+        "phoneNumber": "0408042000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -7945,11 +8272,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Uudenkaupungin terveysneuvola"
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
         },
-        "phoneNumber": "0445512520",
+        "phoneNumber": "024612516",
         "info": {
-          "fi": "ma - pe klo 8–15"
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
+        },
+        "phoneNumber": "024612516",
+        "info": {
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
         }
       }
     ]
@@ -8064,11 +8404,24 @@
     "contact": [
       {
         "title": {
-          "fi": "Uudenkaupungin terveysneuvola"
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
         },
-        "phoneNumber": "0445512520",
+        "phoneNumber": "024612516",
         "info": {
-          "fi": "ma - pe klo 8–15"
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
+        }
+      },
+      {
+        "title": {
+          "fi": "U-SOTE Koronalinja",
+          "sv": "U-SOTE Koronalinja"
+        },
+        "phoneNumber": "024612516",
+        "info": {
+          "fi": "ma - pe klo 8–15",
+          "sv": "må - fre kl. 8–15"
         }
       }
     ]
@@ -8140,13 +8493,35 @@
     "contact": [
       {
         "title": {
-          "fi": "Soiten koronaneuvontapuhelin",
+          "fi": "Tunkkari",
+          "sv": "Tunkkari"
+        },
+        "phoneNumber": "0408045000",
+        "info": {
+          "fi": "ma-pe klo 8-16",
+          "sv": "må-fre kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Soiten koronaneuvonta",
           "sv": "Soites coronarådgivning"
         },
         "phoneNumber": "068287499",
         "info": {
-          "fi": "ma -su klo 8–16",
-          "sv": "må - sö kl. 8–16"
+          "fi": "la-su klo 8-16",
+          "sv": "lö-sö kl. 8-16"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystys",
+          "sv": "Jour"
+        },
+        "phoneNumber": "068264500",
+        "info": {
+          "fi": "",
+          "sv": ""
         }
       }
     ]
@@ -8250,7 +8625,11 @@
       "sv": "Vimpeli"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
@@ -8446,11 +8825,11 @@
     "contact": [
       {
         "title": {
-          "fi": "Katso yhteystiedot oman kuntasi verkkosivuilta."
+          "fi": "Kallion pandemianeuvonta"
         },
-        "phoneNumber": "",
+        "phoneNumber": "084195140",
         "info": {
-          "fi": ""
+          "fi": "arkipäivisin klo 8 -16"
         }
       }
     ]
@@ -8517,7 +8896,11 @@
       "sv": "Etseri"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": false
+      }
     },
     "contact": [
       {
