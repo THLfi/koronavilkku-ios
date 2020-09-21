@@ -222,21 +222,35 @@ final class StatusHeaderView: UIView {
         switch radarStatus {
         case .btOff:
             openSettings(.bluetooth)
+
         case .apiDisabled:
-            // RadarStatus.apiDisabled==ENStatus.restricted which can be used in various situations:
-            // app specific EN permission turned off, system level EN (permission) turned off or
-            // if another EN app is active. In the last case we can activate our app by calling enable
-            // and the user doesn't need to do anything. In the other cases the user needs to go to
-            // settings and either enable app or system EN. If enabling fails but the error is "restricted"
-            // (user didn't grant permission to switch the app), then don't show the Enable EN instructions.
+            // attempt to enable the disabled API first
+            // in some cases the system pops up a dialog where the user is able to
+            // activate the API, eg. after being completely turned off (in iOS 13.7+)
+            // or when another app is currently active (prior to iOS 13.7)
             exposureRepository.tryEnable { [weak self] errorCode in
-                if let code = errorCode, code != .restricted {
+                // API activated
+                guard let code = errorCode else {
+                    return
+                }
+                
+                // iOS 13.7+ we can no longer reliably determine anything from the error code;
+                // just show instructions how to enable the API in Settings.app
+                if #available(iOS 13.7, *) {
                     self?.openSettings(.exposureNotifications)
+                } else {
+                    // in iOS prior to 13.7, attempting to enable the API results in .notAuthorized
+                    // when the API has been disabled and .restricted when the user rejects the
+                    // presented dialog; avoid showing instructions if the user rejected
+                    if code != .restricted {
+                        self?.openSettings(.exposureNotifications)
+                    }
                 }
             }
-            
+
         case .off:
             exposureRepository.setStatus(enabled: true)
+
         default:
             break
         }

@@ -1,7 +1,7 @@
+import Combine
 import Foundation
-import UIKit
 import SnapKit
-import ExposureNotification
+import UIKit
 
 class OpenSettingsViewController: UIViewController {
 
@@ -11,14 +11,14 @@ class OpenSettingsViewController: UIViewController {
     let userDismissable: Bool
     
     // Return true if the status is such that the OpenSettingsViewController no longer needs to be visible.
-    let dismissCheck: (ENStatus) -> Bool
+    let dismissCheck: (RadarStatus) -> Bool
     
     // Handles dismissing the view controller.
     let dismisser: () -> Void
     
-    private var notificationObserver: Any? = nil
+    var statusUpdateTask: AnyCancellable? = nil
     
-    init(content: OpenSettingsContent, userDismissable: Bool, dismissCheck: @escaping (ENStatus) -> Bool, dismisser: @escaping () -> Void) {
+    init(content: OpenSettingsContent, userDismissable: Bool, dismissCheck: @escaping (RadarStatus) -> Bool, dismisser: @escaping () -> Void) {
         self.content = content
         self.userDismissable = userDismissable
         self.dismissCheck = dismissCheck
@@ -37,17 +37,21 @@ class OpenSettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        checkDismiss()
+
+        statusUpdateTask = LocalStore.shared.$uiStatus.$wrappedValue.sink { [weak self] status in
+            guard self?.dismissCheck(status) == true else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self?.dismisser()
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        stopObservingReturn()
-    }
-    
-    func canDismiss() -> Bool {
-        let status = ExposureManagerProvider.shared.manager.exposureNotificationStatus
-        return dismissCheck(status)
+        statusUpdateTask = nil
     }
     
     private func initUI() {
@@ -114,49 +118,26 @@ class OpenSettingsViewController: UIViewController {
 
     private func openSettings() {
         guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-        startObservingReturn()
         UIApplication.shared.open(url)
     }
 
-    private func startObservingReturn() {
-        guard notificationObserver == nil else { return }
-
-        let name = UIApplication.willEnterForegroundNotification
-        let center = NotificationCenter.default
-
-        notificationObserver = center.addObserver(forName: name, object: nil, queue: nil) { [weak self] _ in
-            self?.stopObservingReturn()
-            self?.checkDismiss()
-        }
-    }
-    
-    private func checkDismiss() {
-        guard canDismiss() else { return }
-        dismisser()
-    }
-    
-    private func stopObservingReturn() {
-        guard let observer = notificationObserver else { return }
-        notificationObserver = nil
-        NotificationCenter.default.removeObserver(observer)
-    }
-    
     static func create(type: OpenSettingsType, userDismissable: Bool = true, dismisser: @escaping () -> Void) -> UIViewController {
+        print("Creating OpenSettingsViewController of type \(type)!")
         let content: OpenSettingsContent
-        let dismissCheck: (ENStatus) -> Bool
+        let dismissCheck: (RadarStatus) -> Bool
         
         switch type {
         case .bluetooth:
             content = OpenSettingsContent(title: Translation.BluetoothDisabledTitle,
                                           text: Translation.BluetoothDisabledText,
                                           steps: nil)
-            dismissCheck = { status in status != .bluetoothOff }
+            dismissCheck = { status in status != .btOff }
 
         case .exposureNotifications:
             content = OpenSettingsContent(title: Translation.ENBlockedTitle,
                                           text: Translation.ENBlockedText,
                                           steps: Translation.ENBlockedSteps)
-            dismissCheck = { status in status == .active || status == .bluetoothOff || status == .disabled }
+            dismissCheck = { status in status != .apiDisabled }
         }
 
         return OpenSettingsViewController(content: content,

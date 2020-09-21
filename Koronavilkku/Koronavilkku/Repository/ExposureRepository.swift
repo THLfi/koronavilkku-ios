@@ -147,7 +147,14 @@ struct ExposureRepositoryImpl : ExposureRepository {
             return
         }
         
-        let status = RadarStatus.init(from: exposureManager.exposureNotificationStatus)
+        let status: RadarStatus
+
+        if type(of: exposureManager).authorizationStatus != .authorized {
+            status = .apiDisabled
+        } else {
+            status = RadarStatus.init(from: exposureManager.exposureNotificationStatus)
+        }
+        
         Log.d("Status=\(status)")
 
         if (LocalStore.shared.uiStatus != status) {
