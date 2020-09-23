@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Use exact versions for SPM dependencies
 - Schedule the EN background task to run max 6 times a day to prevent it being run excessively by the system
 - Suppress any errors encountered while updating the municipality list in the background task
+- Localisation updates
 
 ### Added
 - REST API tests
@@ -20,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Proper TEK generation in MockExposureManager
 - Git commit hash to version information in Settings view
 - Show the change log in Xcode workspace
+- English translation
 
 ## 1.0.1
 
