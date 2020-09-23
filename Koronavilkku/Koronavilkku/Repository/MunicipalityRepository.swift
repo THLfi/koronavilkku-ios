@@ -46,9 +46,9 @@ class MunicipalityRepositoryImpl: MunicipalityRepository {
     }
     
     func getMunicipalityList() -> AnyPublisher<Municipalities, Error> {
-        return readFromFile()
-            .catch({ _ in self.cms.call(endpoint: .getMunicipalityList) })
-        .eraseToAnyPublisher()
+        return readFromFile().catch { _ in
+            self.cms.call(endpoint: .getMunicipalityList)
+        }.eraseToAnyPublisher()
     }
     
     private func readFromFile() -> AnyPublisher<Municipalities, Error> {

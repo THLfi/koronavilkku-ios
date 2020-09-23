@@ -256,6 +256,7 @@ class OnboardingViewController: UINavigationController {
             
         } else if step.showScrollIndicator {
             let button = RoundedButton(title: "\u{2193}", action: self.scrollDown)
+            button.accessibilityHint = Translation.ButtonScrollDown.localized
             viewController.view.addSubview(button)
             button.snp.makeConstraints { make in
                 make.size.equalTo(CGSize(width: 50, height: 50))

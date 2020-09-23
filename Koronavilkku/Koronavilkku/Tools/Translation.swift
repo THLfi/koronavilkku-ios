@@ -38,14 +38,10 @@ enum Translation: String, Localizable {
     
     /* Headers and titles */
     case HeaderContinueByAcceptingExposureLogging
-    case HeaderSelectMunicipality
     
     /* Subtitles, labels, etc. less significant elements */
     case ExposureNotificationUserExplanation
     case HowItWorksButton
-    case AlertErrorLoadingMunicipalities
-    case AlertMessagePleaseTryAgainLater
-    case AlertDismissMunicipalityError
     
     /* Buttons */
     case ButtonBack
@@ -53,6 +49,7 @@ enum Translation: String, Localizable {
     case ButtonNext
     case ButtonStartUsing
     case ButtonTestUI
+    case ButtonScrollDown
 
     /* Tabs */
     case TabHome

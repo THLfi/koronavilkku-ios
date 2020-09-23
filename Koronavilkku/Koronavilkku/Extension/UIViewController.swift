@@ -8,13 +8,14 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
     
-    func showConfirmation(title: String, message: String, okText: String, cancelText: String, handler: @escaping (_ confirmed: Bool) -> Void) {
+    func showConfirmation(title: String, message: String, okText: String, cancelText: String, destructive: Bool, handler: @escaping (_ confirmed: Bool) -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let style: UIAlertAction.Style = destructive ? .destructive : .default
         let actionHandler = { (action: UIAlertAction) -> Void in
-            handler(action.style == .default)
+            handler(action.style == style)
         }
         
-        alert.addAction(UIAlertAction(title: okText, style: .default, handler: actionHandler))
+        alert.addAction(UIAlertAction(title: okText, style: style, handler: actionHandler))
         alert.addAction(UIAlertAction(title: cancelText, style: .cancel, handler: actionHandler))
         self.present(alert, animated: true)
     }

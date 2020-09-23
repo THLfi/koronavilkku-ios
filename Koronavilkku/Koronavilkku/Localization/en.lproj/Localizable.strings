@@ -4,6 +4,7 @@
 "ButtonNext" = "Next";
 "ButtonStartUsing" = "Start using the app";
 "ButtonTestUI" = "Test UI";
+"ButtonScrollDown" = "Scroll down";
 
 "TabHome" = "Home";
 "TabReportInfection" = "Report your infection";
@@ -132,15 +133,18 @@
 "MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Contact your municipal healthcare services as soon as possible and get tested if you experience any of the following symptoms consistent with COVID-19:";
 "MunicipalityContactInfoViewController.Text.SymptomsText" = "- change in sense of smell or taste\n- shortness of breath\n- cough, sore throat or runny nose\n- fever\n- headaches or muscle pain\n- unexplained diarrhoea or abdominal pain.";
 
-"HeaderSelectMunicipality" = "Select your municipality";
+// MARK: SelectMunicipalityViewController
+
+"SelectMunicipalityViewController.Text.Title" = "Select your municipality";
+"SelectMunicipalityViewController.Text.SearchPlaceholder" = "Search";
+"SelectMunicipalityViewController.Text.ErrorTitle" = "Error loading municipality list";
+"SelectMunicipalityViewController.Text.ErrorMessage" = "The municipality list could not be loaded. Please check your internet connection and try again.";
+"SelectMunicipalityViewController.Text.ErrorButton" = "OK";
+
 "HeaderContinueByAcceptingExposureLogging" = "Select \"allow\" to continue setting up the application";
 
 "ContactRequestItemTitle" = "Send a contact request";
 "ContactRequestItemInfo" = "Only for people without symptoms (not for children under 16)";
-
-"AlertErrorLoadingMunicipalities" = "Error loading municipality list";
-"AlertMessagePleaseTryAgainLater" = "The municipality list could not be loaded. Please check your internet connection and try again.";
-"AlertDismissMunicipalityError" = "OK";
 
 "OnboardingIntroTitle" = "Thank you for installing Koronavilkku";
 "OnboardingIntroText" = "Koronavilkku is an application produced by the Finnish Institute for Health and Welfare. It aims to prevent the spread of COVID-19 disease. Your privacy is strongly protected in the application.";

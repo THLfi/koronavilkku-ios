@@ -18,6 +18,7 @@ class LocalizationTests: XCTestCase {
         verifyTranslations(from: SymptomsViewController.Text.self)
         verifyTranslations(from: SettingsViewController.Text.self)
         verifyTranslations(from: SymptomsElement.Text.self)
+        verifyTranslations(from: SelectMunicipalityViewController.Text.self)
     }
     
     private func verifyTranslations<T: Localizable & CaseIterable>(from namespace: T.Type) {

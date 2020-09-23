@@ -97,6 +97,7 @@ class ChangeRadarStatusViewController: UIViewController {
                              message: Translation.DisableConfirmText.localized,
                              okText: Translation.DisableConfirmButton.localized,
                              cancelText: Translation.DisableCancelButton.localized,
+                             destructive: true,
                              handler: { confirmed in
                                 if confirmed { action() }
                              })
