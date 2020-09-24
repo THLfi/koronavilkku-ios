@@ -82,6 +82,7 @@
 		EA1B814824F57CFC0041DED1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814724F57CFC0041DED1 /* Extensions.swift */; };
 		EA1B814A24F57DC40041DED1 /* MockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814924F57DC40041DED1 /* MockApi.swift */; };
 		EA1B814E24F7159B0041DED1 /* MockBackend.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814D24F7159B0041DED1 /* MockBackend.swift */; };
+		EA1C90A7251BF57000DF01FD /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1C90A6251BF57000DF01FD /* LicenseViewController.swift */; };
 		EA1F5C8B24E1517000398EC8 /* InstructionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F5C8A24E1517000398EC8 /* InstructionsView.swift */; };
 		EA1F5C8E24E2763E00398EC8 /* TrustKit in Frameworks */ = {isa = PBXBuildFile; productRef = EA1F5C8D24E2763E00398EC8 /* TrustKit */; };
 		EA30D71824A5C32200AF84B1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D71724A5C32200AF84B1 /* RootViewController.swift */; };
@@ -98,6 +99,8 @@
 		EA7B0556251248BE002941A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B0558251248BE002941A6 /* Localizable.strings */; };
 		EA7B055D251248EC002941A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B055F251248EC002941A6 /* InfoPlist.strings */; };
 		EA7B056425124C5C002941A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B0558251248BE002941A6 /* Localizable.strings */; };
+		EA5296AC251BE1B10089CFB4 /* Licenses.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA5296AB251BE1B10089CFB4 /* Licenses.strings */; };
+		EA5296B4251BE70E0089CFB4 /* LicenseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5296B3251BE70E0089CFB4 /* LicenseListViewController.swift */; };
 		EA80A56C24AC71A60071E0EC /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = EA80A56B24AC71A60071E0EC /* ZIPFoundation */; };
 		EA80A56E24ACAE0D0071E0EC /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80A56D24ACAE0D0071E0EC /* REST.swift */; };
 		EA92357C24B26E4700B21B1B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92357B24B26E4700B21B1B /* Environment.swift */; };
@@ -210,6 +213,7 @@
 		EA1B814724F57CFC0041DED1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		EA1B814924F57DC40041DED1 /* MockApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApi.swift; sourceTree = "<group>"; };
 		EA1B814D24F7159B0041DED1 /* MockBackend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockBackend.swift; sourceTree = "<group>"; };
+		EA1C90A6251BF57000DF01FD /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		EA1F5C8A24E1517000398EC8 /* InstructionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsView.swift; sourceTree = "<group>"; };
 		EA30D71724A5C32200AF84B1 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EA30D71924A603E300AF84B1 /* ReportInfectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfectionViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 		EA7B0559251248C0002941A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7B055A251248C0002941A6 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7B055E251248EC002941A6 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EA5296AB251BE1B10089CFB4 /* Licenses.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Licenses.strings; sourceTree = "<group>"; };
+		EA5296B3251BE70E0089CFB4 /* LicenseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseListViewController.swift; sourceTree = "<group>"; };
 		EA80A56D24ACAE0D0071E0EC /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
 		EA92357B24B26E4700B21B1B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EA92A04024A3958300CE7271 /* Koronavilkku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koronavilkku.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -468,6 +474,8 @@
 				561878B624ADCF53004B7563 /* ExposuresViewController.swift */,
 				5612972B24C977420075161A /* HowItWorksViewController.swift */,
 				32899E4C24C07E3900CFFE27 /* InfoViewController.swift */,
+				EA5296B3251BE70E0089CFB4 /* LicenseListViewController.swift */,
+				EA1C90A6251BF57000DF01FD /* LicenseViewController.swift */,
 				D92F528D24E3FEF40099EBEC /* LinkLanguageViewController.swift */,
 				EA92A04724A3958300CE7271 /* MainViewController.swift */,
 				56E3349324CB21760017CD9A /* MunicipalityContactInfoViewController.swift */,
@@ -509,6 +517,7 @@
 				EA47C5F624A6C1EE00EAC720 /* Fonts */,
 				EA92A04F24A3958500CE7271 /* Assets.xcassets */,
 				EA92A05124A3958500CE7271 /* LaunchScreen.storyboard */,
+				EA5296AB251BE1B10089CFB4 /* Licenses.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -763,6 +772,7 @@
 			files = (
 				EA92A05324A3958500CE7271 /* LaunchScreen.storyboard in Resources */,
 				EA7B055D251248EC002941A6 /* InfoPlist.strings in Resources */,
+				EA5296AC251BE1B10089CFB4 /* Licenses.strings in Resources */,
 				EA92A05024A3958500CE7271 /* Assets.xcassets in Resources */,
 				EA47C5F324A6B3FC00EAC720 /* SourceSansPro-Bold.otf in Resources */,
 				EA7B0556251248BE002941A6 /* Localizable.strings in Resources */,
@@ -851,6 +861,7 @@
 				D98EDD3724CDF91F003E09A1 /* AttentionCard.swift in Sources */,
 				563D44AD24AA7840008FE2BB /* Comparable+Clamp.swift in Sources */,
 				EA30D71824A5C32200AF84B1 /* RootViewController.swift in Sources */,
+				EA1C90A7251BF57000DF01FD /* LicenseViewController.swift in Sources */,
 				EA3ED0E324F8315500635817 /* FileStorage.swift in Sources */,
 				EA92A04624A3958300CE7271 /* SceneDelegate.swift in Sources */,
 				EA92A07B24A4E59800CE7271 /* LivePreview.swift in Sources */,
@@ -869,6 +880,7 @@
 				EA80A56E24ACAE0D0071E0EC /* REST.swift in Sources */,
 				563D44B924AB9CD3008FE2BB /* Dictionary+IndexSubscript.swift in Sources */,
 				56E3349224CB02C00017CD9A /* ExposureDetectionSummary.swift in Sources */,
+				EA5296B4251BE70E0089CFB4 /* LicenseListViewController.swift in Sources */,
 				56C26BB024AF3A0B002F83C1 /* RoundedButton.swift in Sources */,
 				D98EDD2524CB3D5F003E09A1 /* CardElement.swift in Sources */,
 				563D44A824AA2143008FE2BB /* StatusHeaderView.swift in Sources */,

@@ -20,6 +20,7 @@ class SettingsViewController: UIViewController {
         case PrivacyLinkTitle
         case PrivacyLinkName
         case PrivacyLinkURL
+        case OpenSourceLicenses
         case AppInfoWithVersion
     }
     
@@ -117,6 +118,9 @@ class SettingsViewController: UIViewController {
             linkItem(title: Text.HowItWorksTitle, tapped: { self.showGuide() }),
             linkItem(title: Text.TermsLinkTitle, linkName: Text.TermsLinkName, url: Text.TermsLinkURL ),
             linkItem(title: Text.PrivacyLinkTitle, linkName: Text.PrivacyLinkName, url: Text.PrivacyLinkURL),
+            linkItem(title: Text.OpenSourceLicenses, tapped: {
+                self.navigationController?.pushViewController(LicenseListViewController(), animated: true)
+            }),
         ]
         items[1].accessibilityTraits = .button
 
