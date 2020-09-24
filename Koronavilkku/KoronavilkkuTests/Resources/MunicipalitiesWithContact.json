@@ -2398,7 +2398,11 @@
       "sv": "Kaskö"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -3057,7 +3061,11 @@
       "sv": "Korsnäs"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -3221,7 +3229,11 @@
       "sv": "Kristinestad"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -3769,7 +3781,11 @@
       "sv": "Laihela"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -4392,7 +4408,11 @@
       "sv": "Larsmo"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -4519,7 +4539,11 @@
       "sv": "Malax"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -4852,7 +4876,11 @@
       "sv": "Korsholm"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -5221,7 +5249,11 @@
       "sv": "Närpes"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -5704,7 +5736,11 @@
       "sv": "Jakobstad"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -5738,7 +5774,11 @@
       "sv": "Pedersöre"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -8233,7 +8273,11 @@
       "sv": "Nykarleby"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -8301,7 +8345,11 @@
       "sv": "Vasa"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
@@ -8763,7 +8811,11 @@
       "sv": "Vörå"
     },
     "omaolo": {
-      "available": false
+      "available": true,
+      "serviceLanguages": {
+        "fi": true,
+        "sv": true
+      }
     },
     "contact": [
       {
