@@ -112,6 +112,7 @@
 "SettingsViewController.Text.PrivacyLinkTitle" = "Privacy policy";
 "SettingsViewController.Text.PrivacyLinkName" = "koronavilkku.fi";
 "SettingsViewController.Text.PrivacyLinkURL" = "https://koronavilkku.fi/en/privacy/";
+"SettingsViewController.Text.OpenSourceLicenses" = "Open source licenses";
 "SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@";
 
 // MARK: LinkLanguageViewController

@@ -1,54 +1,54 @@
 import SnapKit
 import UIKit
 
-class LicenseListViewController : UIViewController {
+class LicenseListViewController : UITableViewController {
     enum Dependency : String, CaseIterable {
         case SnapKit
         case TrustKit
         case ZIPFoundation
+        
+        var license: String {
+            Bundle.main.localizedString(forKey: rawValue, value: nil, table: "Licenses")
+        }
     }
+    
+    let tableViewCell = "LicenseCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
-        
-        let content = view.addScrollableContentView(backgroundColor: UIColor.Secondary.blueBackdrop, margins: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+        tableView.backgroundColor = UIColor.Secondary.blueBackdrop
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: tableViewCell)
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let heading = UIView()
+        heading.backgroundColor = UIColor.Secondary.blueBackdrop
         
         let title = UILabel(label: "Avoimen lähdekoodin lisenssit", font: .heading2, color: UIColor.Greyscale.black)
         title.numberOfLines = -1
-        content.addSubview(title)
+        heading.addSubview(title)
         
         title.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
+            make.left.right.equalToSuperview().inset(16)
+            make.top.equalToSuperview().inset(28)
+            make.bottom.equalToSuperview().inset(20)
         }
         
-        var topAnchor = title.snp.bottom
-        
-        for dependency in Dependency.allCases {
-            let name = UILabel(label: dependency.rawValue, font: .labelPrimary, color: UIColor.Greyscale.black)
-            content.addSubview(name)
-            
-            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-            name.addGestureRecognizer(tapRecognizer)
-            name.isUserInteractionEnabled = true
-            name.accessibilityTraits = .link
-            
-            name.snp.makeConstraints { make in
-                make.top.equalTo(topAnchor).offset(20)
-                make.left.right.equalToSuperview()
-            }
-            
-            topAnchor = name.snp.bottom
-        }
-        
-        content.snp.makeConstraints { make in
-            make.bottom.equalTo(topAnchor)
-        }
+        return heading
     }
     
-    @objc
-    private func handleTap(sender: UIGestureRecognizer) {
-        Log.d("handling tap")
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        Dependency.allCases.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCell, for: indexPath)
+        cell.backgroundColor = UIColor.Secondary.blueBackdrop
+        cell.textLabel?.text = Dependency.allCases[indexPath.row].rawValue
+        cell.textLabel?.font = .bodySmall
+        cell.accessoryType = .disclosureIndicator
+        return cell
     }
 }
