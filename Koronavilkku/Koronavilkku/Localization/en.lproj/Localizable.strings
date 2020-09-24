@@ -1,0 +1,213 @@
+// MARK: Generic translations
+"ButtonBack" = "Back";
+"ButtonCancel" = "Cancel";
+"ButtonNext" = "Next";
+"ButtonStartUsing" = "Start using the app";
+"ButtonTestUI" = "Test UI";
+"ButtonScrollDown" = "Scroll down";
+
+"TabHome" = "Home";
+"TabReportInfection" = "Report your infection";
+"TabSettings" = "Settings";
+
+"ExposureNotificationUserExplanation" = "You may have been exposed to the coronavirus";
+"LinkAppInfo" = "About Koronavilkku";
+"HowItWorksButton" = "More information about Koronavilkku";
+
+// MARK: MainViewController
+"MainViewController.Text.ProtectionButtonTitle" = "Protect yourself";
+"MainViewController.Text.ProtectionButtonURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/transmission-and-protection-coronavirus";
+"MainViewController.Text.SituationButtonTitle" = "COVID-19 in Finland";
+"MainViewController.Text.SituationButtonURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/situation-update-on-coronavirus";
+
+// MARK: StatusHeaderView
+"StatusHeaderView.Text.TitleEnabled" = "Koronavilkku is active";
+"StatusHeaderView.Text.TitleDisabled" = "Koronavilkku is disabled";
+"StatusHeaderView.Text.TitleLocked" = "Koronavilkku is locked";
+"StatusHeaderView.Text.BodyEnabled" = "The app works even if you close it.";
+"StatusHeaderView.Text.BodyDisabled" = "Enable exposure notifications.";
+"StatusHeaderView.Text.BodyBTOff" = "Turn on Bluetooth.";
+"StatusHeaderView.Text.BodyLocked" = "Thank you for reporting your infection. The app will no longer collect information about encounters. We wish you a quick recovery!";
+"StatusHeaderView.Text.EnableButton" = "Enable";
+
+// MARK: ExposuresElement
+"ExposuresElement.Text.TitleNoExposures" = "No observed exposures";
+"ExposuresElement.Text.BodyNoExposures" = "You have not been near a person who has reported an infection";
+"ExposuresElement.Text.TitleHasExposures" = "Potential exposure";
+"ExposuresElement.Text.BodyHasExposures" = "You may have been exposed to the coronavirus";
+"ExposuresElement.Text.ButtonOpen" = "See instructions";
+
+// MARK: SymptomsElement.Text
+"SymptomsElement.Text.Title" = "Do you think you may have COVID-19?";
+"SymptomsElement.Text.Body" = "Take an online medical COVID-19 symptom check-up";
+
+// MARK: ExposureViewController
+"ExposuresViewController.Text.TitleHasExposures" = "Potential exposure";
+
+// MARK: ExposuresViewWrapper
+"ExposuresViewWrapper.HasExposureText.Heading" = "In the past 14 days, you have been close to a person who has reported a COVID-19 infection via Koronavilkku.";
+"ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Contact healthcare services";
+"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Information about your potential exposure will only be communicated to healthcare services if you contact them yourself.";
+"ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Contact";
+"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Follow these instructions carefully during the next two weeks:";
+"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "If you develop any of the following symptoms consistent with COVID-19, contact your municipal healthcare services and get tested as soon as possible:";
+"ExposuresViewWrapper.HasExposureText.InstructionsSymptomsText" = "- change in sense of smell or taste\n\t- shortness of breath\n\t- cough, sore throat or runny nose\n\t- fever\n\t- headaches or muscle pain\n\t- unexplained diarrhoea or abdominal pain.";
+"ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Avoid meeting other people.";
+"ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Maintain good hand hygiene.";
+"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Avoid public places and public transport. If you have to visit public places, keep at least a two-meter distance to other people. If you cannot keep enough distance, use a face mask.";
+"ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "If possible, let someone else handle food shopping and other errands outside the home.";
+"ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "If you cough or sneeze, use a disposable tissue to cover your mouth and nose. Put the used tissue in a waste bin and wash your hands with water and soap or use hand sanitiser. If you do not have a tissue, cough or sneeze into your sleeve.";
+"ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Work remotely if possible.";
+"ExposuresViewWrapper.HasExposureText.ExposureDisclaimer" = "The assessment of your exposure is based on encounters that Koronavilkku has collected during the last 14 days. The intensity of exposure cannot be accurately assessed.";
+
+"ExposuresViewWrapper.NoExposuresText.Heading" = "No observed exposures";
+"ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku has not detected exposures to the coronavirus in the last 14 days.";
+"ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "However, the application is not able to identify every situation where exposure may occur.";
+
+"ExposuresLastCheckedView.Text.NotCheckedYet" = "No checks yet";
+"ExposuresLastCheckedView.Text.LastCheckedAt" = "Last checked %@";
+
+// MARK: ReportInfectionViewController
+"ReportInfectionViewController.Text.LockedTitle" = "You have already reported your infection";
+"ReportInfectionViewController.Text.LockedText" = "The information you have reported will help to tackle the coronavirus epidemic. The app is now locked and no longer collects information about nearby phones. We wish you a quick recovery!";
+"ReportInfectionViewController.Text.DisabledText" = "Exposure notifications must be turned on in order to report an infection. Return to the Home view and enable them there.";
+"ReportInfectionViewController.Text.ReportTitle" = "Report your infection";
+"ReportInfectionViewController.Text.ReportText" = "If you are diagnosed with COVID-19, you will receive a key code from a healthcare professional or a text message from the Finnish Institute for Health and Welfare. You can use the key code to anonymously share information about your infection.\n\nEnter the key code on the phone you usually carry with you.";
+"ReportInfectionViewController.Text.ReportButton" = "Enter key code";
+"ReportInfectionViewController.Text.ReportItemPrivacy" = "The key code does not reveal your identity.";
+"ReportInfectionViewController.Text.ReportItemNotify" = "Koronavilkku indicates potential exposure to users who have been close to you during the period when you could have infected others.";
+"ReportInfectionViewController.Text.ReportItemGuide" = "Information on potential exposure encourages those who have been notified to keep a safe distance from others, to detect symptoms early on that may indicate infection and, if necessary, to get tested. This will help to decrease the spread of infection.";
+
+// MARK: PublishTokensViewController
+"PublishTokensViewController.Text.Title" = "Enter key code";
+"PublishTokensViewController.Text.ButtonSubmit" = "Report infection";
+"PublishTokensViewController.Text.AdditionalText" = "The key code does not reveal your identity.";
+"PublishTokensViewController.Text.ErrorWrongPublishToken" = "The key code is invalid or has expired. Please check that you have entered the exact code you received.";
+"PublishTokensViewController.Text.ErrorNetwork" = "Failed to report infection because the server cannot be reached. Please check your internet connection and try again.";
+"PublishTokensViewController.Text.FinishedTitle" = "Thank you for your report";
+"PublishTokensViewController.Text.FinishedText" = "The information you have reported will help to tackle the coronavirus epidemic. The app is now locked and no longer collects information about nearby phones. We wish you a quick recovery!";
+"PublishTokensViewController.Text.FinishedButton" = "OK";
+
+// MARK: SymptomsViewController
+"SymptomsViewController.Text.Heading" = "COVID-19 symptom assessment";
+"SymptomsViewController.Text.Body" = "If you suspect that you have COVID-19, take an online COVID-19 symptom assessment in the Omaolo service. You will receive additional instructions based on your answers. It takes approximately 10 minutes to complete the assessment.";
+"SymptomsViewController.Text.LinkTitle" = "Take a symptom assessment in the Omaolo service";
+"SymptomsViewController.Text.LinkName" = "omaolo.fi";
+"SymptomsViewController.Text.LinkURL" = "https://www.omaolo.fi/palvelut/oirearviot/649?lang=en";
+
+// MARK: SettingsViewController
+"SettingsViewController.Text.Heading" = "Settings";
+"SettingsViewController.Text.StatusTitle" = "Exposure notifications";
+"SettingsViewController.Text.StatusOn" = "Enabled";
+"SettingsViewController.Text.StatusOff" = "Disabled";
+"SettingsViewController.Text.StatusLocked" = "Locked";
+"SettingsViewController.Text.HowItWorksTitle" = "How Koronavilkku works";
+"SettingsViewController.Text.SettingsAboutTitle" = "About the app";
+"SettingsViewController.Text.FAQLinkTitle" = "Frequently asked questions";
+"SettingsViewController.Text.FAQLinkName" = "koronavilkku.fi";
+"SettingsViewController.Text.FAQLinkURL" = "https://koronavilkku.fi/en/faq/";
+"SettingsViewController.Text.TermsLinkTitle" = "Terms of use";
+"SettingsViewController.Text.TermsLinkName" = "koronavilkku.fi";
+"SettingsViewController.Text.TermsLinkURL" = "https://koronavilkku.fi/en/terms/";
+"SettingsViewController.Text.PrivacyLinkTitle" = "Privacy policy";
+"SettingsViewController.Text.PrivacyLinkName" = "koronavilkku.fi";
+"SettingsViewController.Text.PrivacyLinkURL" = "https://koronavilkku.fi/en/privacy/";
+"SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@";
+
+// MARK: LinkLanguageViewController
+"LinkLanguageViewController.Text.Title" = "Select language";
+"LinkLanguageViewController.Text.SymptomsAssesmentSubtitle" = "Omaolo symptom assessment";
+"LinkLanguageViewController.Text.SymptomsAssesmentText" = "You can take the symptom assessment in the following languages. Select a language. You will then be taken to the Omaolo.fi web service. It takes approximately 5-10 minutes to take a symptom assessment.";
+"LinkLanguageViewController.Text.ContactRequestSubtitle" = "Send a contact request";
+"LinkLanguageViewController.Text.ContactRequestText" = "If you don't have symptoms, you can send a contact request via the Omaolo.fi web service. Select the language for the service. You will then be taken to the Omaolo.fi web service.";
+"LinkLanguageViewController.Text.Finnish" = "Suomi";
+"LinkLanguageViewController.Text.Swedish" = "Svenska";
+"LinkLanguageViewController.Text.English" = "English";
+
+// MARK: MunicipalityContactInfoViewController
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentTitle" = "Take a symptom assessment";
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentButton" = "Take assessment";
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "We recommend that you contact healthcare services by taking a symptom assessment. This helps the healthcare professionals in their work and saves you effort when handling the matter.";
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "It takes approximately 5-10 minutes to take the symptom assessment. Children under the age of 16 must contact healthcare services by telephone.";
+"MunicipalityContactInfoViewController.Text.ContactInfoTitle" = "Or contact your municipal healthcare services in another way:";
+"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Contact your municipal healthcare services as soon as possible and get tested if you experience any of the following symptoms consistent with COVID-19:";
+"MunicipalityContactInfoViewController.Text.SymptomsText" = "- change in sense of smell or taste\n- shortness of breath\n- cough, sore throat or runny nose\n- fever\n- headaches or muscle pain\n- unexplained diarrhoea or abdominal pain.";
+
+// MARK: SelectMunicipalityViewController
+
+"SelectMunicipalityViewController.Text.Title" = "Select your municipality";
+"SelectMunicipalityViewController.Text.SearchPlaceholder" = "Search";
+"SelectMunicipalityViewController.Text.ErrorTitle" = "Error loading municipality list";
+"SelectMunicipalityViewController.Text.ErrorMessage" = "The municipality list could not be loaded. Please check your internet connection and try again.";
+"SelectMunicipalityViewController.Text.ErrorButton" = "OK";
+
+"HeaderContinueByAcceptingExposureLogging" = "Select \"allow\" to continue setting up the application";
+
+"ContactRequestItemTitle" = "Send a contact request";
+"ContactRequestItemInfo" = "Only for people without symptoms (not for children under 16)";
+
+"OnboardingIntroTitle" = "Thank you for installing Koronavilkku";
+"OnboardingIntroText" = "Koronavilkku is an application produced by the Finnish Institute for Health and Welfare. It aims to prevent the spread of COVID-19 disease. Your privacy is strongly protected in the application.";
+"OnboardingConceptTitle" = "How the app works";
+"OnboardingConceptText" = "Koronavilkku looks for nearby phones that have the same app installed. If someone you have previously met reports via Koronavilkku that they have COVID-19, you receive an exposure notification. If you are diagnosed with COVID-19, you can report this anonymously using the app.";
+"OnboardingYourPrivacyIsProtected" = "Your privacy is protected";
+"OnboardingHowYourPrivacyIsProtected" = "Koronavilkku protects your data and privacy in several ways.";
+"OnboardingPrivacyTitle" = "About personal information";
+"OnboardingPrivacyText" = "Koronavilkku does not store your name, date of birth or contact information. It cannot determine your identity or the identity of the people you come close to.\n\nThe application does not collect location data.";
+"OnboardingUsageTitle" = "How the app uses your data";
+"OnboardingUsageText" = "The app informs the server that the app is running. If you contact healthcare services through the app, the app will also provide information that you may have been exposed to COVID-19.\n\nAll communication between Koronavilkku and the server is encrypted.\n\nThe data is stored anonymously on a server located in Finland, and this server is managed by public administration bodies. The data is deleted when it is no longer needed. At the latest, it is deleted on 31 March 2021.";
+"OnboardingVoluntaryTitle" = "Use is voluntary";
+"OnboardingVoluntaryText" = "You do not have to use Koronavilkku. You can stop using it at any time by removing the app from your phone.";
+"OnboardingAcceptTerms" = "I have read and agree to the terms of use for the service.";
+"OnboardingReadTerms" = "Read the terms of use";
+"OnbardingVoluntaryUse" = "I am voluntarily starting to use the application";
+"OnboardingDone" = "Set-up complete!";
+
+"HomeLogoLinkURL" = "https://www.thl.fi/fi";
+"HomeLogoLinkLabel" = "Finnish Institute for Health and Welfare";
+
+"GuideTitle" = "About Koronavilkku";
+"GuideText" = "Koronavilkku is an application produced by the Finnish Institute for Health and Welfare that informs you if it estimates that you may have been exposed to the coronavirus. If you are diagnosed with COVID-19, you can report this anonymously using the app. Your privacy is strongly protected.";
+"GuideSeedTitle" = "Each phone receives a random code";
+"GuideSeedText" = "The application generates an ID code for each phone. The code is random and changes several times an hour to ensure your privacy. The ID code does not contain information about you or your phone.";
+"GuideExchangeTitle" = "Phones swap codes with each other";
+"GuideExchangeText" = "When close enough to each other, the apps swap codes through a Bluetooth signal. This allows the application to keep track of encounters without saving users' identity or location data.";
+"GuideCompareTitle" = "The app compares codes";
+"GuideCompareText" = "Koronavilkku downloads a list of codes from the server several times a day. The list contains the codes of the phones that have been used to report a COVID-19 infection through the app. Koronavilkku compares these codes to the codes your phone has collected from other app users. This enables the app to determine whether you have been near an infected person.";
+"GuideNotificationTitle" = "You receive a notification of potential exposure";
+"GuideNotificationText" = "If the codes collected by your phone match those received from people who have reported a COVID-19 infection, you will be notified of a potential exposure. You can then provide your contact information to healthcare professionals and receive further instructions.\n\nIf you think that you may have COVID-19, you can take a symptom assessment at any time in the Omaolo.fi web service.";
+"GuideDiagnosisTitle" = "If you are diagnosed with COVID-19";
+"GuideDiagnosisText" = "If you are diagnosed with COVID-19, you will receive a key code from your healthcare professional. You can use this code to report your infection through the app. If you report your infection, the app sends your phone's ID codes to the server. No personal or location information is sent with the ID codes, so you will remain anonymous.";
+"GuidePrivacyTitle" = "Your privacy is protected";
+"GuidePrivacyText" = "The app protects your privacy in the following ways:";
+"GuidePrivacyItem1" = "The information on encounters is stored only on your device. The stored data is deleted within 21 days, and it is deleted immediately if you remove the app.";
+"GuidePrivacyItem2" = "Your identity is encrypted using random IDs.";
+"GuidePrivacyItem3" = "The app never saves your phone's location information.";
+"GuideButtonBack" = "Back";
+
+"EnableTitle" = "COVID-19 exposure notifications are disabled";
+"EnableText" = "Because exposure notifications are disabled, Koronavilkku is not currently monitoring nearby phones.";
+"EnableAttentionText" = "To protect your health and the health of your loved ones, it is recommended that you enable exposure notifications as soon as possible.";
+"EnableButtonTitle" = "Enable COVID-19 exposure notifications";
+"EnableButtonLabel" = "Enable";
+
+"DisableTitle" = "COVID-19 exposure notifications are enabled";
+"DisableText" = "Do you need to disable exposure notifications?";
+"DisableInfo" = "In some situations, it may be necessary to temporarily disable exposure notifications. This may be the case, for example, if you are a healthcare professional and do not want to use the application at your workplace.\n\nIf you disable exposure notifications, the application will stop working.";
+"DisableAttentionText" = "To protect your health and the health of your loved ones, it is recommended that you disable exposure notifications only if it is really necessary. Remember to enable them again as soon as possible.";
+"DisableButtonTitle" = "Disable COVID-19 exposure notifications";
+"DisableButtonLabel" = "Disable";
+
+"DisableConfirmTitle" = "Are you sure you want to disable COVID-19 exposure notifications?";
+"DisableConfirmText" = "If you disable exposure notifications, Koronavilkku will not be able to notify you of potential exposure to the coronavirus.";
+"DisableConfirmButton" = "Disable";
+"DisableCancelButton" = "Cancel";
+
+"BluetoothDisabledTitle" = "Turn on Bluetooth";
+"BluetoothDisabledText" = "If Bluetooth is off, Koronavilkku cannot monitor your potential exposure to COVID-19. Allow the use of Bluetooth in your phone's settings.";
+
+"ENBlockedTitle" = "Exposure notifications are off";
+"ENBlockedText" = "Koronavilkku will not work unless you turn on the exposure notifications in your phone’s operating system. How to turn them on:";
+"ENBlockedSteps" = "1. Use the button below to access your phone's settings.\n\n2. Turn on COVID-19 exposure log and notifications.";
+
+"OpenSettingsButton" = "Open settings";

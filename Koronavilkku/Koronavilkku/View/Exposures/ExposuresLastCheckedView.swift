@@ -5,7 +5,7 @@ import Combine
 
 class ExposuresLastCheckedView: UIView {
     enum Text : String, Localizable {
-        case Never
+        case NotCheckedYet
         case LastCheckedAt
     }
     
@@ -24,12 +24,11 @@ class ExposuresLastCheckedView: UIView {
     private func bindViewModel() {
         cancellable = LocalStore.shared.$dateLastPerformedExposureDetection.$wrappedValue
             .map { lastChecked in
-                var lastCheckedString = Text.Never.localized
-                if let date = lastChecked {
-                    lastCheckedString = date.toLocalizedRelativeFormat()
+                guard let date = lastChecked else {
+                    return Text.NotCheckedYet.localized
                 }
-                Log.d("Mapping value \(lastCheckedString)")
-                return String(format: Text.LastCheckedAt.localized(with: lastCheckedString))
+                
+                return Text.LastCheckedAt.localized(with: date.toLocalizedRelativeFormat())
             }
             .sink( receiveValue: { lastCheckedString in
                 DispatchQueue.main.async {

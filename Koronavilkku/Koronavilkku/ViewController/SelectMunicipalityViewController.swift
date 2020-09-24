@@ -3,6 +3,13 @@ import UIKit
 import Combine
 
 class SelectMunicipalityViewController: UITableViewController {
+    enum Text : String, Localizable {
+        case Title
+        case SearchPlaceholder
+        case ErrorTitle
+        case ErrorMessage
+        case ErrorButton
+    }
     
     private let tableViewCellId = "MunicipalityTableViewCellId"
     private let tableViewHeaderId = "MunicipalityTableViewHeaderId"
@@ -39,7 +46,7 @@ class SelectMunicipalityViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationItem.title = Translation.HeaderSelectMunicipality.localized
+        navigationItem.title = Text.Title.localized
         navigationItem.largeTitleDisplayMode = .never
 
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -76,6 +83,7 @@ class SelectMunicipalityViewController: UITableViewController {
         searchController.searchBar.delegate = self
         
         searchController.searchBar.searchBarStyle = .prominent
+        searchController.searchBar.searchTextField.placeholder = Text.SearchPlaceholder.localized
         searchController.searchBar.searchTextField.font = UIFont.searchBarPlaceholder
         searchController.searchBar.backgroundColor = UIColor.Secondary.blueBackdrop
         
@@ -97,10 +105,10 @@ class SelectMunicipalityViewController: UITableViewController {
                 Log.d("get municipality completed")
             case .failure(let error):
                 Log.e(error)
-                self.showAlert(title: Translation.AlertErrorLoadingMunicipalities.localized,
-                               message:Translation.AlertMessagePleaseTryAgainLater.localized,
-                               buttonText: Translation.AlertDismissMunicipalityError.localized) { _ in
-                                self.navigationController?.popViewController(animated: true)
+                self.showAlert(title: Text.ErrorTitle.localized,
+                               message: Text.ErrorMessage.localized,
+                               buttonText: Text.ErrorButton.localized) { _ in
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }, receiveValue: {

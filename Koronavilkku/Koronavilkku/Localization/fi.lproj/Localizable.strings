@@ -4,6 +4,7 @@
 "ButtonNext" = "Seuraava";
 "ButtonStartUsing" = "Aloita käyttö";
 "ButtonTestUI" = "Testikäyttöliittymä";
+"ButtonScrollDown" = "Vieritä loppuun";
 
 "TabHome" = "Koti";
 "TabReportInfection" = "Ilmoita tartunnastasi";
@@ -63,15 +64,15 @@
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku ei ole havainnut altistumista koronavirukselle viimeisten 14 päivän aikana.";
 "ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "Sovellus ei kuitenkaan tunnista kaikkia mahdollisia altistumistilanteita.";
 
-"ExposuresLastCheckedView.Text.Never" = "Ei milloinkaan";
-"ExposuresLastCheckedView.Text.LastCheckedAt" = "Tarkistettu viimeksi: %@";
+"ExposuresLastCheckedView.Text.NotCheckedYet" = "Altistumistietoja ei ole vielä tarkistettu";
+"ExposuresLastCheckedView.Text.LastCheckedAt" = "Tarkistettu viimeksi %@";
 
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "Olet jo ilmoittanut tartunnasta";
-"ReportInfectionViewController.Text.LockedText" = "Ilmoittamasi tiedot auttavat mahdollisia altistuneita olemaan oikea-aikaisesti terveydenhuoltoon.\n\nSovellus on nyt lukittu, eikä enää lähetä tai kerää kohtaamistietoja. Kiitos sovelluksen käytöstä ja avustasi koronan voittamisessa.";
+"ReportInfectionViewController.Text.LockedText" = "Ilmoittamasi tiedot auttavat koronavirusepidemian taltuttamisessa. Sovellus on nyt lukittu eikä enää kerää tietoja kohtaamisista. Pikaista paranemista!";
 "ReportInfectionViewController.Text.DisabledText" = "Altistumisilmoitusten täytyy olla päällä, jotta voit ilmoittaa tartunnasta. Palaa Koti-näkymään, jossa voit laittaa ne päälle.";
 "ReportInfectionViewController.Text.ReportTitle" = "Ilmoita tartunnastasi";
-"ReportInfectionViewController.Text.ReportText" = "Jos sinulla todetaan tartunta koronavirustestillä, saat avauskoodin terveydenhuollon ammattilaiselta tai tekstiviestillä THL:ltä. Avauskoodilla voit jakaa nimettömästi tiedon tartunnastasi. Syötä avauskoodi sillä puhelimella, jota yleensä pidät mukanasi.";
+"ReportInfectionViewController.Text.ReportText" = "Jos sinulla todetaan tartunta koronavirustestillä, saat avauskoodin terveydenhuollon ammattilaiselta tai tekstiviestillä THL:ltä. Avauskoodilla voit jakaa nimettömästi tiedon tartunnastasi.\n\nSyötä avauskoodi sillä puhelimella, jota yleensä pidät mukanasi.";
 "ReportInfectionViewController.Text.ReportButton" = "Syötä avauskoodisi";
 "ReportInfectionViewController.Text.ReportItemPrivacy" = "Avauskoodista ei voi tunnistaa henkilöllisyyttäsi.";
 "ReportInfectionViewController.Text.ReportItemNotify" = "Koronavilkku ilmoittaa mahdollisesta altistumisesta käyttäjille, jotka ovat olleet lähelläsi todennäköisenä tartuttavuusaikana.";
@@ -132,15 +133,18 @@
 "MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin, jos sinulla ilmenee yksikin näistä koronavirustautiin sopivista oireista:";
 "MunicipalityContactInfoViewController.Text.SymptomsText" = "- haju- tai makuaistin muutos\n- hengitysvaikeus\n- yskä, kurkkukipu tai nuha\n- kuume\n- päänsärky tai lihaskipuja\n- ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
 
-"HeaderSelectMunicipality" = "Valitse asuinkuntasi";
+// MARK: SelectMunicipalityViewController
+
+"SelectMunicipalityViewController.Text.Title" = "Valitse asuinkuntasi";
+"SelectMunicipalityViewController.Text.SearchPlaceholder" = "Etsi";
+"SelectMunicipalityViewController.Text.ErrorTitle" = "Virhe kuntatietojen lataamisessa";
+"SelectMunicipalityViewController.Text.ErrorMessage" = "Kuntatietojen lataaminen ei onnistunut. Tarkista verkkoyhteys ja yritä uudelleen.";
+"SelectMunicipalityViewController.Text.ErrorButton" = "OK";
+
 "HeaderContinueByAcceptingExposureLogging" = "Jatka käyttöönottoa valitsemalla \"Salli\"";
 
 "ContactRequestItemTitle" = "Lähetä yhteydenottopyyntö";
 "ContactRequestItemInfo" = "Vain oireettomille (ei alle 16-vuotiaille)";
-
-"AlertErrorLoadingMunicipalities" = "Virhe kuntatietojen lataamisessa.";
-"AlertMessagePleaseTryAgainLater" = "Ole hyvä ja yritä myöhemmin uudelleen.";
-"AlertDismissMunicipalityError" = "OK";
 
 "OnboardingIntroTitle" = "Kiitos, että latasit Koronavilkun";
 "OnboardingIntroText" = "Koronavilkku on Terveyden ja hyvinvoinnin laitoksen tuottama sovellus, jonka avulla pyritään ehkäisemään koronavirustaudin leviämistä. Sovelluksessa yksityisyytesi on vahvasti suojattu.";
@@ -156,7 +160,7 @@
 "OnboardingVoluntaryText" = "Koronavilkun käyttö ei ole pakollista. Voit milloin tahansa lopettaa käytön poistamalla sovelluksen puhelimestasi.";
 "OnboardingAcceptTerms" = "Olen lukenut ja hyväksyn palvelun käyttöehdot.";
 "OnboardingReadTerms" = "Lue käyttöehdot";
-"OnbardingVoluntaryUse" = "Otan sovelluksen vapaaehtoisesti käyttööni";
+"OnbardingVoluntaryUse" = "Otan sovelluksen vapaaehtoisesti käyttööni.";
 "OnboardingDone" = "Käyttöönotto valmis!";
 
 "HomeLogoLinkURL" = "https://www.thl.fi/fi";
@@ -181,21 +185,21 @@
 "GuidePrivacyItem3" = "Sovellus ei koskaan tallenna puhelimesi sijaintitietoja.";
 "GuideButtonBack" = "Palaa takaisin";
 
-"EnableTitle" = "COVID-19-altistusloki ja -ilmoitukset eivät ole käytössä";
-"EnableText" = "Koska altistumisilmoitukset eivät ole käytössä, Koronavilkku ei tällä hetkellä seuraa lähelläsi olevia puhelimia.";
+"EnableTitle" = "Altistumisilmoitukset eivät ole käytössä";
+"EnableText" = "Koska altistumisilmoitukset eivät ole käytössä, Koronavilkku ei seuraa lähelläsi olevia puhelimia.";
 "EnableAttentionText" = "Terveydestäsi ja läheistesi terveydestä huolehtimiseksi on suositeltavaa, että otat altistumisilmoitukset käyttöön heti kun mahdollista.";
-"EnableButtonTitle" = "Ota COVID-19-altistusloki ja -ilmoitukset käyttöön";
+"EnableButtonTitle" = "Ota altistumisilmoitukset käyttöön";
 "EnableButtonLabel" = "Ota käyttöön";
 
-"DisableTitle" = "COVID-19-altistusloki ja -ilmoitukset käytössä";
+"DisableTitle" = "Altistumisilmoitukset käytössä";
 "DisableText" = "Pitääkö sinun poistaa altistumisilmoitukset käytöstä?";
 "DisableInfo" = "Joissakin tilanteissa voi olla tarpeen väliaikaisesti poistaa altistumisilmoitukset käytöstä. Näin voi olla esimerkiksi silloin, jos olet terveydenhuollon ammattilainen etkä halua käyttää sovellusta työpaikallasi.\n\nJos otat altistumisilmoitukset pois käytöstä, sovellus ei toimi.";
 "DisableAttentionText" = "Terveydestäsi ja läheistesi terveydestä huolehtimiseksi on suositeltavaa, että otat altistumisilmoitukset pois käytöstä vain silloin, jos se on todella tarpeellista. Muistathan ottaa ne uudelleen käyttöön heti kun mahdollista.";
-"DisableButtonTitle" = "Poista COVID-19-altistusloki ja -ilmoitukset käytöstä";
+"DisableButtonTitle" = "Poista altistumisilmoitukset käytöstä";
 "DisableButtonLabel" = "Poista käytöstä";
 
-"DisableConfirmTitle" = "Oletko varma, että haluat ottaa COVID-19-altistulokin ja -ilmoitukset pois käytöstä?";
-"DisableConfirmText" = "Jos poistat altistusilmoitukset käytöstä, Koronavilkku ei voi ilmoittaa sinulle mahdollisesta altistumisesta koronavirukselle.";
+"DisableConfirmTitle" = "Oletko varma, että haluat poistaa altistumisilmoitukset käytöstä?";
+"DisableConfirmText" = "Jos poistat altistumisilmoitukset käytöstä, Koronavilkku ei voi ilmoittaa sinulle mahdollisesta altistumisesta koronavirukselle.";
 "DisableConfirmButton" = "Poista käytöstä";
 "DisableCancelButton" = "Kumoa";
 
