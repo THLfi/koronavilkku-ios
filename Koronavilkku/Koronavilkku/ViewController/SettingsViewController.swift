@@ -26,12 +26,17 @@ class SettingsViewController: UIViewController {
     
     private var statusItem: LinkItem!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setDefaultStyle()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.setNavigationBarHidden(false, animated: false)
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.title = Text.Heading.localized
+        navigationItem.backButtonTitle = ""
 
         initUI()
         updateStatusItem()

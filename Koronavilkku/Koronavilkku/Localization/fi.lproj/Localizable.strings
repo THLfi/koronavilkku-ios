@@ -115,6 +115,8 @@
 "SettingsViewController.Text.OpenSourceLicenses" = "Avoimen lähdekoodin lisenssit";
 "SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@";
 
+"LicenseListViewController.Text.Title" = "Avoimen lähdekoodin lisenssit";
+
 // MARK: LinkLanguageViewController
 "LinkLanguageViewController.Text.Title" = "Valitse asiointikieli";
 "LinkLanguageViewController.Text.SymptomsAssesmentSubtitle" = "Omaolon oirearvio";

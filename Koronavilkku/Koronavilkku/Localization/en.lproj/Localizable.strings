@@ -115,6 +115,8 @@
 "SettingsViewController.Text.OpenSourceLicenses" = "Open source licenses";
 "SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@";
 
+"LicenseListViewController.Text.Title" = "Open source licenses";
+
 // MARK: LinkLanguageViewController
 "LinkLanguageViewController.Text.Title" = "Select language";
 "LinkLanguageViewController.Text.SymptomsAssesmentSubtitle" = "Omaolo symptom assessment";

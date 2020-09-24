@@ -115,6 +115,8 @@
 "SettingsViewController.Text.OpenSourceLicenses" = "Licenser för öppen källkod";
 "SettingsViewController.Text.AppInfoWithVersion" = "Coronablinkern %@";
 
+"LicenseListViewController.Text.Title" = "Licenser för öppen källkod";
+
 // MARK: LinkLanguageViewController
 "LinkLanguageViewController.Text.Title" = "Välj kontaktspråk";
 "LinkLanguageViewController.Text.SymptomsAssesmentSubtitle" = "Symtombedömning i Omaolo";
