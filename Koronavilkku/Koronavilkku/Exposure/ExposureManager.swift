@@ -4,6 +4,7 @@ import Foundation
 
 protocol ExposureManager {
     var exposureNotificationStatus: ENStatus { get }
+    static var authorizationStatus: ENAuthorizationStatus { get }
     func activate(completionHandler: @escaping ENErrorHandler)
     func detectExposures(configuration: ExposureConfiguration, diagnosisKeyURLs: [URL]) -> AnyPublisher<ENExposureDetectionSummary, Error>
     func getExposureInfo(summary: ENExposureDetectionSummary, userExplanation: String) -> AnyPublisher<[ENExposureInfo], Error>
@@ -98,6 +99,7 @@ extension ENManager : ExposureManager {
 }
 
 class MockExposureManager : ExposureManager {
+    static var authorizationStatus: ENAuthorizationStatus = .authorized
     
     enum MockExposureManagerError: Error {
         case MissingTimezone

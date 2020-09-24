@@ -66,10 +66,6 @@ class LocalStore : BatchIdCache {
     @Persisted(userDefaultsKey: "detectionSummaries", notificationName: .init("LocalStoreDetectionSummaries"), defaultValue: [])
     var detectionSummaries: [ExposureDetectionSummary]
     
-    func flush() {
-        UserDefaults.standard.synchronize()
-    }
-    
     func updateDateLastPerformedExposureDetection() {
         dateLastPerformedExposureDetection = Date()
     }

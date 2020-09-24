@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 import SnapKit
 import Combine
-import ExposureNotification
 
 class OnboardingViewController: UINavigationController {
     
@@ -11,7 +10,7 @@ class OnboardingViewController: UINavigationController {
     private var scrollIndicatorButton: UIButton? = nil
     private var scrollView: UIScrollView?
     private var activationTask: AnyCancellable?
-
+    
     private lazy var steps: [Step] = [
         // Note that the steps and StepId values must be in the same order.
         Step(id: .intro,
@@ -52,21 +51,21 @@ class OnboardingViewController: UINavigationController {
                                     // Since step reference isn't available performButtonAction() cannot be called -> call requestApiPermission() directly.
                                     self?.requestApiPermission()
                                 })
-             ])
+                            ])
         ),
         Step(id: .enableApiInstructions,
              viewController: OpenSettingsViewController.create(
                 type: .exposureNotifications,
                 userDismissable: false,
                 dismisser: { [weak self] in self?.onEnableDismissed() }
-            )
+             )
         ),
         Step(id: .enableBluetooth,
              viewController: OpenSettingsViewController.create(
                 type: .bluetooth,
                 userDismissable: false,
                 dismisser: { [weak self] in self?.onEnableDismissed() }
-            )
+             )
         ),
     ]
     
@@ -82,11 +81,11 @@ class OnboardingViewController: UINavigationController {
             blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             self.view.addSubview(blurEffectView)
         }
-
+        
         self.view.backgroundColor = UIColor.Greyscale.white
         self.handleStartStep()
     }
-
+    
     private func performButtonAction(step: Step) {
         
         if let requestPermission = step.requestPermission {
@@ -104,7 +103,8 @@ class OnboardingViewController: UINavigationController {
         }
         
         let exposureManager = ExposureManagerProvider.shared.manager
-
+        
+        // TODO: Refactor this to use ExposureRepository tryEnable
         exposureManager.setExposureNotificationEnabled(true, completionHandler: { [weak self] error in
             guard let weakSelf = self else { return }
             
@@ -116,28 +116,23 @@ class OnboardingViewController: UINavigationController {
             Log.d("Exposure manager status after enable-call: \(status.rawValue)")
             // In the bluetoothOff case complete onboarding. In the main view the user will be shown that Bluetooth
             // needs to be enabled.
-
+            
             if status == .bluetoothOff {
                 weakSelf.step(into: .enableBluetooth)
                 
             } else if let error = error {
-
-                if let err = error as? ENError {
-                    Log.e("Failed to enable EN: \(err.code.rawValue)")
-                }
                 
+                Log.e("Failed to enable: \(error.localizedDescription)")
+
                 // User didn't grant permission to use EN. Next step gives instructions on how to
                 // enable EN via settings. After user has done that and returns to the app, check
                 // whether the app is now authorized to use EN and if it is, then proceed to the next step.
                 weakSelf.step(into: .enableApiInstructions)
-
+                
                 // Save the current step because the app seems to get killed after changing the EN setting.
                 // This way the user doesn't have to start onboarding from the beginning.
                 LocalStore.shared.onboardingResumeStep = StepId.enableApiInstructions.rawValue
-                LocalStore.shared.flush()
-                // Hopefully flush() causes the preference to be written immediately. Otherwise, if the
-                // user is too quick resume step might not get written -> starts from intro.
-
+                
             } else {
                 LocalStore.shared.uiStatus = .on
                 weakSelf.stepDone()
@@ -167,7 +162,7 @@ class OnboardingViewController: UINavigationController {
         LocalStore.shared.isOnboarded = true
         // Return to main view after a delay
         let onBoardingDone = OnboardingDoneView {
-
+            
             if let window = UIApplication.shared.windows.first {
                 window.rootViewController = RootViewController()
                 window.makeKeyAndVisible()
@@ -186,7 +181,7 @@ class OnboardingViewController: UINavigationController {
     
     private func onEnableDismissed() {
         let exposureManager = ExposureManagerProvider.shared.manager
-
+        
         if exposureManager.exposureNotificationStatus == .disabled {
             requestApiPermission(showOverlay: false)
         } else {
@@ -207,20 +202,31 @@ class OnboardingViewController: UINavigationController {
         if let oldScrollView = scrollView {
             oldScrollView.delegate = nil
         }
-
+        
         let index = step.rawValue
         currentStep = index
         let step = steps[index]
         let viewController = step.viewController ?? initStepViewController(from: step, stepView: step.view!)
-        
-        if let osvc = viewController as? OpenSettingsViewController, osvc.canDismiss() {
-            // This happens if the app process was restarted after user turned on EN.
-            // dismisser() is responsible for proceeding to the next step.
-            osvc.dismisser()
-        } else {
+
+        // skip steps where the prerequisite is already met, eg.
+        // EN API is activated, BT is on…
+        if self.requiresPresenting(viewController: viewController) {
             self.pushViewController(viewController, animated: true)
             self.updateButtonState()
         }
+    }
+
+    private func requiresPresenting(viewController: UIViewController) -> Bool {
+        guard
+            let osvc = viewController as? OpenSettingsViewController,
+            osvc.dismissCheck(LocalStore.shared.uiStatus)
+        else {
+            return true
+        }
+        
+        // "dismisses" by moving to the next step
+        osvc.dismisser()
+        return false
     }
     
     private func initStepViewController(from step: Step, stepView: StepView) -> UIViewController {
@@ -231,7 +237,7 @@ class OnboardingViewController: UINavigationController {
         scrollView!.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-
+        
         scrollView!.addSubview(stepView)
         stepView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
@@ -244,10 +250,10 @@ class OnboardingViewController: UINavigationController {
         let buttonMargin = UIEdgeInsets(top: 10, left: 40, bottom: 60, right: 40)
         let buttonHeight = RoundedButton.height
         self.button = nil
-
+        
         if let buttonTitle = step.buttonTitle {
             let button = RoundedButton(title: buttonTitle,
-                                   action: { self.performButtonAction(step: step) })
+                                       action: { self.performButtonAction(step: step) })
             viewController.view.addSubview(button)
             button.snp.makeConstraints { make in
                 make.bottom.left.right.equalToSuperview().inset(buttonMargin)
@@ -266,7 +272,7 @@ class OnboardingViewController: UINavigationController {
             self.scrollIndicatorButton = button
             scrollView!.delegate = self
         }
-
+        
         fade.snp.makeConstraints { make in
             make.trailing.leading.equalToSuperview()
             make.bottom.equalToSuperview()
@@ -297,7 +303,7 @@ class OnboardingViewController: UINavigationController {
             button.setEnabled(true)
             return
         }
-
+        
         // Check views though and enable button if all acceptance views are in accepted state
         let enabled = acceptanceProviders
             .map({ $0 as! AcceptableView })
@@ -325,10 +331,10 @@ class OnboardingViewController: UINavigationController {
         
         if let resumeStepIndex = resumeStepIndex, let resumeStepId = StepId(rawValue: resumeStepIndex) {
             Log.d("Resume at \(resumeStepId)")
-
+            
             // Make sure ExposureManager is active before proceeding as the status might be needed during step(into:).
             activationTask = ExposureManagerProvider.shared.activated.sink { [weak self] activated in
-
+                
                 if activated {
                     self?.step(into: resumeStepId)
                 } else {
@@ -369,7 +375,7 @@ enum StepId: Int {
     case acceptTerms
     case enableApiInstructions
     case enableBluetooth
-//    case allowNotifications
+    //    case allowNotifications
     
     var description: String { return "StepId(\(String(describing: self))" }
 }
@@ -386,7 +392,7 @@ extension OnboardingViewController: UIScrollViewDelegate {
         let contentHeight = scrollView.contentSize.height
         guard contentHeight > 0 else { return }
         let hideOffset: CGFloat = 100
-
+        
         if scrollView.contentOffset.y > contentHeight - view.frame.height - hideOffset {
             hideScrollIndicator()
         }
