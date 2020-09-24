@@ -172,8 +172,9 @@ struct ExposureRepositoryImpl : ExposureRepository {
     func tryEnable(_ completionHandler: @escaping (ENError.Code?) -> Void) {
         let status = exposureManager.exposureNotificationStatus
         Log.d("ENStatus=\(status.rawValue)")
-
+        
         exposureManager.setExposureNotificationEnabled(true) { error in
+            // TODO: Refresh UI status here before calling completion handler
             if let error = error {
                 Log.d("Could not enable exposure notifications: \(error)")
                 completionHandler(ENError.Code(rawValue: (error as NSError).code) ?? .unknown)

@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 import SnapKit
 import Combine
-import ExposureNotification
 
 class OnboardingViewController: UINavigationController {
     
@@ -105,6 +104,7 @@ class OnboardingViewController: UINavigationController {
         
         let exposureManager = ExposureManagerProvider.shared.manager
         
+        // TODO: Refactor this to use ExposureRepository tryEnable
         exposureManager.setExposureNotificationEnabled(true, completionHandler: { [weak self] error in
             guard let weakSelf = self else { return }
             
@@ -122,10 +122,8 @@ class OnboardingViewController: UINavigationController {
                 
             } else if let error = error {
                 
-                if let err = error as? ENError {
-                    Log.e("Failed to enable EN: \(err.code.rawValue)")
-                }
-                
+                Log.e("Failed to enable: \(error.localizedDescription)")
+
                 // User didn't grant permission to use EN. Next step gives instructions on how to
                 // enable EN via settings. After user has done that and returns to the app, check
                 // whether the app is now authorized to use EN and if it is, then proceed to the next step.
@@ -134,9 +132,6 @@ class OnboardingViewController: UINavigationController {
                 // Save the current step because the app seems to get killed after changing the EN setting.
                 // This way the user doesn't have to start onboarding from the beginning.
                 LocalStore.shared.onboardingResumeStep = StepId.enableApiInstructions.rawValue
-                LocalStore.shared.flush()
-                // Hopefully flush() causes the preference to be written immediately. Otherwise, if the
-                // user is too quick resume step might not get written -> starts from intro.
                 
             } else {
                 LocalStore.shared.uiStatus = .on
