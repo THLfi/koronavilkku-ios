@@ -1,10 +1,10 @@
 import UIKit
 
 class LicenseViewController: UIViewController {
-    let libraryName: String
+    let dependency: LicenseListViewController.Dependency
     
-    init(libraryName: String) {
-        self.libraryName = libraryName
+    init(dependency: LicenseListViewController.Dependency) {
+        self.dependency = dependency
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -15,11 +15,17 @@ class LicenseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let content = view.addScrollableContentView(backgroundColor: UIColor.Secondary.blueBackdrop, margins: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
-
-        let text = Bundle.main.localizedString(forKey: libraryName, value: nil, table: "Licenses")
-
-        let license = UILabel(label: text, font: .bodySmall, color: UIColor.Greyscale.black)
+        title = dependency.rawValue
+        
+        let content = view.addScrollableContentView(
+            backgroundColor: UIColor.Secondary.blueBackdrop,
+            margins: UIEdgeInsets(top: 30, left: 20, bottom: 30, right: 20)
+        )
+        
+        let license = UILabel(label: dependency.license,
+                              font: .bodySmall,
+                              color: UIColor.Greyscale.black)
+        
         license.numberOfLines = -1
         content.addSubview(license)
         
