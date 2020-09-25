@@ -125,35 +125,6 @@ class CustomNavigationController : UINavigationController {
     }
 }
 
-extension UINavigationController {
-    func setDefaultStyle() {
-        navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .automatic
-        view.backgroundColor = UIColor.Secondary.blueBackdrop
-        navigationBar.tintColor = UIColor.Greyscale.black
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor.Secondary.blueBackdrop
-        appearance.shadowColor = .clear
-        appearance.largeTitleTextAttributes = [
-            .font: UIFont.heading1,
-            .foregroundColor: UIColor.Greyscale.black
-        ]
-        appearance.titleTextAttributes = [
-            .font: UIFont.labelPrimary,
-            .foregroundColor: UIColor.Greyscale.black
-        ]
-
-        appearance.setBackIndicatorImage(
-            UIImage.init(named: "arrow-left"),
-            transitionMaskImage: UIImage.init(named: "arrow-left")
-        )
-        
-        navigationBar.standardAppearance = appearance
-    }
-}
-
 #if DEBUG
 
 import SwiftUI

@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     enum Text : String, Localizable {
         case Heading
         case StatusTitle
@@ -20,17 +20,23 @@ class SettingsViewController: UIViewController {
         case PrivacyLinkTitle
         case PrivacyLinkName
         case PrivacyLinkURL
+        case OpenSourceLicenses
         case AppInfoWithVersion
     }
     
     private var statusItem: LinkItem!
     
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        // use .heading1 on root view, others use .heading2
+        navigationController.largeTitleFont = (viewController === self) ? .heading1 : .heading2
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.setNavigationBarHidden(false, animated: false)
         navigationItem.largeTitleDisplayMode = .automatic
-        navigationItem.title = Text.Heading.localized
+        title = Text.Heading.localized
+        navigationController?.delegate = self
 
         initUI()
         updateStatusItem()
@@ -117,6 +123,9 @@ class SettingsViewController: UIViewController {
             linkItem(title: Text.HowItWorksTitle, tapped: { self.showGuide() }),
             linkItem(title: Text.TermsLinkTitle, linkName: Text.TermsLinkName, url: Text.TermsLinkURL ),
             linkItem(title: Text.PrivacyLinkTitle, linkName: Text.PrivacyLinkName, url: Text.PrivacyLinkURL),
+            linkItem(title: Text.OpenSourceLicenses, tapped: {
+                self.navigationController?.pushViewController(LicenseListViewController(), animated: true)
+            }),
         ]
         items[1].accessibilityTraits = .button
 
