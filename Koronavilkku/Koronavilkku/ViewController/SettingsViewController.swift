@@ -27,25 +27,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private var statusItem: LinkItem!
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        let isHeading1 = navigationController.navigationBar.standardAppearance.largeTitleTextAttributes[.font] as? NSObject === UIFont.heading1
-        
-        // large titles beyond first level should use .heading2
-        if viewController !== self && isHeading1 {
-            let appearance = navigationController.navigationBar.standardAppearance.copy()
-
-            appearance.largeTitleTextAttributes = [
-                .font: UIFont.heading2
-            ]
-            
-            navigationController.navigationBar.standardAppearance = appearance
-            navigationController.navigationBar.compactAppearance = appearance
-            navigationController.navigationBar.scrollEdgeAppearance = appearance
-        }
-        
-        // reset to .heading1 when returning to root view
-        if viewController === self && !isHeading1 {
-            navigationController.setDefaultStyle()
-        }
+        // use .heading1 on root view, others use .heading2
+        navigationController.largeTitleFont = (viewController === self) ? .heading1 : .heading2
     }
     
     override func viewDidLoad() {

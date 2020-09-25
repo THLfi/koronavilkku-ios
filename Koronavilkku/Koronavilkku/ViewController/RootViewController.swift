@@ -154,6 +154,28 @@ extension UINavigationController {
         navigationBar.scrollEdgeAppearance = appearance
         navigationBar.standardAppearance = appearance
     }
+    
+    var largeTitleFont: UIFont? {
+        get {
+            navigationBar.standardAppearance.largeTitleTextAttributes[.font] as? UIFont
+        }
+        
+        set {
+            guard let font = newValue, font !== largeTitleFont else {
+                return
+            }
+            
+            let appearance = navigationBar.standardAppearance.copy()
+
+            appearance.largeTitleTextAttributes = [
+                .font: font
+            ]
+            
+            navigationBar.standardAppearance = appearance
+            navigationBar.compactAppearance = appearance
+            navigationBar.scrollEdgeAppearance = appearance
+        }
+    }
 }
 
 #if DEBUG
