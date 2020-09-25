@@ -16,6 +16,7 @@
 		32B5956124AA27ED00CC386E /* BatchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B5956024AA27ED00CC386E /* BatchRepository.swift */; };
 		32E0350224AB0E8100F48450 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0350124AB0E8100F48450 /* Configuration.swift */; };
 		32E0350624AB4AB000F48450 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E0350524AB4AB000F48450 /* FileHelper.swift */; };
+		56009400251E08E100F1BE1B /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560093FF251E08E100F1BE1B /* UINavigationController.swift */; };
 		560833BD24B8677C0078B75D /* Translation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560833BC24B8677C0078B75D /* Translation.swift */; };
 		560833C024B886D70078B75D /* LocalizationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 560833BF24B886D70078B75D /* LocalizationTests.swift */; };
 		5612972C24C977420075161A /* HowItWorksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5612972B24C977420075161A /* HowItWorksViewController.swift */; };
@@ -96,11 +97,11 @@
 		EA47C5F524A6B3FC00EAC720 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5F124A6B3FC00EAC720 /* SourceSansPro-Semibold.otf */; };
 		EA4F905024F46E660032D9D5 /* BatchRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F904F24F46E660032D9D5 /* BatchRepositoryTest.swift */; };
 		EA4F905224F4EFAD0032D9D5 /* BackendRestApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */; };
+		EA5296AC251BE1B10089CFB4 /* Licenses.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA5296AB251BE1B10089CFB4 /* Licenses.strings */; };
+		EA5296B4251BE70E0089CFB4 /* LicenseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5296B3251BE70E0089CFB4 /* LicenseListViewController.swift */; };
 		EA7B0556251248BE002941A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B0558251248BE002941A6 /* Localizable.strings */; };
 		EA7B055D251248EC002941A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B055F251248EC002941A6 /* InfoPlist.strings */; };
 		EA7B056425124C5C002941A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B0558251248BE002941A6 /* Localizable.strings */; };
-		EA5296AC251BE1B10089CFB4 /* Licenses.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA5296AB251BE1B10089CFB4 /* Licenses.strings */; };
-		EA5296B4251BE70E0089CFB4 /* LicenseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5296B3251BE70E0089CFB4 /* LicenseListViewController.swift */; };
 		EA80A56C24AC71A60071E0EC /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = EA80A56B24AC71A60071E0EC /* ZIPFoundation */; };
 		EA80A56E24ACAE0D0071E0EC /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80A56D24ACAE0D0071E0EC /* REST.swift */; };
 		EA92357C24B26E4700B21B1B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92357B24B26E4700B21B1B /* Environment.swift */; };
@@ -145,6 +146,7 @@
 		32B5956024AA27ED00CC386E /* BatchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchRepository.swift; sourceTree = "<group>"; };
 		32E0350124AB0E8100F48450 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		32E0350524AB4AB000F48450 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
+		560093FF251E08E100F1BE1B /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		560833BC24B8677C0078B75D /* Translation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translation.swift; sourceTree = "<group>"; };
 		560833BF24B886D70078B75D /* LocalizationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationTests.swift; sourceTree = "<group>"; };
 		5612972B24C977420075161A /* HowItWorksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksViewController.swift; sourceTree = "<group>"; };
@@ -226,12 +228,12 @@
 		EA47C5F124A6B3FC00EAC720 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		EA4F904F24F46E660032D9D5 /* BatchRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchRepositoryTest.swift; sourceTree = "<group>"; };
 		EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendRestApiTest.swift; sourceTree = "<group>"; };
+		EA5296AB251BE1B10089CFB4 /* Licenses.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Licenses.strings; sourceTree = "<group>"; };
+		EA5296B3251BE70E0089CFB4 /* LicenseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseListViewController.swift; sourceTree = "<group>"; };
 		EA7B0557251248BE002941A6 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7B0559251248C0002941A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7B055A251248C0002941A6 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7B055E251248EC002941A6 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		EA5296AB251BE1B10089CFB4 /* Licenses.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Licenses.strings; sourceTree = "<group>"; };
-		EA5296B3251BE70E0089CFB4 /* LicenseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseListViewController.swift; sourceTree = "<group>"; };
 		EA80A56D24ACAE0D0071E0EC /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
 		EA92357B24B26E4700B21B1B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EA92A04024A3958300CE7271 /* Koronavilkku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koronavilkku.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -326,6 +328,7 @@
 				563D44AA24AA327F008FE2BB /* UIView.swift */,
 				32899E4824C0680600CFFE27 /* UIViewController.swift */,
 				EA07E41624E34C7D0097A9A0 /* URLSession.swift */,
+				560093FF251E08E100F1BE1B /* UINavigationController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -865,6 +868,7 @@
 				EA3ED0E324F8315500635817 /* FileStorage.swift in Sources */,
 				EA92A04624A3958300CE7271 /* SceneDelegate.swift in Sources */,
 				EA92A07B24A4E59800CE7271 /* LivePreview.swift in Sources */,
+				56009400251E08E100F1BE1B /* UINavigationController.swift in Sources */,
 				EA07E41724E34C7D0097A9A0 /* URLSession.swift in Sources */,
 				32B5956124AA27ED00CC386E /* BatchRepository.swift in Sources */,
 				5687174224C1969A00E65427 /* StepView.swift in Sources */,
