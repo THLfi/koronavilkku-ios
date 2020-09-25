@@ -57,15 +57,18 @@ class LicenseListViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellIdentifier, for: indexPath)
         cell.backgroundColor = UIColor.Secondary.blueBackdrop
-        cell.textLabel?.text = Dependency.allCases[indexPath.row].rawValue
-        cell.textLabel?.font = .bodySmall
-        cell.textLabel?.numberOfLines = -1
-        
-        cell.textLabel?.snp.remakeConstraints { make in
-            make.top.left.bottom.right.equalToSuperview().inset(20)
+        cell.accessoryType = .disclosureIndicator
+
+        if let label = cell.textLabel {
+            label.text = Dependency.allCases[indexPath.row].rawValue
+            label.font = .bodySmall
+            label.numberOfLines = -1
+            
+            label.snp.remakeConstraints { make in
+                make.top.left.bottom.right.equalToSuperview().inset(20)
+            }
         }
 
-        cell.accessoryType = .disclosureIndicator
         return cell
     }
 }
