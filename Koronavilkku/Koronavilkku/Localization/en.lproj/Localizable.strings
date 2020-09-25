@@ -101,6 +101,7 @@
 "SettingsViewController.Text.StatusOn" = "Enabled";
 "SettingsViewController.Text.StatusOff" = "Disabled";
 "SettingsViewController.Text.StatusLocked" = "Locked";
+"SettingsViewController.Text.ChangeLanguage" = "Change app language";
 "SettingsViewController.Text.HowItWorksTitle" = "How Koronavilkku works";
 "SettingsViewController.Text.SettingsAboutTitle" = "About the app";
 "SettingsViewController.Text.FAQLinkTitle" = "Frequently asked questions";
@@ -114,6 +115,11 @@
 "SettingsViewController.Text.PrivacyLinkURL" = "https://koronavilkku.fi/en/privacy/";
 "SettingsViewController.Text.OpenSourceLicenses" = "Open source licenses";
 "SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@";
+
+"ChangeLanguageViewController.Text.Title" = "Change app language";
+"ChangeLanguageViewController.Text.Message" = "You can change Koronavilkku's language in the Settings app.";
+"ChangeLanguageViewController.Text.ButtonTitle" = "Change language in Settings";
+"ChangeLanguageViewController.Text.UniversalExplanation" = "";
 
 "LicenseListViewController.Text.Title" = "Open source licenses";
 

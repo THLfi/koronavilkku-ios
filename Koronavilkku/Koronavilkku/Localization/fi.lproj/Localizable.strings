@@ -101,6 +101,7 @@
 "SettingsViewController.Text.StatusOn" = "Käytössä";
 "SettingsViewController.Text.StatusOff" = "Ei käytössä";
 "SettingsViewController.Text.StatusLocked" = "Lukittu";
+"SettingsViewController.Text.ChangeLanguage" = "Vaihda sovelluksen kieli";
 "SettingsViewController.Text.HowItWorksTitle" = "Näin Koronavilkku toimii";
 "SettingsViewController.Text.SettingsAboutTitle" = "Tietoa sovelluksesta";
 "SettingsViewController.Text.FAQLinkTitle" = "Usein kysyttyä";
@@ -114,6 +115,11 @@
 "SettingsViewController.Text.PrivacyLinkURL" = "https://koronavilkku.fi/tietosuojaseloste/";
 "SettingsViewController.Text.OpenSourceLicenses" = "Avoimen lähdekoodin lisenssit";
 "SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@";
+
+"ChangeLanguageViewController.Text.Title" = "Vaihda sovelluksen kieli";
+"ChangeLanguageViewController.Text.Message" = "Voit vaihtaa Koronavilkun kielen Asetukset-sovelluksessa.";
+"ChangeLanguageViewController.Text.ButtonTitle" = "Vaihda kieli Asetukset-sovelluksessa";
+"ChangeLanguageViewController.Text.UniversalExplanation" = "Change the app language in the Settings app";
 
 "LicenseListViewController.Text.Title" = "Avoimen lähdekoodin lisenssit";
 
