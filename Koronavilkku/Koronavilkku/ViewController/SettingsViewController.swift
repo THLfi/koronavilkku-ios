@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     enum Text : String, Localizable {
         case Heading
         case StatusTitle
@@ -26,17 +26,34 @@ class SettingsViewController: UIViewController {
     
     private var statusItem: LinkItem!
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setDefaultStyle()
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        let isHeading1 = navigationController.navigationBar.standardAppearance.largeTitleTextAttributes[.font] as? NSObject === UIFont.heading1
+        
+        // large titles beyond first level should use .heading2
+        if viewController !== self && isHeading1 {
+            let appearance = navigationController.navigationBar.standardAppearance.copy()
+
+            appearance.largeTitleTextAttributes = [
+                .font: UIFont.heading2
+            ]
+            
+            navigationController.navigationBar.standardAppearance = appearance
+            navigationController.navigationBar.compactAppearance = appearance
+            navigationController.navigationBar.scrollEdgeAppearance = appearance
+        }
+        
+        // reset to .heading1 when returning to root view
+        if viewController === self && !isHeading1 {
+            navigationController.setDefaultStyle()
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.largeTitleDisplayMode = .automatic
-        navigationItem.title = Text.Heading.localized
-        navigationItem.backButtonTitle = ""
+        title = Text.Heading.localized
+        navigationController?.delegate = self
 
         initUI()
         updateStatusItem()

@@ -15,7 +15,7 @@ class LicenseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = dependency.rawValue
+        title = dependency.rawValue
         
         let content = view.addScrollableContentView(
             backgroundColor: UIColor.Secondary.blueBackdrop,

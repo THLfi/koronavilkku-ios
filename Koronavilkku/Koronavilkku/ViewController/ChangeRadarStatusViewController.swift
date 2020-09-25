@@ -8,7 +8,6 @@ class ChangeRadarStatusViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.title = nil
 
         initUI()
     }
@@ -54,7 +53,7 @@ class ChangeRadarStatusViewController: UIViewController {
 
         let titleLabel = UILabel(label: title.localized, font: .heading2, color: titleColor)
         titleLabel.numberOfLines = 0
-        appendView(titleLabel, spacing: 30)
+        appendView(titleLabel, spacing: 4)
         
         let textLabel = UILabel(label: text.localized, font: .heading4, color: UIColor.Greyscale.black)
         textLabel.numberOfLines = 0

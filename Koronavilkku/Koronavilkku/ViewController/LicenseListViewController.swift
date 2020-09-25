@@ -21,19 +21,8 @@ class LicenseListViewController : UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let appearance = navigationController?.navigationBar.standardAppearance.copy() {
-            appearance.largeTitleTextAttributes = [
-                .font: UIFont.heading2
-            ]
-            
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.compactAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        }
-
         navigationItem.largeTitleDisplayMode = .always
-        navigationItem.title = Text.Title.localized
-        navigationItem.backButtonTitle = ""
+        title = Text.Title.localized
 
         tableView.backgroundColor = UIColor.Secondary.blueBackdrop
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: tableViewCellIdentifier)

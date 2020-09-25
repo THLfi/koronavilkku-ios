@@ -150,6 +150,8 @@ extension UINavigationController {
             transitionMaskImage: UIImage.init(named: "arrow-left")
         )
         
+        navigationBar.compactAppearance = appearance
+        navigationBar.scrollEdgeAppearance = appearance
         navigationBar.standardAppearance = appearance
     }
 }
