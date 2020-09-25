@@ -15,6 +15,7 @@ class OnboardingViewController: UINavigationController {
         // Note that the steps and StepId values must be in the same order.
         Step(id: .intro,
              buttonTitle: Translation.ButtonNext.localized,
+             showLanguageSelection: true,
              view: StepView(image: UIImage(named: "radar-static")!,
                             header: Translation.OnboardingIntroTitle.localized,
                             content: Translation.OnboardingIntroText.localized,
@@ -234,14 +235,24 @@ class OnboardingViewController: UINavigationController {
         self.scrollView?.backgroundColor = .white
         let viewController = UIViewController()
         viewController.view.addSubview(scrollView!)
-        scrollView!.snp.makeConstraints { make in
+        scrollView?.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        scrollView!.addSubview(stepView)
+        scrollView?.addSubview(stepView)
         stepView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.left.right.equalTo(viewController.view)
+        }
+        
+        if step.showLanguageSelection {
+            let languageButton = createLanguageSelectionButton()
+            scrollView?.addSubview(languageButton)
+            
+            languageButton.snp.makeConstraints { make in
+                make.top.equalToSuperview().offset(10)
+                make.right.equalToSuperview().inset(20)
+            }
         }
         
         let fade = FadeBlock()
@@ -319,6 +330,27 @@ class OnboardingViewController: UINavigationController {
                                  underline: false)
     }
     
+    private func createLanguageSelectionButton() -> UIButton {
+        let button = UIButton()
+        
+        button.addTarget(self, action: #selector(languageSelectionTapped), for: .touchUpInside)
+        button.setTitle("Language", for: .normal)
+        button.backgroundColor = UIColor.Secondary.blueBackdrop
+        button.setTitleColor(UIColor.Primary.blue, for: .normal)
+        button.titleLabel?.font = .bodySmall
+        button.layer.cornerRadius = 6
+        button.setImage(UIImage(named: "globe")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 10)
+        button.imageEdgeInsets = UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 0)
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: -4)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.tintColor = UIColor.Primary.blue
+
+        return button
+    }
+    
     private func hideScrollIndicator() {
         guard let indicator = scrollIndicatorButton else { return }
         self.scrollIndicatorButton = nil
@@ -346,23 +378,32 @@ class OnboardingViewController: UINavigationController {
             step(into: .intro)
         }
     }
+
+    @objc func languageSelectionTapped() {
+        let vc = UINavigationController(rootViewController: ChangeLanguageViewController())
+        vc.setDefaultStyle()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+    }
 }
 
 struct Step {
     let id: StepId
     let buttonTitle: String?
     let showScrollIndicator: Bool
-    let hasAcceptableExtraContent: Bool
+    let showLanguageSelection: Bool
     let view: StepView?
     let viewController: UIViewController?
     let requestPermission: (() -> ())?
     
-    init(id: StepId, buttonTitle: String? = nil, showScrollIndicator: Bool = false, hasAcceptableExtraContent: Bool = false, view: StepView? = nil, viewController: UIViewController? = nil, requestPermission: (() -> ())? = nil)
+    init(
+        id: StepId,
+        buttonTitle: String? = nil, showScrollIndicator: Bool = false, showLanguageSelection: Bool = false, view: StepView? = nil, viewController: UIViewController? = nil, requestPermission: (() -> ())? = nil)
     {
         self.id = id
         self.buttonTitle = buttonTitle
         self.showScrollIndicator = showScrollIndicator
-        self.hasAcceptableExtraContent = hasAcceptableExtraContent
+        self.showLanguageSelection = showLanguageSelection
         self.view = view
         self.viewController = viewController
         self.requestPermission = requestPermission
@@ -375,7 +416,6 @@ enum StepId: Int {
     case acceptTerms
     case enableApiInstructions
     case enableBluetooth
-    //    case allowNotifications
     
     var description: String { return "StepId(\(String(describing: self))" }
 }
