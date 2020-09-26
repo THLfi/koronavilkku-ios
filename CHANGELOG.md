@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Localisation updates
 - Determine API disabled status from both exposureNotificationStatus and authorizationStatus
+- Corrected instructions on how to enable EN API on iOS 13.7+
 
 ### Added
 - English translation
