@@ -3,7 +3,7 @@ import UIKit
 import SnapKit
 import Combine
 
-class OnboardingViewController: UINavigationController {
+class OnboardingViewController: UINavigationController, UINavigationControllerDelegate {
     
     private var currentStep = 0
     private var button: RoundedButton? = nil
@@ -72,6 +72,7 @@ class OnboardingViewController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setDefaultStyle()
         self.setNavigationBarHidden(true, animated: false)
         let window = UIApplication.shared.windows.first
         let statusBarFrame = window?.windowScene?.statusBarManager?.statusBarFrame
@@ -83,8 +84,17 @@ class OnboardingViewController: UINavigationController {
             self.view.addSubview(blurEffectView)
         }
         
+        self.delegate = self
         self.view.backgroundColor = UIColor.Greyscale.white
         self.handleStartStep()
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController is ChangeLanguageViewController {
+            self.setNavigationBarHidden(false, animated: true)
+        } else if !navigationBar.isHidden {
+            self.setNavigationBarHidden(true, animated: true)
+        }
     }
     
     private func performButtonAction(step: Step) {
@@ -380,10 +390,7 @@ class OnboardingViewController: UINavigationController {
     }
 
     @objc func languageSelectionTapped() {
-        let vc = UINavigationController(rootViewController: ChangeLanguageViewController())
-        vc.setDefaultStyle()
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+        pushViewController(ChangeLanguageViewController(), animated: true)
     }
 }
 

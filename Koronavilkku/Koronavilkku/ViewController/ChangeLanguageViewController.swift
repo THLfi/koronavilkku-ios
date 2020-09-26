@@ -16,13 +16,6 @@ class ChangeLanguageViewController: UIViewController {
         title = Text.Title.localized
         view.backgroundColor = UIColor.Secondary.blueBackdrop
         
-        if navigationController?.viewControllers[0] === self {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(
-                image: UIImage(named: "arrow-left"),
-                style: .plain,
-                target: self, action: #selector(close))
-        }
-        
         let content = view.addScrollableContentView(margins: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
         
         let message = UILabel(label: Text.Message.localized, font: .bodyLarge, color: UIColor.Greyscale.black)

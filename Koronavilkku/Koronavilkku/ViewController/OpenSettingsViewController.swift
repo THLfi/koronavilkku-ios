@@ -122,7 +122,6 @@ class OpenSettingsViewController: UIViewController {
     }
 
     static func create(type: OpenSettingsType, userDismissable: Bool = true, dismisser: @escaping () -> Void) -> UIViewController {
-        print("Creating OpenSettingsViewController of type \(type)!")
         let content: OpenSettingsContent
         let dismissCheck: (RadarStatus) -> Bool
         
