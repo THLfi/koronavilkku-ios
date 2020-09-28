@@ -247,11 +247,11 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
         self.scrollView?.backgroundColor = .white
         let viewController = UIViewController()
         viewController.view.addSubview(scrollView!)
-        scrollView?.snp.makeConstraints { make in
+        scrollView!.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
-        scrollView?.addSubview(stepView)
+        scrollView!.addSubview(stepView)
         stepView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.left.right.equalTo(viewController.view)
