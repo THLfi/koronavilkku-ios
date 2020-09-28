@@ -64,8 +64,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         items.last!.view.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
         }
-        
-        statusItem.accessibilityTraits = .button
     }
     
     private func sectionTitleItem(text: Text) -> InstructionItem {
@@ -92,14 +90,14 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
             self?.navigationController?.pushViewController(ChangeRadarStatusViewController(), animated: true)
         }
         
-        statusItem = status
-
         let changeLanguage = linkItem(title: Text.ChangeLanguage) { [weak self] in
             self?.navigationController?.pushViewController(ChangeLanguageViewController(), animated: true)
         }
         
+        status.accessibilityTraits = .button
         changeLanguage.accessibilityTraits = .button
-        
+        statusItem = status
+
         let items = [
             status,
             changeLanguage
@@ -129,16 +127,24 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     private func aboutGroupItem() -> InstructionItem {
+        let guideLinkItem = linkItem(title: Text.HowItWorksTitle) { [weak self] in
+            self?.showGuide()
+        }
+
+        let licenseLinkItem = linkItem(title: Text.OpenSourceLicenses) { [weak self] in
+            self?.navigationController?.pushViewController(LicenseListViewController(), animated: true)
+        }
+        
+        guideLinkItem.accessibilityTraits = .button
+        licenseLinkItem.accessibilityTraits = .button
+
         let items = [
             linkItem(title: Text.FAQLinkTitle, linkName: Text.FAQLinkName, url: Text.FAQLinkURL),
-            linkItem(title: Text.HowItWorksTitle, tapped: { self.showGuide() }),
+            guideLinkItem,
             linkItem(title: Text.TermsLinkTitle, linkName: Text.TermsLinkName, url: Text.TermsLinkURL ),
             linkItem(title: Text.PrivacyLinkTitle, linkName: Text.PrivacyLinkName, url: Text.PrivacyLinkURL),
-            linkItem(title: Text.OpenSourceLicenses, tapped: {
-                self.navigationController?.pushViewController(LicenseListViewController(), animated: true)
-            }),
+            licenseLinkItem,
         ]
-        items[1].accessibilityTraits = .button
 
         return InstructionItem(view: LinkItemGroupCard(items: items), spacing: 10)
     }
