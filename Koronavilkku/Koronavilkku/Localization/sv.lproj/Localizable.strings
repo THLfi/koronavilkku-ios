@@ -101,6 +101,7 @@
 "SettingsViewController.Text.StatusOn" = "I bruk";
 "SettingsViewController.Text.StatusOff" = "Ur bruk";
 "SettingsViewController.Text.StatusLocked" = "Låst";
+"SettingsViewController.Text.ChangeLanguage" = "Byt appens språk";
 "SettingsViewController.Text.HowItWorksTitle" = "Så fungerar Coronablinkern";
 "SettingsViewController.Text.SettingsAboutTitle" = "Info om appen";
 "SettingsViewController.Text.FAQLinkTitle" = "Vanliga frågor";
@@ -114,6 +115,12 @@
 "SettingsViewController.Text.PrivacyLinkURL" = "https://koronavilkku.fi/sv/dataskydd/";
 "SettingsViewController.Text.OpenSourceLicenses" = "Licenser för öppen källkod";
 "SettingsViewController.Text.AppInfoWithVersion" = "Coronablinkern %@";
+
+"ChangeLanguageViewController.Text.Title" = "Byt appens språk";
+"ChangeLanguageViewController.Text.Message" = "Du kan byta Coronablinkerns språk i telefonens Inställningar.";
+"ChangeLanguageViewController.Text.ButtonTitle" = "Byt språk i Inställningar";
+"ChangeLanguageViewController.Text.UniversalTitle" = "Change app language";
+"ChangeLanguageViewController.Text.UniversalMessage" = "You can change Koronavilkku's language in the Settings app.";
 
 "LicenseListViewController.Text.Title" = "Licenser för öppen källkod";
 

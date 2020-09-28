@@ -9,6 +9,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         case StatusOn
         case StatusOff
         case StatusLocked
+        case ChangeLanguage
         case SettingsAboutTitle
         case FAQLinkTitle
         case FAQLinkName
@@ -52,7 +53,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
             margins: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
         
         let items = [
-            createStatusItem(),
+            settingGroupItem(),
             sectionTitleItem(text: Text.SettingsAboutTitle),
             aboutGroupItem(),
             appNameAndVersionItem()
@@ -63,8 +64,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         items.last!.view.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
         }
-        
-        statusItem.accessibilityTraits = .button
     }
     
     private func sectionTitleItem(text: Text) -> InstructionItem {
@@ -81,20 +80,30 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         return LinkItem(title: title.localized, linkName: linkName?.localized, value: value?.localized, tapped: tapped, url: url?.toURL())
     }
     
-    private func linkCard(title: Text, value: Text, tapped: TapHandler?) -> InstructionItem {
-        let view = LinkItemCard(title: title.localized, value: value.localized, tapped: tapped)
-        return InstructionItem(view: view, spacing: 10)
-    }
-    
     private func appNameAndVersionItem() -> InstructionItem {
         let versionText = Text.AppInfoWithVersion.localized(with: Environment.default.configuration.version)
         return InstructionsView.labelItem(versionText, font: UIFont.labelTertiary, color: UIColor.Greyscale.darkGrey, spacing: 25)
     }
     
-    private func createStatusItem() -> InstructionItem {
-        let item = linkCard(title: .StatusTitle, value: .StatusOff, tapped: { self.openChangeStatusView() })
-        self.statusItem = (item.view as! LinkItemCard).linkItem
-        return item
+    private func settingGroupItem() -> InstructionItem {
+        let status = linkItem(title: Text.StatusTitle, value: Text.StatusOff) { [weak self] in
+            self?.navigationController?.pushViewController(ChangeRadarStatusViewController(), animated: true)
+        }
+        
+        let changeLanguage = linkItem(title: Text.ChangeLanguage) { [weak self] in
+            self?.navigationController?.pushViewController(ChangeLanguageViewController(), animated: true)
+        }
+        
+        status.accessibilityTraits = .button
+        changeLanguage.accessibilityTraits = .button
+        statusItem = status
+
+        let items = [
+            status,
+            changeLanguage
+        ]
+
+        return InstructionItem(view: LinkItemGroupCard(items: items), spacing: 10)
     }
     
     private func updateStatusItem() {
@@ -118,21 +127,25 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     private func aboutGroupItem() -> InstructionItem {
+        let guideLinkItem = linkItem(title: Text.HowItWorksTitle) { [weak self] in
+            self?.showGuide()
+        }
+
+        let licenseLinkItem = linkItem(title: Text.OpenSourceLicenses) { [weak self] in
+            self?.navigationController?.pushViewController(LicenseListViewController(), animated: true)
+        }
+        
+        guideLinkItem.accessibilityTraits = .button
+        licenseLinkItem.accessibilityTraits = .button
+
         let items = [
             linkItem(title: Text.FAQLinkTitle, linkName: Text.FAQLinkName, url: Text.FAQLinkURL),
-            linkItem(title: Text.HowItWorksTitle, tapped: { self.showGuide() }),
+            guideLinkItem,
             linkItem(title: Text.TermsLinkTitle, linkName: Text.TermsLinkName, url: Text.TermsLinkURL ),
             linkItem(title: Text.PrivacyLinkTitle, linkName: Text.PrivacyLinkName, url: Text.PrivacyLinkURL),
-            linkItem(title: Text.OpenSourceLicenses, tapped: {
-                self.navigationController?.pushViewController(LicenseListViewController(), animated: true)
-            }),
+            licenseLinkItem,
         ]
-        items[1].accessibilityTraits = .button
 
         return InstructionItem(view: LinkItemGroupCard(items: items), spacing: 10)
-    }
-    
-    private func openChangeStatusView() {
-        navigationController?.pushViewController(ChangeRadarStatusViewController(), animated: true)
     }
 }
