@@ -17,8 +17,15 @@ class ChangeLanguageViewController: UIViewController {
         title = Text.Title.localized
         view.backgroundColor = UIColor.Secondary.blueBackdrop
         
-        let content = view.addScrollableContentView(
-            margins: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
+        let margins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        let content = view.addScrollableContentView(margins: margins)
+        
+        content.snp.makeConstraints { make in
+            make.height
+                .equalTo(view.safeAreaLayoutGuide)
+                .offset(0 - margins.top - margins.bottom)
+                .priority(.low)
+        }
         
         let message = UILabel(
             label: Text.Message.localized,
@@ -54,7 +61,7 @@ class ChangeLanguageViewController: UIViewController {
         content.addSubview(universalTitle)
         
         universalTitle.snp.makeConstraints { make in
-            make.top.equalTo(button.snp.bottom).offset(30)
+            make.top.greaterThanOrEqualTo(button.snp.bottom).offset(30)
             make.left.right.equalToSuperview()
         }
 
