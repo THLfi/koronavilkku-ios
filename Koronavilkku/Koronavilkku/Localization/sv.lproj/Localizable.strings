@@ -119,7 +119,8 @@
 "ChangeLanguageViewController.Text.Title" = "Byt appens språk";
 "ChangeLanguageViewController.Text.Message" = "Du kan byta Coronablinkerns språk i telefonens Inställningar.";
 "ChangeLanguageViewController.Text.ButtonTitle" = "Byt språk i Inställningar";
-"ChangeLanguageViewController.Text.UniversalExplanation" = "Change the app language in the Settings app";
+"ChangeLanguageViewController.Text.UniversalTitle" = "Change app language";
+"ChangeLanguageViewController.Text.UniversalMessage" = "You can change Koronavilkku's language in the Settings app.";
 
 "LicenseListViewController.Text.Title" = "Licenser för öppen källkod";
 

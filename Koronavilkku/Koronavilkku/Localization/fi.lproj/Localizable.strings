@@ -119,7 +119,8 @@
 "ChangeLanguageViewController.Text.Title" = "Vaihda sovelluksen kieli";
 "ChangeLanguageViewController.Text.Message" = "Voit vaihtaa Koronavilkun kielen Asetukset-sovelluksessa.";
 "ChangeLanguageViewController.Text.ButtonTitle" = "Vaihda kieli Asetukset-sovelluksessa";
-"ChangeLanguageViewController.Text.UniversalExplanation" = "Change the app language in the Settings app";
+"ChangeLanguageViewController.Text.UniversalTitle" = "Change app language";
+"ChangeLanguageViewController.Text.UniversalMessage" = "You can change Koronavilkku's language in the Settings app.";
 
 "LicenseListViewController.Text.Title" = "Avoimen lähdekoodin lisenssit";
 

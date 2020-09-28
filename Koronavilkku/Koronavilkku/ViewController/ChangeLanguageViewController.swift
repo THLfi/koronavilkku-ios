@@ -7,7 +7,8 @@ class ChangeLanguageViewController: UIViewController {
         case Title
         case Message
         case ButtonTitle
-        case UniversalExplanation
+        case UniversalTitle
+        case UniversalMessage
     }
     
     override func viewDidLoad() {
@@ -44,16 +45,30 @@ class ChangeLanguageViewController: UIViewController {
             make.left.right.equalToSuperview()
         }
         
-        let universalText = UILabel(
-            label: Text.UniversalExplanation.localized.uppercased(),
+        let universalTitle = UILabel(
+            label: Text.UniversalTitle.localized.uppercased(),
             font: .heading5,
             color: UIColor.Greyscale.darkGrey)
         
-        universalText.textAlignment = .center
-        content.addSubview(universalText)
+        universalTitle.textAlignment = .center
+        content.addSubview(universalTitle)
         
-        universalText.snp.makeConstraints { make in
-            make.top.equalTo(button.snp.bottom).offset(20)
+        universalTitle.snp.makeConstraints { make in
+            make.top.equalTo(button.snp.bottom).offset(30)
+            make.left.right.equalToSuperview()
+        }
+
+        let universalMessage = UILabel(
+            label: Text.UniversalMessage.localized,
+            font: .bodySmall,
+            color: UIColor.Greyscale.darkGrey)
+        
+        universalMessage.numberOfLines = -1
+        universalMessage.textAlignment = .center
+        content.addSubview(universalMessage)
+        
+        universalMessage.snp.makeConstraints { make in
+            make.top.equalTo(universalTitle.snp.bottom).offset(6)
             make.left.right.bottom.equalToSuperview()
         }
     }

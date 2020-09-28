@@ -91,8 +91,10 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if viewController is ChangeLanguageViewController {
+            self.largeTitleFont = .heading2
             self.setNavigationBarHidden(false, animated: true)
         } else if !navigationBar.isHidden {
+            self.largeTitleFont = .heading1
             self.setNavigationBarHidden(true, animated: true)
         }
     }
@@ -350,8 +352,6 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
         button.titleLabel?.font = .bodySmall
         button.layer.cornerRadius = 6
         button.setImage(UIImage(named: "globe")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        button.contentVerticalAlignment = .fill
-        button.contentHorizontalAlignment = .fill
         button.contentEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 10)
         button.imageEdgeInsets = UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 0)
         button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: -4)

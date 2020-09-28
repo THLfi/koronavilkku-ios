@@ -119,7 +119,8 @@
 "ChangeLanguageViewController.Text.Title" = "Change app language";
 "ChangeLanguageViewController.Text.Message" = "You can change Koronavilkku's language in the Settings app.";
 "ChangeLanguageViewController.Text.ButtonTitle" = "Change language in Settings";
-"ChangeLanguageViewController.Text.UniversalExplanation" = "";
+"ChangeLanguageViewController.Text.UniversalTitle" = "";
+"ChangeLanguageViewController.Text.UniversalMessage" = "";
 
 "LicenseListViewController.Text.Title" = "Open source licenses";
 
