@@ -48,8 +48,4 @@ class ChangeLanguageViewController: UIViewController {
             make.left.right.bottom.equalToSuperview()
         }
     }
-    
-    @objc func close() {
-        dismiss(animated: true)
-    }
 }
