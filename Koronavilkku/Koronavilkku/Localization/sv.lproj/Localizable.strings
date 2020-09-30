@@ -219,5 +219,6 @@
 "ENBlockedTitle" = "Exponerings\U00ADmeddelandena är bortkopplade";
 "ENBlockedText" = "Coronablinkern fungerar endast om du kopplar på exponerings\U00ADmeddelandena i telefonens inställningar. Gör så här för att koppla på exponerings\U00ADmeddelandena:";
 "ENBlockedSteps" = "1. Tryck på Inställningsknappen nedan.\n\n2. Koppla på COVID-19-exponeringsloggen och -meddelandena.";
+"ENBlockedStepsNew" = "1. Tryck på Inställningsknappen nedan.\n\n2. Öppna Exponeringsnotiser.\n\n3. Koppla på Dela exponeringsinformation.\n\n4. Ställ Institutet för hälsa och välfärd in som aktiv region.";
 
 "OpenSettingsButton" = "Öppna Inställningar";
