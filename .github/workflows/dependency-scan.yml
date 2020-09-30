@@ -18,10 +18,12 @@ jobs:
         uses: actions/cache@v2
         with:
           path: DerivedData
-          key: koronavilkku-ios-build-${{ hashFiles('**/*.pbxproj') }}
-          restore-keys: koronavilkku-ios-build
+          key: koronavilkku-ios-build1-${{ hashFiles('**/*.pbxproj') }}
+          restore-keys: koronavilkku-ios-build1
       - name: Build app
-        run: xcodebuild build -workspace Koronavilkku.xcworkspace -scheme Koronavilkku -derivedDataPath DerivedData -configuration Debug CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+        run: |
+          xcodebuild -version
+          xcodebuild build -workspace Koronavilkku.xcworkspace -scheme Koronavilkku -derivedDataPath DerivedData -configuration Debug CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
   dependency-scan:
     needs: [build-app]
     name: Owasp Dependency Scanning
@@ -32,8 +34,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: DerivedData
-          key: koronavilkku-ios-build
-          restore-keys: koronavilkku-ios-build
+          key: koronavilkku-ios-build1
+          restore-keys: koronavilkku-ios-build1
       - name: Cache vulnerability data cache
         uses: actions/cache@v2
         with:
