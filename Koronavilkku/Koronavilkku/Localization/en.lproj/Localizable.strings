@@ -219,6 +219,6 @@
 "ENBlockedTitle" = "Exposure notifications are off";
 "ENBlockedText" = "Koronavilkku will not work unless you turn on the exposure notifications in your phone’s operating system. How to turn them on:";
 "ENBlockedSteps" = "1. Use the button below to access your phone's settings.\n\n2. Turn on COVID-19 exposure log and notifications.";
-"ENBlockedStepsNew" = "1. Use the button below to access your phone's settings.\n\n2. Select Exposure Notifications.\n\n3. Turn on Share Exposure Information.\n\n4. Set the Finnish Institute for Health and Welfare as active region.";
+"ENBlockedStepsNew" = "1. Use the button below to access your phone's settings.\n\n2. Select Exposure Notifications.\n\n3. Turn on Share Exposure Information.\n\n4. Set the Finnish Institute for Health and Welfare as the active region.";
 
 "OpenSettingsButton" = "Open settings";

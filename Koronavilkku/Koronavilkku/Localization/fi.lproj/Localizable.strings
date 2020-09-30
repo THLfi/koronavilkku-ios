@@ -50,7 +50,7 @@
 "ExposuresViewWrapper.HasExposureText.ContactCardText" = "Tieto mahdollisesta altistumisestasi välittyy terveydenhuoltoon vain, jos otat itse yhteyttä.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ota yhteyttä";
 "ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Noudata näitä ohjeita huolellisesti seuraavan kahden viikon ajan:";
-"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin, jos sinulla ilmenee yksikin näistä koronavirustautiin sopivista oireista:";
+"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Jos sinulla ilmenee yksikin näistä koronavirustautiin sopivista oireista, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin:";
 "ExposuresViewWrapper.HasExposureText.InstructionsSymptomsText" = "- haju- tai makuaistin muutos\n\t- hengitysvaikeus\n\t- yskä, kurkkukipu tai nuha\n\t- kuume\n\t- päänsärky tai lihaskipuja\n\t- ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
 "ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Vältä tapaamasta muita ihmisiä.";
 "ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Huolehdi käsihygieniastasi.";
@@ -117,8 +117,8 @@
 "SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@";
 
 "ChangeLanguageViewController.Text.Title" = "Vaihda sovelluksen kieli";
-"ChangeLanguageViewController.Text.Message" = "Voit vaihtaa Koronavilkun kielen Asetukset-sovelluksessa.";
-"ChangeLanguageViewController.Text.ButtonTitle" = "Vaihda kieli Asetukset-sovelluksessa";
+"ChangeLanguageViewController.Text.Message" = "Voit vaihtaa Koronavilkun kielen puhelimesi asetuksissa.";
+"ChangeLanguageViewController.Text.ButtonTitle" = "Vaihda sovelluksen kieli";
 "ChangeLanguageViewController.Text.UniversalTitle" = "Change app language";
 "ChangeLanguageViewController.Text.UniversalMessage" = "You can change Koronavilkku's language in the Settings app.";
 
@@ -140,7 +140,7 @@
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Suosittelemme, että otat yhteyttä terveydenhuoltoon oirearvion kautta, koska se helpottaa terveydenhuollon ammattilaisten tekemää työtä ja säästää sinulta vaivaa asian käsittelyssä.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "Oirearvion tekemiseen kuluu noin 5–10 minuuttia. Alle 16-vuotiaiden pitää ottaa yhteyttä terveydenhuoltoon puhelimitse.";
 "MunicipalityContactInfoViewController.Text.ContactInfoTitle" = "Tai ota yhteyttä kuntasi terveydenhuoltoon muilla tavoin:";
-"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin, jos sinulla ilmenee yksikin näistä koronavirustautiin sopivista oireista:";
+"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Jos sinulla ilmenee yksikin näistä koronavirustautiin sopivista oireista, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin:";
 "MunicipalityContactInfoViewController.Text.SymptomsText" = "- haju- tai makuaistin muutos\n- hengitysvaikeus\n- yskä, kurkkukipu tai nuha\n- kuume\n- päänsärky tai lihaskipuja\n- ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
 
 // MARK: SelectMunicipalityViewController
