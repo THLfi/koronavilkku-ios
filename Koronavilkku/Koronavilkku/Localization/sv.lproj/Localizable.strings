@@ -17,7 +17,7 @@
 // MARK: MainViewController
 "MainViewController.Text.ProtectionButtonTitle" = "Skydda dig mot smitta";
 "MainViewController.Text.ProtectionButtonURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/smitta-och-skydd-coronaviruset";
-"MainViewController.Text.SituationButtonTitle" = "Virusläget i Finland";
+"MainViewController.Text.SituationButtonTitle" = "Coronaläget i Finland";
 "MainViewController.Text.SituationButtonURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/lagesoversikt-om-coronaviruset";
 
 // MARK: StatusHeaderView
@@ -27,7 +27,7 @@
 "StatusHeaderView.Text.BodyEnabled" = "Appen fungerar även om du stänger den.";
 "StatusHeaderView.Text.BodyDisabled" = "Koppla på exponerings\U00ADmeddelandena på nytt.";
 "StatusHeaderView.Text.BodyBTOff" = "Koppla på Bluetooth.";
-"StatusHeaderView.Text.BodyLocked" = "Tack för att du meddelade om din smitta. Appen samlar inte längre någon information från andra personer du träffat. Krya på dig!";
+"StatusHeaderView.Text.BodyLocked" = "Tack för att du meddelade om din smitta. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
 "StatusHeaderView.Text.EnableButton" = "Koppla på";
 
 // MARK: ExposuresElement
@@ -47,18 +47,18 @@
 // MARK: ExposuresViewWrapper
 "ExposuresViewWrapper.HasExposureText.Heading" = "Du har under de senaste 14 dygnen varit nära en person som meddelat om coronasmitta via Coronablinkern.";
 "ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Kontakta hälsovården";
-"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Information om eventuell exponering förmedlas till hälso- och sjukvården endast om du själv tar kontakt.";
+"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Information om en eventuell exponering förmedlas till hälsovården endast om du själv tar kontakt.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ta kontakt";
-"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Iaktta dessa anvisningar noggrant i två veckors tid:";
-"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Ta så snabbt som möjligt kontakt med hälso- och sjukvården i din kommun och ta ett test, även om du bara har ett av dessa symtom som passar in på coronavirusinfektionen:";
-"ExposuresViewWrapper.HasExposureText.InstructionsSymptomsText" = "- nedsatt lukt- och smaksinne\n\t- andningssvårighet\n\t- hosta, halsont eller snuva\n\t- feber\n\t- huvudvärk eller muskelvärk\n\t- diarré eller magont utan annan uppenbar orsak.";
-"ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Undvik att träffa människor.";
+"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Följ dessa anvisningar noggrant i två veckors tid:";
+"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Om du har ens ett av följande symtom, ta så snabbt som möjligt kontakt med hälsovården i din kommun för att bli testad för coronavirus:";
+"ExposuresViewWrapper.HasExposureText.InstructionsSymptomsText" = "- nedsatt lukt- och smaksinne\n\t- andningssvårigheter\n\t- hosta, halsont eller snuva\n\t- feber\n\t- huvudvärk eller muskelvärk\n\t- diarré eller magont utan annan uppenbar orsak.";
+"ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Undvik att träffa andra människor.";
 "ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Var noggrann med din handhygien.";
-"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Undvik offentliga platser och kollektivtrafik. Om du är tvungen att vistas på offentliga platser ska du iaktta ett avstånd på minst två meter till andra människor. Om du inte kan hålla tillräckligt långt avstånd ska du använda ansiktsmask.";
-"ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "Låt en annan person sköta dina matinköp och andra ärenden utanför hemmet, om möjligt.";
-"ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "Om du hostar eller nyser ska du skydda din mun och näsa med en engångsnäsduk. Kasta den använda näsduken i soporna och tvätta dina händer med tvål och vatten eller använd handdesinficeringsmedel. Om du inte har en näsduk ska du hosta och nysa i ärmen.";
+"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Undvik offentliga platser och kollektivtrafik. Om du är tvungen att vistas på offentliga platser ska du iaktta ett avstånd på minst två meter till andra människor. Om du inte kan hålla tillräckligt långt avstånd använd ansiktsmask.";
+"ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "Låt en annan person handla mat och sköta andra ärenden utanför hemmet, om möjligt.";
+"ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "Om du hostar eller nyser ska du skydda din mun och näsa med en engångsnäsduk. Kasta den använda näsduken i soporna och tvätta dina händer med tvål och vatten eller använd handdesinfektionsmedel. Om du inte har någon näsduk ska du hosta och nysa i ärmen.";
 "ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Arbeta på distans, om möjligt.";
-"ExposuresViewWrapper.HasExposureText.ExposureDisclaimer" = "Bedömningen om exponeringen bygger på den information om möten som Coronablinkern har samlat in under de senaste 14 dygnen. Coronablinkern ger inte en exakt bedömning av hur kraftig smittofaran är.";
+"ExposuresViewWrapper.HasExposureText.ExposureDisclaimer" = "Bedömningen om exponeringen bygger på den information om möten som Coronablinkern har samlat in under de senaste 14 dygnen. Coronablinkern ger ingen exakt bedömning av hur kraftig smittofaran är.";
 
 "ExposuresViewWrapper.NoExposuresText.Heading" = "Ingen exponering har upptäckts";
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Coronablinkern har inte observerat någon exponering för coronaviruset under de senaste 14 dagarna.";
@@ -68,30 +68,30 @@
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Senast granskad: %@";
 
 // MARK: ReportInfectionViewController
-"ReportInfectionViewController.Text.LockedTitle" = "Du har redan meddelat att du blivit smittad";
-"ReportInfectionViewController.Text.LockedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Appen är nu bortkopplad och samlar inte längre in information om personer du träffar. Krya på dig!";
-"ReportInfectionViewController.Text.DisabledText" = "Exponerings\U00ADmeddelandena ska vara påkopplade för att du ska kunna meddela att du bär smitta. Gå tillbaka till hemsidan där du kan koppla på dem.";
+"ReportInfectionViewController.Text.LockedTitle" = "Du har redan meddelat om din smitta";
+"ReportInfectionViewController.Text.LockedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
+"ReportInfectionViewController.Text.DisabledText" = "Exponerings\U00ADmeddelandena måste vara påkopplade för att du ska kunna meddela att du har blivit smittad. Gå tillbaka till hemsidan där du kan koppla på dem.";
 "ReportInfectionViewController.Text.ReportTitle" = "Meddela om din smitta";
-"ReportInfectionViewController.Text.ReportText" = "Om du har testats och konstaterats ha coronavirusinfektion får du en startkod från hälso- och sjukvården eller med ett textmeddelande från THL. Med startkoden kan du anonymt förmedla information om din smitta.\n\nAnge startkoden med den telefon som du vanligtvis har med dig.";
+"ReportInfectionViewController.Text.ReportText" = "Om du har testats och konstaterats ha coronavirusinfektion får du en startkod från hälsovården eller i ett textmeddelande från THL. Med startkoden kan du anonymt förmedla information om din smitta.\n\nAnge startkoden i den telefon som du vanligtvis har med dig.";
 "ReportInfectionViewController.Text.ReportButton" = "Ange startkod";
 "ReportInfectionViewController.Text.ReportItemPrivacy" = "Det är inte möjligt att identifiera dig med hjälp av startkoden.";
-"ReportInfectionViewController.Text.ReportItemNotify" = "Informationen förmedlas till de användare som har varit i din närhet vid den sannolika tidpunkten för virusexponeringen.";
-"ReportInfectionViewController.Text.ReportItemGuide" = "Informationen uppmanar mottagarna att undvika kontakter, att i tid lägga märke till symtom som passar in på infektionen och att vid behov ta ett test. På det här sättet kan smittospridning undvikas.";
+"ReportInfectionViewController.Text.ReportItemNotify" = "Informationen förmedlas till de användare som har varit i din närhet i perioden som du sannolikt har varit smittsam.";
+"ReportInfectionViewController.Text.ReportItemGuide" = "Informationen uppmanar mottagarna att undvika kontakter, att i tid lägga märke till symtom som passar in på infektionen och att vid behov söka sig till test. På det här sättet kan smittospridning begränsas.";
 
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Ange din startkod";
-"PublishTokensViewController.Text.ButtonSubmit" = "Meddela om smitta";
+"PublishTokensViewController.Text.ButtonSubmit" = "Meddela om din smitta";
 "PublishTokensViewController.Text.AdditionalText" = "Det är inte möjligt att identifiera dig med hjälp av startkoden.";
-"PublishTokensViewController.Text.ErrorWrongPublishToken" = "Startkoden är ogiltig eller inte i kraft. Kontrollera att du har angett koden korrekt.";
+"PublishTokensViewController.Text.ErrorWrongPublishToken" = "Startkoden är felaktig eller har gått ut. Kontrollera att du har angett koden korrekt.";
 "PublishTokensViewController.Text.ErrorNetwork" = "Det gick inte att meddela om din smitta eftersom servern inte kunde nås. Försök igen om ett ögonblick.";
 "PublishTokensViewController.Text.FinishedTitle" = "Tack för ditt meddelande";
-"PublishTokensViewController.Text.FinishedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Appen är nu bortkopplad och samlar inte längre in information om personer du träffar. Krya på dig!";
+"PublishTokensViewController.Text.FinishedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Appen är nu låst. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
 "PublishTokensViewController.Text.FinishedButton" = "OK";
 
 // MARK: SymptomsViewController
-"SymptomsViewController.Text.Heading" = "Bedömning av coronasymptom";
-"SymptomsViewController.Text.Body" = "Gör en bedömning av dina symtom i Omaolo, om du misstänker att du smittats av coronaviruset. Du får ytterligare anvisningar på basen av dina svar. Det räcker cirka 5-10 minuter att fylla i bedömningen.";
-"SymptomsViewController.Text.LinkTitle" = "Gör en bedömning av dina symptom i tjänsten Omaolo";
+"SymptomsViewController.Text.Heading" = "Bedömning av coronasymtom";
+"SymptomsViewController.Text.Body" = "Gör en bedömning av dina symtom i Omaolo, om du misstänker att du smittats av coronaviruset. Du får anvisningar på basen av dina svar. Det tar cirka 5-10 minuter att fylla i bedömningen.";
+"SymptomsViewController.Text.LinkTitle" = "Gör en bedömning av dina symtom i tjänsten Omaolo";
 "SymptomsViewController.Text.LinkName" = "omaolo.fi";
 "SymptomsViewController.Text.LinkURL" = "https://www.omaolo.fi/palvelut/oirearviot/649?lang=sv";
 
@@ -101,6 +101,7 @@
 "SettingsViewController.Text.StatusOn" = "I bruk";
 "SettingsViewController.Text.StatusOff" = "Ur bruk";
 "SettingsViewController.Text.StatusLocked" = "Låst";
+"SettingsViewController.Text.ChangeLanguage" = "Byt appens språk";
 "SettingsViewController.Text.HowItWorksTitle" = "Så fungerar Coronablinkern";
 "SettingsViewController.Text.SettingsAboutTitle" = "Info om appen";
 "SettingsViewController.Text.FAQLinkTitle" = "Vanliga frågor";
@@ -115,14 +116,20 @@
 "SettingsViewController.Text.OpenSourceLicenses" = "Licenser för öppen källkod";
 "SettingsViewController.Text.AppInfoWithVersion" = "Coronablinkern %@";
 
+"ChangeLanguageViewController.Text.Title" = "Byt appens språk";
+"ChangeLanguageViewController.Text.Message" = "Du kan byta Coronablinkerns språk i telefonens Inställningar.";
+"ChangeLanguageViewController.Text.ButtonTitle" = "Byt språk i Inställningar";
+"ChangeLanguageViewController.Text.UniversalTitle" = "Change app language";
+"ChangeLanguageViewController.Text.UniversalMessage" = "You can change Koronavilkku's language in the Settings app.";
+
 "LicenseListViewController.Text.Title" = "Licenser för öppen källkod";
 
 // MARK: LinkLanguageViewController
 "LinkLanguageViewController.Text.Title" = "Välj kontaktspråk";
-"LinkLanguageViewController.Text.SymptomsAssesmentSubtitle" = "Symtombedömning i Omaolo";
-"LinkLanguageViewController.Text.SymptomsAssesmentText" = "Du kan göra symtombedömningen på nedanstående språk. Välj språk. Efter detta överförs du till nättjänsten Omaolo.fi. Det räcker cirka 5–10 minuter att göra en symtombedömning.";
-"LinkLanguageViewController.Text.ContactRequestSubtitle" = "Lämna en begäran att hälsovården kontaktar dig";
-"LinkLanguageViewController.Text.ContactRequestText" = "Om du är symtomfri, kan du skicka en begäran till nättjänsten Omaolo.fi att du vill bli kontaktad. Välj kontaktspråk. Efter det här överförs du till nättjänsten Omaolo.fi.";
+"LinkLanguageViewController.Text.SymptomsAssesmentSubtitle" = "Symtombedömning på Omaolo";
+"LinkLanguageViewController.Text.SymptomsAssesmentText" = "Du kan göra symtombedömningen på nedanstående språk. Välj språk. Efter detta hänvisas du till nättjänsten Omaolo.fi. Det tar cirka 5–10 minuter att göra en symtombedömning.";
+"LinkLanguageViewController.Text.ContactRequestSubtitle" = "Lämna en kontaktförfrågan till hälsovården";
+"LinkLanguageViewController.Text.ContactRequestText" = "Om du är symtomfri, kan du skicka ett meddelande via nättjänsten Omaolo.fi att du vill bli kontaktad. Välj kontaktspråk. Efter det här hänvisas du till nättjänsten Omaolo.fi.";
 "LinkLanguageViewController.Text.Finnish" = "Suomi";
 "LinkLanguageViewController.Text.Swedish" = "Svenska";
 "LinkLanguageViewController.Text.English" = "English";
@@ -130,57 +137,57 @@
 // MARK: MunicipalityContactInfoViewController
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentTitle" = "Gör en symtombedömning";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentButton" = "Gör en symtombedömning";
-"MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Vi rekommenderar att du kontaktar hälso- och sjukvården via Omaolo symtombedömningen eftersom det underlättar hälso- och sjukvårdens arbetsbörda och är lätt för dig att utföra.";
-"MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "Det räcker cirka 5–10 minuter att göra en symtombedömning. Personer under 16 år ska kontakta hälso- och sjukvården per telefon.";
-"MunicipalityContactInfoViewController.Text.ContactInfoTitle" = "Eller kontakta hälso- och sjukvården i din kommun på följande sätt:";
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Vi rekommenderar att du kontaktar hälsovården via Omaolos symtombedömning eftersom det underlättar hälsovårdens arbete och är lätt för dig att göra på nätet.";
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "Det tar cirka 5–10 minuter att göra en symtombedömning. Personer under 16 år ska kontakta hälsovården per telefon.";
+"MunicipalityContactInfoViewController.Text.ContactInfoTitle" = "Eller kontakta hälsovården i din kommun på följande sätt:";
 "MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Ta genast kontakt, om du har symtom som passar in på coronavirusinfektionen:";
-"MunicipalityContactInfoViewController.Text.SymptomsText" = "- nedsatt lukt- och smaksinne\n- andningssvårighet\n- hosta, halsont eller snuva\n- feber\n- huvudvärk eller muskelvärk\n- diarré eller magont utan annan uppenbar orsak.";
+"MunicipalityContactInfoViewController.Text.SymptomsText" = "- nedsatt lukt- och smaksinne\n- andningssvårigheter\n- hosta, halsont eller snuva\n- feber\n- huvudvärk eller muskelvärk\n- diarré eller magont utan annan uppenbar orsak.";
 
 // MARK: SelectMunicipalityViewController
 
 "SelectMunicipalityViewController.Text.Title" = "Välj hemkommun";
 "SelectMunicipalityViewController.Text.SearchPlaceholder" = "Sök";
-"SelectMunicipalityViewController.Text.ErrorTitle" = "Det gick inte att ladda kommunuppgifterna.";
-"SelectMunicipalityViewController.Text.ErrorMessage" = "Kontrollera anslutningen och försök på nytt.";
+"SelectMunicipalityViewController.Text.ErrorTitle" = "Det gick inte att ladda kommunuppgifterna";
+"SelectMunicipalityViewController.Text.ErrorMessage" = "Kontrollera din nätverksanslutning och försök på nytt.";
 "SelectMunicipalityViewController.Text.ErrorButton" = "OK";
 
 "HeaderContinueByAcceptingExposureLogging" = "Fortsätt aktiveringen genom att välja \"Tillåt\"";
 
-"ContactRequestItemTitle" = "Lämna en begäran att hälsovården kontaktar dig";
-"ContactRequestItemInfo" = "Avsätt ändast för 16 år fyllda, symptomfria personer";
+"ContactRequestItemTitle" = "Lämna en kontaktförfrågan till hälsovården";
+"ContactRequestItemInfo" = "Avsett endast för 16 år fyllda, symtomfria personer";
 
 "OnboardingIntroTitle" = "Tack för att du laddade ner Coronablinkern";
 "OnboardingIntroText" = "Coronablinkern är en applikation (app) som Institutet för hälsa och välfärd ansvarar för. Med appen strävar man till att förebygga spridningen av coronaviruset. Appen skyddar effektivt din identitet.";
 "OnboardingConceptTitle" = "Så här fungerar appen";
-"OnboardingConceptText" = "Coronablinkern följer med de telefoner i din närhet, på vilka appen är installerad. Om en person som du tidigare mött meddelar om coronavirusinfektion via Coronablinkern får du ett meddelande om at du blivit utsatt (exponerad) för smitta. Om ett test visar att du bär smitta, kan du meddela om det här anonymt med appen.";
+"OnboardingConceptText" = "Coronablinkern följer med de telefoner i din närhet, på vilka appen är installerad. Om en person som du tidigare mött meddelar om coronavirusinfektion via Coronablinkern får du ett meddelande om att du blivit utsatt (exponerad) för smitta. Om du med ett coronavirustest konstateras ha fått smittan, kan du meddela om det här anonymt med appen.";
 "OnboardingYourPrivacyIsProtected" = "Din identitet är skyddad";
 "OnboardingHowYourPrivacyIsProtected" = "Coronablinkern skyddar dina personuppgifter och din identitet på flera sätt.";
 "OnboardingPrivacyTitle" = "Personuppgifter";
-"OnboardingPrivacyText" = "Coronablinkern lagrar inte ditt namn, din födelsetid eller dina kontaktuppgifter. Den kan inte avslöja din identitet eller identiteten på personer du möter.\n\nAppen samlar inte in platsuppgifter.";
+"OnboardingPrivacyText" = "Coronablinkern lagrar inte ditt namn, ditt födelsedatum eller dina kontaktuppgifter. Den kan inte avslöja din identitet eller identiteten på personer du möter.";
 "OnboardingUsageTitle" = "Användningsuppgifter som gäller appen";
-"OnboardingUsageText" = "Appen meddelar till en server att appen är påkopplad. Om du kontaktar hälso- och sjukvården via appen, förmedlar den dessutom information om huruvida du eventuellt blivit utsatt för viruset.\n\nAll datatrafik mellan Coronablinkern och servern är sekretessbelagda.\n\nInformationen lagras anonymt på en server som är belägen i Finland. Servern underhålls av myndigheter inom den offentliga förvaltningen. Uppgifterna avlägsnas då de inte längre behövs. Uppgifterna avlägsnas senast 31.3.2021.";
+"OnboardingUsageText" = "Appen meddelar till en server att den är påkopplad. Om du kontaktar hälsovården via appen, förmedlar den dessutom information om att du eventuellt blivit utsatt för viruset.\n\nAll datatrafik mellan Coronablinkern och servern är krypterad.\n\nInformationen lagras anonymt på en server som är belägen i Finland. Servern underhålls av myndigheter inom den offentliga förvaltningen. Uppgifterna raderas då de inte längre behövs. Uppgifterna raderas senast 31.3.2021.";
 "OnboardingVoluntaryTitle" = "Appen är inte obligatorisk";
-"OnboardingVoluntaryText" = "Det är frivilligt att använda Coronablinkern. Du kan när som helst sluta använda appen genom att avlägsna den från telefonen.";
+"OnboardingVoluntaryText" = "Det är frivilligt att använda Coronablinkern. Du kan när som helst sluta använda appen genom att avlägsna den från din telefon.";
 "OnboardingAcceptTerms" = "Jag har läst och godkänner användningsvillkoren för tjänsten.";
 "OnboardingReadTerms" = "Läs användningsvillkoren";
 "OnbardingVoluntaryUse" = "Jag börjar frivilligt använda appen.";
-"OnboardingDone" = "Idrifttagningen klar!";
+"OnboardingDone" = "Klar att användas!";
 
 "HomeLogoLinkURL" = "https://thl.fi/sv/web/thlfi-sv";
 "HomeLogoLinkLabel" = "Institutet för hälsa och välfärd";
 
 "GuideTitle" = "Om Coronablinkern";
-"GuideText" = "Coronablinkern är en applikation (app) som Institutet för hälsa och välfärd ansvarar för. Appen analyserar huruvida du eventuellt har blivit utsatt för smitta. Om du har konstaterats ha coronavirusinfektion, kan du meddela om det här anonymt via appen. Appen skyddar effektivt din identitet.";
+"GuideText" = "Coronablinkern är en applikation (app) som Institutet för hälsa och välfärd ansvarar för. Appen analyserar om du eventuellt har blivit utsatt för coronaviruset. Om du har konstaterats ha en coronavirusinfektion, kan du meddela om det här anonymt via appen. Appen skyddar effektivt din identitet.";
 "GuideSeedTitle" = "Varje telefon får en slumpmässig identifikationskod";
 "GuideSeedText" = "Appen lottar ut en identifikationskod till varje telefon. Koden är slumpmässig och byts ut flera gånger per timme så att din identitet inte kan avslöjas. Identifikationskoden innehåller inga uppgifter om dig eller din telefon.";
-"GuideExchangeTitle" = "Telefonerna skickar åt varandra identifikationskoder";
-"GuideExchangeText" = "När du är nära en annan person som använder Coronablinkern delar era telefoner ut sina identifikationskoder till varandra via Bluetooth. På det här sättet kan appen följa med telefoner som bärs av mötande personer. Appen lagrar inte användarnas identitet eller plats.";
+"GuideExchangeTitle" = "Telefonerna skickar identifikationskoder åt varandra";
+"GuideExchangeText" = "När du är nära en annan person som använder Coronablinkern delar era telefoner ut sina identifikationskoder till varandra via Bluetooth. På det här sättet kan appen följa med telefoner som bärs av andra personer. Appen lagrar inte användarnas identitet eller plats.";
 "GuideCompareTitle" = "Appen jämför användarnas koder";
-"GuideCompareText" = "Coronablinkern laddar ner flera gånger per dag en förteckning över koder som skickats från smittade personers telefoner med motsvarande app. Coronablinkern jämför de här med de koder som din telefon har samlat in från andra användare. På det här sättet kan appen avgöra om du har varit i närheten av en person som har coronavirusinfektion.";
+"GuideCompareText" = "Coronablinkern laddar flera gånger per dag ner en förteckning över koder som skickats från smittade personers telefoner med samma app. Coronablinkern jämför dessa med de koder som din telefon har samlat in från andra användare. På det här sättet kan appen avgöra om du har varit i närheten av en person som har coronavirusinfektion.";
 "GuideNotificationTitle" = "Du får ett meddelande om eventuell virusexponering";
-"GuideNotificationText" = "Om koderna som din telefon samlat in motsvarar koderna som samlats in från personer som bär på smitta får du ett meddelande om eventuell exponering. I det här fallet kan du meddela dina kontaktuppgifter till hälso- och sjukvården som ger dig närmare anvisningar.\n\nOm du misstänker att du smittats med coronaviruset kan du när som helst göra en symtombedömning i tjänsten Omaolo.";
+"GuideNotificationText" = "Om koderna som din telefon samlat in motsvarar koderna som samlats in från personer som bär på smitta får du ett meddelande om eventuell exponering. I det här fallet kan du meddela dina kontaktuppgifter till hälsovården som ger dig närmare anvisningar.\n\nOm du misstänker att du smittats med coronaviruset kan du när som helst göra en symtombedömning i tjänsten Omaolo.";
 "GuideDiagnosisTitle" = "Om du konstateras ha coronavirusinfektion";
-"GuideDiagnosisText" = "Om du konstaterats ha coronavirusinfektion med ett coronavirustest, får du en startkod från hälso- och sjukvården. Med hjälp av koden kan du, om du vill, meddela via appen att du bär på smitta. Om du delar ut informationen, skickar appen identifikationskoder från din telefon till servern. Inga person- eller platsuppgifter skickas tillsammans med identifikationskoderna, så du förblir anonym.";
+"GuideDiagnosisText" = "Om du konstaterats ha en coronavirusinfektion med ett coronavirustest, får du en startkod från hälsovården. Med hjälp av koden kan du, om du vill, meddela via appen om att du har fått smittan. Om du delar informationen, skickar appen identifikationskoder från din telefon till servern. Inga person- eller platsuppgifter skickas tillsammans med identifikationskoderna, så du förblir anonym.";
 "GuidePrivacyTitle" = "Såhär skyddas din identitet";
 "GuidePrivacyText" = "Din identitet skyddas på följande sätt:";
 "GuidePrivacyItem1" = "Informationen om möten som appen samlar in lagras endast på din telefon. De lagrade uppgifterna avlägsnas från din telefon senast efter 21 dagar eller om du avlägsnar appen från din telefon.";
@@ -188,21 +195,21 @@
 "GuidePrivacyItem3" = "Appen kan inte lagra var du har befunnit dig med din telefon.";
 "GuideButtonBack" = "Tillbaka";
 
-"EnableTitle" = "COVID-19-exponeringsloggen och -meddelandena är bortkopplade";
-"EnableText" = "Eftersom exponerings\U00ADmeddelanden är bortkopplade följer Coronablinkern inte med telefoner i din närhet.";
-"EnableAttentionText" = "För att trygga din egen och dina närståendes hälsa är det tillrådligt att du kopplar på exponerings\U00ADmeddelandena genast då det är möjligt.";
-"EnableButtonTitle" = "Koppla på COVID-19-exponeringsloggen och -meddelandena";
+"EnableTitle" = "Exponerings\U00ADmeddelandena för COVID-19 är bortkopplade";
+"EnableText" = "Eftersom exponerings\U00ADmeddelandena är bortkopplade följer Coronablinkern inte med telefoner i din närhet.";
+"EnableAttentionText" = "För att trygga din egen och dina närståendes hälsa rekommenderas att du kopplar på exponerings\U00ADmeddelandena så fort det är möjligt.";
+"EnableButtonTitle" = "Koppla på COVID-19-exponerings\U00ADmeddelandena";
 "EnableButtonLabel" = "Koppla på";
 
-"DisableTitle" = "COVID-19-exponeringsloggen och -meddelandena är påkopplade";
+"DisableTitle" = "COVID-19-exponerings\U00ADmeddelandena är påkopplade";
 "DisableText" = "Måste du koppla bort exponerings\U00ADmeddelandena?";
 "DisableInfo" = "I vissa situationer kan det vara nödvändigt att tillfälligt koppla bort exponerings\U00ADmeddelanden. Det här kan vara nödvändigt till exempel om du jobbar inom hälso- och sjukvården och inte vill använda appen på din arbetsplats.\n\nOm du kopplar bort exponerings\U00ADmeddelandena fungerar inte appen.";
-"DisableAttentionText" = "För att trygga din egen och dina närståendes hälsa uppmanas du att inte koppla bort exponerings\U00ADmeddelandena om det inte är absolut nödvändigt. Du kommer väl ihåg att koppla på dem genast då det är möjligt.";
-"DisableButtonTitle" = "Koppla bort COVID-19-exponeringsloggen och -meddelandena";
+"DisableAttentionText" = "För att trygga din egen och dina närståendes hälsa rekommenderas du att inte koppla bort exponerings\U00ADmeddelandena om det inte är absolut nödvändigt. Du kommer väl ihåg att koppla på dem genast då det är möjligt?";
+"DisableButtonTitle" = "Koppla bort COVID-19-exponerings\U00ADmeddelandena";
 "DisableButtonLabel" = "Koppla bort";
 
-"DisableConfirmTitle" = "Vill du säkert koppla bort COVID-19-exponeringsloggen och -meddelandena?";
-"DisableConfirmText" = "Om du kopplar bort exponerings\U00ADmeddelandena, kan inte Coronablinkern meddela dig om eventuell exponering för coronaviruset.";
+"DisableConfirmTitle" = "Är du säker på att du vill koppla bort COVID-19-exponerings\U00ADmeddelandena?";
+"DisableConfirmText" = "Om du kopplar bort exponerings\U00ADmeddelandena kan inte Coronablinkern meddela dig om eventuell exponering för coronaviruset.";
 "DisableConfirmButton" = "Koppla bort";
 "DisableCancelButton" = "Avbryt";
 
@@ -212,5 +219,6 @@
 "ENBlockedTitle" = "Exponerings\U00ADmeddelandena är bortkopplade";
 "ENBlockedText" = "Coronablinkern fungerar endast om du kopplar på exponerings\U00ADmeddelandena i telefonens inställningar. Gör så här för att koppla på exponerings\U00ADmeddelandena:";
 "ENBlockedSteps" = "1. Tryck på Inställningsknappen nedan.\n\n2. Koppla på COVID-19-exponeringsloggen och -meddelandena.";
+"ENBlockedStepsNew" = "1. Tryck på Inställningsknappen nedan.\n\n2. Öppna Exponeringsnotiser.\n\n3. Koppla på Dela exponeringsinformation.\n\n4. Ställ in Institutet för hälsa och välfärd som aktiv region.";
 
 "OpenSettingsButton" = "Öppna Inställningar";

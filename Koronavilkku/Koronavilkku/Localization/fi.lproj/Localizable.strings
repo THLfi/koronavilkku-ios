@@ -50,7 +50,7 @@
 "ExposuresViewWrapper.HasExposureText.ContactCardText" = "Tieto mahdollisesta altistumisestasi välittyy terveydenhuoltoon vain, jos otat itse yhteyttä.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ota yhteyttä";
 "ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Noudata näitä ohjeita huolellisesti seuraavan kahden viikon ajan:";
-"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin, jos sinulla ilmenee yksikin näistä koronavirustautiin sopivista oireista:";
+"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Jos sinulla ilmenee yksikin näistä koronavirustautiin sopivista oireista, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin:";
 "ExposuresViewWrapper.HasExposureText.InstructionsSymptomsText" = "- haju- tai makuaistin muutos\n\t- hengitysvaikeus\n\t- yskä, kurkkukipu tai nuha\n\t- kuume\n\t- päänsärky tai lihaskipuja\n\t- ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
 "ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Vältä tapaamasta muita ihmisiä.";
 "ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Huolehdi käsihygieniastasi.";
@@ -101,6 +101,7 @@
 "SettingsViewController.Text.StatusOn" = "Käytössä";
 "SettingsViewController.Text.StatusOff" = "Ei käytössä";
 "SettingsViewController.Text.StatusLocked" = "Lukittu";
+"SettingsViewController.Text.ChangeLanguage" = "Vaihda sovelluksen kieli";
 "SettingsViewController.Text.HowItWorksTitle" = "Näin Koronavilkku toimii";
 "SettingsViewController.Text.SettingsAboutTitle" = "Tietoa sovelluksesta";
 "SettingsViewController.Text.FAQLinkTitle" = "Usein kysyttyä";
@@ -114,6 +115,12 @@
 "SettingsViewController.Text.PrivacyLinkURL" = "https://koronavilkku.fi/tietosuojaseloste/";
 "SettingsViewController.Text.OpenSourceLicenses" = "Avoimen lähdekoodin lisenssit";
 "SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@";
+
+"ChangeLanguageViewController.Text.Title" = "Vaihda sovelluksen kieli";
+"ChangeLanguageViewController.Text.Message" = "Voit vaihtaa Koronavilkun kielen puhelimesi asetuksissa.";
+"ChangeLanguageViewController.Text.ButtonTitle" = "Vaihda sovelluksen kieli";
+"ChangeLanguageViewController.Text.UniversalTitle" = "Change app language";
+"ChangeLanguageViewController.Text.UniversalMessage" = "You can change Koronavilkku's language in the Settings app.";
 
 "LicenseListViewController.Text.Title" = "Avoimen lähdekoodin lisenssit";
 
@@ -133,7 +140,7 @@
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Suosittelemme, että otat yhteyttä terveydenhuoltoon oirearvion kautta, koska se helpottaa terveydenhuollon ammattilaisten tekemää työtä ja säästää sinulta vaivaa asian käsittelyssä.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "Oirearvion tekemiseen kuluu noin 5–10 minuuttia. Alle 16-vuotiaiden pitää ottaa yhteyttä terveydenhuoltoon puhelimitse.";
 "MunicipalityContactInfoViewController.Text.ContactInfoTitle" = "Tai ota yhteyttä kuntasi terveydenhuoltoon muilla tavoin:";
-"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin, jos sinulla ilmenee yksikin näistä koronavirustautiin sopivista oireista:";
+"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Jos sinulla ilmenee yksikin näistä koronavirustautiin sopivista oireista, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin:";
 "MunicipalityContactInfoViewController.Text.SymptomsText" = "- haju- tai makuaistin muutos\n- hengitysvaikeus\n- yskä, kurkkukipu tai nuha\n- kuume\n- päänsärky tai lihaskipuja\n- ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
 
 // MARK: SelectMunicipalityViewController
@@ -212,5 +219,6 @@
 "ENBlockedTitle" = "Altistumis­ilmoitukset eivät ole käytössä";
 "ENBlockedText" = "Koronavilkku ei toimi, jos et ota käyttöön puhelimesi käyttöjärjestelmän altistumisilmoituksia. Näin otat ne käyttöön:";
 "ENBlockedSteps" = "1. Avaa puhelimesi asetukset alla olevasta painikkeesta.\n\n2. Laita COVID-19-altistusloki ja -ilmoitukset päälle.";
+"ENBlockedStepsNew" = "1. Avaa puhelimesi asetukset alla olevasta painikkeesta.\n\n2. Valitse Altistusilmoitukset.\n\n3. Laita päälle Jaa altistustiedot.\n\n4. Aseta aktiiviseksi alueeksi Terveyden ja hyvinvoinnin laitos.";
 
 "OpenSettingsButton" = "Avaa asetukset";

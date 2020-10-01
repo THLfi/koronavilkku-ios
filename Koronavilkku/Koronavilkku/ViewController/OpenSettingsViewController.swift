@@ -122,7 +122,6 @@ class OpenSettingsViewController: UIViewController {
     }
 
     static func create(type: OpenSettingsType, userDismissable: Bool = true, dismisser: @escaping () -> Void) -> UIViewController {
-        print("Creating OpenSettingsViewController of type \(type)!")
         let content: OpenSettingsContent
         let dismissCheck: (RadarStatus) -> Bool
         
@@ -134,9 +133,15 @@ class OpenSettingsViewController: UIViewController {
             dismissCheck = { status in status != .btOff }
 
         case .exposureNotifications:
+            var steps = Translation.ENBlockedSteps
+            
+            if #available(iOS 13.7, *) {
+                steps = Translation.ENBlockedStepsNew
+            }
+            
             content = OpenSettingsContent(title: Translation.ENBlockedTitle,
                                           text: Translation.ENBlockedText,
-                                          steps: Translation.ENBlockedSteps)
+                                          steps: steps)
             dismissCheck = { status in status != .apiDisabled }
         }
 

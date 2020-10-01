@@ -18,10 +18,14 @@ jobs:
         uses: actions/cache@v2
         with:
           path: DerivedData
-          key: koronavilkku-ios-build-${{ hashFiles('**/*.pbxproj') }}
-          restore-keys: koronavilkku-ios-build
+          key: koronavilkku-ios-build1-${{ hashFiles('**/*.pbxproj') }}
+          restore-keys: koronavilkku-ios-build1
       - name: Build app
-        run: xcodebuild build -workspace Koronavilkku.xcworkspace -scheme Koronavilkku -derivedDataPath DerivedData -configuration Debug CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_12.app/Contents/Developer
+        run: |
+          xcodebuild -version
+          xcodebuild build -workspace Koronavilkku.xcworkspace -scheme Koronavilkku -derivedDataPath DerivedData -configuration Debug CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
   dependency-scan:
     needs: [build-app]
     name: Owasp Dependency Scanning
@@ -32,14 +36,14 @@ jobs:
         uses: actions/cache@v2
         with:
           path: DerivedData
-          key: koronavilkku-ios-build
-          restore-keys: koronavilkku-ios-build
+          key: koronavilkku-ios-build1
+          restore-keys: koronavilkku-ios-build1
       - name: Cache vulnerability data cache
         uses: actions/cache@v2
         with:
           path: owasp_dependency_check_data
-          key: ${{ runner.os }}-owasp-dependency-check-data
-          restore-keys: ${{ runner.os }}-owasp-dependency-check-data
+          key: ${{ runner.os }}-owasp-dependency-check-data1
+          restore-keys: ${{ runner.os }}-owasp-dependency-check-data1
       - name: OWASP dependency check
         uses: ./.github/docker-owasp-dependency-check-ios
         with:

@@ -27,10 +27,6 @@ class StepView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var hasAcceptableExtraContent: Bool {
-        return self.extraContent?.first { $0 is AcceptableView } != nil
-    }
-    
     func initUI() {
         self.backgroundColor = UIColor.Greyscale.white
         
