@@ -188,6 +188,7 @@ final class StatusHeaderView: UIView {
                              color: getTitleFontColor())
         
         titleLabel.textAlignment = .center
+        titleLabel.numberOfLines = -1
         container.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(radarContainer.snp.bottom).offset(15)

@@ -122,14 +122,14 @@ class MainViewController: UIViewController {
             make.left.equalToSuperview().offset(21)
             make.width.equalTo(103)
         }
-        
+
         let logoTapper = UITapGestureRecognizer(target: self, action: #selector(logoImageTapped))
         logo.isUserInteractionEnabled = true
         logo.addGestureRecognizer(logoTapper)
         logo.isAccessibilityElement = true
         logo.accessibilityLabel = Translation.HomeLogoLinkLabel.localized
         logo.accessibilityTraits = .link
-        
+
         let infoButton = UIButton(type: .custom)
         infoButton.setTitle(Translation.LinkAppInfo.localized, for: .normal)
         infoButton.setTitleColor(UIColor.Primary.blue, for: .normal)
@@ -141,9 +141,9 @@ class MainViewController: UIViewController {
         infoButton.snp.makeConstraints { make in
             make.right.equalToSuperview().offset(-20)
             make.centerY.equalTo(logo)
-            make.width.equalTo(statistics)
+            make.left.greaterThanOrEqualTo(logo.snp.right).offset(20)
         }
-        
+
         #if !PRODUCTION
         let debugButton = UIButton(type: .custom)
         debugButton.setTitle(Translation.ButtonTestUI.localized, for: .normal)

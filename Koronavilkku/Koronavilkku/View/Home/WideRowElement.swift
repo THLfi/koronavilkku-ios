@@ -43,6 +43,9 @@ class WideRowElement: CardElement {
         // TODO line height - https://stackoverflow.com/a/5513730
         let bodyLabel = UILabel(label: body, font: UIFont.labelTertiary, color: UIColor.Greyscale.black)
         bodyLabel.numberOfLines = 0
+        if #available(iOS 14.0, *) {
+            bodyLabel.lineBreakStrategy = .hangulWordPriority
+        }
         return bodyLabel
     }
     
@@ -131,7 +134,7 @@ final class ExposuresElement: WideRowElement {
         container.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(margin.top)
             make.left.equalToSuperview().offset(margin.left)
-            make.right.equalTo(imageView.snp.left)
+            make.right.equalTo(imageView.snp.left).offset(-20)
             
             if button.isHidden {
                 make.bottom.equalToSuperview().offset(margin.bottom)
@@ -141,7 +144,7 @@ final class ExposuresElement: WideRowElement {
         }
 
         imageView.snp.makeConstraints { make in
-            make.centerY.equalTo(container.snp.centerY)
+            make.top.equalTo(container).offset(4)
             make.right.equalToSuperview().offset(margin.right)
             make.size.equalTo(CGSize(width: 50, height: 50))
         }
