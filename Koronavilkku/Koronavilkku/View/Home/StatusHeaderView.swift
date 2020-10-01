@@ -160,7 +160,7 @@ final class StatusHeaderView: UIView {
         let radarView = getRadarView()
         radarContainer.addSubview(radarView)
         radarView.snp.makeConstraints { make in
-            make.height.centerX.equalToSuperview()
+            make.top.height.centerX.equalToSuperview()
             make.width.equalTo(radarView.snp.height)
         }
     }

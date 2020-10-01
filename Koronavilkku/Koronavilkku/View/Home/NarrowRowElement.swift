@@ -50,7 +50,7 @@ final class NarrowRowElement: CardElement {
             make.top.equalTo(imageView.snp.bottom).offset(8)
             make.leading.equalToSuperview().offset(10)
             make.trailing.equalToSuperview().offset(-10)
-            make.bottom.lessThanOrEqualToSuperview().offset(-14)
+            make.bottom.equalToSuperview().offset(-14)
         }
         
         titleLabel.isAccessibilityElement = false

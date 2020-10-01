@@ -188,35 +188,41 @@ final class SymptomsElement: WideRowElement {
         case Body
     }
     
-    let margin = UIEdgeInsets(top: 30, left: 20, bottom: -20, right: -20)
+    let margin = UIEdgeInsets(top: 20, left: 20, bottom: -20, right: -20)
 
     override func createSubViews() {
         super.createSubViews()
 
         let imageView = UIImageView(image: UIImage(named: "symptoms-cropped")!)
+        let container = UIView()
         let titleView = createTitleLabel(title: Text.Title.localized)
         let bodyView = createBodyLabel(body: Text.Body.localized)
         
-        self.addSubview(titleView)
-        self.addSubview(bodyView)
+        self.addSubview(container)
         self.addSubview(imageView)
+        container.addSubview(titleView)
+        container.addSubview(bodyView)
         
-        titleView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(margin.top)
+        container.snp.makeConstraints { make in
+            make.top.greaterThanOrEqualToSuperview().offset(margin.top)
+            make.bottom.lessThanOrEqualToSuperview().offset(margin.bottom)
+            make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(margin.left)
             make.right.equalTo(imageView.snp.left)
         }
 
+        titleView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+        }
+        
         bodyView.snp.makeConstraints{ make in
             make.top.equalTo(titleView.snp.bottom).offset(10)
-            make.bottom.lessThanOrEqualToSuperview().offset(margin.bottom)
-            make.left.equalToSuperview().offset(margin.left)
-            make.right.equalTo(imageView.snp.left)
+            make.bottom.left.right.equalToSuperview()
         }
         
         imageView.snp.makeConstraints { make in
             make.bottom.right.equalToSuperview()
-            make.top.greaterThanOrEqualToSuperview()
+            make.top.equalToSuperview().priority(.low)
             make.size.equalTo(CGSize(width: 135, height: 110))
             // TODO would look nicer with larger fonts (and big screen) if available height would be utilized -> but it also decreases text area width -> image width needs to restricted, e.g. max 75% of parent area width + image shouldn't have that much empty space on the left.
         }
