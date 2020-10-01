@@ -31,5 +31,5 @@ extension UIColor {
 }
 
 extension CGColor {
-    static let dropShadow = UIColor(red: 0.136, green: 0.295, blue: 0.425, alpha: 0.1).cgColor
+    static let dropShadow = UIColor(red: 0.136, green: 0.295, blue: 0.425, alpha: 1).cgColor
 }

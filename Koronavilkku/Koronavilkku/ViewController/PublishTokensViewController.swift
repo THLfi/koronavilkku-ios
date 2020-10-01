@@ -149,7 +149,7 @@ class PublishTokensViewController: UIViewController {
                                 
         tokenCodeField.backgroundColor = UIColor.Greyscale.white
         tokenCodeField.layer.shadowColor = .dropShadow
-        tokenCodeField.layer.shadowOpacity = 1
+        tokenCodeField.layer.shadowOpacity = 0.1
         tokenCodeField.layer.shadowOffset = CGSize(width: 0, height: 4)
         tokenCodeField.layer.shadowRadius = 14
         tokenCodeField.font = UIFont.coronaCode

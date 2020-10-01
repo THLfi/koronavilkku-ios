@@ -5,8 +5,6 @@ import UIKit
 
 class WideRowElement: CardElement {
     
-    let margin = UIEdgeInsets(top: 20, left: 20, bottom: -20, right: -20)
-    
     let tapped: () -> ()
 
     init(tapped: @escaping () -> () = {}) {
@@ -49,13 +47,23 @@ class WideRowElement: CardElement {
         return bodyLabel
     }
     
-    func createImageView(image: UIImage) -> UIImageView {
-        let view = UIImageView(image: image)
-        view.layer.shadowColor = UIColor.Greyscale.lightGrey.cgColor
-        view.layer.shadowOpacity = 0.3
-        view.layer.shadowOffset = .zero
-        view.layer.shadowRadius = 14
-        return view
+    func createImageView(image: UIImage) -> UIView {
+        let shadowOffset = CGSize(width: 0, height: 4)
+
+        let wrapper = UIView()
+        wrapper.layer.shadowColor = .dropShadow
+        wrapper.layer.shadowOffset = shadowOffset
+        wrapper.layer.shadowOpacity = 0.2
+        wrapper.layer.shadowRadius = 20
+
+        let image = UIImageView(image: image)
+        image.layer.shadowColor = .dropShadow
+        image.layer.shadowOffset = shadowOffset
+        image.layer.shadowOpacity = 0.1
+        image.layer.shadowRadius = 14
+        
+        wrapper.addSubview(image)
+        return wrapper
     }
 }
 
@@ -68,6 +76,7 @@ final class ExposuresElement: WideRowElement {
         case ButtonOpen
     }
     
+    let margin = UIEdgeInsets(top: 24, left: 20, bottom: -20, right: -20)
     var updateTask: AnyCancellable?
     var counter: Int = 0
     
@@ -144,8 +153,8 @@ final class ExposuresElement: WideRowElement {
         }
 
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(container).offset(4)
-            make.right.equalToSuperview().offset(margin.right)
+            make.top.equalTo(container).offset(6)
+            make.right.equalToSuperview().inset(30)
             make.size.equalTo(CGSize(width: 50, height: 50))
         }
 
@@ -179,23 +188,25 @@ final class SymptomsElement: WideRowElement {
         case Body
     }
     
+    let margin = UIEdgeInsets(top: 30, left: 20, bottom: -20, right: -20)
+
     override func createSubViews() {
         super.createSubViews()
 
         let imageView = UIImageView(image: UIImage(named: "symptoms-cropped")!)
         let titleView = createTitleLabel(title: Text.Title.localized)
         let bodyView = createBodyLabel(body: Text.Body.localized)
-
+        
         self.addSubview(titleView)
         self.addSubview(bodyView)
         self.addSubview(imageView)
-
+        
         titleView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(margin.top)
             make.left.equalToSuperview().offset(margin.left)
             make.right.equalTo(imageView.snp.left)
         }
-        
+
         bodyView.snp.makeConstraints{ make in
             make.top.equalTo(titleView.snp.bottom).offset(10)
             make.bottom.lessThanOrEqualToSuperview().offset(margin.bottom)
