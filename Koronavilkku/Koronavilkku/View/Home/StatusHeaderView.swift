@@ -44,7 +44,9 @@ final class RadarAnimation : UIImageView {
         addSubview(animated)
         
         animated.snp.makeConstraints { make in
-            make.center.width.height.equalToSuperview()
+            make.centerX.width.equalToSuperview()
+            make.height.equalTo(snp.width)
+            make.top.equalToSuperview()
         }
         
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation")
@@ -105,7 +107,7 @@ final class StatusHeaderView: UIView {
     var openSettingsHandler: ((_ type: OpenSettingsType) -> Void)? = nil
     
     let verticalPadding = CGFloat(30)
-    let imageHeight = CGFloat(122)
+    let imageHeight = CGFloat(138)
     
     init() {
         super.init(frame: .zero)
@@ -128,14 +130,18 @@ final class StatusHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func adjustSize(by: CGFloat) {
+    func adjustSize(by: CGFloat, topInset: CGFloat) {
+        let extraSpace = (0 - by - topInset) / 2
+        
         self.snp.updateConstraints { make in
             make.top.equalToSuperview().offset(by < 0 ? by : 0)
         }
+        
+        let paddingTop = verticalPadding + topInset
 
         radarContainer.snp.updateConstraints { make in
-            make.top.equalToSuperview().offset(by < 0 ? verticalPadding - by / 2 : verticalPadding)
-            make.height.equalTo(by < 0 ? imageHeight - by / 2 : imageHeight)
+            make.top.equalToSuperview().offset(extraSpace > 0 ? paddingTop + extraSpace : paddingTop)
+            make.height.equalTo(extraSpace > 0 ? imageHeight + extraSpace : imageHeight)
         }
     }
     
@@ -161,7 +167,7 @@ final class StatusHeaderView: UIView {
         radarContainer.addSubview(radarView)
         radarView.snp.makeConstraints { make in
             make.top.height.centerX.equalToSuperview()
-            make.width.equalTo(radarView.snp.height)
+            make.width.equalTo(radarView.snp.height).multipliedBy(118.0 / 138.0)
         }
     }
     
@@ -171,8 +177,8 @@ final class StatusHeaderView: UIView {
         radarContainer = UIView()
         self.addSubview(radarContainer)
         radarContainer.snp.makeConstraints { make in
-            make.left.right.equalToSuperview().inset(30)
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(verticalPadding)
+            make.left.right.equalToSuperview()
             make.height.equalTo(imageHeight)
         }
         
@@ -180,7 +186,9 @@ final class StatusHeaderView: UIView {
         self.addSubview(container)
         
         container.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(UIEdgeInsets(top: 16, left: 20, bottom: 30, right: 20))
+            make.top.equalTo(radarContainer.snp.bottom)
+            make.left.right.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(30)
         }
         
         titleLabel = UILabel(label: getTitleText().localized,
@@ -191,8 +199,7 @@ final class StatusHeaderView: UIView {
         titleLabel.numberOfLines = -1
         container.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(radarContainer.snp.bottom).offset(15)
-            make.left.right.equalToSuperview().inset(10)
+            make.top.left.right.equalToSuperview()
         }
         
         bodyLabel = UILabel(label: getBodyText().localized,
@@ -203,7 +210,7 @@ final class StatusHeaderView: UIView {
         container.addSubview(bodyLabel)
         bodyLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.left.right.equalToSuperview().inset(10)
+            make.left.right.equalToSuperview()
             make.bottom.equalToSuperview().priority(.medium)
         }
         

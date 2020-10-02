@@ -220,7 +220,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        headerView.adjustSize(by: scrollView.contentOffset.y)
+        headerView.adjustSize(by: scrollView.contentOffset.y, topInset: view.safeAreaInsets.top)
     }
 }
 
