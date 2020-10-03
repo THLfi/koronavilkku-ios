@@ -39,6 +39,7 @@ class MainViewController: UIViewController {
         let scrollView = UIScrollView()
         scrollView.isScrollEnabled = true
         scrollView.isUserInteractionEnabled = true
+        scrollView.alwaysBounceVertical = true
         scrollView.delegate = self
         view.addSubview(scrollView)
                 

@@ -245,6 +245,7 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
     private func initStepViewController(from step: Step, stepView: StepView) -> UIViewController {
         self.scrollView = UIScrollView()
         self.scrollView?.backgroundColor = .white
+        self.scrollView?.alwaysBounceVertical = true
         let viewController = UIViewController()
         viewController.view.addSubview(scrollView!)
         scrollView!.snp.makeConstraints { make in

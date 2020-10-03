@@ -37,6 +37,7 @@ extension UIView {
     func addScrollableContentView(backgroundColor: UIColor? = nil, margins: UIEdgeInsets) -> UIView {
         let scrollView = UIScrollView()
         scrollView.isScrollEnabled = true
+        scrollView.alwaysBounceVertical = true
         scrollView.isUserInteractionEnabled = true
         scrollView.backgroundColor = backgroundColor
         addSubview(scrollView)

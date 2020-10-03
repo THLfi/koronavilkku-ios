@@ -123,6 +123,7 @@ class PublishTokensViewController: UIViewController {
         view.addSubview(scrollView)
         
         scrollView.isUserInteractionEnabled = true
+        scrollView.alwaysBounceVertical = true
         
         scrollView.backgroundColor = UIColor.Secondary.blueBackdrop
         scrollView.snp.makeConstraints { make in
@@ -214,7 +215,7 @@ class PublishTokensViewController: UIViewController {
         wrapper.addSubview(image)
         image.snp.makeConstraints { make in
             make.left.top.equalToSuperview()
-            make.height.equalTo(22)
+            make.width.height.equalTo(24)
         }
         
         errorLabel = UILabel(label: Text.ErrorWrongPublishToken.localized,

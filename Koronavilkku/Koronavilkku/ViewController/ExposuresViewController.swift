@@ -9,7 +9,6 @@ class ExposuresViewController: UIViewController {
         case TitleHasExposures
     }
 
-    private let scrollView = UIScrollView()
     let exposuresViewWrapper = ExposuresViewWrapper()
     var cancellable: AnyCancellable?
     var hasExposures: Bool = false
