@@ -48,19 +48,11 @@ class WideRowElement: CardElement {
     }
     
     func createImageView(image: UIImage) -> UIView {
-        let shadowOffset = CGSize(width: 0, height: 4)
-
         let wrapper = UIView()
-        wrapper.layer.shadowColor = .dropShadow
-        wrapper.layer.shadowOffset = shadowOffset
-        wrapper.layer.shadowOpacity = 0.2
-        wrapper.layer.shadowRadius = 20
+        wrapper.setElevation(.elevation2)
 
         let image = UIImageView(image: image)
-        image.layer.shadowColor = .dropShadow
-        image.layer.shadowOffset = shadowOffset
-        image.layer.shadowOpacity = 0.1
-        image.layer.shadowRadius = 14
+        image.setElevation(.elevation1)
         
         let shadowPath = UIBezierPath(ovalIn: image.bounds).cgPath
         wrapper.layer.shadowPath = shadowPath

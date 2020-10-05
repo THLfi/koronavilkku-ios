@@ -11,8 +11,7 @@ class CardElement: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 14).cgPath
+        updateShadowPath()
     }
     
     required init?(coder: NSCoder) {
@@ -21,10 +20,7 @@ class CardElement: UIView {
     
     private func configureLayer() {
         self.backgroundColor = UIColor.Greyscale.white
-        self.layer.shadowColor = .dropShadow
-        self.layer.shadowOpacity = 0.1
-        self.layer.shadowOffset = CGSize(width: 0, height: 4)
-        self.layer.shadowRadius = 14
+        setElevation(.elevation1)
         self.layer.cornerRadius = 14
     }
 }
