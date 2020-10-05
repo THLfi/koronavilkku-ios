@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - English translation
 - Show licenses of used third party libraries inside the app, accessed from the Settings tab
 - Instructions on how to change the app language in Settings tab and Onboarding
+- New Elevation enum for adding predefined shadow styles into UIViews
 
 ## 1.0.2
 
