@@ -24,15 +24,6 @@ extension UIView {
 }
 
 extension UIView {
-    func elevate() {
-        self.layer.shadowColor = UIColor.Greyscale.lightGrey.cgColor
-        self.layer.shadowOpacity = 0.3
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 14
-    }
-}
-
-extension UIView {
 
     func addScrollableContentView(backgroundColor: UIColor? = nil, margins: UIEdgeInsets) -> UIView {
         let scrollView = UIScrollView()

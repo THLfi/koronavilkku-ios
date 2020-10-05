@@ -62,6 +62,10 @@ class WideRowElement: CardElement {
         image.layer.shadowOpacity = 0.1
         image.layer.shadowRadius = 14
         
+        let shadowPath = UIBezierPath(ovalIn: image.bounds).cgPath
+        wrapper.layer.shadowPath = shadowPath
+        image.layer.shadowPath = shadowPath
+
         wrapper.addSubview(image)
         return wrapper
     }
