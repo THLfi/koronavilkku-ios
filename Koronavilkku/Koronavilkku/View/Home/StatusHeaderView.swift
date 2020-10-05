@@ -108,6 +108,7 @@ final class StatusHeaderView: UIView {
     
     let verticalPadding = CGFloat(30)
     let imageHeight = CGFloat(138)
+    let imageWidth = CGFloat(118)
     
     init() {
         super.init(frame: .zero)
@@ -129,12 +130,22 @@ final class StatusHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func adjustSize(by: CGFloat, topInset: CGFloat) {
-        let extraSpace = (0 - by - topInset) / 2
+
+    /**
+     Adjust the status header size by increasing the radar height and top spacing.
+     
+     This method is called from the scroll view delegate for a visual effect where the element seems to stay in place and stretch vertically as the user drags over the edge.
+     
+     - Parameters:
+        - by: the (negative) offset the user has dragged over the top edge
+        - topInset: the amount of safe area inset the previous value contains
+     */
+    func adjustSize(by totalOffset: CGFloat, topInset: CGFloat) {
+        // we're splitting the extra space in the half: 50% for the image, 50% to spacing
+        let extraSpace = (0 - totalOffset - topInset) / 2
         
         self.snp.updateConstraints { make in
-            make.top.equalToSuperview().offset(by < 0 ? by : 0)
+            make.top.equalToSuperview().offset(totalOffset < 0 ? totalOffset : 0)
         }
         
         let paddingTop = verticalPadding + topInset
@@ -167,7 +178,7 @@ final class StatusHeaderView: UIView {
         radarContainer.addSubview(radarView)
         radarView.snp.makeConstraints { make in
             make.top.height.centerX.equalToSuperview()
-            make.width.equalTo(radarView.snp.height).multipliedBy(118.0 / 138.0)
+            make.width.equalTo(radarView.snp.height).multipliedBy(imageWidth / imageHeight)
         }
     }
     
