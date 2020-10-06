@@ -1,5 +1,8 @@
 import UIKit
 
+/**
+ Predefined elevation styles from UI Style Library
+ */
 enum Elevation {
     case elevation1
     case elevation2
