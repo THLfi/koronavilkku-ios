@@ -189,17 +189,23 @@ final class SymptomsElement: WideRowElement {
     override func createSubViews() {
         super.createSubViews()
 
-        let imageView = UIImageView(image: UIImage(named: "symptoms-cropped")!)
         let container = UIView()
+        let imageView = UIImageView(image: UIImage(named: "symptoms-cropped")!)
+        let textContainer = UIView()
         let titleView = createTitleLabel(title: Text.Title.localized)
         let bodyView = createBodyLabel(body: Text.Body.localized)
         
         self.addSubview(container)
-        self.addSubview(imageView)
-        container.addSubview(titleView)
-        container.addSubview(bodyView)
-        
+        container.addSubview(textContainer)
+        container.addSubview(imageView)
+        textContainer.addSubview(titleView)
+        textContainer.addSubview(bodyView)
+                
         container.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        textContainer.snp.makeConstraints { make in
             make.top.greaterThanOrEqualToSuperview().offset(margin.top)
             make.bottom.lessThanOrEqualToSuperview().offset(margin.bottom)
             make.centerY.equalToSuperview()
@@ -220,9 +226,10 @@ final class SymptomsElement: WideRowElement {
             make.bottom.right.equalToSuperview()
             make.top.equalToSuperview().priority(.low)
             make.size.equalTo(CGSize(width: 135, height: 110))
-            // TODO would look nicer with larger fonts (and big screen) if available height would be utilized -> but it also decreases text area width -> image width needs to restricted, e.g. max 75% of parent area width + image shouldn't have that much empty space on the left.
         }
         
+        container.clipsToBounds = true
+        container.layer.cornerRadius = cornerRadius
         titleView.isAccessibilityElement = false
         bodyView.isAccessibilityElement = false
         self.accessibilityTraits = .button

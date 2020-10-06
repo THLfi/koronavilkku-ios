@@ -45,7 +45,7 @@ final class RadarAnimation : UIImageView {
         
         animated.snp.makeConstraints { make in
             make.centerX.width.equalToSuperview()
-            make.height.equalTo(snp.width)
+            make.height.equalTo(animated.snp.width)
             make.top.equalToSuperview()
         }
         

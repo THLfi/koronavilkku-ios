@@ -3,6 +3,8 @@ import UIKit
 import SnapKit
 
 class CardElement: UIView {
+    
+    let cornerRadius = CGFloat(14)
 
     init() {
         super.init(frame: .zero)
@@ -21,6 +23,6 @@ class CardElement: UIView {
     private func configureLayer() {
         self.backgroundColor = UIColor.Greyscale.white
         setElevation(.elevation1)
-        self.layer.cornerRadius = 14
+        self.layer.cornerRadius = cornerRadius
     }
 }
