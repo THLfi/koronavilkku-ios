@@ -7,17 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Changed
+- Fixed small layout and rendering issues in the main screen
+- Fixed scrolling issues with navigation bar large titles
+
+### Added
+- New Elevation enum for adding predefined shadow styles into UIViews
+
+## 1.1.0
+
+### Changed
 - Localisation updates
 - Determine API disabled status from both exposureNotificationStatus and authorizationStatus
 - Corrected instructions on how to enable EN API on iOS 13.7+
-- Fixed small layout and rendering issues in the main screen
-- Fixed scrolling issues with navigation bar large titles
 
 ### Added
 - English translation
 - Show licenses of used third party libraries inside the app, accessed from the Settings tab
 - Instructions on how to change the app language in Settings tab and Onboarding
-- New Elevation enum for adding predefined shadow styles into UIViews
 
 ## 1.0.2
 
