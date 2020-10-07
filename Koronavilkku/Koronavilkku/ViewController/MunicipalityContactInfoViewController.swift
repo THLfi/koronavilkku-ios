@@ -53,7 +53,7 @@ class MunicipalityContactInfoViewController: UIViewController {
                                               descriptionText: Text.SymptomAssesmentDescription.localized,
                                               buttonTitle: Text.SymptomAssesmentButton.localized,
                                               bottomText: Text.SymptomAssesmentHelp.localized,
-                                              buttonTapped: { [weak self] in self?.openOmaoloLink(target: .makeEvaluation) })
+                                              buttonTapped: { [unowned self] in self.openOmaoloLink(target: .makeEvaluation) })
             top = contentView.appendView(infoView, top: top)
 
             let subHeader = UILabel(label: Text.ContactInfoTitle.localized,
@@ -67,9 +67,9 @@ class MunicipalityContactInfoViewController: UIViewController {
             contactInfoTopMargin = 0
         }
 
-        let contactInformationView = MunicipalityContactInformationView(municipality: municipality, contactRequestHandler: {
-            [weak self] in self?.openOmaoloLink(target: .contact)
-        })
+        let contactInformationView = MunicipalityContactInformationView(municipality: municipality) { [unowned self] in
+            self.openOmaoloLink(target: .contact)
+        }
         
         top = contentView.appendView(contactInformationView, spacing: contactInfoTopMargin, top: top)
         

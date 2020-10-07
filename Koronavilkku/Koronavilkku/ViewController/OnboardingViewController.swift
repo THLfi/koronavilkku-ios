@@ -48,9 +48,9 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
                                                     externalLinkCaption: Translation.OnboardingReadTerms.localized,
                                                     externalLinkUrl: SettingsViewController.Text.TermsLinkURL.toURL()),
                                 AcceptableTermsView(label: Translation.OnbardingVoluntaryUse.localized),
-                                RoundedButton(title: Translation.ButtonStartUsing.localized, action: { [weak self] in
+                                RoundedButton(title: Translation.ButtonStartUsing.localized, action: { [unowned self] in
                                     // Since step reference isn't available performButtonAction() cannot be called -> call requestApiPermission() directly.
-                                    self?.requestApiPermission()
+                                    self.requestApiPermission()
                                 })
                             ])
         ),
