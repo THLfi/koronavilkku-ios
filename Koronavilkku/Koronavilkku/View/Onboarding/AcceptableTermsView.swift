@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-protocol AcceptDelegate: NSObjectProtocol {
+protocol AcceptDelegate: AnyObject {
     func statusChanged()
 }
 

@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 import Combine
 
-protocol ExposuresViewDelegate: NSObjectProtocol {
+protocol ExposuresViewDelegate: AnyObject {
     func showHowItWorks()
     func makeContact()
 }

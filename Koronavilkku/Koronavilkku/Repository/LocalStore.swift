@@ -33,7 +33,7 @@ class Persisted<Value: Codable> {
     var projectedValue: Persisted<Value> { self }
     
     @discardableResult
-    func addObserver(using block: @escaping () -> Void) -> NSObjectProtocol {
+    func addObserver(using block: @escaping () -> Void) -> AnyObject {
         return NotificationCenter.default.addObserver(forName: notificationName, object: nil, queue: nil) { _ in
             block()
         }
