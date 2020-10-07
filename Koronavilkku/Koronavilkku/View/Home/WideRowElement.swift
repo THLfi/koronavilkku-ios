@@ -5,8 +5,6 @@ import UIKit
 
 class WideRowElement: CardElement {
     
-    let margin = UIEdgeInsets(top: 20, left: 20, bottom: -20, right: -20)
-    
     let tapped: () -> ()
 
     init(tapped: @escaping () -> () = {}) {
@@ -49,13 +47,19 @@ class WideRowElement: CardElement {
         return bodyLabel
     }
     
-    func createImageView(image: UIImage) -> UIImageView {
-        let view = UIImageView(image: image)
-        view.layer.shadowColor = UIColor.Greyscale.lightGrey.cgColor
-        view.layer.shadowOpacity = 0.3
-        view.layer.shadowOffset = .zero
-        view.layer.shadowRadius = 14
-        return view
+    func createImageView(image: UIImage) -> UIView {
+        let wrapper = UIView()
+        wrapper.setElevation(.elevation2)
+
+        let image = UIImageView(image: image)
+        image.setElevation(.elevation1)
+        
+        let shadowPath = UIBezierPath(ovalIn: image.bounds).cgPath
+        wrapper.layer.shadowPath = shadowPath
+        image.layer.shadowPath = shadowPath
+
+        wrapper.addSubview(image)
+        return wrapper
     }
 }
 
@@ -68,6 +72,7 @@ final class ExposuresElement: WideRowElement {
         case ButtonOpen
     }
     
+    let margin = UIEdgeInsets(top: 24, left: 20, bottom: -20, right: -20)
     var updateTask: AnyCancellable?
     var counter: Int = 0
     
@@ -144,8 +149,8 @@ final class ExposuresElement: WideRowElement {
         }
 
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(container).offset(4)
-            make.right.equalToSuperview().offset(margin.right)
+            make.top.equalTo(container).offset(6)
+            make.right.equalToSuperview().inset(30)
             make.size.equalTo(CGSize(width: 50, height: 50))
         }
 
@@ -179,37 +184,52 @@ final class SymptomsElement: WideRowElement {
         case Body
     }
     
+    let margin = UIEdgeInsets(top: 20, left: 20, bottom: -20, right: -20)
+
     override func createSubViews() {
         super.createSubViews()
 
+        let container = UIView()
         let imageView = UIImageView(image: UIImage(named: "symptoms-cropped")!)
+        let textContainer = UIView()
         let titleView = createTitleLabel(title: Text.Title.localized)
         let bodyView = createBodyLabel(body: Text.Body.localized)
-
-        self.addSubview(titleView)
-        self.addSubview(bodyView)
-        self.addSubview(imageView)
-
-        titleView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(margin.top)
+        
+        self.addSubview(container)
+        container.addSubview(textContainer)
+        container.addSubview(imageView)
+        textContainer.addSubview(titleView)
+        textContainer.addSubview(bodyView)
+                
+        container.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        textContainer.snp.makeConstraints { make in
+            make.top.greaterThanOrEqualToSuperview().offset(margin.top)
+            make.bottom.lessThanOrEqualToSuperview().offset(margin.bottom)
+            make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(margin.left)
             make.right.equalTo(imageView.snp.left)
+        }
+
+        titleView.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
         }
         
         bodyView.snp.makeConstraints{ make in
             make.top.equalTo(titleView.snp.bottom).offset(10)
-            make.bottom.lessThanOrEqualToSuperview().offset(margin.bottom)
-            make.left.equalToSuperview().offset(margin.left)
-            make.right.equalTo(imageView.snp.left)
+            make.bottom.left.right.equalToSuperview()
         }
         
         imageView.snp.makeConstraints { make in
             make.bottom.right.equalToSuperview()
-            make.top.greaterThanOrEqualToSuperview()
+            make.top.equalToSuperview().priority(.low)
             make.size.equalTo(CGSize(width: 135, height: 110))
-            // TODO would look nicer with larger fonts (and big screen) if available height would be utilized -> but it also decreases text area width -> image width needs to restricted, e.g. max 75% of parent area width + image shouldn't have that much empty space on the left.
         }
         
+        container.clipsToBounds = true
+        container.layer.cornerRadius = cornerRadius
         titleView.isAccessibilityElement = false
         bodyView.isAccessibilityElement = false
         self.accessibilityTraits = .button

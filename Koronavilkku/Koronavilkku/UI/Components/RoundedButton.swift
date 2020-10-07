@@ -40,15 +40,17 @@ class RoundedButton: UIButton {
         self.titleLabel?.font = UIFont.labelPrimary
         
         self.layer.cornerRadius = 25
-        self.layer.shadowColor = UIColor.Greyscale.lightGrey.cgColor
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = .zero
-        self.layer.shadowRadius = 14
+        self.setElevation(.elevation1)
         self.addTarget(self, action: #selector(performAction), for: .touchUpInside)
         
         self.snp.makeConstraints { make in
             make.height.equalTo(RoundedButton.height)
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        updateShadowPath()
     }
     
     @objc func performAction() {

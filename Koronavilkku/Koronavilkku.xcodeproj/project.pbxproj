@@ -118,6 +118,8 @@
 		EAD8619B24ADDCC900809677 /* ExposureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619A24ADDCC900809677 /* ExposureManager.swift */; };
 		EAD8619D24AE18A900809677 /* ExposureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619C24AE18A900809677 /* ExposureRepository.swift */; };
 		EAD8619F24AE56BA00809677 /* ExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619E24AE56BA00809677 /* ExposureConfiguration.swift */; };
+		EAEB8333252B7095005B8E24 /* Elevation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB8332252B7095005B8E24 /* Elevation.swift */; };
+		EAEB833B252B77AE005B8E24 /* TokenCodeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB833A252B77AE005B8E24 /* TokenCodeField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -258,6 +260,8 @@
 		EAD8619C24AE18A900809677 /* ExposureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRepository.swift; sourceTree = "<group>"; };
 		EAD8619E24AE56BA00809677 /* ExposureConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureConfiguration.swift; sourceTree = "<group>"; };
 		EADCF97224E51E0E0076B0FB /* LocalEnvironment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = LocalEnvironment.xcconfig; sourceTree = "<group>"; };
+		EAEB8332252B7095005B8E24 /* Elevation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elevation.swift; sourceTree = "<group>"; };
+		EAEB833A252B77AE005B8E24 /* TokenCodeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenCodeField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -439,6 +443,7 @@
 				56C26BAC24AF3886002F83C1 /* InfoViewWithButton.swift */,
 				EA1F5C8A24E1517000398EC8 /* InstructionsView.swift */,
 				56C26BC224B450ED002F83C1 /* MunicipalityCell.swift */,
+				EAEB833A252B77AE005B8E24 /* TokenCodeField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -512,6 +517,7 @@
 			isa = PBXGroup;
 			children = (
 				EA30D71E24A620C900AF84B1 /* Colors.swift */,
+				EAEB8332252B7095005B8E24 /* Elevation.swift */,
 				EA47C5EB24A6AB0300EAC720 /* Fonts.swift */,
 			);
 			path = Styles;
@@ -835,6 +841,7 @@
 				EA92A04824A3958300CE7271 /* MainViewController.swift in Sources */,
 				56DB5AE224A4B5BD0019C1A1 /* WideRowElement.swift in Sources */,
 				EAD8619D24AE18A900809677 /* ExposureRepository.swift in Sources */,
+				EAEB8333252B7095005B8E24 /* Elevation.swift in Sources */,
 				563D44A624A9FEB6008FE2BB /* NarrowRowElement.swift in Sources */,
 				5630F2EF24C7157200B12438 /* OnboardingDoneView.swift in Sources */,
 				563D44B524AB59FE008FE2BB /* TableViewCell.swift in Sources */,
@@ -873,6 +880,7 @@
 				EA92A07B24A4E59800CE7271 /* LivePreview.swift in Sources */,
 				56009400251E08E100F1BE1B /* UINavigationController.swift in Sources */,
 				EA07E41724E34C7D0097A9A0 /* URLSession.swift in Sources */,
+				EAEB833B252B77AE005B8E24 /* TokenCodeField.swift in Sources */,
 				32B5956124AA27ED00CC386E /* BatchRepository.swift in Sources */,
 				5687174224C1969A00E65427 /* StepView.swift in Sources */,
 				561878AC24AC9952004B7563 /* LocalStore.swift in Sources */,

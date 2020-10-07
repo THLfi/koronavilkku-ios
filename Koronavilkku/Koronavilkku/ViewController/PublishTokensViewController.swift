@@ -17,9 +17,15 @@ class PublishTokensViewController: UIViewController {
     }
     
     private let scrollView = UIScrollView()
-    private lazy var button = RoundedButton(title: Text.ButtonSubmit.localized,
-                                            action: { [weak self] in self?.sendPressed() })
-    private let tokenCodeField = UITextField()
+    
+    private lazy var button = RoundedButton(title: Text.ButtonSubmit.localized) { [weak self] in
+        self?.sendPressed()
+    }
+    
+    private lazy var tokenCodeField = TokenCodeField() { [weak self] in
+        self?.updateButtonEnabled()
+    }
+    
     private var errorView: UIView!
     private var errorLabel: UILabel!
     private var progressIndicator = UIActivityIndicatorView(style: .large)
@@ -123,6 +129,7 @@ class PublishTokensViewController: UIViewController {
         view.addSubview(scrollView)
         
         scrollView.isUserInteractionEnabled = true
+        scrollView.alwaysBounceVertical = true
         
         scrollView.backgroundColor = UIColor.Secondary.blueBackdrop
         scrollView.snp.makeConstraints { make in
@@ -146,21 +153,8 @@ class PublishTokensViewController: UIViewController {
             make.top.equalToSuperview().offset(8)
             make.left.right.equalToSuperview().inset(20)
         }
-                                
-        tokenCodeField.backgroundColor = UIColor.Greyscale.white
-        tokenCodeField.layer.shadowColor = .dropShadow
-        tokenCodeField.layer.shadowOpacity = 1
-        tokenCodeField.layer.shadowOffset = CGSize(width: 0, height: 4)
-        tokenCodeField.layer.shadowRadius = 14
-        tokenCodeField.font = UIFont.coronaCode
-        tokenCodeField.layer.cornerRadius = 8
-        tokenCodeField.textAlignment = .center
-        tokenCodeField.keyboardType = .asciiCapableNumberPad
-        tokenCodeField.autocorrectionType = .no
-        tokenCodeField.delegate = self
+        
         tokenCodeField.accessibilityLabel = Text.Title.localized
-        tokenCodeField.addTarget(self, action: #selector(updateButtonEnabled), for: .editingChanged)
-
         updateButtonEnabled()
 
         wrapper.addSubview(tokenCodeField)
@@ -214,7 +208,7 @@ class PublishTokensViewController: UIViewController {
         wrapper.addSubview(image)
         image.snp.makeConstraints { make in
             make.left.top.equalToSuperview()
-            make.height.equalTo(22)
+            make.width.height.equalTo(24)
         }
         
         errorLabel = UILabel(label: Text.ErrorWrongPublishToken.localized,
@@ -312,26 +306,6 @@ class PublishTokensViewController: UIViewController {
 extension NSError {
     func equals(_ code: ENError.Code) -> Bool {
         return domain == ENErrorDomain && self.code == code.rawValue
-    }
-}
-
-extension PublishTokensViewController: UITextFieldDelegate {
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let oldLength = textField.text?.count ?? 0
-        let replacementLength = string.count
-        let rangeLength = range.length
-        
-        let newLength = oldLength - rangeLength + replacementLength
-        
-        let returnPressed = string.range(of: "\n") != nil
-        
-        return newLength <= 12 || returnPressed
     }
 }
 

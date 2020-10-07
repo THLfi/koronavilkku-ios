@@ -115,7 +115,7 @@ class ReportInfectionViewController: UIViewController {
         top = contentView.appendView(bulletList, spacing: 30, top: top)
         
         bulletList.snp.makeConstraints { make in
-            make.bottom.lessThanOrEqualToSuperview()
+            make.bottom.equalToSuperview()
         }
     }
 

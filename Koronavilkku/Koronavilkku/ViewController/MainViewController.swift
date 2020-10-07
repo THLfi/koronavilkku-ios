@@ -39,20 +39,20 @@ class MainViewController: UIViewController {
         let scrollView = UIScrollView()
         scrollView.isScrollEnabled = true
         scrollView.isUserInteractionEnabled = true
+        scrollView.alwaysBounceVertical = true
         scrollView.delegate = self
         view.addSubview(scrollView)
                 
         scrollView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaInsets)
+            make.top.bottom.equalTo(view.safeAreaInsets)
             make.left.right.equalTo(view)
-            make.bottom.equalTo(view.safeAreaInsets)
         }
                 
         let wrapper = UIView()
         scrollView.addSubview(wrapper)
         wrapper.snp.makeConstraints { make in
-            make.top.bottom.left.right.equalTo(scrollView)
-            make.width.equalTo(scrollView)
+            make.edges.equalTo(scrollView.contentLayoutGuide.snp.edges)
+            make.width.equalTo(scrollView.frameLayoutGuide.snp.width)
         }
         
         // Setup header view
@@ -67,7 +67,7 @@ class MainViewController: UIViewController {
             let viewController = OpenSettingsViewController.create(type: type) { self.dismiss(animated: true) }
             self.present(viewController, animated: true)
         }
-
+        
         // Setup notification and helper components
         self.notifications = ExposuresElement(tapped: { self.openExposuresViewController() })
         
@@ -93,7 +93,6 @@ class MainViewController: UIViewController {
             make.top.equalTo(helper.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
-            make.height.greaterThanOrEqualTo(120)
         }
         
         let howToProtect = NarrowRowElement(image: UIImage(named: "shield-icon")!,
@@ -118,7 +117,7 @@ class MainViewController: UIViewController {
         logo.contentMode = .scaleAspectFit
         wrapper.addSubview(logo)
         logo.snp.makeConstraints { make in
-            make.top.equalTo(statistics.snp.bottom).offset(30.45)
+            make.top.equalTo(row.snp.bottom).offset(28)
             make.left.equalToSuperview().offset(21)
             make.width.equalTo(103)
         }
@@ -222,7 +221,7 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        headerView.adjustSize(by: scrollView.contentOffset.y)
+        headerView.adjustSize(by: scrollView.contentOffset.y, topInset: view.safeAreaInsets.top)
     }
 }
 
