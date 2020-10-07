@@ -286,7 +286,9 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
             self.button = button
             
         } else if step.showScrollIndicator {
-            let button = RoundedButton(title: "\u{2193}", action: self.scrollDown)
+            let button = RoundedButton(title: "\u{2193}") { [unowned self] in
+                self.scrollDown()
+            }
             button.accessibilityHint = Translation.ButtonScrollDown.localized
             viewController.view.addSubview(button)
             button.snp.makeConstraints { make in

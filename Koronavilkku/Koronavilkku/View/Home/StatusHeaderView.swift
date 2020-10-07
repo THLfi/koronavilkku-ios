@@ -227,8 +227,9 @@ final class StatusHeaderView: UIView {
         
         button = RoundedButton(title: "",
                                backgroundColor: UIColor.Primary.red,
-                               highlightedBackgroundColor: UIColor.Primary.red,
-                               action: buttonAction)
+                               highlightedBackgroundColor: UIColor.Primary.red) { [unowned self] in
+            self.buttonAction()
+        }
         container.addSubview(button)
         button.snp.makeConstraints { make in
             make.left.right.equalToSuperview().inset(10)
