@@ -3,12 +3,11 @@ import UIKit
 
 class LinkLabel: UILabel {
     
-    let url: URL
+    let tapped: TapHandler
     var contentInset: UIEdgeInsets = .zero
     
-    init(label: String, font: UIFont, color: UIColor, url: URL, underline: Bool = true) {
-        
-        self.url = url
+    init(label: String, font: UIFont, color: UIColor, underline: Bool = true, tapped: @escaping TapHandler) {
+        self.tapped = tapped
         super.init(frame: .zero)
         var attributes: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.font: font,
@@ -26,15 +25,15 @@ class LinkLabel: UILabel {
         
         self.addGestureRecognizer(
             UITapGestureRecognizer(target: self,
-                                   action: #selector(openUrl)))
+                                   action: #selector(handleTap)))
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func openUrl() {
-        LinkHandler.shared.open(url, inApp: true)
+    @objc func handleTap() {
+        tapped()
     }
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {

@@ -92,7 +92,7 @@ class LinkLanguageViewController: UIViewController {
 
     private func openLink(language: String) {
         let url = repository.getOmaoloLink(for: target, in: municipality, language: language)
-        LinkHandler.shared.open(url, inApp: false)
+        self.openExternalLink(url: url)
     }
 }
 

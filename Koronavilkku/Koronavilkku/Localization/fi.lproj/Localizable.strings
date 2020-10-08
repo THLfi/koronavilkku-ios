@@ -222,3 +222,7 @@
 "ENBlockedStepsNew" = "1. Avaa puhelimesi asetukset alla olevasta painikkeesta.\n\n2. Valitse Altistusilmoitukset.\n\n3. Laita päälle Jaa altistustiedot.\n\n4. Aseta aktiiviseksi alueeksi Terveyden ja hyvinvoinnin laitos.";
 
 "OpenSettingsButton" = "Avaa asetukset";
+
+"ExternalLinkErrorTitle" = "Verkkosivua ei voida avata";
+"ExternalLinkErrorMessage" = "Verkkosivua ei voida avata, koska puhelimessasi ei ole selainta tai sen käyttö on estetty.";
+"ExternalLinkErrorButton" = "OK";

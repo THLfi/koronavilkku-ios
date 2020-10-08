@@ -11,10 +11,8 @@ class LinkItem: UIButton {
     private var valueMarginConstraint: Constraint? = nil
     private var tapRecognizer: UITapGestureRecognizer!
 
-    init(title: String, linkName: String? = nil, value: String? = nil, tapped: TapHandler? = nil, url: URL? = nil) {
-        guard tapped != nil || url != nil else { fatalError("Either argument tapped or url must be defined") }
-        
-        self.tapped = tapped ?? { LinkHandler.shared.open(url!, inApp: true) }
+    init(title: String, linkName: String? = nil, value: String? = nil, tapped: @escaping TapHandler) {
+        self.tapped = tapped
         self.valueLabel = UILabel(label: value ?? "", font: UIFont.bodySmall, color: UIColor.Greyscale.darkGrey)
         
         super.init(frame: .zero)

@@ -92,7 +92,7 @@ class MunicipalityContactInfoViewController: UIViewController {
         
         if languages.isEmpty || languages.count == 1 {
             let url = municipalityRepository.getOmaoloLink(for: target, in: municipality, language: languages.first ?? Omaolo.defaultLanguageId)
-            LinkHandler.shared.open(url, inApp: false)
+            self.openExternalLink(url: url)
             
         } else {
             let langSelector = LinkLanguageViewController(municipalityRepository, municipality, target)

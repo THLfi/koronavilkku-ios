@@ -222,3 +222,7 @@
 "ENBlockedStepsNew" = "1. Use the button below to access your phone's settings.\n\n2. Select Exposure Notifications.\n\n3. Turn on Share Exposure Information.\n\n4. Set the Finnish Institute for Health and Welfare as the active region.";
 
 "OpenSettingsButton" = "Open settings";
+
+"ExternalLinkErrorTitle" = "Web page cannot be opened";
+"ExternalLinkErrorMessage" = "Web page cannot be opened because your phone does not have an internet browser or its use has been blocked.";
+"ExternalLinkErrorButton" = "OK";

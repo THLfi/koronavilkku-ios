@@ -124,8 +124,7 @@ struct StepViewPreview: PreviewProvider {
                         LinkLabel(label: "Katso, miten sovellus toimii",
                                   font: UIFont.heading4,
                                   color: UIColor.Primary.blue,
-                                  url: URL(string: "http://www.thl.fi")!,
-                                  underline: false)
+                                  underline: false) {}
         ]),
         width: 375,
         height: 667

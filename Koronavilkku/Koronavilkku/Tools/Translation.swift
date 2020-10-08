@@ -123,4 +123,8 @@ enum Translation: String, Localizable {
     
     case ContactRequestItemTitle
     case ContactRequestItemInfo
+
+    case ExternalLinkErrorTitle
+    case ExternalLinkErrorMessage
+    case ExternalLinkErrorButton
 }
