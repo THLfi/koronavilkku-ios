@@ -7,8 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Changed
-- Fixed small layout and rendering issues in the main screen
+- Small layout and rendering corrections in the main screen
 - Fixed scrolling issues with navigation bar large titles
+- Break potential retain cycles by using weak or unowned self in capturing closures and weak view controller delegates
 
 ### Added
 - New Elevation enum for adding predefined shadow styles into UIViews

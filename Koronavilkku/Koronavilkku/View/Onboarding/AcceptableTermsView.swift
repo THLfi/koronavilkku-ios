@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-protocol AcceptDelegate {
+protocol AcceptDelegate: AnyObject {
     func statusChanged()
 }
 
@@ -18,7 +18,7 @@ class LinkTapGestureRecognizer: UITapGestureRecognizer {
 
 class AcceptableTermsView: CardElement, AcceptableView {
     
-    var delegate: AcceptDelegate?
+    weak var delegate: AcceptDelegate?
     
     var accepted: Bool = false
         

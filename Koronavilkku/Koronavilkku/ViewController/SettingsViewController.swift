@@ -42,8 +42,8 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         initUI()
         updateStatusItem()
         
-        LocalStore.shared.$uiStatus.addObserver(using: {
-            self.updateStatusItem()
+        LocalStore.shared.$uiStatus.addObserver(using: { [weak self] in
+            self?.updateStatusItem()
         })
     }
     
@@ -86,12 +86,12 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     private func settingGroupItem() -> InstructionItem {
-        let status = linkItem(title: Text.StatusTitle, value: Text.StatusOff) { [weak self] in
-            self?.navigationController?.pushViewController(ChangeRadarStatusViewController(), animated: true)
+        let status = linkItem(title: Text.StatusTitle, value: Text.StatusOff) { [unowned self] in
+            self.navigationController?.pushViewController(ChangeRadarStatusViewController(), animated: true)
         }
         
-        let changeLanguage = linkItem(title: Text.ChangeLanguage) { [weak self] in
-            self?.navigationController?.pushViewController(ChangeLanguageViewController(), animated: true)
+        let changeLanguage = linkItem(title: Text.ChangeLanguage) { [unowned self] in
+            self.navigationController?.pushViewController(ChangeLanguageViewController(), animated: true)
         }
         
         status.accessibilityTraits = .button
@@ -127,12 +127,12 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     private func aboutGroupItem() -> InstructionItem {
-        let guideLinkItem = linkItem(title: Text.HowItWorksTitle) { [weak self] in
-            self?.showGuide()
+        let guideLinkItem = linkItem(title: Text.HowItWorksTitle) { [unowned self] in
+            self.showGuide()
         }
 
-        let licenseLinkItem = linkItem(title: Text.OpenSourceLicenses) { [weak self] in
-            self?.navigationController?.pushViewController(LicenseListViewController(), animated: true)
+        let licenseLinkItem = linkItem(title: Text.OpenSourceLicenses) { [unowned self] in
+            self.navigationController?.pushViewController(LicenseListViewController(), animated: true)
         }
         
         guideLinkItem.accessibilityTraits = .button

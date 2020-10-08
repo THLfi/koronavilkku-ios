@@ -18,12 +18,12 @@ class PublishTokensViewController: UIViewController {
     
     private let scrollView = UIScrollView()
     
-    private lazy var button = RoundedButton(title: Text.ButtonSubmit.localized) { [weak self] in
-        self?.sendPressed()
+    private lazy var button = RoundedButton(title: Text.ButtonSubmit.localized) { [unowned self] in
+        self.sendPressed()
     }
     
-    private lazy var tokenCodeField = TokenCodeField() { [weak self] in
-        self?.updateButtonEnabled()
+    private lazy var tokenCodeField = TokenCodeField() { [unowned self] in
+        self.updateButtonEnabled()
     }
     
     private var errorView: UIView!
@@ -262,7 +262,7 @@ class PublishTokensViewController: UIViewController {
         finishViewController.titleText = Text.FinishedTitle.localized
         finishViewController.textLabelText = Text.FinishedText.localized
         finishViewController.buttonTitle = Text.FinishedButton.localized
-        finishViewController.buttonPressed = {
+        finishViewController.buttonPressed = { [unowned finishViewController] in
             UIApplication.shared.selectRootTab(.home)
             finishViewController.dismiss(animated: true, completion: nil)
         }

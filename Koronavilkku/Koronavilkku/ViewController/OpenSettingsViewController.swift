@@ -102,8 +102,8 @@ class OpenSettingsViewController: UIViewController {
             make.height.equalTo(margins.bottom)
         }
         
-        let button = RoundedButton(title: Translation.OpenSettingsButton.localized, action: { [weak self] in
-            self?.openSettings()
+        let button = RoundedButton(title: Translation.OpenSettingsButton.localized, action: { [unowned self] in
+            self.openSettings()
         })
         view.addSubview(button)
         button.snp.makeConstraints { make in

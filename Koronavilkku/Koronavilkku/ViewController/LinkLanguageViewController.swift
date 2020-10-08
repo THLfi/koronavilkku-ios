@@ -77,8 +77,8 @@ class LinkLanguageViewController: UIViewController {
         municipality.omaolo.supportedServiceLanguageIdentifiers()
             .map { langId in SelectableLanguage(identifier: langId, name: languageNames[langId]?.localized ?? langId) }
             .forEach { lang in
-                let linkCard = LinkItemCard(title: lang.name, linkName: nil, value: nil, tapped: { [weak self] in
-                    self?.openLink(language: lang.identifier)
+                let linkCard = LinkItemCard(title: lang.name, linkName: nil, value: nil, tapped: { [unowned self] in
+                    self.openLink(language: lang.identifier)
                 })
                 
                 top = contentView.appendView(linkCard, spacing: spacing, top: top)

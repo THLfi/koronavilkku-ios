@@ -43,7 +43,7 @@ class InfoViewWithButton: CardElement {
                                        color: UIColor.Greyscale.black)
         descriptionLabel.numberOfLines = 0
         
-        let button = RoundedButton(title: buttonTitle, action: {
+        let button = RoundedButton(title: buttonTitle, action: { [unowned self] in
             self.buttonTapped()
         })
     

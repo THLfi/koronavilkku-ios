@@ -63,13 +63,13 @@ class MainViewController: UIViewController {
             make.left.right.equalToSuperview()
         }
         
-        headerView.openSettingsHandler = { type in
+        headerView.openSettingsHandler = { [unowned self] type in
             let viewController = OpenSettingsViewController.create(type: type) { self.dismiss(animated: true) }
             self.present(viewController, animated: true)
         }
         
         // Setup notification and helper components
-        self.notifications = ExposuresElement(tapped: { self.openExposuresViewController() })
+        self.notifications = ExposuresElement(tapped: { [unowned self] in self.openExposuresViewController() })
         
         wrapper.addSubview(notifications)
         notifications.snp.makeConstraints { make in
@@ -78,7 +78,7 @@ class MainViewController: UIViewController {
             make.right.equalToSuperview().offset(-20)
         }
         
-        let helper = SymptomsElement(tapped: { self.openSymptomsViewController() })
+        let helper = SymptomsElement(tapped: { [unowned self] in self.openSymptomsViewController() })
         wrapper.addSubview(helper)
         helper.snp.makeConstraints { make in
             make.top.equalTo(notifications.snp.bottom).offset(20)
@@ -97,7 +97,7 @@ class MainViewController: UIViewController {
         
         let howToProtect = NarrowRowElement(image: UIImage(named: "shield-icon")!,
                                             title: Text.ProtectionButtonTitle.localized,
-                                            tapped: { self.openProtectionWebView() })
+                                            tapped: { [unowned self] in self.openProtectionWebView() })
         row.addSubview(howToProtect)
         howToProtect.snp.makeConstraints { make in
             make.top.left.bottom.equalToSuperview()
@@ -106,7 +106,7 @@ class MainViewController: UIViewController {
         
         let statistics = NarrowRowElement(image: UIImage(named: "finland-map")!,
                                           title: Text.SituationButtonTitle.localized,
-                                          tapped: { self.openSituationWebView() })
+                                          tapped: { [unowned self] in self.openSituationWebView() })
         row.addSubview(statistics)
         statistics.snp.makeConstraints { make in
             make.top.right.bottom.equalToSuperview()

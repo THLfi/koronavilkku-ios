@@ -72,8 +72,8 @@ class ChangeRadarStatusViewController: UIViewController {
         buttonTitleLabel.textAlignment = .center
         appendView(buttonTitleLabel, spacing: 30)
 
-        let button = RoundedButton(title: buttonLabel.localized, backgroundColor: buttonColor, highlightedBackgroundColor: buttonHighlightedColor, action: { [weak self] in
-            self?.setStatus(enabled: isOn ? false : true)
+        let button = RoundedButton(title: buttonLabel.localized, backgroundColor: buttonColor, highlightedBackgroundColor: buttonHighlightedColor, action: { [unowned self] in
+            self.setStatus(enabled: isOn ? false : true)
         })
         content.addSubview(button)
         appendView(button, spacing: 20)
