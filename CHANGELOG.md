@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - New Elevation enum for adding predefined shadow styles into UIViews
+- Haptic feedback to supported devices
 
 ## 1.1.0
 
@@ -43,7 +44,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Proper TEK generation in MockExposureManager
 - Git commit hash to version information in Settings view
 - Show the change log in Xcode workspace
-- Haptic feedback to supported devices
 
 ## 1.0.1
 
