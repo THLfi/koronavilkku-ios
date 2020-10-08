@@ -6879,7 +6879,16 @@
         },
         "phoneNumber": "02772606",
         "info": {
-          "fi": "ma - to klo 8–16, ma - pe klo 8–15"
+          "fi": "ma - to klo 8–16, pe 8–15 (muina aikoina päivystyspuhelin)"
+        }
+      },
+      {
+        "title": {
+          "fi": "Päivystyspuhelin"
+        },
+        "phoneNumber": "023138800",
+        "info": {
+          "fi": ""
         }
       }
     ]
