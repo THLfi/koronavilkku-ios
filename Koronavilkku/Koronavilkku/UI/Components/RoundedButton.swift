@@ -54,7 +54,6 @@ class RoundedButton: UIButton {
     }
     
     @objc func performAction() {
-        HapticEngine.selection.selectionChanged()
         action()
     }
     

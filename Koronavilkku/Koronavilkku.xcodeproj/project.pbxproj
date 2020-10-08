@@ -64,7 +64,6 @@
 		56E3349624CCC0BB0017CD9A /* MunicipalityContactInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E3349524CCC0BB0017CD9A /* MunicipalityContactInformationView.swift */; };
 		56E3349A24CEC9290017CD9A /* ContactItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E3349924CEC9290017CD9A /* ContactItemCard.swift */; };
 		56EE9BD724F7DE9E0037A45D /* TemporaryExposureKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EE9BD624F7DE9E0037A45D /* TemporaryExposureKeyTests.swift */; };
-		5A8A95E0250CFD8900520720 /* HapticEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8A95DF250CFD8900520720 /* HapticEngine.swift */; };
 		D92F18AD24CEC0F300F3FBCE /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92F18AC24CEC0F300F3FBCE /* Log.swift */; };
 		D92F18AF24CFF8F700F3FBCE /* OpenSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92F18AE24CFF8F700F3FBCE /* OpenSettingsViewController.swift */; };
 		D92F528E24E3FEF40099EBEC /* LinkLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92F528D24E3FEF40099EBEC /* LinkLanguageViewController.swift */; };
@@ -199,7 +198,6 @@
 		56E3349724CEAFA00017CD9A /* MunicipalitiesWithContact.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MunicipalitiesWithContact.json; sourceTree = "<group>"; };
 		56E3349924CEC9290017CD9A /* ContactItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactItemCard.swift; sourceTree = "<group>"; };
 		56EE9BD624F7DE9E0037A45D /* TemporaryExposureKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryExposureKeyTests.swift; sourceTree = "<group>"; };
-		5A8A95DF250CFD8900520720 /* HapticEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticEngine.swift; sourceTree = "<group>"; };
 		D92F18AC24CEC0F300F3FBCE /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		D92F18AE24CFF8F700F3FBCE /* OpenSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSettingsViewController.swift; sourceTree = "<group>"; };
 		D92F528D24E3FEF40099EBEC /* LinkLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLanguageViewController.swift; sourceTree = "<group>"; };
@@ -458,14 +456,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5A8A95DE250CFD6E00520720 /* UX */ = {
-			isa = PBXGroup;
-			children = (
-				5A8A95DF250CFD8900520720 /* HapticEngine.swift */,
-			);
-			path = UX;
-			sourceTree = "<group>";
-		};
 		EA0D8B2224B482BF002F1BCD /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -517,7 +507,6 @@
 		EA30D71D24A620BC00AF84B1 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				5A8A95DE250CFD6E00520720 /* UX */,
 				56C26BAE24AF39FD002F83C1 /* Components */,
 				EA47C5EA24A6AAF000EAC720 /* Styles */,
 			);
@@ -892,7 +881,6 @@
 				56009400251E08E100F1BE1B /* UINavigationController.swift in Sources */,
 				EA07E41724E34C7D0097A9A0 /* URLSession.swift in Sources */,
 				EAEB833B252B77AE005B8E24 /* TokenCodeField.swift in Sources */,
-				5A8A95E0250CFD8900520720 /* HapticEngine.swift in Sources */,
 				32B5956124AA27ED00CC386E /* BatchRepository.swift in Sources */,
 				5687174224C1969A00E65427 /* StepView.swift in Sources */,
 				561878AC24AC9952004B7563 /* LocalStore.swift in Sources */,

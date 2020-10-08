@@ -207,7 +207,6 @@ class MainViewController: UIViewController {
     }
 
     @objc private func infoButtonTapped() {
-        HapticEngine.selection.selectionChanged()
         showGuide()
     }
     

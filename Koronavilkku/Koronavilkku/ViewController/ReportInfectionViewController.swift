@@ -78,7 +78,6 @@ class ReportInfectionViewController: UIViewController {
         
         childNavController.navigationBar.standardAppearance = appearance
         childNavController.navigationBar.tintColor = UIColor.Primary.blue
-        HapticEngine.selection.selectionChanged()
         
         self.navigationController?.present(childNavController, animated: true)
     }

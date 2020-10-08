@@ -69,7 +69,6 @@ class HowItWorksViewController: UIViewController {
     }
     
     @objc func close() {
-        HapticEngine.selection.selectionChanged()
         self.dismiss(animated: true, completion: {})
     }
 

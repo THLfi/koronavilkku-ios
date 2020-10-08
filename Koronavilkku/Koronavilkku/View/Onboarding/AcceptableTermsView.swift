@@ -131,7 +131,7 @@ class AcceptableTermsView: CardElement, AcceptableView {
     }
     
     @objc func toggleTapped() {
-        HapticEngine.selection.selectionChanged()
+        UISelectionFeedbackGenerator().selectionChanged()
         acceptButton.isSelected = !acceptButton.isSelected
         acceptButton.backgroundColor = acceptButton.isSelected ? UIColor.Primary.blue : .clear
         

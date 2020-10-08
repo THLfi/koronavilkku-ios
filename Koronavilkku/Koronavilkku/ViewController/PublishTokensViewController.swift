@@ -122,7 +122,6 @@ class PublishTokensViewController: UIViewController {
     
     @objc
     func close() {
-        HapticEngine.selection.selectionChanged()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -232,7 +231,6 @@ class PublishTokensViewController: UIViewController {
     }
     
     @objc func sendPressed() {
-        HapticEngine.selection.selectionChanged()
         DispatchQueue.main.async {
             self.errorView.isHidden = true
             self.progressIndicator.startAnimating()
@@ -244,14 +242,15 @@ class PublishTokensViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink(
                 receiveCompletion: {
+                    let feedbackGenerator = UINotificationFeedbackGenerator()
                     switch $0 {
                     case .failure(let error as NSError):
-                        HapticEngine.result.notificationOccurred(.error)
+                        feedbackGenerator.notificationOccurred(.error)
                         Log.e("Failed to post exposure keys: \(error)")
                         self.failure = error
 
                     case .finished:
-                        HapticEngine.result.notificationOccurred(.success)
+                        feedbackGenerator.notificationOccurred(.success)
                         self.showFinishViewController()
                     }
                 },
@@ -267,7 +266,6 @@ class PublishTokensViewController: UIViewController {
         finishViewController.textLabelText = Text.FinishedText.localized
         finishViewController.buttonTitle = Text.FinishedButton.localized
         finishViewController.buttonPressed = { [unowned finishViewController] in
-            HapticEngine.selection.selectionChanged()
             UIApplication.shared.selectRootTab(.home)
             finishViewController.dismiss(animated: true, completion: nil)
         }
