@@ -131,6 +131,7 @@ class AcceptableTermsView: CardElement, AcceptableView {
     }
     
     @objc func toggleTapped() {
+        UISelectionFeedbackGenerator().selectionChanged()
         acceptButton.isSelected = !acceptButton.isSelected
         acceptButton.backgroundColor = acceptButton.isSelected ? UIColor.Primary.blue : .clear
         

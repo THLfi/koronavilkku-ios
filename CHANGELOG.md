@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - New Elevation enum for adding predefined shadow styles into UIViews
+- Haptic feedback when user toggles checkbox values or submits their TEK's
 
 ## 1.1.0
 

@@ -242,12 +242,15 @@ class PublishTokensViewController: UIViewController {
             .receive(on: RunLoop.main)
             .sink(
                 receiveCompletion: {
+                    let feedbackGenerator = UINotificationFeedbackGenerator()
                     switch $0 {
                     case .failure(let error as NSError):
+                        feedbackGenerator.notificationOccurred(.error)
                         Log.e("Failed to post exposure keys: \(error)")
                         self.failure = error
 
                     case .finished:
+                        feedbackGenerator.notificationOccurred(.success)
                         self.showFinishViewController()
                     }
                 },
