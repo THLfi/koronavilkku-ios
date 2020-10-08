@@ -96,20 +96,22 @@ final class StatusHeaderView: UIView {
         case EnableButton
     }
 
-    var radarStatus: RadarStatus?
-    var radarContainer: UIView!
-    var titleLabel: UILabel!
-    var bodyLabel: UILabel!
-    var button: UIButton!
-    var buttonConstraint: Constraint!
-    let exposureRepository = Environment.default.exposureRepository
-    var updateTask: AnyCancellable? = nil
+    private var radarStatus: RadarStatus?
+    private var radarContainer: UIView!
+    private var titleLabel: UILabel!
+    private var bodyLabel: UILabel!
+    private var button: UIButton!
+    private var buttonConstraint: Constraint!
+
+    private let exposureRepository = Environment.default.exposureRepository
+    private var updateTask: AnyCancellable? = nil
+    
+    private let verticalPadding = CGFloat(30)
+    private let imageHeight = CGFloat(138)
+    private let imageWidth = CGFloat(118)
+    
     var openSettingsHandler: ((_ type: OpenSettingsType) -> Void)? = nil
-    
-    let verticalPadding = CGFloat(30)
-    let imageHeight = CGFloat(138)
-    let imageWidth = CGFloat(118)
-    
+
     init() {
         super.init(frame: .zero)
 
