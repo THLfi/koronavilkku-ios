@@ -262,7 +262,7 @@ class PublishTokensViewController: UIViewController {
         finishViewController.titleText = Text.FinishedTitle.localized
         finishViewController.textLabelText = Text.FinishedText.localized
         finishViewController.buttonTitle = Text.FinishedButton.localized
-        finishViewController.buttonPressed = {
+        finishViewController.buttonPressed = { [unowned finishViewController] in
             UIApplication.shared.selectRootTab(.home)
             finishViewController.dismiss(animated: true, completion: nil)
         }
