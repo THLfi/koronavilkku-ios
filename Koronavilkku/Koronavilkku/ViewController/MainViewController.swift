@@ -1,5 +1,4 @@
 import UIKit
-import SafariServices
 import SnapKit
 
 class MainViewController: UIViewController {
@@ -96,8 +95,10 @@ class MainViewController: UIViewController {
         }
         
         let howToProtect = NarrowRowElement(image: UIImage(named: "shield-icon")!,
-                                            title: Text.ProtectionButtonTitle.localized,
-                                            tapped: { [unowned self] in self.openProtectionWebView() })
+                                            title: Text.ProtectionButtonTitle.localized) { [unowned self] in
+            self.openLink(url: Text.ProtectionButtonURL.toURL()!)
+        }
+        
         row.addSubview(howToProtect)
         howToProtect.snp.makeConstraints { make in
             make.top.left.bottom.equalToSuperview()
@@ -105,8 +106,10 @@ class MainViewController: UIViewController {
         }
         
         let statistics = NarrowRowElement(image: UIImage(named: "finland-map")!,
-                                          title: Text.SituationButtonTitle.localized,
-                                          tapped: { [unowned self] in self.openSituationWebView() })
+                                          title: Text.SituationButtonTitle.localized) { [unowned self] in
+            self.openLink(url: Text.SituationButtonURL.toURL()!)
+        }
+        
         row.addSubview(statistics)
         statistics.snp.makeConstraints { make in
             make.top.right.bottom.equalToSuperview()
@@ -174,24 +177,6 @@ class MainViewController: UIViewController {
         openSubview(viewController: exposuresVC)
     }
     
-    private func openProtectionWebView() {
-        guard let url = Text.ProtectionButtonURL.toURL() else {
-            return
-        }
-        
-        let safariController = SFSafariViewController(url: url)
-        navigationController?.present(safariController, animated: true)
-    }
-    
-    private func openSituationWebView() {
-        guard let url = Text.SituationButtonURL.toURL() else {
-            return
-        }
-        
-        let safariController = SFSafariViewController(url: url)
-        navigationController?.present(safariController, animated: true)
-    }
-    
     private func openSymptomsViewController() {
         openSubview(viewController: SymptomsViewController())
     }
@@ -211,7 +196,7 @@ class MainViewController: UIViewController {
     }
     
     @objc private func logoImageTapped() {
-        UIApplication.shared.open(URL(string: Translation.HomeLogoLinkURL.localized)!)
+        self.openLink(url: URL(string: Translation.HomeLogoLinkURL.localized)!)
     }
     
     @objc private func willEnterForeground() {

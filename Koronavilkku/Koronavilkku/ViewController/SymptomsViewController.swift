@@ -55,7 +55,10 @@ class SymptomsViewController: UIViewController {
     }
 
     private func linkItem(title: Text, linkName: Text, url: Text, spacing: CGFloat) -> InstructionItem {
-        let view = LinkItemCard(title: title.localized, linkName: linkName.localized, url: URL(string: url.localized))
+        let view = LinkItemCard(title: title.localized, linkName: linkName.localized) { [unowned self] in
+            self.openExternalLink(url: URL(string: url.localized)!)
+        }
+        
         return InstructionItem(view: view, spacing: spacing)
     }
 }

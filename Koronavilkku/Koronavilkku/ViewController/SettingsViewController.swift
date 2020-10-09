@@ -77,7 +77,18 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
 
     private func linkItem<T: Localizable>(title: T, linkName: T? = nil, value: T? = nil, tapped: TapHandler? = nil, url: T? = nil) -> LinkItem {
-        return LinkItem(title: title.localized, linkName: linkName?.localized, value: value?.localized, tapped: tapped, url: url?.toURL())
+        var tapped = tapped
+        
+        if let url = url?.toURL() {
+            tapped = { [unowned self] in
+                self.openLink(url: url)
+            }
+        }
+        
+        return LinkItem(title: title.localized,
+                        linkName: linkName?.localized,
+                        value: value?.localized,
+                        tapped: tapped!)
     }
     
     private func appNameAndVersionItem() -> InstructionItem {
@@ -141,7 +152,7 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         let items = [
             linkItem(title: Text.FAQLinkTitle, linkName: Text.FAQLinkName, url: Text.FAQLinkURL),
             guideLinkItem,
-            linkItem(title: Text.TermsLinkTitle, linkName: Text.TermsLinkName, url: Text.TermsLinkURL ),
+            linkItem(title: Text.TermsLinkTitle, linkName: Text.TermsLinkName, url: Text.TermsLinkURL),
             linkItem(title: Text.PrivacyLinkTitle, linkName: Text.PrivacyLinkName, url: Text.PrivacyLinkURL),
             licenseLinkItem,
         ]

@@ -1,4 +1,5 @@
 import Foundation
+import SafariServices
 import UIKit
 
 extension UIViewController {
@@ -22,5 +23,20 @@ extension UIViewController {
     
     func showGuide() {
         self.present(HowItWorksViewController(), animated: true)
+    }
+    
+    func openLink(url: URL) {
+        let safariController = SFSafariViewController(url: url)
+        self.present(safariController, animated: true)
+    }
+    
+    func openExternalLink(url: URL) {
+        if !UIApplication.shared.canOpenURL(url) {
+            showAlert(title: Translation.ExternalLinkErrorTitle.localized,
+                      message: Translation.ExternalLinkErrorMessage.localized,
+                      buttonText: Translation.ExternalLinkErrorButton.localized)
+        } else {
+            UIApplication.shared.open(url)
+        }
     }
 }

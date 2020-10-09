@@ -222,3 +222,7 @@
 "ENBlockedStepsNew" = "1. Tryck på Inställningsknappen nedan.\n\n2. Öppna Exponeringsnotiser.\n\n3. Koppla på Dela exponeringsinformation.\n\n4. Ställ in Institutet för hälsa och välfärd som aktiv region.";
 
 "OpenSettingsButton" = "Öppna Inställningar";
+
+"ExternalLinkErrorTitle" = "Webbsidan kan inte öppnas";
+"ExternalLinkErrorMessage" = "Webbsidan kan inte öppnas eftersom din telefon inte har någon webbläsare eller för att webbläsaren är blockerad.";
+"ExternalLinkErrorButton" = "OK";

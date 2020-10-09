@@ -330,11 +330,11 @@
 				561878BC24ADD24B004B7563 /* Date+Formatter.swift */,
 				563D44B824AB9CD3008FE2BB /* Dictionary+IndexSubscript.swift */,
 				563D44B624AB5DEE008FE2BB /* UILabel+Styled.swift */,
+				560093FF251E08E100F1BE1B /* UINavigationController.swift */,
 				32899E4A24C0761100CFFE27 /* UITextField.swift */,
 				563D44AA24AA327F008FE2BB /* UIView.swift */,
 				32899E4824C0680600CFFE27 /* UIViewController.swift */,
 				EA07E41624E34C7D0097A9A0 /* URLSession.swift */,
-				560093FF251E08E100F1BE1B /* UINavigationController.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";

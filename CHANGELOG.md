@@ -10,10 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Small layout and rendering corrections in the main screen
 - Fixed scrolling issues with navigation bar large titles
 - Break potential retain cycles by using weak or unowned self in capturing closures and weak view controller delegates
+- Use in-app browser for all THL links
 
 ### Added
 - New Elevation enum for adding predefined shadow styles into UIViews
 - Haptic feedback when user toggles checkbox values or submits their TEK's
+- New error message if a link cannot be opened in external browser due to app restrictions
 
 ## 1.1.0
 

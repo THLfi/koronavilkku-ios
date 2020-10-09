@@ -5,6 +5,7 @@ import SnapKit
 
 protocol AcceptDelegate: AnyObject {
     func statusChanged()
+    func openLink(url: URL)
 }
 
 protocol AcceptableView {
@@ -92,8 +93,10 @@ class AcceptableTermsView: CardElement, AcceptableView {
             let spacing: CGFloat = 10
             let linkLabel = LinkLabel(label: caption,
                                     font: UIFont.linkLabel,
-                                    color: UIColor.Primary.blue,
-                                    url: url)
+                                    color: UIColor.Primary.blue) { [unowned self] in
+                self.delegate?.openLink(url: url)
+            }
+            
             linkLabel.contentInset = UIEdgeInsets(top: -spacing, left: 0, bottom: -bottomMargin, right: 0)
             linkLabel.accessibilityTraits = .link
             self.addSubview(linkLabel)
