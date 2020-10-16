@@ -45,11 +45,11 @@
 "ExposuresViewController.Text.TitleHasExposures" = "Potential exposure";
 
 // MARK: ExposuresViewWrapper
-"ExposuresViewWrapper.HasExposureText.Heading" = "In the past 14 days, you have been close to a person who has reported a COVID-19 infection via Koronavilkku.";
+"ExposuresViewWrapper.HasExposureText.Heading" = "In the past 10 days, you have been close to a person who has reported a COVID-19 infection via Koronavilkku.";
 "ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Contact healthcare services";
 "ExposuresViewWrapper.HasExposureText.ContactCardText" = "Information about your potential exposure will only be communicated to healthcare services if you contact them yourself.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Contact";
-"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Follow these instructions carefully during the next two weeks:";
+"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Follow these instructions carefully during the next 10 days:";
 "ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "If you develop any of the following symptoms consistent with COVID-19, contact your municipal healthcare services and get tested as soon as possible:";
 "ExposuresViewWrapper.HasExposureText.InstructionsSymptomsText" = "- change in sense of smell or taste\n\t- shortness of breath\n\t- cough, sore throat or runny nose\n\t- fever\n\t- headaches or muscle pain\n\t- unexplained diarrhoea or abdominal pain.";
 "ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Avoid meeting other people.";
@@ -58,10 +58,10 @@
 "ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "If possible, let someone else handle food shopping and other errands outside the home.";
 "ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "If you cough or sneeze, use a disposable tissue to cover your mouth and nose. Put the used tissue in a waste bin and wash your hands with water and soap or use hand sanitiser. If you do not have a tissue, cough or sneeze into your sleeve.";
 "ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Work remotely if possible.";
-"ExposuresViewWrapper.HasExposureText.ExposureDisclaimer" = "The assessment of your exposure is based on encounters that Koronavilkku has collected during the last 14 days. The intensity of exposure cannot be accurately assessed.";
+"ExposuresViewWrapper.HasExposureText.ExposureDisclaimer" = "The assessment of your exposure is based on encounters that Koronavilkku has collected during the last 10 days. The intensity of exposure cannot be accurately assessed.";
 
 "ExposuresViewWrapper.NoExposuresText.Heading" = "No observed exposures";
-"ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku has not detected exposures to the coronavirus in the last 14 days.";
+"ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku has not detected exposures to the coronavirus in the last 10 days.";
 "ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "However, the application is not able to identify every situation where exposure may occur.";
 
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "No checks yet";

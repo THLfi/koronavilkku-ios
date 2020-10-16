@@ -45,11 +45,11 @@
 "ExposuresViewController.Text.TitleHasExposures" = "Eventuell exponering";
 
 // MARK: ExposuresViewWrapper
-"ExposuresViewWrapper.HasExposureText.Heading" = "Du har under de senaste 14 dygnen varit nära en person som meddelat om coronasmitta via Coronablinkern.";
+"ExposuresViewWrapper.HasExposureText.Heading" = "Du har under de senaste 10 dygnen varit nära en person som meddelat om coronasmitta via Coronablinkern.";
 "ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Kontakta hälsovården";
 "ExposuresViewWrapper.HasExposureText.ContactCardText" = "Information om en eventuell exponering förmedlas till hälsovården endast om du själv tar kontakt.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ta kontakt";
-"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Följ dessa anvisningar noggrant i två veckors tid:";
+"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Följ dessa anvisningar noggrant i 10 dagars tid:";
 "ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Om du har ens ett av följande symtom, ta så snabbt som möjligt kontakt med hälsovården i din kommun för att bli testad för coronavirus:";
 "ExposuresViewWrapper.HasExposureText.InstructionsSymptomsText" = "- nedsatt lukt- och smaksinne\n\t- andningssvårigheter\n\t- hosta, halsont eller snuva\n\t- feber\n\t- huvudvärk eller muskelvärk\n\t- diarré eller magont utan annan uppenbar orsak.";
 "ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Undvik att träffa andra människor.";
@@ -58,10 +58,10 @@
 "ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "Låt en annan person handla mat och sköta andra ärenden utanför hemmet, om möjligt.";
 "ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "Om du hostar eller nyser ska du skydda din mun och näsa med en engångsnäsduk. Kasta den använda näsduken i soporna och tvätta dina händer med tvål och vatten eller använd handdesinfektionsmedel. Om du inte har någon näsduk ska du hosta och nysa i ärmen.";
 "ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Arbeta på distans, om möjligt.";
-"ExposuresViewWrapper.HasExposureText.ExposureDisclaimer" = "Bedömningen om exponeringen bygger på den information om möten som Coronablinkern har samlat in under de senaste 14 dygnen. Coronablinkern ger ingen exakt bedömning av hur kraftig smittofaran är.";
+"ExposuresViewWrapper.HasExposureText.ExposureDisclaimer" = "Bedömningen om exponeringen bygger på den information om möten som Coronablinkern har samlat in under de senaste 10 dygnen. Coronablinkern ger ingen exakt bedömning av hur kraftig smittofaran är.";
 
 "ExposuresViewWrapper.NoExposuresText.Heading" = "Ingen exponering har upptäckts";
-"ExposuresViewWrapper.NoExposuresText.Subtitle" = "Coronablinkern har inte observerat någon exponering för coronaviruset under de senaste 14 dagarna.";
+"ExposuresViewWrapper.NoExposuresText.Subtitle" = "Coronablinkern har inte observerat någon exponering för coronaviruset under de senaste 10 dagarna.";
 "ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "Appen kan emellertid inte identifiera alla eventuella exponeringar.";
 
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "Ingen kontroll ännu";
