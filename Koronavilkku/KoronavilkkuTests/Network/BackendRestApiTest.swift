@@ -46,13 +46,9 @@ class BackendRestApiTest : XCTestCase {
         let exposureConfiguration = ExposureConfiguration(
             minimumRiskScore: 1,
             attenuationScores: [1, 2],
-            attenuationWeight: 3,
             daysSinceLastExposureScores: [4, 5],
-            daysSinceLastExposureWeight: 6,
             durationScores: [7, 8],
-            durationWeight: 9,
             transmissionRiskScores: [10, 11],
-            transmissionRiskWeight: 12,
             durationAtAttenuationThresholds: [13, 14, 15]
         )
 
@@ -64,13 +60,9 @@ class BackendRestApiTest : XCTestCase {
         }, response: exposureConfiguration, verifyResponse: { input, output in
             XCTAssertEqual(input.minimumRiskScore, output.minimumRiskScore)
             XCTAssertEqual(input.attenuationScores, output.attenuationScores)
-            XCTAssertEqual(input.attenuationWeight, output.attenuationWeight)
             XCTAssertEqual(input.daysSinceLastExposureScores, output.daysSinceLastExposureScores)
-            XCTAssertEqual(input.daysSinceLastExposureWeight, output.daysSinceLastExposureWeight)
             XCTAssertEqual(input.durationScores, output.durationScores)
-            XCTAssertEqual(input.durationWeight, output.durationWeight)
             XCTAssertEqual(input.transmissionRiskScores, output.transmissionRiskScores)
-            XCTAssertEqual(input.transmissionRiskWeight, output.transmissionRiskWeight)
             XCTAssertEqual(input.durationAtAttenuationThresholds, output.durationAtAttenuationThresholds)
         })
         

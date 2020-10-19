@@ -1,8 +1,6 @@
 import XCTest
 @testable import Koronavilkku
 
-import XCTest
-
 class TemporaryExposureKeyTests: XCTestCase {
     
     static let keyCount = 14
