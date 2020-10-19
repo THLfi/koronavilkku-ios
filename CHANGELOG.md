@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed scrolling issues with navigation bar large titles
 - Break potential retain cycles by using weak or unowned self in capturing closures and weak view controller delegates
 - Use in-app browser for all THL links
+- Adjust the exposure notification retention time to 10 days from the exposure
 
 ### Added
 - New Elevation enum for adding predefined shadow styles into UIViews
