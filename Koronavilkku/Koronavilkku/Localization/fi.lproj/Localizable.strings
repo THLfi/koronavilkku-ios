@@ -49,7 +49,7 @@
 "ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Ota yhteyttä terveydenhuoltoon";
 "ExposuresViewWrapper.HasExposureText.ContactCardText" = "Tieto mahdollisesta altistumisestasi välittyy terveydenhuoltoon vain, jos otat itse yhteyttä.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ota yhteyttä";
-"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Noudata näitä ohjeita huolellisesti seuraavan 10 päivän ajan:";
+"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Noudata näitä ohjeita huolellisesti seuraavien 10 päivän ajan:";
 "ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Jos sinulla ilmenee yksikin näistä koronavirustautiin sopivista oireista, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin:";
 "ExposuresViewWrapper.HasExposureText.InstructionsSymptomsText" = "- haju- tai makuaistin muutos\n\t- hengitysvaikeus\n\t- yskä, kurkkukipu tai nuha\n\t- kuume\n\t- päänsärky tai lihaskipuja\n\t- ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
 "ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Vältä tapaamasta muita ihmisiä.";

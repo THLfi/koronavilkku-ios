@@ -2,33 +2,23 @@ import Foundation
 import ExposureNotification
 
 struct Exposure: Codable {
-    
-    static let retentionTime: Double = (60 * 60 * 24) * 15 // 15 days
-    static let testRetentionTime: Double = 60 * 10 // 10 minutes
+    // The official exposure retention time is 10 * 24 hours from the time of exposure.
+    // As we don't know the exact time of exposure, just the 24-hour window starting
+    // from 00:00 UTC, we need to round it up to the next UTC midnight to make sure
+    // every possible exposure is covered
+    static let retentionTime: TimeInterval = (10 + 1) * 86_400
     
     let date: Date
-    let deleteDate: Date
     
-    init(date: Date) {
-        self.date = date
-        self.deleteDate = date.addingTimeInterval(Exposure.retentionTime)
+    var deleteDate: Date {
+        get {
+            date.addingTimeInterval(Self.retentionTime)
+        }
     }
 }
 
 extension ENExposureInfo {
     func to() -> Exposure {
         Exposure(date: self.date)
-    }
-}
-
-extension Exposure: Comparable {
-    static func < (lhs: Exposure, rhs: Exposure) -> Bool {
-        return lhs.date < rhs.date
-    }
-}
-
-extension ENExposureInfo {
-    func toExposureTest() -> Exposure {
-        Exposure(date: Date())
     }
 }
