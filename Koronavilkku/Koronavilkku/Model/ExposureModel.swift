@@ -2,11 +2,14 @@ import Foundation
 import ExposureNotification
 
 struct Exposure: Codable {
-    // The official exposure retention time is 10 * 24 hours from the time of exposure.
-    // As we don't know the exact time of exposure, just the 24-hour window starting
-    // from 00:00 UTC, we need to round it up to the next UTC midnight to make sure
-    // every possible exposure is covered
-    static let retentionTime: TimeInterval = (10 + 1) * 86_400
+    
+    /// How long the notification is being shown after the exposure
+    ///
+    /// The official exposure retention time is 10 * 24 hours from the time of exposure.
+    /// As we don't know the exact time of exposure, just the 24-hour window starting
+    /// from 00:00 UTC, we need to add one additional 24-hour window to make sure every
+    /// possible exposure is covered.
+    static let retentionTime = TimeInterval(60 * 60 * 24) * (10 + 1)
     
     let date: Date
     
