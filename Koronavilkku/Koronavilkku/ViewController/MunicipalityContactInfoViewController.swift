@@ -29,7 +29,7 @@ class MunicipalityContactInfoViewController: UIViewController {
     private func setupNavigationBar() {
         navigationItem.title = municipality.name.localeString
         navigationController?.navigationBar.barTintColor = UIColor.Secondary.blueBackdrop
-        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.navigationBar.tintColor = UIColor.Primary.blue
         navigationController?.navigationItem.titleView?.isHidden = true
         let textAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.Greyscale.black,

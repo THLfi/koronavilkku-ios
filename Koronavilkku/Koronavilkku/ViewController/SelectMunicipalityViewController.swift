@@ -51,8 +51,7 @@ class SelectMunicipalityViewController: UITableViewController {
 
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.navigationBar.barTintColor = UIColor.Secondary.blueBackdrop
-        navigationController?.navigationBar.tintColor = UIColor.Secondary.blueBackdrop
-        navigationController?.navigationBar.tintColor = UIColor.black
+        navigationController?.navigationBar.tintColor = UIColor.Primary.blue
         
         let textAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.Greyscale.black,

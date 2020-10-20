@@ -78,7 +78,7 @@ class ExposuresViewController: UIViewController {
             navigationItem.title = ""
             appearance.backgroundColor = UIColor.Secondary.blueBackdrop
             appearance.titleTextAttributes[NSAttributedString.Key.foregroundColor] = UIColor.Greyscale.black
-            navController.navigationBar.tintColor = UIColor.Greyscale.black
+            navController.navigationBar.tintColor = UIColor.Primary.blue
         }
         
         navController.navigationBar.standardAppearance = appearance
