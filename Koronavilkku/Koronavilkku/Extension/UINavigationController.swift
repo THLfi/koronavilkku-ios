@@ -6,7 +6,7 @@ extension UINavigationController {
         navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         view.backgroundColor = UIColor.Secondary.blueBackdrop
-        navigationBar.tintColor = UIColor.Greyscale.black
+        navigationBar.tintColor = UIColor.Primary.blue
         
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()

@@ -27,6 +27,8 @@ extension UIViewController {
     
     func openLink(url: URL) {
         let safariController = SFSafariViewController(url: url)
+        safariController.preferredControlTintColor = UIColor.Primary.blue
+        safariController.preferredBarTintColor = UIColor.Secondary.blueBackdrop
         self.present(safariController, animated: true)
     }
     
