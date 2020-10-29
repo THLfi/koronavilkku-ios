@@ -48,7 +48,7 @@ class MunicipalityContactInfoViewController: UIViewController {
         var top = contentView.snp.top
         var contactInfoTopMargin: CGFloat
         
-        if municipality.omaolo.available {
+        if municipality.omaolo.available(service: .SymptomAssessment) {
             let infoView = InfoViewWithButton(title: Text.SymptomAssesmentTitle.localized,
                                               descriptionText: Text.SymptomAssesmentDescription.localized,
                                               buttonTitle: Text.SymptomAssesmentButton.localized,
@@ -110,7 +110,10 @@ struct MunicipalityContactInfoViewControllerController_Preview: PreviewProvider 
     static var previews: some View = createPreview(for: {
         let municipality = Municipality(code: "1234",
                                         name: MunicipalityName(fi: "Pirkkala", sv: "Birkala"),
-                                        omaolo: Omaolo(available: true, serviceLanguages: ServiceLanguages(fi: true, sv: true, en: true)),
+                                        omaolo: Omaolo(
+                                            available: true,
+                                            serviceLanguages: ServiceLanguages(fi: true, sv: true, en: true),
+                                            symptomAssessmentOnly: false),
                                         contact: [
                                             Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
                                                                      sv: nil,
