@@ -8,6 +8,8 @@ struct ExposureConfiguration: Codable {
     let durationScores: [Int]
     let transmissionRiskScores: [Int]
     let durationAtAttenuationThresholds: [Int]
+    let durationAtAttenuationWeights: [Double]
+    let exposureRiskDuration: Int
 }
 
 extension ENExposureConfiguration {
@@ -20,6 +22,10 @@ extension ENExposureConfiguration {
         minimumRiskScore = ENRiskScore(clamp(from.minimumRiskScore, minValue: 0, maxValue: 255))
         transmissionRiskLevelValues = from.transmissionRiskScores.map(convertLevelValues)
         durationLevelValues = from.durationScores.map(convertLevelValues)
+        
+        if #available(iOS 13.6, *) {
+            attenuationDurationThresholds = from.durationAtAttenuationThresholds.map(convertLevelValues)
+        }
     }
 }
 
@@ -32,6 +38,8 @@ extension ExposureConfiguration {
             daysSinceLastExposureScores: daysSinceLastExposureScores,
             durationScores: durationScores,
             transmissionRiskScores: transmissionRiskScores,
-            durationAtAttenuationThresholds: durationAtAttenuationThresholds)
+            durationAtAttenuationThresholds: durationAtAttenuationThresholds,
+            durationAtAttenuationWeights: durationAtAttenuationWeights,
+            exposureRiskDuration: exposureRiskDuration)
     }
 }
