@@ -1,9 +1,18 @@
 import Combine
 import ExposureNotification
 import Foundation
-import Dispatch
+import UIKit
+
+enum ManualDetectionStatus {
+    case idle(allowed: Bool)
+    case detecting
+}
 
 protocol ExposureRepository {
+    var manualDetectionStatus: AnyPublisher<ManualDetectionStatus, Never> { get }
+    var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> { get }
+
+    func runManualCheck() -> AnyPublisher<Bool, Never>
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error>
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error>
     func postExposureKeys(publishToken: String?) -> AnyPublisher<Void, Error>
@@ -14,19 +23,81 @@ protocol ExposureRepository {
     func deleteBatchFiles()
 }
 
-struct ExposureRepositoryImpl : ExposureRepository {
+final class ExposureRepositoryImpl : ExposureRepository {
     static let keyCount = 14
+    static let manualCheckThreshold: TimeInterval = 24 * 60 * 60
+    
     private static let dummyPostToken = "000000000000"
+
     private let exposureManager: ExposureManager
     private let backend: Backend
     private let storage: FileStorage
+    private var detectionTask: AnyCancellable?
     
+    @Published
+    private var detectionRunning = false
+    
+    lazy var manualDetectionStatus: AnyPublisher<ManualDetectionStatus, Never> = {
+        Log.d("Create manualDetectionStatus")
+        let allowManualCheck = timeFromLastCheck.map { interval -> Bool in
+            guard let interval = interval else { return false }
+            return interval <= 0 - Self.manualCheckThreshold
+        }
+        
+        return $detectionRunning.combineLatest(allowManualCheck) { running, allowChecking in
+            if running {
+                return .detecting
+            }
+            
+            return .idle(allowed: allowChecking)
+        }.eraseToAnyPublisher()
+    }()
+        
+    lazy var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> = {
+        LocalStore.shared.$dateLastPerformedExposureDetection.$wrappedValue.map { lastCheck -> AnyPublisher<TimeInterval?, Never> in
+            guard let lastCheck = lastCheck else {
+                return Just(nil).eraseToAnyPublisher()
+            }
+            
+            let publisher = Just(Date())
+            let timer = Timer.publish(every: 60, tolerance: 1, on: .main, in: .default).autoconnect()
+            
+            return publisher
+                .merge(with: timer)
+                .map { $0.distance(to: lastCheck) }
+                .eraseToAnyPublisher()
+        }
+        .switchToLatest()
+        .share()
+        .eraseToAnyPublisher()
+    }()
+
     init(exposureManager: ExposureManager, backend: Backend, storage: FileStorage) {
         self.exposureManager = exposureManager
         self.backend = backend
         self.storage = storage
     }
     
+    func runManualCheck() -> AnyPublisher<Bool, Never> {
+        var backgroundId: UIBackgroundTaskIdentifier! = nil
+        
+        backgroundId = UIApplication.shared.beginBackgroundTask() { [weak self] in
+            self?.detectionTask?.cancel()
+            UIApplication.shared.endBackgroundTask(backgroundId)
+            backgroundId = .invalid
+        }
+        
+        return Future { promise in
+            self.detectionRunning = true
+            self.detectionTask = BackgroundTaskForNotifications.execute { [weak self] success in
+                self?.detectionRunning = false
+                promise(.success(success))
+                UIApplication.shared.endBackgroundTask(backgroundId)
+                backgroundId = .invalid
+            }
+        }.setFailureType(to: Never.self).eraseToAnyPublisher()
+    }
+        
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error> {
         return backend.getConfiguration()
     }

@@ -70,32 +70,59 @@ final class ExposuresElement: WideRowElement {
         case TitleHasExposures
         case BodyHasExposures
         case ButtonOpen
+        case ButtonCheckNow
     }
     
+    let manualCheckAction: () -> ()
     let margin = UIEdgeInsets(top: 24, left: 20, bottom: -20, right: -20)
-    var updateTask: AnyCancellable?
-    var counter: Int = 0
+    var updateTasks = Set<AnyCancellable>()
+    var exposureCount: Int = 0
+    var allowManualCheck = false
+    var manualCheckButton: RoundedButton?
     
-    override init(tapped: @escaping () -> () = {}) {
+    private func updateProperty<T: Equatable>(keyPath: ReferenceWritableKeyPath<ExposuresElement, T>, value: T) {
+        if self[keyPath: keyPath] != value {
+            self[keyPath: keyPath] = value
+            self.createSubViews()
+        }
+    }
+    
+    init(tapped: @escaping () -> (), manualCheckAction: @escaping () -> ()) {
+        self.manualCheckAction = manualCheckAction
         super.init(tapped: tapped)
         
-        updateTask = LocalStore.shared.$exposures.$wrappedValue.sink(receiveValue: { [weak self] exposures in
-            self?.counter = exposures.count
-            self?.createSubViews()
-        })
+        LocalStore.shared.$exposures.$wrappedValue
+            .sink { [weak self] exposures in
+                self?.updateProperty(keyPath: \.exposureCount, value: exposures.count)
+            }
+            .store(in: &updateTasks)
+        
+        Environment.default.exposureRepository.manualDetectionStatus
+            .sink { [weak self] state in
+                switch state {
+                case .idle(let allow):
+                    self?.manualCheckButton?.isLoading = false
+                    self?.updateProperty(keyPath: \.allowManualCheck, value: allow)
+                case .detecting:
+                    self?.manualCheckButton?.isLoading = true
+                }
+            }
+            .store(in: &updateTasks)
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
+        fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func createSubViews() {
         super.createSubViews()
 
         let imageName: String
         let title, body: Text
+        var button: RoundedButton? = nil
+        manualCheckButton = nil
         
-        if counter == 0 {
+        if exposureCount == 0 {
             imageName = "flat-color-icons_ok"
             title = .TitleNoExposures
             body = .BodyNoExposures
@@ -109,42 +136,67 @@ final class ExposuresElement: WideRowElement {
         let imageView = createImageView(image: UIImage(named: imageName)!)
         let titleView = createTitleLabel(title: title.localized)
         let bodyView = createBodyLabel(body: body.localized)
-        let button = RoundedButton(title: Text.ButtonOpen.localized,
-                                   backgroundColor: UIColor.Primary.red,
-                                   highlightedBackgroundColor: UIColor.Primary.red,
-                                   action: tapped)
+        let accessibilityView: UIView
+        var additionalView: UIView?
 
-        if counter > 0 {
-            titleView.textColor = UIColor.Primary.red
-            button.isHidden = false
-        } else {
-            button.isHidden = true
-        }
-        
         self.addSubview(container)
+        self.addSubview(imageView)
         container.addSubview(titleView)
         container.addSubview(bodyView)
-        self.addSubview(imageView)
-        self.addSubview(button)
 
+        if exposureCount > 0 {
+            accessibilityView = container
+            button = RoundedButton(title: Text.ButtonOpen.localized,
+                                       backgroundColor: UIColor.Primary.red,
+                                       highlightedBackgroundColor: UIColor.Primary.red,
+                                       action: tapped)
+            titleView.textColor = UIColor.Primary.red
+            button!.isHidden = false
+        } else {
+            if allowManualCheck {
+                manualCheckButton = RoundedButton(title: Text.ButtonCheckNow.localized,
+                                       backgroundColor: UIColor.Primary.blue,
+                                       highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground,
+                                       action: manualCheckAction)
+                
+                self.addSubview(manualCheckButton!)
+                
+                manualCheckButton!.snp.makeConstraints { make in
+                    make.bottom.equalToSuperview().offset(margin.bottom)
+                    make.right.equalToSuperview().offset(margin.right)
+                    make.left.equalToSuperview().offset(margin.left)
+                }
+            }
+            
+            accessibilityView = self
+            additionalView = ExposuresLastCheckedView(style: .subdued)
+            container.addSubview(additionalView!)
+        }
+        
         titleView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
         }
 
         bodyView.snp.makeConstraints { make in
             make.top.equalTo(titleView.snp.bottom).offset(10)
-            make.bottom.left.right.equalToSuperview()
+            make.left.right.equalToSuperview()
         }
-
+        
+        additionalView?.snp.makeConstraints { make in
+            make.top.equalTo(bodyView.snp.bottom).offset(10)
+            make.left.right.equalToSuperview()
+        }
+        
         container.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(margin.top)
             make.left.equalToSuperview().offset(margin.left)
             make.right.equalTo(imageView.snp.left).offset(-20)
+            make.bottom.equalTo(additionalView ?? bodyView)
             
-            if button.isHidden {
-                make.bottom.equalToSuperview().offset(margin.bottom)
-            } else {
+            if let button = button ?? manualCheckButton {
                 make.bottom.equalTo(button.snp.top).offset(-20)
+            } else {
+                make.bottom.equalToSuperview().offset(margin.bottom)
             }
         }
 
@@ -155,20 +207,6 @@ final class ExposuresElement: WideRowElement {
         }
 
         self.isAccessibilityElement = false // In case button visibility changes.
-        let accessibilityView: UIView
-        
-        if !button.isHidden {
-            button.snp.makeConstraints { make in
-                make.bottom.equalToSuperview().offset(margin.bottom)
-                make.right.equalToSuperview().offset(margin.right)
-                make.left.equalToSuperview().offset(margin.left)
-            }
-            accessibilityView = container
-            
-        } else {
-            accessibilityView = self
-        }
-
         titleView.isAccessibilityElement = false
         bodyView.isAccessibilityElement = false
         accessibilityView.accessibilityTraits = .button

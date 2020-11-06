@@ -126,10 +126,10 @@ final class BackgroundTaskForNotifications: BackgroundTask {
                 // …but prevent possible errors from interfering with the real background task
                 return Empty(completeImmediately: true)
             }
-        ).flatMap { (ids, config, _) -> (AnyPublisher<Bool, Error>) in
-            DispatchQueue.main.async {
-                LocalStore.shared.removeExpiredExposures()
-            }
+        )
+        .receive(on: RunLoop.main)
+        .flatMap { (ids, config, _) -> (AnyPublisher<Bool, Error>) in
+            LocalStore.shared.removeExpiredExposures()
             
             Log.d("Got \(ids.count) keys")
             if ids.count == 0 {

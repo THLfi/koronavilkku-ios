@@ -34,10 +34,6 @@ class ExposuresViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.updateNavigationBar()
-
-        // Causes last checked view to redraw itself.
-        LocalStore.shared.$dateLastPerformedExposureDetection.wrappedValue =
-            LocalStore.shared.$dateLastPerformedExposureDetection.wrappedValue
     }
     
     override func viewWillDisappear(_ animated: Bool) {

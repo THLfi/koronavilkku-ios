@@ -9,8 +9,32 @@ class RoundedButton: UIButton {
     
     override open var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? highlightedBackgroundColor : enabledBackgroundColor
+            if !isLoading {
+                backgroundColor = isHighlighted ? highlightedBackgroundColor : enabledBackgroundColor
+            }
+
             layer.shadowColor = isHighlighted ? UIColor.clear.cgColor : UIColor.Greyscale.lightGrey.cgColor
+        }
+    }
+    
+    var isLoading = false {
+        didSet {
+            if isLoading {
+                backgroundColor = UIColor.Greyscale.backdropGrey
+                setImage(UIImage.init(named: "refresh")?.withTintColor(UIColor.Greyscale.mediumGrey), for: .normal)
+                setTitle(nil, for: .normal)
+                
+                let animation = CABasicAnimation(keyPath: "transform.rotation")
+                animation.fromValue = 0.0
+                animation.toValue = CGFloat(Double.pi * 2.0)
+                animation.duration = 2
+                imageView?.layer.add(animation, forKey: nil)
+            } else {
+                imageView?.layer.removeAllAnimations()
+                setImage(nil, for: .normal)
+                setTitle(title, for: .normal)
+                self.setEnabled(true)
+            }
         }
     }
     
@@ -48,17 +72,19 @@ class RoundedButton: UIButton {
         }
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         updateShadowPath()
     }
     
     @objc func performAction() {
-        action()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        if !isLoading {
+            action()
+        }
     }
     
     func setEnabled(_ enabled: Bool) {

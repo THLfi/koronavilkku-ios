@@ -1,5 +1,6 @@
-import UIKit
+import Combine
 import SnapKit
+import UIKit
 
 class MainViewController: UIViewController {
     enum Text : String, Localizable {
@@ -11,7 +12,7 @@ class MainViewController: UIViewController {
     
     private var headerView: StatusHeaderView!
     private var notifications: ExposuresElement!
-    lazy var exposuresVC = ExposuresViewController()
+    private var detectionTask: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +69,17 @@ class MainViewController: UIViewController {
         }
         
         // Setup notification and helper components
-        self.notifications = ExposuresElement(tapped: { [unowned self] in self.openExposuresViewController() })
+        self.notifications = ExposuresElement() { [unowned self] in
+            self.openExposuresViewController()
+        } manualCheckAction: {
+            self.detectionTask = Environment.default.exposureRepository.runManualCheck().sink { [weak self] success in
+                if !success {
+                    self?.showAlert(title: "No can do",
+                                    message: "Cannot run check",
+                                    buttonText: "Okey dokey!")
+                }
+            }
+        }
         
         wrapper.addSubview(notifications)
         notifications.snp.makeConstraints { make in
@@ -174,7 +185,7 @@ class MainViewController: UIViewController {
     }
     
     private func openExposuresViewController() {
-        openSubview(viewController: exposuresVC)
+        openSubview(viewController: ExposuresViewController())
     }
     
     private func openSymptomsViewController() {
