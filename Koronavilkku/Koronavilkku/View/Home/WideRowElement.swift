@@ -146,32 +146,33 @@ final class ExposuresElement: WideRowElement {
         container.addSubview(bodyView)
 
         if exposureCount > 0 {
-            accessibilityView = container
+            titleView.textColor = UIColor.Primary.red
             button = RoundedButton(title: Text.ButtonOpen.localized,
                                        backgroundColor: UIColor.Primary.red,
                                        highlightedBackgroundColor: UIColor.Primary.red,
                                        action: tapped)
-            titleView.textColor = UIColor.Primary.red
-            button!.isHidden = false
         } else {
             if allowManualCheck {
                 manualCheckButton = RoundedButton(title: Text.ButtonCheckNow.localized,
                                        backgroundColor: UIColor.Primary.blue,
                                        highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground,
                                        action: manualCheckAction)
-                
-                self.addSubview(manualCheckButton!)
-                
-                manualCheckButton!.snp.makeConstraints { make in
-                    make.bottom.equalToSuperview().offset(margin.bottom)
-                    make.right.equalToSuperview().offset(margin.right)
-                    make.left.equalToSuperview().offset(margin.left)
-                }
             }
             
-            accessibilityView = self
             additionalView = ExposuresLastCheckedView(style: .subdued)
             container.addSubview(additionalView!)
+        }
+        
+        if let button = button ?? manualCheckButton {
+            accessibilityView = container
+            self.addSubview(button)
+            button.snp.makeConstraints { make in
+                make.bottom.equalToSuperview().offset(margin.bottom)
+                make.right.equalToSuperview().offset(margin.right)
+                make.left.equalToSuperview().offset(margin.left)
+            }
+        } else {
+            accessibilityView = self
         }
         
         titleView.snp.makeConstraints { make in

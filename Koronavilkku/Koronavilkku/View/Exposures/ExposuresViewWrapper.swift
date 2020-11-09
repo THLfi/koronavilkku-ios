@@ -118,7 +118,9 @@ class ExposuresViewWrapper: UIView {
             }
         }
         
-        checkDelayedView.render(loading: isDetecting)
+        if allowManualCheck {
+            checkDelayedView.render(loading: isDetecting)
+        }
     }
     
     private func createExposureView() {
