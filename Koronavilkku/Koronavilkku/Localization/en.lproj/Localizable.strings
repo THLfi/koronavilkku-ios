@@ -33,9 +33,11 @@
 // MARK: ExposuresElement
 "ExposuresElement.Text.TitleNoExposures" = "No observed exposures";
 "ExposuresElement.Text.BodyNoExposures" = "You have not been near a person who has reported an infection";
+"ExposuresElement.Text.BodyExposureCheckDelayed" = "Checking for potential exposures has not been successful for over 24 hours. The app will try again later. You can check now.";
 "ExposuresElement.Text.TitleHasExposures" = "Potential exposure";
 "ExposuresElement.Text.BodyHasExposures" = "You may have been exposed to the coronavirus";
 "ExposuresElement.Text.ButtonOpen" = "See instructions";
+"ExposuresElement.Text.ButtonCheckNow" = "Check now";
 
 // MARK: SymptomsElement.Text
 "SymptomsElement.Text.Title" = "Do you think you may have COVID-19?";
@@ -64,8 +66,9 @@
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku has not detected exposures to the coronavirus in the last 10 days.";
 "ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "However, the application is not able to identify every situation where exposure may occur.";
 
-"ExposuresLastCheckedView.Text.NotCheckedYet" = "No checks yet";
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Last checked %@";
+"ExposuresLastCheckedView.Text.MomentAgo" = "a moment ago";
+"ExposuresLastCheckedView.Text.NotCheckedYet" = "No checks yet";
 
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "You have already reported your infection";
@@ -226,3 +229,7 @@
 "ExternalLinkErrorTitle" = "Web page cannot be opened";
 "ExternalLinkErrorMessage" = "Web page cannot be opened because your phone does not have an internet browser or its use has been blocked.";
 "ExternalLinkErrorButton" = "OK";
+
+"ManualCheckErrorTitle" = "Error loading exposure data";
+"ManualCheckErrorMessage" = "Exposure data could not be loaded. Please check your internet connection and try again.";
+"ManualCheckErrorButton" = "OK";
