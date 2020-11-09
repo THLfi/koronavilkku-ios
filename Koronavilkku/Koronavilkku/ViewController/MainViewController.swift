@@ -74,9 +74,9 @@ class MainViewController: UIViewController {
         } manualCheckAction: {
             self.detectionTask = Environment.default.exposureRepository.runManualCheck().sink { [weak self] success in
                 if !success {
-                    self?.showAlert(title: "No can do",
-                                    message: "Cannot run check",
-                                    buttonText: "Okey dokey!")
+                    self?.showAlert(title: Translation.ManualCheckErrorTitle.localized,
+                                    message: Translation.ManualCheckErrorMessage.localized,
+                                    buttonText: Translation.ManualCheckErrorButton.localized)
                 }
             }
         }

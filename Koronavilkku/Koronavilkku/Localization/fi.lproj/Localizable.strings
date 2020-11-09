@@ -33,9 +33,11 @@
 // MARK: ExposuresElement
 "ExposuresElement.Text.TitleNoExposures" = "Ei havaittuja altistumisia";
 "ExposuresElement.Text.BodyNoExposures" = "Et ole ollut tartunnasta ilmoittaneen henkilön lähellä";
+"ExposuresElement.Text.BodyExposureCheckDelayed" = "Altistumistietojen tarkistus ei ole onnistunut yli 24 tuntiin. Sovellus yrittää tarkistaa tiedot myöhemmin. Voit myös käynnistää tarkistuksen nyt.";
 "ExposuresElement.Text.TitleHasExposures" = "Mahdollinen altistuminen";
 "ExposuresElement.Text.BodyHasExposures" = "Olet saattanut altistua virukselle";
 "ExposuresElement.Text.ButtonOpen" = "Katso toimintaohjeet";
+"ExposuresElement.Text.ButtonCheckNow" = "Käynnistä tarkistus";
 
 // MARK: SymptomsElement.Text
 "SymptomsElement.Text.Title" = "Epäiletkö tartuntaa?";
@@ -64,8 +66,9 @@
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku ei ole havainnut altistumista koronavirukselle viimeisten 10 päivän aikana.";
 "ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "Sovellus ei kuitenkaan tunnista kaikkia mahdollisia altistumistilanteita.";
 
-"ExposuresLastCheckedView.Text.NotCheckedYet" = "Altistumistietoja ei ole vielä tarkistettu";
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Tarkistettu viimeksi %@";
+"ExposuresLastCheckedView.Text.MomentAgo" = "hetki sitten";
+"ExposuresLastCheckedView.Text.NotCheckedYet" = "Altistumistietoja ei ole vielä tarkistettu";
 
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "Olet jo ilmoittanut tartunnasta";
@@ -226,3 +229,7 @@
 "ExternalLinkErrorTitle" = "Verkkosivua ei voida avata";
 "ExternalLinkErrorMessage" = "Verkkosivua ei voida avata, koska puhelimessasi ei ole selainta tai sen käyttö on estetty.";
 "ExternalLinkErrorButton" = "OK";
+
+"ManualCheckErrorTitle" = "Altistumistietoja ei voitu ladata";
+"ManualCheckErrorMessage" = "Altistumistietojen lataaminen ei onnistunut. Tarkista verkkoyhteys ja yritä uudelleen.";
+"ManualCheckErrorButton" = "OK";

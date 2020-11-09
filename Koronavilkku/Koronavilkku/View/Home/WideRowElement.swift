@@ -67,6 +67,7 @@ final class ExposuresElement: WideRowElement {
     enum Text : String, Localizable {
         case TitleNoExposures
         case BodyNoExposures
+        case BodyExposureCheckDelayed
         case TitleHasExposures
         case BodyHasExposures
         case ButtonOpen
@@ -125,7 +126,7 @@ final class ExposuresElement: WideRowElement {
         if exposureCount == 0 {
             imageName = "flat-color-icons_ok"
             title = .TitleNoExposures
-            body = .BodyNoExposures
+            body = allowManualCheck ? .BodyExposureCheckDelayed : .BodyNoExposures
         } else {
             imageName = "flat-color-icons_notifications"
             title = .TitleHasExposures

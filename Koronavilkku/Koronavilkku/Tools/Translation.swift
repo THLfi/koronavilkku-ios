@@ -127,4 +127,8 @@ enum Translation: String, Localizable {
     case ExternalLinkErrorTitle
     case ExternalLinkErrorMessage
     case ExternalLinkErrorButton
+    
+    case ManualCheckErrorTitle
+    case ManualCheckErrorMessage
+    case ManualCheckErrorButton
 }
