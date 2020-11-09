@@ -54,6 +54,7 @@ final class ExposureRepositoryImpl : ExposureRepository {
     }()
         
     lazy var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> = {
+        // Create a timer based on the current exposure detection date
         LocalStore.shared.$dateLastPerformedExposureDetection.$wrappedValue.map { lastCheck -> AnyPublisher<TimeInterval?, Never> in
             guard let lastCheck = lastCheck else {
                 return Just(nil).eraseToAnyPublisher()
@@ -67,8 +68,11 @@ final class ExposureRepositoryImpl : ExposureRepository {
                 .map { $0.distance(to: lastCheck) }
                 .eraseToAnyPublisher()
         }
+        // Cancels the previous timer when the value changes to avoid mixed signals
         .switchToLatest()
-        .share()
+        // Make sure the same value is broadcasted to every subscriber *and* that the current value is always published
+        .multicast(subject: CurrentValueSubject<TimeInterval?, Never>(nil))
+        .autoconnect()
         .eraseToAnyPublisher()
     }()
 
