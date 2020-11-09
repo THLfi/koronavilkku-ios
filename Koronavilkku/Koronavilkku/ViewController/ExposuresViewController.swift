@@ -10,8 +10,9 @@ class ExposuresViewController: UIViewController {
     }
 
     let exposuresViewWrapper = ExposuresViewWrapper()
-    var cancellable: AnyCancellable?
+    var updateTasks = Set<AnyCancellable>()
     var hasExposures: Bool = false
+    var manualDetectionStatus: ManualDetectionStatus?
     
     private let button = UIButton()
     
@@ -42,19 +43,30 @@ class ExposuresViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        cancellable = LocalStore.shared.$exposures.$wrappedValue
-            .sink { [weak self] exposures in
+        LocalStore.shared.$exposures.$wrappedValue
+            .map { $0.count > 0 }
+            .receive(on: RunLoop.main)
+            .sink { [weak self] hasExposures in
                 guard let self = self else {
                     return
                 }
                 
-                Log.d("Exposures: \(exposures)")
-                DispatchQueue.main.async {
-                    self.hasExposures = exposures.count > 0
+                if self.hasExposures != hasExposures {
+                    self.hasExposures = hasExposures
                     self.updateNavigationBar()
-                    self.exposuresViewWrapper.render(hasExposures: self.hasExposures)
+                    self.exposuresViewWrapper.render(hasExposures: self.hasExposures,
+                                                     manualDetectionStatus: self.manualDetectionStatus)
                 }
             }
+            .store(in: &updateTasks)
+        
+        Environment.default.exposureRepository.manualDetectionStatus
+            .receive(on: RunLoop.main)
+            .sink { manualDetectionStatus in
+                self.exposuresViewWrapper.render(hasExposures: self.hasExposures,
+                                                 manualDetectionStatus: manualDetectionStatus)
+            }
+            .store(in: &updateTasks)
     }
     
     private func updateNavigationBar() {
@@ -96,6 +108,19 @@ class ExposuresViewController: UIViewController {
 }
 
 extension ExposuresViewController: ExposuresViewDelegate {
+    func startManualCheck() {
+        Environment.default.exposureRepository.runManualCheck()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] success in
+                if !success {
+                    self?.showAlert(title: Translation.ManualCheckErrorTitle.localized,
+                                    message: Translation.ManualCheckErrorMessage.localized,
+                                    buttonText: Translation.ManualCheckErrorButton.localized)
+                }
+            }
+            .store(in: &updateTasks)
+    }
+    
     func showHowItWorks() {
         self.navigationController?.present(HowItWorksViewController(), animated: true)
     }

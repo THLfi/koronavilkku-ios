@@ -28,6 +28,7 @@ class RoundedButton: UIButton {
                 animation.fromValue = 0.0
                 animation.toValue = CGFloat(Double.pi * 2.0)
                 animation.duration = 2
+                animation.repeatCount = .greatestFiniteMagnitude
                 imageView?.layer.add(animation, forKey: nil)
             } else {
                 imageView?.layer.removeAllAnimations()
