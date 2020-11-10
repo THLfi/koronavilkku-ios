@@ -142,22 +142,17 @@ final class BackgroundTaskForNotifications: BackgroundTask {
         }
         .sink(
             receiveCompletion: {
-                // Update last checked date once we have tried loading batches
-                LocalStore.shared.updateDateLastPerformedExposureDetection()
-                
                 exposureRepository.deleteBatchFiles()
                 
-                switch $0 {
-                case .finished:
-                    Log.d("Detecting exposures finished")
-                    completionHandler(true)
-                case .failure(let error):
+                if case .failure(let error) = $0 {
                     Log.e("Detecting exposures failed: \(error.localizedDescription)")
                     completionHandler(false)
                 }
             },
             receiveValue: { exposuresFound in
                 Log.d("Detecting exposures succeeded. Exposures found: \(exposuresFound)")
+                LocalStore.shared.updateDateLastPerformedExposureDetection()
+                completionHandler(true)
             }
         )
     }
