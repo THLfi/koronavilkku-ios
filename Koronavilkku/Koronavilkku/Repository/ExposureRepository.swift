@@ -53,14 +53,14 @@ final class ExposureRepositoryImpl : ExposureRepository {
             }
         }
         
-        return $detectionRunning.combineLatest(isDelayed, isDisabled) { running, isDelayed, isDisabled in
+        return $detectionRunning.combineLatest(isDelayed, isDisabled) { running, delayed, disabled in
             switch true {
-            case isDisabled:
+            case disabled:
                 return .disabled
             case running:
                 return .detecting
             default:
-                return .idle(delayed: isDelayed)
+                return .idle(delayed: delayed)
             }
         }.eraseToAnyPublisher()
     }()

@@ -111,20 +111,6 @@ final class ExposuresElement: WideRowElement {
             }
             .store(in: &updateTasks)
         
-        LocalStore.shared.$uiStatus.$wrappedValue
-            .map { status in
-                switch status {
-                case .apiDisabled, .off:
-                    return false
-                default:
-                    return true
-                }
-            }
-            .sink { [weak self] enabled in
-                self?.updateProperty(keyPath: \.checksEnabled, value: enabled)
-            }
-            .store(in: &updateTasks)
-        
         Environment.default.exposureRepository.detectionStatus
             .sink { [weak self] state in
                 guard let self = self else { return }
