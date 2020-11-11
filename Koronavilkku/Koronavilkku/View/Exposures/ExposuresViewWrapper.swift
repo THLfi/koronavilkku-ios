@@ -90,18 +90,18 @@ class ExposuresViewWrapper: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func render(hasExposures: Bool, manualDetectionStatus: ManualDetectionStatus?) {
+    func render(hasExposures: Bool, detectionStatus: DetectionStatus?) {
         let allowManualCheck: Bool
         let isDetecting: Bool
         
-        switch manualDetectionStatus {
+        switch detectionStatus {
         case .detecting:
             allowManualCheck = true
             isDetecting = true
-        case .idle(let allowed):
-            allowManualCheck = allowed
+        case .idle(let delayed):
+            allowManualCheck = delayed
             isDetecting = false
-        case nil:
+        default:
             allowManualCheck = false
             isDetecting = false
         }

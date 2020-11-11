@@ -12,7 +12,7 @@ class ExposuresViewController: UIViewController {
     let exposuresViewWrapper = ExposuresViewWrapper()
     var updateTasks = Set<AnyCancellable>()
     var hasExposures: Bool = false
-    var manualDetectionStatus: ManualDetectionStatus?
+    var detectionStatus: DetectionStatus?
     
     private let button = UIButton()
     
@@ -55,16 +55,16 @@ class ExposuresViewController: UIViewController {
                     self.hasExposures = hasExposures
                     self.updateNavigationBar()
                     self.exposuresViewWrapper.render(hasExposures: self.hasExposures,
-                                                     manualDetectionStatus: self.manualDetectionStatus)
+                                                     detectionStatus: self.detectionStatus)
                 }
             }
             .store(in: &updateTasks)
         
-        Environment.default.exposureRepository.manualDetectionStatus
+        Environment.default.exposureRepository.detectionStatus
             .receive(on: RunLoop.main)
-            .sink { manualDetectionStatus in
+            .sink { detectionStatus in
                 self.exposuresViewWrapper.render(hasExposures: self.hasExposures,
-                                                 manualDetectionStatus: manualDetectionStatus)
+                                                 detectionStatus: detectionStatus)
             }
             .store(in: &updateTasks)
     }

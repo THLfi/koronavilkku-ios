@@ -47,18 +47,24 @@ class WideRowElement: CardElement {
         return bodyLabel
     }
     
-    func createImageView(image: UIImage) -> UIView {
+    func createImageView(imageNamed: String, addShadow: Bool = true) -> UIView {
+        let image = UIImage(named: imageNamed)
+        let imageView = UIImageView(image: image)
+        
+        if !addShadow {
+            return imageView
+        }
+        
+        imageView.setElevation(.elevation1)
+
         let wrapper = UIView()
         wrapper.setElevation(.elevation2)
-
-        let image = UIImageView(image: image)
-        image.setElevation(.elevation1)
         
-        let shadowPath = UIBezierPath(ovalIn: image.bounds).cgPath
+        let shadowPath = UIBezierPath(ovalIn: imageView.bounds).cgPath
         wrapper.layer.shadowPath = shadowPath
-        image.layer.shadowPath = shadowPath
+        imageView.layer.shadowPath = shadowPath
 
-        wrapper.addSubview(image)
+        wrapper.addSubview(imageView)
         return wrapper
     }
 }
@@ -74,13 +80,20 @@ final class ExposuresElement: WideRowElement {
         case ButtonCheckNow
     }
     
+    var manualCheckButton: RoundedButton?
     let manualCheckAction: () -> ()
     let margin = UIEdgeInsets(top: 24, left: 20, bottom: -20, right: -20)
     var updateTasks = Set<AnyCancellable>()
-    var exposureCount: Int = 0
-    var allowManualCheck = false
-    var manualCheckButton: RoundedButton?
     
+    /// The number of active exposures
+    var exposureCount = 0
+    
+    /// Whether the exposure checks are enabled at all
+    var checksEnabled = true
+
+    /// Whether the user is allowed to run exposure checks manually
+    var checksDelayed = false
+
     private func updateProperty<T: Equatable>(keyPath: ReferenceWritableKeyPath<ExposuresElement, T>, value: T) {
         if self[keyPath: keyPath] != value {
             self[keyPath: keyPath] = value
@@ -98,14 +111,37 @@ final class ExposuresElement: WideRowElement {
             }
             .store(in: &updateTasks)
         
-        Environment.default.exposureRepository.manualDetectionStatus
+        LocalStore.shared.$uiStatus.$wrappedValue
+            .map { status in
+                switch status {
+                case .apiDisabled, .off:
+                    return false
+                default:
+                    return true
+                }
+            }
+            .sink { [weak self] enabled in
+                self?.updateProperty(keyPath: \.checksEnabled, value: enabled)
+            }
+            .store(in: &updateTasks)
+        
+        Environment.default.exposureRepository.detectionStatus
             .sink { [weak self] state in
+                guard let self = self else { return }
+                
                 switch state {
-                case .idle(let allow):
-                    self?.manualCheckButton?.isLoading = false
-                    self?.updateProperty(keyPath: \.allowManualCheck, value: allow)
+                case .disabled:
+                    self.updateProperty(keyPath: \.checksEnabled, value: false)
+                case .idle(let delayed):
+                    self.manualCheckButton?.isLoading = false
+                    
+                    if !self.checksEnabled || self.checksDelayed != delayed {
+                        self.checksEnabled = true
+                        self.checksDelayed = delayed
+                        self.createSubViews()
+                    }
                 case .detecting:
-                    self?.manualCheckButton?.isLoading = true
+                    self.manualCheckButton?.isLoading = true
                 }
             }
             .store(in: &updateTasks)
@@ -115,48 +151,74 @@ final class ExposuresElement: WideRowElement {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func createImageView() -> UIView {
+        if exposureCount > 0 {
+            return createImageView(imageNamed: "flat-color-icons_notifications")
+        }
+
+        if !checksEnabled || checksDelayed {
+            return createImageView(imageNamed: "flat-color-icons_alert", addShadow: false)
+        }
+        
+        return createImageView(imageNamed: "flat-color-icons_ok")
+    }
+    
+    private func createTitleLabel() -> UILabel {
+        if exposureCount > 0 {
+            let title = createTitleLabel(title: Text.TitleHasExposures.localized)
+            title.textColor = UIColor.Primary.red
+            return title
+        }
+
+        return createTitleLabel(title: Text.TitleNoExposures.localized)
+    }
+    
+    private func createBodyLabel() -> UILabel? {
+        var body: Text
+        
+        switch true {
+        case exposureCount > 0:
+            body = .BodyHasExposures
+        case !checksEnabled:
+            return nil
+        case checksDelayed:
+            body = .BodyExposureCheckDelayed
+        default:
+            body = .BodyNoExposures
+        }
+        
+        return createBodyLabel(body: body.localized)
+    }
+    
     override func createSubViews() {
         super.createSubViews()
 
-        let imageName: String
-        let title, body: Text
-        var button: RoundedButton? = nil
-        manualCheckButton = nil
-        
-        if exposureCount == 0 {
-            imageName = "flat-color-icons_ok"
-            title = .TitleNoExposures
-            body = allowManualCheck ? .BodyExposureCheckDelayed : .BodyNoExposures
-        } else {
-            imageName = "flat-color-icons_notifications"
-            title = .TitleHasExposures
-            body = .BodyHasExposures
-        }
+        // reset state
+        self.isAccessibilityElement = false
+        self.manualCheckButton = nil
 
         let container = UIView()
-        let imageView = createImageView(image: UIImage(named: imageName)!)
-        let titleView = createTitleLabel(title: title.localized)
-        let bodyView = createBodyLabel(body: body.localized)
+        let imageView = createImageView()
+        let titleView = createTitleLabel()
+        let bodyView = createBodyLabel()
         let accessibilityView: UIView
         var additionalView: UIView?
+        var button: RoundedButton? = nil
 
         self.addSubview(container)
         self.addSubview(imageView)
-        container.addSubview(titleView)
-        container.addSubview(bodyView)
 
         if exposureCount > 0 {
-            titleView.textColor = UIColor.Primary.red
             button = RoundedButton(title: Text.ButtonOpen.localized,
-                                       backgroundColor: UIColor.Primary.red,
-                                       highlightedBackgroundColor: UIColor.Primary.red,
-                                       action: tapped)
+                                   backgroundColor: UIColor.Primary.red,
+                                   highlightedBackgroundColor: UIColor.Primary.red,
+                                   action: tapped)
         } else {
-            if allowManualCheck {
+            if checksEnabled && checksDelayed {
                 manualCheckButton = RoundedButton(title: Text.ButtonCheckNow.localized,
-                                       backgroundColor: UIColor.Primary.blue,
-                                       highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground,
-                                       action: manualCheckAction)
+                                                  backgroundColor: UIColor.Primary.blue,
+                                                  highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground,
+                                                  action: manualCheckAction)
             }
             
             additionalView = ExposuresLastCheckedView(style: .subdued)
@@ -175,17 +237,23 @@ final class ExposuresElement: WideRowElement {
             accessibilityView = self
         }
         
+        container.addSubview(titleView)
+
         titleView.snp.makeConstraints { make in
             make.top.left.right.equalToSuperview()
         }
+        
+        if let bodyView = bodyView {
+            container.addSubview(bodyView)
 
-        bodyView.snp.makeConstraints { make in
-            make.top.equalTo(titleView.snp.bottom).offset(10)
-            make.left.right.equalToSuperview()
+            bodyView.snp.makeConstraints { make in
+                make.top.equalTo(titleView.snp.bottom).offset(10)
+                make.left.right.equalToSuperview()
+            }
         }
         
         additionalView?.snp.makeConstraints { make in
-            make.top.equalTo(bodyView.snp.bottom).offset(10)
+            make.top.equalTo((bodyView ?? titleView).snp.bottom).offset(10)
             make.left.right.equalToSuperview()
         }
         
@@ -193,7 +261,7 @@ final class ExposuresElement: WideRowElement {
             make.top.equalToSuperview().offset(margin.top)
             make.left.equalToSuperview().offset(margin.left)
             make.right.equalTo(imageView.snp.left).offset(-20)
-            make.bottom.equalTo(additionalView ?? bodyView)
+            make.bottom.equalTo(additionalView ?? bodyView ?? titleView)
             
             if let button = button ?? manualCheckButton {
                 make.bottom.equalTo(button.snp.top).offset(-20)
@@ -203,18 +271,17 @@ final class ExposuresElement: WideRowElement {
         }
 
         imageView.snp.makeConstraints { make in
-            make.top.equalTo(container).offset(6)
+            make.top.equalTo(container).offset(bodyView != nil ? 6 : 0)
             make.right.equalToSuperview().inset(30)
             make.size.equalTo(CGSize(width: 50, height: 50))
         }
 
-        self.isAccessibilityElement = false // In case button visibility changes.
         titleView.isAccessibilityElement = false
-        bodyView.isAccessibilityElement = false
+        bodyView?.isAccessibilityElement = false
         accessibilityView.accessibilityTraits = .button
         accessibilityView.isAccessibilityElement = true
-        accessibilityView.accessibilityLabel = title.localized
-        accessibilityView.accessibilityValue = body.localized
+        accessibilityView.accessibilityLabel = titleView.text
+        accessibilityView.accessibilityValue = bodyView?.text
     }
 }
 

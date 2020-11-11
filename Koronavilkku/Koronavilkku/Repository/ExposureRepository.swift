@@ -3,13 +3,14 @@ import ExposureNotification
 import Foundation
 import UIKit
 
-enum ManualDetectionStatus {
-    case idle(allowed: Bool)
+enum DetectionStatus {
+    case disabled
+    case idle(delayed: Bool)
     case detecting
 }
 
 protocol ExposureRepository {
-    var manualDetectionStatus: AnyPublisher<ManualDetectionStatus, Never> { get }
+    var detectionStatus: AnyPublisher<DetectionStatus, Never> { get }
     var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> { get }
 
     func runManualCheck() -> AnyPublisher<Bool, Never>
@@ -37,19 +38,30 @@ final class ExposureRepositoryImpl : ExposureRepository {
     @Published
     private var detectionRunning = false
     
-    lazy var manualDetectionStatus: AnyPublisher<ManualDetectionStatus, Never> = {
-        Log.d("Create manualDetectionStatus")
-        let allowManualCheck = timeFromLastCheck.map { interval -> Bool in
+    lazy var detectionStatus: AnyPublisher<DetectionStatus, Never> = {
+        let isDelayed = timeFromLastCheck.map { interval -> Bool in
             guard let interval = interval else { return false }
             return interval <= 0 - Self.manualCheckThreshold
         }
         
-        return $detectionRunning.combineLatest(allowManualCheck) { running, allowChecking in
-            if running {
-                return .detecting
+        let isDisabled = LocalStore.shared.$uiStatus.$wrappedValue.map { uiStatus -> Bool in
+            switch uiStatus {
+            case .apiDisabled, .off:
+                return true
+            default:
+                return false
             }
-            
-            return .idle(allowed: allowChecking)
+        }
+        
+        return $detectionRunning.combineLatest(isDelayed, isDisabled) { running, isDelayed, isDisabled in
+            switch true {
+            case isDisabled:
+                return .disabled
+            case running:
+                return .detecting
+            default:
+                return .idle(delayed: isDelayed)
+            }
         }.eraseToAnyPublisher()
     }()
         
