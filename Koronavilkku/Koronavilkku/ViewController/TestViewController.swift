@@ -116,13 +116,14 @@ class TestViewController: UIViewController {
     }
     
     @objc func downloadAndDetect() {
-        BackgroundTaskForNotifications.execute { success in
-            if success {
-                Log.d("Download and detect completed successfully")
-            } else {
-                Log.e("Failed to download and detect")
-            }
-        }.store(in: &tasks)
+        BackgroundTaskForNotifications.shared.run()
+            .sink { success in
+                if success {
+                    Log.d("Download and detect completed successfully")
+                } else {
+                    Log.e("Failed to download and detect")
+                }
+            }.store(in: &tasks)
     }
     
     @objc func batchDownloadBackgroundPressed() {

@@ -13,7 +13,6 @@ protocol ExposureRepository {
     var detectionStatus: AnyPublisher<DetectionStatus, Never> { get }
     var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> { get }
 
-    func runManualCheck() -> AnyPublisher<Bool, Never>
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error>
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error>
     func postExposureKeys(publishToken: String?) -> AnyPublisher<Void, Error>
@@ -33,11 +32,7 @@ final class ExposureRepositoryImpl : ExposureRepository {
     private let exposureManager: ExposureManager
     private let backend: Backend
     private let storage: FileStorage
-    private var detectionTask: AnyCancellable?
-    
-    @Published
-    private var detectionRunning = false
-    
+        
     lazy var detectionStatus: AnyPublisher<DetectionStatus, Never> = {
         let isDelayed = timeFromLastCheck.map { interval -> Bool in
             guard let interval = interval else { return false }
@@ -53,16 +48,17 @@ final class ExposureRepositoryImpl : ExposureRepository {
             }
         }
         
-        return $detectionRunning.combineLatest(isDelayed, isDisabled) { running, delayed, disabled in
-            switch true {
-            case disabled:
-                return .disabled
-            case running:
-                return .detecting
-            default:
-                return .idle(delayed: delayed)
-            }
-        }.eraseToAnyPublisher()
+        return BackgroundTaskForNotifications.shared.$detectionRunning
+            .combineLatest(isDelayed, isDisabled) { running, delayed, disabled in
+                switch true {
+                case disabled:
+                    return .disabled
+                case running:
+                    return .detecting
+                default:
+                    return .idle(delayed: delayed)
+                }
+            }.eraseToAnyPublisher()
     }()
         
     lazy var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> = {
@@ -94,26 +90,6 @@ final class ExposureRepositoryImpl : ExposureRepository {
         self.storage = storage
     }
     
-    func runManualCheck() -> AnyPublisher<Bool, Never> {
-        var backgroundId: UIBackgroundTaskIdentifier! = nil
-        
-        backgroundId = UIApplication.shared.beginBackgroundTask() { [weak self] in
-            self?.detectionTask?.cancel()
-            UIApplication.shared.endBackgroundTask(backgroundId)
-            backgroundId = .invalid
-        }
-        
-        return Future { promise in
-            self.detectionRunning = true
-            self.detectionTask = BackgroundTaskForNotifications.execute { [weak self] success in
-                self?.detectionRunning = false
-                promise(.success(success))
-                UIApplication.shared.endBackgroundTask(backgroundId)
-                backgroundId = .invalid
-            }
-        }.setFailureType(to: Never.self).eraseToAnyPublisher()
-    }
-        
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error> {
         return backend.getConfiguration()
     }

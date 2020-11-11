@@ -109,7 +109,7 @@ class ExposuresViewController: UIViewController {
 
 extension ExposuresViewController: ExposuresViewDelegate {
     func startManualCheck() {
-        Environment.default.exposureRepository.runManualCheck()
+        BackgroundTaskForNotifications.shared.run()
             .receive(on: RunLoop.main)
             .sink { [weak self] success in
                 if !success {

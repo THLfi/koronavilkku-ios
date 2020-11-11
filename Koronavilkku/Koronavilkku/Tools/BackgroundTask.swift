@@ -1,6 +1,7 @@
 import BackgroundTasks
 import Combine
 import ExposureNotification
+import UIKit
 
 enum TaskType {
     case notifications
@@ -51,7 +52,8 @@ class BackgroundTaskManager {
 
 protocol BackgroundTask {
     
-    static var shared: BackgroundTask { get }
+    associatedtype Task: BackgroundTask
+    static var shared: Task { get }
     var type: TaskType { get }
     var identifier: String { get }
     func register()
@@ -60,13 +62,15 @@ protocol BackgroundTask {
 }
 
 final class BackgroundTaskForNotifications: BackgroundTask {
-    
-    static let shared: BackgroundTask = BackgroundTaskForNotifications()
+    static var shared = BackgroundTaskForNotifications()
     let type: TaskType = .notifications
     var identifier: String = Bundle.main.bundleIdentifier! + ".exposure-notification"
     
     private var backgroundTask: AnyCancellable?
-    
+
+    @Published
+    private(set) var detectionRunning = false
+
     // ENAPIVersion 2 detectExposures() limited to 6 calls per day
     // we're not using it yet, but it's a good starting point
     let TASK_MINIMUM_DELAY: TimeInterval = 4 * 60 * 60
@@ -89,7 +93,7 @@ final class BackgroundTaskForNotifications: BackgroundTask {
                 return task.setTaskCompleted(success: true)
             }
 
-            self.backgroundTask = BackgroundTaskForNotifications.execute { success in
+            self.execute { success in
                 task.setTaskCompleted(success: success)
             }
         }
@@ -108,13 +112,33 @@ final class BackgroundTaskForNotifications: BackgroundTask {
         }
     }
     
-    static func execute(_ completionHandler: @escaping (Bool) -> Void) -> AnyCancellable {
+    func run() -> AnyPublisher<Bool, Never> {
+        var backgroundId: UIBackgroundTaskIdentifier! = nil
+        
+        backgroundId = UIApplication.shared.beginBackgroundTask() { [weak self] in
+            self?.backgroundTask?.cancel()
+            UIApplication.shared.endBackgroundTask(backgroundId)
+        }
+        
+        return Future { promise in
+            self.execute { success in
+                UIApplication.shared.endBackgroundTask(backgroundId)
+                promise(.success(success))
+            }
+        }.setFailureType(to: Never.self).eraseToAnyPublisher()
+    }
+
+    private func execute(_ completionHandler: @escaping (Bool) -> Void) {
         let batchRepository = Environment.default.batchRepository
         let exposureRepository = Environment.default.exposureRepository
         let municipalityRepository = Environment.default.municipalityRepository
         
+        // prevent running checks in parallel
+        self.backgroundTask?.cancel()
+        self.detectionRunning = true
+
         // run all required async tasks concurrently
-        return Publishers.Zip3(
+        self.backgroundTask = Publishers.Zip3(
             // 1. download new batches from the backend
             batchRepository.getNewBatches().collect(),
             
@@ -148,6 +172,8 @@ final class BackgroundTaskForNotifications: BackgroundTask {
                     Log.e("Detecting exposures failed: \(error.localizedDescription)")
                     completionHandler(false)
                 }
+                
+                self.detectionRunning = false
             },
             receiveValue: { exposuresFound in
                 Log.d("Detecting exposures succeeded. Exposures found: \(exposuresFound)")
@@ -160,7 +186,7 @@ final class BackgroundTaskForNotifications: BackgroundTask {
 
 fileprivate final class BackgroundTaskForDummyPosting: BackgroundTask {
     
-    static let shared: BackgroundTask = BackgroundTaskForDummyPosting()
+    static let shared = BackgroundTaskForDummyPosting()
     let type: TaskType = .dummyPost
     var identifier: String = Bundle.main.bundleIdentifier! + ".dummy-post"
     

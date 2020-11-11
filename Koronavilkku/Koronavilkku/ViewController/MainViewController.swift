@@ -72,13 +72,15 @@ class MainViewController: UIViewController {
         self.notifications = ExposuresElement() { [unowned self] in
             self.openExposuresViewController()
         } manualCheckAction: {
-            self.detectionTask = Environment.default.exposureRepository.runManualCheck().sink { [weak self] success in
-                if !success {
-                    self?.showAlert(title: Translation.ManualCheckErrorTitle.localized,
-                                    message: Translation.ManualCheckErrorMessage.localized,
-                                    buttonText: Translation.ManualCheckErrorButton.localized)
+            self.detectionTask = BackgroundTaskForNotifications.shared.run()
+                .receive(on: RunLoop.main)
+                .sink { [weak self] success in
+                    if !success {
+                        self?.showAlert(title: Translation.ManualCheckErrorTitle.localized,
+                                        message: Translation.ManualCheckErrorMessage.localized,
+                                        buttonText: Translation.ManualCheckErrorButton.localized)
+                    }
                 }
-            }
         }
         
         wrapper.addSubview(notifications)
