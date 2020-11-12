@@ -45,7 +45,6 @@
 		5695F6CE24D2AFB9008E06BC /* BackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695F6CD24D2AFB9008E06BC /* BackgroundTask.swift */; };
 		5695F6D024D446DE008E06BC /* MunicipalityRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695F6CF24D446DE008E06BC /* MunicipalityRepository.swift */; };
 		5695F6D224D802FD008E06BC /* CMS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695F6D124D802FD008E06BC /* CMS.swift */; };
-		5695F6D324D82C40008E06BC /* MunicipalitiesWithContact.json in Resources */ = {isa = PBXBuildFile; fileRef = 56E3349724CEAFA00017CD9A /* MunicipalitiesWithContact.json */; };
 		5695F6D624D82C9E008E06BC /* MunicipalityValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695F6D524D82C9E008E06BC /* MunicipalityValidation.swift */; };
 		5695F6D724D82D9B008E06BC /* MunicipalityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C26BC624B461ED002F83C1 /* MunicipalityModel.swift */; };
 		56C26BAD24AF3886002F83C1 /* InfoViewWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C26BAC24AF3886002F83C1 /* InfoViewWithButton.swift */; };
@@ -195,7 +194,6 @@
 		56E3349124CB02C00017CD9A /* ExposureDetectionSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureDetectionSummary.swift; sourceTree = "<group>"; };
 		56E3349324CB21760017CD9A /* MunicipalityContactInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunicipalityContactInfoViewController.swift; sourceTree = "<group>"; };
 		56E3349524CCC0BB0017CD9A /* MunicipalityContactInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunicipalityContactInformationView.swift; sourceTree = "<group>"; };
-		56E3349724CEAFA00017CD9A /* MunicipalitiesWithContact.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MunicipalitiesWithContact.json; sourceTree = "<group>"; };
 		56E3349924CEC9290017CD9A /* ContactItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactItemCard.swift; sourceTree = "<group>"; };
 		56EE9BD624F7DE9E0037A45D /* TemporaryExposureKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryExposureKeyTests.swift; sourceTree = "<group>"; };
 		D92F18AC24CEC0F300F3FBCE /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -620,7 +618,6 @@
 				EA4F905324F4EFB40032D9D5 /* Network */,
 				56C2DBF524EFA8C50014F09D /* Scene */,
 				56C2DBF124EE66D10014F09D /* Repository */,
-				EACBF18524FE5AD500488B4E /* Resources */,
 				EA1B814624F57CED0041DED1 /* Utils */,
 				EA92A05D24A3958600CE7271 /* KoronavilkkuTests.swift */,
 				EA92A05F24A3958600CE7271 /* Info.plist */,
@@ -647,14 +644,6 @@
 				560833BC24B8677C0078B75D /* Translation.swift */,
 			);
 			path = Tools;
-			sourceTree = "<group>";
-		};
-		EACBF18524FE5AD500488B4E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				56E3349724CEAFA00017CD9A /* MunicipalitiesWithContact.json */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		EAD8619924ADDCAB00809677 /* Exposure */ = {
@@ -798,7 +787,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5695F6D324D82C40008E06BC /* MunicipalitiesWithContact.json in Resources */,
 				EA7B056425124C5C002941A6 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
