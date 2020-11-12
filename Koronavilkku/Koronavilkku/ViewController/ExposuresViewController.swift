@@ -47,9 +47,7 @@ class ExposuresViewController: UIViewController {
             .map { $0.count > 0 }
             .receive(on: RunLoop.main)
             .sink { [weak self] hasExposures in
-                guard let self = self else {
-                    return
-                }
+                guard let self = self else { return }
                 
                 if self.hasExposures != hasExposures {
                     self.hasExposures = hasExposures
@@ -62,7 +60,9 @@ class ExposuresViewController: UIViewController {
         
         Environment.default.exposureRepository.detectionStatus
             .receive(on: RunLoop.main)
-            .sink { detectionStatus in
+            .sink { [weak self] detectionStatus in
+                guard let self = self else { return }
+                
                 self.exposuresViewWrapper.render(hasExposures: self.hasExposures,
                                                  detectionStatus: detectionStatus)
             }

@@ -19,6 +19,8 @@ class RoundedButton: UIButton {
     
     var isLoading = false {
         didSet {
+            guard oldValue != isLoading else { return }
+            
             if isLoading {
                 backgroundColor = UIColor.Greyscale.backdropGrey
                 setImage(UIImage.init(named: "refresh")?.withTintColor(UIColor.Greyscale.mediumGrey), for: .normal)

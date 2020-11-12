@@ -71,16 +71,8 @@ class MainViewController: UIViewController {
         // Setup notification and helper components
         self.notifications = ExposuresElement() { [unowned self] in
             self.openExposuresViewController()
-        } manualCheckAction: {
-            self.detectionTask = BackgroundTaskForNotifications.shared.run()
-                .receive(on: RunLoop.main)
-                .sink { [weak self] success in
-                    if !success {
-                        self?.showAlert(title: Translation.ManualCheckErrorTitle.localized,
-                                        message: Translation.ManualCheckErrorMessage.localized,
-                                        buttonText: Translation.ManualCheckErrorButton.localized)
-                    }
-                }
+        } manualCheckAction: { [unowned self] in
+            self.runManualDetection()
         }
         
         wrapper.addSubview(notifications)
@@ -197,6 +189,18 @@ class MainViewController: UIViewController {
     private func openSubview(viewController: UIViewController) {
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    private func runManualDetection() {
+        self.detectionTask = BackgroundTaskForNotifications.shared.run()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] success in
+                if !success {
+                    self?.showAlert(title: Translation.ManualCheckErrorTitle.localized,
+                                    message: Translation.ManualCheckErrorMessage.localized,
+                                    buttonText: Translation.ManualCheckErrorButton.localized)
+                }
+            }
     }
     
     @objc private func debugButtonTapped() {

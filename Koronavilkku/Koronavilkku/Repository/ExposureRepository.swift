@@ -3,7 +3,7 @@ import ExposureNotification
 import Foundation
 import UIKit
 
-enum DetectionStatus {
+enum DetectionStatus: Equatable {
     case disabled
     case idle(delayed: Bool)
     case detecting
@@ -58,7 +58,9 @@ final class ExposureRepositoryImpl : ExposureRepository {
                 default:
                     return .idle(delayed: delayed)
                 }
-            }.eraseToAnyPublisher()
+            }
+            .removeDuplicates()
+            .eraseToAnyPublisher()
     }()
         
     lazy var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> = {
