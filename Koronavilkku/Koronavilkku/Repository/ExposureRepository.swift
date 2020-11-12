@@ -32,14 +32,11 @@ struct ExposureRepositoryImpl : ExposureRepository {
     }
     
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error> {
-        
-        #if DEBUG
+
         // If exposureInfo.score < minimumRiskScore, then the score and other values will be 0.
         // To get more information about those cases use the minimum allowed value.
+        // Due to the bucket based calculation min score always needs to be set to 1.
         let cfg = config.with(minimumRiskScore: 1)
-        #else
-        let cfg = config
-        #endif
         
         let urls = ids.map { self.storage.getFileUrls(forBatchId: $0) }.flatMap { $0 }
         Log.d("Ids: \(ids), Config: \(config), Detecting with urls: \(urls)")
@@ -60,7 +57,25 @@ struct ExposureRepositoryImpl : ExposureRepository {
                 // Matched key count is not the one to use to determine real exposures.
                 // We must check that Summary's maximumRiskScore >= minimumRiskScore in server configuration
                 // and filter results to only those and fetch info for only
-                let validDetections = summary.maximumRiskScoreFullRange >= Double(config.minimumRiskScore)
+                var validDetections = summary.maximumRiskScoreFullRange >= Double(config.minimumRiskScore)
+                
+                // On pre-13.6 EN API doesn't support defining attenuationDurationThresholds so
+                // bucket calculation isn't meaningful on those devices.
+                if !validDetections, #available(iOS 13.6, *) {
+                    // The attenuation score is a time weighted average -> if the same device is near for a
+                    // short while and then within range (high attenuation) for a really long time, then the
+                    // attenuation value could end up being too small to trigger a risk score based exposure
+                    // notification. Multiple short exposures can also trigger an exposure notification when
+                    // using bucket calculation.
+                    let durations = summary.weightedAttenuationDurations(with: cfg)
+                    let totalMinutes = Int(durations.reduce(0, +) / 60.0)
+                    
+                    if totalMinutes >= cfg.exposureRiskDuration {
+                        Log.d("Long duration exposure detected (\(totalMinutes))")
+                        validDetections = true
+                    }
+                }
+                
                 Log.d("Valid detections? \(validDetections)")
                 
                 if validDetections && summary.matchedKeyCount > 0 {
@@ -74,6 +89,8 @@ struct ExposureRepositoryImpl : ExposureRepository {
                 let detectedExposures = exposureInfos.count > 0
 
                 if detectedExposures {
+                    exposureInfos.forEach { Log.d("ExposureInfo: \($0)") }
+                    
                     let exposures = exposureInfos.map { $0.to() }
                     DispatchQueue.main.async {
                         LocalStore.shared.exposures.append(contentsOf: exposures)
@@ -181,6 +198,18 @@ struct ExposureRepositoryImpl : ExposureRepository {
             } else {
                 completionHandler(nil)
             }
+        }
+    }
+}
+
+extension ENExposureDetectionSummary {
+
+    func weightedAttenuationDurations(with cfg: ExposureConfiguration) -> [Double] {
+        let weights = cfg.durationAtAttenuationWeights
+
+        return attenuationDurations.enumerated().map { (index, duration) in
+            let weight = index < weights.count ? weights[index] : 0.0
+            return duration.doubleValue * weight
         }
     }
 }

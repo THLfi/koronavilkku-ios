@@ -9,7 +9,7 @@ struct ExposureConfiguration: Codable {
     let transmissionRiskScores: [Int]
     let durationAtAttenuationThresholds: [Int]
     let durationAtAttenuationWeights: [Double]
-    let exposureRiskDuration: Int
+    let exposureRiskDuration: Int // In minutes.
 }
 
 extension ENExposureConfiguration {
