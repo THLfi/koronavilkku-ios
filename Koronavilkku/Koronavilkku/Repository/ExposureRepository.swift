@@ -67,8 +67,8 @@ struct ExposureRepositoryImpl : ExposureRepository {
                     // attenuation value could end up being too small to trigger a risk score based exposure
                     // notification. Multiple short exposures can also trigger an exposure notification when
                     // using bucket calculation.
-                    let durations = summary.weightedAttenuationDurations(with: cfg)
-                    let totalMinutes = Int(durations.reduce(0, +) / 60.0)
+                    let durations = summary.attenuationDurations.weighted(with: cfg.durationAtAttenuationWeights)
+                    let totalMinutes = durations.sumSecondsAsMinutes()
                     
                     if totalMinutes >= cfg.exposureRiskDuration {
                         Log.d("Long duration exposure detected (\(totalMinutes))")
@@ -202,14 +202,19 @@ struct ExposureRepositoryImpl : ExposureRepository {
     }
 }
 
-extension ENExposureDetectionSummary {
+extension Array where Element == NSNumber {
 
-    func weightedAttenuationDurations(with cfg: ExposureConfiguration) -> [Double] {
-        let weights = cfg.durationAtAttenuationWeights
-
-        return attenuationDurations.enumerated().map { (index, duration) in
+    func weighted(with weights: [Double]) -> [Double] {
+        return self.enumerated().map { (index, duration) in
             let weight = index < weights.count ? weights[index] : 0.0
             return duration.doubleValue * weight
         }
+    }
+}
+
+extension Array where Element == Double {
+    
+    func sumSecondsAsMinutes() -> Int {
+        return Int(self.reduce(0, +) / 60.0)
     }
 }

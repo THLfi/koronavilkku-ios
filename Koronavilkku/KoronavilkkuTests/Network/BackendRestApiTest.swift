@@ -49,7 +49,9 @@ class BackendRestApiTest : XCTestCase {
             daysSinceLastExposureScores: [4, 5],
             durationScores: [7, 8],
             transmissionRiskScores: [10, 11],
-            durationAtAttenuationThresholds: [13, 14, 15]
+            durationAtAttenuationThresholds: [13, 14, 15],
+            durationAtAttenuationWeights: [1.0, 0.5, 0.0],
+            exposureRiskDuration: 16
         )
 
         testEndpoint(task: backend.getConfiguration(), verifyRequest: { request in
@@ -64,6 +66,8 @@ class BackendRestApiTest : XCTestCase {
             XCTAssertEqual(input.durationScores, output.durationScores)
             XCTAssertEqual(input.transmissionRiskScores, output.transmissionRiskScores)
             XCTAssertEqual(input.durationAtAttenuationThresholds, output.durationAtAttenuationThresholds)
+            XCTAssertEqual(input.durationAtAttenuationWeights, output.durationAtAttenuationWeights)
+            XCTAssertEqual(input.exposureRiskDuration, output.exposureRiskDuration)
         })
         
         let diagnosisKeys = DiagnosisPublishRequest(keys: [])
