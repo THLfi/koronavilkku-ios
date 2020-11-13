@@ -5,6 +5,7 @@
 "ButtonStartUsing" = "Start using the app";
 "ButtonTestUI" = "Test UI";
 "ButtonScrollDown" = "Scroll down";
+"ButtonLoading" = "Loading";
 
 "TabHome" = "Home";
 "TabReportInfection" = "Report your infection";
@@ -34,6 +35,7 @@
 "ExposuresElement.Text.TitleNoExposures" = "No observed exposures";
 "ExposuresElement.Text.BodyNoExposures" = "You have not been near a person who has reported an infection";
 "ExposuresElement.Text.BodyExposureCheckDelayed" = "Checking for potential exposures has not been successful for over 24 hours. The app will try again later. You can check now.";
+"ExposuresElement.Text.AccessibilityValueCheckDelayed" = "Checking for potential exposures has not been successful for over 24 hours.";
 "ExposuresElement.Text.TitleHasExposures" = "Potential exposure";
 "ExposuresElement.Text.BodyHasExposures" = "You may have been exposed to the coronavirus";
 "ExposuresElement.Text.ButtonOpen" = "See instructions";

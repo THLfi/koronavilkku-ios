@@ -37,6 +37,13 @@ class ExposuresLastCheckedView: UIView {
     private var lastCheckedLabel: UILabel!
     private let style: Style
     
+    override var accessibilityLabel: String? {
+        get {
+            lastCheckedLabel.text
+        }
+        set {}
+    }
+    
     init(style: Style = .normal) {
         self.style = style
         super.init(frame: .zero)

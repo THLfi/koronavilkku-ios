@@ -32,7 +32,10 @@ class RoundedButton: UIButton {
                 animation.duration = 2
                 animation.repeatCount = .greatestFiniteMagnitude
                 imageView?.layer.add(animation, forKey: nil)
+                
+                accessibilityLabel = Translation.ButtonLoading.localized
             } else {
+                accessibilityLabel = nil
                 imageView?.layer.removeAllAnimations()
                 setImage(nil, for: .normal)
                 setTitle(title, for: .normal)
@@ -84,10 +87,13 @@ class RoundedButton: UIButton {
         updateShadowPath()
     }
     
-    @objc func performAction() {
+    @objc func performAction() -> Bool {
         if !isLoading {
             action()
+            return true
         }
+        
+        return false
     }
     
     func setEnabled(_ enabled: Bool) {

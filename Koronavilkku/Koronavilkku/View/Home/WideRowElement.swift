@@ -74,6 +74,7 @@ final class ExposuresElement: WideRowElement {
         case TitleNoExposures
         case BodyNoExposures
         case BodyExposureCheckDelayed
+        case AccessibilityValueCheckDelayed
         case TitleHasExposures
         case BodyHasExposures
         case ButtonOpen
@@ -81,6 +82,8 @@ final class ExposuresElement: WideRowElement {
     }
     
     var manualCheckButton: RoundedButton?
+    var lastCheckedView: ExposuresLastCheckedView?
+    
     let manualCheckAction: () -> ()
     let margin = UIEdgeInsets(top: 24, left: 20, bottom: -20, right: -20)
     var updateTasks = Set<AnyCancellable>()
@@ -93,11 +96,35 @@ final class ExposuresElement: WideRowElement {
 
     /// Whether the user is allowed to run exposure checks manually
     var checksDelayed = false
+    
+    /// Whether the UI has been initialized or not
+    var initialized = false
+
+    private var _accessibilityValue: String?
+    
+    /// Provide a default value that can be change over time without the UI being notified of the change
+    /// To override this behaviour, set this property explicitly to non-nil value
+    override var accessibilityValue: String? {
+        get {
+            if let value = _accessibilityValue {
+                return value
+            }
+            
+            if checksDelayed {
+                return Text.AccessibilityValueCheckDelayed.localized
+            }
+            
+            return lastCheckedView?.accessibilityLabel
+        }
+        set {
+            _accessibilityValue = newValue
+        }
+    }
 
     private func updateProperty<T: Equatable>(keyPath: ReferenceWritableKeyPath<ExposuresElement, T>, value: T) {
         if self[keyPath: keyPath] != value {
             self[keyPath: keyPath] = value
-            self.createSubViews()
+            self.render(update: true)
         }
     }
     
@@ -105,29 +132,35 @@ final class ExposuresElement: WideRowElement {
         self.manualCheckAction = manualCheckAction
         super.init(tapped: tapped)
         
-        LocalStore.shared.$exposures.$wrappedValue
-            .sink { [weak self] exposures in
-                self?.updateProperty(keyPath: \.exposureCount, value: exposures.count)
-            }
-            .store(in: &updateTasks)
-        
         Environment.default.exposureRepository.detectionStatus
-            .sink { [weak self] state in
+            .combineLatest(LocalStore.shared.$exposures.$wrappedValue)
+            .sink { [weak self] state, exposures in
                 guard let self = self else { return }
+                
+                self.updateProperty(keyPath: \.exposureCount, value: exposures.count)
                 
                 switch state {
                 case .disabled:
                     self.updateProperty(keyPath: \.checksEnabled, value: false)
+                    
                 case .idle(let delayed):
+                    self.accessibilityValue = nil
                     self.manualCheckButton?.isLoading = false
                     
                     if !self.checksEnabled || self.checksDelayed != delayed {
                         self.checksEnabled = true
                         self.checksDelayed = delayed
-                        self.createSubViews()
+                        self.render(update: true)
                     }
+                    
                 case .detecting:
                     self.manualCheckButton?.isLoading = true
+                    self.accessibilityValue = self.manualCheckButton?.accessibilityLabel
+                }
+                
+                if !self.initialized {
+                    self.render()
+                    self.initialized = true
                 }
             }
             .store(in: &updateTasks)
@@ -176,19 +209,20 @@ final class ExposuresElement: WideRowElement {
         return createBodyLabel(body: body.localized)
     }
     
-    override func createSubViews() {
-        super.createSubViews()
+    func render(update: Bool = false) {
+        if update {
+            guard initialized else { return }
+            removeAllSubviews()
+        }
 
         // reset state
-        self.isAccessibilityElement = false
         self.manualCheckButton = nil
+        self.lastCheckedView = nil
 
         let container = UIView()
         let imageView = createImageView()
         let titleView = createTitleLabel()
         let bodyView = createBodyLabel()
-        let accessibilityView: UIView
-        var additionalView: UIView?
         var button: RoundedButton? = nil
 
         self.addSubview(container)
@@ -207,20 +241,17 @@ final class ExposuresElement: WideRowElement {
                                                   action: manualCheckAction)
             }
             
-            additionalView = ExposuresLastCheckedView(style: .subdued)
-            container.addSubview(additionalView!)
+            lastCheckedView = ExposuresLastCheckedView(style: .subdued)
+            container.addSubview(lastCheckedView!)
         }
         
         if let button = button ?? manualCheckButton {
-            accessibilityView = container
             self.addSubview(button)
             button.snp.makeConstraints { make in
                 make.bottom.equalToSuperview().offset(margin.bottom)
                 make.right.equalToSuperview().offset(margin.right)
                 make.left.equalToSuperview().offset(margin.left)
             }
-        } else {
-            accessibilityView = self
         }
         
         container.addSubview(titleView)
@@ -238,7 +269,7 @@ final class ExposuresElement: WideRowElement {
             }
         }
         
-        additionalView?.snp.makeConstraints { make in
+        lastCheckedView?.snp.makeConstraints { make in
             make.top.equalTo((bodyView ?? titleView).snp.bottom).offset(10)
             make.left.right.equalToSuperview()
         }
@@ -247,7 +278,7 @@ final class ExposuresElement: WideRowElement {
             make.top.equalToSuperview().offset(margin.top)
             make.left.equalToSuperview().offset(margin.left)
             make.right.equalTo(imageView.snp.left).offset(-20)
-            make.bottom.equalTo(additionalView ?? bodyView ?? titleView)
+            make.bottom.equalTo(lastCheckedView ?? bodyView ?? titleView)
             
             if let button = button ?? manualCheckButton {
                 make.bottom.equalTo(button.snp.top).offset(-20)
@@ -262,12 +293,29 @@ final class ExposuresElement: WideRowElement {
             make.size.equalTo(CGSize(width: 50, height: 50))
         }
 
-        titleView.isAccessibilityElement = false
-        bodyView?.isAccessibilityElement = false
-        accessibilityView.accessibilityTraits = .button
-        accessibilityView.isAccessibilityElement = true
-        accessibilityView.accessibilityLabel = titleView.text
-        accessibilityView.accessibilityValue = bodyView?.text
+        isAccessibilityElement = true
+        accessibilityTraits = .button
+        accessibilityCustomActions = nil
+
+        if exposureCount > 0 {
+            accessibilityHint = Text.ButtonOpen.localized
+            accessibilityLabel = "\(titleView.text ?? ""). \(bodyView?.text ?? "")"
+        } else {
+            accessibilityHint = nil
+            accessibilityLabel = titleView.text
+            
+            if let manualCheckButton = self.manualCheckButton {
+                accessibilityCustomActions = [
+                    UIAccessibilityCustomAction(name: Text.ButtonCheckNow.localized) { _ in
+                        return manualCheckButton.performAction()
+                    }
+                ]
+            }
+        }
+        
+        if update {
+            UIAccessibility.post(notification: .layoutChanged, argument: self)
+        }
     }
 }
 
@@ -325,6 +373,7 @@ final class SymptomsElement: WideRowElement {
         container.layer.cornerRadius = cornerRadius
         titleView.isAccessibilityElement = false
         bodyView.isAccessibilityElement = false
+        imageView.accessibilityTraits = .none
         self.accessibilityTraits = .button
         self.isAccessibilityElement = true
         self.accessibilityLabel = titleView.text

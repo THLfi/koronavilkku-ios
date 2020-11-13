@@ -5,6 +5,7 @@
 "ButtonStartUsing" = "Börja använda";
 "ButtonTestUI" = "Verktyg";
 "ButtonScrollDown" = "Scrolla ner";
+"ButtonLoading" = "Laddar";
 
 "TabHome" = "Hem";
 "TabReportInfection" = "Meddela din smitta";
@@ -34,6 +35,7 @@
 "ExposuresElement.Text.TitleNoExposures" = "Ingen exponering har upptäckts";
 "ExposuresElement.Text.BodyNoExposures" = "Du har inte varit i närheten av en person som meddelat om smitta";
 "ExposuresElement.Text.BodyExposureCheckDelayed" = "Kontrollen av eventuella exponeringar har inte lyckats på över 24 timmar. Appen försöker utföra kontrollen igen senare. Du kan själv starta kontrollen nu.";
+"ExposuresElement.Text.AccessibilityValueCheckDelayed" = "Kontrollen av eventuella exponeringar har inte lyckats på över 24 timmar.";
 "ExposuresElement.Text.TitleHasExposures" = "Eventuell exponering";
 "ExposuresElement.Text.BodyHasExposures" = "Du kan ha exponerats för viruset";
 "ExposuresElement.Text.ButtonOpen" = "Se anvisningar";
