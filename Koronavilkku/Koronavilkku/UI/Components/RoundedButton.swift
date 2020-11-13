@@ -35,11 +35,11 @@ class RoundedButton: UIButton {
                 
                 accessibilityLabel = Translation.ButtonLoading.localized
             } else {
-                accessibilityLabel = nil
+                backgroundColor = isEnabled ? enabledBackgroundColor : disabledBackgroundColor
                 imageView?.layer.removeAllAnimations()
                 setImage(nil, for: .normal)
                 setTitle(title, for: .normal)
-                self.setEnabled(true)
+                accessibilityLabel = nil
             }
         }
     }
@@ -48,6 +48,7 @@ class RoundedButton: UIButton {
     
     let title: String
     let action: () -> ()
+    private let disabledBackgroundColor = UIColor.Greyscale.lightGrey
     private let enabledBackgroundColor: UIColor
     private let highlightedBackgroundColor: UIColor
     
@@ -99,6 +100,6 @@ class RoundedButton: UIButton {
     func setEnabled(_ enabled: Bool) {
         isEnabled = enabled
         alpha = enabled ? 1.0 : 0.5
-        backgroundColor = enabled ? enabledBackgroundColor : UIColor.Greyscale.lightGrey
+        backgroundColor = enabled ? enabledBackgroundColor : disabledBackgroundColor
     }
 }
