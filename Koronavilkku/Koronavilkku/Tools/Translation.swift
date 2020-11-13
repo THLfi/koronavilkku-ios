@@ -50,6 +50,7 @@ enum Translation: String, Localizable {
     case ButtonStartUsing
     case ButtonTestUI
     case ButtonScrollDown
+    case ButtonLoading
 
     /* Tabs */
     case TabHome
@@ -127,4 +128,8 @@ enum Translation: String, Localizable {
     case ExternalLinkErrorTitle
     case ExternalLinkErrorMessage
     case ExternalLinkErrorButton
+    
+    case ManualCheckErrorTitle
+    case ManualCheckErrorMessage
+    case ManualCheckErrorButton
 }

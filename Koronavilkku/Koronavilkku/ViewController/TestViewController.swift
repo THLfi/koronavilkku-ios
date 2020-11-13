@@ -26,6 +26,8 @@ class TestViewController: UIViewController {
     
     lazy var updateMunicipalityListButton = self.createButton(title: "Update municipality list", action: #selector(updateMunicipalityList))
     
+    lazy var setLastExposureCheckButton = self.createButton(title: "Set exposure check date", action: #selector(setLastExposureCheck))
+    
     // force downcast, because we're using the internals here
     var batchRepository = Environment.default.batchRepository as! BatchRepositoryImpl
     var exposureManager = ExposureManagerProvider.shared.manager
@@ -82,6 +84,7 @@ class TestViewController: UIViewController {
         appendButton(resetOnboardingButton)
         appendButton(showExposureLogsButton)
         appendButton(updateMunicipalityListButton)
+        appendButton(setLastExposureCheckButton)
         
         LocalStore.shared.$uiStatus.addObserver(using: { [weak self] in
             self?.radarStatus.setTitle("Radar status \(LocalStore.shared.uiStatus)", for: .normal)
@@ -113,13 +116,14 @@ class TestViewController: UIViewController {
     }
     
     @objc func downloadAndDetect() {
-        BackgroundTaskForNotifications.execute { success in
-            if success {
-                Log.d("Download and detect completed successfully")
-            } else {
-                Log.e("Failed to download and detect")
-            }
-        }.store(in: &tasks)
+        BackgroundTaskForNotifications.shared.run()
+            .sink { success in
+                if success {
+                    Log.d("Download and detect completed successfully")
+                } else {
+                    Log.e("Failed to download and detect")
+                }
+            }.store(in: &tasks)
     }
     
     @objc func batchDownloadBackgroundPressed() {
@@ -195,6 +199,10 @@ class TestViewController: UIViewController {
                 }, receiveValue: { _ in }
             )
             .store(in: &tasks)
+    }
+    
+    @objc func setLastExposureCheck() {
+        LocalStore.shared.$dateLastPerformedExposureDetection.wrappedValue = Date().addingTimeInterval(30 - ExposureRepositoryImpl.manualCheckThreshold)
     }
     
     private func showDialog(_ message: String, title: String = "Error") {

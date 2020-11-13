@@ -1,9 +1,18 @@
 import Combine
 import ExposureNotification
 import Foundation
-import Dispatch
+import UIKit
+
+enum DetectionStatus: Equatable {
+    case disabled
+    case idle(delayed: Bool)
+    case detecting
+}
 
 protocol ExposureRepository {
+    var detectionStatus: AnyPublisher<DetectionStatus, Never> { get }
+    var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> { get }
+
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error>
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error>
     func postExposureKeys(publishToken: String?) -> AnyPublisher<Void, Error>
@@ -14,13 +23,69 @@ protocol ExposureRepository {
     func deleteBatchFiles()
 }
 
-struct ExposureRepositoryImpl : ExposureRepository {
+final class ExposureRepositoryImpl : ExposureRepository {
     static let keyCount = 14
+    static let manualCheckThreshold: TimeInterval = 24 * 60 * 60
+    
     private static let dummyPostToken = "000000000000"
+
     private let exposureManager: ExposureManager
     private let backend: Backend
     private let storage: FileStorage
-    
+        
+    lazy var detectionStatus: AnyPublisher<DetectionStatus, Never> = {
+        let isDelayed = timeFromLastCheck.map { interval -> Bool in
+            guard let interval = interval else { return false }
+            return interval <= 0 - Self.manualCheckThreshold
+        }
+        
+        let isDisabled = LocalStore.shared.$uiStatus.$wrappedValue.map { uiStatus -> Bool in
+            switch uiStatus {
+            case .apiDisabled, .off:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        return BackgroundTaskForNotifications.shared.$detectionRunning
+            .combineLatest(isDelayed, isDisabled) { running, delayed, disabled in
+                switch true {
+                case disabled:
+                    return .disabled
+                case running:
+                    return .detecting
+                default:
+                    return .idle(delayed: delayed)
+                }
+            }
+            .removeDuplicates()
+            .eraseToAnyPublisher()
+    }()
+        
+    lazy var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> = {
+        // Create a timer based on the current exposure detection date
+        LocalStore.shared.$dateLastPerformedExposureDetection.$wrappedValue.map { lastCheck -> AnyPublisher<TimeInterval?, Never> in
+            guard let lastCheck = lastCheck else {
+                return Just(nil).eraseToAnyPublisher()
+            }
+            
+            let publisher = Just(Date())
+            let timer = Timer.publish(every: 60, tolerance: 1, on: .main, in: .default).autoconnect()
+            
+            return publisher
+                .merge(with: timer)
+                .map { $0.distance(to: lastCheck) }
+                .eraseToAnyPublisher()
+        }
+        // Cancels the previous timer when the value changes to avoid mixed signals
+        .switchToLatest()
+        // Make sure the same value is broadcasted to every subscriber *and* that the current value is always published
+        .multicast(subject: CurrentValueSubject<TimeInterval?, Never>(nil))
+        .autoconnect()
+        .eraseToAnyPublisher()
+    }()
+
     init(exposureManager: ExposureManager, backend: Backend, storage: FileStorage) {
         self.exposureManager = exposureManager
         self.backend = backend

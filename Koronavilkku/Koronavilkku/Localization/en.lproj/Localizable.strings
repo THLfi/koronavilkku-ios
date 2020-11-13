@@ -5,6 +5,7 @@
 "ButtonStartUsing" = "Start using the app";
 "ButtonTestUI" = "Test UI";
 "ButtonScrollDown" = "Scroll down";
+"ButtonLoading" = "Loading";
 
 "TabHome" = "Home";
 "TabReportInfection" = "Report your infection";
@@ -33,9 +34,12 @@
 // MARK: ExposuresElement
 "ExposuresElement.Text.TitleNoExposures" = "No observed exposures";
 "ExposuresElement.Text.BodyNoExposures" = "You have not been near a person who has reported an infection";
+"ExposuresElement.Text.BodyExposureCheckDelayed" = "Checking for potential exposures has not been carried out for over 24 hours. The app will try again later. You can start a check now.";
+"ExposuresElement.Text.AccessibilityValueCheckDelayed" = "Checking for potential exposures has not been carried out for over 24 hours.";
 "ExposuresElement.Text.TitleHasExposures" = "Potential exposure";
 "ExposuresElement.Text.BodyHasExposures" = "You may have been exposed to the coronavirus";
 "ExposuresElement.Text.ButtonOpen" = "See instructions";
+"ExposuresElement.Text.ButtonCheckNow" = "Check now";
 
 // MARK: SymptomsElement.Text
 "SymptomsElement.Text.Title" = "Do you think you may have COVID-19?";
@@ -64,13 +68,14 @@
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku has not detected exposures to the coronavirus in the last 10 days.";
 "ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "However, the application is not able to identify every situation where exposure may occur.";
 
-"ExposuresLastCheckedView.Text.NotCheckedYet" = "No checks yet";
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Last checked %@";
+"ExposuresLastCheckedView.Text.MomentAgo" = "a moment ago";
+"ExposuresLastCheckedView.Text.NotCheckedYet" = "No checks yet";
 
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "You have already reported your infection";
 "ReportInfectionViewController.Text.LockedText" = "The information you have reported will help to tackle the coronavirus epidemic. The app is now locked and no longer collects information about nearby phones. We wish you a quick recovery!";
-"ReportInfectionViewController.Text.DisabledText" = "Exposure notifications must be turned on in order to report an infection. Return to the Home view and enable them there.";
+"ReportInfectionViewController.Text.DisabledText" = "Exposure notifications must be turned on in order to report an infection. Return to the Home view and enable exposure notifications.";
 "ReportInfectionViewController.Text.ReportTitle" = "Report your infection";
 "ReportInfectionViewController.Text.ReportText" = "If you are diagnosed with COVID-19, you will receive a key code from a healthcare professional or a text message from the Finnish Institute for Health and Welfare. You can use the key code to anonymously share information about your infection.\n\nEnter the key code on the phone you usually carry with you.";
 "ReportInfectionViewController.Text.ReportButton" = "Enter key code";
@@ -226,3 +231,7 @@
 "ExternalLinkErrorTitle" = "Web page cannot be opened";
 "ExternalLinkErrorMessage" = "Web page cannot be opened because your phone does not have an internet browser or its use has been blocked.";
 "ExternalLinkErrorButton" = "OK";
+
+"ManualCheckErrorTitle" = "Error loading exposure data";
+"ManualCheckErrorMessage" = "Exposure data could not be loaded. Please check your internet connection and try again.";
+"ManualCheckErrorButton" = "OK";

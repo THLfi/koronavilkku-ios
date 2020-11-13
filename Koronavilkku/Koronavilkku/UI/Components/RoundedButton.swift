@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import UIKit
 
@@ -9,8 +10,31 @@ class RoundedButton: UIButton {
     
     override open var isHighlighted: Bool {
         didSet {
-            backgroundColor = isHighlighted ? highlightedBackgroundColor : enabledBackgroundColor
+            if !isLoading {
+                backgroundColor = isHighlighted ? highlightedBackgroundColor : enabledBackgroundColor
+            }
+
             layer.shadowColor = isHighlighted ? UIColor.clear.cgColor : UIColor.Greyscale.lightGrey.cgColor
+        }
+    }
+    
+    var isLoading = false {
+        didSet {
+            guard oldValue != isLoading else { return }
+            
+            if isLoading {
+                backgroundColor = UIColor.Greyscale.backdropGrey
+                setImage(UIImage.init(named: "refresh")?.withTintColor(UIColor.Greyscale.mediumGrey), for: .normal)
+                setTitle(nil, for: .normal)
+                accessibilityLabel = Translation.ButtonLoading.localized
+                runLoadingAnimation()
+            } else {
+                backgroundColor = isEnabled ? enabledBackgroundColor : disabledBackgroundColor
+                imageView?.layer.removeAllAnimations()
+                setImage(nil, for: .normal)
+                setTitle(title, for: .normal)
+                accessibilityLabel = nil
+            }
         }
     }
     
@@ -18,9 +42,13 @@ class RoundedButton: UIButton {
     
     let title: String
     let action: () -> ()
+    
+    private let disabledBackgroundColor = UIColor.Greyscale.lightGrey
     private let enabledBackgroundColor: UIColor
     private let highlightedBackgroundColor: UIColor
     
+    private var restartAnimationTask: AnyCancellable?
+
     init(title: String,
          disabledTitle: String? = nil,
          backgroundColor: UIColor = UIColor.Primary.blue,
@@ -48,22 +76,44 @@ class RoundedButton: UIButton {
         }
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         updateShadowPath()
     }
     
-    @objc func performAction() {
-        action()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    @objc func performAction() -> Bool {
+        if !isLoading {
+            action()
+            return true
+        }
+        
+        return false
     }
     
     func setEnabled(_ enabled: Bool) {
         isEnabled = enabled
         alpha = enabled ? 1.0 : 0.5
-        backgroundColor = enabled ? enabledBackgroundColor : UIColor.Greyscale.lightGrey
+        backgroundColor = enabled ? enabledBackgroundColor : disabledBackgroundColor
+    }
+    
+    private func runLoadingAnimation() {
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.fromValue = 0.0
+        animation.toValue = CGFloat(Double.pi * 2.0)
+        animation.duration = 2
+        animation.repeatCount = .greatestFiniteMagnitude
+        imageView?.layer.add(animation, forKey: nil)
+        
+        if restartAnimationTask == nil {
+            restartAnimationTask = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
+                .sink { [weak self] _ in
+                    guard let self = self, self.isLoading else { return }
+                    self.runLoadingAnimation()
+                }
+        }
     }
 }

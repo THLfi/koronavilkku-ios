@@ -5,15 +5,49 @@ import Combine
 
 class ExposuresLastCheckedView: UIView {
     enum Text : String, Localizable {
-        case NotCheckedYet
         case LastCheckedAt
+        case MomentAgo
+        case NotCheckedYet
+    }
+    
+    enum Style {
+        case normal
+        case subdued
+        
+        var font: UIFont {
+            switch self {
+            case .normal:
+                return .bodySmall
+            case .subdued:
+                return .labelTertiary
+            }
+        }
+        
+        var textColor: UIColor {
+            switch self {
+            case .normal:
+                return UIColor.Greyscale.black
+            case .subdued:
+                return UIColor.Greyscale.darkGrey
+            }
+        }
     }
     
     private var cancellable: AnyCancellable?
     private var lastCheckedLabel: UILabel!
+    private let style: Style
     
-    init() {
+    override var accessibilityLabel: String? {
+        get {
+            lastCheckedLabel.text
+        }
+        set {}
+    }
+    
+    init(style: Style = .normal) {
+        self.style = style
         super.init(frame: .zero)
+        self.createUI()
         self.bindViewModel()
     }
     
@@ -21,28 +55,25 @@ class ExposuresLastCheckedView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    static func format(interval: TimeInterval?) -> String {
+        guard let interval = interval else {
+            return Text.NotCheckedYet.localized
+        }
+        
+        return Text.LastCheckedAt.localized(with: interval > -60
+            ? Text.MomentAgo.localized
+            : RelativeDateTimeFormatter().localizedString(fromTimeInterval: interval))
+    }
+
     private func bindViewModel() {
-        cancellable = LocalStore.shared.$dateLastPerformedExposureDetection.$wrappedValue
-            .map { lastChecked in
-                guard let date = lastChecked else {
-                    return Text.NotCheckedYet.localized
-                }
-                
-                return Text.LastCheckedAt.localized(with: date.toLocalizedRelativeFormat())
-            }
-            .sink( receiveValue: { lastCheckedString in
-                DispatchQueue.main.async {
-                    self.updateUI(label: lastCheckedString)
-                }
-            })
+        cancellable = Environment.default.exposureRepository.timeFromLastCheck
+            .map(Self.format)
+            .receive(on: RunLoop.main)
+            .assign(to: \.text, on: lastCheckedLabel)
     }
     
-    private func updateUI(label: String) {
-        self.removeAllSubviews()
-        
-        lastCheckedLabel = UILabel(label: label,
-                                   font: UIFont.bodySmall,
-                                   color: UIColor.Greyscale.black)
+    private func createUI() {
+        lastCheckedLabel = UILabel(label: "", font: style.font, color: style.textColor)
         lastCheckedLabel.numberOfLines = 0
         self.addSubview(lastCheckedLabel)
         
