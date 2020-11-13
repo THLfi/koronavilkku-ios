@@ -1,3 +1,4 @@
+import Combine
 import Foundation
 import UIKit
 
@@ -25,15 +26,8 @@ class RoundedButton: UIButton {
                 backgroundColor = UIColor.Greyscale.backdropGrey
                 setImage(UIImage.init(named: "refresh")?.withTintColor(UIColor.Greyscale.mediumGrey), for: .normal)
                 setTitle(nil, for: .normal)
-                
-                let animation = CABasicAnimation(keyPath: "transform.rotation")
-                animation.fromValue = 0.0
-                animation.toValue = CGFloat(Double.pi * 2.0)
-                animation.duration = 2
-                animation.repeatCount = .greatestFiniteMagnitude
-                imageView?.layer.add(animation, forKey: nil)
-                
                 accessibilityLabel = Translation.ButtonLoading.localized
+                runLoadingAnimation()
             } else {
                 backgroundColor = isEnabled ? enabledBackgroundColor : disabledBackgroundColor
                 imageView?.layer.removeAllAnimations()
@@ -48,10 +42,13 @@ class RoundedButton: UIButton {
     
     let title: String
     let action: () -> ()
+    
     private let disabledBackgroundColor = UIColor.Greyscale.lightGrey
     private let enabledBackgroundColor: UIColor
     private let highlightedBackgroundColor: UIColor
     
+    private var restartAnimationTask: AnyCancellable?
+
     init(title: String,
          disabledTitle: String? = nil,
          backgroundColor: UIColor = UIColor.Primary.blue,
@@ -101,5 +98,23 @@ class RoundedButton: UIButton {
         isEnabled = enabled
         alpha = enabled ? 1.0 : 0.5
         backgroundColor = enabled ? enabledBackgroundColor : disabledBackgroundColor
+    }
+    
+    private func runLoadingAnimation() {
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.fromValue = 0.0
+        animation.toValue = CGFloat(Double.pi * 2.0)
+        animation.duration = 2
+        animation.repeatCount = .greatestFiniteMagnitude
+        imageView?.layer.add(animation, forKey: nil)
+        
+        if restartAnimationTask == nil {
+            restartAnimationTask = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
+                .print()
+                .sink { [weak self] _ in
+                    guard let self = self, self.isLoading else { return }
+                    self.runLoadingAnimation()
+                }
+        }
     }
 }
