@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+- Let the user run the exposure detection manually if the previous check has not been completed in the last 24 hours
+- New ExposureRepository publishers for the current detection status and time from the last completed detection on at one minute intervals
+- A loading state for RoundedButton for asynchronous tasks
+
+### Changed
+- Improve the main screen accessibility
+
 ## 1.2.0
 
 ### Changed

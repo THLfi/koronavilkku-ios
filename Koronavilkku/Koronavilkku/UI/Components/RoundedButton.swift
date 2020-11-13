@@ -110,7 +110,6 @@ class RoundedButton: UIButton {
         
         if restartAnimationTask == nil {
             restartAnimationTask = NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
-                .print()
                 .sink { [weak self] _ in
                     guard let self = self, self.isLoading else { return }
                     self.runLoadingAnimation()
