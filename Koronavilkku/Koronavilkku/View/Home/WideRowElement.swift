@@ -81,25 +81,26 @@ final class ExposuresElement: WideRowElement {
         case ButtonCheckNow
     }
     
-    var manualCheckButton: RoundedButton?
-    var lastCheckedView: ExposuresLastCheckedView?
+    private var manualCheckButton: RoundedButton?
+    private var lastCheckedView: ExposuresLastCheckedView?
     
-    let manualCheckAction: () -> ()
-    let margin = UIEdgeInsets(top: 24, left: 20, bottom: -20, right: -20)
-    var updateTasks = Set<AnyCancellable>()
+    private let manualCheckAction: () -> ()
+    private let margin = UIEdgeInsets(top: 24, left: 20, bottom: -20, right: -20)
+    private var updateTasks = Set<AnyCancellable>()
     
     /// The number of active exposures
-    var exposureCount = 0
+    private var exposureCount = 0
     
     /// Whether the exposure checks are enabled at all
-    var checksEnabled = true
+    private var checksEnabled = true
 
-    /// Whether the user is allowed to run exposure checks manually
-    var checksDelayed = false
+    /// Whether the checks are delayed and user is allowed to run exposure checks manually
+    private var checksDelayed = false
     
     /// Whether the UI has been initialized or not
-    var initialized = false
+    private var initialized = false
 
+    /// Internal storage, use `accessibilityValue` instead
     private var _accessibilityValue: String?
     
     /// Provide a default value that can be change over time without the UI being notified of the change
