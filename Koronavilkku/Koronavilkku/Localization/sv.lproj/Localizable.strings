@@ -68,7 +68,7 @@
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Coronablinkern har inte observerat någon exponering för coronaviruset under de senaste 10 dagarna.";
 "ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "Appen kan emellertid inte identifiera alla eventuella exponeringar.";
 
-"ExposuresLastCheckedView.Text.LastCheckedAt" = "Senast granskad: %@";
+"ExposuresLastCheckedView.Text.LastCheckedAt" = "Senast granskad %@";
 "ExposuresLastCheckedView.Text.MomentAgo" = "för ett ögonblick sedan";
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "Ingen kontroll ännu";
 
