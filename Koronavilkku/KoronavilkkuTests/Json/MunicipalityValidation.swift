@@ -1,19 +1,66 @@
 import XCTest
 @testable import Koronavilkku
 
+struct Endpoint : RestResource {
+    var path: String
+    var method = "GET"
+    var headers: [String : String]? = nil
+    func body() throws -> Data? { nil }
+}
+
+struct MockCMS : RestApi {
+    typealias Resource = Endpoint
+
+    var baseURL: URL
+    var urlSession: URLSession
+}
+
 class MunicipalityJsonTests: XCTestCase {
     
     enum AssertionError: Error {
         case municipalityServiceLanguageMissing(_ municipality: Municipality)
     }
     
-    func testMunicipalitiesAccrodingToSchema() {
-        let municipalities = loadData()
+    private var cms: MockCMS!
+    
+    override func setUp() {
+        let config = LocalConfiguration()
+        cms = MockCMS(baseURL: URL(string: config.cmsBaseURL)!, urlSession: URLSession.shared)
+    }
+    
+    func testProductionData() throws {
+        let production = Endpoint(path: "/sites/koronavilkku/yhteystiedot.json")
+        let result: Result<Municipalities, Error> = call(api: cms, endpoint: production, timeout: 5)
+
+        switch result {
+        case .failure(let error):
+            throw error
+        case .success(let data):
+            try testMunicipalityData(data: data)
+        }
+    }
+    
+    func testStagingData() throws {
+        let staging = Endpoint(path: "/sites/koronavilkku/yhteystiedot_uusi.json")
+        let result: Result<Municipalities, Error> = call(api: cms, endpoint: staging, timeout: 5)
+        
+        switch result {
+        case .failure(let error):
+            throw XCTSkip(error.localizedDescription)
+        case .success(let data):
+            try testMunicipalityData(data: data)
+        }
+    }
+    
+    private func testMunicipalityData(data municipalities: Municipalities) throws {
+
         XCTAssertNotNil(municipalities)
         XCTAssertGreaterThan(municipalities.count, 0)
         
-        XCTAssertNoThrow(try municipalities.forEach { try assertMunicipality(municipality: $0) })
-        
+        XCTAssertNoThrow(try municipalities.forEach {
+            try assertMunicipality(municipality: $0)
+        })
+
     }
     
     private func assertMunicipality(municipality: Municipality) throws {
@@ -43,21 +90,6 @@ class MunicipalityJsonTests: XCTestCase {
             XCTAssertNotNil(municipality.omaolo.serviceLanguages, "Service languages present")
             XCTAssertNotNil(municipality.omaolo.serviceLanguages?.fi)
             XCTAssertNotNil(municipality.omaolo.serviceLanguages?.sv)
-        }
-    }
-    
-    private func loadData() -> Municipalities {
-        if let url = URL(string: "https://repo.thl.fi/sites/koronavilkku/yhteystiedot_uusi.json") {
-            do {
-                let data = try Data(contentsOf: url, options: .alwaysMapped)
-                return try JSONDecoder()
-                    .decode(Municipalities.self, from: data)
-            } catch {
-                fatalError(error.localizedDescription)
-            }
-        }
-        else {
-            fatalError("Unable to find test material from server")
         }
     }
 }
