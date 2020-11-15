@@ -58,7 +58,7 @@ class ExposuresViewController: UIViewController {
             }
             .store(in: &updateTasks)
         
-        Environment.default.exposureRepository.detectionStatus
+        Environment.default.exposureRepository.detectionStatus()
             .receive(on: RunLoop.main)
             .sink { [weak self] detectionStatus in
                 guard let self = self else { return }

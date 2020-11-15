@@ -133,7 +133,7 @@ final class ExposuresElement: WideRowElement {
         self.manualCheckAction = manualCheckAction
         super.init(tapped: tapped)
         
-        Environment.default.exposureRepository.detectionStatus
+        Environment.default.exposureRepository.detectionStatus()
             .combineLatest(LocalStore.shared.$exposures.$wrappedValue)
             .sink { [weak self] state, exposures in
                 guard let self = self else { return }

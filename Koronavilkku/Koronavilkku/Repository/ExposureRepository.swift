@@ -10,9 +10,8 @@ enum DetectionStatus: Equatable {
 }
 
 protocol ExposureRepository {
-    var detectionStatus: AnyPublisher<DetectionStatus, Never> { get }
-    var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> { get }
-
+    func detectionStatus() -> AnyPublisher<DetectionStatus, Never>
+    func timeFromLastCheck() -> AnyPublisher<TimeInterval?, Never>
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error>
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error>
     func postExposureKeys(publishToken: String?) -> AnyPublisher<Void, Error>
@@ -23,18 +22,37 @@ protocol ExposureRepository {
     func deleteBatchFiles()
 }
 
-final class ExposureRepositoryImpl : ExposureRepository {
+struct ExposureRepositoryImpl : ExposureRepository {
     static let keyCount = 14
     static let manualCheckThreshold: TimeInterval = 24 * 60 * 60
     
     private static let dummyPostToken = "000000000000"
 
-    private let exposureManager: ExposureManager
-    private let backend: Backend
-    private let storage: FileStorage
-        
-    lazy var detectionStatus: AnyPublisher<DetectionStatus, Never> = {
-        let isDelayed = timeFromLastCheck.map { interval -> Bool in
+    /// Publisher logic cached here to avoid every subscriber running it separately
+    static private var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> = {
+        // Create a timer based on the current exposure detection date
+        LocalStore.shared.$dateLastPerformedExposureDetection.$wrappedValue.map { lastCheck -> AnyPublisher<TimeInterval?, Never> in
+            guard let lastCheck = lastCheck else {
+                return Just(nil).eraseToAnyPublisher()
+            }
+            
+            return Timer
+                .publish(every: 60, tolerance: 1, on: .main, in: .default)
+                .autoconnect()
+                // Timer does not publish the current date until it fires the first time
+                // To avoid missing data during the first 60 seconds, merge in the current time
+                .merge(with: Just(Date()))
+                .map { $0.distance(to: lastCheck) }
+                .eraseToAnyPublisher()
+        }
+        // Cancels the previous timer when the value changes to avoid mixed signals
+        .switchToLatest()
+        .shareCurrent()
+        .eraseToAnyPublisher()
+    }()
+    
+    static private var detectionStatus: AnyPublisher<DetectionStatus, Never> = {
+        let isDelayed = Self.timeFromLastCheck.map { interval -> Bool in
             guard let interval = interval else { return false }
             return interval <= 0 - Self.manualCheckThreshold
         }
@@ -60,31 +78,21 @@ final class ExposureRepositoryImpl : ExposureRepository {
                 }
             }
             .removeDuplicates()
+            .shareCurrent()
             .eraseToAnyPublisher()
     }()
+
+    private let exposureManager: ExposureManager
+    private let backend: Backend
+    private let storage: FileStorage
         
-    lazy var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> = {
-        // Create a timer based on the current exposure detection date
-        LocalStore.shared.$dateLastPerformedExposureDetection.$wrappedValue.map { lastCheck -> AnyPublisher<TimeInterval?, Never> in
-            guard let lastCheck = lastCheck else {
-                return Just(nil).eraseToAnyPublisher()
-            }
-            
-            let publisher = Just(Date())
-            let timer = Timer.publish(every: 60, tolerance: 1, on: .main, in: .default).autoconnect()
-            
-            return publisher
-                .merge(with: timer)
-                .map { $0.distance(to: lastCheck) }
-                .eraseToAnyPublisher()
-        }
-        // Cancels the previous timer when the value changes to avoid mixed signals
-        .switchToLatest()
-        // Make sure the same value is broadcasted to every subscriber *and* that the current value is always published
-        .multicast(subject: CurrentValueSubject<TimeInterval?, Never>(nil))
-        .autoconnect()
-        .eraseToAnyPublisher()
-    }()
+    func detectionStatus() -> AnyPublisher<DetectionStatus, Never> {
+        Self.detectionStatus
+    }
+        
+    func timeFromLastCheck() -> AnyPublisher<TimeInterval?, Never> {
+        Self.timeFromLastCheck
+    }
 
     init(exposureManager: ExposureManager, backend: Backend, storage: FileStorage) {
         self.exposureManager = exposureManager

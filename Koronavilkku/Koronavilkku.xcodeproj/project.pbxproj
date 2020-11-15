@@ -94,6 +94,7 @@
 		EA47C5F324A6B3FC00EAC720 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5EF24A6B3FC00EAC720 /* SourceSansPro-Bold.otf */; };
 		EA47C5F424A6B3FC00EAC720 /* SourceSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5F024A6B3FC00EAC720 /* SourceSansPro-Black.otf */; };
 		EA47C5F524A6B3FC00EAC720 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5F124A6B3FC00EAC720 /* SourceSansPro-Semibold.otf */; };
+		EA4A59432561C25800E65CFB /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A59422561C25800E65CFB /* Publisher.swift */; };
 		EA4F905024F46E660032D9D5 /* BatchRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F904F24F46E660032D9D5 /* BatchRepositoryTest.swift */; };
 		EA4F905224F4EFAD0032D9D5 /* BackendRestApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */; };
 		EA5296AC251BE1B10089CFB4 /* Licenses.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA5296AB251BE1B10089CFB4 /* Licenses.strings */; };
@@ -227,6 +228,7 @@
 		EA47C5EF24A6B3FC00EAC720 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
 		EA47C5F024A6B3FC00EAC720 /* SourceSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.otf"; sourceTree = "<group>"; };
 		EA47C5F124A6B3FC00EAC720 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
+		EA4A59422561C25800E65CFB /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		EA4F904F24F46E660032D9D5 /* BatchRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchRepositoryTest.swift; sourceTree = "<group>"; };
 		EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendRestApiTest.swift; sourceTree = "<group>"; };
 		EA5296AB251BE1B10089CFB4 /* Licenses.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Licenses.strings; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				563D44AA24AA327F008FE2BB /* UIView.swift */,
 				32899E4824C0680600CFFE27 /* UIViewController.swift */,
 				EA07E41624E34C7D0097A9A0 /* URLSession.swift */,
+				EA4A59422561C25800E65CFB /* Publisher.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				5630F2E924C5B4A000B12438 /* TextParagraphView.swift in Sources */,
 				561878AE24AD2BDE004B7563 /* PublishTokensViewController.swift in Sources */,
 				56E3349624CCC0BB0017CD9A /* MunicipalityContactInformationView.swift in Sources */,
+				EA4A59432561C25800E65CFB /* Publisher.swift in Sources */,
 				D98EDD2724CB3E17003E09A1 /* LinkItem.swift in Sources */,
 				D98EDD3524CDF754003E09A1 /* AttentionLabel.swift in Sources */,
 				EA0D8B2124B33B25002F1BCD /* TemporaryExposureKey.swift in Sources */,

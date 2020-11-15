@@ -66,7 +66,7 @@ class ExposuresLastCheckedView: UIView {
     }
 
     private func bindViewModel() {
-        cancellable = Environment.default.exposureRepository.timeFromLastCheck
+        cancellable = Environment.default.exposureRepository.timeFromLastCheck()
             .map(Self.format)
             .receive(on: RunLoop.main)
             .assign(to: \.text, on: lastCheckedLabel)
