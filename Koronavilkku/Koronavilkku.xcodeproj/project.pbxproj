@@ -95,6 +95,9 @@
 		EA47C5F424A6B3FC00EAC720 /* SourceSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5F024A6B3FC00EAC720 /* SourceSansPro-Black.otf */; };
 		EA47C5F524A6B3FC00EAC720 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5F124A6B3FC00EAC720 /* SourceSansPro-Semibold.otf */; };
 		EA4A59432561C25800E65CFB /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A59422561C25800E65CFB /* Publisher.swift */; };
+		EA4A594B2562708400E65CFB /* ExposuresElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A594A2562708400E65CFB /* ExposuresElement.swift */; };
+		EA4A59502562716100E65CFB /* SymptomsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A594F2562716100E65CFB /* SymptomsElement.swift */; };
+		EA4A595B2562AE3A00E65CFB /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A595A2562AE3A00E65CFB /* Badge.swift */; };
 		EA4F905024F46E660032D9D5 /* BatchRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F904F24F46E660032D9D5 /* BatchRepositoryTest.swift */; };
 		EA4F905224F4EFAD0032D9D5 /* BackendRestApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */; };
 		EA5296AC251BE1B10089CFB4 /* Licenses.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA5296AB251BE1B10089CFB4 /* Licenses.strings */; };
@@ -229,6 +232,9 @@
 		EA47C5F024A6B3FC00EAC720 /* SourceSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.otf"; sourceTree = "<group>"; };
 		EA47C5F124A6B3FC00EAC720 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		EA4A59422561C25800E65CFB /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
+		EA4A594A2562708400E65CFB /* ExposuresElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposuresElement.swift; sourceTree = "<group>"; };
+		EA4A594F2562716100E65CFB /* SymptomsElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsElement.swift; sourceTree = "<group>"; };
+		EA4A595A2562AE3A00E65CFB /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		EA4F904F24F46E660032D9D5 /* BatchRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchRepositoryTest.swift; sourceTree = "<group>"; };
 		EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendRestApiTest.swift; sourceTree = "<group>"; };
 		EA5296AB251BE1B10089CFB4 /* Licenses.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Licenses.strings; sourceTree = "<group>"; };
@@ -376,6 +382,7 @@
 				D98EDD3624CDF91F003E09A1 /* AttentionCard.swift */,
 				D98EDD3424CDF754003E09A1 /* AttentionLabel.swift */,
 				5687173C24C06A5200E65427 /* AttributedStringGenerator.swift */,
+				EA4A595A2562AE3A00E65CFB /* Badge.swift */,
 				D98EDD2424CB3D5F003E09A1 /* CardElement.swift */,
 				56E3349924CEC9290017CD9A /* ContactItemCard.swift */,
 				5630F2EA24C6F8BD00B12438 /* LabeledOverlay.swift */,
@@ -401,8 +408,10 @@
 		56C26BBE24B44CB8002F83C1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EA4A594A2562708400E65CFB /* ExposuresElement.swift */,
 				563D44A524A9FEB6008FE2BB /* NarrowRowElement.swift */,
 				563D44A724AA2143008FE2BB /* StatusHeaderView.swift */,
+				EA4A594F2562716100E65CFB /* SymptomsElement.swift */,
 				56DB5AE124A4B5BD0019C1A1 /* WideRowElement.swift */,
 			);
 			path = Home;
@@ -841,10 +850,12 @@
 				5687174424C1AA7C00E65427 /* AcceptableTermsView.swift in Sources */,
 				56C26BC924B4B5A0002F83C1 /* MunicipalitySearchResultController.swift in Sources */,
 				56C26BBA24B30CF8002F83C1 /* ExposuresViewWrapper.swift in Sources */,
+				EA4A594B2562708400E65CFB /* ExposuresElement.swift in Sources */,
 				563D44B724AB5DEE008FE2BB /* UILabel+Styled.swift in Sources */,
 				56C26BC724B461ED002F83C1 /* MunicipalityModel.swift in Sources */,
 				5695F6D224D802FD008E06BC /* CMS.swift in Sources */,
 				32B5955E24AA21EC00CC386E /* TestViewController.swift in Sources */,
+				EA4A59502562716100E65CFB /* SymptomsElement.swift in Sources */,
 				5630F2ED24C70F6700B12438 /* LinkLabel.swift in Sources */,
 				5630F2EB24C6F8BD00B12438 /* LabeledOverlay.swift in Sources */,
 				56C26BBC24B33D74002F83C1 /* ExposuresLastCheckedView.swift in Sources */,
@@ -863,6 +874,7 @@
 				EA92A04424A3958300CE7271 /* AppDelegate.swift in Sources */,
 				32899E4D24C07E3900CFFE27 /* InfoViewController.swift in Sources */,
 				32899E4B24C0761100CFFE27 /* UITextField.swift in Sources */,
+				EA4A595B2562AE3A00E65CFB /* Badge.swift in Sources */,
 				D98EDD3724CDF91F003E09A1 /* AttentionCard.swift in Sources */,
 				563D44AD24AA7840008FE2BB /* Comparable+Clamp.swift in Sources */,
 				EA30D71824A5C32200AF84B1 /* RootViewController.swift in Sources */,

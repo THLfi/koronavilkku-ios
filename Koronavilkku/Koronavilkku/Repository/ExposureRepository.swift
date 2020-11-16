@@ -9,8 +9,14 @@ enum DetectionStatus: Equatable {
     case detecting
 }
 
+enum ExposureStatus: Equatable {
+    case unexposed
+    case exposed(notificationCount: Int?)
+}
+
 protocol ExposureRepository {
     func detectionStatus() -> AnyPublisher<DetectionStatus, Never>
+    func exposureStatus() -> AnyPublisher<ExposureStatus, Never>
     func timeFromLastCheck() -> AnyPublisher<TimeInterval?, Never>
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error>
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error>
@@ -92,6 +98,12 @@ struct ExposureRepositoryImpl : ExposureRepository {
         
     func timeFromLastCheck() -> AnyPublisher<TimeInterval?, Never> {
         Self.timeFromLastCheck
+    }
+    
+    func exposureStatus() -> AnyPublisher<ExposureStatus, Never> {
+        LocalStore.shared.$exposures.$wrappedValue.map { exposures -> ExposureStatus in
+            .exposed(notificationCount: nil)
+        }.eraseToAnyPublisher()
     }
 
     init(exposureManager: ExposureManager, backend: Backend, storage: FileStorage) {

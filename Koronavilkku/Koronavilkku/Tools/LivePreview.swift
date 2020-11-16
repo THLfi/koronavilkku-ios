@@ -37,6 +37,17 @@ extension PreviewProvider {
         UIViewPreviewContainer(view: view)
             .previewLayout(.fixed(width: width, height: height))
     }
+    
+    static func createPreviewInContainer(for view: UIView, width: CGFloat, height: CGFloat) -> some View {
+        let container = UIView()
+        container.addSubview(view)
+        view.snp.makeConstraints { make in
+            make.left.top.right.equalToSuperview().inset(20)
+        }
+        
+        return UIViewPreviewContainer(view: container)
+            .previewLayout(.fixed(width: width, height: height))
+    }
 }
 
 #endif

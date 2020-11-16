@@ -69,7 +69,8 @@ class MainViewController: UIViewController {
         }
         
         // Setup notification and helper components
-        self.notifications = ExposuresElement() { [unowned self] in
+        self.notifications = ExposuresElement(detectionStatus: Environment.default.exposureRepository.detectionStatus(),
+                                              exposureStatus: Environment.default.exposureRepository.exposureStatus()) { [unowned self] in
             self.openExposuresViewController()
         } manualCheckAction: { [unowned self] in
             self.runManualDetection()
