@@ -97,19 +97,14 @@ final class ExposureRepositoryImpl : ExposureRepository {
     }
     
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error> {
-        
-        #if DEBUG
-        // If exposureInfo.score < minimumRiskScore, then the score and other values will be 0.
-        // To get more information about those cases use the minimum allowed value.
-        let cfg = config.with(minimumRiskScore: 1)
-        #else
-        let cfg = config
-        #endif
-        
+
         let urls = ids.map { self.storage.getFileUrls(forBatchId: $0) }.flatMap { $0 }
         Log.d("Ids: \(ids), Config: \(config), Detecting with urls: \(urls)")
 
-        return self.exposureManager.detectExposures(configuration: cfg, diagnosisKeyURLs: urls)
+        // iOS calculates attenuation buckets only from exposures equal or greater to minimumRiskScore
+        // Override the minimumRiskScore for detection only
+        return self.exposureManager.detectExposures(configuration: config.with(minimumRiskScore: 1),
+                                                    diagnosisKeyURLs: urls)
             .flatMap { summary -> AnyPublisher<[ENExposureInfo], Error> in
                 Log.d("Got summary: \(summary)")
                 
@@ -118,14 +113,32 @@ final class ExposureRepositoryImpl : ExposureRepository {
                 }
                 
                 #if DEBUG
-                    // When dbugging, store detection summary to local store for debugging purposes
+                    // When debugging, store detection summary to local store for debugging purposes
                     LocalStore.shared.detectionSummaries.append(summary.to())
                 #endif
                 
                 // Matched key count is not the one to use to determine real exposures.
                 // We must check that Summary's maximumRiskScore >= minimumRiskScore in server configuration
                 // and filter results to only those and fetch info for only
-                let validDetections = summary.maximumRiskScoreFullRange >= Double(config.minimumRiskScore)
+                var validDetections = summary.maximumRiskScoreFullRange >= Double(config.minimumRiskScore)
+                
+                // On pre-13.6 EN API doesn't support defining attenuationDurationThresholds so
+                // bucket calculation isn't meaningful on those devices.
+                if !validDetections, #available(iOS 13.6, *) {
+                    // The attenuation score is a time weighted average -> if the same device is near for a
+                    // short while and then within range (high attenuation) for a really long time, then the
+                    // attenuation value could end up being too small to trigger a risk score based exposure
+                    // notification. Multiple short exposures can also trigger an exposure notification when
+                    // using bucket calculation.
+                    let durations = summary.attenuationDurations.weighted(with: config.durationAtAttenuationWeights)
+                    let totalMinutes = durations.sumSecondsAsMinutes()
+                    
+                    if totalMinutes >= config.exposureRiskDuration {
+                        Log.d("Long duration exposure detected (\(totalMinutes))")
+                        validDetections = true
+                    }
+                }
+                
                 Log.d("Valid detections? \(validDetections)")
                 
                 if validDetections && summary.matchedKeyCount > 0 {
@@ -139,6 +152,8 @@ final class ExposureRepositoryImpl : ExposureRepository {
                 let detectedExposures = exposureInfos.count > 0
 
                 if detectedExposures {
+                    exposureInfos.forEach { Log.d("ExposureInfo: \($0)") }
+                    
                     let exposures = exposureInfos.map { $0.to() }
                     DispatchQueue.main.async {
                         LocalStore.shared.exposures.append(contentsOf: exposures)
@@ -247,5 +262,22 @@ final class ExposureRepositoryImpl : ExposureRepository {
                 completionHandler(nil)
             }
         }
+    }
+}
+
+extension Array where Element == NSNumber {
+
+    func weighted(with weights: [Double]) -> [Double] {
+        return self.enumerated().map { (index, duration) in
+            let weight = index < weights.count ? weights[index] : 0.0
+            return duration.doubleValue * weight
+        }
+    }
+}
+
+extension Array where Element == Double {
+    
+    func sumSecondsAsMinutes() -> Int {
+        return Int(self.reduce(0, +) / 60.0)
     }
 }
