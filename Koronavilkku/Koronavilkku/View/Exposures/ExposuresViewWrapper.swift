@@ -6,6 +6,46 @@ import Combine
 protocol ExposuresViewDelegate: AnyObject {
     func showHowItWorks()
     func makeContact()
+    func startManualCheck()
+}
+
+class CheckDelayedView : CardElement {
+    private let button: RoundedButton!
+    
+    init(buttonAction: @escaping () -> ()) {
+        self.button = RoundedButton(title: ExposuresElement.Text.ButtonCheckNow.localized,
+                                    backgroundColor: UIColor.Primary.blue,
+                                    highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground,
+                                    action: buttonAction)
+        super.init()
+        createUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func render(loading: Bool) {
+        button.isLoading = loading
+    }
+    
+    private func createUI() {
+        let label = UILabel(label: ExposuresElement.Text.BodyExposureCheckDelayed.localized, font: .labelTertiary, color: UIColor.Greyscale.black)
+        label.numberOfLines = 0
+        addSubview(label)
+        
+        label.snp.makeConstraints { make in
+            make.left.top.right.equalToSuperview().inset(20)
+        }
+        
+        addSubview(button)
+        
+        button.snp.makeConstraints { make in
+            make.top.equalTo(label.snp.bottom).offset(20)
+            make.left.right.equalToSuperview().inset(20)
+            make.bottom.equalToSuperview().inset(30)
+        }
+    }
 }
 
 class ExposuresViewWrapper: UIView {
@@ -33,7 +73,14 @@ class ExposuresViewWrapper: UIView {
     }
     
     weak var delegate: ExposuresViewDelegate?
-    let lastCheckedView = ExposuresLastCheckedView()
+    
+    private lazy var lastCheckedView = ExposuresLastCheckedView()
+    private lazy var checkDelayedView = CheckDelayedView() { [unowned self] in
+        self.delegate?.startManualCheck()
+    }
+    
+    private var hasExposures: Bool?
+    private var allowManualCheck = false
     
     init() {
         super.init(frame: .zero)
@@ -43,13 +90,36 @@ class ExposuresViewWrapper: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func render(hasExposures: Bool) {
-        self.removeAllSubviews()
+    func render(hasExposures: Bool, detectionStatus: DetectionStatus?) {
+        let allowManualCheck: Bool
+        let isDetecting: Bool
         
-        if hasExposures {
-            createExposureView()
-        } else {
-            createNoExposuresView()
+        switch detectionStatus {
+        case .detecting:
+            allowManualCheck = true
+            isDetecting = true
+        case .idle(let delayed):
+            allowManualCheck = delayed
+            isDetecting = false
+        default:
+            allowManualCheck = false
+            isDetecting = false
+        }
+        
+        if self.allowManualCheck != allowManualCheck || self.hasExposures != hasExposures {
+            self.allowManualCheck = allowManualCheck
+            self.hasExposures = hasExposures
+            self.removeAllSubviews()
+            
+            if hasExposures {
+                createExposureView()
+            } else {
+                createNoExposuresView()
+            }
+        }
+        
+        if allowManualCheck {
+            checkDelayedView.render(loading: isDetecting)
         }
     }
     
@@ -122,6 +192,10 @@ class ExposuresViewWrapper: UIView {
         noExposuresHeader.numberOfLines = 0
         top = appendView(noExposuresHeader, top: top)
         top = appendView(lastCheckedView, spacing: 10, top: top)
+        
+        if allowManualCheck {
+            top = appendView(checkDelayedView, spacing: 30, top: top)
+        }
         
         let noExposuresLabel = UILabel(label: NoExposuresText.Subtitle.localized,
                                        font: UIFont.heading4,

@@ -10,8 +10,9 @@ class ExposuresViewController: UIViewController {
     }
 
     let exposuresViewWrapper = ExposuresViewWrapper()
-    var cancellable: AnyCancellable?
+    var updateTasks = Set<AnyCancellable>()
     var hasExposures: Bool = false
+    var detectionStatus: DetectionStatus?
     
     private let button = UIButton()
     
@@ -34,10 +35,6 @@ class ExposuresViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.updateNavigationBar()
-
-        // Causes last checked view to redraw itself.
-        LocalStore.shared.$dateLastPerformedExposureDetection.wrappedValue =
-            LocalStore.shared.$dateLastPerformedExposureDetection.wrappedValue
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,19 +43,30 @@ class ExposuresViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        cancellable = LocalStore.shared.$exposures.$wrappedValue
-            .sink { [weak self] exposures in
-                guard let self = self else {
-                    return
-                }
+        LocalStore.shared.$exposures.$wrappedValue
+            .map { $0.count > 0 }
+            .receive(on: RunLoop.main)
+            .sink { [weak self] hasExposures in
+                guard let self = self else { return }
                 
-                Log.d("Exposures: \(exposures)")
-                DispatchQueue.main.async {
-                    self.hasExposures = exposures.count > 0
+                if self.hasExposures != hasExposures {
+                    self.hasExposures = hasExposures
                     self.updateNavigationBar()
-                    self.exposuresViewWrapper.render(hasExposures: self.hasExposures)
+                    self.exposuresViewWrapper.render(hasExposures: self.hasExposures,
+                                                     detectionStatus: self.detectionStatus)
                 }
             }
+            .store(in: &updateTasks)
+        
+        Environment.default.exposureRepository.detectionStatus
+            .receive(on: RunLoop.main)
+            .sink { [weak self] detectionStatus in
+                guard let self = self else { return }
+                
+                self.exposuresViewWrapper.render(hasExposures: self.hasExposures,
+                                                 detectionStatus: detectionStatus)
+            }
+            .store(in: &updateTasks)
     }
     
     private func updateNavigationBar() {
@@ -100,6 +108,19 @@ class ExposuresViewController: UIViewController {
 }
 
 extension ExposuresViewController: ExposuresViewDelegate {
+    func startManualCheck() {
+        BackgroundTaskForNotifications.shared.run()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] success in
+                if !success {
+                    self?.showAlert(title: Translation.ManualCheckErrorTitle.localized,
+                                    message: Translation.ManualCheckErrorMessage.localized,
+                                    buttonText: Translation.ManualCheckErrorButton.localized)
+                }
+            }
+            .store(in: &updateTasks)
+    }
+    
     func showHowItWorks() {
         self.navigationController?.present(HowItWorksViewController(), animated: true)
     }

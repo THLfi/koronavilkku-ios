@@ -5,6 +5,7 @@
 "ButtonStartUsing" = "Börja använda";
 "ButtonTestUI" = "Verktyg";
 "ButtonScrollDown" = "Scrolla ner";
+"ButtonLoading" = "Laddar";
 
 "TabHome" = "Hem";
 "TabReportInfection" = "Meddela din smitta";
@@ -33,9 +34,12 @@
 // MARK: ExposuresElement
 "ExposuresElement.Text.TitleNoExposures" = "Ingen exponering har upptäckts";
 "ExposuresElement.Text.BodyNoExposures" = "Du har inte varit i närheten av en person som meddelat om smitta";
+"ExposuresElement.Text.BodyExposureCheckDelayed" = "Kontrollen av eventuella exponeringar har inte lyckats på över 24 timmar. Appen försöker utföra kontrollen igen senare. Du kan själv starta kontrollen nu.";
+"ExposuresElement.Text.AccessibilityValueCheckDelayed" = "Kontrollen av eventuella exponeringar har inte lyckats på över 24 timmar.";
 "ExposuresElement.Text.TitleHasExposures" = "Eventuell exponering";
 "ExposuresElement.Text.BodyHasExposures" = "Du kan ha exponerats för viruset";
 "ExposuresElement.Text.ButtonOpen" = "Se anvisningar";
+"ExposuresElement.Text.ButtonCheckNow" = "Kontrollera nu";
 
 // MARK: SymptomsElement.Text
 "SymptomsElement.Text.Title" = "Misstänker du smitta?";
@@ -64,8 +68,9 @@
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Coronablinkern har inte observerat någon exponering för coronaviruset under de senaste 10 dagarna.";
 "ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "Appen kan emellertid inte identifiera alla eventuella exponeringar.";
 
+"ExposuresLastCheckedView.Text.LastCheckedAt" = "Senast granskad %@";
+"ExposuresLastCheckedView.Text.MomentAgo" = "för ett ögonblick sedan";
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "Ingen kontroll ännu";
-"ExposuresLastCheckedView.Text.LastCheckedAt" = "Senast granskad: %@";
 
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "Du har redan meddelat om din smitta";
@@ -226,3 +231,7 @@
 "ExternalLinkErrorTitle" = "Webbsidan kan inte öppnas";
 "ExternalLinkErrorMessage" = "Webbsidan kan inte öppnas eftersom din telefon inte har någon webbläsare eller för att webbläsaren är blockerad.";
 "ExternalLinkErrorButton" = "OK";
+
+"ManualCheckErrorTitle" = "Det gick inte att ladda exponeringsdata";
+"ManualCheckErrorMessage" = "Exponeringsdata kunde inte laddas. Kontrollera din nätverksanslutning och försök på nytt.";
+"ManualCheckErrorButton" = "OK";

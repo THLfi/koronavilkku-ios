@@ -1,5 +1,6 @@
-import UIKit
+import Combine
 import SnapKit
+import UIKit
 
 class MainViewController: UIViewController {
     enum Text : String, Localizable {
@@ -11,7 +12,7 @@ class MainViewController: UIViewController {
     
     private var headerView: StatusHeaderView!
     private var notifications: ExposuresElement!
-    lazy var exposuresVC = ExposuresViewController()
+    private var detectionTask: AnyCancellable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +69,11 @@ class MainViewController: UIViewController {
         }
         
         // Setup notification and helper components
-        self.notifications = ExposuresElement(tapped: { [unowned self] in self.openExposuresViewController() })
+        self.notifications = ExposuresElement() { [unowned self] in
+            self.openExposuresViewController()
+        } manualCheckAction: { [unowned self] in
+            self.runManualDetection()
+        }
         
         wrapper.addSubview(notifications)
         notifications.snp.makeConstraints { make in
@@ -174,7 +179,7 @@ class MainViewController: UIViewController {
     }
     
     private func openExposuresViewController() {
-        openSubview(viewController: exposuresVC)
+        openSubview(viewController: ExposuresViewController())
     }
     
     private func openSymptomsViewController() {
@@ -184,6 +189,18 @@ class MainViewController: UIViewController {
     private func openSubview(viewController: UIViewController) {
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    private func runManualDetection() {
+        self.detectionTask = BackgroundTaskForNotifications.shared.run()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] success in
+                if !success {
+                    self?.showAlert(title: Translation.ManualCheckErrorTitle.localized,
+                                    message: Translation.ManualCheckErrorMessage.localized,
+                                    buttonText: Translation.ManualCheckErrorButton.localized)
+                }
+            }
     }
     
     @objc private func debugButtonTapped() {

@@ -1,4 +1,6 @@
+import Combine
 import Foundation
+import XCTest
 @testable import Koronavilkku
 
 extension URLRequest {
@@ -33,4 +35,49 @@ extension URLSession {
         urlSessionConfig.protocolClasses = [MockURLProtocol.self]
         return URLSession(configuration: urlSessionConfig)
     }()
+}
+
+extension XCTestCase {
+    enum RestApiError : Error {
+        case timeout
+        case http(originatingError: Error)
+        case unknown
+    }
+
+    func call<R: RestApi, T: Decodable>(api: R, endpoint: R.Resource, timeout: TimeInterval) -> Result<T, Error> {
+        Result {
+            let loadExpectation = expectation(description: String(describing: endpoint))
+            var tasks = Set<AnyCancellable>()
+            var data: T?
+            var loadingError: Error?
+
+            api.call(endpoint: endpoint)
+                .sink { result in
+                    if case .failure(let error) = result {
+                        loadingError = error
+                    }
+                    
+                    loadExpectation.fulfill()
+                } receiveValue: { (input: T) in
+                    data = input
+                }
+                .store(in: &tasks)
+            
+            let wait = XCTWaiter.wait(for: [loadExpectation], timeout: timeout)
+            
+            if case .timedOut = wait {
+                throw RestApiError.timeout
+            }
+            
+            if let loadingError = loadingError {
+                throw RestApiError.http(originatingError: loadingError)
+            }
+            
+            if let data = data {
+                return data
+            }
+            
+            throw RestApiError.unknown
+        }
+    }
 }
