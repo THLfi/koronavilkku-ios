@@ -54,16 +54,17 @@ class ExposuresViewWrapper: UIView {
         case ContactCardTitle
         case ContactCardText
         case ContactButtonTitle
+        case ExposuresButtonTitle
+        case ExposuresButtonNotificationCount
         case InstructionsTitle
+        case InstructionsLede
         case InstructionsSymptoms
-        case InstructionsSymptomsText
         case InstructionsDistancing
         case InstructionsHygiene
         case InstructionsAvoidTravel
         case InstructionsShopping
         case InstructionsCoughing
         case InstructionsRemoteWork
-        case ExposureDisclaimer
     }
     
     enum NoExposuresText : String, Localizable {
@@ -133,6 +134,7 @@ class ExposuresViewWrapper: UIView {
         top = appendView(exposuresLabel, spacing: 0, top: top)
 
         let contactView = InfoViewWithButton(title: HasExposureText.ContactCardTitle.localized,
+                                             titleFont: .heading3,
                                              descriptionText: HasExposureText.ContactCardText.localized,
                                              buttonTitle: HasExposureText.ContactButtonTitle.localized,
                                              bottomText: nil,
@@ -143,18 +145,16 @@ class ExposuresViewWrapper: UIView {
         instructionsTitle.numberOfLines = 0
         top = appendView(instructionsTitle, spacing: 30, top: top)
         
+        let instructionsLede = UILabel(label: HasExposureText.InstructionsLede.localized, font: .bodySmall, color: UIColor.Greyscale.black)
+        instructionsLede.numberOfLines = 0
+        top = appendView(instructionsLede, spacing: 18, top: top)
+
         func bulletItem(_ text: HasExposureText) -> BulletListParagraph {
             return BulletListParagraph(content: text.localized, textColor: UIColor.Greyscale.black)
         }
 
-        let item1 = bulletItem(.InstructionsSymptoms).get().toLabel()
-        top = appendView(item1, spacing: 20, top: top)
-
-        let details1 = IndentedParagraph(content: HasExposureText.InstructionsSymptomsText.localized,
-                                         textColor: UIColor.Greyscale.darkGrey)
-        top = appendView(details1.get().toLabel(), spacing: 10, top: top)
-        
         let bulletList = [
+            .InstructionsSymptoms,
             .InstructionsDistancing,
             .InstructionsHygiene,
             .InstructionsAvoidTravel,
@@ -163,23 +163,14 @@ class ExposuresViewWrapper: UIView {
             .InstructionsRemoteWork,
         ].map { bulletItem($0) }.asMutableAttributedString().toLabel()
 
-        top = appendView(bulletList, spacing: 10, top: top)
+        top = appendView(bulletList, spacing: 18, top: top)
          
         bulletList.snp.makeConstraints { make in
             make.bottom.lessThanOrEqualToSuperview()
         }
 
-        let divider = UIView.createDivider()
-        top = appendView(divider, spacing: 30, top: top)
-
-        let disclaimer = UILabel(label: HasExposureText.ExposureDisclaimer.localized,
-                                 font: UIFont.bodySmall,
-                                 color: UIColor.Greyscale.darkGrey)
-        disclaimer.numberOfLines = 0
-        top = appendView(disclaimer, spacing: 30, top: top)
-        
         self.snp.makeConstraints { make in
-            make.bottom.equalTo(disclaimer).offset(30)
+            make.bottom.equalTo(bulletList)
         }
     }
     

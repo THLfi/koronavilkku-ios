@@ -102,7 +102,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
     
     func exposureStatus() -> AnyPublisher<ExposureStatus, Never> {
         LocalStore.shared.$exposures.$wrappedValue.map { exposures -> ExposureStatus in
-            .exposed(notificationCount: nil)
+            exposures.count > 0 ? .exposed(notificationCount: nil) : .unexposed
         }.eraseToAnyPublisher()
     }
 

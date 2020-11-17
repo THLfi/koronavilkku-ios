@@ -98,6 +98,8 @@
 		EA4A594B2562708400E65CFB /* ExposuresElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A594A2562708400E65CFB /* ExposuresElement.swift */; };
 		EA4A59502562716100E65CFB /* SymptomsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A594F2562716100E65CFB /* SymptomsElement.swift */; };
 		EA4A595B2562AE3A00E65CFB /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A595A2562AE3A00E65CFB /* Badge.swift */; };
+		EA4A59672563C4A400E65CFB /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = EA4A59692563C4A400E65CFB /* Localizable.stringsdict */; };
+		EA4A59742563CBBB00E65CFB /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = EA4A59692563C4A400E65CFB /* Localizable.stringsdict */; };
 		EA4F905024F46E660032D9D5 /* BatchRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F904F24F46E660032D9D5 /* BatchRepositoryTest.swift */; };
 		EA4F905224F4EFAD0032D9D5 /* BackendRestApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */; };
 		EA5296AC251BE1B10089CFB4 /* Licenses.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA5296AB251BE1B10089CFB4 /* Licenses.strings */; };
@@ -235,6 +237,9 @@
 		EA4A594A2562708400E65CFB /* ExposuresElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposuresElement.swift; sourceTree = "<group>"; };
 		EA4A594F2562716100E65CFB /* SymptomsElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsElement.swift; sourceTree = "<group>"; };
 		EA4A595A2562AE3A00E65CFB /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		EA4A59682563C4A400E65CFB /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = fi; path = fi.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		EA4A596F2563C61C00E65CFB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		EA4A59702563C61D00E65CFB /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = sv; path = sv.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		EA4F904F24F46E660032D9D5 /* BatchRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatchRepositoryTest.swift; sourceTree = "<group>"; };
 		EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendRestApiTest.swift; sourceTree = "<group>"; };
 		EA5296AB251BE1B10089CFB4 /* Licenses.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Licenses.strings; sourceTree = "<group>"; };
@@ -569,6 +574,7 @@
 			children = (
 				EA7B0558251248BE002941A6 /* Localizable.strings */,
 				EA7B055F251248EC002941A6 /* InfoPlist.strings */,
+				EA4A59692563C4A400E65CFB /* Localizable.stringsdict */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -786,6 +792,7 @@
 				EA92A05324A3958500CE7271 /* LaunchScreen.storyboard in Resources */,
 				EA7B055D251248EC002941A6 /* InfoPlist.strings in Resources */,
 				EA5296AC251BE1B10089CFB4 /* Licenses.strings in Resources */,
+				EA4A59672563C4A400E65CFB /* Localizable.stringsdict in Resources */,
 				EA92A05024A3958500CE7271 /* Assets.xcassets in Resources */,
 				EA47C5F324A6B3FC00EAC720 /* SourceSansPro-Bold.otf in Resources */,
 				EA7B0556251248BE002941A6 /* Localizable.strings in Resources */,
@@ -800,6 +807,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA7B056425124C5C002941A6 /* Localizable.strings in Resources */,
+				EA4A59742563CBBB00E65CFB /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -953,6 +961,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		EA4A59692563C4A400E65CFB /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA4A59682563C4A400E65CFB /* fi */,
+				EA4A596F2563C61C00E65CFB /* en */,
+				EA4A59702563C61D00E65CFB /* sv */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
 		EA7B0558251248BE002941A6 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

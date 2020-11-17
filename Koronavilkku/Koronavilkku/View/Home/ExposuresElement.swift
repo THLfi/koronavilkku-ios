@@ -100,7 +100,6 @@ final class ExposuresElement: WideRowElement {
                         self.checksDelayed = delayed
                         self.render(update: true)
                     }
-
                 }
 
                 // prevent unnecessary renders when setting up the screen for the first time
