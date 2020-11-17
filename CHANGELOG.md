@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Let the user run the exposure detection manually if the previous check has not been completed in the last 24 hours
 - New ExposureRepository publishers for the current detection status and time from the last completed detection
 - A loading state for RoundedButton for asynchronous tasks
+- Bucket calculation
 
 ### Changed
 - Improve the main screen accessibility
