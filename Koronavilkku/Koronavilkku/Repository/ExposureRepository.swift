@@ -33,15 +33,13 @@ struct ExposureRepositoryImpl : ExposureRepository {
     
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error> {
 
-        // If exposureInfo.score < minimumRiskScore, then the score and other values will be 0.
-        // To get more information about those cases use the minimum allowed value.
-        // Due to the bucket based calculation min score always needs to be set to 1.
-        let cfg = config.with(minimumRiskScore: 1)
-        
         let urls = ids.map { self.storage.getFileUrls(forBatchId: $0) }.flatMap { $0 }
         Log.d("Ids: \(ids), Config: \(config), Detecting with urls: \(urls)")
 
-        return self.exposureManager.detectExposures(configuration: cfg, diagnosisKeyURLs: urls)
+        // iOS calculates attenuation buckets only from exposures equal or greater to minimumRiskScore
+        // Override the minimumRiskScore for detection only
+        return self.exposureManager.detectExposures(configuration: config.with(minimumRiskScore: 1),
+                                                    diagnosisKeyURLs: urls)
             .flatMap { summary -> AnyPublisher<[ENExposureInfo], Error> in
                 Log.d("Got summary: \(summary)")
                 
@@ -50,7 +48,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
                 }
                 
                 #if DEBUG
-                    // When dbugging, store detection summary to local store for debugging purposes
+                    // When debugging, store detection summary to local store for debugging purposes
                     LocalStore.shared.detectionSummaries.append(summary.to())
                 #endif
                 
@@ -67,10 +65,10 @@ struct ExposureRepositoryImpl : ExposureRepository {
                     // attenuation value could end up being too small to trigger a risk score based exposure
                     // notification. Multiple short exposures can also trigger an exposure notification when
                     // using bucket calculation.
-                    let durations = summary.attenuationDurations.weighted(with: cfg.durationAtAttenuationWeights)
+                    let durations = summary.attenuationDurations.weighted(with: config.durationAtAttenuationWeights)
                     let totalMinutes = durations.sumSecondsAsMinutes()
                     
-                    if totalMinutes >= cfg.exposureRiskDuration {
+                    if totalMinutes >= config.exposureRiskDuration {
                         Log.d("Long duration exposure detected (\(totalMinutes))")
                         validDetections = true
                     }
