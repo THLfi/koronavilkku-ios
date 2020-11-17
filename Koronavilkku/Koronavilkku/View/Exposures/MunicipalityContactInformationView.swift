@@ -23,7 +23,7 @@ class MunicipalityContactInformationView: UIView {
         var top = self.snp.top
         var spacing: CGFloat = 0
         
-        if municipality.omaolo.available {
+        if municipality.omaolo.available(service: .ContactRequest) {
             let omaolo = LinkItemCard(title: Translation.ContactRequestItemTitle.localized,
                                   linkName: Translation.ContactRequestItemInfo.localized,
                                   tapped: contactRequestHandler)
@@ -54,7 +54,11 @@ struct MunicipalityContactInformationViewPreview: PreviewProvider {
             for: MunicipalityContactInformationView(municipality: Municipality(
                                                         code: "1234",
                                                         name: MunicipalityName(fi: "Pirkkala", sv: "Birkala"),
-                                                        omaolo: Omaolo(available: true, serviceLanguages: ServiceLanguages(fi: true, sv: true, en: true)),
+                                                        omaolo: Omaolo(available: true,
+                                                                       serviceLanguages: ServiceLanguages(fi: true,
+                                                                                                          sv: true,
+                                                                                                          en: true),
+                                                                       symptomAssessmentOnly: false),
                                                         contact: [
                                                             Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
                                                                                      sv: "Birkala hälsovårdscentral",

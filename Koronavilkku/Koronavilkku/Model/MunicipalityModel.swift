@@ -91,16 +91,42 @@ struct Contact: Codable {
 
 // MARK: - Omaolo
 struct Omaolo: Codable {
-    let available: Bool
-    let serviceLanguages: ServiceLanguages?
+    enum Service: CaseIterable {
+        case SymptomAssessment
+        case ContactRequest
+    }
 
-    /// Identiers as used in the Omaolo links.
+    private let available: Bool
+    private let serviceLanguages: ServiceLanguages?
+    private let symptomAssessmentOnly: Bool?
+    
+    init(available: Bool, serviceLanguages: ServiceLanguages?, symptomAssessmentOnly: Bool?) {
+        self.available = available
+        self.serviceLanguages = serviceLanguages
+        self.symptomAssessmentOnly = symptomAssessmentOnly
+    }
+
+    /// Identifiers as used in the Omaolo links.
     func supportedServiceLanguageIdentifiers() -> [String] {
         var ids = [String]()
         if serviceLanguages?.fi ?? false { ids.append(OmaoloLanguageId.finnish) }
         if serviceLanguages?.sv ?? false { ids.append(OmaoloLanguageId.swedish) }
         if serviceLanguages?.en ?? false { ids.append(OmaoloLanguageId.english) }
         return ids
+    }
+    
+    /// Service-specific availability lookup.
+    func available(service: Service) -> Bool {
+        guard available else {
+            return false
+        }
+        
+        switch service {
+        case .ContactRequest:
+            return symptomAssessmentOnly != true
+        case .SymptomAssessment:
+            return true
+        }
     }
     
     static let defaultLanguageId = OmaoloLanguageId.finnish
