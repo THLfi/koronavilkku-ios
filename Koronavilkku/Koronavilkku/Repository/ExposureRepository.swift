@@ -3,10 +3,17 @@ import ExposureNotification
 import Foundation
 import UIKit
 
-enum DetectionStatus: Equatable {
-    case disabled
-    case idle(delayed: Bool)
-    case detecting
+struct DetectionStatus: Equatable {
+    enum Status: Equatable {
+        case disabled
+        case idle
+        case detecting
+    }
+
+    let status: Status
+    
+    /// Whether the detection checks are delayed and can be manually started
+    let delayed: Bool
 }
 
 enum ExposureStatus: Equatable {
@@ -76,11 +83,11 @@ struct ExposureRepositoryImpl : ExposureRepository {
             .combineLatest(isDelayed, isDisabled) { running, delayed, disabled in
                 switch true {
                 case disabled:
-                    return .disabled
+                    return .init(status: .disabled, delayed: delayed)
                 case running:
-                    return .detecting
+                    return .init(status: .detecting, delayed: delayed)
                 default:
-                    return .idle(delayed: delayed)
+                    return .init(status: .idle, delayed: delayed)
                 }
             }
             .removeDuplicates()

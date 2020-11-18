@@ -37,6 +37,12 @@ class ExposuresLastCheckedView: UIView {
     private var lastCheckedLabel: UILabel!
     private let style: Style
     
+    var timeFromLastCheck: TimeInterval? {
+        didSet {
+            render()
+        }
+    }
+    
     override var accessibilityLabel: String? {
         get {
             lastCheckedLabel.text
@@ -44,11 +50,13 @@ class ExposuresLastCheckedView: UIView {
         set {}
     }
     
-    init(style: Style = .normal) {
+    init(style: Style = .normal, value lastChecked: TimeInterval? = nil) {
+        self.timeFromLastCheck = lastChecked
         self.style = style
+        
         super.init(frame: .zero)
+        
         self.createUI()
-        self.bindViewModel()
     }
     
     required init?(coder: NSCoder) {
@@ -80,5 +88,11 @@ class ExposuresLastCheckedView: UIView {
         lastCheckedLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        render()
+    }
+    
+    private func render() {
+        lastCheckedLabel.text = Self.format(interval: timeFromLastCheck)
     }
 }

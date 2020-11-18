@@ -12,7 +12,18 @@ class MainViewController: UIViewController {
     
     private var headerView: StatusHeaderView!
     private var notifications: ExposuresElement!
-    private var detectionTask: AnyCancellable?
+    
+    private var tasks = Set<AnyCancellable>()
+    private let exposureRepository: ExposureRepository
+    
+    init(env: Environment = .default) {
+        self.exposureRepository = env.exposureRepository
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +34,7 @@ class MainViewController: UIViewController {
                                                name: UIApplication.willEnterForegroundNotification,
                                                object: nil)
         initUI()
+        initDataBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,6 +43,26 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.setNavigationBarHidden(true, animated: false)
         headerView.render()
+    }
+    
+    private func initDataBindings() {
+        exposureRepository.detectionStatus()
+            .sink { [weak self] status in
+                self?.notifications.detectionStatus = status
+            }
+            .store(in: &tasks)
+
+        exposureRepository.exposureStatus()
+            .sink { [weak self] status in
+                self?.notifications.exposureStatus = status
+            }
+            .store(in: &tasks)
+        
+        exposureRepository.timeFromLastCheck()
+            .sink { [weak self] time in
+                self?.notifications.timeFromLastUpdate = time
+            }
+            .store(in: &tasks)
     }
     
     private func initUI() {
@@ -69,8 +101,7 @@ class MainViewController: UIViewController {
         }
         
         // Setup notification and helper components
-        self.notifications = ExposuresElement(detectionStatus: Environment.default.exposureRepository.detectionStatus(),
-                                              exposureStatus: Environment.default.exposureRepository.exposureStatus()) { [unowned self] in
+        self.notifications = ExposuresElement() { [unowned self] in
             self.openExposuresViewController()
         } manualCheckAction: { [unowned self] in
             self.runManualDetection()
@@ -193,7 +224,7 @@ class MainViewController: UIViewController {
     }
     
     private func runManualDetection() {
-        self.detectionTask = BackgroundTaskForNotifications.shared.run()
+        BackgroundTaskForNotifications.shared.run()
             .receive(on: RunLoop.main)
             .sink { [weak self] success in
                 if !success {
@@ -202,6 +233,7 @@ class MainViewController: UIViewController {
                                     buttonText: Translation.ManualCheckErrorButton.localized)
                 }
             }
+            .store(in: &tasks)
     }
     
     @objc private func debugButtonTapped() {
@@ -233,7 +265,15 @@ extension MainViewController: UIScrollViewDelegate {
 import SwiftUI
 
 struct MainViewController_Preview: PreviewProvider {
-    static var previews: some View = createPreview(for: MainViewController())
+    static var previews: some View = Group {
+        createPreview(for: MainViewController(env: .preview {
+            .init(exposureStatus: .init(.unexposed))
+        }))
+
+        createPreview(for: MainViewController(env: .preview {
+            .init(exposureStatus: .init(.exposed(notificationCount: 3)))
+        }))
+    }
 }
 
 #endif

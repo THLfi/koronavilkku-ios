@@ -18,20 +18,66 @@ final class ExposuresElement: WideRowElement {
     
     private let manualCheckAction: () -> ()
     private let margin = UIEdgeInsets(top: 24, left: 20, bottom: -20, right: -20)
-    private var updateTasks = Set<AnyCancellable>()
     
-    /// The current exposure status
-    private var exposureStatus: ExposureStatus?
+    var timeFromLastUpdate: TimeInterval? {
+        didSet {
+            guard timeFromLastUpdate != oldValue else { return }
+            lastCheckedView?.timeFromLastCheck = timeFromLastUpdate
+        }
+    }
     
-    /// Whether the exposure checks are enabled at all
-    private var checksEnabled = true
+    /// The current exposure status.
+    ///
+    /// Re-renders the entire view if the value changes.
+    var exposureStatus: ExposureStatus? {
+        didSet {
+            guard exposureStatus != oldValue else { return }
+            render()
+        }
+    }
 
-    /// Whether the checks are delayed and user is allowed to run exposure checks manually
-    private var checksDelayed = false
+    /// The current detection status.
+    ///
+    /// Has more fine-grained control over re-rendering: Changes to the button loading state are rendered without recreating the UI
+    var detectionStatus: DetectionStatus? {
+        didSet {
+            // prevent nulling & same values
+            guard let detectionStatus = detectionStatus, detectionStatus != oldValue else { return }
+            
+            // first value must render
+            guard oldValue != nil else { return render() }
+            
+            // exposed users see only static content
+            guard case .unexposed = exposureStatus else { return }
+            
+            switch detectionStatus.status {
+            case .detecting:
+                // only affects the button rendering
+                if detectionStatus.delayed {
+                    self.manualCheckButton?.isLoading = true
+                    self.accessibilityValue = self.manualCheckButton?.accessibilityLabel
+                }
+
+            case .idle:
+                // if the manual check failed, reset the button state
+                if case .detecting = oldValue?.status, detectionStatus.delayed {
+                    self.accessibilityValue = nil
+                    self.manualCheckButton?.isLoading = false
+                } else {
+                    render()
+                }
+
+            case .disabled:
+                if oldValue?.status != .disabled {
+                    render()
+                }
+            }
+        }
+    }
     
     /// Whether the UI has been initialized or not
     private var initialized = false
-
+    
     /// Internal storage, use `accessibilityValue` instead
     private var _accessibilityValue: String?
     
@@ -43,7 +89,7 @@ final class ExposuresElement: WideRowElement {
                 return value
             }
             
-            if checksDelayed {
+            if detectionStatus?.delayed == true {
                 return Text.AccessibilityValueCheckDelayed.localized
             }
             
@@ -57,58 +103,13 @@ final class ExposuresElement: WideRowElement {
     private func updateProperty<T: Equatable>(keyPath: ReferenceWritableKeyPath<ExposuresElement, T>, value: T) {
         if self[keyPath: keyPath] != value {
             self[keyPath: keyPath] = value
-            self.render(update: true)
+            self.render()
         }
     }
     
-    init(detectionStatus: AnyPublisher<DetectionStatus, Never>,
-         exposureStatus: AnyPublisher<ExposureStatus, Never>,
-         tapped: @escaping () -> (),
-         manualCheckAction: @escaping () -> ()) {
-        
+    init(tapped: @escaping () -> (), manualCheckAction: @escaping () -> ()) {
         self.manualCheckAction = manualCheckAction
         super.init(tapped: tapped)
-        
-        // data binding
-        detectionStatus
-            .combineLatest(exposureStatus)
-            .sink { [weak self] detectionStatus, exposureStatus in
-                guard let self = self else { return }
-                
-                // whenever exposure status changes, we'll re-render the entire screen
-                self.updateProperty(keyPath: \.exposureStatus, value: exposureStatus)
-                
-                // detection status has more fine grained control
-                switch detectionStatus {
-                case .detecting:
-                    // don't re-render, just update the existing components' state
-                    self.manualCheckButton?.isLoading = true
-                    self.accessibilityValue = self.manualCheckButton?.accessibilityLabel
-
-                case .disabled:
-                    // different layout; causes re-render
-                    self.updateProperty(keyPath: \.checksEnabled, value: false)
-                
-                case .idle(let delayed):
-                    // either just reset the component state back to normal
-                    self.accessibilityValue = nil
-                    self.manualCheckButton?.isLoading = false
-                    
-                    // or re-render if the state has changed too much
-                    if !self.checksEnabled || self.checksDelayed != delayed {
-                        self.checksEnabled = true
-                        self.checksDelayed = delayed
-                        self.render(update: true)
-                    }
-                }
-
-                // prevent unnecessary renders when setting up the screen for the first time
-                if !self.initialized {
-                    self.render()
-                    self.initialized = true
-                }
-            }
-            .store(in: &updateTasks)
     }
     
     required init?(coder: NSCoder) {
@@ -119,8 +120,8 @@ final class ExposuresElement: WideRowElement {
         if case .exposed = exposureStatus {
             return nil
         }
-
-        if !checksEnabled || checksDelayed {
+        
+        if detectionStatus?.delayed == true || detectionStatus?.status == .disabled {
             return createImageView(imageNamed: "flat-color-icons_alert", addShadow: false)
         }
         
@@ -138,6 +139,12 @@ final class ExposuresElement: WideRowElement {
     }
     
     private func createBodyLabel() -> UILabel? {
+        guard let detectionStatus = detectionStatus,
+              let exposureStatus = exposureStatus,
+              detectionStatus.status != .disabled else {
+            return nil
+        }
+        
         var body: Text
         
         switch exposureStatus {
@@ -145,28 +152,26 @@ final class ExposuresElement: WideRowElement {
             body = .BodyHasExposures
         
         case .unexposed:
-            if !checksEnabled {
-                return nil
-            }
-            
-            body = checksDelayed ? .BodyExposureCheckDelayed : .BodyNoExposures
-            
-        case .none:
-            return nil
+            body = detectionStatus.delayed ? .BodyExposureCheckDelayed : .BodyNoExposures
         }
         
         return createBodyLabel(body: body.localized)
     }
     
-    func render(update: Bool = false) {
-        if update {
-            guard initialized else { return }
-            removeAllSubviews()
+    func render() {
+        guard let exposureStatus = self.exposureStatus,
+              let detectionStatus = self.detectionStatus
+        else {
+            return
         }
-
-        // reset state
+        
+        // reset initial state
         self.manualCheckButton = nil
         self.lastCheckedView = nil
+        
+        if initialized {
+            removeAllSubviews()
+        }
 
         let container = UIView()
         let imageView = createImageView()
@@ -207,14 +212,14 @@ final class ExposuresElement: WideRowElement {
                                    highlightedBackgroundColor: UIColor.Primary.red,
                                    action: tapped)
         } else {
-            if checksEnabled && checksDelayed {
+            if detectionStatus.delayed {
                 manualCheckButton = RoundedButton(title: Text.ButtonCheckNow.localized,
                                                   backgroundColor: UIColor.Primary.blue,
                                                   highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground,
                                                   action: manualCheckAction)
             }
             
-            lastCheckedView = ExposuresLastCheckedView(style: .subdued)
+            lastCheckedView = ExposuresLastCheckedView(style: .subdued, value: timeFromLastUpdate)
             container.addSubview(lastCheckedView!)
         }
         
@@ -286,9 +291,12 @@ final class ExposuresElement: WideRowElement {
             }
         }
         
-        if update {
+        // let the user know we've changed the view contents
+        if initialized {
             UIAccessibility.post(notification: .layoutChanged, argument: self)
         }
+        
+        initialized = true
     }
 }
 
@@ -297,58 +305,42 @@ final class ExposuresElement: WideRowElement {
 import SwiftUI
 
 struct ExposuresElement_NoExposures: PreviewProvider {
-    static func createView() -> ExposuresElement {
-        .init(detectionStatus: Just<DetectionStatus>(.idle(delayed: false)).eraseToAnyPublisher(),
-              exposureStatus: Just<ExposureStatus>(.unexposed).eraseToAnyPublisher(),
-              tapped: {},
-              manualCheckAction: {})
+    static func createView(customize: (ExposuresElement) -> Void) -> ExposuresElement {
+        let view = ExposuresElement(tapped: {}, manualCheckAction: {})
+        customize(view)
+        return view
     }
 
-    static var previews: some View = createPreviewInContainer(for: createView(), width: 375, height: 200)
-}
+    static var previews: some View = Group {
+        createPreviewInContainer(for: createView() {
+            $0.exposureStatus = .unexposed
+            $0.detectionStatus = .init(status: .idle, delayed: false)
+        }, width: 375, height: 200)
 
-struct ExposuresElement_NoExposuresDelayed: PreviewProvider {
-    static func createView() -> ExposuresElement {
-        .init(detectionStatus: Just<DetectionStatus>(.idle(delayed: true)).eraseToAnyPublisher(),
-              exposureStatus: Just<ExposureStatus>(.unexposed).eraseToAnyPublisher(),
-              tapped: {},
-              manualCheckAction: {})
+        createPreviewInContainer(for: createView() {
+            $0.timeFromLastUpdate = -1_000_000
+            $0.exposureStatus = .unexposed
+            $0.detectionStatus = .init(status: .idle, delayed: true)
+        }, width: 375, height: 300)
+
+        createPreviewInContainer(for: createView() {
+            $0.timeFromLastUpdate = -10_000
+            $0.exposureStatus = .exposed(notificationCount: 3)
+            $0.detectionStatus = .init(status: .disabled, delayed: true)
+        }, width: 375, height: 220)
+
+        createPreviewInContainer(for: createView() {
+            $0.timeFromLastUpdate = -1000
+            $0.exposureStatus = .exposed(notificationCount: nil)
+            $0.detectionStatus = .init(status: .idle, delayed: false)
+        }, width: 375, height: 220)
+
+        createPreviewInContainer(for: createView() {
+            $0.timeFromLastUpdate = -100
+            $0.exposureStatus = .unexposed
+            $0.detectionStatus = .init(status: .disabled, delayed: true)
+        }, width: 375, height: 150)
     }
-
-    static var previews: some View = createPreviewInContainer(for: createView(), width: 375, height: 300)
-}
-
-struct ExposuresElement_HasExposures: PreviewProvider {
-    static func createView() -> ExposuresElement {
-        .init(detectionStatus: Just<DetectionStatus>(.idle(delayed: false)).eraseToAnyPublisher(),
-              exposureStatus: Just<ExposureStatus>(.exposed(notificationCount: 2)).eraseToAnyPublisher(),
-              tapped: {},
-              manualCheckAction: {})
-    }
-
-    static var previews: some View = createPreviewInContainer(for: createView(), width: 375, height: 250)
-}
-
-struct ExposuresElement_HasLegacyExposures: PreviewProvider {
-    static func createView() -> ExposuresElement {
-        .init(detectionStatus: Just<DetectionStatus>(.idle(delayed: false)).eraseToAnyPublisher(),
-              exposureStatus: Just<ExposureStatus>(.exposed(notificationCount: nil)).eraseToAnyPublisher(),
-              tapped: {},
-              manualCheckAction: {})
-    }
-
-    static var previews: some View = createPreviewInContainer(for: createView(), width: 375, height: 250)
-}
-
-struct ExposuresElement_Disabled: PreviewProvider {
-    static func createView() -> ExposuresElement {
-        .init(detectionStatus: Just<DetectionStatus>(.disabled).eraseToAnyPublisher(),
-              exposureStatus: Just<ExposureStatus>(.unexposed).eraseToAnyPublisher(),
-              tapped: {},
-              manualCheckAction: {})
-    }
-
-    static var previews: some View = createPreviewInContainer(for: createView(), width: 375, height: 150)
 }
 
 #endif

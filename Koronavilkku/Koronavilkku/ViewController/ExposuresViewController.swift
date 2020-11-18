@@ -9,17 +9,37 @@ class ExposuresViewController: UIViewController {
         case TitleHasExposures
     }
 
-    let exposuresViewWrapper = ExposuresViewWrapper()
-    var updateTasks = Set<AnyCancellable>()
-    var hasExposures: Bool = false
-    var detectionStatus: DetectionStatus?
+    private let exposureRepository: ExposureRepository
+    private let exposuresViewWrapper = ExposuresViewWrapper()
+    private var updateTasks = Set<AnyCancellable>()
+    
+    private var exposureStatus: ExposureStatus? {
+        didSet {
+            guard let exposureStatus = exposureStatus, exposureStatus != oldValue else { return }
+            self.updateNavigationBar()
+            self.exposuresViewWrapper.exposureStatus = exposureStatus
+        }
+    }
     
     private let button = UIButton()
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         get {
-            hasExposures ? .lightContent : .darkContent
+            if case .exposed = exposureStatus {
+                return .lightContent
+            }
+            
+            return .darkContent
         }
+    }
+    
+    init(env: Environment = .default) {
+        exposureRepository = env.exposureRepository
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -43,28 +63,23 @@ class ExposuresViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        LocalStore.shared.$exposures.$wrappedValue
-            .map { $0.count > 0 }
+        exposureRepository.exposureStatus()
             .receive(on: RunLoop.main)
-            .sink { [weak self] hasExposures in
-                guard let self = self else { return }
-                
-                if self.hasExposures != hasExposures {
-                    self.hasExposures = hasExposures
-                    self.updateNavigationBar()
-                    self.exposuresViewWrapper.render(hasExposures: self.hasExposures,
-                                                     detectionStatus: self.detectionStatus)
-                }
+            .sink { [weak self] exposureStatus in
+                self?.exposureStatus = exposureStatus
             }
             .store(in: &updateTasks)
         
-        Environment.default.exposureRepository.detectionStatus()
+        exposureRepository.detectionStatus()
             .receive(on: RunLoop.main)
             .sink { [weak self] detectionStatus in
-                guard let self = self else { return }
-                
-                self.exposuresViewWrapper.render(hasExposures: self.hasExposures,
-                                                 detectionStatus: detectionStatus)
+                self?.exposuresViewWrapper.detectionStatus = detectionStatus
+            }
+            .store(in: &updateTasks)
+        
+        exposureRepository.timeFromLastCheck()
+            .sink { [weak self] time in
+                self?.exposuresViewWrapper.timeFromLastCheck = time
             }
             .store(in: &updateTasks)
     }
@@ -77,7 +92,7 @@ class ExposuresViewController: UIViewController {
         let appearance = navController.navigationBar.standardAppearance.copy()
         navController.navigationBar.prefersLargeTitles = false
 
-        if hasExposures {
+        if case .exposed = exposureStatus {
             navigationItem.title = Text.TitleHasExposures.localized
             appearance.backgroundColor = UIColor.Primary.red
             appearance.titleTextAttributes[NSAttributedString.Key.foregroundColor] = UIColor.Greyscale.white
@@ -135,6 +150,14 @@ extension ExposuresViewController: ExposuresViewDelegate {
 import SwiftUI
 
 struct ExposuresViewControllerPreview: PreviewProvider {
-    static var previews: some View = createPreview(for: ExposuresViewController())
+    static var previews: some View = Group {
+        createPreviewInNavController(for: ExposuresViewController(env: .preview {
+            .init(exposureStatus: .init(.unexposed))
+        }))
+
+        createPreviewInNavController(for: ExposuresViewController(env: .preview {
+        .init(exposureStatus: .init(.exposed(notificationCount: nil)))
+        }))
+    }
 }
 #endif

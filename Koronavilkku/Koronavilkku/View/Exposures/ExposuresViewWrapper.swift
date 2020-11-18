@@ -10,6 +10,12 @@ protocol ExposuresViewDelegate: AnyObject {
 }
 
 class CheckDelayedView : CardElement {
+    var detectionRunning: Bool = false {
+        didSet {
+            button.isLoading = detectionRunning
+        }
+    }
+    
     private let button: RoundedButton!
     
     init(buttonAction: @escaping () -> ()) {
@@ -23,10 +29,6 @@ class CheckDelayedView : CardElement {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func render(loading: Bool) {
-        button.isLoading = loading
     }
     
     private func createUI() {
@@ -75,13 +77,41 @@ class ExposuresViewWrapper: UIView {
     
     weak var delegate: ExposuresViewDelegate?
     
-    private lazy var lastCheckedView = ExposuresLastCheckedView()
+    private lazy var lastCheckedView = ExposuresLastCheckedView(value: timeFromLastCheck)
     private lazy var checkDelayedView = CheckDelayedView() { [unowned self] in
         self.delegate?.startManualCheck()
     }
     
-    private var hasExposures: Bool?
-    private var allowManualCheck = false
+    var timeFromLastCheck: TimeInterval? {
+        didSet {
+            guard let timeFromLastCheck = timeFromLastCheck, timeFromLastCheck != oldValue else { return }
+            lastCheckedView.timeFromLastCheck = timeFromLastCheck
+        }
+    }
+    
+    var exposureStatus: ExposureStatus? {
+        didSet {
+            guard let exposureStatus = exposureStatus, exposureStatus != oldValue else { return }
+            render()
+        }
+    }
+    
+    var detectionStatus: DetectionStatus? {
+        didSet {
+            if detectionStatus?.delayed != oldValue?.delayed {
+                render()
+            }
+            
+            if let detectionStatus = detectionStatus, detectionStatus.delayed == true {
+                switch detectionStatus.status {
+                case .detecting:
+                    checkDelayedView.detectionRunning = true
+                default:
+                    checkDelayedView.detectionRunning = false
+                }
+            }
+        }
+    }
     
     init() {
         super.init(frame: .zero)
@@ -90,37 +120,14 @@ class ExposuresViewWrapper: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    func render(hasExposures: Bool, detectionStatus: DetectionStatus?) {
-        let allowManualCheck: Bool
-        let isDetecting: Bool
+    
+    func render() {
+        self.removeAllSubviews()
         
-        switch detectionStatus {
-        case .detecting:
-            allowManualCheck = true
-            isDetecting = true
-        case .idle(let delayed):
-            allowManualCheck = delayed
-            isDetecting = false
-        default:
-            allowManualCheck = false
-            isDetecting = false
-        }
-        
-        if self.allowManualCheck != allowManualCheck || self.hasExposures != hasExposures {
-            self.allowManualCheck = allowManualCheck
-            self.hasExposures = hasExposures
-            self.removeAllSubviews()
-            
-            if hasExposures {
-                createExposureView()
-            } else {
-                createNoExposuresView()
-            }
-        }
-        
-        if allowManualCheck {
-            checkDelayedView.render(loading: isDetecting)
+        if case .exposed = exposureStatus {
+            createExposureView()
+        } else {
+            createNoExposuresView()
         }
     }
     
@@ -140,6 +147,10 @@ class ExposuresViewWrapper: UIView {
                                              bottomText: nil,
                                              buttonTapped: { [unowned self] in self.delegate?.makeContact() })
         top = appendView(contactView, spacing: 20, top: top)
+        
+        if case .exposed(let notificationCount) = exposureStatus {
+            
+        }
 
         let instructionsTitle = UILabel(label: HasExposureText.InstructionsTitle.localized, font: .heading3, color: UIColor.Greyscale.black)
         instructionsTitle.numberOfLines = 0
@@ -184,7 +195,7 @@ class ExposuresViewWrapper: UIView {
         top = appendView(noExposuresHeader, top: top)
         top = appendView(lastCheckedView, spacing: 10, top: top)
         
-        if allowManualCheck {
+        if detectionStatus?.delayed == true {
             top = appendView(checkDelayedView, spacing: 30, top: top)
         }
         
@@ -213,3 +224,36 @@ class ExposuresViewWrapper: UIView {
         }
     }
 }
+
+#if DEBUG
+
+import SwiftUI
+
+struct ExposuresViewWrapper_Preview: PreviewProvider {
+    static func createView(customize: (ExposuresViewWrapper) -> Void) -> ExposuresViewWrapper {
+        let view = ExposuresViewWrapper()
+        customize(view)
+        return view
+    }
+    
+    static var previews: some View = Group {
+        createPreviewInContainer(for: createView {
+            $0.exposureStatus = .unexposed
+        }, width: 375, height: 300)
+
+        createPreviewInContainer(for: createView {
+            $0.exposureStatus = .unexposed
+            $0.detectionStatus = .init(status: .detecting, delayed: true)
+        }, width: 375, height: 300)
+
+        createPreviewInContainer(for: createView {
+            $0.exposureStatus = .exposed(notificationCount: nil)
+        }, width: 375, height: 1000)
+
+        createPreviewInContainer(for: createView {
+            $0.exposureStatus = .exposed(notificationCount: 10)
+        }, width: 375, height: 1000)
+    }
+}
+
+#endif
