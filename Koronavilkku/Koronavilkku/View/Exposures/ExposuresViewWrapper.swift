@@ -7,6 +7,7 @@ protocol ExposuresViewDelegate: AnyObject {
     func showHowItWorks()
     func makeContact()
     func startManualCheck()
+    func showNotificationList()
 }
 
 class CheckDelayedView : CardElement {
@@ -47,6 +48,77 @@ class CheckDelayedView : CardElement {
             make.left.right.equalToSuperview().inset(20)
             make.bottom.equalToSuperview().inset(30)
         }
+    }
+}
+
+class InfoButton : CardElement {
+    private var titleView: UILabel!
+    private var subtitleView: UILabel!
+    private var tapRecognizer: UITapGestureRecognizer!
+    private let tapped: () -> ()
+    
+    var title: String {
+        didSet {
+            titleView.text = title
+            accessibilityLabel = title
+        }
+    }
+    
+    var subtitle: String {
+        didSet {
+            subtitleView.text = subtitle
+            accessibilityValue = subtitle
+        }
+    }
+    
+    init(title: String, subtitle: String, tapped: @escaping () -> ()) {
+        self.title = title
+        self.subtitle = subtitle
+        self.tapped = tapped
+        super.init()
+
+        self.tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureHandler))
+        self.accessibilityTraits = .button
+        self.accessibilityLabel = title
+        self.accessibilityValue = subtitle
+        
+        let imageView = UIImageView(image: UIImage(named: "info-mark")?.withTintColor(UIColor.Primary.blue))
+        addSubview(imageView)
+        
+        imageView.snp.makeConstraints { make in
+            make.right.equalToSuperview().inset(20)
+            make.width.height.equalTo(24)
+            make.centerY.equalToSuperview()
+        }
+        
+        let titleView = UILabel(label: title, font: .bodySmall, color: UIColor.Greyscale.black)
+        titleView.numberOfLines = 0
+        addSubview(titleView)
+        
+        titleView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(14)
+            make.left.equalToSuperview().inset(20)
+            make.right.equalTo(imageView.snp.left).offset(-10)
+        }
+        
+        let subtitleView = UILabel(label: subtitle, font: .labelTertiary, color: UIColor.Greyscale.darkGrey)
+        subtitleView.numberOfLines = 0
+        addSubview(subtitleView)
+
+        subtitleView.snp.makeConstraints { make in
+            make.top.equalTo(titleView.snp.bottom).offset(2)
+            make.left.equalToSuperview().inset(20)
+            make.right.equalTo(imageView.snp.left).offset(-10)
+            make.bottom.equalToSuperview().inset(13)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func tapGestureHandler() {
+        tapped()
     }
 }
 
@@ -124,14 +196,14 @@ class ExposuresViewWrapper: UIView {
     func render() {
         self.removeAllSubviews()
         
-        if case .exposed = exposureStatus {
-            createExposureView()
+        if case .exposed(let notificationCount) = exposureStatus {
+            createExposureView(notificationCount: notificationCount)
         } else {
             createNoExposuresView()
         }
     }
     
-    private func createExposureView() {
+    private func createExposureView(notificationCount: Int?) {
         var top = self.snp.top
         
         let exposuresLabel = UILabel(label: HasExposureText.Heading.localized,
@@ -144,12 +216,19 @@ class ExposuresViewWrapper: UIView {
                                              titleFont: .heading3,
                                              descriptionText: HasExposureText.ContactCardText.localized,
                                              buttonTitle: HasExposureText.ContactButtonTitle.localized,
-                                             bottomText: nil,
-                                             buttonTapped: { [unowned self] in self.delegate?.makeContact() })
+                                             bottomText: nil) { [unowned self] in
+            self.delegate?.makeContact()
+        }
+        
         top = appendView(contactView, spacing: 20, top: top)
         
-        if case .exposed(let notificationCount) = exposureStatus {
+        if let notificationCount = notificationCount {
+            let button = InfoButton(title: HasExposureText.ExposuresButtonTitle.localized,
+                                    subtitle: HasExposureText.ExposuresButtonNotificationCount.localized(with: notificationCount)) { [unowned self] in
+                self.delegate?.showNotificationList()
+            }
             
+            top = appendView(button, spacing: 20, top: top)
         }
 
         let instructionsTitle = UILabel(label: HasExposureText.InstructionsTitle.localized, font: .heading3, color: UIColor.Greyscale.black)
@@ -244,7 +323,7 @@ struct ExposuresViewWrapper_Preview: PreviewProvider {
         createPreviewInContainer(for: createView {
             $0.exposureStatus = .unexposed
             $0.detectionStatus = .init(status: .detecting, delayed: true)
-        }, width: 375, height: 300)
+        }, width: 375, height: 320)
 
         createPreviewInContainer(for: createView {
             $0.exposureStatus = .exposed(notificationCount: nil)

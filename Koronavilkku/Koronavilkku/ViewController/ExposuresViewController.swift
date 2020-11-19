@@ -143,6 +143,10 @@ extension ExposuresViewController: ExposuresViewDelegate {
     func makeContact() {
         self.navigationController?.pushViewController(SelectMunicipalityViewController(style: .grouped), animated: true)
     }
+
+    func showNotificationList() {
+        self.navigationController?.pushViewController(UIViewController(), animated: true)
+    }
 }
 
 
