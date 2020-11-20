@@ -53,8 +53,12 @@ class LocalStore : BatchIdCache {
     @Persisted(userDefaultsKey: "nextDiagnosisKeyFileIndex", notificationName: .init("LocalStoreNextDiagnosisKeyFileIndexDidChange"), defaultValue: nil)
     var nextDiagnosisKeyFileIndex: String?
     
+    @available(*, deprecated, message: "No longer used, but kept here for legacy data")
     @Persisted(userDefaultsKey: "exposures", notificationName: .init("LocalStoreExposuresDidChange"), defaultValue: [])
     var exposures: [Exposure]
+    
+    @Persisted(userDefaultsKey: "exposureNotifications", notificationName: .init("LocalStoreExposureNotificationsDidChange"), defaultValue: [])
+    var exposureNotifications: [ExposureNotification]
     
     @Persisted(userDefaultsKey: "dateLastPerformedExposureDetection",
                notificationName: .init("LocalStoreDateLastPerformedExposureDetectionDidChange"), defaultValue: nil)
@@ -69,14 +73,16 @@ class LocalStore : BatchIdCache {
     func updateDateLastPerformedExposureDetection() {
         dateLastPerformedExposureDetection = Date()
     }
-    
+
     func removeExpiredExposures() {
-        Log.d("Clean \(exposures.filter({ $0.deleteDate < Date() }).count) expired exposures")
-        exposures.removeAll { $0.deleteDate < Date() }
+        let now = Date()
+        exposures.removeAll { $0.deleteDate < now }
+        exposureNotifications.removeAll { $0.expiresOn < now }
     }
     
     func resetExposures() {
         exposures = []
+        exposureNotifications = []
         dateLastPerformedExposureDetection = nil
     }
 }

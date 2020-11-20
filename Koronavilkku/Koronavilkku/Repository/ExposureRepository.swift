@@ -3,24 +3,6 @@ import ExposureNotification
 import Foundation
 import UIKit
 
-struct DetectionStatus: Equatable {
-    enum Status: Equatable {
-        case disabled
-        case idle
-        case detecting
-    }
-
-    let status: Status
-    
-    /// Whether the detection checks are delayed and can be manually started
-    let delayed: Bool
-}
-
-enum ExposureStatus: Equatable {
-    case unexposed
-    case exposed(notificationCount: Int?)
-}
-
 protocol ExposureRepository {
     func detectionStatus() -> AnyPublisher<DetectionStatus, Never>
     func exposureStatus() -> AnyPublisher<ExposureStatus, Never>
@@ -108,9 +90,19 @@ struct ExposureRepositoryImpl : ExposureRepository {
     }
     
     func exposureStatus() -> AnyPublisher<ExposureStatus, Never> {
-        LocalStore.shared.$exposures.$wrappedValue.map { exposures -> ExposureStatus in
-            exposures.count > 0 ? .exposed(notificationCount: nil) : .unexposed
-        }.eraseToAnyPublisher()
+        LocalStore.shared.$exposures.$wrappedValue
+            .combineLatest(LocalStore.shared.$exposureNotifications.$wrappedValue)
+            .map { exposures, notifications -> ExposureStatus in
+                if !notifications.isEmpty {
+                    return .exposed(notificationCount: notifications.count)
+                }
+                
+                if !exposures.isEmpty {
+                    return .exposed(notificationCount: nil)
+                }
+                
+                return .unexposed
+            }.eraseToAnyPublisher()
     }
 
     init(exposureManager: ExposureManager, backend: Backend, storage: FileStorage) {
@@ -175,19 +167,14 @@ struct ExposureRepositoryImpl : ExposureRepository {
                     return Just([ENExposureInfo]()).setFailureType(to: Error.self).eraseToAnyPublisher()
                 }
             }
+            .receive(on: RunLoop.main)
             .map { exposureInfos -> Bool in
-                let detectedExposures = exposureInfos.count > 0
-
-                if detectedExposures {
-                    exposureInfos.forEach { Log.d("ExposureInfo: \($0)") }
-                    
-                    let exposures = exposureInfos.map { $0.to() }
-                    DispatchQueue.main.async {
-                        LocalStore.shared.exposures.append(contentsOf: exposures)
-                    }
-                }
-
-                return detectedExposures
+                guard !exposureInfos.isEmpty else { return false }
+                
+                exposureInfos.forEach { Log.d("ExposureInfo: \($0)") }
+                let notification = exposureInfos.to(config: config)
+                LocalStore.shared.exposureNotifications.append(notification)
+                return true
             }
             .eraseToAnyPublisher()
     }

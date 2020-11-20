@@ -153,8 +153,6 @@ final class BackgroundTaskForNotifications: BackgroundTask {
         )
         .receive(on: RunLoop.main)
         .flatMap { (ids, config, _) -> (AnyPublisher<Bool, Error>) in
-            LocalStore.shared.removeExpiredExposures()
-            
             Log.d("Got \(ids.count) keys")
             if ids.count == 0 {
                 Log.d("No new batches to check")
