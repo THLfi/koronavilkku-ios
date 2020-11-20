@@ -72,6 +72,14 @@
 "ExposuresLastCheckedView.Text.MomentAgo" = "för ett ögonblick sedan";
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "Ingen kontroll ännu";
 
+"NotificationListViewController.Text.Title" = "Exponerings\U00ADmeddelandena";
+"NotificationListViewController.Text.Disclaimer" = "Bedömningen om exponeringen bygger på den information om möten som Coronablinkern har samlat in under de senaste 10 dygnen. Coronablinkern ger ingen exakt bedömning av hur stor smittorisken är.";
+"NotificationListViewController.Text.ItemTitle" = "Meddelande om eventuell exponering %@";
+"NotificationListViewController.Text.ItemCountLabel" = "Eventuella exponeringar";
+"NotificationListViewController.Text.ItemCountValue" = "%@ st.";
+"NotificationListViewController.Text.ItemIntervalLabel" = "Tidsperiod";
+"NotificationListViewController.Text.ItemIntervalValue" = "%@";
+
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "Du har redan meddelat om din smitta";
 "ReportInfectionViewController.Text.LockedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";

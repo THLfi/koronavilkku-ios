@@ -112,6 +112,7 @@
 		EA80A56E24ACAE0D0071E0EC /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80A56D24ACAE0D0071E0EC /* REST.swift */; };
 		EA839F8C2567C4BC003B1580 /* DetectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA839F8B2567C4BC003B1580 /* DetectionStatus.swift */; };
 		EA839F942567D288003B1580 /* ExposureModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA839F932567D288003B1580 /* ExposureModelTests.swift */; };
+		EA839F9C256802C2003B1580 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA839F9B256802C2003B1580 /* NotificationListViewController.swift */; };
 		EA92357C24B26E4700B21B1B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92357B24B26E4700B21B1B /* Environment.swift */; };
 		EA92A04424A3958300CE7271 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92A04324A3958300CE7271 /* AppDelegate.swift */; };
 		EA92A04624A3958300CE7271 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92A04524A3958300CE7271 /* SceneDelegate.swift */; };
@@ -254,6 +255,7 @@
 		EA80A56D24ACAE0D0071E0EC /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
 		EA839F8B2567C4BC003B1580 /* DetectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionStatus.swift; sourceTree = "<group>"; };
 		EA839F932567D288003B1580 /* ExposureModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureModelTests.swift; sourceTree = "<group>"; };
+		EA839F9B256802C2003B1580 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
 		EA92357B24B26E4700B21B1B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EA92A04024A3958300CE7271 /* Koronavilkku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koronavilkku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA92A04324A3958300CE7271 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 				EA92A04724A3958300CE7271 /* MainViewController.swift */,
 				56E3349324CB21760017CD9A /* MunicipalityContactInfoViewController.swift */,
 				56C26BC824B4B5A0002F83C1 /* MunicipalitySearchResultController.swift */,
+				EA839F9B256802C2003B1580 /* NotificationListViewController.swift */,
 				5687173E24C190E400E65427 /* OnboardingViewController.swift */,
 				D92F18AE24CFF8F700F3FBCE /* OpenSettingsViewController.swift */,
 				561878AD24AD2BDE004B7563 /* PublishTokensViewController.swift */,
@@ -876,6 +879,7 @@
 				EAD8619F24AE56BA00809677 /* ExposureConfiguration.swift in Sources */,
 				561878AA24AC8F03004B7563 /* ExposureModel.swift in Sources */,
 				56E3349424CB21760017CD9A /* MunicipalityContactInfoViewController.swift in Sources */,
+				EA839F9C256802C2003B1580 /* NotificationListViewController.swift in Sources */,
 				56C26BC324B450ED002F83C1 /* MunicipalityCell.swift in Sources */,
 				EA1F5C8B24E1517000398EC8 /* InstructionsView.swift in Sources */,
 				56C26BAD24AF3886002F83C1 /* InfoViewWithButton.swift in Sources */,

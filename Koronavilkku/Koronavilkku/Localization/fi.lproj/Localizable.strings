@@ -72,6 +72,14 @@
 "ExposuresLastCheckedView.Text.MomentAgo" = "hetki sitten";
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "Altistumistietoja ei ole vielä tarkistettu";
 
+"NotificationListViewController.Text.Title" = "Altistumisilmoitukset";
+"NotificationListViewController.Text.Disclaimer" = "Arvio altistumisesta perustuu Koronavilkun keräämiin kohtaamistietoihin viimeisten 10 vuorokauden ajalta. Altistumisen voimakkuutta ei voida täsmällisesti arvioida.";
+"NotificationListViewController.Text.ItemTitle" = "Altistumisilmoitus %@";
+"NotificationListViewController.Text.ItemCountLabel" = "Mahdollisia altistumisia";
+"NotificationListViewController.Text.ItemCountValue" = "%@ kpl";
+"NotificationListViewController.Text.ItemIntervalLabel" = "Aikavälillä";
+"NotificationListViewController.Text.ItemIntervalValue" = "%@";
+
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "Olet jo ilmoittanut tartunnasta";
 "ReportInfectionViewController.Text.LockedText" = "Ilmoittamasi tiedot auttavat koronavirusepidemian taltuttamisessa. Sovellus on nyt lukittu eikä enää kerää tietoja kohtaamisista. Pikaista paranemista!";

@@ -78,6 +78,8 @@ class InfoButton : CardElement {
         super.init()
 
         self.tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapGestureHandler))
+        self.addGestureRecognizer(self.tapRecognizer)
+        
         self.accessibilityTraits = .button
         self.accessibilityLabel = title
         self.accessibilityValue = subtitle

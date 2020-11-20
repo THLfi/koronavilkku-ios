@@ -158,7 +158,7 @@ class TestViewController: UIViewController {
     private func addTestExposure() {
         let notification = ExposureNotification(detectionTime: Date(),
                                                 latestExposureOn: Date().addingTimeInterval(86_400 * -3),
-                                                exposureCount: 3)
+                                                exposureCount: Int.random(in: 1...5))
         
         LocalStore.shared.exposureNotifications.append(notification)
         LocalStore.shared.updateDateLastPerformedExposureDetection()

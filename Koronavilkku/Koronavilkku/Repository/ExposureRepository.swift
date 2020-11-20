@@ -6,6 +6,7 @@ import UIKit
 protocol ExposureRepository {
     func detectionStatus() -> AnyPublisher<DetectionStatus, Never>
     func exposureStatus() -> AnyPublisher<ExposureStatus, Never>
+    func getExposureNotifications() -> AnyPublisher<[ExposureNotification], Never>
     func timeFromLastCheck() -> AnyPublisher<TimeInterval?, Never>
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error>
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error>
@@ -81,6 +82,12 @@ struct ExposureRepositoryImpl : ExposureRepository {
     private let backend: Backend
     private let storage: FileStorage
         
+    init(exposureManager: ExposureManager, backend: Backend, storage: FileStorage) {
+        self.exposureManager = exposureManager
+        self.backend = backend
+        self.storage = storage
+    }
+
     func detectionStatus() -> AnyPublisher<DetectionStatus, Never> {
         Self.detectionStatus
     }
@@ -105,10 +112,8 @@ struct ExposureRepositoryImpl : ExposureRepository {
             }.eraseToAnyPublisher()
     }
 
-    init(exposureManager: ExposureManager, backend: Backend, storage: FileStorage) {
-        self.exposureManager = exposureManager
-        self.backend = backend
-        self.storage = storage
+    func getExposureNotifications() -> AnyPublisher<[ExposureNotification], Never> {
+        LocalStore.shared.$exposureNotifications.$wrappedValue.eraseToAnyPublisher()
     }
     
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error> {

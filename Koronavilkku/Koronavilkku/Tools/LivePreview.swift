@@ -34,6 +34,7 @@ struct PreviewState {
     var detectionStatus = Just<DetectionStatus>(.init(status: .idle, delayed: false))
     var exposureStatus = Just<ExposureStatus>(.unexposed)
     var timeFromLastCheck = Just<TimeInterval?>(TimeInterval(-360))
+    var exposureNotifications = Just<[ExposureNotification]>(.init())
 }
 
 extension Environment {
@@ -49,6 +50,10 @@ extension Environment {
         struct PreviewExposureRepository: ExposureRepository {
             let state: PreviewState
             
+            func getExposureNotifications() -> AnyPublisher<[ExposureNotification], Never> {
+                state.exposureNotifications.eraseToAnyPublisher()
+            }
+
             func detectionStatus() -> AnyPublisher<DetectionStatus, Never> {
                 state.detectionStatus.eraseToAnyPublisher()
             }

@@ -145,7 +145,7 @@ extension ExposuresViewController: ExposuresViewDelegate {
     }
 
     func showNotificationList() {
-        self.navigationController?.pushViewController(UIViewController(), animated: true)
+        self.navigationController?.present(NotificationListViewController(), animated: true)
     }
 }
 

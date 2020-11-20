@@ -72,6 +72,14 @@
 "ExposuresLastCheckedView.Text.MomentAgo" = "a moment ago";
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "No checks yet";
 
+"NotificationListViewController.Text.Title" = "Exposure notifications";
+"NotificationListViewController.Text.Disclaimer" = "The assessment of your exposure is based on encounters that Koronavilkku has collected during the last 10 days. The intensity of exposure cannot be accurately assessed.";
+"NotificationListViewController.Text.ItemTitle" = "Notification about potential exposure %@";
+"NotificationListViewController.Text.ItemCountLabel" = "Potential exposures";
+"NotificationListViewController.Text.ItemCountValue" = "%@ pcs.";
+"NotificationListViewController.Text.ItemIntervalLabel" = "Time period";
+"NotificationListViewController.Text.ItemIntervalValue" = "%@";
+
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "You have already reported your infection";
 "ReportInfectionViewController.Text.LockedText" = "The information you have reported will help to tackle the coronavirus epidemic. The app is now locked and no longer collects information about nearby phones. We wish you a quick recovery!";
