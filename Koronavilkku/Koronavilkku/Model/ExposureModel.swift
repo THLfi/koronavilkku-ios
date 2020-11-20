@@ -58,7 +58,9 @@ extension Collection where Element : ENExposureInfo {
     }
 }
 
-@available(*, deprecated, message: "Use the new ExposureNotification instead, kept for rendering legacy data")
+/// Single exposure object
+///
+/// - Important: Deprecated, use ExposureNotification instead
 struct Exposure: Codable {
     static let retentionTime = TimeInterval(60 * 60 * 24) * (10 + 1)
     

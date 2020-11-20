@@ -147,7 +147,7 @@ class TestViewController: UIViewController {
         let exposure = Exposure(date: Date())
         LocalStore.shared.exposures.append(exposure)
         Log.d("Created exposure \(exposure)")
-}
+    }
 
     @objc func addExposureDelayed() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {

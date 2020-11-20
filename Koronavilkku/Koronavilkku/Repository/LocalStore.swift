@@ -53,7 +53,7 @@ class LocalStore : BatchIdCache {
     @Persisted(userDefaultsKey: "nextDiagnosisKeyFileIndex", notificationName: .init("LocalStoreNextDiagnosisKeyFileIndexDidChange"), defaultValue: nil)
     var nextDiagnosisKeyFileIndex: String?
     
-    @available(*, deprecated, message: "No longer used, but kept here for legacy data")
+    @available(*, message: "No longer used, but kept here for legacy data")
     @Persisted(userDefaultsKey: "exposures", notificationName: .init("LocalStoreExposuresDidChange"), defaultValue: [])
     var exposures: [Exposure]
     
