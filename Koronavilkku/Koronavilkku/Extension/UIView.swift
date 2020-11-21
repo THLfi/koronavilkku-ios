@@ -81,18 +81,18 @@ extension UIView {
     }
     
     func layout(appendMaker: ((UIView, UIEdgeInsets?) -> ()) -> ()) -> Self {
-        var top = self.snp.top
+        var topAnchor = self.snp.top
         var bottomInset: CGFloat = 0
         
         appendMaker { view, insets in
             var insets = insets ?? UIEdgeInsets()
             insets.top += bottomInset
-            top = appendView(view, insets: insets, top: top)
+            topAnchor = appendView(view, insets: insets, top: topAnchor)
             bottomInset = insets.bottom
         }
         
         self.snp.makeConstraints { make in
-            make.bottom.equalTo(top).offset(bottomInset)
+            make.bottom.equalTo(topAnchor).offset(bottomInset)
         }
         
         return self
