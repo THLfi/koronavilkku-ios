@@ -80,6 +80,7 @@ extension UIView {
         return divider
     }
     
+    @discardableResult
     func layout(appendMaker: ((UIView, UIEdgeInsets?) -> ()) -> ()) -> Self {
         var topAnchor = self.snp.top
         var bottomInset: CGFloat = 0
