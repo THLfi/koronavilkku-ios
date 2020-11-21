@@ -80,27 +80,22 @@ extension UIView {
         return divider
     }
     
-    func layout(padding: UIEdgeInsets? = nil, appendMaker: ((UIView, UIEdgeInsets?) -> ()) -> ()) {
+    func layout(appendMaker: ((UIView, UIEdgeInsets?) -> ()) -> ()) -> Self {
         var top = self.snp.top
-        var paddingTop = padding?.top ?? 0
+        var bottomInset: CGFloat = 0
         
         appendMaker { view, insets in
             var insets = insets ?? UIEdgeInsets()
-            
-            if let padding = padding {
-                insets = UIEdgeInsets(top: insets.top + paddingTop,
-                                      left: insets.left + padding.left,
-                                      bottom: insets.bottom,
-                                      right: insets.right + padding.right)
-            }
-            
-            paddingTop = 0
+            insets.top += bottomInset
             top = appendView(view, insets: insets, top: top)
+            bottomInset = insets.bottom
         }
         
         self.snp.makeConstraints { make in
-            make.bottom.equalTo(top).offset(padding?.bottom ?? 0)
+            make.bottom.equalTo(top).offset(bottomInset)
         }
+        
+        return self
     }
 }
 

@@ -63,11 +63,11 @@ class NotificationListViewController: UIViewController {
         
         disclaimerView.numberOfLines = 0
 
-        content.layout(padding: UIEdgeInsets(top: 20, bottom: 50)) { append in
-            append(titleView, UIEdgeInsets(right: 40))
+        content.layout { append in
+            append(titleView, UIEdgeInsets(top: 20, right: 40))
             append(lastCheckedView, UIEdgeInsets(top: 6))
             append(notificationListWrapper, UIEdgeInsets())
-            append(disclaimerView, UIEdgeInsets(top: 20))
+            append(disclaimerView, UIEdgeInsets(top: 20, bottom: 50))
         }
     }
     
@@ -103,41 +103,45 @@ class NotificationListViewController: UIViewController {
     }
     
     func createNotificationItem(notification: ExposureNotification) -> CardElement {
-        let card = CardElement()
-        let formatter = DateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate("dMyyyy")
-        let title = UILabel(label: Text.ItemTitle.localized(with: formatter.string(from: notification.detectedOn)),
-                            font: .heading4,
-                            color: UIColor.Greyscale.black)
+        CardElement().layout { append in
+            let dateFormatter = DateFormatter()
+            dateFormatter.setLocalizedDateFormatFromTemplate("dMyyyy")
 
-        title.numberOfLines = 0
-        
-        card.layout(padding: .init(top: 20, left: 20, bottom: 20, right: 20)) { append in
-            append(title, nil)
-            append(.createDivider(height: 1), UIEdgeInsets(top: 10))
+            let detectionDate = dateFormatter.string(from: notification.detectedOn)
+            let titleView = UILabel(label: Text.ItemTitle.localized(with: detectionDate),
+                                    font: .heading4,
+                                    color: UIColor.Greyscale.black)
+            titleView.numberOfLines = 0
             
-            append(addLine(label: Text.ItemCountLabel.localized,
-                           value: Text.ItemCountValue.localized(with: String(notification.exposureCount))),
-                   UIEdgeInsets(top: 10))
+            append(titleView,
+                   .init(top: 20, left: 20, right: 20))
             
-            let formatter = DateIntervalFormatter()
-            formatter.timeStyle = .none
+            append(.createDivider(height: 1),
+                   .init(top: 10, left: 20, right: 20))
             
-            let interval = formatter.string(from: notification.detectionInterval.start,
-                                            to: notification.detectionInterval.end)
+            append(createLineItem(label: .ItemCountLabel,
+                                  valueText: .ItemCountValue,
+                                  value: String(notification.exposureCount)),
+                   .init(top: 10, left: 20, right: 20))
             
-            append(addLine(label: Text.ItemIntervalLabel.localized,
-                           value: Text.ItemIntervalValue.localized(with: interval)),
-                   UIEdgeInsets(top: 10))
+            let intervalFormatter = DateIntervalFormatter()
+            intervalFormatter.timeStyle = .none
+            let interval = intervalFormatter.string(from: notification.detectionInterval.start,
+                                                    to: notification.detectionInterval.end)
+            append(createLineItem(label: .ItemIntervalLabel,
+                                  valueText: .ItemIntervalValue,
+                                  value: interval),
+                   .init(top: 10, left: 20, bottom: 20, right: 20))
         }
-
-        return card
     }
     
-    private func addLine(label: String, value: String) -> UIView {
+    private func createLineItem(label: Text, valueText: Text, value: CVarArg) -> UIView {
         let line = UIView()
         
-        let label = UILabel(label: label, font: .bodySmall, color: UIColor.Greyscale.black)
+        let label = UILabel(label: label.localized,
+                            font: .bodySmall,
+                            color: UIColor.Greyscale.black)
+        
         label.numberOfLines = 0
         label.textAlignment = .left
         line.addSubview(label)
@@ -146,7 +150,10 @@ class NotificationListViewController: UIViewController {
             make.top.bottom.left.equalToSuperview()
         }
         
-        let value = UILabel(label: value, font: .bodySmall, color: UIColor.Greyscale.black)
+        let value = UILabel(label: valueText.localized(with: value),
+                            font: .bodySmall,
+                            color: UIColor.Greyscale.black)
+        
         value.numberOfLines = 0
         value.textAlignment = .right
         line.addSubview(value)
