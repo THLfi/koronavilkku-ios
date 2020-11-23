@@ -130,8 +130,6 @@ final class StatusHeaderView: UIView {
     }
     
     func render() {
-        Log.d("StatusHeaderView render()")
-
         renderRadar()
         titleLabel.text = getTitleText().localized
         titleLabel.textColor = getTitleFontColor()

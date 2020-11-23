@@ -7,19 +7,17 @@ enum ExposureStatus: Equatable {
 }
 
 struct ExposureNotification: Codable {
-    static let secondsInADay = TimeInterval(60 * 60 * 24)
-    
     /// How long the notification is being shown after the exposure
     ///
     /// The official exposure retention time is 10 * 24 hours from the time of exposure.
     /// As we don't know the exact time of exposure, just the 24-hour window starting
     /// from 00:00 UTC, we need to add one additional 24-hour window to make sure every
     /// possible exposure is covered.
-    static let retentionTime = secondsInADay * (10 + 1)
+    static let retentionTime: TimeInterval = .days(10 + 1)
     
     /// Detection duration is 10 days long
-    static let detectionIntervalDuration = secondsInADay * 9
-    static let detectionIntervalStart = 0 - secondsInADay - detectionIntervalDuration
+    static let detectionIntervalDuration: TimeInterval = .days(9)
+    static let detectionIntervalStart: TimeInterval = .days(-10)
 
     let detectedOn: Date
     let expiresOn: Date
@@ -62,7 +60,7 @@ extension Collection where Element : ENExposureInfo {
 ///
 /// - Important: Deprecated, use ExposureNotification instead
 struct Exposure: Codable {
-    static let retentionTime = TimeInterval(60 * 60 * 24) * (10 + 1)
+    static let retentionTime: TimeInterval = .days(10 + 1)
     
     let date: Date
     

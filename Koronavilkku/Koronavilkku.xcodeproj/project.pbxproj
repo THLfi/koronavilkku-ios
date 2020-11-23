@@ -126,6 +126,7 @@
 		EAD8619B24ADDCC900809677 /* ExposureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619A24ADDCC900809677 /* ExposureManager.swift */; };
 		EAD8619D24AE18A900809677 /* ExposureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619C24AE18A900809677 /* ExposureRepository.swift */; };
 		EAD8619F24AE56BA00809677 /* ExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619E24AE56BA00809677 /* ExposureConfiguration.swift */; };
+		EAE47D2B256C6D9E002ECE03 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE47D2A256C6D9E002ECE03 /* TimeInterval.swift */; };
 		EAEB8333252B7095005B8E24 /* Elevation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB8332252B7095005B8E24 /* Elevation.swift */; };
 		EAEB833B252B77AE005B8E24 /* TokenCodeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB833A252B77AE005B8E24 /* TokenCodeField.swift */; };
 /* End PBXBuildFile section */
@@ -277,6 +278,7 @@
 		EAD8619C24AE18A900809677 /* ExposureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRepository.swift; sourceTree = "<group>"; };
 		EAD8619E24AE56BA00809677 /* ExposureConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureConfiguration.swift; sourceTree = "<group>"; };
 		EADCF97224E51E0E0076B0FB /* LocalEnvironment.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = LocalEnvironment.xcconfig; sourceTree = "<group>"; };
+		EAE47D2A256C6D9E002ECE03 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		EAEB8332252B7095005B8E24 /* Elevation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elevation.swift; sourceTree = "<group>"; };
 		EAEB833A252B77AE005B8E24 /* TokenCodeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenCodeField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -346,13 +348,14 @@
 				563D44AC24AA7840008FE2BB /* Comparable+Clamp.swift */,
 				561878BC24ADD24B004B7563 /* Date+Formatter.swift */,
 				563D44B824AB9CD3008FE2BB /* Dictionary+IndexSubscript.swift */,
+				EA4A59422561C25800E65CFB /* Publisher.swift */,
+				EAE47D2A256C6D9E002ECE03 /* TimeInterval.swift */,
 				563D44B624AB5DEE008FE2BB /* UILabel+Styled.swift */,
 				560093FF251E08E100F1BE1B /* UINavigationController.swift */,
 				32899E4A24C0761100CFFE27 /* UITextField.swift */,
 				563D44AA24AA327F008FE2BB /* UIView.swift */,
 				32899E4824C0680600CFFE27 /* UIViewController.swift */,
 				EA07E41624E34C7D0097A9A0 /* URLSession.swift */,
-				EA4A59422561C25800E65CFB /* Publisher.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 				563D44B324AB4C6D008FE2BB /* TableViewHeader.swift in Sources */,
 				5612972C24C977420075161A /* HowItWorksViewController.swift in Sources */,
 				32899E4924C0680600CFFE27 /* UIViewController.swift in Sources */,
+				EAE47D2B256C6D9E002ECE03 /* TimeInterval.swift in Sources */,
 				EA30D71F24A620C900AF84B1 /* Colors.swift in Sources */,
 				EA92A04824A3958300CE7271 /* MainViewController.swift in Sources */,
 				56DB5AE224A4B5BD0019C1A1 /* WideRowElement.swift in Sources */,

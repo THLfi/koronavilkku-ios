@@ -82,7 +82,7 @@ final class ExposuresElement: WideRowElement {
                 return value
             }
             
-            if detectionStatus?.delayed == true {
+            if detectionStatus?.manualCheckAllowed() == true {
                 return Text.AccessibilityValueCheckDelayed.localized
             }
             
@@ -153,8 +153,6 @@ final class ExposuresElement: WideRowElement {
         guard let exposureStatus = self.exposureStatus,
               let detectionStatus = self.detectionStatus else { return }
         
-        Log.d("ExposuresElement render()")
-
         // reset initial state
         self.manualCheckButton = nil
         self.lastCheckedView = nil
@@ -187,12 +185,12 @@ final class ExposuresElement: WideRowElement {
             let exposureCountLabel = Badge(label: notificationCount?.description ?? "!", backgroundColor: UIColor.Primary.red)
             exposureCountLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
             container.addSubview(exposureCountLabel)
-            
+
             exposureCountLabel.snp.makeConstraints { make in
                 make.left.equalTo(titleView.snp.right).offset(10)
                 make.right.lessThanOrEqualToSuperview()
             }
-            
+
             exposureCountLabel.label.snp.makeConstraints { make in
                 make.firstBaseline.equalTo(titleView)
             }

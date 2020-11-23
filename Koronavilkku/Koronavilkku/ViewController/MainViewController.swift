@@ -11,12 +11,15 @@ class MainViewController: UIViewController {
     }
     
     private var headerView: StatusHeaderView!
+    
     private var exposuresElement: ExposuresElement!
+    private var exposuresElementTopConstraint: Constraint!
+    private var exposuresElementBottomConstraint: Constraint!
+    
     private var symptomsElement: SymptomsElement!
-    
-    private var exposuresConstraint: Constraint!
-    private var symptomsConstraint: Constraint!
-    
+    private var symptomsElementTopConstraint: Constraint!
+    private var symptomsElementBottomConstraint: Constraint!
+
     private var tasks = Set<AnyCancellable>()
     private let exposureRepository: ExposureRepository
     
@@ -56,10 +59,12 @@ class MainViewController: UIViewController {
 
                 if detectionStatus.status == .locked {
                     self.exposuresElement.isHidden = true
-                    self.exposuresConstraint.deactivate()
+                    self.exposuresElementTopConstraint.deactivate()
+                    self.exposuresElementBottomConstraint.deactivate()
                 } else {
                     self.exposuresElement.isHidden = false
-                    self.exposuresConstraint.activate()
+                    self.exposuresElementTopConstraint.activate()
+                    self.exposuresElementBottomConstraint.activate()
 
                     self.exposuresElement.detectionStatus = detectionStatus
                     self.exposuresElement.exposureStatus = exposureStatus
@@ -68,10 +73,12 @@ class MainViewController: UIViewController {
                 
                 if case .exposed = exposureStatus, detectionStatus.status != .locked {
                     self.symptomsElement.isHidden = true
-                    self.symptomsConstraint.deactivate()
+                    self.symptomsElementTopConstraint.deactivate()
+                    self.symptomsElementBottomConstraint.deactivate()
                 } else {
                     self.symptomsElement.isHidden = false
-                    self.symptomsConstraint.activate()
+                    self.symptomsElementTopConstraint.activate()
+                    self.symptomsElementBottomConstraint.activate()
                 }
                 
                 self.headerView.radarStatus = detectionStatus.status
@@ -115,7 +122,7 @@ class MainViewController: UIViewController {
             make.left.right.equalToSuperview()
         }
         
-        headerView!.openSettingsHandler = { [unowned self] type in
+        headerView.openSettingsHandler = { [unowned self] type in
             let viewController = OpenSettingsViewController.create(type: type) { [unowned self] in
                 self.dismiss(animated: true)
             }
@@ -130,10 +137,10 @@ class MainViewController: UIViewController {
             self.runManualDetection()
         }
         
-        wrapper.addSubview(self.exposuresElement!)
+        wrapper.addSubview(self.exposuresElement)
 
-        self.exposuresElement!.snp.makeConstraints { make in
-            exposuresConstraint = make.top.equalTo(headerView.snp.bottom).offset(20).constraint
+        self.exposuresElement.snp.makeConstraints { make in
+            exposuresElementTopConstraint = make.top.equalTo(headerView.snp.bottom).offset(20).constraint
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
         }
@@ -142,9 +149,9 @@ class MainViewController: UIViewController {
             self.openSymptomsViewController()
         }
 
-        wrapper.addSubview(symptomsElement!)
-        symptomsElement!.snp.makeConstraints { make in
-            symptomsConstraint = make.top.equalTo(exposuresElement.snp.bottom).offset(20).constraint
+        wrapper.addSubview(symptomsElement)
+        symptomsElement.snp.makeConstraints { make in
+            symptomsElementTopConstraint = make.top.equalTo(exposuresElement.snp.bottom).offset(20).constraint
             make.top.equalTo(headerView.snp.bottom).offset(20).priority(.medium)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
@@ -154,9 +161,9 @@ class MainViewController: UIViewController {
         let row = UIView()
         wrapper.addSubview(row)
         row.snp.makeConstraints { make in
-            make.top.equalTo(headerView.snp.bottom).offset(20).priority(300)
-            make.top.equalTo(exposuresElement.snp.bottom).offset(20).priority(350)
-            make.top.equalTo(symptomsElement.snp.bottom).offset(20).priority(400)
+            make.top.equalTo(headerView).offset(20).priority(.low)
+            exposuresElementBottomConstraint = make.top.equalTo(exposuresElement.snp.bottom).offset(20).priority(.medium).constraint
+            symptomsElementBottomConstraint = make.top.equalTo(symptomsElement.snp.bottom).offset(20).priority(.high).constraint
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
         }

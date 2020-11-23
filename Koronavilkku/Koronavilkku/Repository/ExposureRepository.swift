@@ -20,7 +20,7 @@ protocol ExposureRepository {
 
 struct ExposureRepositoryImpl : ExposureRepository {
     static let keyCount = 14
-    static let manualCheckThreshold: TimeInterval = 24 * 60 * 60
+    static let manualCheckThreshold: TimeInterval = .days(1)
     
     private static let dummyPostToken = "000000000000"
 

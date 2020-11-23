@@ -161,6 +161,7 @@ class NotificationListViewController: UIViewController {
         value.snp.makeConstraints { make in
             make.top.bottom.right.equalToSuperview()
             make.left.equalTo(label.snp.right)
+            make.width.greaterThanOrEqualTo(label).multipliedBy(0.3)
         }
         
         return line
