@@ -53,25 +53,10 @@ struct ExposureRepositoryImpl : ExposureRepository {
             return interval <= 0 - Self.manualCheckThreshold
         }
         
-        let isDisabled = LocalStore.shared.$uiStatus.$wrappedValue.map { uiStatus -> Bool in
-            switch uiStatus {
-            case .apiDisabled, .off:
-                return true
-            default:
-                return false
-            }
-        }
-        
-        return BackgroundTaskForNotifications.shared.$detectionRunning
-            .combineLatest(isDelayed, isDisabled) { running, delayed, disabled in
-                switch true {
-                case disabled:
-                    return .init(status: .disabled, delayed: delayed)
-                case running:
-                    return .init(status: .detecting, delayed: delayed)
-                default:
-                    return .init(status: .idle, delayed: delayed)
-                }
+        return LocalStore.shared.$uiStatus.$wrappedValue
+            .combineLatest(isDelayed,
+                           BackgroundTaskForNotifications.shared.$detectionRunning) {
+                .init(status: $0, delayed: $1, running: $2)
             }
             .removeDuplicates()
             .shareCurrent()

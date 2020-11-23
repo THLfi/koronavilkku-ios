@@ -11,7 +11,11 @@ class MainViewController: UIViewController {
     }
     
     private var headerView: StatusHeaderView!
-    private var notifications: ExposuresElement!
+    private var exposuresElement: ExposuresElement!
+    private var symptomsElement: SymptomsElement!
+    
+    private var exposuresConstraint: Constraint!
+    private var symptomsConstraint: Constraint!
     
     private var tasks = Set<AnyCancellable>()
     private let exposureRepository: ExposureRepository
@@ -28,45 +32,60 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(willEnterForeground),
-                                               name: UIApplication.willEnterForegroundNotification,
-                                               object: nil)
-        initUI()
+        createUI()
         initDataBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         // Hide navigation bar from view as we have no need for it in main view
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationController?.setNavigationBarHidden(true, animated: false)
-        headerView.render()
+        
+        // restart animation
+        self.headerView?.render()
     }
     
     private func initDataBindings() {
         exposureRepository.detectionStatus()
-            .sink { [weak self] status in
-                self?.notifications.detectionStatus = status
-            }
-            .store(in: &tasks)
+            .combineLatest(exposureRepository.exposureStatus(),
+                           exposureRepository.timeFromLastCheck())
+            .sink { [weak self] detectionStatus, exposureStatus, timeFromLastCheck in
+                guard let self = self else { return }
 
-        exposureRepository.exposureStatus()
-            .sink { [weak self] status in
-                self?.notifications.exposureStatus = status
+                if detectionStatus.status == .locked {
+                    self.exposuresElement.isHidden = true
+                    self.exposuresConstraint.deactivate()
+                } else {
+                    self.exposuresElement.isHidden = false
+                    self.exposuresConstraint.activate()
+
+                    self.exposuresElement.detectionStatus = detectionStatus
+                    self.exposuresElement.exposureStatus = exposureStatus
+                    self.exposuresElement.timeFromLastUpdate = timeFromLastCheck
+                }
+                
+                if case .exposed = exposureStatus, detectionStatus.status != .locked {
+                    self.symptomsElement.isHidden = true
+                    self.symptomsConstraint.deactivate()
+                } else {
+                    self.symptomsElement.isHidden = false
+                    self.symptomsConstraint.activate()
+                }
+                
+                self.headerView.radarStatus = detectionStatus.status
             }
             .store(in: &tasks)
         
-        exposureRepository.timeFromLastCheck()
-            .sink { [weak self] time in
-                self?.notifications.timeFromLastUpdate = time
+        NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)
+            .sink { [weak self] _ in
+                self?.headerView.render()
             }
             .store(in: &tasks)
     }
     
-    private func initUI() {
-        self.view.removeAllSubviews()
+    private func createUI() {
         view.backgroundColor = UIColor.Secondary.blueBackdrop
         let scrollView = UIScrollView()
         scrollView.isScrollEnabled = true
@@ -86,38 +105,47 @@ class MainViewController: UIViewController {
             make.edges.equalTo(scrollView.contentLayoutGuide.snp.edges)
             make.width.equalTo(scrollView.frameLayoutGuide.snp.width)
         }
-        
+                       
         // Setup header view
-        headerView = StatusHeaderView()
+        self.headerView = StatusHeaderView()
         wrapper.addSubview(headerView)
+        
         headerView.snp.makeConstraints { make in
             make.top.equalTo(wrapper)
             make.left.right.equalToSuperview()
         }
         
-        headerView.openSettingsHandler = { [unowned self] type in
-            let viewController = OpenSettingsViewController.create(type: type) { self.dismiss(animated: true) }
+        headerView!.openSettingsHandler = { [unowned self] type in
+            let viewController = OpenSettingsViewController.create(type: type) { [unowned self] in
+                self.dismiss(animated: true)
+            }
+            
             self.present(viewController, animated: true)
         }
         
         // Setup notification and helper components
-        self.notifications = ExposuresElement() { [unowned self] in
+        self.exposuresElement = ExposuresElement() { [unowned self] in
             self.openExposuresViewController()
         } manualCheckAction: { [unowned self] in
             self.runManualDetection()
         }
         
-        wrapper.addSubview(notifications)
-        notifications.snp.makeConstraints { make in
-            make.top.equalTo(headerView.snp.bottom).offset(20)
+        wrapper.addSubview(self.exposuresElement!)
+
+        self.exposuresElement!.snp.makeConstraints { make in
+            exposuresConstraint = make.top.equalTo(headerView.snp.bottom).offset(20).constraint
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
         }
         
-        let helper = SymptomsElement(tapped: { [unowned self] in self.openSymptomsViewController() })
-        wrapper.addSubview(helper)
-        helper.snp.makeConstraints { make in
-            make.top.equalTo(notifications.snp.bottom).offset(20)
+        self.symptomsElement = SymptomsElement { [unowned self] in
+            self.openSymptomsViewController()
+        }
+
+        wrapper.addSubview(symptomsElement!)
+        symptomsElement!.snp.makeConstraints { make in
+            symptomsConstraint = make.top.equalTo(exposuresElement.snp.bottom).offset(20).constraint
+            make.top.equalTo(headerView.snp.bottom).offset(20).priority(.medium)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
         }
@@ -126,7 +154,9 @@ class MainViewController: UIViewController {
         let row = UIView()
         wrapper.addSubview(row)
         row.snp.makeConstraints { make in
-            make.top.equalTo(helper.snp.bottom).offset(20)
+            make.top.equalTo(headerView.snp.bottom).offset(20).priority(300)
+            make.top.equalTo(exposuresElement.snp.bottom).offset(20).priority(350)
+            make.top.equalTo(symptomsElement.snp.bottom).offset(20).priority(400)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
         }
@@ -250,13 +280,13 @@ class MainViewController: UIViewController {
     }
     
     @objc private func willEnterForeground() {
-        headerView.render()
+        self.headerView?.render()
     }
 }
 
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        headerView.adjustSize(by: scrollView.contentOffset.y, topInset: view.safeAreaInsets.top)
+        self.headerView?.adjustSize(by: scrollView.contentOffset.y, topInset: view.safeAreaInsets.top)
     }
 }
 

@@ -41,36 +41,29 @@ final class ExposuresElement: WideRowElement {
     /// Has more fine-grained control over re-rendering: Changes to the button loading state are rendered without recreating the UI
     var detectionStatus: DetectionStatus? {
         didSet {
-            // prevent nulling & same values
+            // prevent null & same values causing re-renders
             guard let detectionStatus = detectionStatus, detectionStatus != oldValue else { return }
             
             // first value must render
-            guard oldValue != nil else { return render() }
+            guard let oldValue = oldValue else { return render() }
             
             // exposed users see only static content
             guard case .unexposed = exposureStatus else { return }
             
-            switch detectionStatus.status {
-            case .detecting:
-                // only affects the button rendering
-                if detectionStatus.delayed {
+            if detectionStatus.manualCheckAllowed() {
+                if detectionStatus.running {
+                    // only affects the button rendering
                     self.manualCheckButton?.isLoading = true
                     self.accessibilityValue = self.manualCheckButton?.accessibilityLabel
-                }
-
-            case .idle:
-                // if the manual check failed, reset the button state
-                if case .detecting = oldValue?.status, detectionStatus.delayed {
+                } else if oldValue.running == true {
+                    // reset the button state on failure
                     self.accessibilityValue = nil
                     self.manualCheckButton?.isLoading = false
                 } else {
                     render()
                 }
-
-            case .disabled:
-                if oldValue?.status != .disabled {
-                    render()
-                }
+            } else {
+                render()
             }
         }
     }
@@ -121,7 +114,7 @@ final class ExposuresElement: WideRowElement {
             return nil
         }
         
-        if detectionStatus?.delayed == true || detectionStatus?.status == .disabled {
+        if detectionStatus!.delayed || !detectionStatus!.enabled() {
             return createImageView(imageNamed: "flat-color-icons_alert", addShadow: false)
         }
         
@@ -139,32 +132,29 @@ final class ExposuresElement: WideRowElement {
     }
     
     private func createBodyLabel() -> UILabel? {
-        guard let detectionStatus = detectionStatus,
-              let exposureStatus = exposureStatus,
-              detectionStatus.status != .disabled else {
-            return nil
-        }
-        
         var body: Text
         
-        switch exposureStatus {
+        switch exposureStatus! {
         case .exposed:
             body = .BodyHasExposures
         
         case .unexposed:
-            body = detectionStatus.delayed ? .BodyExposureCheckDelayed : .BodyNoExposures
+            guard detectionStatus!.enabled() else {
+                return nil
+            }
+
+            body = detectionStatus!.delayed ? .BodyExposureCheckDelayed : .BodyNoExposures
         }
-        
+            
         return createBodyLabel(body: body.localized)
     }
     
     func render() {
         guard let exposureStatus = self.exposureStatus,
-              let detectionStatus = self.detectionStatus
-        else {
-            return
-        }
+              let detectionStatus = self.detectionStatus else { return }
         
+        Log.d("ExposuresElement render()")
+
         // reset initial state
         self.manualCheckButton = nil
         self.lastCheckedView = nil
@@ -212,7 +202,7 @@ final class ExposuresElement: WideRowElement {
                                    highlightedBackgroundColor: UIColor.Primary.red,
                                    action: tapped)
         } else {
-            if detectionStatus.delayed {
+            if detectionStatus.manualCheckAllowed() {
                 manualCheckButton = RoundedButton(title: Text.ButtonCheckNow.localized,
                                                   backgroundColor: UIColor.Primary.blue,
                                                   highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground,
@@ -305,41 +295,46 @@ final class ExposuresElement: WideRowElement {
 import SwiftUI
 
 struct ExposuresElement_NoExposures: PreviewProvider {
-    static func createView(customize: (ExposuresElement) -> Void) -> ExposuresElement {
+    static func createView(exposureStatus: ExposureStatus,
+                           detectionStatus: DetectionStatus,
+                           timeFromLastUpdate: TimeInterval? = nil) -> ExposuresElement {
+        
         let view = ExposuresElement(tapped: {}, manualCheckAction: {})
-        customize(view)
+        view.exposureStatus = exposureStatus
+        view.detectionStatus = detectionStatus
+        view.timeFromLastUpdate = timeFromLastUpdate
         return view
     }
 
     static var previews: some View = Group {
-        createPreviewInContainer(for: createView() {
-            $0.exposureStatus = .unexposed
-            $0.detectionStatus = .init(status: .idle, delayed: false)
-        }, width: 375, height: 200)
+        createPreviewInContainer(for: createView(exposureStatus: .unexposed,
+                                                 detectionStatus: .init(status: .on, delayed: false, running: false)),
+                                 width: 375,
+                                 height: 200)
 
-        createPreviewInContainer(for: createView() {
-            $0.timeFromLastUpdate = -1_000_000
-            $0.exposureStatus = .unexposed
-            $0.detectionStatus = .init(status: .idle, delayed: true)
-        }, width: 375, height: 300)
+        createPreviewInContainer(for: createView(exposureStatus: .unexposed,
+                                                 detectionStatus: .init(status: .on, delayed: true, running: false),
+                                                 timeFromLastUpdate: -1_000_000),
+                                 width: 375,
+                                 height: 300)
 
-        createPreviewInContainer(for: createView() {
-            $0.timeFromLastUpdate = -10_000
-            $0.exposureStatus = .exposed(notificationCount: 3)
-            $0.detectionStatus = .init(status: .disabled, delayed: true)
-        }, width: 375, height: 220)
+        createPreviewInContainer(for: createView(exposureStatus: .exposed(notificationCount: 3),
+                                                 detectionStatus: .init(status: .off, delayed: true, running: false),
+                                                 timeFromLastUpdate: -10_000),
+                                 width: 375,
+                                 height: 220)
 
-        createPreviewInContainer(for: createView() {
-            $0.timeFromLastUpdate = -1000
-            $0.exposureStatus = .exposed(notificationCount: nil)
-            $0.detectionStatus = .init(status: .idle, delayed: false)
-        }, width: 375, height: 220)
+        createPreviewInContainer(for: createView(exposureStatus: .exposed(notificationCount: nil),
+                                                 detectionStatus: .init(status: .on, delayed: false, running: false),
+                                                 timeFromLastUpdate: -1000),
+                                 width: 375,
+                                 height: 220)
 
-        createPreviewInContainer(for: createView() {
-            $0.timeFromLastUpdate = -100
-            $0.exposureStatus = .unexposed
-            $0.detectionStatus = .init(status: .disabled, delayed: true)
-        }, width: 375, height: 150)
+        createPreviewInContainer(for: createView(exposureStatus: .unexposed,
+                                                 detectionStatus: .init(status: .apiDisabled, delayed: true, running: false),
+                                                 timeFromLastUpdate: -100),
+                                 width: 375,
+                                 height: 150)
     }
 }
 

@@ -1,31 +1,6 @@
 import Combine
-import ExposureNotification
-import Foundation
 import SnapKit
 import UIKit
-
-enum RadarStatus: Int, Codable {
-    case on
-    case off
-    case locked
-    case btOff
-    case apiDisabled
-}
-
-extension RadarStatus {
-    init(from status: ENStatus) {
-        switch status {
-        case .active:
-            self = .on
-        case .bluetoothOff:
-            self = .btOff
-        case .disabled:
-            self = .off
-        default:
-            self = .apiDisabled
-        }
-    }
-}
 
 final class RadarAnimation : UIImageView {
     init() {
@@ -96,7 +71,6 @@ final class StatusHeaderView: UIView {
         case EnableButton
     }
 
-    private var radarStatus: RadarStatus?
     private var radarContainer: UIView!
     private var titleLabel: UILabel!
     private var bodyLabel: UILabel!
@@ -104,29 +78,26 @@ final class StatusHeaderView: UIView {
     private var buttonConstraint: Constraint!
 
     private let exposureRepository = Environment.default.exposureRepository
-    private var updateTask: AnyCancellable? = nil
-    
+
     private let verticalPadding = CGFloat(30)
     private let imageHeight = CGFloat(138)
     private let imageWidth = CGFloat(118)
+    
+    var radarStatus: RadarStatus? {
+        didSet {
+            guard let radarStatus = radarStatus, radarStatus != oldValue else { return }
+            
+            UIView.defaultTransition(with: self) { [unowned self] in
+                self.render()
+            }
+        }
+    }
     
     var openSettingsHandler: ((_ type: OpenSettingsType) -> Void)? = nil
 
     init() {
         super.init(frame: .zero)
-
         createUI()
-
-        updateTask = LocalStore.shared.$uiStatus.$wrappedValue.sink { [weak self] status in
-            guard let self = self else {
-                return
-            }
-            
-            UIView.defaultTransition(with: self) {
-                self.radarStatus = status
-                self.render()
-            }
-        }
     }
     
     required init?(coder: NSCoder) {
@@ -159,6 +130,8 @@ final class StatusHeaderView: UIView {
     }
     
     func render() {
+        Log.d("StatusHeaderView render()")
+
         renderRadar()
         titleLabel.text = getTitleText().localized
         titleLabel.textColor = getTitleFontColor()
@@ -284,7 +257,7 @@ final class StatusHeaderView: UIView {
     }
     
     private func getRadarView() -> UIImageView {
-        switch(radarStatus) {
+        switch radarStatus {
         case .on:
             return RadarAnimation()
         case .off, .locked, .apiDisabled, .btOff, .none:
@@ -295,7 +268,7 @@ final class StatusHeaderView: UIView {
     }
     
     private func getTitleText() -> Text {
-        switch(radarStatus) {
+        switch radarStatus {
         case .on:
             return .TitleEnabled
         case .off, .apiDisabled, .btOff, .none:
@@ -306,7 +279,7 @@ final class StatusHeaderView: UIView {
     }
     
     private func getBodyText() -> Text {
-        switch(radarStatus) {
+        switch radarStatus {
         case .on:
             return .BodyEnabled
         case .off, .apiDisabled, .none:
@@ -319,7 +292,7 @@ final class StatusHeaderView: UIView {
     }
     
     private func getTitleFontColor() -> UIColor {
-        switch(radarStatus) {
+        switch radarStatus {
         case .on:
             return UIColor.Primary.blue
         case .off, .apiDisabled, .btOff, .none:

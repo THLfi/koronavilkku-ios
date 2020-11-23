@@ -151,15 +151,13 @@ class ExposuresViewWrapper: UIView {
     
     weak var delegate: ExposuresViewDelegate?
     
-    private lazy var lastCheckedView = ExposuresLastCheckedView(value: timeFromLastCheck)
-    private lazy var checkDelayedView = CheckDelayedView() { [unowned self] in
-        self.delegate?.startManualCheck()
-    }
+    private var lastCheckedView: ExposuresLastCheckedView?
+    private var checkDelayedView: CheckDelayedView?
     
     var timeFromLastCheck: TimeInterval? {
         didSet {
             guard let timeFromLastCheck = timeFromLastCheck, timeFromLastCheck != oldValue else { return }
-            lastCheckedView.timeFromLastCheck = timeFromLastCheck
+            lastCheckedView?.timeFromLastCheck = timeFromLastCheck
         }
     }
     
@@ -172,17 +170,12 @@ class ExposuresViewWrapper: UIView {
     
     var detectionStatus: DetectionStatus? {
         didSet {
-            if detectionStatus?.delayed != oldValue?.delayed {
+            if detectionStatus?.manualCheckAllowed() != oldValue?.manualCheckAllowed() {
                 render()
             }
             
-            if let detectionStatus = detectionStatus, detectionStatus.delayed == true {
-                switch detectionStatus.status {
-                case .detecting:
-                    checkDelayedView.detectionRunning = true
-                default:
-                    checkDelayedView.detectionRunning = false
-                }
+            if let detectionStatus = detectionStatus {
+                self.checkDelayedView?.detectionRunning = detectionStatus.running
             }
         }
     }
@@ -196,6 +189,7 @@ class ExposuresViewWrapper: UIView {
     }
     
     func render() {
+        self.checkDelayedView = nil
         self.removeAllSubviews()
         
         if case .exposed(let notificationCount) = exposureStatus {
@@ -274,10 +268,16 @@ class ExposuresViewWrapper: UIView {
                                         color: UIColor.Greyscale.black)
         noExposuresHeader.numberOfLines = 0
         top = appendView(noExposuresHeader, top: top)
-        top = appendView(lastCheckedView, spacing: 10, top: top)
         
-        if detectionStatus?.delayed == true {
-            top = appendView(checkDelayedView, spacing: 30, top: top)
+        self.lastCheckedView = ExposuresLastCheckedView(value: timeFromLastCheck)
+        top = appendView(self.lastCheckedView!, spacing: 10, top: top)
+        
+        if detectionStatus?.manualCheckAllowed() == true {
+            self.checkDelayedView = CheckDelayedView() { [unowned self] in
+                self.delegate?.startManualCheck()
+            }
+            
+            top = appendView(self.checkDelayedView!, spacing: 30, top: top)
         }
         
         let noExposuresLabel = UILabel(label: NoExposuresText.Subtitle.localized,
@@ -324,7 +324,7 @@ struct ExposuresViewWrapper_Preview: PreviewProvider {
 
         createPreviewInContainer(for: createView {
             $0.exposureStatus = .unexposed
-            $0.detectionStatus = .init(status: .detecting, delayed: true)
+            $0.detectionStatus = .init(status: .on, delayed: true, running: true)
         }, width: 375, height: 320)
 
         createPreviewInContainer(for: createView {

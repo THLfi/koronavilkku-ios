@@ -31,7 +31,7 @@ private struct UIViewPreviewContainer<T: UIView> : UIViewRepresentable {
 }
 
 struct PreviewState {
-    var detectionStatus = Just<DetectionStatus>(.init(status: .idle, delayed: false))
+    var detectionStatus = Just<DetectionStatus>(.init(status: .on, delayed: false, running: false))
     var exposureStatus = Just<ExposureStatus>(.unexposed)
     var timeFromLastCheck = Just<TimeInterval?>(TimeInterval(-360))
     var exposureNotifications = Just<[ExposureNotification]>(.init())
