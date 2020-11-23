@@ -10,6 +10,7 @@ class Badge: UIView {
          textColor: UIColor = UIColor.Greyscale.white) {
         
         self.label = UILabel(label: label, font: .heading4, color: textColor)
+        self.label.textAlignment = .center
         super.init(frame: .zero)
         
         self.backgroundColor = backgroundColor
@@ -22,8 +23,9 @@ class Badge: UIView {
                                   bottom: verticalInset,
                                   right: horizontalInset)
         
-        self.label.snp.makeConstraints { make in
+        self.label.snp.makeConstraints { [unowned self] make in
             make.edges.equalToSuperview().inset(insets)
+            make.width.greaterThanOrEqualTo(self.label.snp.height).multipliedBy(1 / 2.4)
         }
     }
     

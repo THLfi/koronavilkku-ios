@@ -72,7 +72,7 @@
 "ExposuresLastCheckedView.Text.MomentAgo" = "hetki sitten";
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "Altistumistietoja ei ole vielä tarkistettu";
 
-"NotificationListViewController.Text.Title" = "Altistumisilmoitukset";
+"NotificationListViewController.Text.Title" = "Altistumis\U00ADilmoitukset";
 "NotificationListViewController.Text.Disclaimer" = "Arvio altistumisesta perustuu Koronavilkun keräämiin kohtaamistietoihin viimeisten 10 vuorokauden ajalta. Altistumisen voimakkuutta ei voida täsmällisesti arvioida.";
 "NotificationListViewController.Text.ItemTitle" = "Altistumisilmoitus %@";
 "NotificationListViewController.Text.ItemCountLabel" = "Mahdollisia altistumisia";
