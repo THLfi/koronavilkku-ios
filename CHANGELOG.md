@@ -10,11 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Service-specific availability lookups for Omaolo municipalities 
 - Let the user run the exposure detection manually if the previous check has not been completed in the last 24 hours
 - New ExposureRepository publishers for the current detection status and time from the last completed detection
+- Exposure status lookups in the ExposureRepository
 - A loading state for RoundedButton for asynchronous tasks
-- Bucket calculation
+- New bucket calculation for long exposures
+- Display the number of the exposure notifications in the main screen
+- Detailed list of exposure notifications in the potential exposure screen
 
 ### Changed
 - Improve the main screen accessibility
+- Changes to the app texts and localizations
+- Move data binding logic to MainViewController from the main screen UIViews 
 
 ## 1.2.0
 

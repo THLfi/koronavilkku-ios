@@ -3,16 +3,11 @@ import ExposureNotification
 import Foundation
 import UIKit
 
-enum DetectionStatus: Equatable {
-    case disabled
-    case idle(delayed: Bool)
-    case detecting
-}
-
 protocol ExposureRepository {
-    var detectionStatus: AnyPublisher<DetectionStatus, Never> { get }
-    var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> { get }
-
+    func detectionStatus() -> AnyPublisher<DetectionStatus, Never>
+    func exposureStatus() -> AnyPublisher<ExposureStatus, Never>
+    func getExposureNotifications() -> AnyPublisher<[ExposureNotification], Never>
+    func timeFromLastCheck() -> AnyPublisher<TimeInterval?, Never>
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error>
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error>
     func postExposureKeys(publishToken: String?) -> AnyPublisher<Void, Error>
@@ -23,73 +18,87 @@ protocol ExposureRepository {
     func deleteBatchFiles()
 }
 
-final class ExposureRepositoryImpl : ExposureRepository {
+struct ExposureRepositoryImpl : ExposureRepository {
     static let keyCount = 14
-    static let manualCheckThreshold: TimeInterval = 24 * 60 * 60
+    static let manualCheckThreshold: TimeInterval = .days(1)
     
     private static let dummyPostToken = "000000000000"
 
-    private let exposureManager: ExposureManager
-    private let backend: Backend
-    private let storage: FileStorage
-        
-    lazy var detectionStatus: AnyPublisher<DetectionStatus, Never> = {
-        let isDelayed = timeFromLastCheck.map { interval -> Bool in
-            guard let interval = interval else { return false }
-            return interval <= 0 - Self.manualCheckThreshold
-        }
-        
-        let isDisabled = LocalStore.shared.$uiStatus.$wrappedValue.map { uiStatus -> Bool in
-            switch uiStatus {
-            case .apiDisabled, .off:
-                return true
-            default:
-                return false
-            }
-        }
-        
-        return BackgroundTaskForNotifications.shared.$detectionRunning
-            .combineLatest(isDelayed, isDisabled) { running, delayed, disabled in
-                switch true {
-                case disabled:
-                    return .disabled
-                case running:
-                    return .detecting
-                default:
-                    return .idle(delayed: delayed)
-                }
-            }
-            .removeDuplicates()
-            .eraseToAnyPublisher()
-    }()
-        
-    lazy var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> = {
+    /// Publisher logic cached here to avoid every subscriber running it separately
+    static private var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> = {
         // Create a timer based on the current exposure detection date
         LocalStore.shared.$dateLastPerformedExposureDetection.$wrappedValue.map { lastCheck -> AnyPublisher<TimeInterval?, Never> in
             guard let lastCheck = lastCheck else {
                 return Just(nil).eraseToAnyPublisher()
             }
             
-            let publisher = Just(Date())
-            let timer = Timer.publish(every: 60, tolerance: 1, on: .main, in: .default).autoconnect()
-            
-            return publisher
-                .merge(with: timer)
+            return Timer
+                .publish(every: 60, tolerance: 1, on: .main, in: .default)
+                .autoconnect()
+                // Timer does not publish the current date until it fires the first time
+                // To avoid missing data during the first 60 seconds, merge in the current time
+                .merge(with: Just(Date()))
                 .map { $0.distance(to: lastCheck) }
                 .eraseToAnyPublisher()
         }
         // Cancels the previous timer when the value changes to avoid mixed signals
         .switchToLatest()
-        // Make sure the same value is broadcasted to every subscriber *and* that the current value is always published
-        .multicast(subject: CurrentValueSubject<TimeInterval?, Never>(nil))
-        .autoconnect()
+        .shareCurrent()
         .eraseToAnyPublisher()
     }()
+    
+    static private var detectionStatus: AnyPublisher<DetectionStatus, Never> = {
+        let isDelayed = Self.timeFromLastCheck.map { interval -> Bool in
+            guard let interval = interval else { return false }
+            return interval <= 0 - Self.manualCheckThreshold
+        }
+        
+        return LocalStore.shared.$uiStatus.$wrappedValue
+            .combineLatest(isDelayed,
+                           BackgroundTaskForNotifications.shared.$detectionRunning) {
+                .init(status: $0, delayed: $1, running: $2)
+            }
+            .removeDuplicates()
+            .shareCurrent()
+            .eraseToAnyPublisher()
+    }()
 
+    private let exposureManager: ExposureManager
+    private let backend: Backend
+    private let storage: FileStorage
+        
     init(exposureManager: ExposureManager, backend: Backend, storage: FileStorage) {
         self.exposureManager = exposureManager
         self.backend = backend
         self.storage = storage
+    }
+
+    func detectionStatus() -> AnyPublisher<DetectionStatus, Never> {
+        Self.detectionStatus
+    }
+        
+    func timeFromLastCheck() -> AnyPublisher<TimeInterval?, Never> {
+        Self.timeFromLastCheck
+    }
+    
+    func exposureStatus() -> AnyPublisher<ExposureStatus, Never> {
+        LocalStore.shared.$exposures.$wrappedValue
+            .combineLatest(LocalStore.shared.$exposureNotifications.$wrappedValue)
+            .map { exposures, notifications -> ExposureStatus in
+                if !notifications.isEmpty {
+                    return .exposed(notificationCount: notifications.count)
+                }
+                
+                if !exposures.isEmpty {
+                    return .exposed(notificationCount: nil)
+                }
+                
+                return .unexposed
+            }.eraseToAnyPublisher()
+    }
+
+    func getExposureNotifications() -> AnyPublisher<[ExposureNotification], Never> {
+        LocalStore.shared.$exposureNotifications.$wrappedValue.eraseToAnyPublisher()
     }
     
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error> {
@@ -148,19 +157,14 @@ final class ExposureRepositoryImpl : ExposureRepository {
                     return Just([ENExposureInfo]()).setFailureType(to: Error.self).eraseToAnyPublisher()
                 }
             }
+            .receive(on: RunLoop.main)
             .map { exposureInfos -> Bool in
-                let detectedExposures = exposureInfos.count > 0
-
-                if detectedExposures {
-                    exposureInfos.forEach { Log.d("ExposureInfo: \($0)") }
-                    
-                    let exposures = exposureInfos.map { $0.to() }
-                    DispatchQueue.main.async {
-                        LocalStore.shared.exposures.append(contentsOf: exposures)
-                    }
-                }
-
-                return detectedExposures
+                guard !exposureInfos.isEmpty else { return false }
+                
+                exposureInfos.forEach { Log.d("ExposureInfo: \($0)") }
+                let notification = exposureInfos.to(config: config)
+                LocalStore.shared.exposureNotifications.append(notification)
+                return true
             }
             .eraseToAnyPublisher()
     }

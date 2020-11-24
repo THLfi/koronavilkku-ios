@@ -21,6 +21,7 @@ class LocalizationTests: XCTestCase {
         verifyTranslations(from: SelectMunicipalityViewController.Text.self)
         verifyTranslations(from: LicenseListViewController.Text.self)
         verifyTranslations(from: ChangeLanguageViewController.Text.self)
+        verifyTranslations(from: NotificationListViewController.Text.self)
     }
     
     private func verifyTranslations<T: Localizable & CaseIterable>(from namespace: T.Type) {

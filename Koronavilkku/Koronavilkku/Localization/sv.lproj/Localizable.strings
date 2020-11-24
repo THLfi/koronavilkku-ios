@@ -51,18 +51,18 @@
 // MARK: ExposuresViewWrapper
 "ExposuresViewWrapper.HasExposureText.Heading" = "Du har under de senaste 10 dygnen varit nära en person som meddelat om coronasmitta via Coronablinkern.";
 "ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Kontakta hälsovården";
-"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Information om en eventuell exponering förmedlas till hälsovården endast om du själv tar kontakt.";
+"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Information om eventuell exponering förmedlas till hälsovården endast om du själv tar kontakt.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ta kontakt";
-"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Följ dessa anvisningar noggrant i 10 dagars tid:";
-"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Om du har ens ett av följande symtom, ta så snabbt som möjligt kontakt med hälsovården i din kommun för att bli testad för coronavirus:";
-"ExposuresViewWrapper.HasExposureText.InstructionsSymptomsText" = "- nedsatt lukt- och smaksinne\n\t- andningssvårigheter\n\t- hosta, halsont eller snuva\n\t- feber\n\t- huvudvärk eller muskelvärk\n\t- diarré eller magont utan annan uppenbar orsak.";
+"ExposuresViewWrapper.HasExposureText.ExposuresButtonTitle" = "Visa exponerings\U00ADmeddelandena";
+"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Gör så här";
+"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Följ dessa anvisningar i 10 dagar:";
+"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Var uppmärksam på hur du mår. Om du har ens ett av symtomen som passar in på coronavirus\U00ADinfektion, ta så snabbt som möjligt kontakt med hälsovården i din kommun för att bli testad. Symtom som kan tyda på coronavirus\U00ADinfektion är förändringar i lukt- eller smaksinnet, andningssvårigheter, hosta, halsont, snuva, feber, huvudvärk, muskelvärk samt diarré eller magont utan annan uppenbar orsak.";
 "ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Undvik att träffa andra människor.";
 "ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Var noggrann med din handhygien.";
-"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Undvik offentliga platser och kollektivtrafik. Om du är tvungen att vistas på offentliga platser ska du iaktta ett avstånd på minst två meter till andra människor. Om du inte kan hålla tillräckligt långt avstånd använd ansiktsmask.";
+"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Undvik offentliga platser och kollektivtrafik. Om du är tvungen att vistas på offentliga platser ska du hålla ett avstånd på minst två meter till andra människor. Om du inte kan hålla ett tillräckligt långt, avstånd använd ansiktsmask.";
 "ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "Låt en annan person handla mat och sköta andra ärenden utanför hemmet, om möjligt.";
 "ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "Om du hostar eller nyser ska du skydda din mun och näsa med en engångsnäsduk. Kasta den använda näsduken i soporna och tvätta dina händer med tvål och vatten eller använd handdesinfektionsmedel. Om du inte har någon näsduk ska du hosta och nysa i ärmen.";
 "ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Arbeta på distans, om möjligt.";
-"ExposuresViewWrapper.HasExposureText.ExposureDisclaimer" = "Bedömningen om exponeringen bygger på den information om möten som Coronablinkern har samlat in under de senaste 10 dygnen. Coronablinkern ger ingen exakt bedömning av hur kraftig smittofaran är.";
 
 "ExposuresViewWrapper.NoExposuresText.Heading" = "Ingen exponering har upptäckts";
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Coronablinkern har inte observerat någon exponering för coronaviruset under de senaste 10 dagarna.";
@@ -71,6 +71,14 @@
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Senast granskad %@";
 "ExposuresLastCheckedView.Text.MomentAgo" = "för ett ögonblick sedan";
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "Ingen kontroll ännu";
+
+"NotificationListViewController.Text.Title" = "Exponerings\U00ADmeddelandena";
+"NotificationListViewController.Text.Disclaimer" = "Bedömningen om exponeringen bygger på den information om möten som Coronablinkern har samlat in under de senaste 10 dygnen. Coronablinkern ger ingen exakt bedömning av hur stor smittorisken är.";
+"NotificationListViewController.Text.ItemTitle" = "Meddelande om eventuell exponering %@";
+"NotificationListViewController.Text.ItemCountLabel" = "Eventuella exponeringar";
+"NotificationListViewController.Text.ItemCountValue" = "%@ st.";
+"NotificationListViewController.Text.ItemIntervalLabel" = "Tidsperiod";
+"NotificationListViewController.Text.ItemIntervalValue" = "%@";
 
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "Du har redan meddelat om din smitta";
@@ -145,8 +153,8 @@
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Vi rekommenderar att du kontaktar hälsovården via Omaolos symtombedömning eftersom det underlättar hälsovårdens arbete och är lätt för dig att göra på nätet.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "Det tar cirka 5–10 minuter att göra en symtombedömning. Personer under 16 år ska kontakta hälsovården per telefon.";
 "MunicipalityContactInfoViewController.Text.ContactInfoTitle" = "Eller kontakta hälsovården i din kommun på följande sätt:";
-"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Ta genast kontakt, om du har symtom som passar in på coronavirusinfektionen:";
-"MunicipalityContactInfoViewController.Text.SymptomsText" = "- nedsatt lukt- och smaksinne\n- andningssvårigheter\n- hosta, halsont eller snuva\n- feber\n- huvudvärk eller muskelvärk\n- diarré eller magont utan annan uppenbar orsak.";
+"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Sök dig genast till test om du får symtom";
+"MunicipalityContactInfoViewController.Text.SymptomsText" = "Var uppmärksam på hur du mår. Om du har ens ett av symtomen som passar in på coronavirusinfektion, ta så snabbt som möjligt kontakt med hälsovården i din kommun för att bli testad. Symtom som kan tyda på coronavirusinfektion är förändringar i lukt- eller smaksinnet, andningssvårigheter, hosta, halsont, snuva, feber, huvudvärk, muskelvärk samt diarré eller magont utan annan uppenbar orsak.";
 
 // MARK: SelectMunicipalityViewController
 

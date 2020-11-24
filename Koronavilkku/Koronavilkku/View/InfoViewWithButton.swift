@@ -7,18 +7,21 @@ class InfoViewWithButton: CardElement {
     let buttonTapped: () -> ()
     let helperText: String?
     let title: String
+    let titleFont: UIFont
     let descriptionText: String
     let buttonTitle: String
     let bottomText: String?
     
     init(helperText: String? = nil,
          title: String,
+         titleFont: UIFont = .heading2,
          descriptionText: String,
          buttonTitle: String,
          bottomText: String?,
          buttonTapped: @escaping () -> ()) {
         self.helperText = helperText
         self.title = title
+        self.titleFont = titleFont
         self.descriptionText = descriptionText
         self.buttonTitle = buttonTitle
         self.bottomText = bottomText
@@ -33,7 +36,7 @@ class InfoViewWithButton: CardElement {
     
     private func initUI() {
         let titleLabel = UILabel(label: self.title,
-                                 font: UIFont.heading2,
+                                 font: titleFont,
                                  color: UIColor.Greyscale.black)
         titleLabel.numberOfLines = 0
         titleLabel.setLineHeight(0.9)

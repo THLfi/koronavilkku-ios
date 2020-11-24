@@ -73,7 +73,7 @@ final class BackgroundTaskForNotifications: BackgroundTask {
 
     // ENAPIVersion 2 detectExposures() limited to 6 calls per day
     // we're not using it yet, but it's a good starting point
-    let TASK_MINIMUM_DELAY: TimeInterval = 4 * 60 * 60
+    let TASK_MINIMUM_DELAY: TimeInterval = .hours(4)
     
     // To test the background tasks (this does not work on simulator, apparently)
     // 1. Pause the debugger after registering the task
@@ -153,8 +153,6 @@ final class BackgroundTaskForNotifications: BackgroundTask {
         )
         .receive(on: RunLoop.main)
         .flatMap { (ids, config, _) -> (AnyPublisher<Bool, Error>) in
-            LocalStore.shared.removeExpiredExposures()
-            
             Log.d("Got \(ids.count) keys")
             if ids.count == 0 {
                 Log.d("No new batches to check")
@@ -227,7 +225,7 @@ fileprivate final class BackgroundTaskForDummyPosting: BackgroundTask {
         taskRequest.requiresNetworkConnectivity = true
         taskRequest.requiresExternalPower = false
         let randomHours = Double.random(in: 12...24)
-        taskRequest.earliestBeginDate = Date(timeIntervalSinceNow: 60 * 60 * randomHours)
+        taskRequest.earliestBeginDate = Date(timeIntervalSinceNow: .hours(randomHours))
         do {
             Log.d("Try schedule new task \(taskRequest)")
             try BGTaskScheduler.shared.submit(taskRequest)

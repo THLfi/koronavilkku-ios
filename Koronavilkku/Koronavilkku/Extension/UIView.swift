@@ -58,15 +58,45 @@ extension UIView {
         return view.snp.bottom
     }
     
-    static func createDivider() -> UIView {
+    func appendView(_ view: UIView, insets: UIEdgeInsets, top: ConstraintItem) -> ConstraintItem {
+        addSubview(view)
+        
+        view.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(insets)
+            make.top.equalTo(top).offset(insets.top)
+        }
+        
+        return view.snp.bottom
+    }
+    
+    static func createDivider(height: CGFloat = 0.5) -> UIView {
         let divider = UIView()
         divider.backgroundColor = UIColor.Greyscale.borderGrey
         
         divider.snp.makeConstraints { make in
-            make.height.equalTo(0.5)
+            make.height.equalTo(height)
         }
         
         return divider
+    }
+    
+    @discardableResult
+    func layout(appendMaker: ((UIView, UIEdgeInsets?) -> ()) -> ()) -> Self {
+        var topAnchor = self.snp.top
+        var bottomInset: CGFloat = 0
+        
+        appendMaker { view, insets in
+            var insets = insets ?? UIEdgeInsets()
+            insets.top += bottomInset
+            topAnchor = appendView(view, insets: insets, top: topAnchor)
+            bottomInset = insets.bottom
+        }
+        
+        self.snp.makeConstraints { make in
+            make.bottom.equalTo(topAnchor).offset(bottomInset)
+        }
+        
+        return self
     }
 }
 
@@ -78,6 +108,9 @@ extension UIView {
 }
 
 extension UIEdgeInsets {
+    init(top: CGFloat? = nil, left: CGFloat? = nil, bottom: CGFloat? = nil, right: CGFloat? = nil) {
+        self.init(top: top ?? 0, left: left ?? 0, bottom: bottom ?? 0, right: right ?? 0)
+    }
     
     var horizontal: CGFloat {
         get { left + right }

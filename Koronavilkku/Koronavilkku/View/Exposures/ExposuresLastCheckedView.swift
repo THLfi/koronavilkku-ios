@@ -33,9 +33,14 @@ class ExposuresLastCheckedView: UIView {
         }
     }
     
-    private var cancellable: AnyCancellable?
     private var lastCheckedLabel: UILabel!
     private let style: Style
+    
+    var timeFromLastCheck: TimeInterval? {
+        didSet {
+            render()
+        }
+    }
     
     override var accessibilityLabel: String? {
         get {
@@ -44,11 +49,13 @@ class ExposuresLastCheckedView: UIView {
         set {}
     }
     
-    init(style: Style = .normal) {
+    init(style: Style = .normal, value lastChecked: TimeInterval? = nil) {
+        self.timeFromLastCheck = lastChecked
         self.style = style
+        
         super.init(frame: .zero)
+        
         self.createUI()
-        self.bindViewModel()
     }
     
     required init?(coder: NSCoder) {
@@ -65,13 +72,6 @@ class ExposuresLastCheckedView: UIView {
             : RelativeDateTimeFormatter().localizedString(fromTimeInterval: interval))
     }
 
-    private func bindViewModel() {
-        cancellable = Environment.default.exposureRepository.timeFromLastCheck
-            .map(Self.format)
-            .receive(on: RunLoop.main)
-            .assign(to: \.text, on: lastCheckedLabel)
-    }
-    
     private func createUI() {
         lastCheckedLabel = UILabel(label: "", font: style.font, color: style.textColor)
         lastCheckedLabel.numberOfLines = 0
@@ -80,5 +80,11 @@ class ExposuresLastCheckedView: UIView {
         lastCheckedLabel.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
+        render()
+    }
+    
+    private func render() {
+        lastCheckedLabel.text = Self.format(interval: timeFromLastCheck)
     }
 }

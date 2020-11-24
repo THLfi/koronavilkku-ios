@@ -17,7 +17,8 @@ class TestViewController: UIViewController {
     lazy var downloadAndDetectButton = self.createButton(title: "Dl and detect", action: #selector(downloadAndDetect))
     lazy var addExposureButton = self.createButton(title: "Add exposure", action: #selector(addExposure))
     lazy var addExposureDelayedButton = self.createButton(title: "Add exposure, delayed", action: #selector(addExposureDelayed))
-    
+    lazy var addLegacyExposureButton = self.createButton(title: "Add legacy exposure", action: #selector(addLegacyExposure))
+
     lazy var removeExposuresButton = self.createButton(title: "Remove exposures", action: #selector(removeExposures))
     lazy var radarStatus = self.createButton(title: "Radar status \(LocalStore.shared.uiStatus)", action: #selector(toggleRadarStatus))
     
@@ -79,6 +80,7 @@ class TestViewController: UIViewController {
         appendButton(testBatchDownloadInTheBackgroundButton)
         appendButton(addExposureButton)
         appendButton(addExposureDelayedButton)
+        appendButton(addLegacyExposureButton)
         appendButton(removeExposuresButton)
         appendButton(radarStatus)
         appendButton(resetOnboardingButton)
@@ -141,6 +143,12 @@ class TestViewController: UIViewController {
         addTestExposure()
     }
     
+    @objc func addLegacyExposure() {
+        let exposure = Exposure(date: Date())
+        LocalStore.shared.exposures.append(exposure)
+        Log.d("Created exposure \(exposure)")
+    }
+
     @objc func addExposureDelayed() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             self.addTestExposure()
@@ -148,10 +156,13 @@ class TestViewController: UIViewController {
     }
     
     private func addTestExposure() {
-        let exposure = Exposure(date: Date())
-        LocalStore.shared.exposures.append(exposure)
+        let notification = ExposureNotification(detectionTime: Date(),
+                                                latestExposureOn: Date().addingTimeInterval(86_400 * -3),
+                                                exposureCount: Int.random(in: 1...5))
+        
+        LocalStore.shared.exposureNotifications.append(notification)
         LocalStore.shared.updateDateLastPerformedExposureDetection()
-        Log.d("Created exposure \(exposure)")
+        Log.d("Created exposure notification \(notification)")
     }
     
     @objc func removeExposures() {
