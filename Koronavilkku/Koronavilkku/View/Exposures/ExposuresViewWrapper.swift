@@ -326,6 +326,11 @@ struct ExposuresViewWrapper_Preview: PreviewProvider {
             $0.exposureStatus = .unexposed
             $0.detectionStatus = .init(status: .on, delayed: true, running: true)
         }, width: 375, height: 320)
+        
+        createPreviewInContainer(for: createView {
+            $0.exposureStatus = .unexposed
+            $0.detectionStatus = .init(status: .on, delayed: true, running: false)
+        }, width: 375, height: 320)
 
         createPreviewInContainer(for: createView {
             $0.exposureStatus = .exposed(notificationCount: nil)
