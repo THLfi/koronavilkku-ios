@@ -153,8 +153,8 @@
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Suosittelemme, että otat yhteyttä terveydenhuoltoon oirearvion kautta, koska se helpottaa terveydenhuollon ammattilaisten tekemää työtä ja säästää sinulta vaivaa asian käsittelyssä.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "Oirearvion tekemiseen kuluu noin 5–10 minuuttia. Alle 16-vuotiaiden pitää ottaa yhteyttä terveydenhuoltoon puhelimitse.";
 "MunicipalityContactInfoViewController.Text.ContactInfoTitle" = "Tai ota yhteyttä kuntasi terveydenhuoltoon muilla tavoin:";
-"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Jos sinulla ilmenee yksikin näistä koronavirustautiin sopivista oireista, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin:";
-"MunicipalityContactInfoViewController.Text.SymptomsText" = "- haju- tai makuaistin muutos\n- hengitysvaikeus\n- yskä, kurkkukipu tai nuha\n- kuume\n- päänsärky tai lihaskipuja\n- ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
+"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Jos sinulla ilmenee oireita, hakeudu testiin";
+"MunicipalityContactInfoViewController.Text.SymptomsText" = "Tarkkaile vointiasi. Jos sinulla ilmenee yksikin koronavirustautiin sopiva oire, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin. Koronavirustautiin sopivia oireita ovat haju- tai makuaistin muutos, hengitysvaikeus, yskä, kurkkukipu, nuha, kuume, päänsärky, lihaskivut, ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
 
 // MARK: SelectMunicipalityViewController
 

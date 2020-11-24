@@ -153,8 +153,8 @@
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Vi rekommenderar att du kontaktar hälsovården via Omaolos symtombedömning eftersom det underlättar hälsovårdens arbete och är lätt för dig att göra på nätet.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "Det tar cirka 5–10 minuter att göra en symtombedömning. Personer under 16 år ska kontakta hälsovården per telefon.";
 "MunicipalityContactInfoViewController.Text.ContactInfoTitle" = "Eller kontakta hälsovården i din kommun på följande sätt:";
-"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Ta genast kontakt, om du har symtom som passar in på coronavirusinfektionen:";
-"MunicipalityContactInfoViewController.Text.SymptomsText" = "- nedsatt lukt- och smaksinne\n- andningssvårigheter\n- hosta, halsont eller snuva\n- feber\n- huvudvärk eller muskelvärk\n- diarré eller magont utan annan uppenbar orsak.";
+"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Sök dig genast till test om du får symtom";
+"MunicipalityContactInfoViewController.Text.SymptomsText" = "Var uppmärksam på hur du mår. Om du har ens ett av symtomen som passar in på coronavirusinfektion, ta så snabbt som möjligt kontakt med hälsovården i din kommun för att bli testad. Symtom som kan tyda på coronavirusinfektion är förändringar i lukt- eller smaksinnet, andningssvårigheter, hosta, halsont, snuva, feber, huvudvärk, muskelvärk samt diarré eller magont utan annan uppenbar orsak.";
 
 // MARK: SelectMunicipalityViewController
 

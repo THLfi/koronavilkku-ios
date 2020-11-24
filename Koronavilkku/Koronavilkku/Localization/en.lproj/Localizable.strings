@@ -153,8 +153,8 @@
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "We recommend that you contact healthcare services by taking a symptom assessment. This helps the healthcare professionals in their work and saves you effort when handling the matter.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "It takes approximately 5-10 minutes to take the symptom assessment. Children under the age of 16 must contact healthcare services by telephone.";
 "MunicipalityContactInfoViewController.Text.ContactInfoTitle" = "Or contact your municipal healthcare services in another way:";
-"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Contact your municipal healthcare services as soon as possible and get tested if you experience any of the following symptoms consistent with COVID-19:";
-"MunicipalityContactInfoViewController.Text.SymptomsText" = "- change in sense of smell or taste\n- shortness of breath\n- cough, sore throat or runny nose\n- fever\n- headaches or muscle pain\n- unexplained diarrhoea or abdominal pain.";
+"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "If you develop symptoms, get tested";
+"MunicipalityContactInfoViewController.Text.SymptomsText" = "Monitor your health. If you develop any symptoms consistent with COVID-19, contact your municipal healthcare service and get tested as soon as possible. Symptoms consistent with COVID-19 are change in sense of smell or taste, shortness of breath, cough, sore throat, runny nose, fever, headaches, muscle pain, unexplained diarrhoea or abdominal pain.";
 
 // MARK: SelectMunicipalityViewController
 
