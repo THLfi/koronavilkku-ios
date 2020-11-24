@@ -93,13 +93,6 @@ final class ExposuresElement: WideRowElement {
         }
     }
 
-    private func updateProperty<T: Equatable>(keyPath: ReferenceWritableKeyPath<ExposuresElement, T>, value: T) {
-        if self[keyPath: keyPath] != value {
-            self[keyPath: keyPath] = value
-            self.render()
-        }
-    }
-    
     init(tapped: @escaping () -> (), manualCheckAction: @escaping () -> ()) {
         self.manualCheckAction = manualCheckAction
         super.init(tapped: tapped)
