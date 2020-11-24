@@ -60,6 +60,8 @@ extension Collection where Element : ENExposureInfo {
 ///
 /// - Important: Deprecated, use ExposureNotification instead
 struct Exposure: Codable {
+    // Keep using the old retention time here to avoid problems if the ExposureNotification
+    // retention time changes in the future
     static let retentionTime: TimeInterval = .days(10 + 1)
     
     let date: Date

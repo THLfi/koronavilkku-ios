@@ -14,7 +14,6 @@ class Badge: UIView {
         super.init(frame: .zero)
         
         self.backgroundColor = backgroundColor
-        self.layer.cornerRadius = 100
         
         addSubview(self.label)
 
@@ -25,7 +24,9 @@ class Badge: UIView {
         
         self.label.snp.makeConstraints { [unowned self] make in
             make.edges.equalToSuperview().inset(insets)
-            make.width.greaterThanOrEqualTo(self.label.snp.height).multipliedBy(1 / 2.4)
+            
+            // make sure the element is slightly wider than higher to avoid funny corner radius shapes
+            make.width.greaterThanOrEqualTo(self.label.snp.height).offset(horizontalInset * -1.5)
         }
     }
     
