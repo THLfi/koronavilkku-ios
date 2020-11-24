@@ -57,8 +57,8 @@ final class ExposuresElement: WideRowElement {
                     self.accessibilityValue = self.manualCheckButton?.accessibilityLabel
                 } else if oldValue.running == true {
                     // reset the button state on failure
-                    self.accessibilityValue = nil
                     self.manualCheckButton?.isLoading = false
+                    self.accessibilityValue = nil
                 } else {
                     render()
                 }
@@ -149,6 +149,7 @@ final class ExposuresElement: WideRowElement {
         // reset initial state
         self.manualCheckButton = nil
         self.lastCheckedView = nil
+        self.accessibilityValue = nil
         
         if initialized {
             removeAllSubviews()

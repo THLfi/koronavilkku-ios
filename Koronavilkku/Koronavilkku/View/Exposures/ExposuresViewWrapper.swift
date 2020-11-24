@@ -81,6 +81,7 @@ class InfoButton : CardElement {
         self.addGestureRecognizer(self.tapRecognizer)
         
         self.accessibilityTraits = .button
+        self.isAccessibilityElement = true
         self.accessibilityLabel = title
         self.accessibilityValue = subtitle
         

@@ -164,6 +164,10 @@ class NotificationListViewController: UIViewController {
             make.width.greaterThanOrEqualTo(label).multipliedBy(0.3)
         }
         
+        line.isAccessibilityElement = true
+        line.accessibilityLabel = label.text
+        line.accessibilityValue = value.text
+
         return line
     }
     
