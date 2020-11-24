@@ -33,7 +33,6 @@ class ExposuresLastCheckedView: UIView {
         }
     }
     
-    private var cancellable: AnyCancellable?
     private var lastCheckedLabel: UILabel!
     private let style: Style
     
@@ -73,13 +72,6 @@ class ExposuresLastCheckedView: UIView {
             : RelativeDateTimeFormatter().localizedString(fromTimeInterval: interval))
     }
 
-    private func bindViewModel() {
-        cancellable = Environment.default.exposureRepository.timeFromLastCheck()
-            .map(Self.format)
-            .receive(on: RunLoop.main)
-            .assign(to: \.text, on: lastCheckedLabel)
-    }
-    
     private func createUI() {
         lastCheckedLabel = UILabel(label: "", font: style.font, color: style.textColor)
         lastCheckedLabel.numberOfLines = 0
