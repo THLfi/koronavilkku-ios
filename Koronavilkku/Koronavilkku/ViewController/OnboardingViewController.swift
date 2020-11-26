@@ -289,7 +289,7 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
             let button = RoundedButton(title: "\u{2193}") { [unowned self] in
                 self.scrollDown()
             }
-            button.accessibilityHint = Translation.ButtonScrollDown.localized
+            button.accessibilityLabel = Translation.ButtonScrollDown.localized
             viewController.view.addSubview(button)
             button.snp.makeConstraints { make in
                 make.size.equalTo(CGSize(width: 50, height: 50))

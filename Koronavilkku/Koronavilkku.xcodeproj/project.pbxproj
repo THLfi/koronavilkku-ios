@@ -108,6 +108,7 @@
 		EA7B0556251248BE002941A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B0558251248BE002941A6 /* Localizable.strings */; };
 		EA7B055D251248EC002941A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B055F251248EC002941A6 /* InfoPlist.strings */; };
 		EA7B056425124C5C002941A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B0558251248BE002941A6 /* Localizable.strings */; };
+		EA7BEC8A2570E5EF005DDF3D /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BEC892570E5EF005DDF3D /* Checkbox.swift */; };
 		EA80A56C24AC71A60071E0EC /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = EA80A56B24AC71A60071E0EC /* ZIPFoundation */; };
 		EA80A56E24ACAE0D0071E0EC /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80A56D24ACAE0D0071E0EC /* REST.swift */; };
 		EA839F8C2567C4BC003B1580 /* DetectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA839F8B2567C4BC003B1580 /* DetectionStatus.swift */; };
@@ -253,6 +254,7 @@
 		EA7B0559251248C0002941A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7B055A251248C0002941A6 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7B055E251248EC002941A6 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EA7BEC892570E5EF005DDF3D /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		EA80A56D24ACAE0D0071E0EC /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
 		EA839F8B2567C4BC003B1580 /* DetectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionStatus.swift; sourceTree = "<group>"; };
 		EA839F932567D288003B1580 /* ExposureModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureModelTests.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				5687173C24C06A5200E65427 /* AttributedStringGenerator.swift */,
 				EA4A595A2562AE3A00E65CFB /* Badge.swift */,
 				D98EDD2424CB3D5F003E09A1 /* CardElement.swift */,
+				EA7BEC892570E5EF005DDF3D /* Checkbox.swift */,
 				56E3349924CEC9290017CD9A /* ContactItemCard.swift */,
 				5630F2EA24C6F8BD00B12438 /* LabeledOverlay.swift */,
 				D98EDD2624CB3E17003E09A1 /* LinkItem.swift */,
@@ -913,6 +916,7 @@
 				EA47C5EC24A6AB0300EAC720 /* Fonts.swift in Sources */,
 				EA839F8C2567C4BC003B1580 /* DetectionStatus.swift in Sources */,
 				D98EDD3124CCAD15003E09A1 /* LinkItemGroupCard.swift in Sources */,
+				EA7BEC8A2570E5EF005DDF3D /* Checkbox.swift in Sources */,
 				563D44AB24AA327F008FE2BB /* UIView.swift in Sources */,
 				D98EDD2F24CCACF3003E09A1 /* LinkItemCard.swift in Sources */,
 				EAD8619B24ADDCC900809677 /* ExposureManager.swift in Sources */,
