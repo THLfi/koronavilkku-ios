@@ -22,7 +22,7 @@ final class SymptomsElement: WideRowElement {
         container.addSubview(imageView)
         textContainer.addSubview(titleView)
         textContainer.addSubview(bodyView)
-                
+        
         container.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -32,7 +32,7 @@ final class SymptomsElement: WideRowElement {
             make.bottom.lessThanOrEqualToSuperview().offset(margin.bottom)
             make.centerY.equalToSuperview()
             make.left.equalToSuperview().offset(margin.left)
-            make.right.equalTo(imageView.snp.left)
+            make.right.equalTo(imageView.snp.left).offset(36)
         }
 
         titleView.snp.makeConstraints { make in
@@ -41,12 +41,13 @@ final class SymptomsElement: WideRowElement {
         
         bodyView.snp.makeConstraints{ make in
             make.top.equalTo(titleView.snp.bottom).offset(10)
-            make.bottom.left.right.equalToSuperview()
+            make.bottom.left.equalToSuperview()
+            make.right.equalToSuperview().offset(-10)
         }
         
         imageView.snp.makeConstraints { make in
             make.bottom.right.equalToSuperview()
-            make.top.equalToSuperview().priority(.low)
+            make.top.greaterThanOrEqualToSuperview()
             make.size.equalTo(CGSize(width: 135, height: 110))
         }
         

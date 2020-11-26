@@ -34,6 +34,9 @@ class WideRowElement: CardElement {
     func createTitleLabel(title: String) -> UILabel {
         let titleView = UILabel(label: title, font: UIFont.heading4, color: UIColor.Greyscale.black)
         titleView.numberOfLines = 0
+        if #available(iOS 14.0, *) {
+            titleView.lineBreakStrategy = .hangulWordPriority
+        }
         return titleView
     }
 
