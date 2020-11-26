@@ -15,15 +15,17 @@ extension UIFont {
     static var bodySmall = useFont(name: "SourceSansPro-Regular", ofSize: 15, withStyle: .body)
     static var searchBarPlaceholder = useFont(name: "SourceSansPro-Regular", ofSize: 17, withStyle: .body)
     static var linkLabel = useFont(name: "SourceSansPro-Bold", ofSize: 15, withStyle: .body)
-    static var tabTitle = useFont(name: "SourceSansPro-Semibold", ofSize: 11, withStyle: .caption2)
-
+    static var tabTitle = UIFont(name: "SourceSansPro-Semibold", size: 11)
+    
     static fileprivate func useFont(
         name: String,
         ofSize size: CGFloat,
         withStyle style: TextStyle
     ) -> UIFont {
-        return UIFontMetrics(forTextStyle: style).scaledFont(
-            for: UIFont(name: name, size: size) ?? systemFont(ofSize: size)
-        )
+        guard let font = UIFont(name: name, size: size) else {
+            return preferredFont(forTextStyle: style)
+        }
+     
+        return UIFontMetrics(forTextStyle: style).scaledFont(for: font)
     }
 }

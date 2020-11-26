@@ -7,7 +7,6 @@ import ExposureNotification
 
 class TestViewController: UIViewController {
     let batchIdInput = UITextField()
-    let label = UILabel()
     
     var tasks = [AnyCancellable]()
     

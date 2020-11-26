@@ -25,6 +25,9 @@ class RootViewController : UITabBarController {
         ensureCurrentBatchIdTask = Environment.default.batchRepository.getCurrentBatchId()
             .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
         
+        // Set every UILabel automagically respond to Dynamic Type changes
+        UILabel.appearance().adjustsFontForContentSizeCategory = true
+        
         viewControllers = [
             createTab(for: MainViewController()) {
                 UITabBarItem(
@@ -65,16 +68,19 @@ class RootViewController : UITabBarController {
         let navController = CustomNavigationController(rootViewController: viewController)
         navController.setDefaultStyle()
         
-        let titleTextAttributes = [
-            NSAttributedString.Key.font: UIFont.tabTitle,
-        ]
-        
         let barItem = createBarItem()
-        barItem.setTitleTextAttributes(titleTextAttributes, for: .normal)
-        barItem.imageInsets = UIEdgeInsets(top: 2, left: 0, bottom: -2, right: 0)
-        barItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -1)
-        navController.tabBarItem = barItem
+
+        if let font = UIFont.tabTitle {
+            let titleTextAttributes = [
+                NSAttributedString.Key.font: font,
+            ]
+
+            barItem.setTitleTextAttributes(titleTextAttributes, for: .normal)
+            barItem.imageInsets = UIEdgeInsets(top: 2, left: 0, bottom: -2, right: 0)
+            barItem.titlePositionAdjustment = UIOffset(horizontal: 0, vertical: -1)
+        }
         
+        navController.tabBarItem = barItem
         return navController
     }
     
