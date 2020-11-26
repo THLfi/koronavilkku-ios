@@ -1,7 +1,7 @@
 import ExposureNotification
 import Foundation
 
-struct TemporaryExposureKey : Codable {
+struct TemporaryExposureKey : Codable, Equatable {
     
     enum DataGenerationError: Error {
         case errorGeneratingRandomData
