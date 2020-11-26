@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-struct DiagnosisPublishRequest : Encodable {
+struct DiagnosisPublishRequest : Codable, Equatable {
     let keys: [TemporaryExposureKey]
     
     /// Temporary static values for E2E testing

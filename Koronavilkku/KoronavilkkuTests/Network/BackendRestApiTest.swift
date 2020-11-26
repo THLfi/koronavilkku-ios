@@ -81,11 +81,20 @@ class BackendRestApiTest : XCTestCase {
             XCTAssertEqual(request.httpMethod, "POST")
             XCTAssertEqual(request.allHTTPHeaderFields, [
                 "KV-Fake-Request": "1",
-                "Content-Length": "11",
+                "Content-Length": "101",
                 "KV-Publish-Token": "789",
                 "Content-Type": "application/json; charset=utf-8",
             ])
-            XCTAssertEqual(request.readHttpBody(), try! diagnosisKeys.toJSON())
+            
+            let decoder = JSONDecoder()
+            decoder.dateDecodingStrategy = .iso8601
+            
+            XCTAssertEqual(
+                try! decoder.decode(DiagnosisPublishRequest.self, from: request.readHttpBody()!),
+                diagnosisKeys,
+                "The decoded body should equal to the encoded payload")
+            
+            
         }, response: Data("".utf8), verifyResponse: { input, output in
             XCTAssertEqual(input, output)
         })
