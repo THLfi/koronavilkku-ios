@@ -53,8 +53,8 @@ final class NarrowRowElement: CardElement {
             make.bottom.equalToSuperview().offset(-14)
         }
         
-        titleLabel.isAccessibilityElement = false
-        self.accessibilityTraits = .button
+        titleLabel.isAccessibilityElement = false        
+        self.accessibilityTraits = .link
         self.isAccessibilityElement = true
         self.accessibilityLabel = title
     }
