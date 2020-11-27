@@ -4,7 +4,6 @@
 "ButtonNext" = "Nästa";
 "ButtonStartUsing" = "Börja använda";
 "ButtonTestUI" = "Verktyg";
-"ButtonScrollDown" = "Scrolla ner";
 "ButtonLoading" = "Laddar";
 
 "TabHome" = "Hem";
@@ -14,6 +13,11 @@
 "ExposureNotificationUserExplanation" = "Du kan ha exponerats för viruset";
 "LinkAppInfo" = "Om Coronablinkern";
 "HowItWorksButton" = "Se mer information om Coronablinkern";
+
+// MARK: Checkbox
+"Checkbox.Text.AccessibilityValueUnchecked" = "Avmarkerad";
+"Checkbox.Text.AccessibilityValueChecked" = "Markerad";
+"Checkbox.Text.AccessibilityHint" = "Tryck två gånger för att ändra valet";
 
 // MARK: MainViewController
 "MainViewController.Text.ProtectionButtonTitle" = "Skydda dig mot smitta";

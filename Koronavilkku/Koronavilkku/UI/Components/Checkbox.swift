@@ -2,6 +2,12 @@ import SnapKit
 import UIKit
 
 class Checkbox: UIView {
+    enum Text: String, Localizable {
+        case AccessibilityValueUnchecked
+        case AccessibilityValueChecked
+        case AccessibilityHint
+    }
+    
     private let acceptButton = UIButton()
     private let labelView: UILabel
     private let tapped: (Bool) -> ()
@@ -60,23 +66,15 @@ class Checkbox: UIView {
         labelView.isAccessibilityElement = false
         isAccessibilityElement = true
         accessibilityLabel = label
-        accessibilityValue = "Unchecked"
-        accessibilityTraits = .adjustable
+        accessibilityValue = Text.AccessibilityValueUnchecked.localized
+        accessibilityHint = Text.AccessibilityHint.localized
     }
     
-    override func accessibilityIncrement() {
-        toggleTapped()
-    }
-
-    override func accessibilityDecrement() {
-        toggleTapped()
-    }
-
     override func accessibilityActivate() -> Bool {
         toggleTapped()
         return true
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -85,7 +83,8 @@ class Checkbox: UIView {
         acceptButton.isSelected = !acceptButton.isSelected
         UISelectionFeedbackGenerator().selectionChanged()
         acceptButton.backgroundColor = acceptButton.isSelected ? UIColor.Primary.blue : .clear
-        accessibilityValue = isChecked ? "Checked" : "Unchecked"
         tapped(isChecked)
+        let accessibilityValue: Text = isChecked ? .AccessibilityValueChecked : .AccessibilityValueUnchecked
+        self.accessibilityValue = accessibilityValue.localized
     }
 }

@@ -27,12 +27,7 @@ class HowItWorksViewController: UIViewController {
                                                     font: UIFont.heading2,
                                                     color: UIColor.Greyscale.black,
                                                     spacing: 30)
-
-        let privacyItemList = InstructionsView.bulletList(items: [
-            Translation.GuidePrivacyItem1,
-            Translation.GuidePrivacyItem2,
-            Translation.GuidePrivacyItem3,
-        ].map { bulletItem($0) }, spacing: 10)
+        titleLabel.view.accessibilityTraits = .header
 
         let items = [
             titleLabel,
@@ -54,7 +49,9 @@ class HowItWorksViewController: UIViewController {
             textLabel(Translation.GuideDiagnosisText),
             subtitleLabel(Translation.GuidePrivacyTitle),
             textLabel(Translation.GuidePrivacyText),
-            privacyItemList,
+            bulletItem(Translation.GuidePrivacyItem1, spacing: 20),
+            bulletItem(Translation.GuidePrivacyItem2),
+            bulletItem(Translation.GuidePrivacyItem3),
         ]
 
         let topConstraint = InstructionsView.layoutItems(items, contentView: content)
@@ -72,12 +69,13 @@ class HowItWorksViewController: UIViewController {
         self.dismiss(animated: true, completion: {})
     }
 
-    private func bulletItem(_ text: Translation) -> BulletListParagraph {
-        return BulletListParagraph(content: text.localized, paragraphSpacing: 0)
+    private func bulletItem(_ text: Translation, spacing: CGFloat = 10) -> InstructionItem {
+        let bullet = BulletItem(text: text.localized, textColor: UIColor.Greyscale.darkGrey)
+        return InstructionItem(view: bullet, spacing: spacing)
     }
 
     private func subtitleLabel(_ text: Translation) -> InstructionItem {
-        return InstructionsView.labelItem(text, font: UIFont.heading4, color: UIColor.Greyscale.black, spacing: 20)
+        InstructionsView.labelItem(text, font: UIFont.heading4, color: UIColor.Greyscale.black, spacing: 20)
     }
 
     private func listTitleLabel(_ text: Translation) -> InstructionItem {

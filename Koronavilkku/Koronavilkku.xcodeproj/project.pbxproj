@@ -38,7 +38,6 @@
 		563D44B524AB59FE008FE2BB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563D44B424AB59FE008FE2BB /* TableViewCell.swift */; };
 		563D44B724AB5DEE008FE2BB /* UILabel+Styled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563D44B624AB5DEE008FE2BB /* UILabel+Styled.swift */; };
 		563D44B924AB9CD3008FE2BB /* Dictionary+IndexSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563D44B824AB9CD3008FE2BB /* Dictionary+IndexSubscript.swift */; };
-		5687173D24C06A5200E65427 /* AttributedStringGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687173C24C06A5200E65427 /* AttributedStringGenerator.swift */; };
 		5687173F24C190E400E65427 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687173E24C190E400E65427 /* OnboardingViewController.swift */; };
 		5687174224C1969A00E65427 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687174124C1969A00E65427 /* StepView.swift */; };
 		5687174424C1AA7C00E65427 /* AcceptableTermsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5687174324C1AA7C00E65427 /* AcceptableTermsView.swift */; };
@@ -109,6 +108,7 @@
 		EA7B055D251248EC002941A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B055F251248EC002941A6 /* InfoPlist.strings */; };
 		EA7B056425124C5C002941A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B0558251248BE002941A6 /* Localizable.strings */; };
 		EA7BEC8A2570E5EF005DDF3D /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BEC892570E5EF005DDF3D /* Checkbox.swift */; };
+		EA7BEC9225712B56005DDF3D /* BulletItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BEC9125712B56005DDF3D /* BulletItem.swift */; };
 		EA80A56C24AC71A60071E0EC /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = EA80A56B24AC71A60071E0EC /* ZIPFoundation */; };
 		EA80A56E24ACAE0D0071E0EC /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA80A56D24ACAE0D0071E0EC /* REST.swift */; };
 		EA839F8C2567C4BC003B1580 /* DetectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA839F8B2567C4BC003B1580 /* DetectionStatus.swift */; };
@@ -182,7 +182,6 @@
 		563D44B624AB5DEE008FE2BB /* UILabel+Styled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Styled.swift"; sourceTree = "<group>"; };
 		563D44B824AB9CD3008FE2BB /* Dictionary+IndexSubscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+IndexSubscript.swift"; sourceTree = "<group>"; };
 		5687173A24BF26C500E65427 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		5687173C24C06A5200E65427 /* AttributedStringGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributedStringGenerator.swift; sourceTree = "<group>"; };
 		5687173E24C190E400E65427 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		5687174124C1969A00E65427 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
 		5687174324C1AA7C00E65427 /* AcceptableTermsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptableTermsView.swift; sourceTree = "<group>"; };
@@ -255,6 +254,7 @@
 		EA7B055A251248C0002941A6 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7B055E251248EC002941A6 /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EA7BEC892570E5EF005DDF3D /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		EA7BEC9125712B56005DDF3D /* BulletItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BulletItem.swift; sourceTree = "<group>"; };
 		EA80A56D24ACAE0D0071E0EC /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
 		EA839F8B2567C4BC003B1580 /* DetectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionStatus.swift; sourceTree = "<group>"; };
 		EA839F932567D288003B1580 /* ExposureModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureModelTests.swift; sourceTree = "<group>"; };
@@ -398,8 +398,8 @@
 			children = (
 				D98EDD3624CDF91F003E09A1 /* AttentionCard.swift */,
 				D98EDD3424CDF754003E09A1 /* AttentionLabel.swift */,
-				5687173C24C06A5200E65427 /* AttributedStringGenerator.swift */,
 				EA4A595A2562AE3A00E65CFB /* Badge.swift */,
+				EA7BEC9125712B56005DDF3D /* BulletItem.swift */,
 				D98EDD2424CB3D5F003E09A1 /* CardElement.swift */,
 				EA7BEC892570E5EF005DDF3D /* Checkbox.swift */,
 				56E3349924CEC9290017CD9A /* ContactItemCard.swift */,
@@ -844,6 +844,7 @@
 				EA92357C24B26E4700B21B1B /* Environment.swift in Sources */,
 				5695F6D024D446DE008E06BC /* MunicipalityRepository.swift in Sources */,
 				5630F2E924C5B4A000B12438 /* TextParagraphView.swift in Sources */,
+				EA7BEC9225712B56005DDF3D /* BulletItem.swift in Sources */,
 				561878AE24AD2BDE004B7563 /* PublishTokensViewController.swift in Sources */,
 				56E3349624CCC0BB0017CD9A /* MunicipalityContactInformationView.swift in Sources */,
 				EA4A59432561C25800E65CFB /* Publisher.swift in Sources */,
@@ -870,7 +871,6 @@
 				563D44A624A9FEB6008FE2BB /* NarrowRowElement.swift in Sources */,
 				5630F2EF24C7157200B12438 /* OnboardingDoneView.swift in Sources */,
 				563D44B524AB59FE008FE2BB /* TableViewCell.swift in Sources */,
-				5687173D24C06A5200E65427 /* AttributedStringGenerator.swift in Sources */,
 				5687174424C1AA7C00E65427 /* AcceptableTermsView.swift in Sources */,
 				56C26BC924B4B5A0002F83C1 /* MunicipalitySearchResultController.swift in Sources */,
 				56C26BBA24B30CF8002F83C1 /* ExposuresViewWrapper.swift in Sources */,

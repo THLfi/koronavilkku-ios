@@ -41,6 +41,7 @@ class StepView: UIView {
             make.height.equalTo(180)
         }
         
+        headerLabel.accessibilityTraits = .header
         headerLabel.text = header
         headerLabel.font = .heading2
         headerLabel.numberOfLines = 0
