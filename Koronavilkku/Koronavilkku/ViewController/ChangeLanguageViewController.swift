@@ -58,6 +58,7 @@ class ChangeLanguageViewController: UIViewController {
             color: UIColor.Greyscale.darkGrey)
         
         universalTitle.textAlignment = .center
+        universalTitle.accessibilityLanguage = "en"
         content.addSubview(universalTitle)
         
         universalTitle.snp.makeConstraints { make in
@@ -72,6 +73,7 @@ class ChangeLanguageViewController: UIViewController {
         
         universalMessage.numberOfLines = -1
         universalMessage.textAlignment = .center
+        universalMessage.accessibilityLanguage = "en"
         content.addSubview(universalMessage)
         
         universalMessage.snp.makeConstraints { make in

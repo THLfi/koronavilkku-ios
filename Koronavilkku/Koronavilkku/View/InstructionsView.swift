@@ -33,10 +33,6 @@ struct InstructionsView {
         return topConstraint
     }
 
-    static func bulletList(items: [BulletListParagraph], spacing: CGFloat) -> InstructionItem {
-        return InstructionItem(view: items.asMutableAttributedString().toLabel(), spacing: spacing)
-    }
-
     static func labelItem(_ text: Translation, font: UIFont, color: UIColor, spacing: CGFloat) -> InstructionItem {
         return labelItem(text.localized, font: font, color: color, spacing: spacing)
     }

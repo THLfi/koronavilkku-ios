@@ -103,19 +103,19 @@ class ReportInfectionViewController: UIViewController {
         button.snp.makeConstraints { make in
             make.bottom.lessThanOrEqualTo(contentView.snp.bottom)
         }
-
-        let bulletList = [
-            Text.ReportItemPrivacy,
-            Text.ReportItemNotify,
-            Text.ReportItemGuide,
-        ]
-            .map { BulletListParagraph(content: $0.localized, textColor: UIColor.Greyscale.darkGrey) }
-            .asMutableAttributedString()
-            .toLabel()
-        top = contentView.appendView(bulletList, spacing: 30, top: top)
         
-        bulletList.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
+        var spacing: CGFloat = 30
+        var bottomAnchor = button.snp.bottom
+        
+        for listItem in [Text.ReportItemPrivacy, Text.ReportItemNotify, Text.ReportItemGuide] {
+            let bulletItem = BulletItem(text: listItem.localized)
+            top = contentView.appendView(bulletItem, spacing: spacing, top: top)
+            spacing = 10
+            bottomAnchor = bulletItem.snp.bottom
+        }
+        
+        contentView.snp.makeConstraints { make in
+            make.bottom.equalTo(bottomAnchor)
         }
     }
 

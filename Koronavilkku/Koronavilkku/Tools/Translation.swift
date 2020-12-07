@@ -49,7 +49,6 @@ enum Translation: String, Localizable {
     case ButtonNext
     case ButtonStartUsing
     case ButtonTestUI
-    case ButtonScrollDown
     case ButtonLoading
 
     /* Tabs */

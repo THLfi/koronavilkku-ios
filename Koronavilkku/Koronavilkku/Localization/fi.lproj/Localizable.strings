@@ -4,7 +4,6 @@
 "ButtonNext" = "Seuraava";
 "ButtonStartUsing" = "Aloita käyttö";
 "ButtonTestUI" = "Testikäyttöliittymä";
-"ButtonScrollDown" = "Vieritä loppuun";
 "ButtonLoading" = "Ladataan";
 
 "TabHome" = "Koti";
@@ -14,6 +13,11 @@
 "ExposureNotificationUserExplanation" = "Olet saattanut altistua virukselle";
 "LinkAppInfo" = "Tietoa sovelluksesta";
 "HowItWorksButton" = "Katso lisätietoa Koronavilkusta";
+
+// MARK: Checkbox
+"Checkbox.Text.AccessibilityValueUnchecked" = "Ei valittuna";
+"Checkbox.Text.AccessibilityValueChecked" = "Valittuna";
+"Checkbox.Text.AccessibilityHint" = "Muuta valintaa kaksoisnapauttamalla";
 
 // MARK: MainViewController
 "MainViewController.Text.ProtectionButtonTitle" = "Näin suojaudut";

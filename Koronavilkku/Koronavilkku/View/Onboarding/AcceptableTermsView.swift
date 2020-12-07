@@ -20,26 +20,21 @@ class LinkTapGestureRecognizer: UITapGestureRecognizer {
 class AcceptableTermsView: CardElement, AcceptableView {
     
     weak var delegate: AcceptDelegate?
-    
     var accepted: Bool = false
         
-    private let acceptButton = UIButton()
-    private let touchArea = UIView()
-    private let label: String
+    private var checkbox: Checkbox!
     private var externalLinkCaption: String?
     private var externalLinkUrl: URL?
     
     init(label: String, externalLinkCaption: String? = nil, externalLinkUrl: URL? = nil) {
-        self.label = label
         self.externalLinkCaption = externalLinkCaption
         self.externalLinkUrl = externalLinkUrl
         
         super.init()
         
-        initUI()
+        initUI(label: label)
         
-        self.layer.shadowColor = UIColor.Greyscale.darkGrey.cgColor
-        self.layer.borderColor = UIColor(red: 0.938, green: 0.938, blue: 0.938, alpha: 1).cgColor
+        self.layer.borderColor = UIColor.Greyscale.backdropGrey.cgColor
         self.layer.borderWidth = 1
     }
     
@@ -47,106 +42,50 @@ class AcceptableTermsView: CardElement, AcceptableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func initUI() {
+    private func initUI(label: String) {
         self.backgroundColor = UIColor.Greyscale.white
-        
-        acceptButton.isSelected = false
-        acceptButton.addTarget(self, action: #selector(toggleTapped), for: .touchUpInside)
-        acceptButton.backgroundColor = .clear
-        acceptButton.layer.cornerRadius = 5
-        acceptButton.layer.borderWidth = 2
-        acceptButton.layer.borderColor = UIColor.Primary.blue.cgColor
-        acceptButton.setBackgroundImage(UIImage(named: "check")!.withTintColor(UIColor.Greyscale.white), for: .selected)
-        acceptButton.imageView?.contentMode = .scaleAspectFit
-        acceptButton.backgroundColor = acceptButton.isSelected ?
-            UIColor.Primary.blue :
-            .clear
-        
-        self.addSubview(acceptButton)
-        acceptButton.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
-            make.left.equalToSuperview().offset(20)
-
-            make.width.height.equalTo(22)
-
-        }
-        
-        let textLabel = UILabel(label: self.label,
-                                font: UIFont.bodySmall,
-                                color: UIColor.Greyscale.darkGrey)
-        textLabel.numberOfLines = 0
-        self.addSubview(textLabel)
-        textLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
-            make.left.equalTo(acceptButton.snp.right).offset(10)
-            make.right.equalToSuperview().offset(-20)
-        }
-
-        let tap = UITapGestureRecognizer(target: self, action: #selector(toggleTapped))
-        touchArea.addGestureRecognizer(tap)
-        self.addSubview(touchArea)
-        
-        let bottomMargin: CGFloat = 20
         let contentBottom: ConstraintItem
+        let bottomMargin: CGFloat
+        
+        checkbox = Checkbox(label: label) { [unowned self] checked in
+            self.accepted = checked
+            self.delegate?.statusChanged()
+        }
 
+        self.addSubview(checkbox)
+        
+        checkbox.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+        }
+        
         if let caption = externalLinkCaption, let url = externalLinkUrl {
             let spacing: CGFloat = 10
             let linkLabel = LinkLabel(label: caption,
-                                    font: UIFont.linkLabel,
-                                    color: UIColor.Primary.blue) { [unowned self] in
+                                      font: UIFont.linkLabel,
+                                      color: UIColor.Primary.blue) { [unowned self] in
                 self.delegate?.openLink(url: url)
             }
-            
-            linkLabel.contentInset = UIEdgeInsets(top: -spacing, left: 0, bottom: -bottomMargin, right: 0)
+
+            linkLabel.contentInset = UIEdgeInsets(top: -spacing, left: 0, bottom: -spacing * 2, right: 0)
             linkLabel.accessibilityTraits = .link
             self.addSubview(linkLabel)
-            
+
             linkLabel.snp.makeConstraints { make in
-                make.left.equalTo(acceptButton.snp.right).offset(10)
-                make.top.equalTo(textLabel.snp.bottom).offset(spacing)
-                make.left.equalTo(textLabel)
-                make.right.equalTo(textLabel)
-            }
-            contentBottom = linkLabel.snp.bottom
-            
-            touchArea.snp.makeConstraints { make in
-                make.top.left.right.equalToSuperview()
-                make.bottom.equalTo(linkLabel.snp.top).offset(-spacing)
+                make.top.equalTo(checkbox.snp.bottom).offset(-10)
+                make.left.equalTo(checkbox.labelStartConstraint)
+                make.right.equalTo(checkbox).offset(-20)
             }
 
+            contentBottom = linkLabel.snp.bottom
+            bottomMargin = 20
         } else {
-            contentBottom = textLabel.snp.bottom
-            
-            touchArea.snp.makeConstraints { make in
-                make.top.left.right.bottom.equalToSuperview()
-            }
+            contentBottom = checkbox.snp.bottom
+            bottomMargin = 0
         }
 
         self.snp.makeConstraints { make in
             make.bottom.equalTo(contentBottom).offset(bottomMargin)
         }
-        
-        acceptButton.isAccessibilityElement = false
-        textLabel.isAccessibilityElement = false
-        touchArea.isAccessibilityElement = true
-        touchArea.accessibilityTraits = .button
-        touchArea.accessibilityLabel = textLabel.text
-    }
-    
-    @objc func toggleTapped() {
-        UISelectionFeedbackGenerator().selectionChanged()
-        acceptButton.isSelected = !acceptButton.isSelected
-        acceptButton.backgroundColor = acceptButton.isSelected ? UIColor.Primary.blue : .clear
-        
-        if acceptButton.isSelected {
-            touchArea.accessibilityTraits.insert(.selected)
-        } else {
-            touchArea.accessibilityTraits.remove(.selected)
-        }
-        
-        Log.d("Checkbox button tapped")
-        self.accepted = acceptButton.isSelected
-        self.delegate?.statusChanged()
     }
 }
 

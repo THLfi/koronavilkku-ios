@@ -289,7 +289,7 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
             let button = RoundedButton(title: "\u{2193}") { [unowned self] in
                 self.scrollDown()
             }
-            button.accessibilityHint = Translation.ButtonScrollDown.localized
+            button.isAccessibilityElement = false
             viewController.view.addSubview(button)
             button.snp.makeConstraints { make in
                 make.size.equalTo(CGSize(width: 50, height: 50))
@@ -351,6 +351,7 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
         
         button.addTarget(self, action: #selector(languageSelectionTapped), for: .touchUpInside)
         button.setTitle("Language", for: .normal)
+        button.accessibilityLanguage = "en"
         button.backgroundColor = UIColor.Secondary.blueBackdrop
         button.setTitleColor(UIColor.Primary.blue, for: .normal)
         button.titleLabel?.font = .bodySmall

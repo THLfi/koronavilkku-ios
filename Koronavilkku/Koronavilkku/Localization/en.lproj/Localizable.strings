@@ -4,7 +4,6 @@
 "ButtonNext" = "Next";
 "ButtonStartUsing" = "Start using the app";
 "ButtonTestUI" = "Test UI";
-"ButtonScrollDown" = "Scroll down";
 "ButtonLoading" = "Loading";
 
 "TabHome" = "Home";
@@ -14,6 +13,11 @@
 "ExposureNotificationUserExplanation" = "You may have been exposed to the coronavirus";
 "LinkAppInfo" = "About Koronavilkku";
 "HowItWorksButton" = "More information about Koronavilkku";
+
+// MARK: Checkbox
+"Checkbox.Text.AccessibilityValueUnchecked" = "Unchecked";
+"Checkbox.Text.AccessibilityValueChecked" = "Checked";
+"Checkbox.Text.AccessibilityHint" = "Double tap to toggle";
 
 // MARK: MainViewController
 "MainViewController.Text.ProtectionButtonTitle" = "Protect yourself";
