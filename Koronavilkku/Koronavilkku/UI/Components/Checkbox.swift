@@ -59,7 +59,7 @@ class Checkbox: UIView {
         }
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(toggleTapped))
-        labelView.addGestureRecognizer(tap)
+        self.addGestureRecognizer(tap)
 
         labelView.isUserInteractionEnabled = true
         acceptButton.isAccessibilityElement = false
@@ -70,11 +70,6 @@ class Checkbox: UIView {
         accessibilityHint = Text.AccessibilityHint.localized
     }
     
-    override func accessibilityActivate() -> Bool {
-        toggleTapped()
-        return true
-    }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
