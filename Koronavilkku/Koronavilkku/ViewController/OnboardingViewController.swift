@@ -351,6 +351,7 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
         
         button.addTarget(self, action: #selector(languageSelectionTapped), for: .touchUpInside)
         button.setTitle("Language", for: .normal)
+        button.accessibilityLanguage = "en"
         button.backgroundColor = UIColor.Secondary.blueBackdrop
         button.setTitleColor(UIColor.Primary.blue, for: .normal)
         button.titleLabel?.font = .bodySmall
