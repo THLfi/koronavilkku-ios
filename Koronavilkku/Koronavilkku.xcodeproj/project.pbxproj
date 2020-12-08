@@ -124,6 +124,7 @@
 		EA92A06924A3958600CE7271 /* KoronavilkkuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92A06824A3958600CE7271 /* KoronavilkkuUITests.swift */; };
 		EA92A07824A4982000CE7271 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EA92A07724A4982000CE7271 /* SnapKit */; };
 		EA92A07B24A4E59800CE7271 /* LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92A07A24A4E59800CE7271 /* LivePreview.swift */; };
+		EAA9892D257E7194009A7FF8 /* EFGSRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA9892C257E7194009A7FF8 /* EFGSRepository.swift */; };
 		EAD8619B24ADDCC900809677 /* ExposureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619A24ADDCC900809677 /* ExposureManager.swift */; };
 		EAD8619D24AE18A900809677 /* ExposureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619C24AE18A900809677 /* ExposureRepository.swift */; };
 		EAD8619F24AE56BA00809677 /* ExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619E24AE56BA00809677 /* ExposureConfiguration.swift */; };
@@ -275,6 +276,7 @@
 		EA92A06A24A3958600CE7271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA92A07A24A4E59800CE7271 /* LivePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePreview.swift; sourceTree = "<group>"; };
 		EA9EF6AD2506679300FBAB9E /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
+		EAA9892C257E7194009A7FF8 /* EFGSRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFGSRepository.swift; sourceTree = "<group>"; };
 		EAD8619824ADCC0100809677 /* Koronavilkku.debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Koronavilkku.debug.entitlements; sourceTree = "<group>"; };
 		EAD8619A24ADDCC900809677 /* ExposureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureManager.swift; sourceTree = "<group>"; };
 		EAD8619C24AE18A900809677 /* ExposureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRepository.swift; sourceTree = "<group>"; };
@@ -316,9 +318,10 @@
 		32B5955F24AA273A00CC386E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				EA3ED0E224F8315500635817 /* FileStorage.swift */,
 				32B5956024AA27ED00CC386E /* BatchRepository.swift */,
+				EAA9892C257E7194009A7FF8 /* EFGSRepository.swift */,
 				EAD8619C24AE18A900809677 /* ExposureRepository.swift */,
+				EA3ED0E224F8315500635817 /* FileStorage.swift */,
 				561878AB24AC9952004B7563 /* LocalStore.swift */,
 				5695F6CF24D446DE008E06BC /* MunicipalityRepository.swift */,
 			);
@@ -884,6 +887,7 @@
 				5630F2EB24C6F8BD00B12438 /* LabeledOverlay.swift in Sources */,
 				56C26BBC24B33D74002F83C1 /* ExposuresLastCheckedView.swift in Sources */,
 				EAD8619F24AE56BA00809677 /* ExposureConfiguration.swift in Sources */,
+				EAA9892D257E7194009A7FF8 /* EFGSRepository.swift in Sources */,
 				561878AA24AC8F03004B7563 /* ExposureModel.swift in Sources */,
 				56E3349424CB21760017CD9A /* MunicipalityContactInfoViewController.swift in Sources */,
 				EA839F9C256802C2003B1580 /* NotificationListViewController.swift in Sources */,

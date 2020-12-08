@@ -13,7 +13,7 @@ class RootViewController : UITabBarController {
         super.init(coder: coder)
     }
     
-    var ensureCurrentBatchIdTask: AnyCancellable?
+    var updateTask: AnyCancellable?
     
     init(initialTab selectedTab: RootTab? = nil) {
         super.init(nibName: nil, bundle: nil)
@@ -22,8 +22,13 @@ class RootViewController : UITabBarController {
         
         // In case a considerable amount of time (batch id changes) elapses before
         // the background task is run the first time, attempt to fetch the current batch identifier separately.
-        ensureCurrentBatchIdTask = Environment.default.batchRepository.getCurrentBatchId()
-            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+        updateTask = Publishers.Zip(
+            Environment.default.batchRepository.getCurrentBatchId().catch { _ in
+                Empty(completeImmediately: true)
+            },
+            Environment.default.efgsRepository.updateCountryList()
+        )
+        .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
         
         // Set every UILabel automagically respond to Dynamic Type changes
         UILabel.appearance().adjustsFontForContentSizeCategory = true

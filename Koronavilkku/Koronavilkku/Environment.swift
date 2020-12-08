@@ -5,6 +5,7 @@ import TrustKit
 struct Environment {
     let configuration: Configuration
     let batchRepository: BatchRepository
+    let efgsRepository: EFGSRepository
     let exposureRepository: ExposureRepository
     let municipalityRepository: MunicipalityRepository
 
@@ -27,12 +28,16 @@ extension Environment {
                                                         backend: backend,
                                                         storage: storage)
         
+        let efgsRepository = EFGSRepositoryImpl(exposureRepository: exposureRepository,
+                                                storage: storage)
+        
         let municipalityRepository = MunicipalityRepositoryImpl(cms: cms,
                                                                 omaoloBaseURL: config.omaoloBaseURL,
                                                                 storage: storage)
         
         return Environment(configuration: config,
                            batchRepository: batchRepository,
+                           efgsRepository: efgsRepository,
                            exposureRepository: exposureRepository,
                            municipalityRepository: municipalityRepository)
     }
