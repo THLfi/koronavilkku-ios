@@ -51,35 +51,9 @@ class ReportInfectionViewController: UIViewController {
             Log.d("User has already published tokens")
             return
         }
-
-        let publishTokensVC = PublishTokensViewController()
         
-        if let code = code {
-            publishTokensVC.setCode(code)
-        }
-
-        let childNavController = UINavigationController(rootViewController: publishTokensVC)
-        childNavController.modalPresentationStyle = .fullScreen
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor.Secondary.blueBackdrop
-        appearance.shadowColor = .clear
-        appearance.titleTextAttributes = [
-            .font: UIFont.labelPrimary,
-            .foregroundColor: UIColor.Greyscale.black
-        ]
-        
-        let buttonAppearance = UIBarButtonItemAppearance()
-        buttonAppearance.normal.titleTextAttributes = [
-            .font: UIFont.labelPrimary,
-        ]
-
-        appearance.buttonAppearance = buttonAppearance
-        
-        childNavController.navigationBar.standardAppearance = appearance
-        childNavController.navigationBar.tintColor = UIColor.Primary.blue
-        
-        self.navigationController?.present(childNavController, animated: true)
+        self.navigationController?.present(ReportInfectionFlowViewController(publishToken: code),
+                                           animated: true)
     }
     
     private func showInstructions() {

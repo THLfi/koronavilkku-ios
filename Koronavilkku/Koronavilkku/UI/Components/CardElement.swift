@@ -26,3 +26,16 @@ class CardElement: UIView {
         self.layer.cornerRadius = cornerRadius
     }
 }
+
+extension UIView {
+    func embedInCard() -> CardElement {
+        let card = CardElement()
+        card.addSubview(self)
+        
+        self.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        return card
+    }
+}
