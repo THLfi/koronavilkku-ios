@@ -12,6 +12,7 @@ class StepView: UIView {
     let header: String
     let content: String
     let extraContent: [UIView]?
+    var bottomConstraint: Constraint?
     
     init(image: UIImage, header: String, content: String, extraContent: [UIView]?) {
         self.image = image
@@ -79,7 +80,7 @@ class StepView: UIView {
         }
         
         bottomView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-160)
+            bottomConstraint = make.bottom.equalToSuperview().offset(-160).constraint
         }
     }
     

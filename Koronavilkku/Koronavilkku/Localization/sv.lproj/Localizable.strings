@@ -89,11 +89,9 @@
 "ReportInfectionViewController.Text.LockedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
 "ReportInfectionViewController.Text.DisabledText" = "Exponerings\U00ADmeddelandena måste vara påkopplade för att du ska kunna meddela att du har blivit smittad. Gå tillbaka till hemsidan där du kan koppla på dem.";
 "ReportInfectionViewController.Text.ReportTitle" = "Meddela om din smitta";
-"ReportInfectionViewController.Text.ReportText" = "Om du har testats och konstaterats ha coronavirusinfektion får du en startkod från hälsovården eller i ett textmeddelande från THL. Med startkoden kan du anonymt förmedla information om din smitta.\n\nAnge startkoden i den telefon som du vanligtvis har med dig.";
-"ReportInfectionViewController.Text.ReportButton" = "Ange startkod";
-"ReportInfectionViewController.Text.ReportItemPrivacy" = "Det är inte möjligt att identifiera dig med hjälp av startkoden.";
-"ReportInfectionViewController.Text.ReportItemNotify" = "Informationen förmedlas till de användare som har varit i din närhet i perioden som du sannolikt har varit smittsam.";
-"ReportInfectionViewController.Text.ReportItemGuide" = "Informationen uppmanar mottagarna att undvika kontakter, att i tid lägga märke till symtom som passar in på infektionen och att vid behov söka sig till test. På det här sättet kan smittospridning begränsas.";
+"ReportInfectionViewController.Text.ReportMessagePrimary" = "För att meddela om din smitta behöver du en startkod. Du får startkoden från en yrkesperson inom hälso- och sjukvården eller per textmeddelande från THL, om du i ett coronavirustest i Finland har konstateras vara smittad.";
+"ReportInfectionViewController.Text.ReportMessageSecondary" = "Ange startkoden i den telefon som du vanligtvis har med dig. Coronablinkern meddelar om eventuell exponering till de användare av applikationen som har varit i din närhet under perioden som du sannolikt har varit smittsam. Det är inte möjligt att identifiera dig med hjälp av startkoden.";
+"ReportInfectionViewController.Text.ReportButton" = "Meddela om smitta";
 
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Ange din startkod";

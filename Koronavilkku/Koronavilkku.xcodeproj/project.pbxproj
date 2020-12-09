@@ -134,6 +134,7 @@
 		EAEB8333252B7095005B8E24 /* Elevation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB8332252B7095005B8E24 /* Elevation.swift */; };
 		EAEB833B252B77AE005B8E24 /* TokenCodeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB833A252B77AE005B8E24 /* TokenCodeField.swift */; };
 		EAF340C52580F1460092ED6E /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF340C42580F1460092ED6E /* RadioButton.swift */; };
+		EAF340D0258102120092ED6E /* FadeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF340CF258102120092ED6E /* FadeBlock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -291,6 +292,7 @@
 		EAEB8332252B7095005B8E24 /* Elevation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elevation.swift; sourceTree = "<group>"; };
 		EAEB833A252B77AE005B8E24 /* TokenCodeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenCodeField.swift; sourceTree = "<group>"; };
 		EAF340C42580F1460092ED6E /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		EAF340CF258102120092ED6E /* FadeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeBlock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +414,7 @@
 				D98EDD2424CB3D5F003E09A1 /* CardElement.swift */,
 				EA7BEC892570E5EF005DDF3D /* Checkbox.swift */,
 				56E3349924CEC9290017CD9A /* ContactItemCard.swift */,
+				EAF340CF258102120092ED6E /* FadeBlock.swift */,
 				5630F2EA24C6F8BD00B12438 /* LabeledOverlay.swift */,
 				D98EDD2624CB3E17003E09A1 /* LinkItem.swift */,
 				D98EDD2E24CCACF3003E09A1 /* LinkItemCard.swift */,
@@ -914,6 +917,7 @@
 				EA1F5C8B24E1517000398EC8 /* InstructionsView.swift in Sources */,
 				56C26BAD24AF3886002F83C1 /* InfoViewWithButton.swift in Sources */,
 				32E0350224AB0E8100F48450 /* Configuration.swift in Sources */,
+				EAF340D0258102120092ED6E /* FadeBlock.swift in Sources */,
 				D98EDD2B24CC7EBA003E09A1 /* SymptomsViewController.swift in Sources */,
 				3288A07724AC593300365B46 /* Backend.swift in Sources */,
 				327C940224BED1C9003C8429 /* ApiResponses.swift in Sources */,

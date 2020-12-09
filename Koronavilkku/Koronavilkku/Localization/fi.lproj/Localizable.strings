@@ -89,11 +89,9 @@
 "ReportInfectionViewController.Text.LockedText" = "Ilmoittamasi tiedot auttavat koronavirusepidemian taltuttamisessa. Sovellus on nyt lukittu eikä enää kerää tietoja kohtaamisista. Pikaista paranemista!";
 "ReportInfectionViewController.Text.DisabledText" = "Altistumisilmoitusten täytyy olla päällä, jotta voit ilmoittaa tartunnasta. Palaa Koti-näkymään, jossa voit laittaa ne päälle.";
 "ReportInfectionViewController.Text.ReportTitle" = "Ilmoita tartunnastasi";
-"ReportInfectionViewController.Text.ReportText" = "Jos sinulla todetaan tartunta koronavirustestillä, saat avauskoodin terveydenhuollon ammattilaiselta tai tekstiviestillä THL:ltä. Avauskoodilla voit jakaa nimettömästi tiedon tartunnastasi.\n\nSyötä avauskoodi sillä puhelimella, jota yleensä pidät mukanasi.";
-"ReportInfectionViewController.Text.ReportButton" = "Syötä avauskoodisi";
-"ReportInfectionViewController.Text.ReportItemPrivacy" = "Avauskoodista ei voi tunnistaa henkilöllisyyttäsi.";
-"ReportInfectionViewController.Text.ReportItemNotify" = "Koronavilkku ilmoittaa mahdollisesta altistumisesta käyttäjille, jotka ovat olleet lähelläsi todennäköisenä tartuttavuusaikana.";
-"ReportInfectionViewController.Text.ReportItemGuide" = "Tieto mahdollisesta altistumisesta kannustaa ilmoituksen saaneita pitämään etäisyyttä muihin, havaitsemaan tartuntaan sopivat oireet ajoissa ja tarvittaessa hakeutumaan testiin. Näin voidaan välttää uusia tartuntoja.";
+"ReportInfectionViewController.Text.ReportMessagePrimary" = "Ilmoittaaksesi tartunnastasi tarvitset avauskoodin. Saat koodin terveyden\U00ADhuollon ammattilaiselta tai tekstiviestillä THL:ltä, jos sinulla todetaan tartunta koronavirustestillä Suomessa.";
+"ReportInfectionViewController.Text.ReportMessageSecondary" = "Syötä avauskoodi sillä puhelimella, jota yleensä pidät mukanasi. Koronavilkku ilmoittaa mahdollisesta altistumisesta sovelluksen käyttäjille, jotka ovat olleet lähelläsi todennäköisenä tartuttavuusaikana. Avauskoodista ei voi tunnistaa henkilöllisyyttäsi.";
+"ReportInfectionViewController.Text.ReportButton" = "Ilmoita tartunnasta";
 
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Syötä avauskoodisi";

@@ -8,11 +8,10 @@ class ReportInfectionViewController: UIViewController {
         case LockedText
         case DisabledText
         case ReportTitle
-        case ReportText
+        case ReportMessagePrimary
+        case ReportMessageSecondary
         case ReportButton
-        case ReportItemPrivacy
-        case ReportItemNotify
-        case ReportItemGuide
+        case ReportDisclaimer
     }
     
     override func viewDidLoad() {
@@ -62,34 +61,46 @@ class ReportInfectionViewController: UIViewController {
         navigationItem.title = Text.ReportTitle.localized
 
         let margin = UIEdgeInsets(top: 20, left: 20, bottom: 30, right: 20)
-        let contentView = view.addScrollableContentView(backgroundColor: UIColor.Secondary.blueBackdrop, margins: margin)
-        
+        let buttonMargin = UIEdgeInsets(top: 20, left: 20, bottom: 44, right: 20)
+        let contentView = view.addScrollableContentView(backgroundColor: UIColor.Secondary.blueBackdrop,
+                                                        margins: margin)
         var top = contentView.snp.top
+
+        let primaryMessage = UILabel(label: Text.ReportMessagePrimary.localized,
+                                     font: .heading4,
+                                     color: UIColor.Greyscale.black)
+
+        primaryMessage.numberOfLines = 0
+        top = contentView.appendView(primaryMessage, top: top)
         
-        let text = UILabel(label: Text.ReportText.localized, font: .bodyLarge, color: UIColor.Greyscale.black)
-        text.numberOfLines = 0
-        top = contentView.appendView(text, top: top)
+        let secondaryMessage = UILabel(label: Text.ReportMessageSecondary.localized,
+                                       font: .bodySmall,
+                                       color: UIColor.Greyscale.black)
         
-        let button = RoundedButton(title: Text.ReportButton.localized,
-                                   action: { [unowned self] in self.pushToPublishTokensVC() })
-        top = contentView.appendView(button, spacing: 30, top: top)
+        secondaryMessage.numberOfLines = 0
+        top = contentView.appendView(secondaryMessage, spacing: 20, top: top)
+
+        contentView.snp.makeConstraints { make in
+            // the content wrapper already contains the space between text and button top edge
+            make.bottom.equalTo(top).offset(buttonMargin.bottom + RoundedButton.height)
+        }
+
+        let fadeBlock = FadeBlock(color: UIColor.Secondary.blueBackdrop)
+        view.addSubview(fadeBlock)
+
+        fadeBlock.snp.makeConstraints { make in
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.left.right.equalToSuperview()
+        }
+
+        let button = RoundedButton(title: Text.ReportButton.localized) { [unowned self] in
+            self.pushToPublishTokensVC()
+        }
+        
+        view.addSubview(button)
         
         button.snp.makeConstraints { make in
-            make.bottom.lessThanOrEqualTo(contentView.snp.bottom)
-        }
-        
-        var spacing: CGFloat = 30
-        var bottomAnchor = button.snp.bottom
-        
-        for listItem in [Text.ReportItemPrivacy, Text.ReportItemNotify, Text.ReportItemGuide] {
-            let bulletItem = BulletItem(text: listItem.localized)
-            top = contentView.appendView(bulletItem, spacing: spacing, top: top)
-            spacing = 10
-            bottomAnchor = bulletItem.snp.bottom
-        }
-        
-        contentView.snp.makeConstraints { make in
-            make.bottom.equalTo(bottomAnchor)
+            make.edges.equalTo(fadeBlock).inset(buttonMargin)
         }
     }
 

@@ -25,15 +25,15 @@ class ChooseDestinationViewController: UIViewController {
         let radioEFGS = RadioButton(value: ReportingDestination.efgs,
                                     label: Text.DestinationEFGS.localized)
         
-        let radioLocalOnly = RadioButton(value: ReportingDestination.local,
+        let radioLocal = RadioButton(value: ReportingDestination.local,
                                          label: Text.DestinationLocal.localized)
         
-        self.radioButtonGroup = RadioButtonGroup([radioEFGS, radioLocalOnly])
+        self.radioButtonGroup = RadioButtonGroup([radioEFGS, radioLocal])
         
         container.layout { append in
             append(titleView, nil)
-            append(radioEFGS.embedInCard(), UIEdgeInsets(top: 20))
-            append(radioLocalOnly.embedInCard(), UIEdgeInsets(top: 20))
+            append(CardElement(embed: radioEFGS), UIEdgeInsets(top: 20))
+            append(CardElement(embed: radioLocal), UIEdgeInsets(top: 20))
         }
 
         radioButtonGroup.onChange { [unowned self] value in
