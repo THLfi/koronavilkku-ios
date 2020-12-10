@@ -87,11 +87,22 @@
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "Olet jo ilmoittanut tartunnasta";
 "ReportInfectionViewController.Text.LockedText" = "Ilmoittamasi tiedot auttavat koronavirusepidemian taltuttamisessa. Sovellus on nyt lukittu eikä enää kerää tietoja kohtaamisista. Pikaista paranemista!";
-"ReportInfectionViewController.Text.DisabledText" = "Altistumisilmoitusten täytyy olla päällä, jotta voit ilmoittaa tartunnasta. Palaa Koti-näkymään, jossa voit laittaa ne päälle.";
+"ReportInfectionViewController.Text.DisabledText" = "Altistumis\U00ADilmoitusten täytyy olla käytössä, jotta voit ilmoittaa tartunnasta. Ota altistumis\U00ADilmoitukset käyttöön Koronavilkun Koti-näkymässä.";
 "ReportInfectionViewController.Text.ReportTitle" = "Ilmoita tartunnastasi";
 "ReportInfectionViewController.Text.ReportMessagePrimary" = "Ilmoittaaksesi tartunnastasi tarvitset avauskoodin. Saat koodin terveyden\U00ADhuollon ammattilaiselta tai tekstiviestillä THL:ltä, jos sinulla todetaan tartunta koronavirustestillä Suomessa.";
 "ReportInfectionViewController.Text.ReportMessageSecondary" = "Syötä avauskoodi sillä puhelimella, jota yleensä pidät mukanasi. Koronavilkku ilmoittaa mahdollisesta altistumisesta sovelluksen käyttäjille, jotka ovat olleet lähelläsi todennäköisenä tartuttavuusaikana. Avauskoodista ei voi tunnistaa henkilöllisyyttäsi.";
 "ReportInfectionViewController.Text.ReportButton" = "Ilmoita tartunnasta";
+
+// MARK: ChooseDestinationViewController
+"ChooseDestinationViewController.Text.Title" = "Kenelle haluat ilmoittaa tartunnastasi?";
+"ChooseDestinationViewController.Text.DestinationEFGS" = "Koronavilkun ja muiden eurooppalaisten koronasovellusten käyttäjille.";
+"ChooseDestinationViewController.Text.DestinationLocal" = "Vain Koronavilkun käyttäjille.";
+"ChooseDestinationViewController.Text.PublishTokenReceived" = "Koronavilkku sai avauskoodisi tekstiviestistä.";
+
+// MARK: TravelStatusViewController
+"TravelStatusViewController.Text.Title" = "Oletko matkustanut ulkomailla viimeisten 14 vuorokauden aikana?";
+"TravelStatusViewController.Text.NotTravelled" = "En ole matkustanut.";
+"TravelStatusViewController.Text.HasTravelled" = "Olen matkustanut.";
 
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Syötä avauskoodisi";

@@ -36,11 +36,7 @@ class ReportInfectionViewController: UIViewController {
         }
     }
     
-    private func pushToPublishTokensVC() {
-        self.pushToPublishTokensVC(with: nil)
-    }
-    
-    func pushToPublishTokensVC(with code: String?) {
+    func startReportInfectionFlow(with code: String?) {
         guard LocalStore.shared.uiStatus != .apiDisabled else {
             Log.d("Cannot publish tokens because EN API is disabled")
             return
@@ -94,7 +90,7 @@ class ReportInfectionViewController: UIViewController {
         }
 
         let button = RoundedButton(title: Text.ReportButton.localized) { [unowned self] in
-            self.pushToPublishTokensVC()
+            self.startReportInfectionFlow(with: nil)
         }
         
         view.addSubview(button)

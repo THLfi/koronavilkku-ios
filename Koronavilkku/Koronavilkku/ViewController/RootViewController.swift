@@ -91,11 +91,8 @@ class RootViewController : UITabBarController {
     
     func openReportInfectionScreenWithCode(code: String) {
         // if we're already in the publish tokens step, just prefill the code
-        if
-            let navController = presentedViewController as? UINavigationController,
-            let publishTokensVC = navController.topViewController as? PublishTokensViewController?
-        {
-            publishTokensVC?.setCode(code)
+        if let flowController = presentedViewController as? ReportInfectionFlowViewController {
+            flowController.setPublishToken(publishToken: code, receivedFromSMS: true)
             return
         }
         
@@ -104,10 +101,11 @@ class RootViewController : UITabBarController {
 
         // navigate to the correct view
         selectTab(.reportInfection)
+
         guard let navController = tabViewController(.reportInfection) else { return }
         guard let reportInfectionVC = navController.topViewController as? ReportInfectionViewController else { return }
         
-        reportInfectionVC.pushToPublishTokensVC(with: code)
+        reportInfectionVC.startReportInfectionFlow(with: code)
     }
     
     func selectTab(_ tab: RootTab) {

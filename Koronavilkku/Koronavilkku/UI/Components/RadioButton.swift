@@ -22,7 +22,7 @@ class RadioButton<Value: Equatable>: Checkbox {
     
     @objc override func tapHandler() {
         isChecked = true
-        radioGroup?.setValue(newValue: value)
+        radioGroup?.value = value
     }
 }
 
@@ -37,6 +37,20 @@ class RadioButtonGroup<Value: Equatable> {
     private let radioButtons: [RadioButton<Value>]
     private var onChangeHandler: ((Value) -> ())?
     
+    var value: Value? {
+        didSet {
+            guard let value = value, value != oldValue else { return }
+            
+            for button in radioButtons {
+                if button.value != value {
+                    button.isChecked = false
+                }
+            }
+            
+            onChangeHandler?(value)
+        }
+    }
+    
     init(_ radioButtons: [RadioButton<Value>]) {
         self.radioButtons = radioButtons
         
@@ -47,15 +61,5 @@ class RadioButtonGroup<Value: Equatable> {
     
     func onChange(handler: @escaping (Value) -> ()) {
         self.onChangeHandler = handler
-    }
-    
-    func setValue(newValue: Value) {
-        for button in radioButtons {
-            if button.value != newValue {
-                button.isChecked = false
-            }
-        }
-        
-        onChangeHandler?(newValue)
     }
 }

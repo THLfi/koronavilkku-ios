@@ -87,11 +87,22 @@
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "You have already reported your infection";
 "ReportInfectionViewController.Text.LockedText" = "The information you have reported will help to tackle the coronavirus epidemic. The app is now locked and no longer collects information about nearby phones. We wish you a quick recovery!";
-"ReportInfectionViewController.Text.DisabledText" = "Exposure notifications must be turned on in order to report an infection. Return to the Home view and enable exposure notifications.";
+"ReportInfectionViewController.Text.DisabledText" = "Exposure notifications must be turned on to report an infection. Enable exposure notifications in the Koronavilkku Home view.";
 "ReportInfectionViewController.Text.ReportTitle" = "Report your infection";
 "ReportInfectionViewController.Text.ReportMessagePrimary" = "You will need a key code to report your infection. You will receive a key code from a health care professional or via text message from the Finnish Institute for Health and Welfare.";
 "ReportInfectionViewController.Text.ReportMessageSecondary" = "Enter the key code on the phone you usually carry with you. Koronavilkku sends a notification of potential exposure to app users who have been close to you during the period when you could have infected others. The key code does not reveal your identity.";
 "ReportInfectionViewController.Text.ReportButton" = "Report your infection";
+
+// MARK: ChooseDestinationViewController
+"ChooseDestinationViewController.Text.Title" = "Who do you want to report your infection to?";
+"ChooseDestinationViewController.Text.DestinationEFGS" = "Users of Koronavilkku and other European coronavirus applications.";
+"ChooseDestinationViewController.Text.DestinationLocal" = "Users of Koronavilkku only.";
+"ChooseDestinationViewController.Text.PublishTokenReceived" = "Koronavilkku got your key code from a text message.";
+
+// MARK: TravelStatusViewController
+"TravelStatusViewController.Text.Title" = "Have you travelled abroad within the past 14 days?";
+"TravelStatusViewController.Text.NotTravelled" = "I have not.";
+"TravelStatusViewController.Text.HasTravelled" = "I have.";
 
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Enter key code";

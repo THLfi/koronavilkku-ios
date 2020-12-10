@@ -87,11 +87,22 @@
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "Du har redan meddelat om din smitta";
 "ReportInfectionViewController.Text.LockedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
-"ReportInfectionViewController.Text.DisabledText" = "Exponerings\U00ADmeddelandena måste vara påkopplade för att du ska kunna meddela att du har blivit smittad. Gå tillbaka till hemsidan där du kan koppla på dem.";
+"ReportInfectionViewController.Text.DisabledText" = "Exponerings\U00ADmeddelandena måste vara påkopplade för att du ska kunna meddela att du har blivit smittad. Koppla på exponerings\U00ADmeddelandena i Coronablinkerns hemvy.";
 "ReportInfectionViewController.Text.ReportTitle" = "Meddela om din smitta";
 "ReportInfectionViewController.Text.ReportMessagePrimary" = "För att meddela om din smitta behöver du en startkod. Du får startkoden från en yrkesperson inom hälso- och sjukvården eller per textmeddelande från THL, om du i ett coronavirustest i Finland har konstateras vara smittad.";
 "ReportInfectionViewController.Text.ReportMessageSecondary" = "Ange startkoden i den telefon som du vanligtvis har med dig. Coronablinkern meddelar om eventuell exponering till de användare av applikationen som har varit i din närhet under perioden som du sannolikt har varit smittsam. Det är inte möjligt att identifiera dig med hjälp av startkoden.";
 "ReportInfectionViewController.Text.ReportButton" = "Meddela om smitta";
+
+// MARK: ChooseDestinationViewController
+"ChooseDestinationViewController.Text.Title" = "Vem vill du meddela din smitta till?";
+"ChooseDestinationViewController.Text.DestinationEFGS" = "För användare av Coronablinkern och andra europeiska corona-applikationer.";
+"ChooseDestinationViewController.Text.DestinationLocal" = "Endast för användare av Coronablinkern.";
+"ChooseDestinationViewController.Text.PublishTokenReceived" = "Coronablinkern fick din startkod från textmeddelandet.";
+
+// MARK: TravelStatusViewController
+"TravelStatusViewController.Text.Title" = "Har du rest utomlands under de senaste 14 dygnen?";
+"TravelStatusViewController.Text.NotTravelled" = "Nej.";
+"TravelStatusViewController.Text.HasTravelled" = "Ja.";
 
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Ange din startkod";

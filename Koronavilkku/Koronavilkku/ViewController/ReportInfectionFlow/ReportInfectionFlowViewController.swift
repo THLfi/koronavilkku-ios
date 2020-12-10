@@ -7,14 +7,14 @@ enum ReportingDestination {
 
 struct TravelStatus {
     let hasTravelled: Bool?
-    let travelledCountries = [EFGSCountry]()
-    let otherCountries = false
+    let travelledCountries: [EFGSCountry]
 }
 
 struct ReportInfectionViewModel {
     let destination: ReportingDestination?
     let travelStatus: TravelStatus?
     let publishToken: String?
+    let tokenReceived: Bool
 }
 
 class ReportInfectionFlowViewController: UINavigationController {
@@ -23,34 +23,66 @@ class ReportInfectionFlowViewController: UINavigationController {
     private(set) var viewModel: ReportInfectionViewModel
     
     init(publishToken: String? = nil) {
-        self.viewModel = .init(destination: nil, travelStatus: nil, publishToken: publishToken)
+        self.viewModel = .init(destination: nil,
+                               travelStatus: nil,
+                               publishToken: publishToken,
+                               tokenReceived: publishToken != nil)
+        
         super.init(rootViewController: ChooseDestinationViewController())
 
         modalPresentationStyle = .fullScreen
-        
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = UIColor.Secondary.blueBackdrop
-        appearance.shadowColor = .clear
-        appearance.titleTextAttributes = [
-            .font: UIFont.labelPrimary,
-            .foregroundColor: UIColor.Greyscale.black
-        ]
-        
-        let buttonAppearance = UIBarButtonItemAppearance()
-        buttonAppearance.normal.titleTextAttributes = [
-            .font: UIFont.labelPrimary,
-        ]
-
-        appearance.buttonAppearance = buttonAppearance
-        
-        navigationBar.standardAppearance = appearance
-        navigationBar.tintColor = UIColor.Primary.blue
+        setDefaultStyle()
     }
     
-    func setPublishToken(publishToken: String) {
+    func setPublishToken(publishToken: String, receivedFromSMS: Bool) {
         viewModel = .init(destination: viewModel.destination,
                           travelStatus: viewModel.travelStatus,
-                          publishToken: publishToken)
+                          publishToken: publishToken,
+                          tokenReceived: receivedFromSMS)
+    }
+    
+    func setDestination(destination: ReportingDestination) {
+        let travelStatus: TravelStatus?
+        let nextVC: BaseReportInfectionViewController
+        
+        switch destination {
+        case .local:
+            travelStatus = nil
+            nextVC = ConfirmReportViewController()
+        default:
+            travelStatus = viewModel.travelStatus
+            nextVC = TravelStatusViewController()
+        }
+        
+        viewModel = .init(destination: destination,
+                          travelStatus: travelStatus,
+                          publishToken: viewModel.publishToken,
+                          tokenReceived: viewModel.tokenReceived)
+        
+        pushViewController(nextVC, animated: true)
+    }
+    
+    func setTravelStatus(hasTravelled: Bool) {
+        let travelledCountries: [EFGSCountry]
+        let nextVC: BaseReportInfectionViewController
+        
+        switch hasTravelled {
+        case true:
+            travelledCountries = viewModel.travelStatus?.travelledCountries ?? []
+            nextVC = ChooseCountriesViewController()
+            
+        case false:
+            travelledCountries = []
+            nextVC = ConfirmReportViewController()
+        }
+        
+        viewModel = .init(destination: viewModel.destination,
+                          travelStatus: TravelStatus(hasTravelled: hasTravelled,
+                                                     travelledCountries: travelledCountries),
+                          publishToken: viewModel.publishToken,
+                          tokenReceived: viewModel.tokenReceived)
+        
+        pushViewController(nextVC, animated: true)
     }
     
     required init?(coder aDecoder: NSCoder) {
