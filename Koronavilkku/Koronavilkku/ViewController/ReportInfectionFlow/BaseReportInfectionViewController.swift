@@ -11,14 +11,12 @@ class BaseReportInfectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = nil
         navigationItem.largeTitleDisplayMode = .never
-
-        // show back arrow when in the root view, as this flow is shown modally
-        if navigationController?.viewControllers.first == self {
-            navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .plain, target: self, action: #selector(close))
-            navigationItem.leftBarButtonItem?.accessibilityLabel = Translation.ButtonBack.localized
-        }
+        navigationItem.setHidesBackButton(true, animated: false)
+        
+        let backButton = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .plain, target: self, action: #selector(backHandler))
+        backButton.accessibilityLabel = Translation.ButtonBack.localized
+        navigationItem.setLeftBarButton(backButton, animated: false)
     }
 
     internal func createContentWrapper(floatingButton: RoundedButton? = nil) {
@@ -55,7 +53,7 @@ class BaseReportInfectionViewController: UIViewController {
     }
 
     @objc
-    func close() {
-        self.dismiss(animated: true, completion: nil)
+    func backHandler() {
+        flowController.navigateBack()
     }
 }

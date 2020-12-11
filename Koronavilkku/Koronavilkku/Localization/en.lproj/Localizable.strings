@@ -104,6 +104,11 @@
 "TravelStatusViewController.Text.NotTravelled" = "I have not.";
 "TravelStatusViewController.Text.HasTravelled" = "I have.";
 
+// MARK: ChooseCountriesViewController
+"ChooseCountriesViewController.Text.Title" = "Where have you travelled?";
+"ChooseCountriesViewController.Text.Message" = "Which countries have you visited within the past 14 days? If the country you visited is not listed or you do not want to disclose it, select Other.";
+"ChooseCountriesViewController.Text.CheckboxOther" = "Other";
+
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Enter key code";
 "PublishTokensViewController.Text.ButtonSubmit" = "Report infection";

@@ -2,7 +2,7 @@ import Combine
 import UIKit
 
 /// EFGS participating country
-struct EFGSCountry: Codable {
+struct EFGSCountry: Codable, Hashable {
     /// ISO 3166-1 alpha-2 region code
     let regionCode: String
     
@@ -31,7 +31,7 @@ struct EFGSCountry: Codable {
 /// signature would be unique and it could potentially identify someone having received a
 /// positive COVID-19 diagnosis.
 protocol EFGSRepository {
-    func getParticipatingCountries() -> [EFGSCountry]?
+    func getParticipatingCountries() -> Set<EFGSCountry>?
     func updateCountryList() -> AnyPublisher<Bool, Never>
 }
 
@@ -41,7 +41,7 @@ struct EFGSRepositoryImpl: EFGSRepository {
     let exposureRepository: ExposureRepository
     let storage: FileStorage
     
-    func getParticipatingCountries() -> [EFGSCountry]? {
+    func getParticipatingCountries() -> Set<EFGSCountry>? {
         storage.read(from: Self.countryListFile)
     }
     

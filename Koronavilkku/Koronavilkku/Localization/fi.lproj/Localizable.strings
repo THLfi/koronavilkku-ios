@@ -104,6 +104,11 @@
 "TravelStatusViewController.Text.NotTravelled" = "En ole matkustanut.";
 "TravelStatusViewController.Text.HasTravelled" = "Olen matkustanut.";
 
+// MARK: ChooseCountriesViewController
+"ChooseCountriesViewController.Text.Title" = "Missä olet matkustanut?";
+"ChooseCountriesViewController.Text.Message" = "Missä maissa olet matkustanut viimeisten 14 vuorokauden aikana? Jos matkustusmaasi ei ole listalla tai et halua kertoa sitä, valitse Muu.";
+"ChooseCountriesViewController.Text.CheckboxOther" = "Muu";
+
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Syötä avauskoodisi";
 "PublishTokensViewController.Text.ButtonSubmit" = "Ilmoita tartunnasta";

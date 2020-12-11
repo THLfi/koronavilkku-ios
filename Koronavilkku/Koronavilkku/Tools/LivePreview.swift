@@ -119,8 +119,8 @@ extension Environment {
         }
         
         struct PreviewEFGSRepository: EFGSRepository {
-            func getParticipatingCountries() -> [EFGSCountry]? {
-                []
+            func getParticipatingCountries() -> Set<EFGSCountry>? {
+                Set()
             }
             
             func updateCountryList() -> AnyPublisher<Bool, Never> {

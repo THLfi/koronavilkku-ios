@@ -7,7 +7,7 @@ enum ReportingDestination {
 
 struct TravelStatus {
     let hasTravelled: Bool?
-    let travelledCountries: [EFGSCountry]
+    let travelledCountries: Set<EFGSCountry>
 }
 
 struct ReportInfectionViewModel {
@@ -22,14 +22,17 @@ class ReportInfectionFlowViewController: UINavigationController {
     @Published
     private(set) var viewModel: ReportInfectionViewModel
     
-    init(publishToken: String? = nil) {
+    private let efgsRepository: EFGSRepository
+    
+    init(efgsRepository: EFGSRepository = Environment.default.efgsRepository, publishToken: String? = nil) {
+        self.efgsRepository = efgsRepository
         self.viewModel = .init(destination: nil,
                                travelStatus: nil,
                                publishToken: publishToken,
                                tokenReceived: publishToken != nil)
         
         super.init(rootViewController: ChooseDestinationViewController())
-
+        
         modalPresentationStyle = .fullScreen
         setDefaultStyle()
     }
@@ -63,13 +66,13 @@ class ReportInfectionFlowViewController: UINavigationController {
     }
     
     func setTravelStatus(hasTravelled: Bool) {
-        let travelledCountries: [EFGSCountry]
+        let travelledCountries: Set<EFGSCountry>
         let nextVC: BaseReportInfectionViewController
         
         switch hasTravelled {
         case true:
-            travelledCountries = viewModel.travelStatus?.travelledCountries ?? []
-            nextVC = ChooseCountriesViewController()
+            travelledCountries = viewModel.travelStatus?.travelledCountries ?? Set()
+            nextVC = ChooseCountriesViewController(countries: efgsRepository.getParticipatingCountries() ?? [])
             
         case false:
             travelledCountries = []
@@ -83,6 +86,24 @@ class ReportInfectionFlowViewController: UINavigationController {
                           tokenReceived: viewModel.tokenReceived)
         
         pushViewController(nextVC, animated: true)
+    }
+    
+    func setTravelStatus(countries: Set<EFGSCountry>) {
+        viewModel = .init(destination: viewModel.destination,
+                          travelStatus: TravelStatus(hasTravelled: true,
+                                                     travelledCountries: countries),
+                          publishToken: viewModel.publishToken,
+                          tokenReceived: viewModel.tokenReceived)
+        
+        pushViewController(ConfirmReportViewController(), animated: true)
+    }
+    
+    func navigateBack() {
+        if viewControllers.count > 1 {
+            popViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

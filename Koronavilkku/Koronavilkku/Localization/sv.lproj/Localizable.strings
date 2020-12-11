@@ -104,6 +104,11 @@
 "TravelStatusViewController.Text.NotTravelled" = "Nej.";
 "TravelStatusViewController.Text.HasTravelled" = "Ja.";
 
+// MARK: ChooseCountriesViewController
+"ChooseCountriesViewController.Text.Title" = "Var har du rest?";
+"ChooseCountriesViewController.Text.Message" = "I vilka länder har du rest under de senaste 14 dygnen? Om landet dit du rest inte finns med på listan eller om du inte vill berätta det, välj Annat.";
+"ChooseCountriesViewController.Text.CheckboxOther" = "Annat";
+
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Ange din startkod";
 "PublishTokensViewController.Text.ButtonSubmit" = "Meddela om din smitta";
