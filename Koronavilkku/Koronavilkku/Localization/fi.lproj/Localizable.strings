@@ -109,6 +109,20 @@
 "ChooseCountriesViewController.Text.Message" = "Missä maissa olet matkustanut viimeisten 14 vuorokauden aikana? Jos matkustusmaasi ei ole listalla tai et halua kertoa sitä, valitse Muu.";
 "ChooseCountriesViewController.Text.CheckboxOther" = "Muu";
 
+// MARK: ConfirmReportViewController
+"ConfirmReportViewController.Text.Title" = "Vahvista ja lähetä";
+"ConfirmReportViewController.Text.MessageLocal" = "Tieto tartunnastasi jaetaan nimettömästi Koronavilkun käyttäjille.";
+"ConfirmReportViewController.Text.MessageEFGS" = "Tieto tartunnastasi jaetaan nimettömästi Koronavilkun ja muiden eurooppalaisten korona\U00ADsovellusten käyttäjille.";
+"ConfirmReportViewController.Text.TravelSubtitle" = "Matkustustiedot";
+"ConfirmReportViewController.Text.NotTravelledMessage" = "Et ole matkustanut viimeisten 14 vuorokauden aikana ulkomailla.";
+"ConfirmReportViewController.Text.HasTravelledMessage" = "Olet matkustanut viimeisten 14 vuorokauden aikana näissä maissa:";
+"ConfirmReportViewController.Text.OptionOther" = "Muu";
+"ConfirmReportViewController.Text.TermsSubtitle" = "Suostumus";
+"ConfirmReportViewController.Text.TermsCheckboxLocal" = "Kohtaamistietoni sekä tiedon todennäköisestä tartuttavuus\U00ADajastani saa luovuttaa Koronavilkku-sovelluksen käyttöön tartunta\U00ADketjujen katkaisemiseksi.\n\nAnnan suostumukseni vapaaehtoisesti. Minulta ei ole vaadittu suostumusta terveydenhuollon asiakas\U00ADpalvelu\U00ADtilanteessa eikä viranomais\U00ADmenettelyssä.";
+"ConfirmReportViewController.Text.TermsCheckboxEFGS" = "Kohtaamistietoni, edellä valitsemani matkustustiedot ja tiedon todennäköisestä tartuttavuus\U00ADajastani saa luovuttaa EU- ja Eta-maiden sekä Sveitsin ja Iso-Britannian korona\U00ADsovellusten käyttöön tartunta\U00ADketjujen katkaisemiseksi.";
+"ConfirmReportViewController.Text.TermsDisclaimer" = "Kun olet lähettänyt tiedot, et voi enää peruuttaa antamaasi suostumusta.";
+"ConfirmReportViewController.Text.Button" = "Syötä avauskoodisi";
+
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Syötä avauskoodisi";
 "PublishTokensViewController.Text.ButtonSubmit" = "Ilmoita tartunnasta";

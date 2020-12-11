@@ -109,6 +109,20 @@
 "ChooseCountriesViewController.Text.Message" = "I vilka länder har du rest under de senaste 14 dygnen? Om landet dit du rest inte finns med på listan eller om du inte vill berätta det, välj Annat.";
 "ChooseCountriesViewController.Text.CheckboxOther" = "Annat";
 
+// MARK: ConfirmReportViewController
+"ConfirmReportViewController.Text.Title" = "Bekräfta och sänd";
+"ConfirmReportViewController.Text.MessageLocal" = "Informationen om din smitta förmedlas anonymt till de som använder Coronablinkern.";
+"ConfirmReportViewController.Text.MessageEFGS" = "Information om din smitta meddelas anonymt till de som använder Coronablinkern och andra europeiska corona-applikationer.";
+"ConfirmReportViewController.Text.TravelSubtitle" = "Reseuppgifter";
+"ConfirmReportViewController.Text.NotTravelledMessage" = "Du har inte rest utomlands under de senaste 14 dygnen.";
+"ConfirmReportViewController.Text.HasTravelledMessage" = "Du har rest i dessa länder under de senaste 14 dygnen:";
+"ConfirmReportViewController.Text.OptionOther" = "Annat";
+"ConfirmReportViewController.Text.TermsSubtitle" = "Samtycke";
+"ConfirmReportViewController.Text.TermsCheckboxLocal" = "Mina mötesuppgifter samt information om min sannolika smittsamhets\U00ADperiod får lämnas ut för användning i Coronablinker-applikationen i syfte att bryta smittkedjorna.\n\nJag ger mitt samtycke frivilligt. Mitt samtycke har inte krävts i en kundbetjänings\U00ADsituation inom hälso- och sjukvården eller i ett myndighets\U00ADförfarande.";
+"ConfirmReportViewController.Text.TermsCheckboxEFGS" = "Mina mötesuppgifter, ovan valda reseuppgifter och information om min sannolika smittsamhets\U00ADperiod får lämnas ut för användning av corona-applikationer i EU- och EES-länderna samt Schweiz och Storbritannien i syfte att bryta smittkedjorna.";
+"ConfirmReportViewController.Text.TermsDisclaimer" = "När du sänt uppgifterna kan du inte längre återkalla ditt samtycke.";
+"ConfirmReportViewController.Text.Button" = "Ange din startkod";
+
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Ange din startkod";
 "PublishTokensViewController.Text.ButtonSubmit" = "Meddela om din smitta";

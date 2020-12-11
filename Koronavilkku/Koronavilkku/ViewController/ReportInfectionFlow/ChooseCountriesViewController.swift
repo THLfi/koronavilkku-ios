@@ -8,8 +8,9 @@ class ChooseCountriesViewController: BaseReportInfectionViewController {
         case CheckboxOther
     }
     
-    let countryList: Set<EFGSCountry>
-    var selectedCountries = Set<EFGSCountry>()
+    private let countryList: Set<EFGSCountry>
+    private var selectedCountries = Set<EFGSCountry>()
+    private var otherCountries = false
     
     init(countries: Set<EFGSCountry>) {
         self.countryList = countries
@@ -34,14 +35,21 @@ class ChooseCountriesViewController: BaseReportInfectionViewController {
         messageLabel.numberOfLines = 0
         
         let button = RoundedButton(title: Translation.ButtonNext.localized) { [unowned self] in
-            flowController.setTravelStatus(countries: selectedCountries)
+            flowController.setTravelStatus(countries: selectedCountries,
+                                           otherCountries: otherCountries)
         }
         
         let countries = Dictionary.init(grouping: countryList) {
             String($0.localizedName.first ?? Character(""))
         }.sorted { $0.key < $1.key }
         
-        let otherCheckbox = Checkbox(label: Text.CheckboxOther.localized) { _ in }
+        let otherCheckbox = Checkbox(label: Text.CheckboxOther.localized) { [unowned self] isChecked in
+            self.otherCountries = isChecked
+        }
+        
+        if flowController.viewModel.travelStatus?.otherCountries == true {
+            otherCheckbox.isChecked = true
+        }
         
         content.layout { append in
             append(messageLabel, nil)
@@ -67,6 +75,10 @@ class ChooseCountriesViewController: BaseReportInfectionViewController {
             } else {
                 self.selectedCountries.remove(country)
             }
+        }
+        
+        if let countries = flowController.viewModel.travelStatus?.travelledCountries, countries.contains(country) {
+            checkbox.isChecked = true
         }
         
         return CardElement(embed: checkbox)

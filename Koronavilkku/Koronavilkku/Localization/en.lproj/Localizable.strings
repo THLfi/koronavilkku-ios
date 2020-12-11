@@ -109,6 +109,20 @@
 "ChooseCountriesViewController.Text.Message" = "Which countries have you visited within the past 14 days? If the country you visited is not listed or you do not want to disclose it, select Other.";
 "ChooseCountriesViewController.Text.CheckboxOther" = "Other";
 
+// MARK: ConfirmReportViewController
+"ConfirmReportViewController.Text.Title" = "Confirm and send";
+"ConfirmReportViewController.Text.MessageLocal" = "Information about your infection will be shared anonymously to the users of Koronavilkku.";
+"ConfirmReportViewController.Text.MessageEFGS" = "Information about your infection will be shared anonymously to the users of Koronavilkku and other European coronavirus applications.";
+"ConfirmReportViewController.Text.TravelSubtitle" = "Travel information";
+"ConfirmReportViewController.Text.NotTravelledMessage" = "You have not travelled abroad within the past 14 days.";
+"ConfirmReportViewController.Text.HasTravelledMessage" = "You have visited these countries within the past 14 days:";
+"ConfirmReportViewController.Text.OptionOther" = "Other";
+"ConfirmReportViewController.Text.TermsSubtitle" = "Consent";
+"ConfirmReportViewController.Text.TermsCheckboxLocal" = "My encounter data and the estimated period of when I could have infected others may be shared to the Koronavilkku app for the purpose of breaking transmission chains.\n\nI give this consent voluntarily. I have not been demanded for this consent in a health care customer service situation or during official proceedings.";
+"ConfirmReportViewController.Text.TermsCheckboxEFGS" = "My encounter data, the travel information I have selected above, and the estimated period of when I could have infected others may be shared to the coronavirus applications used in the EU, EEA, Switzerland and Great Britain for the purpose of breaking transmission chains.";
+"ConfirmReportViewController.Text.TermsDisclaimer" = "Once you have sent the information, you cannot withdraw your consent.";
+"ConfirmReportViewController.Text.Button" = "Enter your key code";
+
 // MARK: PublishTokensViewController
 "PublishTokensViewController.Text.Title" = "Enter key code";
 "PublishTokensViewController.Text.ButtonSubmit" = "Report infection";

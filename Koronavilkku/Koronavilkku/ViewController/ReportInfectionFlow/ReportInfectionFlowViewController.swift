@@ -6,8 +6,9 @@ enum ReportingDestination {
 }
 
 struct TravelStatus {
-    let hasTravelled: Bool?
+    let hasTravelled: Bool
     let travelledCountries: Set<EFGSCountry>
+    let otherCountries: Bool
 }
 
 struct ReportInfectionViewModel {
@@ -67,35 +68,44 @@ class ReportInfectionFlowViewController: UINavigationController {
     
     func setTravelStatus(hasTravelled: Bool) {
         let travelledCountries: Set<EFGSCountry>
+        let otherCountries: Bool
         let nextVC: BaseReportInfectionViewController
         
         switch hasTravelled {
         case true:
             travelledCountries = viewModel.travelStatus?.travelledCountries ?? Set()
+            otherCountries = viewModel.travelStatus?.otherCountries ?? false
             nextVC = ChooseCountriesViewController(countries: efgsRepository.getParticipatingCountries() ?? [])
             
         case false:
             travelledCountries = []
+            otherCountries = false
             nextVC = ConfirmReportViewController()
         }
         
         viewModel = .init(destination: viewModel.destination,
                           travelStatus: TravelStatus(hasTravelled: hasTravelled,
-                                                     travelledCountries: travelledCountries),
+                                                     travelledCountries: travelledCountries,
+                                                     otherCountries: otherCountries),
                           publishToken: viewModel.publishToken,
                           tokenReceived: viewModel.tokenReceived)
         
         pushViewController(nextVC, animated: true)
     }
     
-    func setTravelStatus(countries: Set<EFGSCountry>) {
+    func setTravelStatus(countries: Set<EFGSCountry>, otherCountries: Bool) {
         viewModel = .init(destination: viewModel.destination,
                           travelStatus: TravelStatus(hasTravelled: true,
-                                                     travelledCountries: countries),
+                                                     travelledCountries: countries,
+                                                     otherCountries: countries.isEmpty ? true : otherCountries),
                           publishToken: viewModel.publishToken,
                           tokenReceived: viewModel.tokenReceived)
         
         pushViewController(ConfirmReportViewController(), animated: true)
+    }
+    
+    func acceptTerms() {
+        pushViewController(PublishTokensViewController(), animated: true)
     }
     
     func navigateBack() {
