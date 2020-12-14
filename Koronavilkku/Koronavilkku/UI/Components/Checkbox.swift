@@ -24,7 +24,6 @@ class Checkbox: UIView {
         set {
             guard isChecked != newValue else { return }
             acceptButton.isSelected = newValue
-            UISelectionFeedbackGenerator().selectionChanged()
             acceptButton.backgroundColor = newValue ? selectedColor : .clear
             self.accessibilityValue = newValue ? Text.AccessibilityValueChecked.localized : Text.AccessibilityValueUnchecked.localized
         }
@@ -88,6 +87,7 @@ class Checkbox: UIView {
     
     @objc internal func tapHandler() {
         isChecked = !isChecked
+        UISelectionFeedbackGenerator().selectionChanged()
         tapped(isChecked)
     }
 }

@@ -21,6 +21,10 @@ class RadioButton<Value: Equatable>: Checkbox {
     }
     
     @objc override func tapHandler() {
+        if !isChecked {
+            UISelectionFeedbackGenerator().selectionChanged()
+        }
+
         isChecked = true
         radioGroup?.value = value
     }

@@ -10,7 +10,6 @@ class ChooseCountriesViewController: BaseReportInfectionViewController {
     
     private let countryList: Set<EFGSCountry>
     private var selectedCountries = Set<EFGSCountry>()
-    private var otherCountries = false
     
     init(countries: Set<EFGSCountry>) {
         self.countryList = countries
@@ -34,30 +33,32 @@ class ChooseCountriesViewController: BaseReportInfectionViewController {
         
         messageLabel.numberOfLines = 0
         
+        let otherCheckbox = Checkbox(label: Text.CheckboxOther.localized) { _ in }
+
+        if flowController.viewModel.travelStatus?.otherCountries == true {
+            otherCheckbox.isChecked = true
+        }
+
         let button = RoundedButton(title: Translation.ButtonNext.localized) { [unowned self] in
             flowController.setTravelStatus(countries: selectedCountries,
-                                           otherCountries: otherCountries)
+                                           otherCountries: otherCheckbox.isChecked)
         }
         
         let countries = Dictionary.init(grouping: countryList) {
             String($0.localizedName.first ?? Character(""))
         }.sorted { $0.key < $1.key }
         
-        let otherCheckbox = Checkbox(label: Text.CheckboxOther.localized) { [unowned self] isChecked in
-            self.otherCountries = isChecked
-        }
-        
-        if flowController.viewModel.travelStatus?.otherCountries == true {
-            otherCheckbox.isChecked = true
-        }
-        
         content.layout { append in
             append(messageLabel, nil)
             
             for (letter, countries) in countries {
                 append(UILabel(label: String(letter), font: .heading5, color: UIColor.Greyscale.darkGrey), UIEdgeInsets(top: 20))
+                
+                let sortedCountries = countries.sorted {
+                    $0.localizedName < $1.localizedName
+                }
 
-                for country in countries {
+                for country in sortedCountries {
                     append(createCheckbox(for: country), UIEdgeInsets(top: 10))
                 }
             }
