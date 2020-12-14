@@ -44,5 +44,9 @@ class TravelStatusViewController: BaseReportInfectionViewController {
         radioButtonGroup.onChange { value in
             continueButton.setEnabled(true)
         }
+
+        if let travelStatus = flowController.viewModel.travelStatus {
+            self.radioButtonGroup.value = travelStatus.hasTravelled
+        }
     }
 }

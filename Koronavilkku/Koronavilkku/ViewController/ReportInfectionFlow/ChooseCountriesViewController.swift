@@ -78,6 +78,7 @@ class ChooseCountriesViewController: BaseReportInfectionViewController {
         }
         
         if let countries = flowController.viewModel.travelStatus?.travelledCountries, countries.contains(country) {
+            selectedCountries.insert(country)
             checkbox.isChecked = true
         }
         

@@ -42,9 +42,7 @@ class RadioButtonGroup<Value: Equatable> {
             guard let value = value, value != oldValue else { return }
             
             for button in radioButtons {
-                if button.value != value {
-                    button.isChecked = false
-                }
+                button.isChecked = (button.value == value)
             }
             
             onChangeHandler?(value)
