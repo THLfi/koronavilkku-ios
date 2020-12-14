@@ -213,7 +213,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
             .eraseToAnyPublisher()
     }
     
-    private func mapKeysToCorrectLength(enTemporaryExposureKeys: [ENTemporaryExposureKey]) -> [TemporaryExposureKey] {
+    func mapKeysToCorrectLength(enTemporaryExposureKeys: [ENTemporaryExposureKey]) -> [TemporaryExposureKey] {
         var keys = enTemporaryExposureKeys.map { $0.toTemporaryExposureKey() }
         // If there are more than 14 keys, remove old keys by sorting temporary keys to descending order
         // by rollingStartIntervalNumber and removing tail from sorted array

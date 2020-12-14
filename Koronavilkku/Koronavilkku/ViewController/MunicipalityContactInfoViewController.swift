@@ -10,6 +10,7 @@ class MunicipalityContactInfoViewController: UIViewController {
         case SymptomAssesmentButton
         case SymptomAssesmentHelp
         case ContactInfoTitle
+        case ContactInfoMessage
         case SymptomsInfo
         case SymptomsText
     }
@@ -56,12 +57,19 @@ class MunicipalityContactInfoViewController: UIViewController {
                                               buttonTapped: { [unowned self] in self.openOmaoloLink(target: .makeEvaluation) })
             top = contentView.appendView(infoView, top: top)
 
-            let subHeader = UILabel(label: Text.ContactInfoTitle.localized,
-                                    font: UIFont.heading3,
-                                    color: UIColor.Greyscale.black)
-            subHeader.numberOfLines = 0
-            subHeader.setLineHeight(0.95)
-            top = contentView.appendView(subHeader, spacing: 30, top: top)
+            let titleLabel = UILabel(label: Text.ContactInfoTitle.localized,
+                                     font: UIFont.heading3,
+                                     color: UIColor.Greyscale.black)
+            titleLabel.numberOfLines = 0
+            titleLabel.setLineHeight(0.95)
+            top = contentView.appendView(titleLabel, spacing: 30, top: top)
+            
+            let messageLabel = UILabel(label: Text.ContactInfoMessage.localized,
+                                       font: .bodySmall,
+                                       color: UIColor.Greyscale.darkGrey)
+            
+            messageLabel.numberOfLines = 0
+            top = contentView.appendView(messageLabel, spacing: 10, top: top)
             contactInfoTopMargin = 20
         } else {
             contactInfoTopMargin = 0
@@ -73,13 +81,12 @@ class MunicipalityContactInfoViewController: UIViewController {
         
         top = contentView.appendView(contactInformationView, spacing: contactInfoTopMargin, top: top)
         
-        let symptomsInfo = UILabel(label: Text.SymptomsInfo.localized, font: UIFont.heading4, color: UIColor.Greyscale.black)
+        let symptomsInfo = UILabel(label: Text.SymptomsInfo.localized, font: .heading4, color: UIColor.Greyscale.black)
         symptomsInfo.numberOfLines = 0
         top = contentView.appendView(symptomsInfo, spacing: 30, top: top)
         
-        let symptomsText = UILabel(label: Text.SymptomsText.localized, font: UIFont.bodySmall, color: UIColor.Greyscale.darkGrey)
+        let symptomsText = UILabel(label: Text.SymptomsText.localized, font: .bodySmall, color: UIColor.Greyscale.black)
         symptomsText.numberOfLines = 0
-        symptomsText.setLineHeight(1.20)
         top = contentView.appendView(symptomsText, spacing: 10, top: top)
         
         symptomsText.snp.makeConstraints { make in

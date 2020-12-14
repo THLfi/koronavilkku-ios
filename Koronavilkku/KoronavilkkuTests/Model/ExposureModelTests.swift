@@ -28,7 +28,8 @@ class ExposureModelTests: XCTestCase {
                                                transmissionRiskScores: [],
                                                durationAtAttenuationThresholds: [],
                                                durationAtAttenuationWeights: [],
-                                               exposureRiskDuration: 15)
+                                               exposureRiskDuration: 15,
+                                               participatingCountries: ["FI", "NL"])
     
     func testExposureNotificationDates() {
         let exposureDate1 = Date().addingTimeInterval(86_400 * -3)

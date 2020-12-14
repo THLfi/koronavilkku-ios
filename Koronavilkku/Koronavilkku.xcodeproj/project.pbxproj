@@ -120,6 +120,7 @@
 		EA8E224C258250CB0008EE92 /* ConfirmReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E224B258250CB0008EE92 /* ConfirmReportViewController.swift */; };
 		EA8E2251258250FF0008EE92 /* TravelStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E2250258250FF0008EE92 /* TravelStatusViewController.swift */; };
 		EA8E2259258264CF0008EE92 /* ChooseCountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E2258258264CF0008EE92 /* ChooseCountriesViewController.swift */; };
+		EA8E2265258798CE0008EE92 /* MockEFGSRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E2264258798CE0008EE92 /* MockEFGSRepository.swift */; };
 		EA92357C24B26E4700B21B1B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92357B24B26E4700B21B1B /* Environment.swift */; };
 		EA92A04424A3958300CE7271 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92A04324A3958300CE7271 /* AppDelegate.swift */; };
 		EA92A04624A3958300CE7271 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92A04524A3958300CE7271 /* SceneDelegate.swift */; };
@@ -274,6 +275,7 @@
 		EA8E224B258250CB0008EE92 /* ConfirmReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmReportViewController.swift; sourceTree = "<group>"; };
 		EA8E2250258250FF0008EE92 /* TravelStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelStatusViewController.swift; sourceTree = "<group>"; };
 		EA8E2258258264CF0008EE92 /* ChooseCountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCountriesViewController.swift; sourceTree = "<group>"; };
+		EA8E2264258798CE0008EE92 /* MockEFGSRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEFGSRepository.swift; sourceTree = "<group>"; };
 		EA92357B24B26E4700B21B1B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EA92A04024A3958300CE7271 /* Koronavilkku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koronavilkku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA92A04324A3958300CE7271 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -629,6 +631,14 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		EA8E2263258798980008EE92 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				EA8E2264258798CE0008EE92 /* MockEFGSRepository.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
 		EA92A03724A3958300CE7271 = {
 			isa = PBXGroup;
 			children = (
@@ -682,6 +692,7 @@
 			children = (
 				5695F6D424D82C8B008E06BC /* Json */,
 				560833BE24B886B70078B75D /* Localization */,
+				EA8E2263258798980008EE92 /* Mock */,
 				56EE9BD524F7DE720037A45D /* Model */,
 				EA4F905324F4EFB40032D9D5 /* Network */,
 				56C2DBF524EFA8C50014F09D /* Scene */,
@@ -985,6 +996,7 @@
 			files = (
 				EA1B814324F54AA10041DED1 /* RestApiTest.swift in Sources */,
 				5695F6D624D82C9E008E06BC /* MunicipalityValidation.swift in Sources */,
+				EA8E2265258798CE0008EE92 /* MockEFGSRepository.swift in Sources */,
 				EA1B814524F54AD20041DED1 /* MockURLProtocol.swift in Sources */,
 				EA4F905024F46E660032D9D5 /* BatchRepositoryTest.swift in Sources */,
 				EA1B814E24F7159B0041DED1 /* MockBackend.swift in Sources */,

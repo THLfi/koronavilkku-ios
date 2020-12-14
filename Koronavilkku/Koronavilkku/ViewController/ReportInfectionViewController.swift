@@ -11,7 +11,6 @@ class ReportInfectionViewController: UIViewController {
         case ReportMessagePrimary
         case ReportMessageSecondary
         case ReportButton
-        case ReportDisclaimer
     }
     
     override func viewDidLoad() {

@@ -141,6 +141,7 @@ class ExposuresViewWrapper: UIView {
         case InstructionsShopping
         case InstructionsCoughing
         case InstructionsRemoteWork
+        case InstructionsWhenAbroad
     }
     
     enum NoExposuresText : String, Localizable {
@@ -255,8 +256,14 @@ class ExposuresViewWrapper: UIView {
             make.bottom.equalTo(lastBulletBottom)
         }
         
+        let whenAboardLabel = UILabel(label: HasExposureText.InstructionsWhenAbroad.localized,
+                                      font: .bodySmall,
+                                      color: UIColor.Greyscale.black)
+        whenAboardLabel.numberOfLines = 0
+        top = appendView(whenAboardLabel, spacing: 20, top: top)
+
         self.snp.makeConstraints { make in
-            make.bottom.equalTo(bulletList.snp.bottom)
+            make.bottom.equalTo(whenAboardLabel.snp.bottom)
         }
     }
     
