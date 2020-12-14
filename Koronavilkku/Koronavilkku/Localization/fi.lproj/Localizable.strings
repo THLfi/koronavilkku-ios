@@ -30,7 +30,7 @@
 "StatusHeaderView.Text.TitleDisabled" = "Koronavilkku ei käytössä";
 "StatusHeaderView.Text.TitleLocked" = "Koronavilkku lukittu";
 "StatusHeaderView.Text.BodyEnabled" = "Sovellus toimii, vaikka suljet sen.";
-"StatusHeaderView.Text.BodyDisabled" = "Ota altistumisilmoitukset uudelleen käyttöön.";
+"StatusHeaderView.Text.BodyDisabled" = "Ota altistumis\U00ADilmoitukset uudelleen käyttöön.";
 "StatusHeaderView.Text.BodyBTOff" = "Ota Bluetooth käyttöön.";
 "StatusHeaderView.Text.BodyLocked" = "Kiitos, että ilmoitit tartunnastasi. Sovellus ei enää kerää tietoja kohtaamisista. Pikaista paranemista!";
 "StatusHeaderView.Text.EnableButton" = "Ota käyttöön";
@@ -57,7 +57,7 @@
 "ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Ota yhteyttä terveydenhuoltoon";
 "ExposuresViewWrapper.HasExposureText.ContactCardText" = "Tieto mahdollisesta altistumisestasi ei välity terveydenhuoltoon, jollet itse ota yhteyttä.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ota yhteyttä";
-"ExposuresViewWrapper.HasExposureText.ExposuresButtonTitle" = "Katso altistumisilmoitukset";
+"ExposuresViewWrapper.HasExposureText.ExposuresButtonTitle" = "Katso altistumis\U00ADilmoitukset";
 "ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Toimi näin";
 "ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Noudata näitä ohjeita 10 päivän ajan:";
 "ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Tarkkaile vointiasi. Jos sinulla ilmenee yksikin koronavirustautiin sopiva oire, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin. Koronavirustautiin sopivia oireita ovat haju- tai makuaistin muutos, hengitysvaikeus, yskä, kurkkukipu, nuha, kuume, päänsärky, lihaskivut sekä ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
@@ -65,13 +65,13 @@
 "ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Huolehdi käsihygieniastasi.";
 "ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Vältä julkisia paikkoja ja liikennevälineitä. Jos joudut liikkumaan julkisilla paikoilla, pidä muihin ihmisiin etäisyyttä vähintään kaksi metriä. Jos et pysty pitämään riittävästi etäisyyttä, käytä kasvomaskia.";
 "ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "Anna toisen henkilön hoitaa ruokaostokset ja muu asiointi kodin ulkopuolella, jos mahdollista.";
-"ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "Jos yskit tai aivastat, suojaa suusi ja nenäsi kertakäyttönenäliinalla. Laita käytetty nenäliina jäteastiaan ja pese kätesi vedellä ja saippualla tai käytä käsihuuhdetta. Jos sinulla ei ole nenäliinaa, yski tai aivasta hihaan.";
+"ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "Jos yskit tai aivastat, suojaa suusi ja nenäsi kertakäyttö\U00ADnenäliinalla. Laita käytetty nenäliina jäteastiaan ja pese kätesi vedellä ja saippualla tai käytä käsihuuhdetta. Jos sinulla ei ole nenäliinaa, yski tai aivasta hihaan.";
 "ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Tee etätyötä, jos mahdollista.";
 "ExposuresViewWrapper.HasExposureText.InstructionsWhenAbroad" = "Jos et ole Suomessa, noudata paikallisten viranomaisten ohjeita.";
 
 "ExposuresViewWrapper.NoExposuresText.Heading" = "Ei havaittuja altistumisia";
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku ei ole havainnut altistumista koronavirukselle viimeisten 10 päivän aikana.";
-"ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "Sovellus ei kuitenkaan tunnista kaikkia mahdollisia altistumistilanteita.";
+"ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "Sovellus ei kuitenkaan tunnista kaikkia mahdollisia altistumis\U00ADtilanteita.";
 
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Tarkistettu viimeksi %@";
 "ExposuresLastCheckedView.Text.MomentAgo" = "hetki sitten";
@@ -87,7 +87,7 @@
 
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "Olet jo ilmoittanut tartunnasta";
-"ReportInfectionViewController.Text.LockedText" = "Ilmoittamasi tiedot auttavat koronavirusepidemian taltuttamisessa. Sovellus on nyt lukittu eikä enää kerää tietoja kohtaamisista. Pikaista paranemista!";
+"ReportInfectionViewController.Text.LockedText" = "Ilmoittamasi tiedot auttavat koronavirus\U00ADepidemian taltuttamisessa. Sovellus on nyt lukittu eikä enää kerää tietoja kohtaamisista. Pikaista paranemista!";
 "ReportInfectionViewController.Text.DisabledText" = "Altistumis\U00ADilmoitusten täytyy olla käytössä, jotta voit ilmoittaa tartunnasta. Ota altistumis\U00ADilmoitukset käyttöön Koronavilkun Koti-näkymässä.";
 "ReportInfectionViewController.Text.ReportTitle" = "Ilmoita tartunnastasi";
 "ReportInfectionViewController.Text.ReportMessagePrimary" = "Ilmoittaaksesi tartunnastasi tarvitset avauskoodin. Saat koodin terveyden\U00ADhuollon ammattilaiselta tai tekstiviestillä THL:ltä, jos sinulla todetaan tartunta koronavirustestillä Suomessa.";
@@ -133,19 +133,19 @@
 
 // MARK: ReportInfectionFlowViewController
 "ReportInfectionFlowViewController.Text.FinishedTitle" = "Kiitos ilmoituksestasi";
-"ReportInfectionFlowViewController.Text.FinishedText" = "Ilmoittamasi tiedot auttavat koronavirusepidemian taltuttamisessa. Sovellus on nyt lukittu eikä enää kerää tietoja kohtaamisista. Pikaista paranemista!";
+"ReportInfectionFlowViewController.Text.FinishedText" = "Ilmoittamasi tiedot auttavat koronavirus\U00ADepidemian taltuttamisessa. Sovellus on nyt lukittu eikä enää kerää tietoja kohtaamisista. Pikaista paranemista!";
 "ReportInfectionFlowViewController.Text.FinishedButton" = "OK";
 
 // MARK: SymptomsViewController
 "SymptomsViewController.Text.Heading" = "Koronavirustaudin oirearvio";
-"SymptomsViewController.Text.Body" = "Tee oirearvio Omaolo-palvelussa, jos epäilet saaneesi koronavirustartunnan. Saat vastaustesi perusteella lisäohjeita. Vastaaminen kestää noin 10 minuuttia.";
+"SymptomsViewController.Text.Body" = "Tee oirearvio Omaolo-palvelussa, jos epäilet saaneesi koronavirus\U00ADtartunnan. Saat vastaustesi perusteella lisäohjeita. Vastaaminen kestää noin 10 minuuttia.";
 "SymptomsViewController.Text.LinkTitle" = "Tee oirearvio Omaolo-palvelussa";
 "SymptomsViewController.Text.LinkName" = "omaolo.fi";
 "SymptomsViewController.Text.LinkURL" = "https://www.omaolo.fi/palvelut/oirearviot/649?lang=fi";
 
 // MARK: SettingsViewController
 "SettingsViewController.Text.Heading" = "Asetukset";
-"SettingsViewController.Text.StatusTitle" = "Altistumisilmoitukset";
+"SettingsViewController.Text.StatusTitle" = "Altistumis\U00ADilmoitukset";
 "SettingsViewController.Text.StatusOn" = "Käytössä";
 "SettingsViewController.Text.StatusOff" = "Ei käytössä";
 "SettingsViewController.Text.StatusLocked" = "Lukittu";
@@ -244,21 +244,21 @@
 "GuidePrivacyItem3" = "Sovellus ei koskaan tallenna puhelimesi sijaintitietoja.";
 "GuideButtonBack" = "Palaa takaisin";
 
-"EnableTitle" = "Altistumisilmoitukset eivät ole käytössä";
-"EnableText" = "Koska altistumisilmoitukset eivät ole käytössä, Koronavilkku ei seuraa lähelläsi olevia puhelimia.";
-"EnableAttentionText" = "Terveydestäsi ja läheistesi terveydestä huolehtimiseksi on suositeltavaa, että otat altistumisilmoitukset käyttöön heti kun mahdollista.";
-"EnableButtonTitle" = "Ota altistumisilmoitukset käyttöön";
+"EnableTitle" = "Altistumis\U00ADilmoitukset eivät ole käytössä";
+"EnableText" = "Koska altistumis\U00ADilmoitukset eivät ole käytössä, Koronavilkku ei seuraa lähelläsi olevia puhelimia.";
+"EnableAttentionText" = "Terveydestäsi ja läheistesi terveydestä huolehtimiseksi on suositeltavaa, että otat altistumis\U00ADilmoitukset käyttöön heti kun mahdollista.";
+"EnableButtonTitle" = "Ota altistumis\U00ADilmoitukset käyttöön";
 "EnableButtonLabel" = "Ota käyttöön";
 
-"DisableTitle" = "Altistumisilmoitukset käytössä";
-"DisableText" = "Pitääkö sinun poistaa altistumisilmoitukset käytöstä?";
-"DisableInfo" = "Joissakin tilanteissa voi olla tarpeen väliaikaisesti poistaa altistumisilmoitukset käytöstä. Näin voi olla esimerkiksi silloin, jos olet terveydenhuollon ammattilainen etkä halua käyttää sovellusta työpaikallasi.\n\nJos otat altistumisilmoitukset pois käytöstä, sovellus ei toimi.";
-"DisableAttentionText" = "Terveydestäsi ja läheistesi terveydestä huolehtimiseksi on suositeltavaa, että otat altistumisilmoitukset pois käytöstä vain silloin, jos se on todella tarpeellista. Muistathan ottaa ne uudelleen käyttöön heti kun mahdollista.";
-"DisableButtonTitle" = "Poista altistumisilmoitukset käytöstä";
+"DisableTitle" = "Altistumis\U00ADilmoitukset käytössä";
+"DisableText" = "Pitääkö sinun poistaa altistumis\U00ADilmoitukset käytöstä?";
+"DisableInfo" = "Joissakin tilanteissa voi olla tarpeen väliaikaisesti poistaa altistumis\U00ADilmoitukset käytöstä. Näin voi olla esimerkiksi silloin, jos olet terveydenhuollon ammattilainen etkä halua käyttää sovellusta työpaikallasi.\n\nJos otat altistumis\U00ADilmoitukset pois käytöstä, sovellus ei toimi.";
+"DisableAttentionText" = "Terveydestäsi ja läheistesi terveydestä huolehtimiseksi on suositeltavaa, että otat altistumis\U00ADilmoitukset pois käytöstä vain silloin, jos se on todella tarpeellista. Muistathan ottaa ne uudelleen käyttöön heti kun mahdollista.";
+"DisableButtonTitle" = "Poista altistumis\U00ADilmoitukset käytöstä";
 "DisableButtonLabel" = "Poista käytöstä";
 
-"DisableConfirmTitle" = "Oletko varma, että haluat poistaa altistumisilmoitukset käytöstä?";
-"DisableConfirmText" = "Jos poistat altistumisilmoitukset käytöstä, Koronavilkku ei voi ilmoittaa sinulle mahdollisesta altistumisesta koronavirukselle.";
+"DisableConfirmTitle" = "Oletko varma, että haluat poistaa altistumis\U00ADilmoitukset käytöstä?";
+"DisableConfirmText" = "Jos poistat altistumis\U00ADilmoitukset käytöstä, Koronavilkku ei voi ilmoittaa sinulle mahdollisesta altistumisesta koronavirukselle.";
 "DisableConfirmButton" = "Poista käytöstä";
 "DisableCancelButton" = "Kumoa";
 
@@ -266,7 +266,7 @@
 "BluetoothDisabledText" = "Ilman Bluetoothia Koronavilkku ei voi seurata mahdollisia altistumisia. Salli Bluetoothin käyttö puhelimesi asetuksissa.";
 
 "ENBlockedTitle" = "Altistumis­ilmoitukset eivät ole käytössä";
-"ENBlockedText" = "Koronavilkku ei toimi, jos et ota käyttöön puhelimesi käyttöjärjestelmän altistumisilmoituksia. Näin otat ne käyttöön:";
+"ENBlockedText" = "Koronavilkku ei toimi, jos et ota käyttöön puhelimesi käyttöjärjestelmän altistumis\U00ADilmoituksia. Näin otat ne käyttöön:";
 "ENBlockedSteps" = "1. Avaa puhelimesi asetukset alla olevasta painikkeesta.\n\n2. Laita COVID-19-altistusloki ja -ilmoitukset päälle.";
 "ENBlockedStepsNew" = "1. Avaa puhelimesi asetukset alla olevasta painikkeesta.\n\n2. Valitse Altistusilmoitukset.\n\n3. Laita päälle Jaa altistustiedot.\n\n4. Aseta aktiiviseksi alueeksi Terveyden ja hyvinvoinnin laitos.";
 

@@ -208,17 +208,17 @@
 "OnboardingIntroTitle" = "Tack för att du laddade ner Coronablinkern";
 "OnboardingIntroText" = "Coronablinkern är en applikation (app) som Institutet för hälsa och välfärd ansvarar för. Med appen strävar man till att förebygga spridningen av coronaviruset. Appen skyddar effektivt din identitet.";
 "OnboardingConceptTitle" = "Så här fungerar appen";
-"OnboardingConceptText" = "Coronablinkern följer med de telefoner i din närhet, på vilka appen är installerad. Om en person som du tidigare mött meddelar om coronavirusinfektion via Coronablinkern får du ett meddelande om att du blivit utsatt (exponerad) för smitta. Om du med ett coronavirustest konstateras ha fått smittan, kan du meddela om det här anonymt med appen.";
+"OnboardingConceptText" = "Coronablinkern följer med de telefoner i din närhet, på vilka appen är installerad. Om en person som du tidigare mött meddelar om coronavirus\U00ADinfektion via Coronablinkern får du ett meddelande om att du blivit utsatt (exponerad) för smitta. Om du med ett coronavirustest konstateras ha fått smittan, kan du meddela om det här anonymt med appen.";
 "OnboardingYourPrivacyIsProtected" = "Din identitet är skyddad";
 "OnboardingHowYourPrivacyIsProtected" = "Coronablinkern skyddar dina personuppgifter och din identitet på flera sätt.";
 "OnboardingPrivacyTitle" = "Personuppgifter";
 "OnboardingPrivacyText" = "Coronablinkern lagrar inte ditt namn, ditt födelsedatum eller dina kontaktuppgifter. Den kan inte avslöja din identitet eller identiteten på personer du möter.";
-"OnboardingUsageTitle" = "Användningsuppgifter som gäller appen";
+"OnboardingUsageTitle" = "Användnings\U00ADuppgifter som gäller appen";
 "OnboardingUsageText" = "Appen meddelar till en server att den är påkopplad. Om du kontaktar hälsovården via appen, förmedlar den dessutom information om att du eventuellt blivit utsatt för viruset.\n\nAll datatrafik mellan Coronablinkern och servern är krypterad.\n\nInformationen lagras anonymt på en server som är belägen i Finland. Servern underhålls av myndigheter inom den offentliga förvaltningen. Uppgifterna raderas då de inte längre behövs. Uppgifterna raderas senast 31.3.2021.";
 "OnboardingVoluntaryTitle" = "Appen är inte obligatorisk";
 "OnboardingVoluntaryText" = "Det är frivilligt att använda Coronablinkern. Du kan när som helst sluta använda appen genom att avlägsna den från din telefon.";
-"OnboardingAcceptTerms" = "Jag har läst och godkänner användningsvillkoren för tjänsten.";
-"OnboardingReadTerms" = "Läs användningsvillkoren";
+"OnboardingAcceptTerms" = "Jag har läst och godkänner användnings\U00ADvillkoren för tjänsten.";
+"OnboardingReadTerms" = "Läs användnings\U00ADvillkoren";
 "OnbardingVoluntaryUse" = "Jag börjar frivilligt använda appen.";
 "OnboardingDone" = "Klar att användas!";
 
@@ -226,21 +226,21 @@
 "HomeLogoLinkLabel" = "Institutet för hälsa och välfärd";
 
 "GuideTitle" = "Om Coronablinkern";
-"GuideText" = "Coronablinkern är en applikation (app) som Institutet för hälsa och välfärd ansvarar för. Appen analyserar om du eventuellt har blivit utsatt för coronaviruset. Om du har konstaterats ha en coronavirusinfektion, kan du meddela om det här anonymt via appen. Appen skyddar effektivt din identitet.";
+"GuideText" = "Coronablinkern är en applikation (app) som Institutet för hälsa och välfärd ansvarar för. Appen analyserar om du eventuellt har blivit utsatt för coronaviruset. Om du har konstaterats ha en coronavirus\U00ADinfektion, kan du meddela om det här anonymt via appen. Appen skyddar effektivt din identitet.";
 "GuideSeedTitle" = "Varje telefon får en slumpmässig identifikationskod";
-"GuideSeedText" = "Appen lottar ut en identifikationskod till varje telefon. Koden är slumpmässig och byts ut flera gånger per timme så att din identitet inte kan avslöjas. Identifikationskoden innehåller inga uppgifter om dig eller din telefon.";
-"GuideExchangeTitle" = "Telefonerna skickar identifikationskoder åt varandra";
-"GuideExchangeText" = "När du är nära en annan person som använder Coronablinkern delar era telefoner ut sina identifikationskoder till varandra via Bluetooth. På det här sättet kan appen följa med telefoner som bärs av andra personer. Appen lagrar inte användarnas identitet eller plats.";
+"GuideSeedText" = "Appen lottar ut en identifikations\U00ADkod till varje telefon. Koden är slumpmässig och byts ut flera gånger per timme så att din identitet inte kan avslöjas. Identifikations\U00ADkoden innehåller inga uppgifter om dig eller din telefon.";
+"GuideExchangeTitle" = "Telefonerna skickar identifikations\U00ADkoder åt varandra";
+"GuideExchangeText" = "När du är nära en annan person som använder Coronablinkern delar era telefoner ut sina identifikations\U00ADkoder till varandra via Bluetooth. På det här sättet kan appen följa med telefoner som bärs av andra personer. Appen lagrar inte användarnas identitet eller plats.";
 "GuideCompareTitle" = "Appen jämför användarnas koder";
-"GuideCompareText" = "Coronablinkern laddar flera gånger per dag ner en förteckning över koder som skickats från smittade personers telefoner med samma app. Coronablinkern jämför dessa med de koder som din telefon har samlat in från andra användare. På det här sättet kan appen avgöra om du har varit i närheten av en person som har coronavirusinfektion.";
+"GuideCompareText" = "Coronablinkern laddar flera gånger per dag ner en förteckning över koder som skickats från smittade personers telefoner med samma app. Coronablinkern jämför dessa med de koder som din telefon har samlat in från andra användare. På det här sättet kan appen avgöra om du har varit i närheten av en person som har coronavirus\U00ADinfektion.";
 "GuideNotificationTitle" = "Du får ett meddelande om eventuell virusexponering";
 "GuideNotificationText" = "Om koderna som din telefon samlat in motsvarar koderna som samlats in från personer som bär på smitta får du ett meddelande om eventuell exponering. I det här fallet kan du meddela dina kontaktuppgifter till hälsovården som ger dig närmare anvisningar.\n\nOm du misstänker att du smittats med coronaviruset kan du när som helst göra en symtombedömning i tjänsten Omaolo.";
-"GuideDiagnosisTitle" = "Om du konstateras ha coronavirusinfektion";
-"GuideDiagnosisText" = "Om du konstaterats ha en coronavirusinfektion med ett coronavirustest, får du en startkod från hälsovården. Med hjälp av koden kan du, om du vill, meddela via appen om att du har fått smittan. Om du delar informationen, skickar appen identifikationskoder från din telefon till servern. Inga person- eller platsuppgifter skickas tillsammans med identifikationskoderna, så du förblir anonym.";
+"GuideDiagnosisTitle" = "Om du konstateras ha coronavirus\U00ADinfektion";
+"GuideDiagnosisText" = "Om du konstaterats ha en coronavirus\U00ADinfektion med ett coronavirustest, får du en startkod från hälsovården. Med hjälp av koden kan du, om du vill, meddela via appen om att du har fått smittan. Om du delar informationen, skickar appen identifikations\U00ADkoder från din telefon till servern. Inga person- eller platsuppgifter skickas tillsammans med identifikations\U00ADkoderna, så du förblir anonym.";
 "GuidePrivacyTitle" = "Såhär skyddas din identitet";
 "GuidePrivacyText" = "Din identitet skyddas på följande sätt:";
 "GuidePrivacyItem1" = "Informationen om möten som appen samlar in lagras endast på din telefon. De lagrade uppgifterna avlägsnas från din telefon senast efter 21 dagar eller om du avlägsnar appen från din telefon.";
-"GuidePrivacyItem2" = "Din identitet hålls hemlig med hjälp av slumpmässiga identifikationskoder.";
+"GuidePrivacyItem2" = "Din identitet hålls hemlig med hjälp av slumpmässiga identifikations\U00ADkoder.";
 "GuidePrivacyItem3" = "Appen kan inte lagra var du har befunnit dig med din telefon.";
 "GuideButtonBack" = "Tillbaka";
 
@@ -268,7 +268,7 @@
 "ENBlockedTitle" = "Exponerings\U00ADmeddelandena är bortkopplade";
 "ENBlockedText" = "Coronablinkern fungerar endast om du kopplar på exponerings\U00ADmeddelandena i telefonens inställningar. Gör så här för att koppla på exponerings\U00ADmeddelandena:";
 "ENBlockedSteps" = "1. Tryck på Inställningsknappen nedan.\n\n2. Koppla på COVID-19-exponeringsloggen och -meddelandena.";
-"ENBlockedStepsNew" = "1. Tryck på Inställningsknappen nedan.\n\n2. Öppna Exponeringsnotiser.\n\n3. Koppla på Dela exponeringsinformation.\n\n4. Ställ in Institutet för hälsa och välfärd som aktiv region.";
+"ENBlockedStepsNew" = "1. Tryck på Inställnings\U00ADknappen nedan.\n\n2. Öppna Exponerings\U00ADnotiser.\n\n3. Koppla på Dela exponerings\U00ADinformation.\n\n4. Ställ in Institutet för hälsa och välfärd som aktiv region.";
 
 "OpenSettingsButton" = "Öppna Inställningar";
 
