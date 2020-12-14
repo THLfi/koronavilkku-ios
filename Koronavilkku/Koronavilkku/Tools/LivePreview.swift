@@ -74,7 +74,7 @@ extension Environment {
                 return Fail(error: PreviewError.notSupported).eraseToAnyPublisher()
             }
             
-            func postExposureKeys(publishToken: String?) -> AnyPublisher<Void, Error> {
+            func postExposureKeys(publishToken: String?, visitedCountries: Set<EFGSCountry>, shareWithEFGS: Bool) -> AnyPublisher<Void, Error> {
                 return Fail(error: PreviewError.notSupported).eraseToAnyPublisher()
             }
             

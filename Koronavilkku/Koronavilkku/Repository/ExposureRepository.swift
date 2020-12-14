@@ -10,7 +10,7 @@ protocol ExposureRepository {
     func timeFromLastCheck() -> AnyPublisher<TimeInterval?, Never>
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error>
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error>
-    func postExposureKeys(publishToken: String?) -> AnyPublisher<Void, Error>
+    func postExposureKeys(publishToken: String?, visitedCountries: Set<EFGSCountry>, shareWithEFGS: Bool) -> AnyPublisher<Void, Error>
     func postDummyKeys() -> AnyPublisher<Void, Error>
     func refreshStatus()
     func setStatus(enabled: Bool)
@@ -63,16 +63,11 @@ struct ExposureRepositoryImpl : ExposureRepository {
             .eraseToAnyPublisher()
     }()
 
-    private let exposureManager: ExposureManager
-    private let backend: Backend
-    private let storage: FileStorage
+    let efgsRepository: EFGSRepository
+    let exposureManager: ExposureManager
+    let backend: Backend
+    let storage: FileStorage
         
-    init(exposureManager: ExposureManager, backend: Backend, storage: FileStorage) {
-        self.exposureManager = exposureManager
-        self.backend = backend
-        self.storage = storage
-    }
-
     func detectionStatus() -> AnyPublisher<DetectionStatus, Never> {
         Self.detectionStatus
     }
@@ -173,14 +168,21 @@ struct ExposureRepositoryImpl : ExposureRepository {
         // Since we are only processing 1 batch set at a time, always clean up the entire batches directory.
         storage.deleteAllBatches()
     }
-    
-    func postExposureKeys(publishToken: String?) -> AnyPublisher<Void, Error> {
+        
+    func postExposureKeys(publishToken: String?,
+                          visitedCountries: Set<EFGSCountry>,
+                          shareWithEFGS: Bool) -> AnyPublisher<Void, Error> {
+        
         return self.exposureManager.getDiagnosisKeys()
             .flatMap { enTemporaryExposureKeys -> AnyPublisher<Data, Error> in
                 let tempKeys = self.mapKeysToCorrectLength(enTemporaryExposureKeys: enTemporaryExposureKeys)
+                let publishRequest = DiagnosisPublishRequest(keys: tempKeys,
+                                                             visitedCountries: efgsRepository.mask(visitedCountries: visitedCountries),
+                                                             consentToShareWithEfgs: shareWithEFGS ? 1 : 0)
+                
                 Log.d("Post \(tempKeys.count) keys")
                 return self.backend.postDiagnosisKeys(publishToken: publishToken,
-                                                      publishRequest: DiagnosisPublishRequest(keys: tempKeys),
+                                                      publishRequest: publishRequest,
                                                       isDummyRequest: false)
             }
             .map { _ in
@@ -197,9 +199,13 @@ struct ExposureRepositoryImpl : ExposureRepository {
     func postDummyKeys() -> AnyPublisher<Void, Error> {
         // Post 14 dummy keys to backend
         let keys = (0..<ExposureRepositoryImpl.keyCount).map { TemporaryExposureKey.createDummy(index: $0) }
+        let publishRequest = DiagnosisPublishRequest(keys: keys,
+                                                     visitedCountries: efgsRepository.mask(visitedCountries: Set()),
+                                                     consentToShareWithEfgs: 0)
+        
         Log.d("Dummy post \(keys.count) dummy keys")
         return self.backend.postDiagnosisKeys(publishToken: ExposureRepositoryImpl.dummyPostToken,
-                                                            publishRequest: DiagnosisPublishRequest(keys: keys),
+                                                            publishRequest: publishRequest,
                                                             isDummyRequest: true)
             .map { _ in
                 // strip away the response
@@ -207,7 +213,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
             .eraseToAnyPublisher()
     }
     
-    func mapKeysToCorrectLength(enTemporaryExposureKeys: [ENTemporaryExposureKey]) -> [TemporaryExposureKey] {
+    private func mapKeysToCorrectLength(enTemporaryExposureKeys: [ENTemporaryExposureKey]) -> [TemporaryExposureKey] {
         var keys = enTemporaryExposureKeys.map { $0.toTemporaryExposureKey() }
         // If there are more than 14 keys, remove old keys by sorting temporary keys to descending order
         // by rollingStartIntervalNumber and removing tail from sorted array

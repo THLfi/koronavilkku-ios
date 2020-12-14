@@ -129,9 +129,11 @@
 "PublishTokensViewController.Text.AdditionalText" = "Avauskoodista ei voi tunnistaa henkilöllisyyttäsi.";
 "PublishTokensViewController.Text.ErrorWrongPublishToken" = "Avauskoodi on virheellinen tai sen voimassaolo on päättynyt. Tarkistathan, että olet syöttänyt koodin täsmälleen oikein.";
 "PublishTokensViewController.Text.ErrorNetwork" = "Tartunnasta ilmoittaminen epäonnistui, koska palvelimeen ei saada yhteyttä. Ole hyvä ja yritä hetken kuluttua uudelleen.";
-"PublishTokensViewController.Text.FinishedTitle" = "Kiitos ilmoituksestasi";
-"PublishTokensViewController.Text.FinishedText" = "Ilmoittamasi tiedot auttavat koronavirusepidemian taltuttamisessa. Sovellus on nyt lukittu eikä enää kerää tietoja kohtaamisista. Pikaista paranemista!";
-"PublishTokensViewController.Text.FinishedButton" = "OK";
+
+// MARK: ReportInfectionFlowViewController
+"ReportInfectionFlowViewController.Text.FinishedTitle" = "Kiitos ilmoituksestasi";
+"ReportInfectionFlowViewController.Text.FinishedText" = "Ilmoittamasi tiedot auttavat koronavirusepidemian taltuttamisessa. Sovellus on nyt lukittu eikä enää kerää tietoja kohtaamisista. Pikaista paranemista!";
+"ReportInfectionFlowViewController.Text.FinishedButton" = "OK";
 
 // MARK: SymptomsViewController
 "SymptomsViewController.Text.Heading" = "Koronavirustaudin oirearvio";

@@ -129,9 +129,11 @@
 "PublishTokensViewController.Text.AdditionalText" = "Det är inte möjligt att identifiera dig med hjälp av startkoden.";
 "PublishTokensViewController.Text.ErrorWrongPublishToken" = "Startkoden är felaktig eller har gått ut. Kontrollera att du har angett koden korrekt.";
 "PublishTokensViewController.Text.ErrorNetwork" = "Det gick inte att meddela om din smitta eftersom servern inte kunde nås. Försök igen om ett ögonblick.";
-"PublishTokensViewController.Text.FinishedTitle" = "Tack för ditt meddelande";
-"PublishTokensViewController.Text.FinishedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Appen är nu låst. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
-"PublishTokensViewController.Text.FinishedButton" = "OK";
+
+// MARK: ReportInfectionFlowViewController
+"ReportInfectionFlowViewController.Text.FinishedTitle" = "Tack för ditt meddelande";
+"ReportInfectionFlowViewController.Text.FinishedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Appen är nu låst. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
+"ReportInfectionFlowViewController.Text.FinishedButton" = "OK";
 
 // MARK: SymptomsViewController
 "SymptomsViewController.Text.Heading" = "Bedömning av coronasymtom";

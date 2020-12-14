@@ -24,12 +24,13 @@ extension Environment {
                                                   cache: LocalStore.shared,
                                                   storage: storage)
         
-        let exposureRepository = ExposureRepositoryImpl(exposureManager: ExposureManagerProvider.shared.manager,
+        let efgsRepository = EFGSRepositoryImpl(backend: backend,
+                                                storage: storage)
+
+        let exposureRepository = ExposureRepositoryImpl(efgsRepository: efgsRepository,
+                                                        exposureManager: ExposureManagerProvider.shared.manager,
                                                         backend: backend,
                                                         storage: storage)
-        
-        let efgsRepository = EFGSRepositoryImpl(exposureRepository: exposureRepository,
-                                                storage: storage)
         
         let municipalityRepository = MunicipalityRepositoryImpl(cms: cms,
                                                                 omaoloBaseURL: config.omaoloBaseURL,

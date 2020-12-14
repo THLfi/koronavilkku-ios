@@ -129,9 +129,11 @@
 "PublishTokensViewController.Text.AdditionalText" = "The key code does not reveal your identity.";
 "PublishTokensViewController.Text.ErrorWrongPublishToken" = "The key code is invalid or has expired. Please check that you have entered the exact code you received.";
 "PublishTokensViewController.Text.ErrorNetwork" = "Failed to report infection because the server cannot be reached. Please check your internet connection and try again.";
-"PublishTokensViewController.Text.FinishedTitle" = "Thank you for your report";
-"PublishTokensViewController.Text.FinishedText" = "The information you have reported will help to tackle the coronavirus epidemic. The app is now locked and no longer collects information about nearby phones. We wish you a quick recovery!";
-"PublishTokensViewController.Text.FinishedButton" = "OK";
+
+// MARK: ReportInfectionFlowViewController
+"ReportInfectionFlowViewController.Text.FinishedTitle" = "Thank you for your report";
+"ReportInfectionFlowViewController.Text.FinishedText" = "The information you have reported will help to tackle the coronavirus epidemic. The app is now locked and no longer collects information about nearby phones. We wish you a quick recovery!";
+"ReportInfectionFlowViewController.Text.FinishedButton" = "OK";
 
 // MARK: SymptomsViewController
 "SymptomsViewController.Text.Heading" = "COVID-19 symptom assessment";

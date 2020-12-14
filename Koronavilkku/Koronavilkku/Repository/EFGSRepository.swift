@@ -38,7 +38,7 @@ protocol EFGSRepository {
 struct EFGSRepositoryImpl: EFGSRepository {
     static let countryListFile = "efgs-country-list"
     
-    let exposureRepository: ExposureRepository
+    let backend: Backend
     let storage: FileStorage
     
     func getParticipatingCountries() -> Set<EFGSCountry>? {
@@ -46,8 +46,7 @@ struct EFGSRepositoryImpl: EFGSRepository {
     }
     
     func updateCountryList() -> AnyPublisher<Bool, Never> {
-        exposureRepository
-            .getConfiguration()
+        backend.getConfiguration()
             .map { config in
                 let countryList = config.participatingCountries.compactMap { regionCode in
                     EFGSCountry.create(from: regionCode)
@@ -59,5 +58,13 @@ struct EFGSRepositoryImpl: EFGSRepository {
                 Just(false)
             }
             .eraseToAnyPublisher()
+    }
+}
+
+extension EFGSRepository {
+    func mask(visitedCountries: Set<EFGSCountry>) -> Dictionary<String, Int> {
+        getParticipatingCountries()?.reduce(into: [:]) {
+            $0[$1.regionCode] = visitedCountries.contains($1) ? 1 : 0
+        } ?? [:]
     }
 }
