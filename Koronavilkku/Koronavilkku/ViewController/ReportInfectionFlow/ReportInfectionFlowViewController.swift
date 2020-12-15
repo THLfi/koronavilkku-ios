@@ -77,9 +77,14 @@ class ReportInfectionFlowViewController: UINavigationController {
         case .local:
             travelStatus = nil
             nextVC = ConfirmReportViewController()
-        default:
+
+        case .efgs:
             travelStatus = viewModel.travelStatus
-            nextVC = TravelStatusViewController()
+
+            // if the country list is missing, skip the travel status and country selection
+            nextVC = allCountries.isEmpty
+                ? ConfirmReportViewController()
+                : TravelStatusViewController()
         }
         
         viewModel = .init(destination: destination,
