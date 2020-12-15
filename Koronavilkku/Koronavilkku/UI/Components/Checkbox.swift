@@ -86,7 +86,7 @@ class Checkbox: UIView {
     }
     
     @objc internal func tapHandler() {
-        isChecked = !isChecked
+        isChecked.toggle()
         UISelectionFeedbackGenerator().selectionChanged()
         tapped(isChecked)
     }
