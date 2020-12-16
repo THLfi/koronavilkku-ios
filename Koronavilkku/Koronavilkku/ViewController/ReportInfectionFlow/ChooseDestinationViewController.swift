@@ -52,7 +52,7 @@ class ChooseDestinationViewController: BaseReportInfectionViewController {
             append(hasTokenLabel, UIEdgeInsets(top: 40))
         }
 
-        radioButtonGroup.onChange { value in
+        radioButtonGroup.onChange { _ in
             continueButton.setEnabled(true)
         }
         

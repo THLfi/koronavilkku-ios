@@ -36,18 +36,15 @@ class ReportInfectionViewController: UIViewController {
     }
     
     func startReportInfectionFlow(with code: String?) {
-        guard LocalStore.shared.uiStatus != .apiDisabled else {
+        switch LocalStore.shared.uiStatus {
+        case .apiDisabled:
             Log.d("Cannot publish tokens because EN API is disabled")
-            return
-        }
-        
-        guard LocalStore.shared.uiStatus != .locked else {
+        case .locked:
             Log.d("User has already published tokens")
-            return
+        default:
+            self.navigationController?.present(ReportInfectionFlowViewController(publishToken: code),
+                                               animated: true)
         }
-        
-        self.navigationController?.present(ReportInfectionFlowViewController(publishToken: code),
-                                           animated: true)
     }
     
     private func showInstructions() {

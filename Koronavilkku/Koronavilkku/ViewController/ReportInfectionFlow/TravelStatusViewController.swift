@@ -41,7 +41,7 @@ class TravelStatusViewController: BaseReportInfectionViewController {
             append(CardElement(embed: radioHasTravelled), UIEdgeInsets(top: 20))
         }
 
-        radioButtonGroup.onChange { value in
+        radioButtonGroup.onChange { _ in
             continueButton.setEnabled(true)
         }
 
