@@ -23,14 +23,14 @@ class RootViewController : UITabBarController {
         updateTask = Publishers.Zip(
             // In case a considerable amount of time (batch id changes) elapses before
             // the background task is run the first time, attempt to fetch the current batch identifier separately.
-            Environment.default.batchRepository.getCurrentBatchId().catch { _ in
-                Empty(completeImmediately: true)
-            },
+            Environment.default.batchRepository.getCurrentBatchId(),
             
             // Update the EFGS country list
-            Environment.default.efgsRepository.updateCountryList()
+            Environment.default.exposureRepository.getConfiguration()
         )
-        .sink { _ in }
+        .sink { _ in } receiveValue: { _, config in
+            Environment.default.efgsRepository.updateCountryList(from: config)
+        }
         
         // Set every UILabel automagically respond to Dynamic Type changes
         UILabel.appearance().adjustsFontForContentSizeCategory = true

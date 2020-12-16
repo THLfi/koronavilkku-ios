@@ -132,6 +132,7 @@ final class BackgroundTaskForNotifications: BackgroundTask {
         let batchRepository = Environment.default.batchRepository
         let exposureRepository = Environment.default.exposureRepository
         let municipalityRepository = Environment.default.municipalityRepository
+        let efgsRepository = Environment.default.efgsRepository
         
         // prevent running checks in parallel
         self.backgroundTask?.cancel()
@@ -153,13 +154,15 @@ final class BackgroundTaskForNotifications: BackgroundTask {
         )
         .receive(on: RunLoop.main)
         .flatMap { (ids, config, _) -> (AnyPublisher<Bool, Error>) in
-            Log.d("Got \(ids.count) keys")
+            Log.d("Updating the EFGS country list from the configuration")
+            efgsRepository.updateCountryList(from: config)
+            
             if ids.count == 0 {
                 Log.d("No new batches to check")
                 return Just(false).setFailureType(to: Error.self).eraseToAnyPublisher()
             }
             
-            Log.d("Received batches and configurations. Now detect exposures")
+            Log.d("Received \(ids.count) new batches, detecting exposures…")
             return exposureRepository.detectExposures(ids: ids, config: config)
         }
         .sink(

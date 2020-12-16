@@ -32,7 +32,7 @@ struct EFGSCountry: Codable, Hashable {
 /// positive COVID-19 diagnosis.
 protocol EFGSRepository {
     func getParticipatingCountries() -> Set<EFGSCountry>?
-    func updateCountryList() -> AnyPublisher<Bool, Never>
+    func updateCountryList(from: ExposureConfiguration)
 }
 
 struct EFGSRepositoryImpl: EFGSRepository {
@@ -43,6 +43,14 @@ struct EFGSRepositoryImpl: EFGSRepository {
     
     func getParticipatingCountries() -> Set<EFGSCountry>? {
         storage.read(from: Self.countryListFile)
+    }
+    
+    func updateCountryList(from config: ExposureConfiguration) {
+        let countryList = config.participatingCountries.compactMap { regionCode in
+            EFGSCountry.create(from: regionCode)
+        }
+        
+        storage.write(object: countryList, to: Self.countryListFile)
     }
     
     func updateCountryList() -> AnyPublisher<Bool, Never> {
