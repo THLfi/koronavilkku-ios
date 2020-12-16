@@ -4,7 +4,8 @@ import Combine
 @testable import Koronavilkku
 
 class ExposureRepositoryTest: XCTestCase {
-    let repository = ExposureRepositoryImpl(exposureManager: MockExposureManager(),
+    let repository = ExposureRepositoryImpl(efgsRepository: MockEFGSRepository(),
+                                            exposureManager: MockExposureManager(),
                                             backend: BackendRestApi(config: LocalConfiguration(),
                                                              urlSession: URLSession.shared),
                                             storage: MockFileStorage())

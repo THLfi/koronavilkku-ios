@@ -103,6 +103,8 @@
 		EA4F905224F4EFAD0032D9D5 /* BackendRestApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */; };
 		EA5296AC251BE1B10089CFB4 /* Licenses.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA5296AB251BE1B10089CFB4 /* Licenses.strings */; };
 		EA5296B4251BE70E0089CFB4 /* LicenseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5296B3251BE70E0089CFB4 /* LicenseListViewController.swift */; };
+		EA6C1FCE257FB1C200E973E3 /* ReportInfectionFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C1FCD257FB1C200E973E3 /* ReportInfectionFlowViewController.swift */; };
+		EA6C1FDF257FC51100E973E3 /* ChooseDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C1FDE257FC51100E973E3 /* ChooseDestinationViewController.swift */; };
 		EA71E990251E25E900E66F64 /* ChangeLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA71E98F251E25E900E66F64 /* ChangeLanguageViewController.swift */; };
 		EA7B0556251248BE002941A6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B0558251248BE002941A6 /* Localizable.strings */; };
 		EA7B055D251248EC002941A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7B055F251248EC002941A6 /* InfoPlist.strings */; };
@@ -114,6 +116,11 @@
 		EA839F8C2567C4BC003B1580 /* DetectionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA839F8B2567C4BC003B1580 /* DetectionStatus.swift */; };
 		EA839F942567D288003B1580 /* ExposureModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA839F932567D288003B1580 /* ExposureModelTests.swift */; };
 		EA839F9C256802C2003B1580 /* NotificationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA839F9B256802C2003B1580 /* NotificationListViewController.swift */; };
+		EA8E2244258239A40008EE92 /* BaseReportInfectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E2243258239A40008EE92 /* BaseReportInfectionViewController.swift */; };
+		EA8E224C258250CB0008EE92 /* ConfirmReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E224B258250CB0008EE92 /* ConfirmReportViewController.swift */; };
+		EA8E2251258250FF0008EE92 /* TravelStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E2250258250FF0008EE92 /* TravelStatusViewController.swift */; };
+		EA8E2259258264CF0008EE92 /* ChooseCountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E2258258264CF0008EE92 /* ChooseCountriesViewController.swift */; };
+		EA8E2265258798CE0008EE92 /* MockEFGSRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E2264258798CE0008EE92 /* MockEFGSRepository.swift */; };
 		EA92357C24B26E4700B21B1B /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92357B24B26E4700B21B1B /* Environment.swift */; };
 		EA92A04424A3958300CE7271 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92A04324A3958300CE7271 /* AppDelegate.swift */; };
 		EA92A04624A3958300CE7271 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92A04524A3958300CE7271 /* SceneDelegate.swift */; };
@@ -124,12 +131,15 @@
 		EA92A06924A3958600CE7271 /* KoronavilkkuUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92A06824A3958600CE7271 /* KoronavilkkuUITests.swift */; };
 		EA92A07824A4982000CE7271 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EA92A07724A4982000CE7271 /* SnapKit */; };
 		EA92A07B24A4E59800CE7271 /* LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92A07A24A4E59800CE7271 /* LivePreview.swift */; };
+		EAA9892D257E7194009A7FF8 /* EFGSRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA9892C257E7194009A7FF8 /* EFGSRepository.swift */; };
 		EAD8619B24ADDCC900809677 /* ExposureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619A24ADDCC900809677 /* ExposureManager.swift */; };
 		EAD8619D24AE18A900809677 /* ExposureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619C24AE18A900809677 /* ExposureRepository.swift */; };
 		EAD8619F24AE56BA00809677 /* ExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619E24AE56BA00809677 /* ExposureConfiguration.swift */; };
 		EAE47D2B256C6D9E002ECE03 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE47D2A256C6D9E002ECE03 /* TimeInterval.swift */; };
 		EAEB8333252B7095005B8E24 /* Elevation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB8332252B7095005B8E24 /* Elevation.swift */; };
 		EAEB833B252B77AE005B8E24 /* TokenCodeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB833A252B77AE005B8E24 /* TokenCodeField.swift */; };
+		EAF340C52580F1460092ED6E /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF340C42580F1460092ED6E /* RadioButton.swift */; };
+		EAF340D0258102120092ED6E /* FadeBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF340CF258102120092ED6E /* FadeBlock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -248,6 +258,8 @@
 		EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendRestApiTest.swift; sourceTree = "<group>"; };
 		EA5296AB251BE1B10089CFB4 /* Licenses.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Licenses.strings; sourceTree = "<group>"; };
 		EA5296B3251BE70E0089CFB4 /* LicenseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseListViewController.swift; sourceTree = "<group>"; };
+		EA6C1FCD257FB1C200E973E3 /* ReportInfectionFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfectionFlowViewController.swift; sourceTree = "<group>"; };
+		EA6C1FDE257FC51100E973E3 /* ChooseDestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDestinationViewController.swift; sourceTree = "<group>"; };
 		EA71E98F251E25E900E66F64 /* ChangeLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageViewController.swift; sourceTree = "<group>"; };
 		EA7B0557251248BE002941A6 /* fi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fi; path = fi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA7B0559251248C0002941A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -259,6 +271,11 @@
 		EA839F8B2567C4BC003B1580 /* DetectionStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectionStatus.swift; sourceTree = "<group>"; };
 		EA839F932567D288003B1580 /* ExposureModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureModelTests.swift; sourceTree = "<group>"; };
 		EA839F9B256802C2003B1580 /* NotificationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListViewController.swift; sourceTree = "<group>"; };
+		EA8E2243258239A40008EE92 /* BaseReportInfectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseReportInfectionViewController.swift; sourceTree = "<group>"; };
+		EA8E224B258250CB0008EE92 /* ConfirmReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmReportViewController.swift; sourceTree = "<group>"; };
+		EA8E2250258250FF0008EE92 /* TravelStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelStatusViewController.swift; sourceTree = "<group>"; };
+		EA8E2258258264CF0008EE92 /* ChooseCountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCountriesViewController.swift; sourceTree = "<group>"; };
+		EA8E2264258798CE0008EE92 /* MockEFGSRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEFGSRepository.swift; sourceTree = "<group>"; };
 		EA92357B24B26E4700B21B1B /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EA92A04024A3958300CE7271 /* Koronavilkku.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Koronavilkku.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA92A04324A3958300CE7271 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -275,6 +292,7 @@
 		EA92A06A24A3958600CE7271 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA92A07A24A4E59800CE7271 /* LivePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePreview.swift; sourceTree = "<group>"; };
 		EA9EF6AD2506679300FBAB9E /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
+		EAA9892C257E7194009A7FF8 /* EFGSRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFGSRepository.swift; sourceTree = "<group>"; };
 		EAD8619824ADCC0100809677 /* Koronavilkku.debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Koronavilkku.debug.entitlements; sourceTree = "<group>"; };
 		EAD8619A24ADDCC900809677 /* ExposureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureManager.swift; sourceTree = "<group>"; };
 		EAD8619C24AE18A900809677 /* ExposureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRepository.swift; sourceTree = "<group>"; };
@@ -283,6 +301,8 @@
 		EAE47D2A256C6D9E002ECE03 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		EAEB8332252B7095005B8E24 /* Elevation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elevation.swift; sourceTree = "<group>"; };
 		EAEB833A252B77AE005B8E24 /* TokenCodeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenCodeField.swift; sourceTree = "<group>"; };
+		EAF340C42580F1460092ED6E /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		EAF340CF258102120092ED6E /* FadeBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeBlock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,9 +336,10 @@
 		32B5955F24AA273A00CC386E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				EA3ED0E224F8315500635817 /* FileStorage.swift */,
 				32B5956024AA27ED00CC386E /* BatchRepository.swift */,
+				EAA9892C257E7194009A7FF8 /* EFGSRepository.swift */,
 				EAD8619C24AE18A900809677 /* ExposureRepository.swift */,
+				EA3ED0E224F8315500635817 /* FileStorage.swift */,
 				561878AB24AC9952004B7563 /* LocalStore.swift */,
 				5695F6CF24D446DE008E06BC /* MunicipalityRepository.swift */,
 			);
@@ -403,11 +424,13 @@
 				D98EDD2424CB3D5F003E09A1 /* CardElement.swift */,
 				EA7BEC892570E5EF005DDF3D /* Checkbox.swift */,
 				56E3349924CEC9290017CD9A /* ContactItemCard.swift */,
+				EAF340CF258102120092ED6E /* FadeBlock.swift */,
 				5630F2EA24C6F8BD00B12438 /* LabeledOverlay.swift */,
 				D98EDD2624CB3E17003E09A1 /* LinkItem.swift */,
 				D98EDD2E24CCACF3003E09A1 /* LinkItemCard.swift */,
 				D98EDD3024CCAD15003E09A1 /* LinkItemGroupCard.swift */,
 				5630F2EC24C70F6700B12438 /* LinkLabel.swift */,
+				EAF340C42580F1460092ED6E /* RadioButton.swift */,
 				56C26BAF24AF3A0B002F83C1 /* RoundedButton.swift */,
 			);
 			path = Components;
@@ -508,6 +531,7 @@
 		EA30D71624A5C15000AF84B1 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				EA6C1FD5257FC44000E973E3 /* ReportInfectionFlow */,
 				EA71E98F251E25E900E66F64 /* ChangeLanguageViewController.swift */,
 				D98EDD3224CDED29003E09A1 /* ChangeRadarStatusViewController.swift */,
 				563ACEAE24D0555500D396F0 /* ExposureLogsViewController.swift */,
@@ -523,7 +547,6 @@
 				EA839F9B256802C2003B1580 /* NotificationListViewController.swift */,
 				5687173E24C190E400E65427 /* OnboardingViewController.swift */,
 				D92F18AE24CFF8F700F3FBCE /* OpenSettingsViewController.swift */,
-				561878AD24AD2BDE004B7563 /* PublishTokensViewController.swift */,
 				EA30D71924A603E300AF84B1 /* ReportInfectionViewController.swift */,
 				EA30D71724A5C32200AF84B1 /* RootViewController.swift */,
 				56C26BC024B4503E002F83C1 /* SelectMunicipalityViewController.swift */,
@@ -584,6 +607,20 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		EA6C1FD5257FC44000E973E3 /* ReportInfectionFlow */ = {
+			isa = PBXGroup;
+			children = (
+				EA8E2243258239A40008EE92 /* BaseReportInfectionViewController.swift */,
+				EA8E2258258264CF0008EE92 /* ChooseCountriesViewController.swift */,
+				EA6C1FDE257FC51100E973E3 /* ChooseDestinationViewController.swift */,
+				EA8E224B258250CB0008EE92 /* ConfirmReportViewController.swift */,
+				561878AD24AD2BDE004B7563 /* PublishTokensViewController.swift */,
+				EA6C1FCD257FB1C200E973E3 /* ReportInfectionFlowViewController.swift */,
+				EA8E2250258250FF0008EE92 /* TravelStatusViewController.swift */,
+			);
+			path = ReportInfectionFlow;
+			sourceTree = "<group>";
+		};
 		EA7B05532512489A002941A6 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +629,14 @@
 				EA4A59692563C4A400E65CFB /* Localizable.stringsdict */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		EA8E2263258798980008EE92 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				EA8E2264258798CE0008EE92 /* MockEFGSRepository.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		EA92A03724A3958300CE7271 = {
@@ -647,6 +692,7 @@
 			children = (
 				5695F6D424D82C8B008E06BC /* Json */,
 				560833BE24B886B70078B75D /* Localization */,
+				EA8E2263258798980008EE92 /* Mock */,
 				56EE9BD524F7DE720037A45D /* Model */,
 				EA4F905324F4EFB40032D9D5 /* Network */,
 				56C2DBF524EFA8C50014F09D /* Scene */,
@@ -844,6 +890,7 @@
 				EA92357C24B26E4700B21B1B /* Environment.swift in Sources */,
 				5695F6D024D446DE008E06BC /* MunicipalityRepository.swift in Sources */,
 				5630F2E924C5B4A000B12438 /* TextParagraphView.swift in Sources */,
+				EA8E2251258250FF0008EE92 /* TravelStatusViewController.swift in Sources */,
 				EA7BEC9225712B56005DDF3D /* BulletItem.swift in Sources */,
 				561878AE24AD2BDE004B7563 /* PublishTokensViewController.swift in Sources */,
 				56E3349624CCC0BB0017CD9A /* MunicipalityContactInformationView.swift in Sources */,
@@ -872,8 +919,11 @@
 				5630F2EF24C7157200B12438 /* OnboardingDoneView.swift in Sources */,
 				563D44B524AB59FE008FE2BB /* TableViewCell.swift in Sources */,
 				5687174424C1AA7C00E65427 /* AcceptableTermsView.swift in Sources */,
+				EA6C1FCE257FB1C200E973E3 /* ReportInfectionFlowViewController.swift in Sources */,
 				56C26BC924B4B5A0002F83C1 /* MunicipalitySearchResultController.swift in Sources */,
+				EA6C1FDF257FC51100E973E3 /* ChooseDestinationViewController.swift in Sources */,
 				56C26BBA24B30CF8002F83C1 /* ExposuresViewWrapper.swift in Sources */,
+				EA8E2259258264CF0008EE92 /* ChooseCountriesViewController.swift in Sources */,
 				EA4A594B2562708400E65CFB /* ExposuresElement.swift in Sources */,
 				563D44B724AB5DEE008FE2BB /* UILabel+Styled.swift in Sources */,
 				56C26BC724B461ED002F83C1 /* MunicipalityModel.swift in Sources */,
@@ -884,6 +934,7 @@
 				5630F2EB24C6F8BD00B12438 /* LabeledOverlay.swift in Sources */,
 				56C26BBC24B33D74002F83C1 /* ExposuresLastCheckedView.swift in Sources */,
 				EAD8619F24AE56BA00809677 /* ExposureConfiguration.swift in Sources */,
+				EAA9892D257E7194009A7FF8 /* EFGSRepository.swift in Sources */,
 				561878AA24AC8F03004B7563 /* ExposureModel.swift in Sources */,
 				56E3349424CB21760017CD9A /* MunicipalityContactInfoViewController.swift in Sources */,
 				EA839F9C256802C2003B1580 /* NotificationListViewController.swift in Sources */,
@@ -891,6 +942,7 @@
 				EA1F5C8B24E1517000398EC8 /* InstructionsView.swift in Sources */,
 				56C26BAD24AF3886002F83C1 /* InfoViewWithButton.swift in Sources */,
 				32E0350224AB0E8100F48450 /* Configuration.swift in Sources */,
+				EAF340D0258102120092ED6E /* FadeBlock.swift in Sources */,
 				D98EDD2B24CC7EBA003E09A1 /* SymptomsViewController.swift in Sources */,
 				3288A07724AC593300365B46 /* Backend.swift in Sources */,
 				327C940224BED1C9003C8429 /* ApiResponses.swift in Sources */,
@@ -915,6 +967,7 @@
 				561878AC24AC9952004B7563 /* LocalStore.swift in Sources */,
 				EA47C5EC24A6AB0300EAC720 /* Fonts.swift in Sources */,
 				EA839F8C2567C4BC003B1580 /* DetectionStatus.swift in Sources */,
+				EA8E224C258250CB0008EE92 /* ConfirmReportViewController.swift in Sources */,
 				D98EDD3124CCAD15003E09A1 /* LinkItemGroupCard.swift in Sources */,
 				EA7BEC8A2570E5EF005DDF3D /* Checkbox.swift in Sources */,
 				563D44AB24AA327F008FE2BB /* UIView.swift in Sources */,
@@ -924,6 +977,7 @@
 				D98EDD2D24CC9C93003E09A1 /* SettingsViewController.swift in Sources */,
 				56E3349A24CEC9290017CD9A /* ContactItemCard.swift in Sources */,
 				EA80A56E24ACAE0D0071E0EC /* REST.swift in Sources */,
+				EAF340C52580F1460092ED6E /* RadioButton.swift in Sources */,
 				563D44B924AB9CD3008FE2BB /* Dictionary+IndexSubscript.swift in Sources */,
 				56E3349224CB02C00017CD9A /* ExposureDetectionSummary.swift in Sources */,
 				EA71E990251E25E900E66F64 /* ChangeLanguageViewController.swift in Sources */,
@@ -932,6 +986,7 @@
 				D98EDD2524CB3D5F003E09A1 /* CardElement.swift in Sources */,
 				563D44A824AA2143008FE2BB /* StatusHeaderView.swift in Sources */,
 				5687173F24C190E400E65427 /* OnboardingViewController.swift in Sources */,
+				EA8E2244258239A40008EE92 /* BaseReportInfectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -941,6 +996,7 @@
 			files = (
 				EA1B814324F54AA10041DED1 /* RestApiTest.swift in Sources */,
 				5695F6D624D82C9E008E06BC /* MunicipalityValidation.swift in Sources */,
+				EA8E2265258798CE0008EE92 /* MockEFGSRepository.swift in Sources */,
 				EA1B814524F54AD20041DED1 /* MockURLProtocol.swift in Sources */,
 				EA4F905024F46E660032D9D5 /* BatchRepositoryTest.swift in Sources */,
 				EA1B814E24F7159B0041DED1 /* MockBackend.swift in Sources */,

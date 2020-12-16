@@ -6,10 +6,12 @@ import Combine
 class OnboardingViewController: UINavigationController, UINavigationControllerDelegate {
     
     private var currentStep = 0
-    private var button: RoundedButton? = nil
-    private var scrollIndicatorButton: UIButton? = nil
+    private var button: RoundedButton?
+    private var scrollIndicatorButton: UIButton?
+    private var fadeBlock: FadeBlock?
     private var scrollView: UIScrollView?
     private var activationTask: AnyCancellable?
+    private var onRemoveScrollIndicator: (() -> ())?
     
     private lazy var steps: [Step] = [
         // Note that the steps and StepId values must be in the same order.
@@ -244,23 +246,25 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
     
     private func initStepViewController(from step: Step, stepView: StepView) -> UIViewController {
         self.scrollView = UIScrollView()
-        self.scrollView?.backgroundColor = .white
-        self.scrollView?.alwaysBounceVertical = true
+        scrollView!.backgroundColor = .white
+        scrollView!.alwaysBounceVertical = true
+        
         let viewController = UIViewController()
         viewController.view.addSubview(scrollView!)
         scrollView!.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.bottom.equalTo(viewController.view.safeAreaInsets)
+            make.left.right.equalToSuperview()
         }
         
         scrollView!.addSubview(stepView)
         stepView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.left.right.equalTo(viewController.view)
+            make.edges.equalTo(scrollView!.contentLayoutGuide.snp.edges)
+            make.width.equalTo(scrollView!.frameLayoutGuide.snp.width)
         }
         
         if step.showLanguageSelection {
             let languageButton = createLanguageSelectionButton()
-            scrollView?.addSubview(languageButton)
+            scrollView!.addSubview(languageButton)
             
             languageButton.snp.makeConstraints { make in
                 make.top.equalToSuperview().offset(10)
@@ -274,6 +278,7 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
         let buttonMargin = UIEdgeInsets(top: 10, left: 40, bottom: 60, right: 40)
         let buttonHeight = RoundedButton.height
         self.button = nil
+        self.onRemoveScrollIndicator = nil
         
         if let buttonTitle = step.buttonTitle {
             let button = RoundedButton(title: buttonTitle) { [unowned self] in
@@ -297,6 +302,10 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
                 make.centerX.equalToSuperview()
             }
             self.scrollIndicatorButton = button
+            self.onRemoveScrollIndicator = {
+                fade.removeFromSuperview()
+                stepView.bottomConstraint?.update(inset: 40)
+            }
             scrollView!.delegate = self
         }
         
@@ -370,6 +379,8 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
         guard let indicator = scrollIndicatorButton else { return }
         self.scrollIndicatorButton = nil
         indicator.removeFromSuperview()
+        
+        onRemoveScrollIndicator?()
     }
     
     private func handleStartStep() {
@@ -454,35 +465,6 @@ extension OnboardingViewController: UIScrollViewDelegate {
 extension UIScrollView {
     func updateContentView() {
         contentSize.height = subviews.sorted(by: { $0.frame.maxY < $1.frame.maxY }).last?.frame.maxY ?? contentSize.height
-    }
-}
-
-class FadeBlock: UIView {
-    
-    private let gradientLayer: CAGradientLayer
-    
-    init() {
-        self.gradientLayer = CAGradientLayer()
-        
-        super.init(frame: .zero)
-        
-        let color = UIColor.white
-        gradientLayer.colors = [color.withAlphaComponent(0.0).cgColor, color.cgColor]
-        gradientLayer.locations = [0, 1]
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1.0)
-        layer.addSublayer(gradientLayer)
-        
-        self.isUserInteractionEnabled = false
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        gradientLayer.frame = bounds
     }
 }
 

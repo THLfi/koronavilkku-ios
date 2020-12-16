@@ -8,14 +8,25 @@ class Checkbox: UIView {
         case AccessibilityHint
     }
     
-    private let acceptButton = UIButton()
+    internal let acceptButton = UIButton()
+    internal var selectedColor = UIColor.Primary.blue
+    
     private let labelView: UILabel
     private let tapped: (Bool) -> ()
     
     private(set) var labelStartConstraint: ConstraintItem!
     
     var isChecked: Bool {
-        acceptButton.isSelected
+        get {
+            acceptButton.isSelected
+        }
+        
+        set {
+            guard isChecked != newValue else { return }
+            acceptButton.isSelected = newValue
+            acceptButton.backgroundColor = newValue ? selectedColor : .clear
+            self.accessibilityValue = newValue ? Text.AccessibilityValueChecked.localized : Text.AccessibilityValueUnchecked.localized
+        }
     }
     
     init(label: String, tapped: @escaping (Bool) -> ()) {
@@ -28,7 +39,7 @@ class Checkbox: UIView {
         super.init(frame: .zero)
 
         acceptButton.isSelected = false
-        acceptButton.addTarget(self, action: #selector(toggleTapped), for: .touchUpInside)
+        acceptButton.addTarget(self, action: #selector(tapHandler), for: .touchUpInside)
         acceptButton.backgroundColor = .clear
         acceptButton.layer.cornerRadius = 5
         acceptButton.layer.borderWidth = 2
@@ -52,13 +63,14 @@ class Checkbox: UIView {
         self.addSubview(labelView)
         labelStartConstraint = labelView.snp.left
         labelView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(18)
             make.left.equalTo(acceptButton.snp.right).offset(10)
             make.right.equalToSuperview().offset(-20)
-            make.bottom.lessThanOrEqualToSuperview().offset(-20)
+            make.height.greaterThanOrEqualTo(acceptButton).offset(4)
+            make.bottom.equalToSuperview().offset(-18)
         }
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(toggleTapped))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandler))
         self.addGestureRecognizer(tap)
 
         labelView.isUserInteractionEnabled = true
@@ -74,12 +86,9 @@ class Checkbox: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func toggleTapped() {
-        acceptButton.isSelected = !acceptButton.isSelected
+    @objc internal func tapHandler() {
+        isChecked.toggle()
         UISelectionFeedbackGenerator().selectionChanged()
-        acceptButton.backgroundColor = acceptButton.isSelected ? UIColor.Primary.blue : .clear
         tapped(isChecked)
-        let accessibilityValue: Text = isChecked ? .AccessibilityValueChecked : .AccessibilityValueUnchecked
-        self.accessibilityValue = accessibilityValue.localized
     }
 }

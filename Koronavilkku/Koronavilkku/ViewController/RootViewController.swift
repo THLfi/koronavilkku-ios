@@ -13,17 +13,24 @@ class RootViewController : UITabBarController {
         super.init(coder: coder)
     }
     
-    var ensureCurrentBatchIdTask: AnyCancellable?
+    var updateTask: AnyCancellable?
     
     init(initialTab selectedTab: RootTab? = nil) {
         super.init(nibName: nil, bundle: nil)
         
         BackgroundTaskManager.shared.scheduleTasks()
-        
-        // In case a considerable amount of time (batch id changes) elapses before
-        // the background task is run the first time, attempt to fetch the current batch identifier separately.
-        ensureCurrentBatchIdTask = Environment.default.batchRepository.getCurrentBatchId()
-            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+
+        updateTask = Publishers.Zip(
+            // In case a considerable amount of time (batch id changes) elapses before
+            // the background task is run the first time, attempt to fetch the current batch identifier separately.
+            Environment.default.batchRepository.getCurrentBatchId().catch { _ in
+                Empty(completeImmediately: true)
+            },
+            
+            // Update the EFGS country list
+            Environment.default.efgsRepository.updateCountryList()
+        )
+        .sink { _ in }
         
         // Set every UILabel automagically respond to Dynamic Type changes
         UILabel.appearance().adjustsFontForContentSizeCategory = true
@@ -86,11 +93,8 @@ class RootViewController : UITabBarController {
     
     func openReportInfectionScreenWithCode(code: String) {
         // if we're already in the publish tokens step, just prefill the code
-        if
-            let navController = presentedViewController as? UINavigationController,
-            let publishTokensVC = navController.topViewController as? PublishTokensViewController?
-        {
-            publishTokensVC?.setCode(code)
+        if let flowController = presentedViewController as? ReportInfectionFlowViewController {
+            flowController.setPublishToken(publishToken: code, receivedFromSMS: true)
             return
         }
         
@@ -99,10 +103,11 @@ class RootViewController : UITabBarController {
 
         // navigate to the correct view
         selectTab(.reportInfection)
+
         guard let navController = tabViewController(.reportInfection) else { return }
         guard let reportInfectionVC = navController.topViewController as? ReportInfectionViewController else { return }
         
-        reportInfectionVC.pushToPublishTokensVC(with: code)
+        reportInfectionVC.startReportInfectionFlow(with: code)
     }
     
     func selectTab(_ tab: RootTab) {

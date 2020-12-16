@@ -51,7 +51,8 @@ class BackendRestApiTest : XCTestCase {
             transmissionRiskScores: [10, 11],
             durationAtAttenuationThresholds: [13, 14, 15],
             durationAtAttenuationWeights: [1.0, 0.5, 0.0],
-            exposureRiskDuration: 16
+            exposureRiskDuration: 16,
+            participatingCountries: ["DE", "EE", "FI"]
         )
 
         testEndpoint(task: backend.getConfiguration(), verifyRequest: { request in
@@ -70,7 +71,7 @@ class BackendRestApiTest : XCTestCase {
             XCTAssertEqual(input.exposureRiskDuration, output.exposureRiskDuration)
         })
         
-        let diagnosisKeys = DiagnosisPublishRequest(keys: [])
+        let diagnosisKeys = DiagnosisPublishRequest(keys: [], visitedCountries: ["EE": 1, "DE": 0], consentToShareWithEfgs: 1)
         
         let uploadTask = backend.postDiagnosisKeys(publishToken: "789",
                                                    publishRequest: diagnosisKeys,
@@ -81,7 +82,7 @@ class BackendRestApiTest : XCTestCase {
             XCTAssertEqual(request.httpMethod, "POST")
             XCTAssertEqual(request.allHTTPHeaderFields, [
                 "KV-Fake-Request": "1",
-                "Content-Length": "101",
+                "Content-Length": "73",
                 "KV-Publish-Token": "789",
                 "Content-Type": "application/json; charset=utf-8",
             ])

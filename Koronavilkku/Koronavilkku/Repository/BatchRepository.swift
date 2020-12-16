@@ -3,11 +3,8 @@ import Foundation
 
 struct DiagnosisPublishRequest : Codable, Equatable {
     let keys: [TemporaryExposureKey]
-    
-    /// Temporary static values for E2E testing
-    /// - Important: These will be replaced with the actual user selected values after the feature has been implemented
-    let visitedCountries: [String: Int] = ["DE": 1, "DK": 1, "LV": 0, "IT": 0, "IE": 0, "ES": 0]
-    let consentToShareWithEfgs: Int = 1
+    let visitedCountries: [String: Int]
+    let consentToShareWithEfgs: Int
 }
 
 protocol BatchRepository {
