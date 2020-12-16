@@ -21,12 +21,13 @@ class TravelStatusViewController: BaseReportInfectionViewController {
         continueButton.setEnabled(false)
         createContentWrapper(floatingButton: continueButton)
 
-        let titleView = UILabel(label: Text.Title.localized,
+        let titleLabel = UILabel(label: Text.Title.localized,
                                 font: .heading3,
                                 color: UIColor.Greyscale.black)
         
-        titleView.numberOfLines = 0
-        
+        titleLabel.numberOfLines = 0
+        titleLabel.accessibilityTraits = .header
+
         let radioNotTravelled = RadioButton(value: false,
                                             label: Text.NotTravelled.localized)
         
@@ -36,7 +37,7 @@ class TravelStatusViewController: BaseReportInfectionViewController {
         self.radioButtonGroup = RadioButtonGroup([radioNotTravelled, radioHasTravelled])
         
         content.layout { append in
-            append(titleView, nil)
+            append(titleLabel, nil)
             append(CardElement(embed: radioNotTravelled), UIEdgeInsets(top: 20))
             append(CardElement(embed: radioHasTravelled), UIEdgeInsets(top: 20))
         }

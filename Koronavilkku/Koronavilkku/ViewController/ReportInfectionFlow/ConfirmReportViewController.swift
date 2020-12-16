@@ -27,7 +27,8 @@ class ConfirmReportViewController: BaseReportInfectionViewController {
 
         let titleLabel = UILabel(label: Text.Title.localized, font: .heading2, color: UIColor.Greyscale.black)
         titleLabel.numberOfLines = 0
-        
+        titleLabel.accessibilityTraits = .header
+
         let messageLabel = UILabel(label: getMessage().localized, font: .bodySmall, color: UIColor.Greyscale.black)
         messageLabel.numberOfLines = 0
         
