@@ -63,10 +63,11 @@ class Checkbox: UIView {
         self.addSubview(labelView)
         labelStartConstraint = labelView.snp.left
         labelView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(20)
+            make.top.equalToSuperview().offset(18)
             make.left.equalTo(acceptButton.snp.right).offset(10)
             make.right.equalToSuperview().offset(-20)
-            make.bottom.lessThanOrEqualToSuperview().offset(-20)
+            make.height.greaterThanOrEqualTo(acceptButton).offset(4)
+            make.bottom.equalToSuperview().offset(-18)
         }
 
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandler))
