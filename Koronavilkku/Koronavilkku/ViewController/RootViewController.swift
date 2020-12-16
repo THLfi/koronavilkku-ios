@@ -19,16 +19,18 @@ class RootViewController : UITabBarController {
         super.init(nibName: nil, bundle: nil)
         
         BackgroundTaskManager.shared.scheduleTasks()
-        
-        // In case a considerable amount of time (batch id changes) elapses before
-        // the background task is run the first time, attempt to fetch the current batch identifier separately.
+
         updateTask = Publishers.Zip(
+            // In case a considerable amount of time (batch id changes) elapses before
+            // the background task is run the first time, attempt to fetch the current batch identifier separately.
             Environment.default.batchRepository.getCurrentBatchId().catch { _ in
                 Empty(completeImmediately: true)
             },
+            
+            // Update the EFGS country list
             Environment.default.efgsRepository.updateCountryList()
         )
-        .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+        .sink { _ in }
         
         // Set every UILabel automagically respond to Dynamic Type changes
         UILabel.appearance().adjustsFontForContentSizeCategory = true
