@@ -85,31 +85,10 @@ class StepView: UIView {
     }
     
     private func createWrapper(for extraContent: [UIView]) -> UIView {
-        let wrapper = UIView(frame: .zero)
-        switch extraContent.count {
-        case ...0: return UIView()
-        default:
-            var lastComponent: UIView?
-            extraContent.enumerated().forEach { (index, content) in
-                wrapper.addSubview(content)
-                content.snp.makeConstraints { make in
-                    if let lastComponent = lastComponent {
-                        make.top.equalTo(lastComponent.snp.bottom).offset(20)
-                    } else {
-                        make.top.equalToSuperview()
-                    }
-                    make.left.equalToSuperview().offset(20)
-                    make.right.equalToSuperview().offset(-20)
-                }
-                lastComponent = content
+        UIView().layout { append in
+            for content in extraContent {
+                append(content, UIEdgeInsets(top: 20, left: 20, right: 20))
             }
-            
-            guard let _ = lastComponent else { return wrapper }
-            
-            wrapper.snp.makeConstraints { make in
-                make.bottom.equalTo(lastComponent!)
-            }
-            return wrapper
         }
     }
 }

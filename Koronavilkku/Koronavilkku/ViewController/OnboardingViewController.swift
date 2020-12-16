@@ -246,23 +246,25 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
     
     private func initStepViewController(from step: Step, stepView: StepView) -> UIViewController {
         self.scrollView = UIScrollView()
-        self.scrollView?.backgroundColor = .white
-        self.scrollView?.alwaysBounceVertical = true
+        scrollView!.backgroundColor = .white
+        scrollView!.alwaysBounceVertical = true
+        
         let viewController = UIViewController()
         viewController.view.addSubview(scrollView!)
         scrollView!.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.top.bottom.equalTo(viewController.view.safeAreaInsets)
+            make.left.right.equalToSuperview()
         }
         
         scrollView!.addSubview(stepView)
         stepView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-            make.left.right.equalTo(viewController.view)
+            make.edges.equalTo(scrollView!.contentLayoutGuide.snp.edges)
+            make.width.equalTo(scrollView!.frameLayoutGuide.snp.width)
         }
         
         if step.showLanguageSelection {
             let languageButton = createLanguageSelectionButton()
-            scrollView?.addSubview(languageButton)
+            scrollView!.addSubview(languageButton)
             
             languageButton.snp.makeConstraints { make in
                 make.top.equalToSuperview().offset(10)
