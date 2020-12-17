@@ -38,7 +38,6 @@ protocol EFGSRepository {
 struct EFGSRepositoryImpl: EFGSRepository {
     static let countryListFile = "efgs-country-list"
     
-    let backend: Backend
     let storage: FileStorage
     
     func getParticipatingCountries() -> Set<EFGSCountry>? {
@@ -51,21 +50,6 @@ struct EFGSRepositoryImpl: EFGSRepository {
         }
         
         storage.write(object: countryList, to: Self.countryListFile)
-    }
-    
-    func updateCountryList() -> AnyPublisher<Bool, Never> {
-        backend.getConfiguration()
-            .map { config in
-                let countryList = config.participatingCountries.compactMap { regionCode in
-                    EFGSCountry.create(from: regionCode)
-                }
-                
-                return storage.write(object: countryList, to: Self.countryListFile)
-            }
-            .catch { _ in
-                Just(false)
-            }
-            .eraseToAnyPublisher()
     }
 }
 
