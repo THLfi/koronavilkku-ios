@@ -39,7 +39,7 @@ class ChooseCountriesViewController: BaseReportInfectionViewController {
             otherCheckbox.isChecked = true
         }
 
-        let button = RoundedButton(title: Translation.ButtonNext.localized) { [unowned self] in
+        let button = RoundedButton(title: Translation.ButtonContinue.localized) { [unowned self] in
             flowController.setTravelStatus(countries: selectedCountries,
                                            otherCountries: otherCheckbox.isChecked)
         }

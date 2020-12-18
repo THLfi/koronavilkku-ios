@@ -43,6 +43,12 @@ class LocalizationTests: XCTestCase {
             XCTAssertNotNil(bundle)
             let translation = NSLocalizedString(translationKey, tableName: nil, bundle: bundle!, value: "", comment: "")
             XCTAssertNotEqual(translationKey, translation, "Failure for \(translationKey) in language \(lang)")
+            
+            // check too long words that need to be broken down
+            if let range = translation.range(of: #"[\w]{20,}"#, options: .regularExpression) {
+                // except if they're used as accessibility labels
+                XCTAssertTrue(translationKey.contains("Accessibility"), "Non-accessibility translation for key \(translationKey) contains too long word \(translation[range])")
+            }
         }
     }
     

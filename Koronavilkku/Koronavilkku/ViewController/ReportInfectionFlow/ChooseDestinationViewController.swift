@@ -16,7 +16,7 @@ class ChooseDestinationViewController: BaseReportInfectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let continueButton = RoundedButton(title: Translation.ButtonNext.localized) { [unowned self] in
+        let continueButton = RoundedButton(title: Translation.ButtonContinue.localized) { [unowned self] in
             guard let destination = radioButtonGroup.value else { return }
             self.flowController.setDestination(destination: destination)
         }

@@ -2,6 +2,7 @@
 "ButtonBack" = "Takaisin";
 "ButtonCancel" = "Peruuta";
 "ButtonNext" = "Seuraava";
+"ButtonContinue" = "Jatka";
 "ButtonStartUsing" = "Aloita käyttö";
 "ButtonTestUI" = "Testikäyttöliittymä";
 "ButtonLoading" = "Ladataan";

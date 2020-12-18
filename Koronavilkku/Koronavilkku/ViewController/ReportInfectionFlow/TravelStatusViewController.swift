@@ -13,7 +13,7 @@ class TravelStatusViewController: BaseReportInfectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let continueButton = RoundedButton(title: Translation.ButtonNext.localized) { [unowned self] in
+        let continueButton = RoundedButton(title: Translation.ButtonContinue.localized) { [unowned self] in
             guard let hasTravelled = radioButtonGroup.value else { return }
             self.flowController.setTravelStatus(hasTravelled: hasTravelled)
         }
