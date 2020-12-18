@@ -12,21 +12,17 @@ class TestViewController: UIViewController {
     
     lazy var storeBatchIdButton = self.createButton(title: "Store batch id", action: #selector(storeBatchId))
     lazy var testBatchDownloadButton = self.createButton(title: "Test batch loading", action: #selector(batchDownloadPressed))
-    lazy var testBatchDownloadInTheBackgroundButton = self.createButton(title: "Test background batch", action: #selector(batchDownloadBackgroundPressed))
-    lazy var downloadAndDetectButton = self.createButton(title: "Dl and detect", action: #selector(downloadAndDetect))
+    lazy var downloadAndDetectButton = self.createButton(title: "Run exposure detection", action: #selector(downloadAndDetect))
     lazy var addExposureButton = self.createButton(title: "Add exposure", action: #selector(addExposure))
     lazy var addExposureDelayedButton = self.createButton(title: "Add exposure, delayed", action: #selector(addExposureDelayed))
     lazy var addLegacyExposureButton = self.createButton(title: "Add legacy exposure", action: #selector(addLegacyExposure))
-
     lazy var removeExposuresButton = self.createButton(title: "Remove exposures", action: #selector(removeExposures))
     lazy var radarStatus = self.createButton(title: "Radar status \(LocalStore.shared.uiStatus)", action: #selector(toggleRadarStatus))
-    
     lazy var resetOnboardingButton = self.createButton(title: "Reset onboarding", action: #selector(resetOnboarding))
     lazy var showExposureLogsButton = self.createButton(title: "Exposure logs", action: #selector(showExposureLogs))
-    
     lazy var updateMunicipalityListButton = self.createButton(title: "Update municipality list", action: #selector(updateMunicipalityList))
-    
     lazy var setLastExposureCheckButton = self.createButton(title: "Set exposure check date", action: #selector(setLastExposureCheck))
+    lazy var dumpEFGSCountriesButton = self.createButton(title: "Dump EFGS countries", action: #selector(dumpEFGSCountries))
     
     // force downcast, because we're using the internals here
     var batchRepository = Environment.default.batchRepository as! BatchRepositoryImpl
@@ -76,7 +72,6 @@ class TestViewController: UIViewController {
         
         appendButton(testBatchDownloadButton)
         appendButton(downloadAndDetectButton)
-        appendButton(testBatchDownloadInTheBackgroundButton)
         appendButton(addExposureButton)
         appendButton(addExposureDelayedButton)
         appendButton(addLegacyExposureButton)
@@ -86,6 +81,7 @@ class TestViewController: UIViewController {
         appendButton(showExposureLogsButton)
         appendButton(updateMunicipalityListButton)
         appendButton(setLastExposureCheckButton)
+        appendButton(dumpEFGSCountriesButton)
         
         LocalStore.shared.$uiStatus.addObserver(using: { [weak self] in
             self?.radarStatus.setTitle("Radar status \(LocalStore.shared.uiStatus)", for: .normal)
@@ -125,17 +121,6 @@ class TestViewController: UIViewController {
                     Log.e("Failed to download and detect")
                 }
             }.store(in: &tasks)
-    }
-    
-    @objc func batchDownloadBackgroundPressed() {
-        let taskRequest = BGProcessingTaskRequest(identifier: BackgroundTaskManager.shared.identifier(for: .notifications))
-        taskRequest.requiresNetworkConnectivity = true
-        do {
-            Log.d("Submitting background task")
-            try BGTaskScheduler.shared.submit(taskRequest)
-        } catch {
-            Log.e("Could not schedule batch download: \(error)")
-        }
     }
     
     @objc func addExposure() {
@@ -213,6 +198,14 @@ class TestViewController: UIViewController {
     
     @objc func setLastExposureCheck() {
         LocalStore.shared.$dateLastPerformedExposureDetection.wrappedValue = Date().addingTimeInterval(30 - ExposureRepositoryImpl.manualCheckThreshold)
+    }
+    
+    @objc func dumpEFGSCountries() {
+        showDialog(
+            Environment.default.efgsRepository.getParticipatingCountries()?
+                .map { $0.localizedName }
+                .joined(separator: "\n") ?? "",
+            title: "EFGS Countries")
     }
     
     private func showDialog(_ message: String, title: String = "Error") {

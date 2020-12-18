@@ -13,7 +13,12 @@ class LocalizationTests: XCTestCase {
         verifyTranslations(from: ExposuresViewWrapper.HasExposureText.self)
         verifyTranslations(from: ExposuresViewWrapper.NoExposuresText.self)
         verifyTranslations(from: ReportInfectionViewController.Text.self)
+        verifyTranslations(from: ChooseCountriesViewController.Text.self)
+        verifyTranslations(from: ChooseDestinationViewController.Text.self)
+        verifyTranslations(from: ConfirmReportViewController.Text.self)
         verifyTranslations(from: PublishTokensViewController.Text.self)
+        verifyTranslations(from: ReportInfectionFlowViewController.Text.self)
+        verifyTranslations(from: TravelStatusViewController.Text.self)
         verifyTranslations(from: ExposuresLastCheckedView.Text.self)
         verifyTranslations(from: SymptomsViewController.Text.self)
         verifyTranslations(from: SettingsViewController.Text.self)
@@ -22,6 +27,7 @@ class LocalizationTests: XCTestCase {
         verifyTranslations(from: LicenseListViewController.Text.self)
         verifyTranslations(from: ChangeLanguageViewController.Text.self)
         verifyTranslations(from: NotificationListViewController.Text.self)
+        verifyTranslations(from: Checkbox.Text.self)
     }
     
     private func verifyTranslations<T: Localizable & CaseIterable>(from namespace: T.Type) {
@@ -37,6 +43,12 @@ class LocalizationTests: XCTestCase {
             XCTAssertNotNil(bundle)
             let translation = NSLocalizedString(translationKey, tableName: nil, bundle: bundle!, value: "", comment: "")
             XCTAssertNotEqual(translationKey, translation, "Failure for \(translationKey) in language \(lang)")
+            
+            // check too long words that need to be broken down
+            if let range = translation.range(of: #"[\w]{20,}"#, options: .regularExpression) {
+                // except if they're used as accessibility labels
+                XCTAssertTrue(translationKey.contains("Accessibility"), "Non-accessibility translation for key \(translationKey) contains too long word \(translation[range])")
+            }
         }
     }
     

@@ -5,6 +5,7 @@ import TrustKit
 struct Environment {
     let configuration: Configuration
     let batchRepository: BatchRepository
+    let efgsRepository: EFGSRepository
     let exposureRepository: ExposureRepository
     let municipalityRepository: MunicipalityRepository
 
@@ -23,7 +24,10 @@ extension Environment {
                                                   cache: LocalStore.shared,
                                                   storage: storage)
         
-        let exposureRepository = ExposureRepositoryImpl(exposureManager: ExposureManagerProvider.shared.manager,
+        let efgsRepository = EFGSRepositoryImpl(storage: storage)
+
+        let exposureRepository = ExposureRepositoryImpl(efgsRepository: efgsRepository,
+                                                        exposureManager: ExposureManagerProvider.shared.manager,
                                                         backend: backend,
                                                         storage: storage)
         
@@ -33,6 +37,7 @@ extension Environment {
         
         return Environment(configuration: config,
                            batchRepository: batchRepository,
+                           efgsRepository: efgsRepository,
                            exposureRepository: exposureRepository,
                            municipalityRepository: municipalityRepository)
     }

@@ -74,7 +74,7 @@ extension Environment {
                 return Fail(error: PreviewError.notSupported).eraseToAnyPublisher()
             }
             
-            func postExposureKeys(publishToken: String?) -> AnyPublisher<Void, Error> {
+            func postExposureKeys(publishToken: String?, visitedCountries: Set<EFGSCountry>, shareWithEFGS: Bool) -> AnyPublisher<Void, Error> {
                 return Fail(error: PreviewError.notSupported).eraseToAnyPublisher()
             }
             
@@ -118,10 +118,22 @@ extension Environment {
             }
         }
         
+        struct PreviewEFGSRepository: EFGSRepository {
+            let state: PreviewState
+
+            func getParticipatingCountries() -> Set<EFGSCountry>? {
+                Set()
+            }
+
+            func updateCountryList(from: ExposureConfiguration) {
+            }
+        }
+        
         let state = createState()
         
         return Environment(configuration: PreviewConfiguration(),
                            batchRepository: PreviewBatchRepository(),
+                           efgsRepository: PreviewEFGSRepository(state: state),
                            exposureRepository: PreviewExposureRepository(state: state),
                            municipalityRepository: PreviewMunicipalityRepository())
     }

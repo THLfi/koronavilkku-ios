@@ -1,19 +1,14 @@
-import Foundation
-import UIKit
-import SnapKit
 import Combine
-import ExposureNotification
+import SnapKit
+import UIKit
 
-class PublishTokensViewController: UIViewController {
+class PublishTokensViewController: BaseReportInfectionViewController {
     enum Text : String, Localizable {
         case Title
         case ButtonSubmit
         case AdditionalText
         case ErrorWrongPublishToken
         case ErrorNetwork
-        case FinishedTitle
-        case FinishedText
-        case FinishedButton
     }
     
     private let scrollView = UIScrollView()
@@ -32,7 +27,7 @@ class PublishTokensViewController: UIViewController {
     private let wrapper = UIView()
     private lazy var infoLabel = createInfoLabel()
     
-    private var failure: NSError? = nil {
+    var failure: NSError? = nil {
         didSet {
             progressIndicator.stopAnimating()
             progressIndicator.isHidden = true
@@ -44,23 +39,24 @@ class PublishTokensViewController: UIViewController {
         }
     }
     
-    let exposureRepository = Environment.default.exposureRepository
     var tasks = [AnyCancellable]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addKeyboardDisposer()
         
-        navigationItem.title = Text.Title.localized
+        title = Text.Title.localized
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: Translation.ButtonCancel.localized, style: .plain, target: self, action: #selector(close))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "arrow-left"), style: .plain, target: self, action: #selector(close))
-        navigationItem.leftBarButtonItem?.accessibilityLabel = Translation.ButtonBack.localized
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+        bindKeyboardEvents()
         initUI()
+        
+        flowController.$viewModel.sink { [weak self] viewModel in
+            guard let self = self, let code = viewModel.publishToken else { return }
+
+            self.tokenCodeField.text = code
+            self.updateButtonEnabled()
+        }.store(in: &tasks)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -79,45 +75,43 @@ class PublishTokensViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationItem.largeTitleDisplayMode = .automatic
-        
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-           return
-        }
-
-        self.infoLabel.snp.updateConstraints { make in
-            make.bottom.equalToSuperview().inset(keyboardSize.height + 20)
-        }
     }
     
-    @objc func keyboardDidShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-           return
-        }
-        
-        // if possible, scroll all the way to bottom
-        let rectHeight = wrapper.frame.height - tokenCodeField.frame.minY + keyboardSize.height
+    func bindKeyboardEvents() {
+        NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification).sink { [weak self] notification in
+            guard let keyboardSize = notification.keyboardSize else {
+               return
+            }
 
-        // but prevent the tokenCodeField from being scrolled over
-        let rectMaxHeight = view.frame.height - view.safeAreaInsets.top - 8
+            self?.infoLabel.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().inset(keyboardSize.height + 20)
+            }
+        }.store(in: &tasks)
 
-        let rect = CGRect(x: tokenCodeField.frame.maxX,
-                          y: tokenCodeField.frame.minY,
-                          width: tokenCodeField.frame.width,
-                          height: rectHeight > rectMaxHeight ? rectMaxHeight : rectHeight)
+        NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification).sink { [weak self] notification in
+            guard let self = self, let keyboardSize = notification.keyboardSize else {
+               return
+            }
+            
+            // if possible, scroll all the way to bottom
+            let rectHeight = self.wrapper.frame.height - self.tokenCodeField.frame.minY + keyboardSize.height
 
-        self.scrollView.scrollRectToVisible(rect, animated: true)
-    }
+            // but prevent the tokenCodeField from being scrolled over
+            let rectMaxHeight = self.view.frame.height - self.view.safeAreaInsets.top - 8
 
-    @objc func keyboardWillHide(notification: NSNotification) {
-        self.infoLabel.snp.updateConstraints { make in
-            make.bottom.equalToSuperview().inset(20)
-        }
+            let rect = CGRect(x: self.tokenCodeField.frame.maxX,
+                              y: self.tokenCodeField.frame.minY,
+                              width: self.tokenCodeField.frame.width,
+                              height: rectHeight > rectMaxHeight ? rectMaxHeight : rectHeight)
+
+            self.scrollView.scrollRectToVisible(rect, animated: true)
+        }.store(in: &tasks)
+
+        NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification).sink { [weak self] notification in
+            self?.infoLabel.snp.updateConstraints { make in
+                make.bottom.equalToSuperview().inset(20)
+            }
+        }.store(in: &tasks)
     }
     
     @objc
@@ -186,11 +180,6 @@ class PublishTokensViewController: UIViewController {
         }
     }
     
-    func setCode(_ code: String) {
-        tokenCodeField.text = code
-        updateButtonEnabled()
-    }
-            
     private func createInfoLabel() -> UILabel {
         let label = UILabel(label: Text.AdditionalText.localized,
                        font: UIFont.bodySmall,
@@ -230,47 +219,14 @@ class PublishTokensViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    @objc func sendPressed() {
-        DispatchQueue.main.async {
-            self.errorView.isHidden = true
-            self.progressIndicator.startAnimating()
-            self.button.isEnabled = false
-            self.button.isUserInteractionEnabled = false
-            self.view.endEditing(true)
-        }
-        exposureRepository.postExposureKeys(publishToken: tokenCodeField.text ?? nil)
-            .receive(on: RunLoop.main)
-            .sink(
-                receiveCompletion: {
-                    let feedbackGenerator = UINotificationFeedbackGenerator()
-                    switch $0 {
-                    case .failure(let error as NSError):
-                        feedbackGenerator.notificationOccurred(.error)
-                        Log.e("Failed to post exposure keys: \(error)")
-                        self.failure = error
-
-                    case .finished:
-                        feedbackGenerator.notificationOccurred(.success)
-                        self.showFinishViewController()
-                    }
-                },
-                receiveValue: {}
-            )
-            .store(in: &tasks)
-    }
-    
-    func showFinishViewController() {
-        let finishViewController = InfoViewController()
-        finishViewController.image = UIImage(named: "ok")
-        finishViewController.titleText = Text.FinishedTitle.localized
-        finishViewController.textLabelText = Text.FinishedText.localized
-        finishViewController.buttonTitle = Text.FinishedButton.localized
-        finishViewController.buttonPressed = { [unowned finishViewController] in
-            UIApplication.shared.selectRootTab(.home)
-            finishViewController.dismiss(animated: true, completion: nil)
-        }
+    private func sendPressed() {
+        errorView.isHidden = true
+        progressIndicator.startAnimating()
+        button.isEnabled = false
+        button.isUserInteractionEnabled = false
+        view.endEditing(true)
         
-        self.show(finishViewController, sender: self.parent)
+        flowController.submit(publishToken: tokenCodeField.text)
     }
     
     private func updateErrorView(with failure: NSError?) {
@@ -300,15 +256,15 @@ class PublishTokensViewController: UIViewController {
         errorView.isHidden = failure == nil || failure!.equals(.notAuthorized)
     }
     
-    @objc private func updateButtonEnabled() {
+    private func updateButtonEnabled() {
         let invalid = tokenCodeField.text?.isEmpty == true
         button.setEnabled(!invalid)
     }
 }
 
-extension NSError {
-    func equals(_ code: ENError.Code) -> Bool {
-        return domain == ENErrorDomain && self.code == code.rawValue
+extension Notification {
+    var keyboardSize: CGRect? {
+        (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
     }
 }
 

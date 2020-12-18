@@ -1,7 +1,6 @@
-
-import Foundation
-import UIKit
 import Combine
+import SnapKit
+import UIKit
 
 protocol ExposuresViewDelegate: AnyObject {
     func showHowItWorks()
@@ -142,6 +141,7 @@ class ExposuresViewWrapper: UIView {
         case InstructionsShopping
         case InstructionsCoughing
         case InstructionsRemoteWork
+        case InstructionsWhenAbroad
     }
     
     enum NoExposuresText : String, Localizable {
@@ -235,12 +235,11 @@ class ExposuresViewWrapper: UIView {
         let instructionsLede = UILabel(label: HasExposureText.InstructionsLede.localized, font: .bodySmall, color: UIColor.Greyscale.black)
         instructionsLede.numberOfLines = 0
         top = appendView(instructionsLede, spacing: 18, top: top)
-
-        func bulletItem(_ text: HasExposureText) -> BulletListParagraph {
-            return BulletListParagraph(content: text.localized, textColor: UIColor.Greyscale.black)
-        }
-
-        let bulletList = [
+        
+        let bulletList = UIView()
+        top = appendView(bulletList, spacing: 10, top: top)
+        
+        let lastBulletBottom = [
             .InstructionsSymptoms,
             .InstructionsDistancing,
             .InstructionsHygiene,
@@ -248,16 +247,23 @@ class ExposuresViewWrapper: UIView {
             .InstructionsShopping,
             .InstructionsCoughing,
             .InstructionsRemoteWork,
-        ].map { bulletItem($0) }.asMutableAttributedString().toLabel()
-
-        top = appendView(bulletList, spacing: 18, top: top)
-         
-        bulletList.snp.makeConstraints { make in
-            make.bottom.lessThanOrEqualToSuperview()
+        ].reduce(bulletList.snp.top) { (top, text: HasExposureText) -> ConstraintItem in
+            let bullet = BulletItem(text: text.localized)
+            return bulletList.appendView(bullet, spacing: 10, top: top)
         }
+        
+        bulletList.snp.makeConstraints { make in
+            make.bottom.equalTo(lastBulletBottom)
+        }
+        
+        let whenAboardLabel = UILabel(label: HasExposureText.InstructionsWhenAbroad.localized,
+                                      font: .bodySmall,
+                                      color: UIColor.Greyscale.black)
+        whenAboardLabel.numberOfLines = 0
+        top = appendView(whenAboardLabel, spacing: 20, top: top)
 
         self.snp.makeConstraints { make in
-            make.bottom.equalTo(bulletList)
+            make.bottom.equalTo(whenAboardLabel.snp.bottom)
         }
     }
     

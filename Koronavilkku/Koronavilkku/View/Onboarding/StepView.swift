@@ -12,6 +12,7 @@ class StepView: UIView {
     let header: String
     let content: String
     let extraContent: [UIView]?
+    var bottomConstraint: Constraint?
     
     init(image: UIImage, header: String, content: String, extraContent: [UIView]?) {
         self.image = image
@@ -41,6 +42,7 @@ class StepView: UIView {
             make.height.equalTo(180)
         }
         
+        headerLabel.accessibilityTraits = .header
         headerLabel.text = header
         headerLabel.font = .heading2
         headerLabel.numberOfLines = 0
@@ -78,36 +80,15 @@ class StepView: UIView {
         }
         
         bottomView.snp.makeConstraints { make in
-            make.bottom.equalToSuperview().offset(-160)
+            bottomConstraint = make.bottom.equalToSuperview().offset(-160).constraint
         }
     }
     
     private func createWrapper(for extraContent: [UIView]) -> UIView {
-        let wrapper = UIView(frame: .zero)
-        switch extraContent.count {
-        case ...0: return UIView()
-        default:
-            var lastComponent: UIView?
-            extraContent.enumerated().forEach { (index, content) in
-                wrapper.addSubview(content)
-                content.snp.makeConstraints { make in
-                    if let lastComponent = lastComponent {
-                        make.top.equalTo(lastComponent.snp.bottom).offset(20)
-                    } else {
-                        make.top.equalToSuperview()
-                    }
-                    make.left.equalToSuperview().offset(20)
-                    make.right.equalToSuperview().offset(-20)
-                }
-                lastComponent = content
+        UIView().layout { append in
+            for content in extraContent {
+                append(content, UIEdgeInsets(top: 20, left: 20, right: 20))
             }
-            
-            guard let _ = lastComponent else { return wrapper }
-            
-            wrapper.snp.makeConstraints { make in
-                make.bottom.equalTo(lastComponent!)
-            }
-            return wrapper
         }
     }
 }

@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+- New UI components: Checkbox, RadioButton, FadeBlock and BulletItem
+- EFGSRepository for managing the EFGS interop information: initially just provides methods for storing and retrieving the participating countries.
+
+### Changed
+- Component style changes and corrections: button shadows and colors, text colors, etc. 
+- Improve accessibility by adding new header traits and hints, better checkbox handling
+- The infection reporting functionality has been replaced with more detailed UI flow that optionally lets the user share their travel history and diagnosis keys with the EFGS. 
+
 ## 1.3.0
 
 ### Added

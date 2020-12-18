@@ -10,6 +10,7 @@ class MunicipalityContactInfoViewController: UIViewController {
         case SymptomAssesmentButton
         case SymptomAssesmentHelp
         case ContactInfoTitle
+        case ContactInfoMessage
         case SymptomsInfo
         case SymptomsText
     }
@@ -56,12 +57,19 @@ class MunicipalityContactInfoViewController: UIViewController {
                                               buttonTapped: { [unowned self] in self.openOmaoloLink(target: .makeEvaluation) })
             top = contentView.appendView(infoView, top: top)
 
-            let subHeader = UILabel(label: Text.ContactInfoTitle.localized,
-                                    font: UIFont.heading3,
-                                    color: UIColor.Greyscale.black)
-            subHeader.numberOfLines = 0
-            subHeader.setLineHeight(0.95)
-            top = contentView.appendView(subHeader, spacing: 30, top: top)
+            let titleLabel = UILabel(label: Text.ContactInfoTitle.localized,
+                                     font: UIFont.heading3,
+                                     color: UIColor.Greyscale.black)
+            titleLabel.numberOfLines = 0
+            titleLabel.setLineHeight(0.95)
+            top = contentView.appendView(titleLabel, spacing: 30, top: top)
+            
+            let messageLabel = UILabel(label: Text.ContactInfoMessage.localized,
+                                       font: .bodySmall,
+                                       color: UIColor.Greyscale.darkGrey)
+            
+            messageLabel.numberOfLines = 0
+            top = contentView.appendView(messageLabel, spacing: 10, top: top)
             contactInfoTopMargin = 20
         } else {
             contactInfoTopMargin = 0
@@ -73,13 +81,12 @@ class MunicipalityContactInfoViewController: UIViewController {
         
         top = contentView.appendView(contactInformationView, spacing: contactInfoTopMargin, top: top)
         
-        let symptomsInfo = UILabel(label: Text.SymptomsInfo.localized, font: UIFont.heading4, color: UIColor.Greyscale.black)
+        let symptomsInfo = UILabel(label: Text.SymptomsInfo.localized, font: .heading4, color: UIColor.Greyscale.black)
         symptomsInfo.numberOfLines = 0
         top = contentView.appendView(symptomsInfo, spacing: 30, top: top)
         
-        let symptomsText = UILabel(label: Text.SymptomsText.localized, font: UIFont.bodySmall, color: UIColor.Greyscale.darkGrey)
+        let symptomsText = UILabel(label: Text.SymptomsText.localized, font: .bodySmall, color: UIColor.Greyscale.black)
         symptomsText.numberOfLines = 0
-        symptomsText.setLineHeight(1.20)
         top = contentView.appendView(symptomsText, spacing: 10, top: top)
         
         symptomsText.snp.makeConstraints { make in
@@ -107,8 +114,9 @@ import SwiftUI
 
 struct MunicipalityContactInfoViewControllerController_Preview: PreviewProvider {
     
-    static var previews: some View = createPreview(for: {
-        let municipality = Municipality(code: "1234",
+    static var previews: some View = Group {
+        createPreview(for: {
+            let municipality = Municipality(code: "1234",
                                         name: MunicipalityName(fi: "Pirkkala", sv: "Birkala"),
                                         omaolo: Omaolo(
                                             available: true,
@@ -148,6 +156,47 @@ struct MunicipalityContactInfoViewControllerController_Preview: PreviewProvider 
         vc.municipality = municipality
         return vc
     }())
+    createPreview(for: {
+            let municipality = Municipality(code: "1234",
+                                        name: MunicipalityName(fi: "Pirkkala", sv: "Birkala"),
+                                        omaolo: Omaolo(
+                                            available: true,
+                                            serviceLanguages: ServiceLanguages(fi: true, sv: true, en: true),
+                                            symptomAssessmentOnly: true),
+                                        contact: [
+                                            Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
+                                                                     sv: nil,
+                                                                     en: nil),
+                                            phoneNumber: "+358 555 123",
+                                            info: Localized(fi: "Maanantai - Perjantai 8-16",
+                                                            sv: nil,
+                                                            en: nil)),
+                                            Contact(title: Localized(fi: nil,
+                                                                     sv: "Birkala hälsovårdscentral",
+                                                                     en: nil),
+                                            phoneNumber: "+358 555 456",
+                                            info: Localized(fi: nil,
+                                                            sv: "Mon - Fri: 8am - 4pm",
+                                                            en: nil)),
+                                            Contact(title: Localized(fi: nil,
+                                                                     sv: nil,
+                                                                     en: "Pirkkala Health Center"),
+                                            phoneNumber: "+358 555 789",
+                                            info: Localized(fi: nil,
+                                                            sv: nil,
+                                                            en: "Mon - Fri: 8am - 16pm")),
+                                            Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
+                                                                     sv: "Birkala hälsovårdscentral",
+                                                                     en: "Pirkkala Health Center"),
+                                            phoneNumber: "+358 555 000",
+                                            info: Localized(fi: "Maanantai - Perjantai 8-16",
+                                                            sv: "Måndag - Fredag 8-16",
+                                                            en: "Mon - Fri: 8am - 16pm"))
+                                        ])
+        let vc = MunicipalityContactInfoViewController()
+        vc.municipality = municipality
+        return vc
+        }())}
 }
 
 #endif

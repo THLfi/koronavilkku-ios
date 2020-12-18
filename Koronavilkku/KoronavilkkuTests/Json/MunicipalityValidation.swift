@@ -41,7 +41,10 @@ class MunicipalityJsonTests: XCTestCase {
     }
     
     func testStagingData() throws {
-        let staging = Endpoint(path: "/sites/koronavilkku/yhteystiedot_uusi.json")
+        // Add current time in milliseconds since unix epoch as query parameter to prevent tests from
+        // hitting cache when fetching test data
+        let millis = Int64((Date().timeIntervalSince1970 * 1000.0).rounded())
+        let staging = Endpoint(path: "/sites/koronavilkku/yhteystiedot_uusi.json?\(millis)")
         let result: Result<Municipalities, Error> = call(api: cms, endpoint: staging, timeout: 5)
         
         switch result {
