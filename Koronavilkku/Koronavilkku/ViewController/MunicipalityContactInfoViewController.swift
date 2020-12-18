@@ -114,8 +114,9 @@ import SwiftUI
 
 struct MunicipalityContactInfoViewControllerController_Preview: PreviewProvider {
     
-    static var previews: some View = createPreview(for: {
-        let municipality = Municipality(code: "1234",
+    static var previews: some View = Group {
+        createPreview(for: {
+            let municipality = Municipality(code: "1234",
                                         name: MunicipalityName(fi: "Pirkkala", sv: "Birkala"),
                                         omaolo: Omaolo(
                                             available: true,
@@ -155,6 +156,47 @@ struct MunicipalityContactInfoViewControllerController_Preview: PreviewProvider 
         vc.municipality = municipality
         return vc
     }())
+    createPreview(for: {
+            let municipality = Municipality(code: "1234",
+                                        name: MunicipalityName(fi: "Pirkkala", sv: "Birkala"),
+                                        omaolo: Omaolo(
+                                            available: true,
+                                            serviceLanguages: ServiceLanguages(fi: true, sv: true, en: true),
+                                            symptomAssessmentOnly: true),
+                                        contact: [
+                                            Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
+                                                                     sv: nil,
+                                                                     en: nil),
+                                            phoneNumber: "+358 555 123",
+                                            info: Localized(fi: "Maanantai - Perjantai 8-16",
+                                                            sv: nil,
+                                                            en: nil)),
+                                            Contact(title: Localized(fi: nil,
+                                                                     sv: "Birkala hälsovårdscentral",
+                                                                     en: nil),
+                                            phoneNumber: "+358 555 456",
+                                            info: Localized(fi: nil,
+                                                            sv: "Mon - Fri: 8am - 4pm",
+                                                            en: nil)),
+                                            Contact(title: Localized(fi: nil,
+                                                                     sv: nil,
+                                                                     en: "Pirkkala Health Center"),
+                                            phoneNumber: "+358 555 789",
+                                            info: Localized(fi: nil,
+                                                            sv: nil,
+                                                            en: "Mon - Fri: 8am - 16pm")),
+                                            Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
+                                                                     sv: "Birkala hälsovårdscentral",
+                                                                     en: "Pirkkala Health Center"),
+                                            phoneNumber: "+358 555 000",
+                                            info: Localized(fi: "Maanantai - Perjantai 8-16",
+                                                            sv: "Måndag - Fredag 8-16",
+                                                            en: "Mon - Fri: 8am - 16pm"))
+                                        ])
+        let vc = MunicipalityContactInfoViewController()
+        vc.municipality = municipality
+        return vc
+        }())}
 }
 
 #endif
