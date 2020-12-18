@@ -119,15 +119,14 @@ extension Environment {
         }
         
         struct PreviewEFGSRepository: EFGSRepository {
+            let state: PreviewState
+
             func getParticipatingCountries() -> Set<EFGSCountry>? {
                 Set()
             }
-            
-            func updateCountryList() -> AnyPublisher<Bool, Never> {
-                return Just(true).eraseToAnyPublisher()
+
+            func updateCountryList(from: ExposureConfiguration) {
             }
-            
-            let state: PreviewState
         }
         
         let state = createState()

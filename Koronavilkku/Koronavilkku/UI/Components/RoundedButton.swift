@@ -14,7 +14,7 @@ class RoundedButton: UIButton {
                 backgroundColor = isHighlighted ? highlightedBackgroundColor : enabledBackgroundColor
             }
 
-            layer.shadowColor = isHighlighted ? UIColor.clear.cgColor : UIColor.Greyscale.lightGrey.cgColor
+            layer.shadowColor = isHighlighted ? UIColor.clear.cgColor : .dropShadow
         }
     }
     
@@ -43,7 +43,7 @@ class RoundedButton: UIButton {
     let title: String
     let action: () -> ()
     
-    private let disabledBackgroundColor = UIColor.Greyscale.lightGrey
+    private let disabledBackgroundColor = UIColor.Greyscale.borderGrey
     private let enabledBackgroundColor: UIColor
     private let highlightedBackgroundColor: UIColor
     
@@ -96,7 +96,7 @@ class RoundedButton: UIButton {
     
     func setEnabled(_ enabled: Bool) {
         isEnabled = enabled
-        alpha = enabled ? 1.0 : 0.5
+        layer.shadowColor = enabled ? .dropShadow : UIColor.clear.cgColor
         backgroundColor = enabled ? enabledBackgroundColor : disabledBackgroundColor
     }
     

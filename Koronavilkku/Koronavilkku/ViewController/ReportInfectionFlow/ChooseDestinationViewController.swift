@@ -24,11 +24,12 @@ class ChooseDestinationViewController: BaseReportInfectionViewController {
         continueButton.setEnabled(false)
         createContentWrapper(floatingButton: continueButton)
 
-        let titleView = UILabel(label: Text.Title.localized,
+        let titleLabel = UILabel(label: Text.Title.localized,
                                 font: .heading3,
                                 color: UIColor.Greyscale.black)
         
-        titleView.numberOfLines = 0
+        titleLabel.numberOfLines = 0
+        titleLabel.accessibilityTraits = .header
         
         let radioEFGS = RadioButton(value: ReportingDestination.efgs,
                                     label: Text.DestinationEFGS.localized)
@@ -46,7 +47,7 @@ class ChooseDestinationViewController: BaseReportInfectionViewController {
         hasTokenLabel.textAlignment = .center
         
         content.layout { append in
-            append(titleView, nil)
+            append(titleLabel, nil)
             append(CardElement(embed: radioEFGS), UIEdgeInsets(top: 20))
             append(CardElement(embed: radioLocal), UIEdgeInsets(top: 20))
             append(hasTokenLabel, UIEdgeInsets(top: 40))

@@ -2,13 +2,15 @@ import Combine
 import Foundation
 
 protocol FileStorage {
-    // batch file accessors
+    // MARK: Batch file accessors
     func `import`(batchId: String, data: Data) throws -> String
     func getFileUrls(forBatchId id: String) -> [URL]
     func deleteAllBatches()
     
-    // generic object storage
+    // MARK: Generic object storage
+    @discardableResult
     func write<T: Codable>(object: T, to filename: String) -> Bool
+    
     func read<T: Codable>(from filename: String) -> T?
 }
 

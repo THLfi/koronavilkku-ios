@@ -24,8 +24,7 @@ extension Environment {
                                                   cache: LocalStore.shared,
                                                   storage: storage)
         
-        let efgsRepository = EFGSRepositoryImpl(backend: backend,
-                                                storage: storage)
+        let efgsRepository = EFGSRepositoryImpl(storage: storage)
 
         let exposureRepository = ExposureRepositoryImpl(efgsRepository: efgsRepository,
                                                         exposureManager: ExposureManagerProvider.shared.manager,

@@ -8,7 +8,6 @@ struct MockEFGSRepository : EFGSRepository {
         participatingCountries
     }
     
-    func updateCountryList() -> AnyPublisher<Bool, Never> {
-        return Just(true).eraseToAnyPublisher()
+    func updateCountryList(from: ExposureConfiguration) {
     }
 }
