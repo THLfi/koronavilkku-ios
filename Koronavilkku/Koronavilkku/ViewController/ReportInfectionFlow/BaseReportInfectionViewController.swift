@@ -22,7 +22,7 @@ class BaseReportInfectionViewController: UIViewController {
     internal func createContentWrapper(floatingButton: RoundedButton? = nil) {
         let buttonMargin = UIEdgeInsets(top: 20,
                                         left: 20,
-                                        bottom: 44,
+                                        bottom: 30,
                                         right: 20)
         
         let bottomSpacing = floatingButton != nil ? buttonMargin.bottom + RoundedButton.height : 0
@@ -40,14 +40,14 @@ class BaseReportInfectionViewController: UIViewController {
             view.addSubview(fadeBlock)
 
             fadeBlock.snp.makeConstraints { make in
-                make.bottom.equalTo(view.safeAreaLayoutGuide)
-                make.left.right.equalToSuperview()
+                make.left.right.bottom.equalToSuperview()
             }
 
             view.addSubview(button)
             
             button.snp.makeConstraints { make in
-                make.edges.equalTo(fadeBlock).inset(buttonMargin)
+                make.top.left.right.equalTo(fadeBlock).inset(buttonMargin)
+                make.bottom.equalTo(view.safeAreaLayoutGuide).inset(buttonMargin)
             }
         }
     }
