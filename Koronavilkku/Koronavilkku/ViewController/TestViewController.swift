@@ -23,7 +23,8 @@ class TestViewController: UIViewController {
     lazy var updateMunicipalityListButton = self.createButton(title: "Update municipality list", action: #selector(updateMunicipalityList))
     lazy var setLastExposureCheckButton = self.createButton(title: "Set exposure check date", action: #selector(setLastExposureCheck))
     lazy var dumpEFGSCountriesButton = self.createButton(title: "Dump EFGS countries", action: #selector(dumpEFGSCountries))
-    
+    lazy var deleteEFGSCountriesButton = self.createButton(title: "Delete EFGS countries", action: #selector(deleteEFGSCountries))
+
     // force downcast, because we're using the internals here
     var batchRepository = Environment.default.batchRepository as! BatchRepositoryImpl
     var exposureManager = ExposureManagerProvider.shared.manager
@@ -82,7 +83,8 @@ class TestViewController: UIViewController {
         appendButton(updateMunicipalityListButton)
         appendButton(setLastExposureCheckButton)
         appendButton(dumpEFGSCountriesButton)
-        
+        appendButton(deleteEFGSCountriesButton)
+
         LocalStore.shared.$uiStatus.addObserver(using: { [weak self] in
             self?.radarStatus.setTitle("Radar status \(LocalStore.shared.uiStatus)", for: .normal)
         })
@@ -208,6 +210,10 @@ class TestViewController: UIViewController {
             title: "EFGS Countries")
     }
     
+    @objc func deleteEFGSCountries() {
+        FileStorageImpl().delete(filename: EFGSRepositoryImpl.countryListFile)
+    }
+
     private func showDialog(_ message: String, title: String = "Error") {
         showAlert(title: title, message: message, buttonText: "Dismiss")
     }

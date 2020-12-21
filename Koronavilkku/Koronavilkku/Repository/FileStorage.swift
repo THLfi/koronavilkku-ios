@@ -101,4 +101,9 @@ class FileStorageImpl : FileStorage {
         
         return try? JSONDecoder().decode(T.self, from: data)
     }
+    
+    func delete(filename: String) {
+        let url = URL(fileURLWithPath: filename, relativeTo: Directories.objects.url).appendingPathExtension("json")
+        fileHelper.deleteFile(url: url)
+    }
 }
