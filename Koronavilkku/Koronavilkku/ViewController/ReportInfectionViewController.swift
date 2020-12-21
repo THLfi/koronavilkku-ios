@@ -53,7 +53,6 @@ class ReportInfectionViewController: UIViewController {
         navigationItem.title = Text.ReportTitle.localized
 
         let margin = UIEdgeInsets(top: 20, left: 20, bottom: 30, right: 20)
-        let buttonMargin = UIEdgeInsets(top: 20, left: 20, bottom: 44, right: 20)
         let contentView = view.addScrollableContentView(backgroundColor: UIColor.Secondary.blueBackdrop,
                                                         margins: margin)
         var top = contentView.snp.top
@@ -72,27 +71,15 @@ class ReportInfectionViewController: UIViewController {
         secondaryMessage.numberOfLines = 0
         top = contentView.appendView(secondaryMessage, spacing: 20, top: top)
 
-        contentView.snp.makeConstraints { make in
-            // the content wrapper already contains the space between text and button top edge
-            make.bottom.equalTo(top).offset(buttonMargin.bottom + RoundedButton.height)
-        }
-
-        let fadeBlock = FadeBlock(color: UIColor.Secondary.blueBackdrop)
-        view.addSubview(fadeBlock)
-
-        fadeBlock.snp.makeConstraints { make in
-            make.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.left.right.equalToSuperview()
-        }
-
         let button = RoundedButton(title: Text.ReportButton.localized) { [unowned self] in
             self.startReportInfectionFlow(with: nil)
         }
         
-        view.addSubview(button)
-        
-        button.snp.makeConstraints { make in
-            make.edges.equalTo(fadeBlock).inset(buttonMargin)
+        top = contentView.appendView(button, spacing: 30, top: top)
+
+        contentView.snp.makeConstraints { make in
+            // the content wrapper already contains the space between text and button top edge
+            make.bottom.equalTo(top).offset(margin.bottom)
         }
     }
 
