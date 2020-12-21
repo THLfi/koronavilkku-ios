@@ -41,7 +41,9 @@ class ReportInfectionFlowViewController: UINavigationController {
     @Published
     private(set) var viewModel: ReportInfectionViewModel
     
-    private let allCountries: Set<EFGSCountry>
+    private lazy var allCountries: Set<EFGSCountry> = efgsRepository.getParticipatingCountries() ?? Set()
+    
+    private let efgsRepository: EFGSRepository
     private let exposureRepository: ExposureRepository
     private var tasks = Set<AnyCancellable>()
     
@@ -49,7 +51,7 @@ class ReportInfectionFlowViewController: UINavigationController {
          exposureRepository: ExposureRepository = Environment.default.exposureRepository,
          publishToken: String? = nil) {
         
-        self.allCountries = efgsRepository.getParticipatingCountries() ?? Set()
+        self.efgsRepository = efgsRepository
         self.exposureRepository = exposureRepository
         self.viewModel = .init(destination: nil,
                                travelStatus: nil,

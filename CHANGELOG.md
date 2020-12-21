@@ -8,12 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - New UI components: Checkbox, RadioButton, FadeBlock and BulletItem
-- EFGSRepository for managing the EFGS interop information: initially just provides methods for storing and retrieving the participating countries.
+- EFGSRepository for managing the EFGS interop information: initially just provides methods for storing and retrieving the participating countries
+- New debug tools for displaying and removing the EFGS country data
 
 ### Changed
 - Component style changes and corrections: button shadows and colors, text colors, etc. 
 - Improve accessibility by adding new header traits and hints, better checkbox handling
-- The infection reporting functionality has been replaced with more detailed UI flow that optionally lets the user share their travel history and diagnosis keys with the EFGS. 
+- The infection reporting functionality has been replaced with more detailed UI flow that optionally lets the user share their travel history and diagnosis keys with the EFGS 
 
 ## 1.3.0
 
