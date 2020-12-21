@@ -28,8 +28,20 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     private var statusItem: LinkItem!
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        // use .heading1 on root view, others use .heading2
-        navigationController.largeTitleFont = (viewController === self) ? .heading1 : .heading2
+        let oldFont = navigationController.largeTitleFont
+        let newFont: UIFont = (viewController === self) ? .heading1 : .heading2
+
+        guard oldFont != newFont else { return }
+        
+        // as the new navigation title is visible during the transition, we need to change it immediately
+        navigationController.largeTitleFont = newFont
+
+        // but in case the user cancels the interaction, revert back to the old font
+        transitionCoordinator?.notifyWhenInteractionChanges { context in
+            if context.isCancelled {
+                navigationController.largeTitleFont = oldFont
+            }
+        }
     }
     
     override func viewDidLoad() {
