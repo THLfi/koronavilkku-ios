@@ -33,29 +33,6 @@ struct ExposureNotification: Codable {
     }
 }
 
-extension Collection where Element : ENExposureInfo {
-    func to(config: ExposureConfiguration, detectionTime: Date = .init()) -> ExposureNotification {
-        let exposures = filter { info in
-            info.totalRiskScore >= config.minimumRiskScore
-        }
-        
-        let latestExposureOn: Date
-        let exposureCount: Int
-        
-        if !exposures.isEmpty {
-            latestExposureOn = exposures.max { $0.date < $1.date }!.date
-            exposureCount = exposures.count
-        } else {
-            latestExposureOn = self.max { $0.date < $1.date }?.date ?? detectionTime
-            exposureCount = 1
-        }
-        
-        return ExposureNotification(detectionTime: detectionTime,
-                                    latestExposureOn: latestExposureOn,
-                                    exposureCount: exposureCount)
-    }
-}
-
 /// Single exposure object
 ///
 /// - Important: Deprecated, use ExposureNotification instead

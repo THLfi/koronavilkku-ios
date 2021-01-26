@@ -111,54 +111,29 @@ struct ExposureRepositoryImpl : ExposureRepository {
                                                     diagnosisKeyURLs: urls)
             .flatMap { summary -> AnyPublisher<[ENExposureInfo], Error> in
                 Log.d("Got summary: \(summary)")
+            
+                let maxScore = summary.daySummaries.reduce(0.0) { score, day in
+                    Log.d("Day \(day.date) summary: \(day.daySummary)")
+                    return day.daySummary.scoreSum > score ? day.daySummary.scoreSum : score
+                }
                 
                 if let latestId = ids.sorted().last {
                     LocalStore.shared.nextDiagnosisKeyFileIndex = latestId
                 }
-                
-                #if DEBUG
-                    // When debugging, store detection summary to local store for debugging purposes
-                    LocalStore.shared.detectionSummaries.append(summary.to())
-                #endif
-                
-                // Matched key count is not the one to use to determine real exposures.
-                // We must check that Summary's maximumRiskScore >= minimumRiskScore in server configuration
-                // and filter results to only those and fetch info for only
-                var validDetections = summary.maximumRiskScoreFullRange >= Double(config.minimumRiskScore)
-                
-                // On pre-13.6 EN API doesn't support defining attenuationDurationThresholds so
-                // bucket calculation isn't meaningful on those devices.
-                if !validDetections, #available(iOS 13.6, *) {
-                    // The attenuation score is a time weighted average -> if the same device is near for a
-                    // short while and then within range (high attenuation) for a really long time, then the
-                    // attenuation value could end up being too small to trigger a risk score based exposure
-                    // notification. Multiple short exposures can also trigger an exposure notification when
-                    // using bucket calculation.
-                    let durations = summary.attenuationDurations.weighted(with: config.durationAtAttenuationWeights)
-                    let totalMinutes = durations.sumSecondsAsMinutes()
-                    
-                    if totalMinutes >= config.exposureRiskDuration {
-                        Log.d("Long duration exposure detected (\(totalMinutes))")
-                        validDetections = true
-                    }
+
+                if maxScore > 900 {
+                    let explanation = Translation.ExposureNotificationUserExplanation.localized
+                    return self.exposureManager.getExposureInfo(summary: summary,
+                                                                userExplanation: explanation)
                 }
                 
-                Log.d("Valid detections? \(validDetections)")
-                
-                if validDetections && summary.matchedKeyCount > 0 {
-                    let userExplanation = Translation.ExposureNotificationUserExplanation.localized
-                    return self.exposureManager.getExposureInfo(summary: summary, userExplanation: userExplanation)
-                } else {
-                    return Just([ENExposureInfo]()).setFailureType(to: Error.self).eraseToAnyPublisher()
-                }
+                return Just([ENExposureInfo]()).setFailureType(to: Error.self).eraseToAnyPublisher()
             }
             .receive(on: RunLoop.main)
             .map { exposureInfos -> Bool in
                 guard !exposureInfos.isEmpty else { return false }
-                
+
                 exposureInfos.forEach { Log.d("ExposureInfo: \($0)") }
-                let notification = exposureInfos.to(config: config)
-                LocalStore.shared.exposureNotifications.append(notification)
                 return true
             }
             .eraseToAnyPublisher()
