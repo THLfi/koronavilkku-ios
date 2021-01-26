@@ -67,7 +67,7 @@ enum BackendEndpoint : RestResource {
         case .getBatchFile(let batchId):
             return "/diagnosis/v1/batch/\(batchId)"
         case .getConfiguration:
-            return "/exposure/configuration/v1"
+            return "/exposure/configuration/v2"
         case .postDiagnosisKeys:
             return "/diagnosis/v1"
         }

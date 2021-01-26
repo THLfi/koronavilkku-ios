@@ -9,6 +9,7 @@ protocol ExposureManager {
     func detectExposures(configuration: ExposureConfiguration, diagnosisKeyURLs: [URL]) -> AnyPublisher<ENExposureDetectionSummary, Error>
     func getExposureInfo(summary: ENExposureDetectionSummary, userExplanation: String) -> AnyPublisher<[ENExposureInfo], Error>
     func getDiagnosisKeys() -> AnyPublisher<[ENTemporaryExposureKey], Error>
+    func getExposureWindows(summary: ENExposureDetectionSummary) -> AnyPublisher<[ENExposureWindow], Error>
     func setExposureNotificationEnabled(_ enabled: Bool, completionHandler: @escaping ENErrorHandler)
     func invalidate()
 }
@@ -52,6 +53,17 @@ class ExposureManagerProvider {
 }
 
 extension ENManager : ExposureManager {
+    func getExposureWindows(summary: ENExposureDetectionSummary) -> AnyPublisher<[ENExposureWindow], Error> {
+        Future { promise in
+            self.getExposureWindows(summary: summary) { (exposureWindows, error) in
+                if let error = error {
+                    promise(.failure(error))
+                }
+
+                promise(.success(exposureWindows ?? []))
+            }
+        }.eraseToAnyPublisher()
+    }
     
     func getDiagnosisKeys() -> AnyPublisher<[ENTemporaryExposureKey], Error> {
         Future { promise in
@@ -175,6 +187,10 @@ class MockExposureManager : ExposureManager {
     }
     
     func getTestDiagnosisKeys(completionHandler: @escaping ENGetDiagnosisKeysHandler) {
+    }
+    
+    func getExposureWindows(summary: ENExposureDetectionSummary) -> AnyPublisher<[ENExposureWindow], Error> {
+        return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
     
     func getExposureInfo(summary: ENExposureDetectionSummary, userExplanation: String) -> AnyPublisher<[ENExposureInfo], Error> {

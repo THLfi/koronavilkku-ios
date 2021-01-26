@@ -45,7 +45,7 @@ struct EFGSRepositoryImpl: EFGSRepository {
     }
     
     func updateCountryList(from config: ExposureConfiguration) {
-        let countryList = config.participatingCountries.compactMap { regionCode in
+        let countryList = config.availableCountries.compactMap { regionCode in
             EFGSCountry.create(from: regionCode)
         }
         

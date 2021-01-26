@@ -42,7 +42,7 @@
 	<key>CMS_USE_HTTPS</key>
 	<string>$(CMS_USE_HTTPS)</string>
 	<key>ENAPIVersion</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>ENDeveloperRegion</key>
 	<string>FI</string>
 	<key>GIT_COMMIT_HASH</key>
