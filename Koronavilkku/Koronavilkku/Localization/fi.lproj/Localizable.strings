@@ -54,13 +54,13 @@
 "ExposuresViewController.Text.TitleHasExposures" = "Mahdollinen altistuminen";
 
 // MARK: ExposuresViewWrapper
-"ExposuresViewWrapper.HasExposureText.Heading" = "Olet ollut viimeisten 10 vuorokauden aikana lähellä henkilöä, joka on ilmoittanut korona\U00ADtartunnastaan sovelluksen kautta.";
+"ExposuresViewWrapper.HasExposureText.Heading" = "Olet ollut viimeisten 14 vuorokauden aikana lähellä henkilöä, joka on ilmoittanut korona\U00ADtartunnastaan sovelluksen kautta.";
 "ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Ota yhteyttä terveydenhuoltoon";
 "ExposuresViewWrapper.HasExposureText.ContactCardText" = "Tieto mahdollisesta altistumisestasi ei välity terveydenhuoltoon, jollet itse ota yhteyttä.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ota yhteyttä";
 "ExposuresViewWrapper.HasExposureText.ExposuresButtonTitle" = "Katso altistumis\U00ADilmoitukset";
 "ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Toimi näin";
-"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Noudata näitä ohjeita 10 päivän ajan:";
+"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Noudata näitä ohjeita 14 päivän ajan:";
 "ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Tarkkaile vointiasi. Jos sinulla ilmenee yksikin koronavirustautiin sopiva oire, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin. Koronavirustautiin sopivia oireita ovat haju- tai makuaistin muutos, hengitysvaikeus, yskä, kurkkukipu, nuha, kuume, päänsärky, lihaskivut sekä ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
 "ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Vältä tapaamasta muita ihmisiä.";
 "ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Huolehdi käsihygieniastasi.";
@@ -71,7 +71,7 @@
 "ExposuresViewWrapper.HasExposureText.InstructionsWhenAbroad" = "Jos et ole Suomessa, noudata paikallisten viranomaisten ohjeita.";
 
 "ExposuresViewWrapper.NoExposuresText.Heading" = "Ei havaittuja altistumisia";
-"ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku ei ole havainnut altistumista koronavirukselle viimeisten 10 päivän aikana.";
+"ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku ei ole havainnut altistumista koronavirukselle viimeisten 14 päivän aikana.";
 "ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "Sovellus ei kuitenkaan tunnista kaikkia mahdollisia altistumis\U00ADtilanteita.";
 
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Tarkistettu viimeksi %@";
@@ -79,7 +79,7 @@
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "Altistumistietoja ei ole vielä tarkistettu";
 
 "NotificationListViewController.Text.Title" = "Altistumis\U00ADilmoitukset";
-"NotificationListViewController.Text.Disclaimer" = "Arvio altistumisesta perustuu Koronavilkun keräämiin kohtaamistietoihin viimeisten 10 vuorokauden ajalta. Altistumisen voimakkuutta ei voida täsmällisesti arvioida.";
+"NotificationListViewController.Text.Disclaimer" = "Arvio altistumisesta perustuu Koronavilkun keräämiin kohtaamistietoihin viimeisten 14 vuorokauden ajalta. Altistumisen voimakkuutta ei voida täsmällisesti arvioida.";
 "NotificationListViewController.Text.ItemTitle" = "Altistumisilmoitus %@";
 "NotificationListViewController.Text.ItemCountLabel" = "Mahdollisia altistumisia";
 "NotificationListViewController.Text.ItemCountValue" = "%@ kpl";
