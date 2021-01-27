@@ -11,7 +11,7 @@
 "TabReportInfection" = "Ilmoita tartunnastasi";
 "TabSettings" = "Asetukset";
 
-"ExposureNotificationUserExplanation" = "Olet saattanut altistua virukselle";
+"ExposureNotificationUserExplanation" = "Olet saattanut altistua koronavirukselle";
 "LinkAppInfo" = "Tietoa sovelluksesta";
 "HowItWorksButton" = "Katso lisätietoa Koronavilkusta";
 
@@ -42,7 +42,7 @@
 "ExposuresElement.Text.BodyExposureCheckDelayed" = "Altistumistietojen tarkistus ei ole onnistunut yli 24 tuntiin. Sovellus yrittää tarkistaa tiedot myöhemmin. Voit myös käynnistää tarkistuksen nyt.";
 "ExposuresElement.Text.AccessibilityValueCheckDelayed" = "Altistumistietojen tarkistus ei ole onnistunut yli 24 tuntiin.";
 "ExposuresElement.Text.TitleHasExposures" = "Mahdollinen altistuminen";
-"ExposuresElement.Text.BodyHasExposures" = "Olet saattanut altistua virukselle";
+"ExposuresElement.Text.BodyHasExposures" = "Olet saattanut altistua koronavirukselle";
 "ExposuresElement.Text.ButtonOpen" = "Katso toimintaohjeet";
 "ExposuresElement.Text.ButtonCheckNow" = "Käynnistä tarkistus";
 
@@ -56,15 +56,15 @@
 // MARK: ExposuresViewWrapper
 "ExposuresViewWrapper.HasExposureText.Heading" = "Olet ollut viimeisten 14 vuorokauden aikana lähellä henkilöä, joka on ilmoittanut korona\U00ADtartunnastaan sovelluksen kautta.";
 "ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Ota yhteyttä terveydenhuoltoon";
-"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Tieto mahdollisesta altistumisestasi ei välity terveydenhuoltoon, jollet itse ota yhteyttä.";
+"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Ota yhteyttä terveydenhuoltoon, vaikka sinulla ei olisikaan koronavirustautiin sopivia oireita. Saat terveydenhuollosta toimintaohjeet ja arvion koronavirustestin tarpeellisuudesta.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ota yhteyttä";
 "ExposuresViewWrapper.HasExposureText.ExposuresButtonTitle" = "Katso altistumis\U00ADilmoitukset";
 "ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Toimi näin";
-"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Noudata näitä ohjeita 14 päivän ajan:";
-"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Tarkkaile vointiasi. Jos sinulla ilmenee yksikin koronavirustautiin sopiva oire, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin. Koronavirustautiin sopivia oireita ovat haju- tai makuaistin muutos, hengitysvaikeus, yskä, kurkkukipu, nuha, kuume, päänsärky, lihaskivut sekä ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
+"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Noudata seuraavia ohjeita 14 päivän ajan. Jatka ohjeiden noudattamista, vaikka saisit negatiivisen koronatestituloksen.";
+"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Tarkkaile vointiasi. Jos sinulla ilmenee yksikin koronavirustautiin sopiva oire, hakeudu koronavirustestiin, vaikka sinulle olisi tehty testi jo aiemmin. Koronavirustautiin sopivia oireita ovat haju- tai makuaistin muutos, hengitysvaikeus, yskä, kurkkukipu, nuha, kuume, päänsärky, lihaskivut, ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
 "ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Vältä tapaamasta muita ihmisiä.";
 "ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Huolehdi käsihygieniastasi.";
-"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Vältä julkisia paikkoja ja liikennevälineitä. Jos joudut liikkumaan julkisilla paikoilla, pidä muihin ihmisiin etäisyyttä vähintään kaksi metriä. Jos et pysty pitämään riittävästi etäisyyttä, käytä kasvomaskia.";
+"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Vältä julkisia paikkoja ja liikennevälineitä. Jos joudut liikkumaan julkisilla paikoilla, pidä muihin ihmisiin etäisyyttä vähintään kaksi metriä. Käytä lisäksi kasvomaskia.";
 "ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "Anna toisen henkilön hoitaa ruokaostokset ja muu asiointi kodin ulkopuolella, jos mahdollista.";
 "ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "Jos yskit tai aivastat, suojaa suusi ja nenäsi kertakäyttö\U00ADnenäliinalla. Laita käytetty nenäliina jäteastiaan ja pese kätesi vedellä ja saippualla tai käytä käsihuuhdetta. Jos sinulla ei ole nenäliinaa, yski tai aivasta hihaan.";
 "ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Tee etätyötä, jos mahdollista.";
@@ -215,7 +215,7 @@
 "OnboardingPrivacyTitle" = "Henkilötiedot";
 "OnboardingPrivacyText" = "Koronavilkku ei tallenna nimeäsi, syntymäaikaasi tai yhteystietojasi. Se ei pysty selvittämään sinun tai tapaamiesi ihmisten henkilöllisyyttä.\n\nSovellus ei kerää sijaintitietoja.";
 "OnboardingUsageTitle" = "Sovelluksen käyttötiedot";
-"OnboardingUsageText" = "Sovellus välittää palvelimelle tiedon siitä, että sovellus on toiminnassa. Jos otat yhteyttä terveydenhuoltoon sovelluksen kautta, sovellus välittää lisäksi tiedon, oletko mahdollisesti altistunut tartunnalle.\n\nKaikki tietoliikenne Koronavilkun ja palvelimen välillä on salattu.\n\nTiedot tallennetaan nimettömänä palvelimelle, joka sijaitsee Suomessa. Palvelinta hallinnoivat julkishallinnon toimijat. Tiedot poistetaan, kun niitä ei enää tarvita. Viimeistään tiedot poistetaan 31.3.2021.";
+"OnboardingUsageText" = "Sovellus välittää palvelimelle tiedon siitä, että sovellus on toiminnassa. Jos otat yhteyttä terveydenhuoltoon sovelluksen kautta, sovellus välittää lisäksi tiedon, oletko mahdollisesti altistunut tartunnalle.\n\nKaikki tietoliikenne Koronavilkun ja palvelimen välillä on salattu.\n\nTiedot tallennetaan nimettömänä palvelimelle, joka sijaitsee Suomessa. Palvelinta hallinnoivat julkishallinnon toimijat. Tietojärjestelmä on käytössä vain tartuntatautilain määräämän ajan. Tietojärjestelmä ja sen tiedot poistetaan, kun järjestelmää ei enää tarvita.";
 "OnboardingVoluntaryTitle" = "Käyttö on vapaaehtoista";
 "OnboardingVoluntaryText" = "Koronavilkun käyttö ei ole pakollista. Voit milloin tahansa lopettaa käytön poistamalla sovelluksen puhelimestasi.";
 "OnboardingAcceptTerms" = "Olen lukenut ja hyväksyn palvelun käyttöehdot.";

@@ -56,15 +56,15 @@
 // MARK: ExposuresViewWrapper
 "ExposuresViewWrapper.HasExposureText.Heading" = "In the past 14 days, you have been close to a person who has reported a COVID-19 infection.";
 "ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Contact healthcare services";
-"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Information about your potential exposure will only be communicated to healthcare services if you contact them yourself.";
+//"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Information about your potential exposure will only be communicated to healthcare services if you contact them yourself.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Contact";
 "ExposuresViewWrapper.HasExposureText.ExposuresButtonTitle" = "Show exposure notifications";
 "ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "What should I do?";
-"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Follow these instructions for 14 days:";
-"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Monitor your health. If you develop any symptom consistent with COVID-19, contact your municipal healthcare service and get tested as soon as possible. Symptoms consistent with COVID-19 are change in sense of smell or taste, shortness of breath, cough, sore throat, runny nose, fever, headaches, muscle pain, unexplained diarrhoea or abdominal pain.";
+//"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Follow these instructions for 14 days:";
+//"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Monitor your health. If you develop any symptom consistent with COVID-19, contact your municipal healthcare service and get tested as soon as possible. Symptoms consistent with COVID-19 are change in sense of smell or taste, shortness of breath, cough, sore throat, runny nose, fever, headaches, muscle pain, unexplained diarrhoea or abdominal pain.";
 "ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Avoid meeting other people.";
 "ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Maintain good hand hygiene.";
-"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Avoid public places and public transport. If you have to visit public places, keep at least a two-meter distance to other people. If you cannot keep a sufficient distance, use a face mask.";
+//"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Avoid public places and public transport. If you have to visit public places, keep at least a two-meter distance to other people. If you cannot keep a sufficient distance, use a face mask.";
 "ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "If possible, let someone else handle food shopping and other errands outside the home.";
 "ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "If you cough or sneeze, use a disposable tissue to cover your mouth and nose. Put the used tissue in a waste bin and wash your hands with water and soap or use hand sanitiser. If you do not have a tissue, cough or sneeze into your sleeve.";
 "ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Work remotely if possible.";
@@ -215,7 +215,7 @@
 "OnboardingPrivacyTitle" = "About personal information";
 "OnboardingPrivacyText" = "Koronavilkku does not store your name, date of birth or contact information. It cannot determine your identity or the identity of the people you come close to.\n\nThe application does not collect location data.";
 "OnboardingUsageTitle" = "How the app uses your data";
-"OnboardingUsageText" = "The app informs the server that the app is running. If you contact healthcare services through the app, the app will also provide information that you may have been exposed to COVID-19.\n\nAll communication between Koronavilkku and the server is encrypted.\n\nThe data is stored anonymously on a server located in Finland, and this server is managed by public administration bodies. The data is deleted when it is no longer needed. At the latest, it is deleted on 31 March 2021.";
+//"OnboardingUsageText" = "The app informs the server that the app is running. If you contact healthcare services through the app, the app will also provide information that you may have been exposed to COVID-19.\n\nAll communication between Koronavilkku and the server is encrypted.\n\nThe data is stored anonymously on a server located in Finland, and this server is managed by public administration bodies. The data is deleted when it is no longer needed. At the latest, it is deleted on 31 March 2021.";
 "OnboardingVoluntaryTitle" = "Use is voluntary";
 "OnboardingVoluntaryText" = "You do not have to use Koronavilkku. You can stop using it at any time by removing the app from your phone.";
 "OnboardingAcceptTerms" = "I have read and agree to the terms of use for the service.";
