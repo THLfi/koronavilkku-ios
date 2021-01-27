@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Adjust the exposure notification retention time and the detection interval duration back to 14 days
+
+## 2.0.0
+
 ### Added
 - New UI components: Checkbox, RadioButton, FadeBlock and BulletItem
 - EFGSRepository for managing the EFGS interop information: initially just provides methods for storing and retrieving the participating countries
