@@ -69,6 +69,9 @@
 "ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "Jos yskit tai aivastat, suojaa suusi ja nenäsi kertakäyttö\U00ADnenäliinalla. Laita käytetty nenäliina jäteastiaan ja pese kätesi vedellä ja saippualla tai käytä käsihuuhdetta. Jos sinulla ei ole nenäliinaa, yski tai aivasta hihaan.";
 "ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Tee etätyötä, jos mahdollista.";
 "ExposuresViewWrapper.HasExposureText.InstructionsWhenAbroad" = "Jos et ole Suomessa, noudata paikallisten viranomaisten ohjeita.";
+"ExposuresViewWrapper.HasExposureText.InfoLinkTitle" = "Katso tarkemmat ohjeet";
+"ExposuresViewWrapper.HasExposureText.InfoLinkSubtitle" = "thl.fi";
+//"ExposuresViewWrapper.HasExposureText.InfoLinkURL" = "";
 
 "ExposuresViewWrapper.NoExposuresText.Heading" = "Ei havaittuja altistumisia";
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku ei ole havainnut altistumista koronavirukselle viimeisten 14 päivän aikana.";
@@ -184,14 +187,16 @@
 "LinkLanguageViewController.Text.English" = "English";
 
 // MARK: MunicipalityContactInfoViewController
-"MunicipalityContactInfoViewController.Text.SymptomAssesmentTitle" = "Tee oirearvio Omaolossa";
+"MunicipalityContactInfoViewController.Text.ContactTitle" = "Ota yhteyttä terveydenhuoltoon";
+"MunicipalityContactInfoViewController.Text.ContactBody" = "Ota yhteyttä terveydenhuoltoon, vaikka sinulla ei olisikaan koronavirustautiin sopivia oireita. Saat terveydenhuollosta toimintaohjeet ja arvion koronavirustestin tarpeellisuudesta.";
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentTitle" = "Ota yhteyttä Omaolon oirearvion avulla";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentButton" = "Tee oirearvio";
-"MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Suosittelemme, että otat yhteyttä terveydenhuoltoon tekemällä oirearvion. Näin saat asiasi helposti vireille verkossa ja helpotat terveyden\U00ADhuollon ammattilaisten tekemää työtä. Oirearvion tekemiseen kuluu noin 5–10 minuuttia.";
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Tee oirearvio Omaolo-palvelussa, niin saat toimintaohjeet ja arvion koronavirustestin tarpeellisuudesta. Tee oirearvio, vaikka sinulla ei olisikaan koronavirustautiin sopivia oireita. Oirearvion tekemiseen kuluu noin 5–10 minuuttia.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "Jos olet alle 15-vuotias, pyydä huoltajaasi asioimaan Omaolossa puolestasi.";
-"MunicipalityContactInfoViewController.Text.ContactInfoTitle" = "Muut yhteydenottotavat";
-"MunicipalityContactInfoViewController.Text.ContactInfoMessage" = "Vaihtoehtoisesti voit ottaa yhteyttä kuntasi terveydenhuoltoon muilla tavoin:";
-"MunicipalityContactInfoViewController.Text.SymptomsInfo" = "Jos sinulla ilmenee oireita, hakeudu testiin";
-"MunicipalityContactInfoViewController.Text.SymptomsText" = "Tarkkaile vointiasi. Jos sinulla ilmenee yksikin koronavirus\U00ADtautiin sopiva oire, ota mahdollisimman pian yhteyttä kuntasi terveyden\U00ADhuoltoon ja hakeudu testiin. Koronavirus\U00ADtautiin sopivia oireita ovat haju- tai makuaistin muutos, hengitysvaikeus, yskä, kurkkukipu, nuha, kuume, päänsärky, lihaskivut sekä ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
+"MunicipalityContactInfoViewController.Text.SecondaryContactTitle" = "Muut yhteydenottotavat";
+"MunicipalityContactInfoViewController.Text.SecondaryContactBody" = "Vaihtoehtoisesti voit ottaa yhteyttä kunnan terveydenhuoltoon muilla tavoin:";
+"MunicipalityContactInfoViewController.Text.ContactFirstTitle" = "Ota ensin yhteyttä puhelimitse tai sähköisesti";
+"MunicipalityContactInfoViewController.Text.ContactFirstBody" = "Ota yhteyttä terveydenhuoltoon puhelimitse tai sähköisesti ennen kuin menet terveydenhuollon toimipisteeseen.\n\nJos vointisi on erittäin huono, ota yhteyttä päivystykseen. Henkeä uhkaavassa tilanteessa soita hätänumeroon 112.";
 
 // MARK: SelectMunicipalityViewController
 

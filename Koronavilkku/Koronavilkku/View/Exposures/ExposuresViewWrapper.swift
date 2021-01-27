@@ -7,6 +7,7 @@ protocol ExposuresViewDelegate: AnyObject {
     func makeContact()
     func startManualCheck()
     func showNotificationList()
+    func openLink(url: URL)
 }
 
 class CheckDelayedView : CardElement {
@@ -142,6 +143,9 @@ class ExposuresViewWrapper: UIView {
         case InstructionsCoughing
         case InstructionsRemoteWork
         case InstructionsWhenAbroad
+        case InfoLinkTitle
+        case InfoLinkSubtitle
+        case InfoLinkURL
     }
     
     enum NoExposuresText : String, Localizable {
@@ -262,8 +266,15 @@ class ExposuresViewWrapper: UIView {
         whenAboardLabel.numberOfLines = 0
         top = appendView(whenAboardLabel, spacing: 20, top: top)
 
+        let infoLink = LinkItemCard(title: HasExposureText.InfoLinkTitle.localized,
+                                    linkName: HasExposureText.InfoLinkSubtitle.localized) { [unowned self] in
+            self.delegate?.openLink(url: URL(string: HasExposureText.InfoLinkURL.localized)!)
+        }
+        
+        top = appendView(infoLink, spacing: 20, top: top)
+
         self.snp.makeConstraints { make in
-            make.bottom.equalTo(whenAboardLabel.snp.bottom)
+            make.bottom.equalTo(infoLink.snp.bottom)
         }
     }
     
