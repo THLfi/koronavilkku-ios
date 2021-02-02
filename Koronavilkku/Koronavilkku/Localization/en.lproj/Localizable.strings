@@ -71,7 +71,7 @@
 "ExposuresViewWrapper.HasExposureText.InstructionsWhenAbroad" = "If you are not in Finland, follow any instructions given by local authorities.";
 "ExposuresViewWrapper.HasExposureText.InfoLinkTitle" = "See more detailed instructions";
 "ExposuresViewWrapper.HasExposureText.InfoLinkSubtitle" = "thl.fi";
-//"ExposuresViewWrapper.HasExposureText.InfoLinkURL" = "";
+"ExposuresViewWrapper.HasExposureText.InfoLinkURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/symptoms-and-treatment-coronavirus";
 
 "ExposuresViewWrapper.NoExposuresText.Heading" = "No observed exposures";
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku has not detected exposures to the coronavirus in the last 14 days.";

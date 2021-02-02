@@ -71,7 +71,7 @@
 "ExposuresViewWrapper.HasExposureText.InstructionsWhenAbroad" = "Om du inte befinner dig i Finland ska du följa de lokala myndigheternas anvisningar.";
 "ExposuresViewWrapper.HasExposureText.InfoLinkTitle" = "Se närmare anvisningar";
 "ExposuresViewWrapper.HasExposureText.InfoLinkSubtitle" = "thl.fi";
-//"ExposuresViewWrapper.HasExposureText.InfoLinkURL" = "";
+"ExposuresViewWrapper.HasExposureText.InfoLinkURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/symtom-och-behandling-coronaviruset";
 
 "ExposuresViewWrapper.NoExposuresText.Heading" = "Ingen exponering har upptäckts";
 "ExposuresViewWrapper.NoExposuresText.Subtitle" = "Coronablinkern har inte observerat någon exponering för coronaviruset under de senaste 14 dagarna.";
