@@ -11,7 +11,7 @@
 "TabReportInfection" = "Meddela din smitta";
 "TabSettings" = "Inställningar";
 
-//"ExposureNotificationUserExplanation" = "Du kan ha exponerats för viruset";
+"ExposureNotificationUserExplanation" = "Du kan ha exponerats för coronaviruset";
 "LinkAppInfo" = "Om Coronablinkern";
 "HowItWorksButton" = "Se mer information om Coronablinkern";
 
@@ -42,7 +42,7 @@
 "ExposuresElement.Text.BodyExposureCheckDelayed" = "Kontrollen av eventuella exponeringar har inte lyckats på över 24 timmar. Appen försöker utföra kontrollen igen senare. Du kan själv starta kontrollen nu.";
 "ExposuresElement.Text.AccessibilityValueCheckDelayed" = "Kontrollen av eventuella exponeringar har inte lyckats på över 24 timmar.";
 "ExposuresElement.Text.TitleHasExposures" = "Eventuell exponering";
-//"ExposuresElement.Text.BodyHasExposures" = "Du kan ha exponerats för viruset";
+"ExposuresElement.Text.BodyHasExposures" = "Du kan ha exponerats för coronaviruset";
 "ExposuresElement.Text.ButtonOpen" = "Se anvisningar";
 "ExposuresElement.Text.ButtonCheckNow" = "Kontrollera nu";
 
@@ -56,21 +56,21 @@
 // MARK: ExposuresViewWrapper
 "ExposuresViewWrapper.HasExposureText.Heading" = "Du har under de senaste 14 dygnen varit i närheten av en person som meddelat om sin coronasmitta via applikationen.";
 "ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Kontakta hälsovården";
-//"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Information om eventuell exponering förmedlas till hälsovården endast om du själv tar kontakt.";
+"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Kontakta hälsovården även om du inte har symtom som passar in på coronavirus\U00ADsjukdom. Hälsovården ger dig anvisningar och en bedömning av behovet av ett coronavirustest.";
 "ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ta kontakt";
 "ExposuresViewWrapper.HasExposureText.ExposuresButtonTitle" = "Visa exponerings\U00ADmeddelandena";
 "ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Gör så här";
-//"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Följ dessa anvisningar i 14 dagar:";
-//"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Var uppmärksam på hur du mår. Om du har ens ett av symtomen som passar in på coronavirus\U00ADinfektion, ta så snabbt som möjligt kontakt med hälsovården i din kommun för att bli testad. Symtom som kan tyda på coronavirus\U00ADinfektion är förändringar i lukt- eller smaksinnet, andningssvårigheter, hosta, halsont, snuva, feber, huvudvärk, muskelvärk samt diarré eller magont utan annan uppenbar orsak.";
+"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Följ anvisningar nedan i 14 dagar. Fortsätt att följa anvisningarna även om du får ett negativt coronatest\U00ADresultat.";
+"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Var uppmärksam på hur du mår. Om du har ens ett av symtomen som passar in på coronavirus\U00ADsjukdom, ska du göra ett coronavirustest även om du redan tidigare har blivit testad. Symtom som kan tyda på coronavirus\U00ADinfektion är förändringar i lukt- eller smaksinnet, andnings\U00ADsvårigheter, hosta, halsont, snuva, feber, huvudvärk, muskelvärk samt diarré eller magont utan annan uppenbar orsak.";
 "ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Undvik att träffa andra människor.";
 "ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Var noggrann med din handhygien.";
-//"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Undvik offentliga platser och kollektivtrafik. Om du är tvungen att vistas på offentliga platser ska du hålla ett avstånd på minst två meter till andra människor. Om du inte kan hålla ett tillräckligt långt avstånd, använd ansiktsmask.";
+"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Undvik offentliga platser och kollektivtrafik. Om du är tvungen att vistas på offentliga platser ska du hålla ett avstånd på minst två meter till andra människor. Använd även ansiktsmask.";
 "ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "Låt en annan person handla mat och sköta andra ärenden utanför hemmet, om möjligt.";
 "ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "Om du hostar eller nyser ska du skydda din mun och näsa med en engångsnäsduk. Kasta den använda näsduken i soporna och tvätta dina händer med tvål och vatten eller använd hand\U00ADdesinfektions\U00ADmedel. Om du inte har en näsduk till hands, hosta eller nys i armvecket.";
 "ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Arbeta på distans, om möjligt.";
 "ExposuresViewWrapper.HasExposureText.InstructionsWhenAbroad" = "Om du inte befinner dig i Finland ska du följa de lokala myndigheternas anvisningar.";
-//"ExposuresViewWrapper.HasExposureText.InfoLinkTitle" = "";
-//"ExposuresViewWrapper.HasExposureText.InfoLinkSubtitle" = "";
+"ExposuresViewWrapper.HasExposureText.InfoLinkTitle" = "Se närmare anvisningar";
+"ExposuresViewWrapper.HasExposureText.InfoLinkSubtitle" = "thl.fi";
 //"ExposuresViewWrapper.HasExposureText.InfoLinkURL" = "";
 
 "ExposuresViewWrapper.NoExposuresText.Heading" = "Ingen exponering har upptäckts";
@@ -187,16 +187,16 @@
 "LinkLanguageViewController.Text.English" = "English";
 
 // MARK: MunicipalityContactInfoViewController
-//"MunicipalityContactInfoViewController.Text.ContactTitle" = "";
-//"MunicipalityContactInfoViewController.Text.ContactBody" = "";
-"MunicipalityContactInfoViewController.Text.SymptomAssesmentTitle" = "Gör en bedömning av dina symtom i Omaolo";
+"MunicipalityContactInfoViewController.Text.ContactTitle" = "Kontakta hälsovården";
+"MunicipalityContactInfoViewController.Text.ContactBody" = "Kontakta hälsovården även om du inte har symtom som passar in på coronavirus\U00ADsjukdom. Hälsovården ger dig anvisningar och bedömmer behovet av ett coronavirustest.";
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentTitle" = "Ta kontakt med hjälp av Omaolos symtombedömning";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentButton" = "Börja";
-"MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Vi rekommenderar att du kontaktar hälsovården genom att göra en symtombedömning eftersom det underlättar hälso- och sjukvårdens arbete och är lätt för dig att göra på nätet. Det tar cirka 5–10 minuter att göra en symtombedömning.";
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Gör en symtombedömning i tjänsten Omaolo så får du anvisningar och en bedömning av behovet av att ta ett coronavirustest. Gör en symtombedömning även om du inte har symtom som passar in på coronavirus\U00ADsjukdom. Det tar cirka 5–10 minuter att göra en symtombedömning.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "Om du är under 15 år, be din vårdnadshavare sköta dina ärenden i Omaolo för dig.";
 "MunicipalityContactInfoViewController.Text.SecondaryContactTitle" = "Övriga kontaktmetoder";
-"MunicipalityContactInfoViewController.Text.SecondaryContactBody" = "Alternativt kan du kontakta hälsovården i din kommun på annat sätt:";
-//"MunicipalityContactInfoViewController.Text.ContactFirstTitle" = "Om du har symtom ska du söka dig till testning";
-//"MunicipalityContactInfoViewController.Text.ContactFirstBody" = "Var uppmärksam på hur du mår. Om du har ens ett av symtomen som passar in på coronavirus\U00ADinfektion, ta så snabbt som möjligt kontakt med hälsovården i din kommun för att bli testad. Symtom som kan tyda på coronavirus\U00ADinfektion är förändringar i lukt- eller smaksinnet, andningssvårigheter, hosta, halsont, snuva, feber, huvudvärk, muskelvärk samt diarré eller magont utan annan uppenbar orsak.";
+"MunicipalityContactInfoViewController.Text.SecondaryContactBody" = "Alternativt kan du kontakta kommunens hälsovård på annat sätt:";
+"MunicipalityContactInfoViewController.Text.ContactFirstTitle" = "Ta först kontakt per telefon eller elektroniskt";
+"MunicipalityContactInfoViewController.Text.ContactFirstBody" = "Kontakta hälsovården per telefon eller elektroniskt innan du besöker hälsovårdens verksamhetsställe.\n\nOm ditt tillstånd är mycket dåligt kontakta jouren. I livshotande situationer ring nödnumret 112.";
 
 // MARK: SelectMunicipalityViewController
 
@@ -220,7 +220,7 @@
 "OnboardingPrivacyTitle" = "Personuppgifter";
 "OnboardingPrivacyText" = "Coronablinkern lagrar inte ditt namn, ditt födelsedatum eller dina kontaktuppgifter. Den kan inte avslöja din identitet eller identiteten på personer du möter.";
 "OnboardingUsageTitle" = "Användnings\U00ADuppgifter som gäller appen";
-//"OnboardingUsageText" = "Appen meddelar till en server att den är påkopplad. Om du kontaktar hälsovården via appen, förmedlar den dessutom information om att du eventuellt blivit utsatt för viruset.\n\nAll datatrafik mellan Coronablinkern och servern är krypterad.\n\nInformationen lagras anonymt på en server som är belägen i Finland. Servern underhålls av myndigheter inom den offentliga förvaltningen. Uppgifterna raderas då de inte längre behövs. Uppgifterna raderas senast 31.3.2021.";
+"OnboardingUsageText" = "Appen meddelar till en server att den är påkopplad. Om du kontaktar hälsovården via appen, förmedlar den dessutom information om att du eventuellt blivit utsatt för viruset.\n\nAll datatrafik mellan Coronablinkern och servern är krypterad.\n\nInformationen lagras anonymt på en server som är belägen i Finland. Servern underhålls av myndigheter inom den offentliga förvaltningen. Informations\U00ADsystemet används endast under den tid som fastställs i lagen om smittsamma sjukdomar. Informations\U00ADsystemet och dess uppgifter raderas när systemet inte längre behövs.";
 "OnboardingVoluntaryTitle" = "Appen är inte obligatorisk";
 "OnboardingVoluntaryText" = "Det är frivilligt att använda Coronablinkern. Du kan när som helst sluta använda appen genom att avlägsna den från din telefon.";
 "OnboardingAcceptTerms" = "Jag har läst och godkänner användnings\U00ADvillkoren för tjänsten.";
