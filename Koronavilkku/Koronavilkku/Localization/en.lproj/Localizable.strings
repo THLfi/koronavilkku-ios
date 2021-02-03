@@ -190,7 +190,7 @@
 "MunicipalityContactInfoViewController.Text.ContactTitle" = "Contact healthcare services";
 "MunicipalityContactInfoViewController.Text.ContactBody" = "Contact healthcare services even if you do not have any symptoms consistent with COVID-19. Healthcare services will give you instructions and evaluate your need for a coronavirus test.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentTitle" = "Contact healthcare via the Omaolo symptom assessment";
-"MunicipalityContactInfoViewController.Text.SymptomAssesmentButton" = "Fill in the symptom checker";
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentButton" = "Take assessment";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Complete a symptom assessment in the Omaolo service; after this, you will be given instructions and an evaluation of whether you need a coronavirus test.  Complete a symptom assessment even if you do not have any symptoms suitable for the coronavirus disease. Filling in the symptom checker takes approximately 5–10 minutes.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "If you are under 15 years old, ask your guardian to use Omaolo on your behalf.";
 "MunicipalityContactInfoViewController.Text.SecondaryContactTitle" = "Other contact methods";
