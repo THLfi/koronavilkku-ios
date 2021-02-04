@@ -50,29 +50,28 @@
 "SymptomsElement.Text.Title" = "Epäiletkö tartuntaa?";
 "SymptomsElement.Text.Body" = "Tee koronavirustaudin oirearvio";
 
-// MARK: ExposureViewController
+// MARK: ExposuresViewController
 "ExposuresViewController.Text.TitleHasExposures" = "Mahdollinen altistuminen";
 
-// MARK: ExposuresViewWrapper
-"ExposuresViewWrapper.HasExposureText.Heading" = "Olet ollut viimeisten 14 vuorokauden aikana lähellä henkilöä, joka on ilmoittanut korona\U00ADtartunnastaan sovelluksen kautta.";
-"ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Ota yhteyttä terveydenhuoltoon";
-"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Tieto mahdollisesta altistumisestasi ei välity terveydenhuoltoon, jollet itse ota yhteyttä.";
-"ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ota yhteyttä";
-"ExposuresViewWrapper.HasExposureText.ExposuresButtonTitle" = "Katso altistumis\U00ADilmoitukset";
-"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Toimi näin";
-"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Noudata näitä ohjeita 14 päivän ajan:";
-"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Tarkkaile vointiasi. Jos sinulla ilmenee yksikin koronavirustautiin sopiva oire, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin. Koronavirustautiin sopivia oireita ovat haju- tai makuaistin muutos, hengitysvaikeus, yskä, kurkkukipu, nuha, kuume, päänsärky, lihaskivut sekä ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
-"ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Vältä tapaamasta muita ihmisiä.";
-"ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Huolehdi käsihygieniastasi.";
-"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Vältä julkisia paikkoja ja liikennevälineitä. Jos joudut liikkumaan julkisilla paikoilla, pidä muihin ihmisiin etäisyyttä vähintään kaksi metriä. Jos et pysty pitämään riittävästi etäisyyttä, käytä kasvomaskia.";
-"ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "Anna toisen henkilön hoitaa ruokaostokset ja muu asiointi kodin ulkopuolella, jos mahdollista.";
-"ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "Jos yskit tai aivastat, suojaa suusi ja nenäsi kertakäyttö\U00ADnenäliinalla. Laita käytetty nenäliina jäteastiaan ja pese kätesi vedellä ja saippualla tai käytä käsihuuhdetta. Jos sinulla ei ole nenäliinaa, yski tai aivasta hihaan.";
-"ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Tee etätyötä, jos mahdollista.";
-"ExposuresViewWrapper.HasExposureText.InstructionsWhenAbroad" = "Jos et ole Suomessa, noudata paikallisten viranomaisten ohjeita.";
+"HasExposuresView.Text.Heading" = "Olet ollut viimeisten 14 vuorokauden aikana lähellä henkilöä, joka on ilmoittanut korona\U00ADtartunnastaan sovelluksen kautta.";
+"HasExposuresView.Text.ContactCardTitle" = "Ota yhteyttä terveydenhuoltoon";
+"HasExposuresView.Text.ContactCardText" = "Tieto mahdollisesta altistumisestasi ei välity terveydenhuoltoon, jollet itse ota yhteyttä.";
+"HasExposuresView.Text.ContactButtonTitle" = "Ota yhteyttä";
+"HasExposuresView.Text.ExposuresButtonTitle" = "Katso altistumis\U00ADilmoitukset";
+"HasExposuresView.Text.InstructionsTitle" = "Toimi näin";
+"HasExposuresView.Text.InstructionsLede" = "Noudata näitä ohjeita 14 päivän ajan:";
+"HasExposuresView.Text.InstructionsSymptoms" = "Tarkkaile vointiasi. Jos sinulla ilmenee yksikin koronavirustautiin sopiva oire, ota mahdollisimman pian yhteyttä kuntasi terveydenhuoltoon ja hakeudu testiin. Koronavirustautiin sopivia oireita ovat haju- tai makuaistin muutos, hengitysvaikeus, yskä, kurkkukipu, nuha, kuume, päänsärky, lihaskivut sekä ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
+"HasExposuresView.Text.InstructionsDistancing" = "Vältä tapaamasta muita ihmisiä.";
+"HasExposuresView.Text.InstructionsHygiene" = "Huolehdi käsihygieniastasi.";
+"HasExposuresView.Text.InstructionsAvoidTravel" = "Vältä julkisia paikkoja ja liikennevälineitä. Jos joudut liikkumaan julkisilla paikoilla, pidä muihin ihmisiin etäisyyttä vähintään kaksi metriä. Jos et pysty pitämään riittävästi etäisyyttä, käytä kasvomaskia.";
+"HasExposuresView.Text.InstructionsShopping" = "Anna toisen henkilön hoitaa ruokaostokset ja muu asiointi kodin ulkopuolella, jos mahdollista.";
+"HasExposuresView.Text.InstructionsCoughing" = "Jos yskit tai aivastat, suojaa suusi ja nenäsi kertakäyttö\U00ADnenäliinalla. Laita käytetty nenäliina jäteastiaan ja pese kätesi vedellä ja saippualla tai käytä käsihuuhdetta. Jos sinulla ei ole nenäliinaa, yski tai aivasta hihaan.";
+"HasExposuresView.Text.InstructionsRemoteWork" = "Tee etätyötä, jos mahdollista.";
+"HasExposuresView.Text.InstructionsWhenAbroad" = "Jos et ole Suomessa, noudata paikallisten viranomaisten ohjeita.";
 
-"ExposuresViewWrapper.NoExposuresText.Heading" = "Ei havaittuja altistumisia";
-"ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku ei ole havainnut altistumista koronavirukselle viimeisten 14 päivän aikana.";
-"ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "Sovellus ei kuitenkaan tunnista kaikkia mahdollisia altistumis\U00ADtilanteita.";
+"NoExposuresView.Text.Heading" = "Ei havaittuja altistumisia";
+"NoExposuresView.Text.Subtitle" = "Koronavilkku ei ole havainnut altistumista koronavirukselle viimeisten 14 päivän aikana.";
+"NoExposuresView.Text.DisclaimerText" = "Sovellus ei kuitenkaan tunnista kaikkia mahdollisia altistumis\U00ADtilanteita.";
 
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Tarkistettu viimeksi %@";
 "ExposuresLastCheckedView.Text.MomentAgo" = "hetki sitten";

@@ -48,7 +48,6 @@
 		5695F6D724D82D9B008E06BC /* MunicipalityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C26BC624B461ED002F83C1 /* MunicipalityModel.swift */; };
 		56C26BAD24AF3886002F83C1 /* InfoViewWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C26BAC24AF3886002F83C1 /* InfoViewWithButton.swift */; };
 		56C26BB024AF3A0B002F83C1 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C26BAF24AF3A0B002F83C1 /* RoundedButton.swift */; };
-		56C26BBA24B30CF8002F83C1 /* ExposuresViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C26BB924B30CF8002F83C1 /* ExposuresViewWrapper.swift */; };
 		56C26BBC24B33D74002F83C1 /* ExposuresLastCheckedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C26BBB24B33D74002F83C1 /* ExposuresLastCheckedView.swift */; };
 		56C26BC124B4503E002F83C1 /* SelectMunicipalityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C26BC024B4503E002F83C1 /* SelectMunicipalityViewController.swift */; };
 		56C26BC324B450ED002F83C1 /* MunicipalityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C26BC224B450ED002F83C1 /* MunicipalityCell.swift */; };
@@ -132,6 +131,9 @@
 		EA92A07824A4982000CE7271 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EA92A07724A4982000CE7271 /* SnapKit */; };
 		EA92A07B24A4E59800CE7271 /* LivePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA92A07A24A4E59800CE7271 /* LivePreview.swift */; };
 		EAA9892D257E7194009A7FF8 /* EFGSRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA9892C257E7194009A7FF8 /* EFGSRepository.swift */; };
+		EAC4CCFF25CBD63B001A4648 /* HasExposuresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4CCFE25CBD63B001A4648 /* HasExposuresView.swift */; };
+		EAC4CD0425CBD67C001A4648 /* NoExposuresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4CD0325CBD67C001A4648 /* NoExposuresView.swift */; };
+		EAC4CD0C25CBE03C001A4648 /* CheckDelayedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4CD0B25CBE03C001A4648 /* CheckDelayedView.swift */; };
 		EAD8619B24ADDCC900809677 /* ExposureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619A24ADDCC900809677 /* ExposureManager.swift */; };
 		EAD8619D24AE18A900809677 /* ExposureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619C24AE18A900809677 /* ExposureRepository.swift */; };
 		EAD8619F24AE56BA00809677 /* ExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619E24AE56BA00809677 /* ExposureConfiguration.swift */; };
@@ -202,7 +204,6 @@
 		5695F6D524D82C9E008E06BC /* MunicipalityValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunicipalityValidation.swift; sourceTree = "<group>"; };
 		56C26BAC24AF3886002F83C1 /* InfoViewWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewWithButton.swift; sourceTree = "<group>"; };
 		56C26BAF24AF3A0B002F83C1 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
-		56C26BB924B30CF8002F83C1 /* ExposuresViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposuresViewWrapper.swift; sourceTree = "<group>"; };
 		56C26BBB24B33D74002F83C1 /* ExposuresLastCheckedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposuresLastCheckedView.swift; sourceTree = "<group>"; };
 		56C26BC024B4503E002F83C1 /* SelectMunicipalityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMunicipalityViewController.swift; sourceTree = "<group>"; };
 		56C26BC224B450ED002F83C1 /* MunicipalityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunicipalityCell.swift; sourceTree = "<group>"; };
@@ -293,6 +294,9 @@
 		EA92A07A24A4E59800CE7271 /* LivePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePreview.swift; sourceTree = "<group>"; };
 		EA9EF6AD2506679300FBAB9E /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		EAA9892C257E7194009A7FF8 /* EFGSRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EFGSRepository.swift; sourceTree = "<group>"; };
+		EAC4CCFE25CBD63B001A4648 /* HasExposuresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasExposuresView.swift; sourceTree = "<group>"; };
+		EAC4CD0325CBD67C001A4648 /* NoExposuresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExposuresView.swift; sourceTree = "<group>"; };
+		EAC4CD0B25CBE03C001A4648 /* CheckDelayedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDelayedView.swift; sourceTree = "<group>"; };
 		EAD8619824ADCC0100809677 /* Koronavilkku.debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Koronavilkku.debug.entitlements; sourceTree = "<group>"; };
 		EAD8619A24ADDCC900809677 /* ExposureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureManager.swift; sourceTree = "<group>"; };
 		EAD8619C24AE18A900809677 /* ExposureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRepository.swift; sourceTree = "<group>"; };
@@ -439,9 +443,11 @@
 		56C26BBD24B44C69002F83C1 /* Exposures */ = {
 			isa = PBXGroup;
 			children = (
+				EAC4CD0B25CBE03C001A4648 /* CheckDelayedView.swift */,
 				56C26BBB24B33D74002F83C1 /* ExposuresLastCheckedView.swift */,
-				56C26BB924B30CF8002F83C1 /* ExposuresViewWrapper.swift */,
+				EAC4CCFE25CBD63B001A4648 /* HasExposuresView.swift */,
 				56E3349524CCC0BB0017CD9A /* MunicipalityContactInformationView.swift */,
+				EAC4CD0325CBD67C001A4648 /* NoExposuresView.swift */,
 			);
 			path = Exposures;
 			sourceTree = "<group>";
@@ -922,12 +928,12 @@
 				EA6C1FCE257FB1C200E973E3 /* ReportInfectionFlowViewController.swift in Sources */,
 				56C26BC924B4B5A0002F83C1 /* MunicipalitySearchResultController.swift in Sources */,
 				EA6C1FDF257FC51100E973E3 /* ChooseDestinationViewController.swift in Sources */,
-				56C26BBA24B30CF8002F83C1 /* ExposuresViewWrapper.swift in Sources */,
 				EA8E2259258264CF0008EE92 /* ChooseCountriesViewController.swift in Sources */,
 				EA4A594B2562708400E65CFB /* ExposuresElement.swift in Sources */,
 				563D44B724AB5DEE008FE2BB /* UILabel+Styled.swift in Sources */,
 				56C26BC724B461ED002F83C1 /* MunicipalityModel.swift in Sources */,
 				5695F6D224D802FD008E06BC /* CMS.swift in Sources */,
+				EAC4CD0C25CBE03C001A4648 /* CheckDelayedView.swift in Sources */,
 				32B5955E24AA21EC00CC386E /* TestViewController.swift in Sources */,
 				EA4A59502562716100E65CFB /* SymptomsElement.swift in Sources */,
 				5630F2ED24C70F6700B12438 /* LinkLabel.swift in Sources */,
@@ -966,6 +972,7 @@
 				5687174224C1969A00E65427 /* StepView.swift in Sources */,
 				561878AC24AC9952004B7563 /* LocalStore.swift in Sources */,
 				EA47C5EC24A6AB0300EAC720 /* Fonts.swift in Sources */,
+				EAC4CCFF25CBD63B001A4648 /* HasExposuresView.swift in Sources */,
 				EA839F8C2567C4BC003B1580 /* DetectionStatus.swift in Sources */,
 				EA8E224C258250CB0008EE92 /* ConfirmReportViewController.swift in Sources */,
 				D98EDD3124CCAD15003E09A1 /* LinkItemGroupCard.swift in Sources */,
@@ -981,6 +988,7 @@
 				563D44B924AB9CD3008FE2BB /* Dictionary+IndexSubscript.swift in Sources */,
 				56E3349224CB02C00017CD9A /* ExposureDetectionSummary.swift in Sources */,
 				EA71E990251E25E900E66F64 /* ChangeLanguageViewController.swift in Sources */,
+				EAC4CD0425CBD67C001A4648 /* NoExposuresView.swift in Sources */,
 				EA5296B4251BE70E0089CFB4 /* LicenseListViewController.swift in Sources */,
 				56C26BB024AF3A0B002F83C1 /* RoundedButton.swift in Sources */,
 				D98EDD2524CB3D5F003E09A1 /* CardElement.swift in Sources */,

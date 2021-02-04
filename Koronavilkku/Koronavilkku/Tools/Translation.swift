@@ -1,5 +1,4 @@
-
-import Foundation
+import UIKit
 
 protocol Localizable : CaseIterable {
     var rawValue: String { get }
@@ -25,6 +24,22 @@ extension Localizable {
 
     func toURL() -> URL? {
         return URL(string: localized)
+    }
+}
+
+protocol LocalizedView {
+    associatedtype Text : Localizable
+}
+
+extension LocalizedView {
+    func text(key: Text, with args: CVarArg...) -> String {
+        key.localized(with: args)
+    }
+    
+    func label(text: Text, with args: CVarArg...) -> UILabel {
+        let label = UILabel()
+        label.text = self.text(key: text, with: args)
+        return label
     }
 }
 
