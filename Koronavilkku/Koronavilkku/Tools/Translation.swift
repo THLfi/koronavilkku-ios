@@ -71,9 +71,7 @@ enum Translation: String, Localizable {
     case TabHome
     case TabReportInfection
     case TabSettings
-    
-    case LinkAppInfo
-    
+        
     case OnboardingDone
     case OnboardingAcceptTerms
     case OnboardingReadTerms

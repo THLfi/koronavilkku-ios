@@ -12,7 +12,6 @@
 "TabSettings" = "Inställningar";
 
 "ExposureNotificationUserExplanation" = "Du kan ha exponerats för viruset";
-"LinkAppInfo" = "Om Coronablinkern";
 "HowItWorksButton" = "Se mer information om Coronablinkern";
 
 // MARK: Checkbox
@@ -25,6 +24,7 @@
 "MainViewController.Text.ProtectionButtonURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/smitta-och-skydd-coronaviruset";
 "MainViewController.Text.SituationButtonTitle" = "Coronaläget i Finland";
 "MainViewController.Text.SituationButtonURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/lagesoversikt-om-coronaviruset";
+"MainViewController.Text.AppGuideButton" = "Om Coronablinkern";
 
 // MARK: StatusHeaderView
 "StatusHeaderView.Text.TitleEnabled" = "Coronablinkern är påkopplad";
@@ -70,8 +70,10 @@
 "HasExposuresView.Text.InstructionsWhenAbroad" = "Om du inte befinner dig i Finland ska du följa de lokala myndigheternas anvisningar.";
 
 "NoExposuresView.Text.Heading" = "Ingen exponering har upptäckts";
-"NoExposuresView.Text.Subtitle" = "Coronablinkern har inte observerat någon exponering för coronaviruset under de senaste 14 dagarna.";
-"NoExposuresView.Text.DisclaimerText" = "Appen kan emellertid inte identifiera alla eventuella exponeringar.";
+"NoExposuresView.Text.Subtitle" = "Enligt uppgifter som samlats in av Coronablinkern har du inte varit i närheten av en person som meddelat om sin coronasmitta under de senaste 14 dagarna.";
+"NoExposuresView.Text.DisclaimerText" = "Appen identifierar dock inte alla eventuella exponerings\U00ADsituationer.";
+"NoExposuresView.Text.ExposureGuideButton" = "Om du får ett exponerings\U00ADmeddelande, gör så här";
+"NoExposuresView.Text.AppGuideButton" = "Information om Coronablinkern";
 
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Senast granskad %@";
 "ExposuresLastCheckedView.Text.MomentAgo" = "för ett ögonblick sedan";

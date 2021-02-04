@@ -12,7 +12,6 @@
 "TabSettings" = "Asetukset";
 
 "ExposureNotificationUserExplanation" = "Olet saattanut altistua virukselle";
-"LinkAppInfo" = "Tietoa sovelluksesta";
 "HowItWorksButton" = "Katso lisätietoa Koronavilkusta";
 
 // MARK: Checkbox
@@ -21,10 +20,11 @@
 "Checkbox.Text.AccessibilityHint" = "Muuta valintaa kaksoisnapauttamalla";
 
 // MARK: MainViewController
-"MainViewController.Text.ProtectionButtonTitle" = "Näin suojaudut";
+"MainViewController.Text.ProtectionButtonTitle" = "Näin suojaudut tartunnalta";
 "MainViewController.Text.ProtectionButtonURL" = "https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/ajankohtaista-koronaviruksesta-covid-19/tarttuminen-ja-suojautuminen-koronavirus";
 "MainViewController.Text.SituationButtonTitle" = "Suomen tautitilanne";
 "MainViewController.Text.SituationButtonURL" = "https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/ajankohtaista-koronaviruksesta-covid-19/tilannekatsaus-koronaviruksesta";
+"MainViewController.Text.AppGuideButton" = "Tietoa Koronavilkusta";
 
 // MARK: StatusHeaderView
 "StatusHeaderView.Text.TitleEnabled" = "Koronavilkku käytössä";
@@ -70,8 +70,10 @@
 "HasExposuresView.Text.InstructionsWhenAbroad" = "Jos et ole Suomessa, noudata paikallisten viranomaisten ohjeita.";
 
 "NoExposuresView.Text.Heading" = "Ei havaittuja altistumisia";
-"NoExposuresView.Text.Subtitle" = "Koronavilkku ei ole havainnut altistumista koronavirukselle viimeisten 14 päivän aikana.";
+"NoExposuresView.Text.Subtitle" = "Koronavilkun keräämien tietojen mukaan et ole ollut tartunnasta ilmoittaneen henkilön lähellä viimeisten 14 päivän aikana.";
 "NoExposuresView.Text.DisclaimerText" = "Sovellus ei kuitenkaan tunnista kaikkia mahdollisia altistumis\U00ADtilanteita.";
+"NoExposuresView.Text.ExposureGuideButton" = "Jos saat altistumis\U00ADilmoituksen, toimi näin";
+"NoExposuresView.Text.AppGuideButton" = "Tietoa Koronavilkusta";
 
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Tarkistettu viimeksi %@";
 "ExposuresLastCheckedView.Text.MomentAgo" = "hetki sitten";

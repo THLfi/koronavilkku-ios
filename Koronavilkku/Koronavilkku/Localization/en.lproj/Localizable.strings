@@ -12,7 +12,6 @@
 "TabSettings" = "Settings";
 
 "ExposureNotificationUserExplanation" = "You may have been exposed to the coronavirus";
-"LinkAppInfo" = "About Koronavilkku";
 "HowItWorksButton" = "More information about Koronavilkku";
 
 // MARK: Checkbox
@@ -21,10 +20,11 @@
 "Checkbox.Text.AccessibilityHint" = "Double tap to toggle";
 
 // MARK: MainViewController
-"MainViewController.Text.ProtectionButtonTitle" = "Protect yourself";
+"MainViewController.Text.ProtectionButtonTitle" = "How to protect yourself from an infection";
 "MainViewController.Text.ProtectionButtonURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/transmission-and-protection-coronavirus";
 "MainViewController.Text.SituationButtonTitle" = "COVID-19 in Finland";
 "MainViewController.Text.SituationButtonURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/situation-update-on-coronavirus";
+"MainViewController.Text.AppGuideButton" = "About Koronavilkku";
 
 // MARK: StatusHeaderView
 "StatusHeaderView.Text.TitleEnabled" = "Koronavilkku is active";
@@ -70,8 +70,10 @@
 "HasExposuresView.Text.InstructionsWhenAbroad" = "If you are not in Finland, follow any instructions given by local authorities.";
 
 "NoExposuresView.Text.Heading" = "No observed exposures";
-"NoExposuresView.Text.Subtitle" = "Koronavilkku has not detected exposures to the coronavirus in the last 14 days.";
+"NoExposuresView.Text.Subtitle" = "According to the information collected by Koronavilkku, you have not been near a person who has reported an infection within the last 14 days.";
 "NoExposuresView.Text.DisclaimerText" = "However, the application is not able to identify every situation where exposure may occur.";
+"NoExposuresView.Text.ExposureGuideButton" = "If you receive an exposure notification, follow these instructions";
+"NoExposuresView.Text.AppGuideButton" = "About Koronavilkku";
 
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Last checked %@";
 "ExposuresLastCheckedView.Text.MomentAgo" = "a moment ago";

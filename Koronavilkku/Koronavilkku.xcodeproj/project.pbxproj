@@ -30,7 +30,6 @@
 		5630F2ED24C70F6700B12438 /* LinkLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5630F2EC24C70F6700B12438 /* LinkLabel.swift */; };
 		5630F2EF24C7157200B12438 /* OnboardingDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5630F2EE24C7157200B12438 /* OnboardingDoneView.swift */; };
 		563ACEAF24D0555500D396F0 /* ExposureLogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563ACEAE24D0555500D396F0 /* ExposureLogsViewController.swift */; };
-		563D44A624A9FEB6008FE2BB /* NarrowRowElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563D44A524A9FEB6008FE2BB /* NarrowRowElement.swift */; };
 		563D44A824AA2143008FE2BB /* StatusHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563D44A724AA2143008FE2BB /* StatusHeaderView.swift */; };
 		563D44AB24AA327F008FE2BB /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563D44AA24AA327F008FE2BB /* UIView.swift */; };
 		563D44AD24AA7840008FE2BB /* Comparable+Clamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563D44AC24AA7840008FE2BB /* Comparable+Clamp.swift */; };
@@ -134,6 +133,7 @@
 		EAC4CCFF25CBD63B001A4648 /* HasExposuresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4CCFE25CBD63B001A4648 /* HasExposuresView.swift */; };
 		EAC4CD0425CBD67C001A4648 /* NoExposuresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4CD0325CBD67C001A4648 /* NoExposuresView.swift */; };
 		EAC4CD0C25CBE03C001A4648 /* CheckDelayedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4CD0B25CBE03C001A4648 /* CheckDelayedView.swift */; };
+		EAC4CD1A25CC21CF001A4648 /* Footer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC4CD1925CC21CF001A4648 /* Footer.swift */; };
 		EAD8619B24ADDCC900809677 /* ExposureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619A24ADDCC900809677 /* ExposureManager.swift */; };
 		EAD8619D24AE18A900809677 /* ExposureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619C24AE18A900809677 /* ExposureRepository.swift */; };
 		EAD8619F24AE56BA00809677 /* ExposureConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD8619E24AE56BA00809677 /* ExposureConfiguration.swift */; };
@@ -185,7 +185,6 @@
 		5630F2EC24C70F6700B12438 /* LinkLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLabel.swift; sourceTree = "<group>"; };
 		5630F2EE24C7157200B12438 /* OnboardingDoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDoneView.swift; sourceTree = "<group>"; };
 		563ACEAE24D0555500D396F0 /* ExposureLogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureLogsViewController.swift; sourceTree = "<group>"; };
-		563D44A524A9FEB6008FE2BB /* NarrowRowElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarrowRowElement.swift; sourceTree = "<group>"; };
 		563D44A724AA2143008FE2BB /* StatusHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusHeaderView.swift; sourceTree = "<group>"; };
 		563D44AA24AA327F008FE2BB /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		563D44AC24AA7840008FE2BB /* Comparable+Clamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Clamp.swift"; sourceTree = "<group>"; };
@@ -297,6 +296,7 @@
 		EAC4CCFE25CBD63B001A4648 /* HasExposuresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasExposuresView.swift; sourceTree = "<group>"; };
 		EAC4CD0325CBD67C001A4648 /* NoExposuresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoExposuresView.swift; sourceTree = "<group>"; };
 		EAC4CD0B25CBE03C001A4648 /* CheckDelayedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDelayedView.swift; sourceTree = "<group>"; };
+		EAC4CD1925CC21CF001A4648 /* Footer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Footer.swift; sourceTree = "<group>"; };
 		EAD8619824ADCC0100809677 /* Koronavilkku.debug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Koronavilkku.debug.entitlements; sourceTree = "<group>"; };
 		EAD8619A24ADDCC900809677 /* ExposureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureManager.swift; sourceTree = "<group>"; };
 		EAD8619C24AE18A900809677 /* ExposureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRepository.swift; sourceTree = "<group>"; };
@@ -429,6 +429,7 @@
 				EA7BEC892570E5EF005DDF3D /* Checkbox.swift */,
 				56E3349924CEC9290017CD9A /* ContactItemCard.swift */,
 				EAF340CF258102120092ED6E /* FadeBlock.swift */,
+				EAC4CD1925CC21CF001A4648 /* Footer.swift */,
 				5630F2EA24C6F8BD00B12438 /* LabeledOverlay.swift */,
 				D98EDD2624CB3E17003E09A1 /* LinkItem.swift */,
 				D98EDD2E24CCACF3003E09A1 /* LinkItemCard.swift */,
@@ -456,7 +457,6 @@
 			isa = PBXGroup;
 			children = (
 				EA4A594A2562708400E65CFB /* ExposuresElement.swift */,
-				563D44A524A9FEB6008FE2BB /* NarrowRowElement.swift */,
 				563D44A724AA2143008FE2BB /* StatusHeaderView.swift */,
 				EA4A594F2562716100E65CFB /* SymptomsElement.swift */,
 				56DB5AE124A4B5BD0019C1A1 /* WideRowElement.swift */,
@@ -921,7 +921,6 @@
 				56DB5AE224A4B5BD0019C1A1 /* WideRowElement.swift in Sources */,
 				EAD8619D24AE18A900809677 /* ExposureRepository.swift in Sources */,
 				EAEB8333252B7095005B8E24 /* Elevation.swift in Sources */,
-				563D44A624A9FEB6008FE2BB /* NarrowRowElement.swift in Sources */,
 				5630F2EF24C7157200B12438 /* OnboardingDoneView.swift in Sources */,
 				563D44B524AB59FE008FE2BB /* TableViewCell.swift in Sources */,
 				5687174424C1AA7C00E65427 /* AcceptableTermsView.swift in Sources */,
@@ -986,6 +985,7 @@
 				EA80A56E24ACAE0D0071E0EC /* REST.swift in Sources */,
 				EAF340C52580F1460092ED6E /* RadioButton.swift in Sources */,
 				563D44B924AB9CD3008FE2BB /* Dictionary+IndexSubscript.swift in Sources */,
+				EAC4CD1A25CC21CF001A4648 /* Footer.swift in Sources */,
 				56E3349224CB02C00017CD9A /* ExposureDetectionSummary.swift in Sources */,
 				EA71E990251E25E900E66F64 /* ChangeLanguageViewController.swift in Sources */,
 				EAC4CD0425CBD67C001A4648 /* NoExposuresView.swift in Sources */,

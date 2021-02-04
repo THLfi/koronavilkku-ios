@@ -6,6 +6,8 @@ class NoExposuresView : ExposuresView, LocalizedView {
         case Heading
         case Subtitle
         case DisclaimerText
+        case ExposureGuideButton
+        case AppGuideButton
     }
     
     var timeFromLastCheck: TimeInterval? {
@@ -63,18 +65,23 @@ class NoExposuresView : ExposuresView, LocalizedView {
             disclaimer.textColor = UIColor.Greyscale.black
             disclaimer.numberOfLines = 0
             append(disclaimer, UIEdgeInsets(top: 10))
-
-            let howItWorksLink = InternalLinkLabel(
-                label: Translation.HowItWorksButton.localized,
-                font: UIFont.labelSecondary,
-                color: UIColor.Primary.blue,
-                linkTapped: { [unowned self] in
-                    self.delegate?.showHowItWorks()
+            
+            let footer = [
+                FooterItem(title: text(key: .ExposureGuideButton)) { [unowned self] in
+                   self.delegate?.showHowItWorks()
                 },
-                underline: false)
-
-            append(howItWorksLink, UIEdgeInsets(top: 8))
+                
+                FooterItem(title: text(key: .AppGuideButton)) { [unowned self] in
+                   self.delegate?.showHowItWorks()
+                }
+            ].build()
+                        
+            append(footer, UIEdgeInsets(top: 30))
         }
+    }
+    
+    @objc func tourButtonTapped() {
+        self.delegate?.showHowItWorks()
     }
 }
 
@@ -92,15 +99,15 @@ struct NoExposuresView_Preview: PreviewProvider {
     static var previews: some View = Group {
         createPreviewInContainer(for: createView {
             $0.detectionStatus = .init(status: .on, delayed: false, running: false)
-        }, width: 375, height: 300)
+        }, width: 375, height: 400)
 
         createPreviewInContainer(for: createView {
             $0.detectionStatus = .init(status: .on, delayed: true, running: true)
-        }, width: 375, height: 500)
+        }, width: 375, height: 600)
 
         createPreviewInContainer(for: createView {
             $0.detectionStatus = .init(status: .on, delayed: true, running: false)
-        }, width: 375, height: 500)
+        }, width: 375, height: 600)
     }
 }
 

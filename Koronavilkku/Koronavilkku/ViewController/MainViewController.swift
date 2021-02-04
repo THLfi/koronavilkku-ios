@@ -2,12 +2,13 @@ import Combine
 import SnapKit
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, LocalizedView {
     enum Text : String, Localizable {
         case ProtectionButtonTitle
         case ProtectionButtonURL
         case SituationButtonTitle
         case SituationButtonURL
+        case AppGuideButton
     }
     
     private var headerView: StatusHeaderView!
@@ -144,7 +145,7 @@ class MainViewController: UIViewController {
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
         }
-        
+                
         self.symptomsElement = SymptomsElement { [unowned self] in
             self.openSymptomsViewController()
         }
@@ -157,10 +158,22 @@ class MainViewController: UIViewController {
             make.right.equalToSuperview().offset(-20)
         }
         
-        // Create wrapper and setup narrow buttons
-        let row = UIView()
-        wrapper.addSubview(row)
-        row.snp.makeConstraints { make in
+        let footer = [
+            FooterItem(title: text(key: .ProtectionButtonTitle)) { [unowned self] in
+                self.openLink(url: Text.ProtectionButtonURL.toURL()!)
+            },
+
+            FooterItem(title: text(key: .SituationButtonTitle)) { [unowned self] in
+                self.openLink(url: Text.SituationButtonURL.toURL()!)
+            },
+
+            FooterItem(title: text(key: .AppGuideButton)) { [unowned self] in
+                showGuide()
+            },
+        ].build()
+        
+        wrapper.addSubview(footer)
+        footer.snp.makeConstraints { make in
             make.top.equalTo(headerView).offset(20).priority(.low)
             exposuresElementBottomConstraint = make.top.equalTo(exposuresElement.snp.bottom).offset(20).priority(.medium).constraint
             symptomsElementBottomConstraint = make.top.equalTo(symptomsElement.snp.bottom).offset(20).priority(.high).constraint
@@ -168,34 +181,12 @@ class MainViewController: UIViewController {
             make.right.equalToSuperview().offset(-20)
         }
         
-        let howToProtect = NarrowRowElement(image: UIImage(named: "shield-icon")!,
-                                            title: Text.ProtectionButtonTitle.localized) { [unowned self] in
-            self.openLink(url: Text.ProtectionButtonURL.toURL()!)
-        }
-        
-        row.addSubview(howToProtect)
-        howToProtect.snp.makeConstraints { make in
-            make.top.left.bottom.equalToSuperview()
-            make.right.equalTo(row.snp.centerX).offset(-10)
-        }
-        
-        let statistics = NarrowRowElement(image: UIImage(named: "finland-map")!,
-                                          title: Text.SituationButtonTitle.localized) { [unowned self] in
-            self.openLink(url: Text.SituationButtonURL.toURL()!)
-        }
-        
-        row.addSubview(statistics)
-        statistics.snp.makeConstraints { make in
-            make.top.right.bottom.equalToSuperview()
-            make.left.equalTo(row.snp.centerX).offset(10)
-        }
-        
         let logo = UIImageView(image: UIImage(named: "THL-logo"))
         logo.contentMode = .scaleAspectFit
         wrapper.addSubview(logo)
         logo.snp.makeConstraints { make in
-            make.top.equalTo(row.snp.bottom).offset(28)
-            make.left.equalToSuperview().offset(21)
+            make.top.equalTo(footer.snp.bottom).offset(16)
+            make.left.equalToSuperview().offset(20)
             make.width.equalTo(103)
         }
 
@@ -205,21 +196,7 @@ class MainViewController: UIViewController {
         logo.isAccessibilityElement = true
         logo.accessibilityLabel = Translation.HomeLogoLinkLabel.localized
         logo.accessibilityTraits = .link
-
-        let infoButton = UIButton(type: .custom)
-        infoButton.setTitle(Translation.LinkAppInfo.localized, for: .normal)
-        infoButton.setTitleColor(UIColor.Primary.blue, for: .normal)
-        infoButton.titleLabel?.font = UIFont.labelSecondary
-        infoButton.titleLabel?.textAlignment = .right
-        infoButton.addTarget(self, action: #selector(infoButtonTapped), for: .touchUpInside)
         
-        wrapper.addSubview(infoButton)
-        infoButton.snp.makeConstraints { make in
-            make.right.equalToSuperview().offset(-20)
-            make.centerY.equalTo(logo)
-            make.left.greaterThanOrEqualTo(logo.snp.right).offset(20)
-        }
-
         #if !PRODUCTION
         let debugButton = UIButton(type: .custom)
         debugButton.setTitle(Translation.ButtonTestUI.localized, for: .normal)
@@ -236,7 +213,7 @@ class MainViewController: UIViewController {
 
         debugButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(infoButton.snp.bottom).offset(30)
+            make.top.equalTo(logo.snp.bottom).offset(30)
         }
         #else
         let bottomGuide = infoButton
@@ -278,10 +255,6 @@ class MainViewController: UIViewController {
         self.present(testVC, animated: true, completion: nil)
     }
 
-    @objc private func infoButtonTapped() {
-        showGuide()
-    }
-    
     @objc private func logoImageTapped() {
         self.openLink(url: URL(string: Translation.HomeLogoLinkURL.localized)!)
     }
