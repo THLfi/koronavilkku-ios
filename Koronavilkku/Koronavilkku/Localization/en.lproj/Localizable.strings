@@ -45,6 +45,7 @@
 "ExposuresElement.Text.BodyHasExposures" = "You may have been exposed to the coronavirus";
 "ExposuresElement.Text.ButtonOpen" = "See instructions";
 "ExposuresElement.Text.ButtonCheckNow" = "Check now";
+"ExposuresElement.Text.ButtonExposureGuide" = "If you receive an exposure notification follow these instructions";
 
 // MARK: SymptomsElement.Text
 "SymptomsElement.Text.Title" = "Do you think you may have COVID-19?";

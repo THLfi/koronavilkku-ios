@@ -1,23 +1,30 @@
 import Combine
+import SnapKit
 import UIKit
 
-final class ExposuresElement: WideRowElement {
+protocol ExposuresElementDelegate : AnyObject {
+    func runManualDetection()
+    func showAppGuide()
+}
+
+final class ExposuresElement: WideRowElement, LocalizedView {
     enum Text : String, Localizable {
         case TitleNoExposures
-        case BodyNoExposures
         case BodyExposureCheckDelayed
         case AccessibilityValueCheckDelayed
         case TitleHasExposures
         case BodyHasExposures
         case ButtonOpen
         case ButtonCheckNow
+        case ButtonExposureGuide
     }
     
     private var manualCheckButton: RoundedButton?
     private var lastCheckedView: ExposuresLastCheckedView?
+
+    weak var delegate: ExposuresElementDelegate?
     
-    private let manualCheckAction: () -> ()
-    private let margin = UIEdgeInsets(top: 24, left: 20, bottom: -20, right: -20)
+    private let margin = UIEdgeInsets(top: 24, left: 20, bottom: 20, right: -20)
     
     var timeFromLastUpdate: TimeInterval? {
         didSet {
@@ -93,15 +100,6 @@ final class ExposuresElement: WideRowElement {
         }
     }
 
-    init(tapped: @escaping () -> (), manualCheckAction: @escaping () -> ()) {
-        self.manualCheckAction = manualCheckAction
-        super.init(tapped: tapped)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     private func createImageView() -> UIView? {
         if case .exposed = exposureStatus {
             return nil
@@ -132,16 +130,40 @@ final class ExposuresElement: WideRowElement {
             body = .BodyHasExposures
         
         case .unexposed:
-            guard detectionStatus!.enabled() else {
+            guard detectionStatus!.enabled() && detectionStatus!.delayed else {
                 return nil
             }
 
-            body = detectionStatus!.delayed ? .BodyExposureCheckDelayed : .BodyNoExposures
+            body = .BodyExposureCheckDelayed
         }
             
         return createBodyLabel(body: body.localized)
     }
     
+    private func createGuideButton(topAnchor: ConstraintItem) -> UIButton {
+        let divider = UIView.createDivider()
+        
+        addSubview(divider)
+
+        divider.snp.makeConstraints { make in
+            make.top.equalTo(topAnchor).offset(20)
+            make.left.right.equalToSuperview()
+        }
+        
+        let button = FooterItem(title: text(key: .ButtonExposureGuide)) { [unowned self] in
+            self.delegate?.showAppGuide()
+        }
+        
+        addSubview(button)
+        
+        button.snp.makeConstraints { make in
+            make.top.equalTo(divider.snp.bottom).offset(12)
+            make.left.right.equalToSuperview().inset(20)
+        }
+        
+        return button
+    }
+
     func render() {
         guard let exposureStatus = self.exposureStatus,
               let detectionStatus = self.detectionStatus else { return }
@@ -159,6 +181,8 @@ final class ExposuresElement: WideRowElement {
         let imageView = createImageView()
         let titleView = createTitleLabel()
         let bodyView = createBodyLabel()
+        let bottomAnchor: ConstraintItem
+        var bottomOffset = margin.bottom
         var button: RoundedButton? = nil
         
         self.addSubview(container)
@@ -193,12 +217,23 @@ final class ExposuresElement: WideRowElement {
                                    backgroundColor: UIColor.Primary.red,
                                    highlightedBackgroundColor: UIColor.Primary.red,
                                    action: tapped)
+ 
+            bottomAnchor = button!.snp.bottom
         } else {
             if detectionStatus.manualCheckAllowed() {
                 manualCheckButton = RoundedButton(title: Text.ButtonCheckNow.localized,
                                                   backgroundColor: UIColor.Primary.blue,
-                                                  highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground,
-                                                  action: manualCheckAction)
+                                                  highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground) { [unowned self] in
+                    self.delegate?.runManualDetection()
+                }
+
+                bottomAnchor = manualCheckButton!.snp.bottom
+            } else if detectionStatus.enabled() {
+                let button = createGuideButton(topAnchor: container.snp.bottom)
+                bottomAnchor = button.snp.bottom
+                bottomOffset = 12
+            } else {
+                bottomAnchor = container.snp.bottom
             }
             
             lastCheckedView = ExposuresLastCheckedView(style: .subdued, value: timeFromLastUpdate)
@@ -208,9 +243,9 @@ final class ExposuresElement: WideRowElement {
         if let button = button ?? manualCheckButton {
             self.addSubview(button)
             button.snp.makeConstraints { make in
-                make.bottom.equalToSuperview().offset(margin.bottom)
                 make.right.equalToSuperview().offset(margin.right)
                 make.left.equalToSuperview().offset(margin.left)
+                make.top.equalTo(container.snp.bottom).offset(20)
             }
         }
                 
@@ -239,18 +274,16 @@ final class ExposuresElement: WideRowElement {
             }
             
             make.bottom.equalTo(lastCheckedView ?? bodyView ?? titleView)
-            
-            if let button = button ?? manualCheckButton {
-                make.bottom.equalTo(button.snp.top).offset(-20)
-            } else {
-                make.bottom.equalToSuperview().offset(margin.bottom)
-            }
         }
 
         imageView?.snp.makeConstraints { make in
             make.top.equalTo(container).offset(bodyView != nil ? 6 : 0)
             make.right.equalToSuperview().inset(30)
             make.size.equalTo(CGSize(width: 50, height: 50))
+        }
+        
+        self.snp.makeConstraints { make in
+            make.bottom.equalTo(bottomAnchor).offset(bottomOffset)
         }
 
         isAccessibilityElement = true
@@ -291,7 +324,7 @@ struct ExposuresElement_NoExposures: PreviewProvider {
                            detectionStatus: DetectionStatus,
                            timeFromLastUpdate: TimeInterval? = nil) -> ExposuresElement {
         
-        let view = ExposuresElement(tapped: {}, manualCheckAction: {})
+        let view = ExposuresElement()
         view.exposureStatus = exposureStatus
         view.detectionStatus = detectionStatus
         view.timeFromLastUpdate = timeFromLastUpdate

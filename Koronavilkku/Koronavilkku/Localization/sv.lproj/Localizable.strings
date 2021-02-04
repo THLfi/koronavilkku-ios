@@ -45,6 +45,7 @@
 "ExposuresElement.Text.BodyHasExposures" = "Du kan ha exponerats för viruset";
 "ExposuresElement.Text.ButtonOpen" = "Se anvisningar";
 "ExposuresElement.Text.ButtonCheckNow" = "Kontrollera nu";
+"ExposuresElement.Text.ButtonExposureGuide" = "Om du får ett exponerings\U00ADmeddelande, gör så här";
 
 // MARK: SymptomsElement.Text
 "SymptomsElement.Text.Title" = "Misstänker du smitta?";

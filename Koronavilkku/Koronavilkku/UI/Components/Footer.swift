@@ -11,6 +11,7 @@ class FooterItem : UIButton {
         addTarget(self, action: #selector(tapped), for: .touchUpInside)
         
         let label = UILabel(label: title, font: .labelTertiary, color: UIColor.Greyscale.darkGrey)
+        label.numberOfLines = 0
         addSubview(label)
         
         label.snp.makeConstraints { make in
@@ -22,7 +23,8 @@ class FooterItem : UIButton {
         
         icon.snp.makeConstraints { make in
             make.centerY.right.equalToSuperview()
-            make.left.greaterThanOrEqualTo(label.snp.right).offset(10)
+            make.left.greaterThanOrEqualTo(label.snp.right).offset(16)
+            make.size.equalTo(CGSize(width: 8, height: 14))
         }
         
         accessibilityLabel = title

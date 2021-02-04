@@ -2,7 +2,7 @@ import Combine
 import SnapKit
 import UIKit
 
-class MainViewController: UIViewController, LocalizedView {
+class MainViewController: UIViewController, LocalizedView, ExposuresElementDelegate {
     enum Text : String, Localizable {
         case ProtectionButtonTitle
         case ProtectionButtonURL
@@ -132,12 +132,11 @@ class MainViewController: UIViewController, LocalizedView {
         }
         
         // Setup notification and helper components
-        self.exposuresElement = ExposuresElement() { [unowned self] in
-            self.openExposuresViewController()
-        } manualCheckAction: { [unowned self] in
-            self.runManualDetection()
+        self.exposuresElement = ExposuresElement { [unowned self] in
+            openSubview(viewController: ExposuresViewController())
         }
-        
+
+        self.exposuresElement.delegate = self
         wrapper.addSubview(self.exposuresElement)
 
         self.exposuresElement.snp.makeConstraints { make in
@@ -224,10 +223,6 @@ class MainViewController: UIViewController, LocalizedView {
         }
     }
     
-    private func openExposuresViewController() {
-        openSubview(viewController: ExposuresViewController())
-    }
-    
     private func openSymptomsViewController() {
         openSubview(viewController: SymptomsViewController())
     }
@@ -237,7 +232,7 @@ class MainViewController: UIViewController, LocalizedView {
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    private func runManualDetection() {
+    func runManualDetection() {
         BackgroundTaskForNotifications.shared.run()
             .receive(on: RunLoop.main)
             .sink { [weak self] success in
@@ -248,6 +243,10 @@ class MainViewController: UIViewController, LocalizedView {
                 }
             }
             .store(in: &tasks)
+    }
+        
+    func showAppGuide() {
+        fatalError("Not yet implemented")
     }
     
     @objc private func debugButtonTapped() {
