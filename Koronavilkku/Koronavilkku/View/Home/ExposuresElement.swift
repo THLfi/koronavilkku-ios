@@ -4,7 +4,7 @@ import UIKit
 
 protocol ExposuresElementDelegate : AnyObject {
     func runManualDetection()
-    func showAppGuide()
+    func showExposureGuide()
 }
 
 final class ExposuresElement: WideRowElement, LocalizedView {
@@ -151,7 +151,7 @@ final class ExposuresElement: WideRowElement, LocalizedView {
         }
         
         let button = FooterItem(title: text(key: .ButtonExposureGuide)) { [unowned self] in
-            self.delegate?.showAppGuide()
+            self.delegate?.showExposureGuide()
         }
         
         addSubview(button)

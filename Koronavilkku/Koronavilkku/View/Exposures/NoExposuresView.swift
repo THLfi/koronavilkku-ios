@@ -68,11 +68,11 @@ class NoExposuresView : ExposuresView, LocalizedView {
             
             let footer = [
                 FooterItem(title: text(key: .ExposureGuideButton)) { [unowned self] in
-                   self.delegate?.showHowItWorks()
+                    self.delegate?.showExposureGuide()
                 },
                 
                 FooterItem(title: text(key: .AppGuideButton)) { [unowned self] in
-                   self.delegate?.showHowItWorks()
+                    self.delegate?.showHowItWorks()
                 }
             ].build()
                         

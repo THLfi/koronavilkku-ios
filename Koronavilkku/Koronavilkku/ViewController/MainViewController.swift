@@ -245,8 +245,9 @@ class MainViewController: UIViewController, LocalizedView, ExposuresElementDeleg
             .store(in: &tasks)
     }
         
-    func showAppGuide() {
-        fatalError("Not yet implemented")
+    func showExposureGuide() {
+        let guide = ExposureGuideViewController()
+        self.navigationController?.present(guide, animated: true, completion: nil)
     }
     
     @objc private func debugButtonTapped() {

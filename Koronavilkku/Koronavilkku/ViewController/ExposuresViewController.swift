@@ -5,6 +5,7 @@ import Combine
 
 protocol ExposuresViewDelegate: AnyObject {
     func showHowItWorks()
+    func showExposureGuide()
     func makeContact()
     func startManualCheck()
     func showNotificationList()
@@ -166,8 +167,12 @@ extension ExposuresViewController: ExposuresViewDelegate {
             .store(in: &updateTasks)
     }
     
+    func showExposureGuide() {
+        self.navigationController?.present(ExposureGuideViewController(), animated: true)
+    }
+    
     func showHowItWorks() {
-        self.navigationController?.present(HowItWorksViewController(), animated: true)
+        self.navigationController?.showGuide()
     }
     
     func makeContact() {
