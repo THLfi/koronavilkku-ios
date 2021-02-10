@@ -203,6 +203,18 @@
 "SelectMunicipalityViewController.Text.ErrorMessage" = "The municipality list could not be loaded. Please check your internet connection and try again.";
 "SelectMunicipalityViewController.Text.ErrorButton" = "OK";
 
+// MARK: ExposureGuideViewController
+
+"ExposureGuideViewController.Text.Title" = "If you receive an exposure notification, follow these instructions";
+"ExposureGuideViewController.Text.ButtonClose" = "Close";
+"ExposureGuideViewController.Text.ButtonPrevious" = "Previous";
+"ExposureGuideViewController.Text.ButtonNext" = "Next";
+"ExposureGuideViewController.Text.Step1" = "If you have been near a person who has reported their coronavirus infection via the application, you will receive a notification of potential exposure to your phone. Tap on the notification to open Koronavilkku.";
+"ExposureGuideViewController.Text.Step2" = "Press the red See instructions button.";
+"ExposureGuideViewController.Text.Step3" = "You will receive instructions on what to do. You will also receive instructions on how to contact a healthcare provider. Read the instructions and press the Contact button.";
+"ExposureGuideViewController.Text.Step4" = "Select the municipality. You can contact the healthcare services via the contact methods provided by the municipality, such as via the Omaolo online service or by telephone.";
+"ExposureGuideViewController.Text.Step5" = "The healthcare services will give you more detailed instructions and evaluate your need for a coronavirus test.";
+
 "HeaderContinueByAcceptingExposureLogging" = "Select \"allow\" to continue setting up the application";
 
 "ContactRequestItemTitle" = "Send a contact request";

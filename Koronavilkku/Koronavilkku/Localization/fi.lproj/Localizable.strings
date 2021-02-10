@@ -203,6 +203,18 @@
 "SelectMunicipalityViewController.Text.ErrorMessage" = "Kuntatietojen lataaminen ei onnistunut. Tarkista verkkoyhteys ja yritä uudelleen.";
 "SelectMunicipalityViewController.Text.ErrorButton" = "OK";
 
+// MARK: ExposureGuideViewController
+
+"ExposureGuideViewController.Text.Title" = "Jos saat altistumisilmoituksen, toimi näin";
+"ExposureGuideViewController.Text.ButtonClose" = "Sulje";
+"ExposureGuideViewController.Text.ButtonPrevious" = "Edellinen";
+"ExposureGuideViewController.Text.ButtonNext" = "Seuraava";
+"ExposureGuideViewController.Text.Step1" = "Jos olet ollut sellaisen henkilön lähellä, joka on ilmoittanut sovelluksella koronatartunnastaan, saat puhelimeesi ilmoituksen mahdollisesta altistumisesta. Paina ilmoitusta, niin Koronavilkku aukeaa.";
+"ExposureGuideViewController.Text.Step2" = "Paina punaista Katso toimintaohjeet -painiketta.";
+"ExposureGuideViewController.Text.Step3" = "Saat toimintaohjeet. Lisäksi saat ohjeet siitä, miten voit ottaa yhteyttä terveydenhuoltoon. Tutustu ohjeisiin ja paina Ota yhteyttä -painiketta.";
+"ExposureGuideViewController.Text.Step4" = "Valitse kunta. Voit ottaa yhteyttä terveydenhuoltoon kunnan tarjoamilla yhteydenottotavoilla, esimerkiksi Omaolo-verkkopalvelussa tai puhelimitse.";
+"ExposureGuideViewController.Text.Step5" = "Saat terveydenhuollosta tarkemmat toimintaohjeet ja arvion koronavirustestin tarpeellisuudesta.";
+
 "HeaderContinueByAcceptingExposureLogging" = "Jatka käyttöönottoa valitsemalla \"Salli\"";
 
 "ContactRequestItemTitle" = "Lähetä yhteydenottopyyntö";

@@ -1,0 +1,77 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "Instructions EN-1x.png",
+      "idiom" : "universal",
+      "locale" : "en",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Instructions EN-2x.png",
+      "idiom" : "universal",
+      "locale" : "en",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Instructions EN-3x.png",
+      "idiom" : "universal",
+      "locale" : "en",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "Instructions FI-1x.png",
+      "idiom" : "universal",
+      "locale" : "fi",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Instructions FI-2x.png",
+      "idiom" : "universal",
+      "locale" : "fi",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Instructions FI-3x.png",
+      "idiom" : "universal",
+      "locale" : "fi",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "Instructions SE-1x.png",
+      "idiom" : "universal",
+      "locale" : "sv",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "Instructions SE-2x.png",
+      "idiom" : "universal",
+      "locale" : "sv",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "Instructions SE-3x.png",
+      "idiom" : "universal",
+      "locale" : "sv",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
+  }
+}
