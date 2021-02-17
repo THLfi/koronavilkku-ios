@@ -21,7 +21,7 @@ final class ExposuresElement: WideRowElement, LocalizedView {
     
     private var manualCheckButton: RoundedButton?
     private var lastCheckedView: ExposuresLastCheckedView?
-
+    
     weak var delegate: ExposuresElementDelegate?
     
     private let margin = UIEdgeInsets(top: 24, left: 20, bottom: 20, right: -20)
@@ -42,7 +42,7 @@ final class ExposuresElement: WideRowElement, LocalizedView {
             render()
         }
     }
-
+    
     /// The current detection status.
     ///
     /// Has more fine-grained control over re-rendering: Changes to the button loading state are rendered without recreating the UI
@@ -99,7 +99,7 @@ final class ExposuresElement: WideRowElement, LocalizedView {
             _accessibilityValue = newValue
         }
     }
-
+    
     private func createImageView() -> UIView? {
         if case .exposed = exposureStatus {
             return nil
@@ -118,7 +118,7 @@ final class ExposuresElement: WideRowElement, LocalizedView {
             title.textColor = UIColor.Primary.red
             return title
         }
-
+        
         return createTitleLabel(title: Text.TitleNoExposures.localized)
     }
     
@@ -128,15 +128,15 @@ final class ExposuresElement: WideRowElement, LocalizedView {
         switch exposureStatus! {
         case .exposed:
             body = .BodyHasExposures
-        
+            
         case .unexposed:
             guard detectionStatus!.enabled() && detectionStatus!.delayed else {
                 return nil
             }
-
+            
             body = .BodyExposureCheckDelayed
         }
-            
+        
         return createBodyLabel(body: body.localized)
     }
     
@@ -144,26 +144,27 @@ final class ExposuresElement: WideRowElement, LocalizedView {
         let divider = UIView.createDivider()
         
         addSubview(divider)
-
+        
         divider.snp.makeConstraints { make in
             make.top.equalTo(topAnchor).offset(20)
             make.left.right.equalToSuperview()
         }
         
-        let button = FooterItem(title: text(key: .ButtonExposureGuide)) { [unowned self] in
+        let button = FooterItem(title: text(key: .ButtonExposureGuide),
+                                padding: UIEdgeInsets(20)) { [unowned self] in
             self.delegate?.showExposureGuide()
         }
         
         addSubview(button)
         
         button.snp.makeConstraints { make in
-            make.top.equalTo(divider.snp.bottom).offset(12)
-            make.left.right.equalToSuperview().inset(20)
+            make.top.equalTo(divider.snp.bottom)
+            make.left.right.equalToSuperview()
         }
         
         return button
     }
-
+    
     func render() {
         guard let exposureStatus = self.exposureStatus,
               let detectionStatus = self.detectionStatus else { return }
@@ -176,7 +177,7 @@ final class ExposuresElement: WideRowElement, LocalizedView {
         if initialized {
             removeAllSubviews()
         }
-
+        
         let container = UIView()
         let imageView = createImageView()
         let titleView = createTitleLabel()
@@ -186,29 +187,29 @@ final class ExposuresElement: WideRowElement, LocalizedView {
         var button: RoundedButton? = nil
         
         self.addSubview(container)
-
+        
         if let imageView = imageView {
             self.addSubview(imageView)
         }
-
+        
         titleView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         container.addSubview(titleView)
-
+        
         titleView.snp.makeConstraints { make in
             make.top.left.equalToSuperview()
             make.right.lessThanOrEqualToSuperview().priority(.low)
         }
-
+        
         if case .exposed(let notificationCount) = exposureStatus {
             let exposureCountLabel = Badge(label: notificationCount?.description ?? "!", backgroundColor: UIColor.Primary.red)
             exposureCountLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
             container.addSubview(exposureCountLabel)
-
+            
             exposureCountLabel.snp.makeConstraints { make in
                 make.left.equalTo(titleView.snp.right).offset(10)
                 make.right.lessThanOrEqualToSuperview()
             }
-
+            
             exposureCountLabel.label.snp.makeConstraints { make in
                 make.firstBaseline.equalTo(titleView)
             }
@@ -217,7 +218,7 @@ final class ExposuresElement: WideRowElement, LocalizedView {
                                    backgroundColor: UIColor.Primary.red,
                                    highlightedBackgroundColor: UIColor.Primary.red,
                                    action: tapped)
- 
+            
             bottomAnchor = button!.snp.bottom
         } else {
             if detectionStatus.manualCheckAllowed() {
@@ -226,12 +227,12 @@ final class ExposuresElement: WideRowElement, LocalizedView {
                                                   highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground) { [unowned self] in
                     self.delegate?.runManualDetection()
                 }
-
+                
                 bottomAnchor = manualCheckButton!.snp.bottom
             } else if detectionStatus.enabled() {
                 let button = createGuideButton(topAnchor: container.snp.bottom)
                 bottomAnchor = button.snp.bottom
-                bottomOffset = 12
+                bottomOffset = 0
             } else {
                 bottomAnchor = container.snp.bottom
             }
@@ -248,10 +249,10 @@ final class ExposuresElement: WideRowElement, LocalizedView {
                 make.top.equalTo(container.snp.bottom).offset(20)
             }
         }
-                
+        
         if let bodyView = bodyView {
             container.addSubview(bodyView)
-
+            
             bodyView.snp.makeConstraints { make in
                 make.top.equalTo(titleView.snp.bottom).offset(10)
                 make.left.right.equalToSuperview()
@@ -275,7 +276,7 @@ final class ExposuresElement: WideRowElement, LocalizedView {
             
             make.bottom.equalTo(lastCheckedView ?? bodyView ?? titleView)
         }
-
+        
         imageView?.snp.makeConstraints { make in
             make.top.equalTo(container).offset(bodyView != nil ? 6 : 0)
             make.right.equalToSuperview().inset(30)
@@ -285,11 +286,11 @@ final class ExposuresElement: WideRowElement, LocalizedView {
         self.snp.makeConstraints { make in
             make.bottom.equalTo(bottomAnchor).offset(bottomOffset)
         }
-
+        
         isAccessibilityElement = true
         accessibilityTraits = .button
         accessibilityCustomActions = nil
-
+        
         if case .exposed = exposureStatus {
             accessibilityHint = Text.ButtonOpen.localized
             accessibilityLabel = "\(titleView.text ?? ""). \(bodyView?.text ?? "")"
@@ -330,31 +331,31 @@ struct ExposuresElement_NoExposures: PreviewProvider {
         view.timeFromLastUpdate = timeFromLastUpdate
         return view
     }
-
+    
     static var previews: some View = Group {
         createPreviewInContainer(for: createView(exposureStatus: .unexposed,
                                                  detectionStatus: .init(status: .on, delayed: false, running: false)),
                                  width: 375,
                                  height: 200)
-
+        
         createPreviewInContainer(for: createView(exposureStatus: .unexposed,
                                                  detectionStatus: .init(status: .on, delayed: true, running: false),
                                                  timeFromLastUpdate: -1_000_000),
                                  width: 375,
                                  height: 300)
-
+        
         createPreviewInContainer(for: createView(exposureStatus: .exposed(notificationCount: 3),
                                                  detectionStatus: .init(status: .off, delayed: true, running: false),
                                                  timeFromLastUpdate: -10_000),
                                  width: 375,
                                  height: 220)
-
+        
         createPreviewInContainer(for: createView(exposureStatus: .exposed(notificationCount: nil),
                                                  detectionStatus: .init(status: .on, delayed: false, running: false),
                                                  timeFromLastUpdate: -1000),
                                  width: 375,
                                  height: 220)
-
+        
         createPreviewInContainer(for: createView(exposureStatus: .unexposed,
                                                  detectionStatus: .init(status: .apiDisabled, delayed: true, running: false),
                                                  timeFromLastUpdate: -100),

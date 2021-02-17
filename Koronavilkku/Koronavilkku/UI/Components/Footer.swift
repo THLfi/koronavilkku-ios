@@ -4,7 +4,7 @@ import UIKit
 class FooterItem : UIButton {
     private let tapHandler: TapHandler
     
-    init(title: String, action: @escaping TapHandler) {
+    init(title: String, padding: UIEdgeInsets = .init(), action: @escaping TapHandler) {
         tapHandler = action
         super.init(frame: .zero)
         
@@ -15,14 +15,15 @@ class FooterItem : UIButton {
         addSubview(label)
         
         label.snp.makeConstraints { make in
-            make.top.left.bottom.equalToSuperview()
+            make.top.left.bottom.equalToSuperview().inset(padding)
         }
         
         let icon = UIImageView(image: UIImage(named: "chevron-right"))
         addSubview(icon)
         
         icon.snp.makeConstraints { make in
-            make.centerY.right.equalToSuperview()
+            make.right.equalToSuperview().inset(padding)
+            make.centerY.equalTo(label)
             make.left.greaterThanOrEqualTo(label.snp.right).offset(16)
             make.size.equalTo(CGSize(width: 8, height: 14))
         }

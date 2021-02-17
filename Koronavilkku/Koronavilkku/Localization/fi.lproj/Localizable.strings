@@ -205,7 +205,7 @@
 
 // MARK: ExposureGuideViewController
 
-"ExposureGuideViewController.Text.Title" = "Jos saat altistumisilmoituksen, toimi näin";
+"ExposureGuideViewController.Text.Title" = "Jos saat altistumis\U00ADilmoituksen, toimi näin";
 "ExposureGuideViewController.Text.ButtonClose" = "Sulje";
 "ExposureGuideViewController.Text.ButtonPrevious" = "Edellinen";
 "ExposureGuideViewController.Text.ButtonNext" = "Seuraava";
