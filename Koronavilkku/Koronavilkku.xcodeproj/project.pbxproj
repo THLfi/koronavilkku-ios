@@ -74,6 +74,10 @@
 		D98EDD3724CDF91F003E09A1 /* AttentionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD3624CDF91F003E09A1 /* AttentionCard.swift */; };
 		EA07E41724E34C7D0097A9A0 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07E41624E34C7D0097A9A0 /* URLSession.swift */; };
 		EA0D8B2124B33B25002F1BCD /* TemporaryExposureKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0D8B2024B33B25002F1BCD /* TemporaryExposureKey.swift */; };
+		EA1AF39325DD5E5B006E4FE4 /* SourceSansPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA1AF38A25DD5D69006E4FE4 /* SourceSansPro-Black.ttf */; };
+		EA1AF39425DD5E5B006E4FE4 /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA1AF38C25DD5D69006E4FE4 /* SourceSansPro-Bold.ttf */; };
+		EA1AF39525DD5E5B006E4FE4 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA1AF38925DD5D69006E4FE4 /* SourceSansPro-Regular.ttf */; };
+		EA1AF39625DD5E5B006E4FE4 /* SourceSansPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA1AF38B25DD5D69006E4FE4 /* SourceSansPro-SemiBold.ttf */; };
 		EA1B814324F54AA10041DED1 /* RestApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814224F54AA10041DED1 /* RestApiTest.swift */; };
 		EA1B814524F54AD20041DED1 /* MockURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814424F54AD20041DED1 /* MockURLProtocol.swift */; };
 		EA1B814824F57CFC0041DED1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1B814724F57CFC0041DED1 /* Extensions.swift */; };
@@ -87,10 +91,6 @@
 		EA30D71F24A620C900AF84B1 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA30D71E24A620C900AF84B1 /* Colors.swift */; };
 		EA3ED0E324F8315500635817 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3ED0E224F8315500635817 /* FileStorage.swift */; };
 		EA47C5EC24A6AB0300EAC720 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47C5EB24A6AB0300EAC720 /* Fonts.swift */; };
-		EA47C5F224A6B3FC00EAC720 /* SourceSansPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5EE24A6B3FC00EAC720 /* SourceSansPro-Regular.otf */; };
-		EA47C5F324A6B3FC00EAC720 /* SourceSansPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5EF24A6B3FC00EAC720 /* SourceSansPro-Bold.otf */; };
-		EA47C5F424A6B3FC00EAC720 /* SourceSansPro-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5F024A6B3FC00EAC720 /* SourceSansPro-Black.otf */; };
-		EA47C5F524A6B3FC00EAC720 /* SourceSansPro-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA47C5F124A6B3FC00EAC720 /* SourceSansPro-Semibold.otf */; };
 		EA4A59432561C25800E65CFB /* Publisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A59422561C25800E65CFB /* Publisher.swift */; };
 		EA4A594B2562708400E65CFB /* ExposuresElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A594A2562708400E65CFB /* ExposuresElement.swift */; };
 		EA4A59502562716100E65CFB /* SymptomsElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A594F2562716100E65CFB /* SymptomsElement.swift */; };
@@ -232,6 +232,10 @@
 		EA07E41624E34C7D0097A9A0 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		EA0D8B2024B33B25002F1BCD /* TemporaryExposureKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryExposureKey.swift; sourceTree = "<group>"; };
 		EA0D8B2324B482CD002F1BCD /* Main.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Main.xcconfig; sourceTree = "<group>"; };
+		EA1AF38925DD5D69006E4FE4 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
+		EA1AF38A25DD5D69006E4FE4 /* SourceSansPro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.ttf"; sourceTree = "<group>"; };
+		EA1AF38B25DD5D69006E4FE4 /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; };
+		EA1AF38C25DD5D69006E4FE4 /* SourceSansPro-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.ttf"; sourceTree = "<group>"; };
 		EA1B814224F54AA10041DED1 /* RestApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestApiTest.swift; sourceTree = "<group>"; };
 		EA1B814424F54AD20041DED1 /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		EA1B814724F57CFC0041DED1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -244,10 +248,6 @@
 		EA30D71E24A620C900AF84B1 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		EA3ED0E224F8315500635817 /* FileStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
 		EA47C5EB24A6AB0300EAC720 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		EA47C5EE24A6B3FC00EAC720 /* SourceSansPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.otf"; sourceTree = "<group>"; };
-		EA47C5EF24A6B3FC00EAC720 /* SourceSansPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Bold.otf"; sourceTree = "<group>"; };
-		EA47C5F024A6B3FC00EAC720 /* SourceSansPro-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.otf"; sourceTree = "<group>"; };
-		EA47C5F124A6B3FC00EAC720 /* SourceSansPro-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Semibold.otf"; sourceTree = "<group>"; };
 		EA4A59422561C25800E65CFB /* Publisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Publisher.swift; sourceTree = "<group>"; };
 		EA4A594A2562708400E65CFB /* ExposuresElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposuresElement.swift; sourceTree = "<group>"; };
 		EA4A594F2562716100E65CFB /* SymptomsElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsElement.swift; sourceTree = "<group>"; };
@@ -599,10 +599,10 @@
 		EA47C5F624A6C1EE00EAC720 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EA47C5F024A6B3FC00EAC720 /* SourceSansPro-Black.otf */,
-				EA47C5EF24A6B3FC00EAC720 /* SourceSansPro-Bold.otf */,
-				EA47C5EE24A6B3FC00EAC720 /* SourceSansPro-Regular.otf */,
-				EA47C5F124A6B3FC00EAC720 /* SourceSansPro-Semibold.otf */,
+				EA1AF38A25DD5D69006E4FE4 /* SourceSansPro-Black.ttf */,
+				EA1AF38C25DD5D69006E4FE4 /* SourceSansPro-Bold.ttf */,
+				EA1AF38925DD5D69006E4FE4 /* SourceSansPro-Regular.ttf */,
+				EA1AF38B25DD5D69006E4FE4 /* SourceSansPro-SemiBold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -859,16 +859,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1AF39325DD5E5B006E4FE4 /* SourceSansPro-Black.ttf in Resources */,
+				EA1AF39425DD5E5B006E4FE4 /* SourceSansPro-Bold.ttf in Resources */,
+				EA1AF39525DD5E5B006E4FE4 /* SourceSansPro-Regular.ttf in Resources */,
+				EA1AF39625DD5E5B006E4FE4 /* SourceSansPro-SemiBold.ttf in Resources */,
 				EA92A05324A3958500CE7271 /* LaunchScreen.storyboard in Resources */,
 				EA7B055D251248EC002941A6 /* InfoPlist.strings in Resources */,
 				EA5296AC251BE1B10089CFB4 /* Licenses.strings in Resources */,
 				EA4A59672563C4A400E65CFB /* Localizable.stringsdict in Resources */,
 				EA92A05024A3958500CE7271 /* Assets.xcassets in Resources */,
-				EA47C5F324A6B3FC00EAC720 /* SourceSansPro-Bold.otf in Resources */,
 				EA7B0556251248BE002941A6 /* Localizable.strings in Resources */,
-				EA47C5F424A6B3FC00EAC720 /* SourceSansPro-Black.otf in Resources */,
-				EA47C5F524A6B3FC00EAC720 /* SourceSansPro-Semibold.otf in Resources */,
-				EA47C5F224A6B3FC00EAC720 /* SourceSansPro-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
