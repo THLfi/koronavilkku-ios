@@ -29,12 +29,12 @@ class SymptomsViewController: UIViewController {
         let titleLabel = InstructionsView.labelItem(Text.Heading.localized,
                                                     font: UIFont.heading2,
                                                     color: UIColor.Greyscale.black,
-                                                    spacing: 20)
+                                                    spacing: 15)
         
         let textLabel = InstructionsView.labelItem(Text.Body.localized,
                                                     font: UIFont.bodySmall,
                                                     color: UIColor.Greyscale.black,
-                                                    spacing: 20)
+                                                    spacing: 30)
         
         let link = linkItem(title: Text.LinkTitle,
                                     linkName: Text.LinkName,

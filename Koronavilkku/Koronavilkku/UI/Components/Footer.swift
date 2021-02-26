@@ -10,7 +10,7 @@ class FooterItem : UIButton {
         
         addTarget(self, action: #selector(tapped), for: .touchUpInside)
         
-        let label = UILabel(label: title, font: .labelTertiary, color: UIColor.Greyscale.darkGrey)
+        let label = UILabel(label: title, font: .labelFooter, color: UIColor.Greyscale.darkGrey)
         label.numberOfLines = 0
         addSubview(label)
         
@@ -19,13 +19,14 @@ class FooterItem : UIButton {
         }
         
         let icon = UIImageView(image: UIImage(named: "chevron-right"))
+        icon.contentMode = .center
         addSubview(icon)
         
         icon.snp.makeConstraints { make in
             make.right.equalToSuperview().inset(padding)
             make.centerY.equalTo(label)
             make.left.greaterThanOrEqualTo(label.snp.right).offset(16)
-            make.size.equalTo(CGSize(width: 8, height: 14))
+            make.size.equalTo(CGSize(width: 24, height: 24))
         }
         
         accessibilityLabel = title
@@ -47,7 +48,7 @@ extension Collection where Element == FooterItem {
             append(UIView.createDivider(), nil)
             
             for item in self {
-                append(item, UIEdgeInsets(top: 12, bottom: 12))
+                append(item, UIEdgeInsets(top: 10, bottom: 12))
                 append(UIView.createDivider(), nil)
             }
         }

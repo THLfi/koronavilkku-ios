@@ -12,7 +12,7 @@ class NumberView : UIView {
         addSubview(label)
         
         label.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(5)
+            make.edges.equalToSuperview().inset(8)
         }
         
         snp.makeConstraints { make in
@@ -116,15 +116,16 @@ class ExposureGuideViewController : UIViewController, LocalizedView, UIScrollVie
         
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(55)
-            make.left.right.equalToSuperview().inset(20)
-            make.height.greaterThanOrEqualTo(imageView.snp.width).multipliedBy(1.033)
+            make.left.equalToSuperview().inset(41)
+            make.right.equalToSuperview().inset(34)
+            make.height.equalTo(imageView.snp.width).multipliedBy(1.03333)
         }
         
         let pageNumber = NumberView(number: screenCount)
         screen.addSubview(pageNumber)
         
         pageNumber.snp.makeConstraints { make in
-            make.top.left.equalTo(imageView).inset(UIEdgeInsets(top: 12, left: 20))
+            make.top.left.equalTo(imageView)
         }
         
         let content = UIView()
@@ -153,14 +154,15 @@ class ExposureGuideViewController : UIViewController, LocalizedView, UIScrollVie
             }
         }
         
-        let label = UILabel(label: body.localized,
+        let bodyLabel = UILabel(label: body.localized,
                             font: .bodySmall,
                             color: UIColor.Greyscale.darkGrey)
         
-        label.numberOfLines = 0
-        content.addSubview(label)
+        bodyLabel.numberOfLines = 0
+        bodyLabel.setLineHeight(1.17)
+        content.addSubview(bodyLabel)
         
-        label.snp.makeConstraints { make in
+        bodyLabel.snp.makeConstraints { make in
             make.top.equalTo(contentTopAnchor).offset(contentTopMargin)
             make.left.right.bottom.equalToSuperview()
         }
