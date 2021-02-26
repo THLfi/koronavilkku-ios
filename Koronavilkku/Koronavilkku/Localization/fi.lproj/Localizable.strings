@@ -45,7 +45,7 @@
 "ExposuresElement.Text.BodyHasExposures" = "Olet saattanut altistua virukselle";
 "ExposuresElement.Text.ButtonOpen" = "Katso toimintaohjeet";
 "ExposuresElement.Text.ButtonCheckNow" = "Käynnistä tarkistus";
-"ExposuresElement.Text.ButtonExposureGuide" = "Jos saat altistumisilmoituksen, toimi näin";
+"ExposuresElement.Text.ButtonExposureGuide" = "Jos saat altistumis\U00ADilmoituksen, toimi näin";
 
 // MARK: SymptomsElement.Text
 "SymptomsElement.Text.Title" = "Epäiletkö tartuntaa?";
