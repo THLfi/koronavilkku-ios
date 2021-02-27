@@ -28,6 +28,7 @@ class LocalizationTests: XCTestCase {
         verifyTranslations(from: ChangeLanguageViewController.Text.self)
         verifyTranslations(from: NotificationListViewController.Text.self)
         verifyTranslations(from: Checkbox.Text.self)
+        verifyTranslations(from: ExposureGuideViewController.Text.self)
     }
     
     private func verifyTranslations<T: Localizable & CaseIterable>(from namespace: T.Type) {
