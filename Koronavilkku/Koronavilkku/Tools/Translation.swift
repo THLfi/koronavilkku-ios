@@ -1,5 +1,4 @@
-
-import Foundation
+import UIKit
 
 protocol Localizable : CaseIterable {
     var rawValue: String { get }
@@ -17,14 +16,30 @@ extension Localizable {
     }
 
     func localized(with args: CVarArg...) -> String {
+        return withVaList(args) {
+            localized($0)
+        }
+    }
+    
+    func localized(_ arguments: CVaListPointer) -> String {
         let localizedString = NSLocalizedString(key, comment: "")
-        return withVaList(args, { (args) -> String in
-            return NSString(format: localizedString, locale: Locale.current, arguments: args) as String
-        })
+        return NSString(format: localizedString, locale: Locale.current, arguments: arguments) as String
     }
 
     func toURL() -> URL? {
         return URL(string: localized)
+    }
+}
+
+protocol LocalizedView {
+    associatedtype Text : Localizable
+}
+
+extension LocalizedView {
+    func text(key: Text, with args: CVarArg...) -> String {
+        return withVaList(args) {
+            key.localized($0)
+        }
     }
 }
 
@@ -56,9 +71,7 @@ enum Translation: String, Localizable {
     case TabHome
     case TabReportInfection
     case TabSettings
-    
-    case LinkAppInfo
-    
+        
     case OnboardingDone
     case OnboardingAcceptTerms
     case OnboardingReadTerms

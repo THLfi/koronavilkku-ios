@@ -12,7 +12,6 @@
 "TabSettings" = "Inställningar";
 
 "ExposureNotificationUserExplanation" = "Du kan ha exponerats för coronaviruset";
-"LinkAppInfo" = "Om Coronablinkern";
 "HowItWorksButton" = "Se mer information om Coronablinkern";
 
 // MARK: Checkbox
@@ -25,6 +24,7 @@
 "MainViewController.Text.ProtectionButtonURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/smitta-och-skydd-coronaviruset";
 "MainViewController.Text.SituationButtonTitle" = "Coronaläget i Finland";
 "MainViewController.Text.SituationButtonURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/lagesoversikt-om-coronaviruset";
+"MainViewController.Text.AppGuideButton" = "Om Coronablinkern";
 
 // MARK: StatusHeaderView
 "StatusHeaderView.Text.TitleEnabled" = "Coronablinkern är påkopplad";
@@ -45,37 +45,39 @@
 "ExposuresElement.Text.BodyHasExposures" = "Du kan ha exponerats för coronaviruset";
 "ExposuresElement.Text.ButtonOpen" = "Se anvisningar";
 "ExposuresElement.Text.ButtonCheckNow" = "Kontrollera nu";
+"ExposuresElement.Text.ButtonExposureGuide" = "Om du får ett exponerings\U00ADmeddelande, gör så här";
 
 // MARK: SymptomsElement.Text
 "SymptomsElement.Text.Title" = "Misstänker du smitta?";
 "SymptomsElement.Text.Body" = "Gör en symtombedömning";
 
-// MARK: ExposureViewController
+// MARK: ExposuresViewController
 "ExposuresViewController.Text.TitleHasExposures" = "Eventuell exponering";
 
-// MARK: ExposuresViewWrapper
-"ExposuresViewWrapper.HasExposureText.Heading" = "Du har under de senaste 14 dygnen varit i närheten av en person som meddelat om sin coronasmitta via applikationen.";
-"ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Kontakta hälsovården";
-"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Kontakta hälsovården även om du inte har symtom som passar in på coronavirus\U00ADsjukdom. Hälsovården ger dig anvisningar och en bedömning av behovet av ett coronavirustest.";
-"ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Ta kontakt";
-"ExposuresViewWrapper.HasExposureText.ExposuresButtonTitle" = "Visa exponerings\U00ADmeddelandena";
-"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "Gör så här";
-"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Följ anvisningar nedan i 14 dagar. Fortsätt att följa anvisningarna även om du får ett negativt coronatest\U00ADresultat.";
-"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Var uppmärksam på hur du mår. Om du har ens ett av symtomen som passar in på coronavirus\U00ADsjukdom, ska du göra ett coronavirustest även om du redan tidigare har blivit testad. Symtom som kan tyda på coronavirus\U00ADinfektion är förändringar i lukt- eller smaksinnet, andnings\U00ADsvårigheter, hosta, halsont, snuva, feber, huvudvärk, muskelvärk samt diarré eller magont utan annan uppenbar orsak.";
-"ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Undvik att träffa andra människor.";
-"ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Var noggrann med din handhygien.";
-"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Undvik offentliga platser och kollektivtrafik. Om du är tvungen att vistas på offentliga platser ska du hålla ett avstånd på minst två meter till andra människor. Använd även ansiktsmask.";
-"ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "Låt en annan person handla mat och sköta andra ärenden utanför hemmet, om möjligt.";
-"ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "Om du hostar eller nyser ska du skydda din mun och näsa med en engångsnäsduk. Kasta den använda näsduken i soporna och tvätta dina händer med tvål och vatten eller använd hand\U00ADdesinfektions\U00ADmedel. Om du inte har en näsduk till hands, hosta eller nys i armvecket.";
-"ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Arbeta på distans, om möjligt.";
-"ExposuresViewWrapper.HasExposureText.InstructionsWhenAbroad" = "Om du inte befinner dig i Finland ska du följa de lokala myndigheternas anvisningar.";
-"ExposuresViewWrapper.HasExposureText.InfoLinkTitle" = "Se närmare anvisningar";
-"ExposuresViewWrapper.HasExposureText.InfoLinkSubtitle" = "thl.fi";
-"ExposuresViewWrapper.HasExposureText.InfoLinkURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/symtom-och-behandling-coronaviruset";
+"HasExposuresView.Text.Heading" = "Du har under de senaste 14 dygnen varit i närheten av en person som meddelat om sin coronasmitta via applikationen.";
+"HasExposuresView.Text.ContactCardTitle" = "Kontakta hälsovården";
+"HasExposuresView.Text.ContactCardText" = "Kontakta hälsovården även om du inte har symtom som passar in på coronavirus\U00ADsjukdom. Hälsovården ger dig anvisningar och en bedömning av behovet av ett coronavirustest.";
+"HasExposuresView.Text.ContactButtonTitle" = "Ta kontakt";
+"HasExposuresView.Text.ExposuresButtonTitle" = "Visa exponerings\U00ADmeddelandena";
+"HasExposuresView.Text.InstructionsTitle" = "Gör så här";
+"HasExposuresView.Text.InstructionsLede" = "Följ anvisningar nedan i 14 dagar. Fortsätt att följa anvisningarna även om du får ett negativt coronatest\U00ADresultat.";
+"HasExposuresView.Text.InstructionsSymptoms" = "Var uppmärksam på hur du mår. Om du har ens ett av symtomen som passar in på coronavirus\U00ADsjukdom, ska du göra ett coronavirustest även om du redan tidigare har blivit testad. Symtom som kan tyda på coronavirus\U00ADinfektion är förändringar i lukt- eller smaksinnet, andnings\U00ADsvårigheter, hosta, halsont, snuva, feber, huvudvärk, muskelvärk samt diarré eller magont utan annan uppenbar orsak.";
+"HasExposuresView.Text.InstructionsDistancing" = "Undvik att träffa andra människor.";
+"HasExposuresView.Text.InstructionsHygiene" = "Var noggrann med din handhygien.";
+"HasExposuresView.Text.InstructionsAvoidTravel" = "Undvik offentliga platser och kollektivtrafik. Om du är tvungen att vistas på offentliga platser ska du hålla ett avstånd på minst två meter till andra människor. Använd även ansiktsmask.";
+"HasExposuresView.Text.InstructionsShopping" = "Låt en annan person handla mat och sköta andra ärenden utanför hemmet, om möjligt.";
+"HasExposuresView.Text.InstructionsCoughing" = "Om du hostar eller nyser ska du skydda din mun och näsa med en engångsnäsduk. Kasta den använda näsduken i soporna och tvätta dina händer med tvål och vatten eller använd hand\U00ADdesinfektions\U00ADmedel. Om du inte har en näsduk till hands, hosta eller nys i armvecket.";
+"HasExposuresView.Text.InstructionsRemoteWork" = "Arbeta på distans, om möjligt.";
+"HasExposuresView.Text.InstructionsWhenAbroad" = "Om du inte befinner dig i Finland ska du följa de lokala myndigheternas anvisningar.";
+"HasExposuresView.Text.InfoLinkTitle" = "Se närmare anvisningar";
+"HasExposuresView.Text.InfoLinkSubtitle" = "thl.fi";
+"HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/symtom-och-behandling-coronaviruset";
 
-"ExposuresViewWrapper.NoExposuresText.Heading" = "Ingen exponering har upptäckts";
-"ExposuresViewWrapper.NoExposuresText.Subtitle" = "Coronablinkern har inte observerat någon exponering för coronaviruset under de senaste 14 dagarna.";
-"ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "Appen kan emellertid inte identifiera alla eventuella exponeringar.";
+"NoExposuresView.Text.Heading" = "Ingen exponering har upptäckts";
+"NoExposuresView.Text.Subtitle" = "Coronablinkern har inte observerat någon exponering för coronaviruset under de senaste 14 dagarna.";
+"NoExposuresView.Text.DisclaimerText" = "Appen kan emellertid inte identifiera alla eventuella exponeringar.";
+"NoExposuresView.Text.ExposureGuideButton" = "Om du får ett exponerings\U00ADmeddelande, gör så här";
+"NoExposuresView.Text.AppGuideButton" = "Information om Coronablinkern";
 
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Senast granskad %@";
 "ExposuresLastCheckedView.Text.MomentAgo" = "för ett ögonblick sedan";
@@ -205,6 +207,18 @@
 "SelectMunicipalityViewController.Text.ErrorTitle" = "Det gick inte att ladda kommunuppgifterna";
 "SelectMunicipalityViewController.Text.ErrorMessage" = "Kontrollera din nätverksanslutning och försök på nytt.";
 "SelectMunicipalityViewController.Text.ErrorButton" = "OK";
+
+// MARK: ExposureGuideViewController
+
+"ExposureGuideViewController.Text.Title" = "Om du får ett exponerings\U00ADmeddelande, gör så här";
+"ExposureGuideViewController.Text.ButtonClose" = "Stäng";
+"ExposureGuideViewController.Text.ButtonPrevious" = "Tidigare";
+"ExposureGuideViewController.Text.ButtonNext" = "Nästa";
+"ExposureGuideViewController.Text.Step1" = "Om du har varit i närheten av en person som har anmält om sin coronainfektion via appen får du ett meddelande om eventuell exponering till din telefon. Tryck på meddelandet så öppnas Coronablinkern.";
+"ExposureGuideViewController.Text.Step2" = "Tryck på den röda knappen Se anvisningar.";
+"ExposureGuideViewController.Text.Step3" = "Du får anvisningar om hur du ska förfara. Dessutom får du anvisningar om hur du kan kontakta hälsovården. Läs anvisningarna och tryck på Ta kontakt.";
+"ExposureGuideViewController.Text.Step4" = "Du får anvisningar om hur du ska förfara. Dessutom får du anvisningar om hur du kan kontakta hälsovården. Läs anvisningarna och tryck på Ta kontakt.";
+"ExposureGuideViewController.Text.Step5" = "Hälsovården ger dig närmare anvisningar och bedömmer behovet av ett coronavirustest.";
 
 "HeaderContinueByAcceptingExposureLogging" = "Fortsätt aktiveringen genom att välja \"Tillåt\"";
 

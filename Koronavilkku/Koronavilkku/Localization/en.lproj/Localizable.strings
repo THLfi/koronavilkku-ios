@@ -12,7 +12,6 @@
 "TabSettings" = "Settings";
 
 "ExposureNotificationUserExplanation" = "You may have been exposed to the coronavirus";
-"LinkAppInfo" = "About Koronavilkku";
 "HowItWorksButton" = "More information about Koronavilkku";
 
 // MARK: Checkbox
@@ -21,10 +20,11 @@
 "Checkbox.Text.AccessibilityHint" = "Double tap to toggle";
 
 // MARK: MainViewController
-"MainViewController.Text.ProtectionButtonTitle" = "Protect yourself";
+"MainViewController.Text.ProtectionButtonTitle" = "How to protect yourself from an infection";
 "MainViewController.Text.ProtectionButtonURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/transmission-and-protection-coronavirus";
 "MainViewController.Text.SituationButtonTitle" = "COVID-19 in Finland";
 "MainViewController.Text.SituationButtonURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/situation-update-on-coronavirus";
+"MainViewController.Text.AppGuideButton" = "About Koronavilkku";
 
 // MARK: StatusHeaderView
 "StatusHeaderView.Text.TitleEnabled" = "Koronavilkku is active";
@@ -45,37 +45,39 @@
 "ExposuresElement.Text.BodyHasExposures" = "You may have been exposed to the coronavirus";
 "ExposuresElement.Text.ButtonOpen" = "See instructions";
 "ExposuresElement.Text.ButtonCheckNow" = "Check now";
+"ExposuresElement.Text.ButtonExposureGuide" = "If you receive an exposure notification follow these instructions";
 
 // MARK: SymptomsElement.Text
 "SymptomsElement.Text.Title" = "Do you think you may have COVID-19?";
 "SymptomsElement.Text.Body" = "Take an online medical COVID-19 symptom check-up";
 
-// MARK: ExposureViewController
+// MARK: ExposuresViewController
 "ExposuresViewController.Text.TitleHasExposures" = "Potential exposure";
 
-// MARK: ExposuresViewWrapper
-"ExposuresViewWrapper.HasExposureText.Heading" = "In the past 14 days, you have been close to a person who has reported a COVID-19 infection.";
-"ExposuresViewWrapper.HasExposureText.ContactCardTitle" = "Contact healthcare services";
-"ExposuresViewWrapper.HasExposureText.ContactCardText" = "Contact healthcare services even if you do not have any symptoms consistent with COVID-19. Healthcare services will give you instructions and evaluate your need for a coronavirus test.";
-"ExposuresViewWrapper.HasExposureText.ContactButtonTitle" = "Contact";
-"ExposuresViewWrapper.HasExposureText.ExposuresButtonTitle" = "Show exposure notifications";
-"ExposuresViewWrapper.HasExposureText.InstructionsTitle" = "What should I do?";
-"ExposuresViewWrapper.HasExposureText.InstructionsLede" = "Follow the instructions below for 14 days. Continue to follow the instructions even if you receive a negative coronavirus test result.";
-"ExposuresViewWrapper.HasExposureText.InstructionsSymptoms" = "Monitor your health. If you develop any symptom consistent with COVID-19, get tested for the coronavirus even if you have already been tested. Symptoms consistent with COVID-19 are change in sense of smell or taste, shortness of breath, cough, sore throat, runny nose, fever, headaches, muscle pain, unexplained diarrhoea or abdominal pain.";
-"ExposuresViewWrapper.HasExposureText.InstructionsDistancing" = "Avoid meeting other people.";
-"ExposuresViewWrapper.HasExposureText.InstructionsHygiene" = "Maintain good hand hygiene.";
-"ExposuresViewWrapper.HasExposureText.InstructionsAvoidTravel" = "Avoid public places and public transport. If you have to visit public places, keep at least a two-meter distance to other people. Also use a face mask.";
-"ExposuresViewWrapper.HasExposureText.InstructionsShopping" = "If possible, let someone else handle food shopping and other errands outside the home.";
-"ExposuresViewWrapper.HasExposureText.InstructionsCoughing" = "If you cough or sneeze, use a disposable tissue to cover your mouth and nose. Put the used tissue in a waste bin and wash your hands with water and soap or use hand sanitiser. If you do not have a tissue, cough or sneeze into your sleeve.";
-"ExposuresViewWrapper.HasExposureText.InstructionsRemoteWork" = "Work remotely if possible.";
-"ExposuresViewWrapper.HasExposureText.InstructionsWhenAbroad" = "If you are not in Finland, follow any instructions given by local authorities.";
-"ExposuresViewWrapper.HasExposureText.InfoLinkTitle" = "See more detailed instructions";
-"ExposuresViewWrapper.HasExposureText.InfoLinkSubtitle" = "thl.fi";
-"ExposuresViewWrapper.HasExposureText.InfoLinkURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/symptoms-and-treatment-coronavirus";
+"HasExposuresView.Text.Heading" = "In the past 14 days, you have been close to a person who has reported a COVID-19 infection.";
+"HasExposuresView.Text.ContactCardTitle" = "Contact healthcare services";
+"HasExposuresView.Text.ContactCardText" = "Contact healthcare services even if you do not have any symptoms consistent with COVID-19. Healthcare services will give you instructions and evaluate your need for a coronavirus test.";
+"HasExposuresView.Text.ContactButtonTitle" = "Contact";
+"HasExposuresView.Text.ExposuresButtonTitle" = "Show exposure notifications";
+"HasExposuresView.Text.InstructionsTitle" = "What should I do?";
+"HasExposuresView.Text.InstructionsLede" = "Follow the instructions below for 14 days. Continue to follow the instructions even if you receive a negative coronavirus test result.";
+"HasExposuresView.Text.InstructionsSymptoms" = "Monitor your health. If you develop any symptom consistent with COVID-19, get tested for the coronavirus even if you have already been tested. Symptoms consistent with COVID-19 are change in sense of smell or taste, shortness of breath, cough, sore throat, runny nose, fever, headaches, muscle pain, unexplained diarrhoea or abdominal pain.";
+"HasExposuresView.Text.InstructionsDistancing" = "Avoid meeting other people.";
+"HasExposuresView.Text.InstructionsHygiene" = "Maintain good hand hygiene.";
+"HasExposuresView.Text.InstructionsAvoidTravel" = "Avoid public places and public transport. If you have to visit public places, keep at least a two-meter distance to other people. Also use a face mask.";
+"HasExposuresView.Text.InstructionsShopping" = "If possible, let someone else handle food shopping and other errands outside the home.";
+"HasExposuresView.Text.InstructionsCoughing" = "If you cough or sneeze, use a disposable tissue to cover your mouth and nose. Put the used tissue in a waste bin and wash your hands with water and soap or use hand sanitiser. If you do not have a tissue, cough or sneeze into your sleeve.";
+"HasExposuresView.Text.InstructionsRemoteWork" = "Work remotely if possible.";
+"HasExposuresView.Text.InstructionsWhenAbroad" = "If you are not in Finland, follow any instructions given by local authorities.";
+"HasExposuresView.Text.InfoLinkTitle" = "See more detailed instructions";
+"HasExposuresView.Text.InfoLinkSubtitle" = "thl.fi";
+"HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/symptoms-and-treatment-coronavirus";
 
-"ExposuresViewWrapper.NoExposuresText.Heading" = "No observed exposures";
-"ExposuresViewWrapper.NoExposuresText.Subtitle" = "Koronavilkku has not detected exposures to the coronavirus in the last 14 days.";
-"ExposuresViewWrapper.NoExposuresText.DisclaimerText" = "However, the application is not able to identify every situation where exposure may occur.";
+"NoExposuresView.Text.Heading" = "No observed exposures";
+"NoExposuresView.Text.Subtitle" = "Koronavilkku has not detected exposures to the coronavirus in the last 14 days.";
+"NoExposuresView.Text.DisclaimerText" = "However, the application is not able to identify every situation where exposure may occur.";
+"NoExposuresView.Text.ExposureGuideButton" = "If you receive an exposure notification, follow these instructions";
+"NoExposuresView.Text.AppGuideButton" = "About Koronavilkku";
 
 "ExposuresLastCheckedView.Text.LastCheckedAt" = "Last checked %@";
 "ExposuresLastCheckedView.Text.MomentAgo" = "a moment ago";
@@ -205,6 +207,18 @@
 "SelectMunicipalityViewController.Text.ErrorTitle" = "Error loading municipality list";
 "SelectMunicipalityViewController.Text.ErrorMessage" = "The municipality list could not be loaded. Please check your internet connection and try again.";
 "SelectMunicipalityViewController.Text.ErrorButton" = "OK";
+
+// MARK: ExposureGuideViewController
+
+"ExposureGuideViewController.Text.Title" = "If you receive an exposure notification, follow these instructions";
+"ExposureGuideViewController.Text.ButtonClose" = "Close";
+"ExposureGuideViewController.Text.ButtonPrevious" = "Previous";
+"ExposureGuideViewController.Text.ButtonNext" = "Next";
+"ExposureGuideViewController.Text.Step1" = "If you have been near a person who has reported their coronavirus infection via the application, you will receive a notification of potential exposure to your phone. Tap on the notification to open Koronavilkku.";
+"ExposureGuideViewController.Text.Step2" = "Press the red See instructions button.";
+"ExposureGuideViewController.Text.Step3" = "You will receive instructions on what to do. You will also receive instructions on how to contact a healthcare provider. Read the instructions and press the Contact button.";
+"ExposureGuideViewController.Text.Step4" = "Select the municipality. You can contact the healthcare services via the contact methods provided by the municipality, such as via the Omaolo online service or by telephone.";
+"ExposureGuideViewController.Text.Step5" = "The healthcare services will give you more detailed instructions and evaluate your need for a coronavirus test.";
 
 "HeaderContinueByAcceptingExposureLogging" = "Select \"allow\" to continue setting up the application";
 
