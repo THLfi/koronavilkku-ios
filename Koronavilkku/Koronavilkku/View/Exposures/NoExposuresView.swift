@@ -37,9 +37,9 @@ class NoExposuresView : ExposuresView, LocalizedView {
         removeAllSubviews()
         
         layout { append in
-            let header = label(text: .Heading)
-            header.font = .heading2
-            header.textColor = UIColor.Greyscale.black
+            let header = UILabel(label: text(key: .Heading),
+                                 font: .heading2,
+                                 color: UIColor.Greyscale.black)
             header.numberOfLines = 0
             append(header, UIEdgeInsets(top: 10))
             
@@ -54,15 +54,15 @@ class NoExposuresView : ExposuresView, LocalizedView {
                 append(checkDelayedView!, UIEdgeInsets(top: 30))
             }
 
-            let subtitle = label(text: .Subtitle)
-            subtitle.font = .heading4
-            subtitle.textColor = UIColor.Greyscale.black
+            let subtitle = UILabel(label: text(key: .Subtitle),
+                                   font: .heading4,
+                                   color: UIColor.Greyscale.black)
             subtitle.numberOfLines = 0
             append(subtitle, UIEdgeInsets(top: 30))
 
-            let disclaimer = label(text: .DisclaimerText)
-            disclaimer.font = .bodySmall
-            disclaimer.textColor = UIColor.Greyscale.black
+            let disclaimer = UILabel(label: text(key: .DisclaimerText),
+                                     font: .bodySmall,
+                                     color: UIColor.Greyscale.black)
             disclaimer.numberOfLines = 0
             append(disclaimer, UIEdgeInsets(top: 10))
             

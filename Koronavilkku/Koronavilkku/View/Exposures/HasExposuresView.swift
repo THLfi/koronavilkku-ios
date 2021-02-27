@@ -100,9 +100,9 @@ class HasExposuresView : ExposuresView, LocalizedView {
         
         var top = self.snp.top
         
-        let exposuresLabel = label(text: .Heading)
-        exposuresLabel.font = .heading4
-        exposuresLabel.textColor = UIColor.Greyscale.black
+        let exposuresLabel = UILabel(label: text(key: .Heading),
+                                     font: .heading4,
+                                     color: UIColor.Greyscale.black)
         exposuresLabel.numberOfLines = 0
         top = appendView(exposuresLabel, spacing: 0, top: top)
 
@@ -160,9 +160,9 @@ class HasExposuresView : ExposuresView, LocalizedView {
             make.bottom.equalTo(lastBulletBottom)
         }
         
-        let whenAboardLabel = label(text: .InstructionsWhenAbroad)
-        whenAboardLabel.font = .bodySmall
-        whenAboardLabel.textColor = UIColor.Greyscale.black
+        let whenAboardLabel = UILabel(label: text(key: .InstructionsWhenAbroad),
+                                      font: .bodySmall,
+                                      color: UIColor.Greyscale.black)
         whenAboardLabel.numberOfLines = 0
         top = appendView(whenAboardLabel, spacing: 20, top: top)
 
