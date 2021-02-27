@@ -74,7 +74,7 @@
 "HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/symptoms-and-treatment-coronavirus";
 
 "NoExposuresView.Text.Heading" = "No observed exposures";
-"NoExposuresView.Text.Subtitle" = "Koronavilkku has not detected exposures to the coronavirus in the last 14 days.";
+"NoExposuresView.Text.Subtitle" = "According to the information collected by Koronavilkku, you have not been near a person who has reported an infection within the last 14 days.";
 "NoExposuresView.Text.DisclaimerText" = "However, the application is not able to identify every situation where exposure may occur.";
 "NoExposuresView.Text.ExposureGuideButton" = "If you receive an exposure notification, follow these instructions";
 "NoExposuresView.Text.AppGuideButton" = "About Koronavilkku";

@@ -74,8 +74,8 @@
 "HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/symtom-och-behandling-coronaviruset";
 
 "NoExposuresView.Text.Heading" = "Ingen exponering har upptäckts";
-"NoExposuresView.Text.Subtitle" = "Coronablinkern har inte observerat någon exponering för coronaviruset under de senaste 14 dagarna.";
-"NoExposuresView.Text.DisclaimerText" = "Appen kan emellertid inte identifiera alla eventuella exponeringar.";
+"NoExposuresView.Text.Subtitle" = "Enligt uppgifter som samlats in av Coronablinkern har du inte varit i närheten av en person som meddelat om sin coronasmitta under de senaste 14 dagarna.";
+"NoExposuresView.Text.DisclaimerText" = "Appen identifierar dock inte alla eventuella exponerings\U00ADsituationer.";
 "NoExposuresView.Text.ExposureGuideButton" = "Om du får ett exponerings\U00ADmeddelande, gör så här";
 "NoExposuresView.Text.AppGuideButton" = "Information om Coronablinkern";
 

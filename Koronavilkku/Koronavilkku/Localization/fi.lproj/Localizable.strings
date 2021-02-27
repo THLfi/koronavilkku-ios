@@ -74,7 +74,7 @@
 "HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/ajankohtaista-koronaviruksesta-covid-19/oireet-ja-hoito-koronavirus";
 
 "NoExposuresView.Text.Heading" = "Ei havaittuja altistumisia";
-"NoExposuresView.Text.Subtitle" = "Koronavilkku ei ole havainnut altistumista koronavirukselle viimeisten 14 päivän aikana.";
+"NoExposuresView.Text.Subtitle" = "Koronavilkun keräämien tietojen mukaan et ole ollut tartunnasta ilmoittaneen henkilön lähellä viimeisten 14 päivän aikana.";
 "NoExposuresView.Text.DisclaimerText" = "Sovellus ei kuitenkaan tunnista kaikkia mahdollisia altistumis\U00ADtilanteita.";
 "NoExposuresView.Text.ExposureGuideButton" = "Jos saat altistumis\U00ADilmoituksen, toimi näin";
 "NoExposuresView.Text.AppGuideButton" = "Tietoa Koronavilkusta";
