@@ -6,9 +6,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-### Changed
+### Added
+- New guide that explains what happens in case user receives an exposure notification in the future
 
+### Changed
 - Improve the instructions given to the user in case of a potential exposure
+- Replaced the narrow link buttons in the home screen with a footer element
+- Use new TTF font files that render more consistently with the reference design
+- Break ExposuresViewWrapper into multiple views and move the related views into separate files
 
 ## 2.0.1
 
