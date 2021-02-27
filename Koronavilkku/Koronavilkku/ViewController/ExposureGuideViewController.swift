@@ -145,6 +145,7 @@ class ExposureGuideViewController : UIViewController, LocalizedView, UIScrollVie
                                      color: UIColor.Greyscale.black)
             
             titleLabel.numberOfLines = 0
+            titleLabel.accessibilityTraits = .header
             content.addSubview(titleLabel)
             contentTopAnchor = titleLabel.snp.bottom
             contentTopMargin = 10
@@ -289,7 +290,6 @@ class ExposureGuideViewController : UIViewController, LocalizedView, UIScrollVie
     
     @objc
     func pagerValueChanged() {
-        print("Page value changed to \(pageControl.currentPage)")
         showPage(index: pageControl.currentPage)
     }
     

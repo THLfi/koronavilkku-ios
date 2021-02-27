@@ -8,6 +8,37 @@ protocol ExposuresElementDelegate : AnyObject {
 }
 
 final class ExposuresElement: WideRowElement, LocalizedView {
+    final class AccessibilityElement : UIAccessibilityElement {
+        weak var exposuresElement: ExposuresElement?
+        
+        /// Internal storage, use `accessibilityValue` instead
+        private var _accessibilityValue: String?
+        
+        /// Provide a default value that can be change over time without the UI being notified of the change
+        /// To override this behaviour, set this property explicitly to non-nil value
+        override var accessibilityValue: String? {
+            get {
+                if let value = _accessibilityValue {
+                    return value
+                }
+                
+                if exposuresElement?.detectionStatus?.manualCheckAllowed() == true {
+                    return Text.AccessibilityValueCheckDelayed.localized
+                }
+                
+                return exposuresElement?.lastCheckedView?.accessibilityLabel
+            }
+            set {
+                _accessibilityValue = newValue
+            }
+        }
+
+        init(parent: ExposuresElement) {
+            exposuresElement = parent
+            super.init(accessibilityContainer: parent)
+        }
+    }
+
     enum Text : String, Localizable {
         case TitleNoExposures
         case BodyExposureCheckDelayed
@@ -19,8 +50,10 @@ final class ExposuresElement: WideRowElement, LocalizedView {
         case ButtonExposureGuide
     }
     
+    private lazy var accessibilityElement = AccessibilityElement(parent: self)
     private var manualCheckButton: RoundedButton?
     private var lastCheckedView: ExposuresLastCheckedView?
+    private var guideButton: UIButton?
     
     weak var delegate: ExposuresElementDelegate?
     
@@ -61,11 +94,11 @@ final class ExposuresElement: WideRowElement, LocalizedView {
                 if detectionStatus.running {
                     // only affects the button rendering
                     self.manualCheckButton?.isLoading = true
-                    self.accessibilityValue = self.manualCheckButton?.accessibilityLabel
+                    accessibilityElement.accessibilityValue = self.manualCheckButton?.accessibilityLabel
                 } else if oldValue.running == true {
                     // reset the button state on failure
                     self.manualCheckButton?.isLoading = false
-                    self.accessibilityValue = nil
+                    accessibilityElement.accessibilityValue = nil
                 } else {
                     render()
                 }
@@ -78,25 +111,13 @@ final class ExposuresElement: WideRowElement, LocalizedView {
     /// Whether the UI has been initialized or not
     private var initialized = false
     
-    /// Internal storage, use `accessibilityValue` instead
-    private var _accessibilityValue: String?
-    
-    /// Provide a default value that can be change over time without the UI being notified of the change
-    /// To override this behaviour, set this property explicitly to non-nil value
-    override var accessibilityValue: String? {
-        get {
-            if let value = _accessibilityValue {
-                return value
-            }
-            
-            if detectionStatus?.manualCheckAllowed() == true {
-                return Text.AccessibilityValueCheckDelayed.localized
-            }
-            
-            return lastCheckedView?.accessibilityLabel
-        }
-        set {
-            _accessibilityValue = newValue
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if let guideButton = guideButton {
+            accessibilityElement.accessibilityFrameInContainerSpace = bounds.divided(atDistance: guideButton.frame.minY, from: .minYEdge).slice
+        } else {
+            accessibilityElement.accessibilityFrameInContainerSpace = bounds
         }
     }
     
@@ -172,7 +193,8 @@ final class ExposuresElement: WideRowElement, LocalizedView {
         // reset initial state
         self.manualCheckButton = nil
         self.lastCheckedView = nil
-        self.accessibilityValue = nil
+        self.guideButton = nil
+        self.accessibilityElement.accessibilityValue = nil
         
         if initialized {
             removeAllSubviews()
@@ -182,9 +204,10 @@ final class ExposuresElement: WideRowElement, LocalizedView {
         let imageView = createImageView()
         let titleView = createTitleLabel()
         let bodyView = createBodyLabel()
-        let bottomAnchor: ConstraintItem
+        
+        var bottomAnchor = container.snp.bottom
         var bottomOffset = margin.bottom
-        var button: RoundedButton? = nil
+        var actionButton: RoundedButton? = nil
         
         self.addSubview(container)
         
@@ -214,12 +237,10 @@ final class ExposuresElement: WideRowElement, LocalizedView {
                 make.firstBaseline.equalTo(titleView)
             }
             
-            button = RoundedButton(title: Text.ButtonOpen.localized,
+            actionButton = RoundedButton(title: Text.ButtonOpen.localized,
                                    backgroundColor: UIColor.Primary.red,
                                    highlightedBackgroundColor: UIColor.Primary.red,
                                    action: tapped)
-            
-            bottomAnchor = button!.snp.bottom
         } else {
             if detectionStatus.manualCheckAllowed() {
                 manualCheckButton = RoundedButton(title: Text.ButtonCheckNow.localized,
@@ -227,22 +248,19 @@ final class ExposuresElement: WideRowElement, LocalizedView {
                                                   highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground) { [unowned self] in
                     self.delegate?.runManualDetection()
                 }
-                
-                bottomAnchor = manualCheckButton!.snp.bottom
             } else if detectionStatus.enabled() {
-                let button = createGuideButton(topAnchor: container.snp.bottom)
-                bottomAnchor = button.snp.bottom
+                self.guideButton = createGuideButton(topAnchor: container.snp.bottom)
+                bottomAnchor = self.guideButton!.snp.bottom
                 bottomOffset = 0
-            } else {
-                bottomAnchor = container.snp.bottom
             }
             
             lastCheckedView = ExposuresLastCheckedView(style: .subdued, value: timeFromLastUpdate)
             container.addSubview(lastCheckedView!)
         }
         
-        if let button = button ?? manualCheckButton {
+        if let button = actionButton ?? manualCheckButton {
             self.addSubview(button)
+            bottomAnchor = button.snp.bottom
             button.snp.makeConstraints { make in
                 make.right.equalToSuperview().offset(margin.right)
                 make.left.equalToSuperview().offset(margin.left)
@@ -287,19 +305,19 @@ final class ExposuresElement: WideRowElement, LocalizedView {
             make.bottom.equalTo(bottomAnchor).offset(bottomOffset)
         }
         
-        isAccessibilityElement = true
-        accessibilityTraits = .button
-        accessibilityCustomActions = nil
-        
+        accessibilityElement.accessibilityTraits = .button
+        accessibilityElement.accessibilityCustomActions = nil
+        accessibilityElements = [accessibilityElement, guideButton].compactMap { $0 }
+
         if case .exposed = exposureStatus {
-            accessibilityHint = Text.ButtonOpen.localized
-            accessibilityLabel = "\(titleView.text ?? ""). \(bodyView?.text ?? "")"
+            accessibilityElement.accessibilityHint = Text.ButtonOpen.localized
+            accessibilityElement.accessibilityLabel = "\(titleView.text ?? ""). \(bodyView?.text ?? "")"
         } else {
-            accessibilityHint = nil
-            accessibilityLabel = titleView.text
+            accessibilityElement.accessibilityHint = nil
+            accessibilityElement.accessibilityLabel = titleView.text
             
             if let manualCheckButton = self.manualCheckButton {
-                accessibilityCustomActions = [
+                accessibilityElement.accessibilityCustomActions = [
                     UIAccessibilityCustomAction(name: Text.ButtonCheckNow.localized) { _ in
                         return manualCheckButton.performAction()
                     }
