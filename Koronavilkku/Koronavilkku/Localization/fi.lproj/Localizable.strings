@@ -38,7 +38,6 @@
 
 // MARK: ExposuresElement
 "ExposuresElement.Text.TitleNoExposures" = "Ei havaittuja altistumisia";
-"ExposuresElement.Text.BodyNoExposures" = "Et ole ollut tartunnasta ilmoittaneen henkilön lähellä";
 "ExposuresElement.Text.BodyExposureCheckDelayed" = "Altistumistietojen tarkistus ei ole onnistunut yli 24 tuntiin. Sovellus yrittää tarkistaa tiedot myöhemmin. Voit myös käynnistää tarkistuksen nyt.";
 "ExposuresElement.Text.AccessibilityValueCheckDelayed" = "Altistumistietojen tarkistus ei ole onnistunut yli 24 tuntiin.";
 "ExposuresElement.Text.TitleHasExposures" = "Mahdollinen altistuminen";

@@ -38,7 +38,6 @@
 
 // MARK: ExposuresElement
 "ExposuresElement.Text.TitleNoExposures" = "No observed exposures";
-"ExposuresElement.Text.BodyNoExposures" = "You have not been near a person who has reported an infection";
 "ExposuresElement.Text.BodyExposureCheckDelayed" = "Checking for potential exposures has not been carried out for over 24 hours. The app will try again later. You can start a check now.";
 "ExposuresElement.Text.AccessibilityValueCheckDelayed" = "Checking for potential exposures has not been carried out for over 24 hours.";
 "ExposuresElement.Text.TitleHasExposures" = "Potential exposure";
