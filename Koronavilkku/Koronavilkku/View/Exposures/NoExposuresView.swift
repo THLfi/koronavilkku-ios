@@ -13,7 +13,6 @@ class NoExposuresView : ExposuresView, LocalizedView {
     var timeFromLastCheck: TimeInterval? {
         didSet {
             guard let timeFromLastCheck = timeFromLastCheck, timeFromLastCheck != oldValue else { return }
-            
             lastCheckedView?.timeFromLastCheck = timeFromLastCheck
         }
     }
@@ -30,7 +29,7 @@ class NoExposuresView : ExposuresView, LocalizedView {
         }
     }
 
-    var lastCheckedView: ExposuresLastCheckedView!
+    var lastCheckedView: ExposuresLastCheckedView?
     var checkDelayedView: CheckDelayedView?
     
     func render() {
@@ -44,7 +43,7 @@ class NoExposuresView : ExposuresView, LocalizedView {
             append(header, UIEdgeInsets(top: 10))
             
             lastCheckedView = ExposuresLastCheckedView(value: timeFromLastCheck)
-            append(lastCheckedView, UIEdgeInsets(top: 10))
+            append(lastCheckedView!, UIEdgeInsets(top: 10))
             
             if detectionStatus?.delayed == true {
                 checkDelayedView = CheckDelayedView() { [unowned self] in

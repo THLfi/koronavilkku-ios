@@ -77,29 +77,18 @@ class ExposuresViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        exposureRepository.exposureStatus()
-            .receive(on: RunLoop.main)
-            .sink { [weak self] exposureStatus in
-                self?.exposureStatus = exposureStatus
+        Publishers.CombineLatest3(
+            exposureRepository.exposureStatus(),
+            exposureRepository.detectionStatus(),
+            exposureRepository.timeFromLastCheck()
+        ).sink { [weak self] exposureStatus, detectionStatus, timeFromLastCheck in
+            self?.exposureStatus = exposureStatus
+
+            if let noExposuresView = self?.exposuresView as? NoExposuresView {
+                noExposuresView.detectionStatus = detectionStatus
+                noExposuresView.timeFromLastCheck = timeFromLastCheck
             }
-            .store(in: &updateTasks)
-        
-        exposureRepository.detectionStatus()
-            .receive(on: RunLoop.main)
-            .sink { [weak self] detectionStatus in
-                if let noExposuresView = self?.exposuresView as? NoExposuresView {
-                    noExposuresView.detectionStatus = detectionStatus
-                }
-            }
-            .store(in: &updateTasks)
-        
-        exposureRepository.timeFromLastCheck()
-            .sink { [weak self] time in
-                if let noExposuresView = self?.exposuresView as? NoExposuresView {
-                    noExposuresView.timeFromLastCheck = time
-                }
-            }
-            .store(in: &updateTasks)
+        }.store(in: &updateTasks)
     }
     
     private func updateNavigationBar() {
