@@ -1,36 +1,7 @@
 import SnapKit
 import UIKit
 
-class NumberView : UIView {
-    init(number: Int) {
-        super.init(frame: .zero)
-        
-        backgroundColor = UIColor.Primary.blue
-
-        let label = UILabel(label: "\(number)", font: .heading4, color: UIColor.Greyscale.white)
-        label.textAlignment = .center
-        addSubview(label)
-        
-        label.snp.makeConstraints { make in
-            make.edges.equalToSuperview().inset(8)
-        }
-        
-        snp.makeConstraints { make in
-            make.width.equalTo(snp.height)
-        }
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layer.cornerRadius = bounds.height / 2
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-class ExposureGuideViewController : UIViewController, LocalizedView, UIScrollViewDelegate, UIPageViewControllerDelegate {
+class ExposureGuideViewController : UIViewController, LocalizedView {
     
     enum Text : String, Localizable {
         case Title
@@ -87,7 +58,7 @@ class ExposureGuideViewController : UIViewController, LocalizedView, UIScrollVie
         scrollView.addSubview(stackView)
         stackView.distribution = .equalSpacing
         stackView.snp.makeConstraints { make in
-            make.edges.equalTo(scrollView.contentLayoutGuide.snp.edges).inset(0)
+            make.edges.equalTo(scrollView.contentLayoutGuide.snp.edges)
         }
 
         let closeButton = UIButton(type: .close)
@@ -184,7 +155,6 @@ class ExposureGuideViewController : UIViewController, LocalizedView, UIScrollVie
     private func createBottomBar() -> UIView {
         let bottom = UIView()
         bottom.backgroundColor = .white
-        bottom.setContentHuggingPriority(.required, for: .vertical)
         view.addSubview(bottom)
         
         bottom.snp.makeConstraints { make in
@@ -193,8 +163,6 @@ class ExposureGuideViewController : UIViewController, LocalizedView, UIScrollVie
         }
         
         secondaryButton = UIButton()
-        secondaryButton.setContentHuggingPriority(.required, for: .vertical)
-        secondaryButton.setContentCompressionResistancePriority(.required, for: .vertical)
         secondaryButton.titleLabel?.font = .labelTertiary
         secondaryButton.setTitleColor(UIColor.Greyscale.darkGrey, for: .normal)
         secondaryButton.addTarget(self,
@@ -222,7 +190,6 @@ class ExposureGuideViewController : UIViewController, LocalizedView, UIScrollVie
         }
 
         pageControl = UIPageControl()
-        pageControl.setContentHuggingPriority(.required, for: .vertical)
         pageControl.setContentCompressionResistancePriority(.required, for: .horizontal)
         pageControl.currentPageIndicatorTintColor = UIColor.Primary.blue
         pageControl.pageIndicatorTintColor = UIColor.Greyscale.lightGrey
@@ -239,16 +206,6 @@ class ExposureGuideViewController : UIViewController, LocalizedView, UIScrollVie
         }
 
         return bottom
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
-        pageControl.currentPage = page
-        pageChanged()
-    }
-    
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        scrollViewDidEndDecelerating(scrollView)
     }
     
     private func showPage(index: Int) {
@@ -296,6 +253,18 @@ class ExposureGuideViewController : UIViewController, LocalizedView, UIScrollVie
     @objc
     func close() {
         self.dismiss(animated: true)
+    }
+}
+
+extension ExposureGuideViewController : UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let page = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+        pageControl.currentPage = page
+        pageChanged()
+    }
+    
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        scrollViewDidEndDecelerating(scrollView)
     }
 }
 

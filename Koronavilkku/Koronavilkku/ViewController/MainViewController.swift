@@ -2,7 +2,7 @@ import Combine
 import SnapKit
 import UIKit
 
-class MainViewController: UIViewController, LocalizedView, ExposuresElementDelegate {
+class MainViewController: UIViewController, LocalizedView {
     enum Text : String, Localizable {
         case ProtectionButtonTitle
         case ProtectionButtonURL
@@ -231,25 +231,7 @@ class MainViewController: UIViewController, LocalizedView, ExposuresElementDeleg
         viewController.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(viewController, animated: true)
     }
-    
-    func runManualDetection() {
-        BackgroundTaskForNotifications.shared.run()
-            .receive(on: RunLoop.main)
-            .sink { [weak self] success in
-                if !success {
-                    self?.showAlert(title: Translation.ManualCheckErrorTitle.localized,
-                                    message: Translation.ManualCheckErrorMessage.localized,
-                                    buttonText: Translation.ManualCheckErrorButton.localized)
-                }
-            }
-            .store(in: &tasks)
-    }
         
-    func showExposureGuide() {
-        let guide = ExposureGuideViewController()
-        self.navigationController?.present(guide, animated: true, completion: nil)
-    }
-    
     @objc private func debugButtonTapped() {
         let testVC = TestViewController()
         self.present(testVC, animated: true, completion: nil)
@@ -267,6 +249,26 @@ class MainViewController: UIViewController, LocalizedView, ExposuresElementDeleg
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.headerView?.adjustSize(by: scrollView.contentOffset.y, topInset: view.safeAreaInsets.top)
+    }
+}
+
+extension MainViewController : ExposuresElementDelegate {
+    func runManualDetection() {
+        BackgroundTaskForNotifications.shared.run()
+            .receive(on: RunLoop.main)
+            .sink { [weak self] success in
+                if !success {
+                    self?.showAlert(title: Translation.ManualCheckErrorTitle.localized,
+                                    message: Translation.ManualCheckErrorMessage.localized,
+                                    buttonText: Translation.ManualCheckErrorButton.localized)
+                }
+            }
+            .store(in: &tasks)
+    }
+        
+    func showExposureGuide() {
+        let guide = ExposureGuideViewController()
+        self.navigationController?.present(guide, animated: true, completion: nil)
     }
 }
 

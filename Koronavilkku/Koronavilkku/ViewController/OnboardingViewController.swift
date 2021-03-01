@@ -3,7 +3,7 @@ import UIKit
 import SnapKit
 import Combine
 
-class OnboardingViewController: UINavigationController, UINavigationControllerDelegate {
+class OnboardingViewController: UINavigationController {
     
     private var currentStep = 0
     private var button: RoundedButton?
@@ -89,16 +89,6 @@ class OnboardingViewController: UINavigationController, UINavigationControllerDe
         self.delegate = self
         self.view.backgroundColor = UIColor.Greyscale.white
         self.handleStartStep()
-    }
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if viewController is ChangeLanguageViewController {
-            self.largeTitleFont = .heading2
-            self.setNavigationBarHidden(false, animated: true)
-        } else if !navigationBar.isHidden {
-            self.largeTitleFont = .heading1
-            self.setNavigationBarHidden(true, animated: true)
-        }
     }
     
     private func performButtonAction(step: Step) {
@@ -450,7 +440,6 @@ extension OnboardingViewController: AcceptDelegate {
 }
 
 extension OnboardingViewController: UIScrollViewDelegate {
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentHeight = scrollView.contentSize.height
         guard contentHeight > 0 else { return }
@@ -458,6 +447,18 @@ extension OnboardingViewController: UIScrollViewDelegate {
         
         if scrollView.contentOffset.y > contentHeight - view.frame.height - hideOffset {
             hideScrollIndicator()
+        }
+    }
+}
+
+extension OnboardingViewController : UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController is ChangeLanguageViewController {
+            self.largeTitleFont = .heading2
+            self.setNavigationBarHidden(false, animated: true)
+        } else if !navigationBar.isHidden {
+            self.largeTitleFont = .heading1
+            self.setNavigationBarHidden(true, animated: true)
         }
     }
 }

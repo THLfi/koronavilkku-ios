@@ -10,7 +10,7 @@ class FooterItem : UIButton {
         
         addTarget(self, action: #selector(tapped), for: .touchUpInside)
         
-        let label = UILabel(label: title, font: .labelFooter, color: UIColor.Greyscale.darkGrey)
+        let label = UILabel(label: title, font: .labelTertiary, color: UIColor.Greyscale.darkGrey)
         label.numberOfLines = 0
         addSubview(label)
         

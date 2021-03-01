@@ -74,6 +74,8 @@
 		D98EDD3724CDF91F003E09A1 /* AttentionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD3624CDF91F003E09A1 /* AttentionCard.swift */; };
 		EA07E41724E34C7D0097A9A0 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07E41624E34C7D0097A9A0 /* URLSession.swift */; };
 		EA0D8B2124B33B25002F1BCD /* TemporaryExposureKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0D8B2024B33B25002F1BCD /* TemporaryExposureKey.swift */; };
+		EA0EB8CB25ED2CC800A6D0DC /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB8CA25ED2CC800A6D0DC /* InfoButton.swift */; };
+		EA0EB8D025ED2D2F00A6D0DC /* NumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB8CF25ED2D2F00A6D0DC /* NumberView.swift */; };
 		EA1AF39325DD5E5B006E4FE4 /* SourceSansPro-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA1AF38A25DD5D69006E4FE4 /* SourceSansPro-Black.ttf */; };
 		EA1AF39425DD5E5B006E4FE4 /* SourceSansPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA1AF38C25DD5D69006E4FE4 /* SourceSansPro-Bold.ttf */; };
 		EA1AF39525DD5E5B006E4FE4 /* SourceSansPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA1AF38925DD5D69006E4FE4 /* SourceSansPro-Regular.ttf */; };
@@ -232,6 +234,8 @@
 		EA07E41624E34C7D0097A9A0 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		EA0D8B2024B33B25002F1BCD /* TemporaryExposureKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryExposureKey.swift; sourceTree = "<group>"; };
 		EA0D8B2324B482CD002F1BCD /* Main.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Main.xcconfig; sourceTree = "<group>"; };
+		EA0EB8CA25ED2CC800A6D0DC /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
+		EA0EB8CF25ED2D2F00A6D0DC /* NumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberView.swift; sourceTree = "<group>"; };
 		EA1AF38925DD5D69006E4FE4 /* SourceSansPro-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Regular.ttf"; sourceTree = "<group>"; };
 		EA1AF38A25DD5D69006E4FE4 /* SourceSansPro-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-Black.ttf"; sourceTree = "<group>"; };
 		EA1AF38B25DD5D69006E4FE4 /* SourceSansPro-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SourceSansPro-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -432,11 +436,13 @@
 				56E3349924CEC9290017CD9A /* ContactItemCard.swift */,
 				EAF340CF258102120092ED6E /* FadeBlock.swift */,
 				EAC4CD1925CC21CF001A4648 /* Footer.swift */,
+				EA0EB8CA25ED2CC800A6D0DC /* InfoButton.swift */,
 				5630F2EA24C6F8BD00B12438 /* LabeledOverlay.swift */,
 				D98EDD2624CB3E17003E09A1 /* LinkItem.swift */,
 				D98EDD2E24CCACF3003E09A1 /* LinkItemCard.swift */,
 				D98EDD3024CCAD15003E09A1 /* LinkItemGroupCard.swift */,
 				5630F2EC24C70F6700B12438 /* LinkLabel.swift */,
+				EA0EB8CF25ED2D2F00A6D0DC /* NumberView.swift */,
 				EAF340C42580F1460092ED6E /* RadioButton.swift */,
 				56C26BAF24AF3A0B002F83C1 /* RoundedButton.swift */,
 			);
@@ -918,6 +924,7 @@
 				D92F18AD24CEC0F300F3FBCE /* Log.swift in Sources */,
 				563D44B324AB4C6D008FE2BB /* TableViewHeader.swift in Sources */,
 				5612972C24C977420075161A /* HowItWorksViewController.swift in Sources */,
+				EA0EB8D025ED2D2F00A6D0DC /* NumberView.swift in Sources */,
 				32899E4924C0680600CFFE27 /* UIViewController.swift in Sources */,
 				EAE47D2B256C6D9E002ECE03 /* TimeInterval.swift in Sources */,
 				EA30D71F24A620C900AF84B1 /* Colors.swift in Sources */,
@@ -930,6 +937,7 @@
 				5687174424C1AA7C00E65427 /* AcceptableTermsView.swift in Sources */,
 				EA6C1FCE257FB1C200E973E3 /* ReportInfectionFlowViewController.swift in Sources */,
 				56C26BC924B4B5A0002F83C1 /* MunicipalitySearchResultController.swift in Sources */,
+				EA0EB8CB25ED2CC800A6D0DC /* InfoButton.swift in Sources */,
 				EA6C1FDF257FC51100E973E3 /* ChooseDestinationViewController.swift in Sources */,
 				EA8E2259258264CF0008EE92 /* ChooseCountriesViewController.swift in Sources */,
 				EA4A594B2562708400E65CFB /* ExposuresElement.swift in Sources */,

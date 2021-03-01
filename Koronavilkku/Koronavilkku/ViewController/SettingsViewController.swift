@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class SettingsViewController: UIViewController, UINavigationControllerDelegate {
+class SettingsViewController: UIViewController {
     enum Text : String, Localizable {
         case Heading
         case StatusTitle
@@ -26,23 +26,6 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
     }
     
     private var statusItem: LinkItem!
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        let oldFont = navigationController.largeTitleFont
-        let newFont: UIFont = (viewController === self) ? .heading1 : .heading2
-
-        guard oldFont != newFont else { return }
-        
-        // as the new navigation title is visible during the transition, we need to change it immediately
-        navigationController.largeTitleFont = newFont
-
-        // but in case the user cancels the interaction, revert back to the old font
-        transitionCoordinator?.notifyWhenInteractionChanges { context in
-            if context.isCancelled {
-                navigationController.largeTitleFont = oldFont
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,5 +153,24 @@ class SettingsViewController: UIViewController, UINavigationControllerDelegate {
         ]
 
         return InstructionItem(view: LinkItemGroupCard(items: items), spacing: 10)
+    }
+}
+
+extension SettingsViewController : UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        let oldFont = navigationController.largeTitleFont
+        let newFont: UIFont = (viewController === self) ? .heading1 : .heading2
+
+        guard oldFont != newFont else { return }
+        
+        // as the new navigation title is visible during the transition, we need to change it immediately
+        navigationController.largeTitleFont = newFont
+
+        // but in case the user cancels the interaction, revert back to the old font
+        transitionCoordinator?.notifyWhenInteractionChanges { context in
+            if context.isCancelled {
+                navigationController.largeTitleFont = oldFont
+            }
+        }
     }
 }
