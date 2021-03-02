@@ -215,11 +215,11 @@ class MainViewController: UIViewController, LocalizedView {
             make.top.equalTo(logo.snp.bottom).offset(30)
         }
         #else
-        let bottomGuide = infoButton
+        let bottomGuide = logo
         #endif
         
         wrapper.snp.makeConstraints { make in
-            make.bottom.equalTo(bottomGuide.snp.bottom).offset(20)
+            make.bottom.equalTo(bottomGuide.snp.bottom).offset(60)
         }
     }
     
