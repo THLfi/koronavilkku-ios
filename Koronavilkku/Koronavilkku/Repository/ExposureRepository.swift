@@ -12,7 +12,7 @@ protocol ExposureRepository {
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error>
     func postExposureKeys(publishToken: String?, visitedCountries: Set<EFGSCountry>, shareWithEFGS: Bool) -> AnyPublisher<Void, Error>
     func postDummyKeys() -> AnyPublisher<Void, Error>
-    func refreshStatus()
+    func refreshStatus(_ completionHandler: ((RadarStatus) -> Void)?)
     func setStatus(enabled: Bool)
     func tryEnable(_ completionHandler: @escaping (ENError.Code?) -> Void)
     func deleteBatchFiles()
@@ -232,7 +232,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
         return keys
     }
     
-    func refreshStatus() {
+    func refreshStatus(_ completion: ((RadarStatus) -> Void)? = nil) {
         if LocalStore.shared.uiStatus == .locked {
             return
         }
@@ -251,6 +251,8 @@ struct ExposureRepositoryImpl : ExposureRepository {
             if (LocalStore.shared.uiStatus != status) {
                 LocalStore.shared.uiStatus = status
             }
+            
+            completion?(status)
         }
         
         if status == .on {

@@ -120,6 +120,7 @@ class OnboardingViewController: UINavigationController {
         }
         
         let exposureManager = ExposureManagerProvider.shared.manager
+        let exposureRepository = Environment.default.exposureRepository
         
         // TODO: Refactor this to use ExposureRepository tryEnable
         exposureManager.setExposureNotificationEnabled(true, completionHandler: { [weak self] error in
@@ -151,8 +152,9 @@ class OnboardingViewController: UINavigationController {
                 LocalStore.shared.onboardingResumeStep = StepId.enableApiInstructions.rawValue
                 
             } else {
-                LocalStore.shared.uiStatus = .on
-                weakSelf.stepDone()
+                exposureRepository.refreshStatus { _ in
+                    weakSelf.stepDone()
+                }
             }
         })
     }

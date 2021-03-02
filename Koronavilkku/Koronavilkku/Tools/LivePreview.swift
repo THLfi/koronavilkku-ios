@@ -82,7 +82,7 @@ extension Environment {
                 return Fail(error: PreviewError.notSupported).eraseToAnyPublisher()
             }
             
-            func refreshStatus() {
+            func refreshStatus(_ completion: ((RadarStatus) -> Void)?) {
             }
             
             func setStatus(enabled: Bool) {
