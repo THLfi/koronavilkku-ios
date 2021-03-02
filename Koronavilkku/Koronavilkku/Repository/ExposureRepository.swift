@@ -237,7 +237,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
             return
         }
         
-        let status: RadarStatus
+        var status: RadarStatus
 
         if type(of: exposureManager).authorizationStatus != .authorized {
             status = .apiDisabled
@@ -245,10 +245,27 @@ struct ExposureRepositoryImpl : ExposureRepository {
             status = RadarStatus.init(from: exposureManager.exposureNotificationStatus)
         }
         
-        Log.d("Status=\(status)")
+        func applyStatus(status: RadarStatus) {
+            Log.d("Status=\(status)")
 
-        if (LocalStore.shared.uiStatus != status) {
-            LocalStore.shared.uiStatus = status
+            if (LocalStore.shared.uiStatus != status) {
+                LocalStore.shared.uiStatus = status
+            }
+        }
+        
+        if status == .on {
+            
+            Notifications.isEnabled(completion: { enabled in
+
+                if !enabled {
+                    status = .notificationsOff
+                }
+                
+                applyStatus(status: status)
+            })
+            
+        } else {
+            applyStatus(status: status)
         }
     }
     

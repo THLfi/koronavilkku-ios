@@ -30,6 +30,8 @@
 "StatusHeaderView.Text.TitleEnabled" = "Coronablinkern är påkopplad";
 "StatusHeaderView.Text.TitleDisabled" = "Coronablinkern är bortkopplad";
 "StatusHeaderView.Text.TitleLocked" = "Coronablinkern är låst";
+"StatusHeaderView.Text.TitleNotificationsOff" = "Ilmoitukset eivät ole käytössä";
+"StatusHeaderView.Text.BodyNotificationsOff" = "Ota ilmoitukset käyttöön, jotta Koronavilkku voi ilmoittaa sinulle mahdollisesta altistumisesta.";
 "StatusHeaderView.Text.BodyEnabled" = "Appen fungerar även om du stänger den.";
 "StatusHeaderView.Text.BodyDisabled" = "Koppla på exponerings\U00ADmeddelandena på nytt.";
 "StatusHeaderView.Text.BodyBTOff" = "Koppla på Bluetooth.";
@@ -228,6 +230,9 @@
 "OnboardingIntroText" = "Coronablinkern är en applikation (app) som Institutet för hälsa och välfärd ansvarar för. Med appen strävar man till att förebygga spridningen av coronaviruset. Appen skyddar effektivt din identitet.";
 "OnboardingConceptTitle" = "Så här fungerar appen";
 "OnboardingConceptText" = "Coronablinkern följer med de telefoner i din närhet, på vilka appen är installerad. Om en person som du tidigare mött meddelar om coronavirus\U00ADinfektion via Coronablinkern får du ett meddelande om att du blivit utsatt (exponerad) för smitta. Om du med ett coronavirustest konstateras ha fått smittan, kan du meddela om det här anonymt med appen.";
+"OnboardingNotificationsTitle" = "Ota ilmoitukset käyttöön";
+"OnboardingNotificationsText" = "Ota ilmoitukset käyttöön, jotta Koronavilkku voi ilmoittaa sinulle mahdollisesta altistumisesta, vaikka sovellus olisi suljettu.";
+"OnboardingNotificationsButtonLabel" = "Ota käyttöön";
 "OnboardingYourPrivacyIsProtected" = "Din identitet är skyddad";
 "OnboardingHowYourPrivacyIsProtected" = "Coronablinkern skyddar dina personuppgifter och din identitet på flera sätt.";
 "OnboardingPrivacyTitle" = "Personuppgifter";
@@ -284,6 +289,10 @@
 "BluetoothDisabledTitle" = "Koppla på Bluetooth";
 "BluetoothDisabledText" = "Utan Bluetooth kan Coronablinkern inte följa med eventuella exponeringar. Tillåt Bluetooth-uppkoppling i telefonens inställningar.";
 
+"NotificationsOffTitle" = "Ilmoitukset estetty";
+"NotificationsOffText" = "Jos et ota ilmoituksia käyttöön, Koronavilkku ei voi ilmoittaa sinulle  mahdollisesta altistumisesta, kun sovellus on suljettu. Ota ilmoitukset käyttöön näin:";
+"NotificationsOffSteps" = "1. Avaa puhelimesi asetukset alla olevasta painikkeesta.\n\n2. Valitse Ilmoitukset.\n\n3. Laita päälle Salli ilmoitukset.";
+
 "ENBlockedTitle" = "Exponerings\U00ADmeddelandena är bortkopplade";
 "ENBlockedText" = "Coronablinkern fungerar endast om du kopplar på exponerings\U00ADmeddelandena i telefonens inställningar. Gör så här för att koppla på exponerings\U00ADmeddelandena:";
 "ENBlockedSteps" = "1. Tryck på Inställningsknappen nedan.\n\n2. Koppla på COVID-19-exponeringsloggen och -meddelandena.";
@@ -298,3 +307,6 @@
 "ManualCheckErrorTitle" = "Det gick inte att ladda exponeringsdata";
 "ManualCheckErrorMessage" = "Exponeringsdata kunde inte laddas. Kontrollera din nätverksanslutning och försök på nytt.";
 "ManualCheckErrorButton" = "OK";
+
+"ExposureNotificationTitle" = "Mahdollinen altistuminen";
+"ExposureNotificationText" = "Olet saattanut altistua koronavirukselle. Katso toimintaohjeet ja ota yhteyttä terveydenhuoltoon.";

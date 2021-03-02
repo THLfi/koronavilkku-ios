@@ -30,6 +30,18 @@ class OnboardingViewController: UINavigationController {
                             content: Translation.OnboardingConceptText.localized,
                             extraContent: [ createGuideLink() ])
         ),
+        Step(id: .enableNotifications,
+             buttonTitle: Translation.OnboardingNotificationsButtonLabel.localized,
+             view: StepView(image: UIImage(named: "notifications")!,
+                            header: Translation.OnboardingNotificationsTitle.localized,
+                            content: Translation.OnboardingNotificationsText.localized,
+                            extraContent: [ createGuideLink() ]),
+             requestPermission: {
+                Notifications.requestAuthorization { _ in
+                    self.stepDone()
+                }
+             }
+        ),
         Step(id: .acceptTerms,
              showScrollIndicator: true,
              view: StepView(image: UIImage(named: "privacy")!,
@@ -143,14 +155,6 @@ class OnboardingViewController: UINavigationController {
                 weakSelf.stepDone()
             }
         })
-    }
-    
-    private func requestNotificationPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { granted, error in
-            DispatchQueue.main.async {
-                self.stepDone()
-            }
-        }
     }
     
     private func stepDone() {
@@ -429,6 +433,7 @@ enum StepId: Int {
     case acceptTerms
     case enableApiInstructions
     case enableBluetooth
+    case enableNotifications
     
     var description: String { return "StepId(\(String(describing: self))" }
 }

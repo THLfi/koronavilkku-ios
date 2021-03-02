@@ -24,6 +24,7 @@ class TestViewController: UIViewController {
     lazy var setLastExposureCheckButton = self.createButton(title: "Set exposure check date", action: #selector(setLastExposureCheck))
     lazy var dumpEFGSCountriesButton = self.createButton(title: "Dump EFGS countries", action: #selector(dumpEFGSCountries))
     lazy var deleteEFGSCountriesButton = self.createButton(title: "Delete EFGS countries", action: #selector(deleteEFGSCountries))
+    lazy var showNotificationButton = self.createButton(title: "Show delayed notification", action: #selector(showDelayedNotification))
 
     // force downcast, because we're using the internals here
     var batchRepository = Environment.default.batchRepository as! BatchRepositoryImpl
@@ -84,6 +85,7 @@ class TestViewController: UIViewController {
         appendButton(setLastExposureCheckButton)
         appendButton(dumpEFGSCountriesButton)
         appendButton(deleteEFGSCountriesButton)
+        appendButton(showNotificationButton)
 
         LocalStore.shared.$uiStatus.addObserver(using: { [weak self] in
             self?.radarStatus.setTitle("Radar status \(LocalStore.shared.uiStatus)", for: .normal)
@@ -148,11 +150,13 @@ class TestViewController: UIViewController {
         
         LocalStore.shared.exposureNotifications.append(notification)
         LocalStore.shared.updateDateLastPerformedExposureDetection()
+        Notifications.showExposureNotification(exposureCount: notification.exposureCount)
         Log.d("Created exposure notification \(notification)")
     }
     
     @objc func removeExposures() {
         LocalStore.shared.resetExposures()
+        Notifications.hideBadge()
     }
     
     @objc func toggleRadarStatus() {
@@ -214,6 +218,10 @@ class TestViewController: UIViewController {
         FileStorageImpl().delete(filename: EFGSRepositoryImpl.countryListFile)
     }
 
+    @objc func showDelayedNotification() {
+        Notifications.showExposureNotification(exposureCount: nil, delay: 5)
+    }
+    
     private func showDialog(_ message: String, title: String = "Error") {
         showAlert(title: title, message: message, buttonText: "Dismiss")
     }
@@ -230,6 +238,8 @@ class TestViewController: UIViewController {
         case .btOff:
             return .apiDisabled
         case .apiDisabled:
+            return .notificationsOff
+        case .notificationsOff:
             return .on
         }
     }

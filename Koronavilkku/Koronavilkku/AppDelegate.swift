@@ -4,10 +4,11 @@ import ExposureNotification
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         BackgroundTaskManager.shared.registerTasks()
+        UNUserNotificationCenter.current().delegate = self
         return true
     }
 
@@ -29,5 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // In addition to possible security risks with 3rd party keyboards, disabling those can have a positive impact on usability too:
         // Gboard for example uses the alphabet mode for the token code input field instead of the numeric only keypad.
         return extensionPointIdentifier != .keyboard
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // Needed to display the notification even if the app is in foreground.
+        completionHandler([.alert, .sound, .badge])
     }
 }

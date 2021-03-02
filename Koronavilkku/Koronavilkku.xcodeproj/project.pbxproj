@@ -72,6 +72,7 @@
 		D98EDD3324CDED29003E09A1 /* ChangeRadarStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD3224CDED29003E09A1 /* ChangeRadarStatusViewController.swift */; };
 		D98EDD3524CDF754003E09A1 /* AttentionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD3424CDF754003E09A1 /* AttentionLabel.swift */; };
 		D98EDD3724CDF91F003E09A1 /* AttentionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD3624CDF91F003E09A1 /* AttentionCard.swift */; };
+		D9A09F5425EE4B4F00411208 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A09F5325EE4B4F00411208 /* Notifications.swift */; };
 		EA07E41724E34C7D0097A9A0 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07E41624E34C7D0097A9A0 /* URLSession.swift */; };
 		EA0D8B2124B33B25002F1BCD /* TemporaryExposureKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0D8B2024B33B25002F1BCD /* TemporaryExposureKey.swift */; };
 		EA0EB8CB25ED2CC800A6D0DC /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB8CA25ED2CC800A6D0DC /* InfoButton.swift */; };
@@ -231,6 +232,7 @@
 		D98EDD3224CDED29003E09A1 /* ChangeRadarStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeRadarStatusViewController.swift; sourceTree = "<group>"; };
 		D98EDD3424CDF754003E09A1 /* AttentionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionLabel.swift; sourceTree = "<group>"; };
 		D98EDD3624CDF91F003E09A1 /* AttentionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionCard.swift; sourceTree = "<group>"; };
+		D9A09F5325EE4B4F00411208 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		EA07E41624E34C7D0097A9A0 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		EA0D8B2024B33B25002F1BCD /* TemporaryExposureKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryExposureKey.swift; sourceTree = "<group>"; };
 		EA0D8B2324B482CD002F1BCD /* Main.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Main.xcconfig; sourceTree = "<group>"; };
@@ -731,6 +733,7 @@
 		EA92A07924A4E56F00CE7271 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D9A09F5325EE4B4F00411208 /* Notifications.swift */,
 				5695F6CD24D2AFB9008E06BC /* BackgroundTask.swift */,
 				32E0350524AB4AB000F48450 /* FileHelper.swift */,
 				EA92A07A24A4E59800CE7271 /* LivePreview.swift */,
@@ -922,6 +925,7 @@
 				560833BD24B8677C0078B75D /* Translation.swift in Sources */,
 				D92F18AF24CFF8F700F3FBCE /* OpenSettingsViewController.swift in Sources */,
 				D92F18AD24CEC0F300F3FBCE /* Log.swift in Sources */,
+				D9A09F5425EE4B4F00411208 /* Notifications.swift in Sources */,
 				563D44B324AB4C6D008FE2BB /* TableViewHeader.swift in Sources */,
 				5612972C24C977420075161A /* HowItWorksViewController.swift in Sources */,
 				EA0EB8D025ED2D2F00A6D0DC /* NumberView.swift in Sources */,

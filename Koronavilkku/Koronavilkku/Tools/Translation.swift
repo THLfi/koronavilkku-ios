@@ -88,6 +88,9 @@ enum Translation: String, Localizable {
     case OnboardingUsageText
     case OnboardingVoluntaryTitle
     case OnboardingVoluntaryText
+    case OnboardingNotificationsTitle
+    case OnboardingNotificationsText
+    case OnboardingNotificationsButtonLabel
 
     case HomeLogoLinkURL
     case HomeLogoLinkLabel
@@ -129,6 +132,9 @@ enum Translation: String, Localizable {
 
     case BluetoothDisabledTitle
     case BluetoothDisabledText
+    case NotificationsOffTitle
+    case NotificationsOffText
+    case NotificationsOffSteps
     case ENBlockedTitle
     case ENBlockedText
     case ENBlockedSteps
@@ -145,4 +151,7 @@ enum Translation: String, Localizable {
     case ManualCheckErrorTitle
     case ManualCheckErrorMessage
     case ManualCheckErrorButton
+
+    case ExposureNotificationTitle
+    case ExposureNotificationText
 }

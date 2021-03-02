@@ -117,7 +117,7 @@ class SettingsViewController: UIViewController {
         var enabled = true
         
         switch LocalStore.shared.uiStatus {
-        case .on:
+        case .on, .notificationsOff:
             value = .StatusOn
         case .off:
             break

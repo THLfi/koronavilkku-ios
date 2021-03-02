@@ -62,11 +62,13 @@ final class StatusHeaderView: UIView {
         case TitleEnabled
         case TitleDisabled
         case TitleLocked
+        case TitleNotificationsOff
 
         case BodyEnabled
         case BodyDisabled
         case BodyLocked
         case BodyBTOff
+        case BodyNotificationsOff
         
         case EnableButton
     }
@@ -215,6 +217,14 @@ final class StatusHeaderView: UIView {
         switch radarStatus {
         case .btOff:
             openSettings(.bluetooth)
+            
+        case .notificationsOff:
+            // OS will only show the permission dialog once.
+            Notifications.requestAuthorization { [weak self] enabled in
+                if !enabled {
+                    self?.openSettings(.notifications)
+                }
+            }
 
         case .apiDisabled:
             // attempt to enable the disabled API first
@@ -258,7 +268,7 @@ final class StatusHeaderView: UIView {
         switch radarStatus {
         case .on:
             return RadarAnimation()
-        case .off, .locked, .apiDisabled, .btOff, .none:
+        case .off, .locked, .apiDisabled, .btOff, .notificationsOff, .none:
             let imageView = UIImageView(image: UIImage(named: "radar-off"))
             imageView.contentMode = .scaleAspectFit
             return imageView
@@ -273,6 +283,8 @@ final class StatusHeaderView: UIView {
             return .TitleDisabled
         case .locked:
             return .TitleLocked
+        case .notificationsOff:
+            return .TitleNotificationsOff
         }
     }
     
@@ -286,6 +298,8 @@ final class StatusHeaderView: UIView {
             return .BodyLocked
         case .btOff:
             return .BodyBTOff
+        case .notificationsOff:
+            return .BodyNotificationsOff
         }
     }
     
@@ -293,7 +307,7 @@ final class StatusHeaderView: UIView {
         switch radarStatus {
         case .on:
             return UIColor.Primary.blue
-        case .off, .apiDisabled, .btOff, .none:
+        case .off, .apiDisabled, .btOff, .notificationsOff, .none:
             return UIColor.Primary.red
         case .locked:
             return UIColor.Greyscale.darkGrey
@@ -304,7 +318,7 @@ final class StatusHeaderView: UIView {
         switch radarStatus {
         case .on, .locked, .none:
             return nil
-        case .apiDisabled, .btOff, .off:
+        case .apiDisabled, .btOff, .off, .notificationsOff:
             return .EnableButton
         }
     }
