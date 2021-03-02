@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaced the narrow link buttons in the home screen with a footer element
 - Use new TTF font files that render more consistently with the reference design
 - Break ExposuresViewWrapper into multiple views and move the related views into separate files
+- Request permission to display notifications
 
 ## 2.0.1
 
