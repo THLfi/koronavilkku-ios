@@ -62,10 +62,10 @@
 	<string>$(OMAOLO_BASEURL)</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SourceSansPro-Regular.otf</string>
-		<string>SourceSansPro-Semibold.otf</string>
-		<string>SourceSansPro-Bold.otf</string>
-		<string>SourceSansPro-Black.otf</string>
+		<string>SourceSansPro-Regular.ttf</string>
+		<string>SourceSansPro-SemiBold.ttf</string>
+		<string>SourceSansPro-Bold.ttf</string>
+		<string>SourceSansPro-Black.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

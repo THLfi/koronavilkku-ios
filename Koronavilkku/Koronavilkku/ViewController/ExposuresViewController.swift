@@ -3,6 +3,18 @@ import UIKit
 import SnapKit
 import Combine
 
+protocol ExposuresViewDelegate: AnyObject {
+    func showHowItWorks()
+    func showExposureGuide()
+    func makeContact()
+    func startManualCheck()
+    func showNotificationList()
+}
+
+class ExposuresView : UIView {
+    weak var delegate: ExposuresViewDelegate?
+}
+
 class ExposuresViewController: UIViewController {
     
     enum Text : String, Localizable {
@@ -10,14 +22,17 @@ class ExposuresViewController: UIViewController {
     }
 
     private let exposureRepository: ExposureRepository
-    private let exposuresViewWrapper = ExposuresViewWrapper()
     private var updateTasks = Set<AnyCancellable>()
-    
+    private var exposuresView: ExposuresView!
+    private var containerView: UIView!
+        
     private var exposureStatus: ExposureStatus? {
         didSet {
-            guard let exposureStatus = exposureStatus, exposureStatus != oldValue else { return }
+            guard let exposureStatus = exposureStatus,
+                  exposureStatus != oldValue else { return }
+            
             self.updateNavigationBar()
-            self.exposuresViewWrapper.exposureStatus = exposureStatus
+            self.render()
         }
     }
     
@@ -44,7 +59,6 @@ class ExposuresViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        exposuresViewWrapper.delegate = self
         initUI()
         bindViewModel()
     }
@@ -63,25 +77,18 @@ class ExposuresViewController: UIViewController {
     }
     
     private func bindViewModel() {
-        exposureRepository.exposureStatus()
-            .receive(on: RunLoop.main)
-            .sink { [weak self] exposureStatus in
-                self?.exposureStatus = exposureStatus
+        Publishers.CombineLatest3(
+            exposureRepository.exposureStatus(),
+            exposureRepository.detectionStatus(),
+            exposureRepository.timeFromLastCheck()
+        ).sink { [weak self] exposureStatus, detectionStatus, timeFromLastCheck in
+            self?.exposureStatus = exposureStatus
+
+            if let noExposuresView = self?.exposuresView as? NoExposuresView {
+                noExposuresView.detectionStatus = detectionStatus
+                noExposuresView.timeFromLastCheck = timeFromLastCheck
             }
-            .store(in: &updateTasks)
-        
-        exposureRepository.detectionStatus()
-            .receive(on: RunLoop.main)
-            .sink { [weak self] detectionStatus in
-                self?.exposuresViewWrapper.detectionStatus = detectionStatus
-            }
-            .store(in: &updateTasks)
-        
-        exposureRepository.timeFromLastCheck()
-            .sink { [weak self] time in
-                self?.exposuresViewWrapper.timeFromLastCheck = time
-            }
-            .store(in: &updateTasks)
+        }.store(in: &updateTasks)
     }
     
     private func updateNavigationBar() {
@@ -111,12 +118,25 @@ class ExposuresViewController: UIViewController {
     }
 
     private func initUI() {
-        view.removeAllSubviews()
-        
         let margins = UIEdgeInsets(top: 30, left: 20, bottom: 30, right: 20)
-        let contentView = view.addScrollableContentView(backgroundColor: UIColor.Secondary.blueBackdrop, margins: margins)
-        contentView.addSubview(exposuresViewWrapper)
-        exposuresViewWrapper.snp.makeConstraints { make in
+        
+        containerView = view.addScrollableContentView(backgroundColor: UIColor.Secondary.blueBackdrop, margins: margins)
+        
+        render()
+    }
+    
+    private func render() {
+        containerView.removeAllSubviews()
+        
+        if case .exposed(let notificationCount) = exposureStatus {
+            exposuresView = HasExposuresView(notificationCount: notificationCount)
+        } else {
+            exposuresView = NoExposuresView()
+        }
+        
+        exposuresView.delegate = self
+        containerView.addSubview(exposuresView)
+        exposuresView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
@@ -136,8 +156,12 @@ extension ExposuresViewController: ExposuresViewDelegate {
             .store(in: &updateTasks)
     }
     
+    func showExposureGuide() {
+        self.navigationController?.present(ExposureGuideViewController(), animated: true)
+    }
+    
     func showHowItWorks() {
-        self.navigationController?.present(HowItWorksViewController(), animated: true)
+        self.navigationController?.showGuide()
     }
     
     func makeContact() {

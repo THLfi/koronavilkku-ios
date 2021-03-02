@@ -5,14 +5,16 @@ import SnapKit
 class MunicipalityContactInfoViewController: UIViewController {
     
     enum Text : String, Localizable {
+        case ContactTitle
+        case ContactBody
         case SymptomAssesmentTitle
         case SymptomAssesmentDescription
         case SymptomAssesmentButton
         case SymptomAssesmentHelp
-        case ContactInfoTitle
-        case ContactInfoMessage
-        case SymptomsInfo
-        case SymptomsText
+        case SecondaryContactTitle
+        case SecondaryContactBody
+        case ContactFirstTitle
+        case ContactFirstBody
     }
     
     private let municipalityRepository = Environment.default.municipalityRepository
@@ -47,7 +49,6 @@ class MunicipalityContactInfoViewController: UIViewController {
         )
         
         var top = contentView.snp.top
-        var contactInfoTopMargin: CGFloat
         
         if municipality.omaolo.available(service: .SymptomAssessment) {
             let infoView = InfoViewWithButton(title: Text.SymptomAssesmentTitle.localized,
@@ -57,35 +58,41 @@ class MunicipalityContactInfoViewController: UIViewController {
                                               buttonTapped: { [unowned self] in self.openOmaoloLink(target: .makeEvaluation) })
             top = contentView.appendView(infoView, top: top)
 
-            let titleLabel = UILabel(label: Text.ContactInfoTitle.localized,
+            let titleLabel = UILabel(label: Text.SecondaryContactTitle.localized,
                                      font: UIFont.heading3,
                                      color: UIColor.Greyscale.black)
             titleLabel.numberOfLines = 0
             titleLabel.setLineHeight(0.95)
             top = contentView.appendView(titleLabel, spacing: 30, top: top)
             
-            let messageLabel = UILabel(label: Text.ContactInfoMessage.localized,
+            let messageLabel = UILabel(label: Text.SecondaryContactBody.localized,
                                        font: .bodySmall,
                                        color: UIColor.Greyscale.darkGrey)
             
             messageLabel.numberOfLines = 0
             top = contentView.appendView(messageLabel, spacing: 10, top: top)
-            contactInfoTopMargin = 20
         } else {
-            contactInfoTopMargin = 0
+            let titleLabel = UILabel(label: Text.ContactTitle.localized, font: .heading2, color: UIColor.Greyscale.black)
+            titleLabel.numberOfLines = 0
+            titleLabel.setLineHeight(0.95)
+            top = contentView.appendView(titleLabel, top: top)
+            
+            let bodyLabel = UILabel(label: Text.ContactBody.localized, font: .bodySmall, color: UIColor.Greyscale.black)
+            bodyLabel.numberOfLines = 0
+            top = contentView.appendView(bodyLabel, spacing: 20, top: top)
         }
 
         let contactInformationView = MunicipalityContactInformationView(municipality: municipality) { [unowned self] in
             self.openOmaoloLink(target: .contact)
         }
         
-        top = contentView.appendView(contactInformationView, spacing: contactInfoTopMargin, top: top)
+        top = contentView.appendView(contactInformationView, spacing: 20, top: top)
         
-        let symptomsInfo = UILabel(label: Text.SymptomsInfo.localized, font: .heading4, color: UIColor.Greyscale.black)
+        let symptomsInfo = UILabel(label: Text.ContactFirstTitle.localized, font: .heading4, color: UIColor.Greyscale.black)
         symptomsInfo.numberOfLines = 0
         top = contentView.appendView(symptomsInfo, spacing: 30, top: top)
         
-        let symptomsText = UILabel(label: Text.SymptomsText.localized, font: .bodySmall, color: UIColor.Greyscale.black)
+        let symptomsText = UILabel(label: Text.ContactFirstBody.localized, font: .bodySmall, color: UIColor.Greyscale.black)
         symptomsText.numberOfLines = 0
         top = contentView.appendView(symptomsText, spacing: 10, top: top)
         
@@ -117,86 +124,64 @@ struct MunicipalityContactInfoViewControllerController_Preview: PreviewProvider 
     static var previews: some View = Group {
         createPreview(for: {
             let municipality = Municipality(code: "1234",
-                                        name: MunicipalityName(fi: "Pirkkala", sv: "Birkala"),
-                                        omaolo: Omaolo(
-                                            available: true,
-                                            serviceLanguages: ServiceLanguages(fi: true, sv: true, en: true),
-                                            symptomAssessmentOnly: false),
-                                        contact: [
-                                            Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
-                                                                     sv: nil,
-                                                                     en: nil),
-                                            phoneNumber: "+358 555 123",
-                                            info: Localized(fi: "Maanantai - Perjantai 8-16",
-                                                            sv: nil,
-                                                            en: nil)),
-                                            Contact(title: Localized(fi: nil,
-                                                                     sv: "Birkala hälsovårdscentral",
-                                                                     en: nil),
-                                            phoneNumber: "+358 555 456",
-                                            info: Localized(fi: nil,
-                                                            sv: "Mon - Fri: 8am - 4pm",
-                                                            en: nil)),
-                                            Contact(title: Localized(fi: nil,
-                                                                     sv: nil,
-                                                                     en: "Pirkkala Health Center"),
-                                            phoneNumber: "+358 555 789",
-                                            info: Localized(fi: nil,
-                                                            sv: nil,
-                                                            en: "Mon - Fri: 8am - 16pm")),
-                                            Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
-                                                                     sv: "Birkala hälsovårdscentral",
-                                                                     en: "Pirkkala Health Center"),
-                                            phoneNumber: "+358 555 000",
-                                            info: Localized(fi: "Maanantai - Perjantai 8-16",
-                                                            sv: "Måndag - Fredag 8-16",
-                                                            en: "Mon - Fri: 8am - 16pm"))
-                                        ])
-        let vc = MunicipalityContactInfoViewController()
-        vc.municipality = municipality
-        return vc
-    }())
-    createPreview(for: {
+                                            name: MunicipalityName(fi: "Pirkkala", sv: "Birkala"),
+                                            omaolo: Omaolo(available: true,
+                                                           serviceLanguages: ServiceLanguages(fi: true, sv: true, en: true),
+                                                           symptomAssessmentOnly: false),
+                                            contact: [
+                                                Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
+                                                                         sv: nil,
+                                                                         en: nil),
+                                                        phoneNumber: "+358 555 123",
+                                                        info: Localized(fi: "Maanantai - Perjantai 8-16",
+                                                                        sv: nil,
+                                                                        en: nil)),
+                                            ])
+            let vc = MunicipalityContactInfoViewController()
+            vc.municipality = municipality
+            return vc
+        }())
+        
+        createPreview(for: {
             let municipality = Municipality(code: "1234",
-                                        name: MunicipalityName(fi: "Pirkkala", sv: "Birkala"),
-                                        omaolo: Omaolo(
-                                            available: true,
-                                            serviceLanguages: ServiceLanguages(fi: true, sv: true, en: true),
-                                            symptomAssessmentOnly: true),
-                                        contact: [
-                                            Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
-                                                                     sv: nil,
-                                                                     en: nil),
-                                            phoneNumber: "+358 555 123",
-                                            info: Localized(fi: "Maanantai - Perjantai 8-16",
-                                                            sv: nil,
-                                                            en: nil)),
-                                            Contact(title: Localized(fi: nil,
-                                                                     sv: "Birkala hälsovårdscentral",
-                                                                     en: nil),
-                                            phoneNumber: "+358 555 456",
-                                            info: Localized(fi: nil,
-                                                            sv: "Mon - Fri: 8am - 4pm",
-                                                            en: nil)),
-                                            Contact(title: Localized(fi: nil,
-                                                                     sv: nil,
-                                                                     en: "Pirkkala Health Center"),
-                                            phoneNumber: "+358 555 789",
-                                            info: Localized(fi: nil,
-                                                            sv: nil,
-                                                            en: "Mon - Fri: 8am - 16pm")),
-                                            Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
-                                                                     sv: "Birkala hälsovårdscentral",
-                                                                     en: "Pirkkala Health Center"),
-                                            phoneNumber: "+358 555 000",
-                                            info: Localized(fi: "Maanantai - Perjantai 8-16",
-                                                            sv: "Måndag - Fredag 8-16",
-                                                            en: "Mon - Fri: 8am - 16pm"))
-                                        ])
-        let vc = MunicipalityContactInfoViewController()
-        vc.municipality = municipality
-        return vc
-        }())}
+                                            name: MunicipalityName(fi: "Pirkkala", sv: "Birkala"),
+                                            omaolo: Omaolo(available: true,
+                                                           serviceLanguages: ServiceLanguages(fi: true, sv: true, en: true),
+                                                           symptomAssessmentOnly: true),
+                                            contact: [
+                                                Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
+                                                                         sv: nil,
+                                                                         en: nil),
+                                                        phoneNumber: "+358 555 123",
+                                                        info: Localized(fi: "Maanantai - Perjantai 8-16",
+                                                                        sv: nil,
+                                                                        en: nil)),
+                                            ])
+            let vc = MunicipalityContactInfoViewController()
+            vc.municipality = municipality
+            return vc
+        }())
+
+        createPreview(for: {
+            let municipality = Municipality(code: "1234",
+                                            name: MunicipalityName(fi: "Pirkkala", sv: "Birkala"),
+                                            omaolo: Omaolo(available: false,
+                                                           serviceLanguages: nil,
+                                                           symptomAssessmentOnly: nil),
+                                            contact: [
+                                                Contact(title: Localized(fi: "Pirkkalan terveyskeskus",
+                                                                         sv: nil,
+                                                                         en: nil),
+                                                        phoneNumber: "+358 555 123",
+                                                        info: Localized(fi: "Maanantai - Perjantai 8-16",
+                                                                        sv: nil,
+                                                                        en: nil)),
+                                            ])
+            let vc = MunicipalityContactInfoViewController()
+            vc.municipality = municipality
+            return vc
+        }())
+    }
 }
 
 #endif

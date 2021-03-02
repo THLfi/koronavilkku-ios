@@ -10,8 +10,8 @@ class LocalizationTests: XCTestCase {
         verifyTranslations(from: StatusHeaderView.Text.self)
         verifyTranslations(from: ExposuresElement.Text.self)
         verifyTranslations(from: ExposuresViewController.Text.self)
-        verifyTranslations(from: ExposuresViewWrapper.HasExposureText.self)
-        verifyTranslations(from: ExposuresViewWrapper.NoExposuresText.self)
+        verifyTranslations(from: HasExposuresView.Text.self)
+        verifyTranslations(from: NoExposuresView.Text.self)
         verifyTranslations(from: ReportInfectionViewController.Text.self)
         verifyTranslations(from: ChooseCountriesViewController.Text.self)
         verifyTranslations(from: ChooseDestinationViewController.Text.self)
@@ -28,6 +28,7 @@ class LocalizationTests: XCTestCase {
         verifyTranslations(from: ChangeLanguageViewController.Text.self)
         verifyTranslations(from: NotificationListViewController.Text.self)
         verifyTranslations(from: Checkbox.Text.self)
+        verifyTranslations(from: ExposureGuideViewController.Text.self)
     }
     
     private func verifyTranslations<T: Localizable & CaseIterable>(from namespace: T.Type) {

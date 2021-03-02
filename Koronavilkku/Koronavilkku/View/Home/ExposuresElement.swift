@@ -1,23 +1,63 @@
 import Combine
+import SnapKit
 import UIKit
 
-final class ExposuresElement: WideRowElement {
+protocol ExposuresElementDelegate : AnyObject {
+    func runManualDetection()
+    func showExposureGuide()
+}
+
+final class ExposuresElement: WideRowElement, LocalizedView {
+    final class AccessibilityElement : UIAccessibilityElement {
+        weak var exposuresElement: ExposuresElement?
+        
+        /// Internal storage, use `accessibilityValue` instead
+        private var _accessibilityValue: String?
+        
+        /// Provide a default value that can be change over time without the UI being notified of the change
+        /// To override this behaviour, set this property explicitly to non-nil value
+        override var accessibilityValue: String? {
+            get {
+                if let value = _accessibilityValue {
+                    return value
+                }
+                
+                if exposuresElement?.detectionStatus?.manualCheckAllowed() == true {
+                    return Text.AccessibilityValueCheckDelayed.localized
+                }
+                
+                return exposuresElement?.lastCheckedView?.accessibilityLabel
+            }
+            set {
+                _accessibilityValue = newValue
+            }
+        }
+
+        init(parent: ExposuresElement) {
+            exposuresElement = parent
+            super.init(accessibilityContainer: parent)
+        }
+    }
+
     enum Text : String, Localizable {
         case TitleNoExposures
-        case BodyNoExposures
         case BodyExposureCheckDelayed
         case AccessibilityValueCheckDelayed
         case TitleHasExposures
         case BodyHasExposures
         case ButtonOpen
         case ButtonCheckNow
+        case ButtonExposureGuide
     }
     
+    private lazy var accessibilityElement = AccessibilityElement(parent: self)
     private var manualCheckButton: RoundedButton?
     private var lastCheckedView: ExposuresLastCheckedView?
+    private var guideButton: UIButton?
     
-    private let manualCheckAction: () -> ()
-    private let margin = UIEdgeInsets(top: 24, left: 20, bottom: -20, right: -20)
+    weak var delegate: ExposuresElementDelegate?
+    
+    private let margin = UIEdgeInsets(top: 24, left: 20, bottom: 20, right: -20)
     
     var timeFromLastUpdate: TimeInterval? {
         didSet {
@@ -35,7 +75,7 @@ final class ExposuresElement: WideRowElement {
             render()
         }
     }
-
+    
     /// The current detection status.
     ///
     /// Has more fine-grained control over re-rendering: Changes to the button loading state are rendered without recreating the UI
@@ -54,11 +94,11 @@ final class ExposuresElement: WideRowElement {
                 if detectionStatus.running {
                     // only affects the button rendering
                     self.manualCheckButton?.isLoading = true
-                    self.accessibilityValue = self.manualCheckButton?.accessibilityLabel
+                    accessibilityElement.accessibilityValue = self.manualCheckButton?.accessibilityLabel
                 } else if oldValue.running == true {
                     // reset the button state on failure
                     self.manualCheckButton?.isLoading = false
-                    self.accessibilityValue = nil
+                    accessibilityElement.accessibilityValue = nil
                 } else {
                     render()
                 }
@@ -71,35 +111,14 @@ final class ExposuresElement: WideRowElement {
     /// Whether the UI has been initialized or not
     private var initialized = false
     
-    /// Internal storage, use `accessibilityValue` instead
-    private var _accessibilityValue: String?
-    
-    /// Provide a default value that can be change over time without the UI being notified of the change
-    /// To override this behaviour, set this property explicitly to non-nil value
-    override var accessibilityValue: String? {
-        get {
-            if let value = _accessibilityValue {
-                return value
-            }
-            
-            if detectionStatus?.manualCheckAllowed() == true {
-                return Text.AccessibilityValueCheckDelayed.localized
-            }
-            
-            return lastCheckedView?.accessibilityLabel
-        }
-        set {
-            _accessibilityValue = newValue
-        }
-    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
 
-    init(tapped: @escaping () -> (), manualCheckAction: @escaping () -> ()) {
-        self.manualCheckAction = manualCheckAction
-        super.init(tapped: tapped)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        if let guideButton = guideButton {
+            accessibilityElement.accessibilityFrameInContainerSpace = bounds.divided(atDistance: guideButton.frame.minY, from: .minYEdge).slice
+        } else {
+            accessibilityElement.accessibilityFrameInContainerSpace = bounds
+        }
     }
     
     private func createImageView() -> UIView? {
@@ -120,7 +139,7 @@ final class ExposuresElement: WideRowElement {
             title.textColor = UIColor.Primary.red
             return title
         }
-
+        
         return createTitleLabel(title: Text.TitleNoExposures.localized)
     }
     
@@ -130,16 +149,41 @@ final class ExposuresElement: WideRowElement {
         switch exposureStatus! {
         case .exposed:
             body = .BodyHasExposures
-        
+            
         case .unexposed:
-            guard detectionStatus!.enabled() else {
+            guard detectionStatus!.enabled() && detectionStatus!.delayed else {
                 return nil
             }
-
-            body = detectionStatus!.delayed ? .BodyExposureCheckDelayed : .BodyNoExposures
-        }
             
+            body = .BodyExposureCheckDelayed
+        }
+        
         return createBodyLabel(body: body.localized)
+    }
+    
+    private func createGuideButton(topAnchor: ConstraintItem) -> UIButton {
+        let divider = UIView.createDivider()
+        
+        addSubview(divider)
+        
+        divider.snp.makeConstraints { make in
+            make.top.equalTo(topAnchor).offset(20)
+            make.left.right.equalToSuperview()
+        }
+        
+        let button = FooterItem(title: text(key: .ButtonExposureGuide),
+                                padding: UIEdgeInsets(20)) { [unowned self] in
+            self.delegate?.showExposureGuide()
+        }
+        
+        addSubview(button)
+        
+        button.snp.makeConstraints { make in
+            make.top.equalTo(divider.snp.bottom)
+            make.left.right.equalToSuperview()
+        }
+        
+        return button
     }
     
     func render() {
@@ -149,47 +193,51 @@ final class ExposuresElement: WideRowElement {
         // reset initial state
         self.manualCheckButton = nil
         self.lastCheckedView = nil
-        self.accessibilityValue = nil
+        self.guideButton = nil
+        self.accessibilityElement.accessibilityValue = nil
         
         if initialized {
             removeAllSubviews()
         }
-
+        
         let container = UIView()
         let imageView = createImageView()
         let titleView = createTitleLabel()
         let bodyView = createBodyLabel()
-        var button: RoundedButton? = nil
+        
+        var bottomAnchor = container.snp.bottom
+        var bottomOffset = margin.bottom
+        var actionButton: RoundedButton? = nil
         
         self.addSubview(container)
-
+        
         if let imageView = imageView {
             self.addSubview(imageView)
         }
-
+        
         titleView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         container.addSubview(titleView)
-
+        
         titleView.snp.makeConstraints { make in
             make.top.left.equalToSuperview()
             make.right.lessThanOrEqualToSuperview().priority(.low)
         }
-
+        
         if case .exposed(let notificationCount) = exposureStatus {
             let exposureCountLabel = Badge(label: notificationCount?.description ?? "!", backgroundColor: UIColor.Primary.red)
             exposureCountLabel.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
             container.addSubview(exposureCountLabel)
-
+            
             exposureCountLabel.snp.makeConstraints { make in
                 make.left.equalTo(titleView.snp.right).offset(10)
                 make.right.lessThanOrEqualToSuperview()
             }
-
+            
             exposureCountLabel.label.snp.makeConstraints { make in
                 make.firstBaseline.equalTo(titleView)
             }
             
-            button = RoundedButton(title: Text.ButtonOpen.localized,
+            actionButton = RoundedButton(title: Text.ButtonOpen.localized,
                                    backgroundColor: UIColor.Primary.red,
                                    highlightedBackgroundColor: UIColor.Primary.red,
                                    action: tapped)
@@ -197,26 +245,32 @@ final class ExposuresElement: WideRowElement {
             if detectionStatus.manualCheckAllowed() {
                 manualCheckButton = RoundedButton(title: Text.ButtonCheckNow.localized,
                                                   backgroundColor: UIColor.Primary.blue,
-                                                  highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground,
-                                                  action: manualCheckAction)
+                                                  highlightedBackgroundColor: UIColor.Secondary.buttonHighlightedBackground) { [unowned self] in
+                    self.delegate?.runManualDetection()
+                }
+            } else if detectionStatus.enabled() {
+                self.guideButton = createGuideButton(topAnchor: container.snp.bottom)
+                bottomAnchor = self.guideButton!.snp.bottom
+                bottomOffset = 0
             }
             
             lastCheckedView = ExposuresLastCheckedView(style: .subdued, value: timeFromLastUpdate)
             container.addSubview(lastCheckedView!)
         }
         
-        if let button = button ?? manualCheckButton {
+        if let button = actionButton ?? manualCheckButton {
             self.addSubview(button)
+            bottomAnchor = button.snp.bottom
             button.snp.makeConstraints { make in
-                make.bottom.equalToSuperview().offset(margin.bottom)
                 make.right.equalToSuperview().offset(margin.right)
                 make.left.equalToSuperview().offset(margin.left)
+                make.top.equalTo(container.snp.bottom).offset(20)
             }
         }
-                
+        
         if let bodyView = bodyView {
             container.addSubview(bodyView)
-
+            
             bodyView.snp.makeConstraints { make in
                 make.top.equalTo(titleView.snp.bottom).offset(10)
                 make.left.right.equalToSuperview()
@@ -239,33 +293,31 @@ final class ExposuresElement: WideRowElement {
             }
             
             make.bottom.equalTo(lastCheckedView ?? bodyView ?? titleView)
-            
-            if let button = button ?? manualCheckButton {
-                make.bottom.equalTo(button.snp.top).offset(-20)
-            } else {
-                make.bottom.equalToSuperview().offset(margin.bottom)
-            }
         }
-
+        
         imageView?.snp.makeConstraints { make in
             make.top.equalTo(container).offset(bodyView != nil ? 6 : 0)
             make.right.equalToSuperview().inset(30)
             make.size.equalTo(CGSize(width: 50, height: 50))
         }
-
-        isAccessibilityElement = true
-        accessibilityTraits = .button
-        accessibilityCustomActions = nil
+        
+        self.snp.makeConstraints { make in
+            make.bottom.equalTo(bottomAnchor).offset(bottomOffset)
+        }
+        
+        accessibilityElement.accessibilityTraits = .button
+        accessibilityElement.accessibilityCustomActions = nil
+        accessibilityElements = [accessibilityElement, guideButton].compactMap { $0 }
 
         if case .exposed = exposureStatus {
-            accessibilityHint = Text.ButtonOpen.localized
-            accessibilityLabel = "\(titleView.text ?? ""). \(bodyView?.text ?? "")"
+            accessibilityElement.accessibilityHint = Text.ButtonOpen.localized
+            accessibilityElement.accessibilityLabel = "\(titleView.text ?? ""). \(bodyView?.text ?? "")"
         } else {
-            accessibilityHint = nil
-            accessibilityLabel = titleView.text
+            accessibilityElement.accessibilityHint = nil
+            accessibilityElement.accessibilityLabel = titleView.text
             
             if let manualCheckButton = self.manualCheckButton {
-                accessibilityCustomActions = [
+                accessibilityElement.accessibilityCustomActions = [
                     UIAccessibilityCustomAction(name: Text.ButtonCheckNow.localized) { _ in
                         return manualCheckButton.performAction()
                     }
@@ -291,37 +343,37 @@ struct ExposuresElement_NoExposures: PreviewProvider {
                            detectionStatus: DetectionStatus,
                            timeFromLastUpdate: TimeInterval? = nil) -> ExposuresElement {
         
-        let view = ExposuresElement(tapped: {}, manualCheckAction: {})
+        let view = ExposuresElement()
         view.exposureStatus = exposureStatus
         view.detectionStatus = detectionStatus
         view.timeFromLastUpdate = timeFromLastUpdate
         return view
     }
-
+    
     static var previews: some View = Group {
         createPreviewInContainer(for: createView(exposureStatus: .unexposed,
                                                  detectionStatus: .init(status: .on, delayed: false, running: false)),
                                  width: 375,
                                  height: 200)
-
+        
         createPreviewInContainer(for: createView(exposureStatus: .unexposed,
                                                  detectionStatus: .init(status: .on, delayed: true, running: false),
                                                  timeFromLastUpdate: -1_000_000),
                                  width: 375,
                                  height: 300)
-
+        
         createPreviewInContainer(for: createView(exposureStatus: .exposed(notificationCount: 3),
                                                  detectionStatus: .init(status: .off, delayed: true, running: false),
                                                  timeFromLastUpdate: -10_000),
                                  width: 375,
                                  height: 220)
-
+        
         createPreviewInContainer(for: createView(exposureStatus: .exposed(notificationCount: nil),
                                                  detectionStatus: .init(status: .on, delayed: false, running: false),
                                                  timeFromLastUpdate: -1000),
                                  width: 375,
                                  height: 220)
-
+        
         createPreviewInContainer(for: createView(exposureStatus: .unexposed,
                                                  detectionStatus: .init(status: .apiDisabled, delayed: true, running: false),
                                                  timeFromLastUpdate: -100),
