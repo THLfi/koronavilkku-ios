@@ -290,7 +290,7 @@
 "BluetoothDisabledText" = "If Bluetooth is off, Koronavilkku cannot monitor your potential exposure to COVID-19. Allow the use of Bluetooth in your phone's settings.";
 
 "NotificationsOffTitle" = "Notifications are blocked";
-"NotificationsOffText" = "If you don't turn notifications on, Koronavilkku can't notify you of potential exposure when the app is closed. Follow these instructions to turn notifications on:";
+"NotificationsOffText" = "If you don't turn on notifications, Koronavilkku can't notify you of a potential exposure when the app is closed. Follow these instructions to turn notifications on:";
 "NotificationsOffSteps" = "1. Tap the button below to open your phone's settings.\n\n2. Select Notifications.\n\n3. Turn on Allow notifications.";
 
 "ENBlockedTitle" = "Exposure notifications are off";
@@ -309,4 +309,4 @@
 "ManualCheckErrorButton" = "OK";
 
 "ExposureNotificationTitle" = "Potential exposure";
-"ExposureNotificationText" = "You may have been exposed to the coronavirus. See instructions and contact healthcare.";
+"ExposureNotificationText" = "You may have been exposed to the coronavirus. See the instructions and contact healthcare.";
