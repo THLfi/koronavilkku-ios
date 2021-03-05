@@ -238,7 +238,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
             return
         }
         
-        var status: RadarStatus
+        let status: RadarStatus
 
         if type(of: exposureManager).authorizationStatus != .authorized {
             status = .apiDisabled
