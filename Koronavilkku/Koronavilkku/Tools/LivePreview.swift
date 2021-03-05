@@ -82,7 +82,7 @@ extension Environment {
                 return Fail(error: PreviewError.notSupported).eraseToAnyPublisher()
             }
             
-            func refreshStatus(_ completion: ((RadarStatus) -> Void)?) {
+            func refreshStatus() {
             }
             
             func setStatus(enabled: Bool) {
@@ -129,13 +129,31 @@ extension Environment {
             }
         }
         
+        struct PreviewNotificationService: NotificationService {
+            var enabled = true
+            
+            func requestAuthorization(provisional: Bool, completion: StatusCallback?) {
+            }
+            
+            func isEnabled(completion: @escaping StatusCallback) {
+                completion(enabled)
+            }
+
+            func showExposureNotification(exposureCount: Int?, delay: TimeInterval?) {
+            }
+            
+            func hideBadge() {
+            }
+        }
+        
         let state = createState()
         
         return Environment(configuration: PreviewConfiguration(),
                            batchRepository: PreviewBatchRepository(),
                            efgsRepository: PreviewEFGSRepository(state: state),
                            exposureRepository: PreviewExposureRepository(state: state),
-                           municipalityRepository: PreviewMunicipalityRepository())
+                           municipalityRepository: PreviewMunicipalityRepository(),
+                           notificationService: PreviewNotificationService())
     }
 }
 

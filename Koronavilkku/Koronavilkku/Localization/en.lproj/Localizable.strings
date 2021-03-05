@@ -309,4 +309,4 @@
 "ManualCheckErrorButton" = "OK";
 
 "ExposureNotificationTitle" = "Potential exposure";
-"ExposureNotificationText" = "You may have been exposed to the coronavirus. See the instructions and contact healthcare.";
+"ExposureNotificationBody" = "You may have been exposed to the coronavirus. See the instructions and contact healthcare.";

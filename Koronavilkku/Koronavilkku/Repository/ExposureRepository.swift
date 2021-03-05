@@ -12,7 +12,7 @@ protocol ExposureRepository {
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error>
     func postExposureKeys(publishToken: String?, visitedCountries: Set<EFGSCountry>, shareWithEFGS: Bool) -> AnyPublisher<Void, Error>
     func postDummyKeys() -> AnyPublisher<Void, Error>
-    func refreshStatus(_ completionHandler: ((RadarStatus) -> Void)?)
+    func refreshStatus()
     func setStatus(enabled: Bool)
     func tryEnable(_ completionHandler: @escaping (ENError.Code?) -> Void)
     func deleteBatchFiles()
@@ -65,6 +65,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
 
     let efgsRepository: EFGSRepository
     let exposureManager: ExposureManager
+    let notificationService: NotificationService
     let backend: Backend
     let storage: FileStorage
         
@@ -232,7 +233,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
         return keys
     }
     
-    func refreshStatus(_ completion: ((RadarStatus) -> Void)? = nil) {
+    func refreshStatus() {
         if LocalStore.shared.uiStatus == .locked {
             return
         }
@@ -245,29 +246,22 @@ struct ExposureRepositoryImpl : ExposureRepository {
             status = RadarStatus.init(from: exposureManager.exposureNotificationStatus)
         }
         
-        func applyStatus(status: RadarStatus) {
-            Log.d("Status=\(status)")
-
-            if (LocalStore.shared.uiStatus != status) {
-                LocalStore.shared.uiStatus = status
+        switch status {
+        case .on:
+            notificationService.isEnabled { enabled in
+                applyStatus(status: enabled ? .on : .notificationsOff)
             }
-            
-            completion?(status)
-        }
-        
-        if status == .on {
-            
-            Notifications.isEnabled(completion: { enabled in
-
-                if !enabled {
-                    status = .notificationsOff
-                }
                 
-                applyStatus(status: status)
-            })
-            
-        } else {
+        default:
             applyStatus(status: status)
+        }
+    }
+    
+    private func applyStatus(status: RadarStatus) {
+        Log.d("Status=\(status)")
+
+        if (LocalStore.shared.uiStatus != status) {
+            LocalStore.shared.uiStatus = status
         }
     }
     

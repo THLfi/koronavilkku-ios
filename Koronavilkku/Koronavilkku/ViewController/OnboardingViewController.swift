@@ -5,6 +5,9 @@ import Combine
 
 class OnboardingViewController: UINavigationController {
     
+    private let exposureRepository: ExposureRepository
+    private let notificationService: NotificationService
+    
     private var currentStep = 0
     private var button: RoundedButton?
     private var scrollIndicatorButton: UIButton?
@@ -36,8 +39,8 @@ class OnboardingViewController: UINavigationController {
                             header: Translation.OnboardingNotificationsTitle.localized,
                             content: Translation.OnboardingNotificationsText.localized,
                             extraContent: [ createGuideLink() ]),
-             requestPermission: {
-                Notifications.requestAuthorization { _ in
+             requestPermission: { [unowned self] in
+                self.notificationService.requestAuthorization(provisional: false) { _ in
                     self.stepDone()
                 }
              }
@@ -84,6 +87,16 @@ class OnboardingViewController: UINavigationController {
         ),
     ]
     
+    init(env: Environment = .default) {
+        exposureRepository = env.exposureRepository
+        notificationService = env.notificationService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setDefaultStyle()
@@ -120,7 +133,6 @@ class OnboardingViewController: UINavigationController {
         }
         
         let exposureManager = ExposureManagerProvider.shared.manager
-        let exposureRepository = Environment.default.exposureRepository
         
         // TODO: Refactor this to use ExposureRepository tryEnable
         exposureManager.setExposureNotificationEnabled(true, completionHandler: { [weak self] error in
@@ -152,9 +164,8 @@ class OnboardingViewController: UINavigationController {
                 LocalStore.shared.onboardingResumeStep = StepId.enableApiInstructions.rawValue
                 
             } else {
-                exposureRepository.refreshStatus { _ in
-                    weakSelf.stepDone()
-                }
+                self?.exposureRepository.refreshStatus()
+                weakSelf.stepDone()
             }
         })
     }

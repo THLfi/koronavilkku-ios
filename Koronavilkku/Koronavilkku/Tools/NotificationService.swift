@@ -2,10 +2,18 @@ import UIKit
 import Foundation
 import UserNotifications
 
-struct Notifications {
- 
+protocol NotificationService {
+    typealias StatusCallback = ((_ enabled: Bool) -> Void)
+    
+    func requestAuthorization(provisional: Bool, completion: StatusCallback?)
+    func isEnabled(completion: @escaping StatusCallback)
+    func showExposureNotification(exposureCount: Int?, delay: TimeInterval?)
+    func hideBadge()
+}
+
+struct NotificationServiceImpl : NotificationService {
     /// The optional completion closure is called with the same enabled value as `isEnabled` does.
-    static func requestAuthorization(provisional: Bool = false, completion: ((_ enabled: Bool) -> Void)? = nil) {
+    func requestAuthorization(provisional: Bool = false, completion: StatusCallback? = nil) {
         let center = UNUserNotificationCenter.current()
         var options: UNAuthorizationOptions = [.alert, .sound, .badge]
 
@@ -27,7 +35,7 @@ struct Notifications {
         }
     }
     
-    static func isEnabled(completion: @escaping (_ enabled: Bool) -> Void) {
+    func isEnabled(completion: @escaping (_ enabled: Bool) -> Void) {
         let center = UNUserNotificationCenter.current()
         
         center.getNotificationSettings { settings in
@@ -37,14 +45,14 @@ struct Notifications {
         }
     }
     
-    static func showExposureNotification(exposureCount: Int?, delay: TimeInterval? = nil) {
-        Notifications.showNotification(title: Translation.ExposureNotificationTitle.localized,
-                                       body: Translation.ExposureNotificationTitle.localized,
-                                       delay: delay,
-                                       badgeNumber: exposureCount)
+    func showExposureNotification(exposureCount: Int?, delay: TimeInterval? = nil) {
+        showNotification(title: Translation.ExposureNotificationTitle.localized,
+                         body: Translation.ExposureNotificationBody.localized,
+                         delay: delay,
+                         badgeNumber: exposureCount)
     }
 
-    static func showNotification(title: String, body: String, delay: TimeInterval? = nil, badgeNumber: Int? = nil) {
+    private func showNotification(title: String, body: String, delay: TimeInterval? = nil, badgeNumber: Int? = nil) {
         let center = UNUserNotificationCenter.current()
 
         func doRequest() {
@@ -83,7 +91,7 @@ struct Notifications {
             // all settings will be enabled when user enables notifications (after having denied permission).
             // Therefore request provisional authorization only when it is actually needed.
             if settings.authorizationStatus == .notDetermined {
-                Notifications.requestAuthorization(provisional: true) { _ in
+                requestAuthorization(provisional: true) { _ in
                     doRequest()
                 }
                 
@@ -96,7 +104,7 @@ struct Notifications {
         }
     }
     
-    static func hideBadge() {
+    func hideBadge() {
         UIApplication.shared.applicationIconBadgeNumber = 0
     }
 }

@@ -63,7 +63,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneDidBecomeActive(_ scene: UIScene) {
         activationTask = ExposureManagerProvider.shared.activated.sink { activated in
-            Environment.default.exposureRepository.refreshStatus(nil)
+            Environment.default.exposureRepository.refreshStatus()
         }
         
         LocalStore.shared.removeExpiredExposures()

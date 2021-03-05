@@ -30,6 +30,7 @@ class TestViewController: UIViewController {
     var batchRepository = Environment.default.batchRepository as! BatchRepositoryImpl
     var exposureManager = ExposureManagerProvider.shared.manager
     var exposureRepository = Environment.default.exposureRepository
+    var notificationService = Environment.default.notificationService
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,29 +41,46 @@ class TestViewController: UIViewController {
         
         self.view.addKeyboardDisposer()
         
-        view.addSubview(batchIdInput)
+        let scrollView = UIScrollView()
+        view.addSubview(scrollView)
+        
+        scrollView.snp.makeConstraints { make in
+            make.top.bottom.equalTo(view.safeAreaInsets)
+            make.left.right.equalToSuperview()
+        }
+        
+        let content = UIView()
+        scrollView.addSubview(content)
+        
+        content.snp.makeConstraints { make in
+            make.edges.equalTo(scrollView.contentLayoutGuide)
+            make.width.equalTo(scrollView.frameLayoutGuide)
+        }
+        
+        content.addSubview(batchIdInput)
         batchIdInput.placeholder = "Batch id"
         batchIdInput.borderStyle = .bezel
         batchIdInput.textColor = .black
         batchIdInput.snp.makeConstraints { make in
             make.width.equalTo(150)
             make.height.equalTo(30)
-            make.right.equalTo(view.snp.centerX)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(50)
+            make.right.equalTo(content.snp.centerX)
+            make.top.equalToSuperview().offset(50)
         }
         
-        view.addSubview(storeBatchIdButton)
+        content.addSubview(storeBatchIdButton)
+        
         self.storeBatchIdButton.snp.makeConstraints { make in
             make.width.equalTo(150)
             make.height.equalTo(30)
             make.left.equalTo(batchIdInput.snp.right).offset(10)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(50)
+            make.top.equalToSuperview().offset(50)
         }
         
         var top = batchIdInput.snp.bottom
         
         func appendButton(_ button: UIButton) {
-            self.view.addSubview(button)
+            content.addSubview(button)
             button.snp.makeConstraints { make in
                 make.width.equalTo(200)
                 make.height.equalTo(30)
@@ -86,6 +104,10 @@ class TestViewController: UIViewController {
         appendButton(dumpEFGSCountriesButton)
         appendButton(deleteEFGSCountriesButton)
         appendButton(showNotificationButton)
+        
+        scrollView.snp.makeConstraints { make in
+            make.bottom.equalTo(top).offset(30)
+        }
 
         LocalStore.shared.$uiStatus.addObserver(using: { [weak self] in
             self?.radarStatus.setTitle("Radar status \(LocalStore.shared.uiStatus)", for: .normal)
@@ -150,13 +172,13 @@ class TestViewController: UIViewController {
         
         LocalStore.shared.exposureNotifications.append(notification)
         LocalStore.shared.updateDateLastPerformedExposureDetection()
-        Notifications.showExposureNotification(exposureCount: notification.exposureCount)
+        notificationService.showExposureNotification(exposureCount: LocalStore.shared.exposureNotifications.count, delay: nil)
         Log.d("Created exposure notification \(notification)")
     }
     
     @objc func removeExposures() {
         LocalStore.shared.resetExposures()
-        Notifications.hideBadge()
+        notificationService.hideBadge()
     }
     
     @objc func toggleRadarStatus() {
@@ -219,7 +241,7 @@ class TestViewController: UIViewController {
     }
 
     @objc func showDelayedNotification() {
-        Notifications.showExposureNotification(exposureCount: nil, delay: 5)
+        notificationService.showExposureNotification(exposureCount: nil, delay: 5)
     }
     
     private func showDialog(_ message: String, title: String = "Error") {

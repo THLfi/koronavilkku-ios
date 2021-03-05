@@ -153,5 +153,5 @@ enum Translation: String, Localizable {
     case ManualCheckErrorButton
 
     case ExposureNotificationTitle
-    case ExposureNotificationText
+    case ExposureNotificationBody
 }

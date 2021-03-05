@@ -23,9 +23,11 @@ class MainViewController: UIViewController, LocalizedView {
 
     private var tasks = Set<AnyCancellable>()
     private let exposureRepository: ExposureRepository
+    private let notificationService: NotificationService
     
     init(env: Environment = .default) {
         self.exposureRepository = env.exposureRepository
+        self.notificationService = env.notificationService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -116,19 +118,12 @@ class MainViewController: UIViewController, LocalizedView {
                        
         // Setup header view
         self.headerView = StatusHeaderView()
+        headerView.delegate = self
         wrapper.addSubview(headerView)
         
         headerView.snp.makeConstraints { make in
             make.top.equalTo(wrapper)
             make.left.right.equalToSuperview()
-        }
-        
-        headerView.openSettingsHandler = { [unowned self] type in
-            let viewController = OpenSettingsViewController.create(type: type) { [unowned self] in
-                self.dismiss(animated: true)
-            }
-            
-            self.present(viewController, animated: true)
         }
         
         // Setup notification and helper components
@@ -269,6 +264,62 @@ extension MainViewController : ExposuresElementDelegate {
     func showExposureGuide() {
         let guide = ExposureGuideViewController()
         self.navigationController?.present(guide, animated: true, completion: nil)
+    }
+}
+
+extension MainViewController : StatusHeaderViewDelegate {
+    private func openSettings(type: OpenSettingsType) {
+        let viewController = OpenSettingsViewController.create(type: type) { [unowned self] in
+            self.dismiss(animated: true)
+        }
+        
+        self.present(viewController, animated: true)
+    }
+    
+    func statusHeaderViewButtonAction(status: RadarStatus) {
+        switch status {
+        case .btOff:
+            openSettings(type: .bluetooth)
+            
+        case .notificationsOff:
+            // OS will only show the permission dialog once.
+            notificationService.requestAuthorization(provisional: false) { [weak self] enabled in
+                if !enabled {
+                    self?.openSettings(type: .notifications)
+                }
+            }
+
+        case .apiDisabled:
+            // attempt to enable the disabled API first
+            // in some cases the system pops up a dialog where the user is able to
+            // activate the API, eg. after being completely turned off (in iOS 13.7+)
+            // or when another app is currently active (prior to iOS 13.7)
+            exposureRepository.tryEnable { [weak self] errorCode in
+                // API activated
+                guard let code = errorCode else {
+                    return
+                }
+                
+                // iOS 13.7+ we can no longer reliably determine anything from the error code;
+                // just show instructions how to enable the API in Settings.app
+                if #available(iOS 13.7, *) {
+                    self?.openSettings(type: .exposureNotifications)
+                } else {
+                    // in iOS prior to 13.7, attempting to enable the API results in .notAuthorized
+                    // when the API has been disabled and .restricted when the user rejects the
+                    // presented dialog; avoid showing instructions if the user rejected
+                    if code != .restricted {
+                        self?.openSettings(type: .exposureNotifications)
+                    }
+                }
+            }
+
+        case .off:
+            exposureRepository.setStatus(enabled: true)
+
+        default:
+            break
+        }
     }
 }
 

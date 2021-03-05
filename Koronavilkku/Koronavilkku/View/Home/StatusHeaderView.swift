@@ -57,6 +57,10 @@ final class RadarAnimation : UIImageView {
     }
 }
 
+protocol StatusHeaderViewDelegate {
+    func statusHeaderViewButtonAction(status: RadarStatus)
+}
+
 final class StatusHeaderView: UIView {
     enum Text : String, Localizable {
         case TitleEnabled
@@ -79,8 +83,6 @@ final class StatusHeaderView: UIView {
     private var button: UIButton!
     private var buttonConstraint: Constraint!
 
-    private let exposureRepository = Environment.default.exposureRepository
-
     private let verticalPadding = CGFloat(30)
     private let imageHeight = CGFloat(138)
     private let imageWidth = CGFloat(118)
@@ -95,8 +97,8 @@ final class StatusHeaderView: UIView {
         }
     }
     
-    var openSettingsHandler: ((_ type: OpenSettingsType) -> Void)? = nil
-
+    var delegate: StatusHeaderViewDelegate? = nil
+    
     init() {
         super.init(frame: .zero)
         createUI()
@@ -214,54 +216,8 @@ final class StatusHeaderView: UIView {
     }
 
     private func buttonAction() {
-        switch radarStatus {
-        case .btOff:
-            openSettings(.bluetooth)
-            
-        case .notificationsOff:
-            // OS will only show the permission dialog once.
-            Notifications.requestAuthorization { [weak self] enabled in
-                if !enabled {
-                    self?.openSettings(.notifications)
-                }
-            }
-
-        case .apiDisabled:
-            // attempt to enable the disabled API first
-            // in some cases the system pops up a dialog where the user is able to
-            // activate the API, eg. after being completely turned off (in iOS 13.7+)
-            // or when another app is currently active (prior to iOS 13.7)
-            exposureRepository.tryEnable { [weak self] errorCode in
-                // API activated
-                guard let code = errorCode else {
-                    return
-                }
-                
-                // iOS 13.7+ we can no longer reliably determine anything from the error code;
-                // just show instructions how to enable the API in Settings.app
-                if #available(iOS 13.7, *) {
-                    self?.openSettings(.exposureNotifications)
-                } else {
-                    // in iOS prior to 13.7, attempting to enable the API results in .notAuthorized
-                    // when the API has been disabled and .restricted when the user rejects the
-                    // presented dialog; avoid showing instructions if the user rejected
-                    if code != .restricted {
-                        self?.openSettings(.exposureNotifications)
-                    }
-                }
-            }
-
-        case .off:
-            exposureRepository.setStatus(enabled: true)
-
-        default:
-            break
-        }
-    }
-    
-    private func openSettings(_ type: OpenSettingsType) {
-        guard let handler = self.openSettingsHandler else { return }
-        handler(type)
+        guard let radarStatus = radarStatus else { return }
+        delegate?.statusHeaderViewButtonAction(status: radarStatus)
     }
     
     private func getRadarView() -> UIImageView {
