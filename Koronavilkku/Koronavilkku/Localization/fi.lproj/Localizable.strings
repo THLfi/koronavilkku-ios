@@ -37,6 +37,7 @@
 "StatusHeaderView.Text.BodyBTOff" = "Ota Bluetooth käyttöön.";
 "StatusHeaderView.Text.BodyLocked" = "Kiitos, että ilmoitit tartunnastasi. Sovellus ei enää kerää tietoja kohtaamisista. Pikaista paranemista!";
 "StatusHeaderView.Text.EnableButton" = "Ota käyttöön";
+"StatusHeaderView.Text.EnableNotificationsButton" = "Ota käyttöön";
 
 // MARK: ExposuresElement
 "ExposuresElement.Text.TitleNoExposures" = "Ei havaittuja altistumisia";

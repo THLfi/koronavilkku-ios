@@ -75,6 +75,7 @@ final class StatusHeaderView: UIView {
         case BodyNotificationsOff
         
         case EnableButton
+        case EnableNotificationsButton
     }
 
     private var radarContainer: UIView!
@@ -274,8 +275,10 @@ final class StatusHeaderView: UIView {
         switch radarStatus {
         case .on, .locked, .none:
             return nil
-        case .apiDisabled, .btOff, .off, .notificationsOff:
+        case .apiDisabled, .btOff, .off:
             return .EnableButton
+        case .notificationsOff:
+            return .EnableNotificationsButton
         }
     }
 }

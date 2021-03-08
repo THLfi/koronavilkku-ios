@@ -37,6 +37,7 @@
 "StatusHeaderView.Text.BodyBTOff" = "Turn on Bluetooth.";
 "StatusHeaderView.Text.BodyLocked" = "Thank you for reporting your infection. The app will no longer collect information about encounters. We wish you a quick recovery!";
 "StatusHeaderView.Text.EnableButton" = "Enable";
+"StatusHeaderView.Text.EnableNotificationsButton" = "Turn on";
 
 // MARK: ExposuresElement
 "ExposuresElement.Text.TitleNoExposures" = "No observed exposures";
