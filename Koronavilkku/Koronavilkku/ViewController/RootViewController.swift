@@ -110,6 +110,15 @@ class RootViewController : UITabBarController {
         reportInfectionVC.startReportInfectionFlow(with: code)
     }
     
+    func openHomeScreen() {
+        // existing modals would prevent the further actions
+        presentedViewController?.dismiss(animated: false)
+
+        // navigate to the correct view
+        selectTab(.home)
+        tabViewController(.home)?.popToRootViewController(animated: false)
+    }
+    
     func selectTab(_ tab: RootTab) {
         selectedIndex = tab.rawValue
     }
