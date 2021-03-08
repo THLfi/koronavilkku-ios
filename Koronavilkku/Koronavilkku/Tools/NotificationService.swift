@@ -55,7 +55,7 @@ struct NotificationServiceImpl : NotificationService {
     private func showNotification(title: String, body: String, delay: TimeInterval? = nil, badgeNumber: Int? = nil) {
         let center = UNUserNotificationCenter.current()
 
-        func doRequest() {
+        let doRequest = {
             let content = UNMutableNotificationContent()
             content.title = title
             content.body = body
@@ -90,15 +90,16 @@ struct NotificationServiceImpl : NotificationService {
             // visible as with provisional authorization. If no provisional authorization has been asked, then
             // all settings will be enabled when user enables notifications (after having denied permission).
             // Therefore request provisional authorization only when it is actually needed.
-            if settings.authorizationStatus == .notDetermined {
+            switch settings.authorizationStatus {
+            case .notDetermined:
                 requestAuthorization(provisional: true) { _ in
                     doRequest()
                 }
-                
-            } else if settings.authorizationStatus == .authorized || settings.authorizationStatus == .provisional {
+            
+            case .authorized, .provisional:
                 doRequest()
-
-            } else {
+            
+            default:
                 Log.d("Unauthorized to display notifications")
             }
         }
