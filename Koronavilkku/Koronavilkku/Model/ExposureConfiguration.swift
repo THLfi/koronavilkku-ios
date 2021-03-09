@@ -17,8 +17,11 @@ struct ExposureConfiguration: Codable {
 
     let daysSinceExposureThreshold: Int
     let minimumWindowScore: Double
+    let minimumDailyScore: Int
 
-    let daysSinceOnsetToinfectiousness: [String: String]
+    let daysSinceOnsetToInfectiousness: [String: String]
+    
+    /// Unused. daysSinceOnsetToInfectiousness should always be complete. EN API defaults to .none if infectiousness is undefined for an onset.
     let infectiousnessWhenDaysSinceOnsetMissing: String
 
     let availableCountries: [String]
@@ -35,7 +38,7 @@ struct ExposureConfiguration: Codable {
             }
         }
         
-        return daysSinceOnsetToinfectiousness.reduce(into: [:]) { (list, item) in
+        return daysSinceOnsetToInfectiousness.reduce(into: [:]) { (list, item) in
             if let day = Int(item.key) {
                 list[NSNumber(value: day)] = NSNumber(value: mapInfectiousness(item.value).rawValue)
             }
@@ -53,6 +56,8 @@ extension ENExposureConfiguration {
         }
         
         attenuationDurationThresholds = from.attenuationBucketThresholdDb.map(NSNumber.init)
+        minimumRiskScoreFullRange = from.minimumWindowScore
+
         immediateDurationWeight = weight(of: from.attenuationBucketWeights[0])
         nearDurationWeight = weight(of: from.attenuationBucketWeights[1])
         mediumDurationWeight = weight(of: from.attenuationBucketWeights[2])
@@ -69,26 +74,5 @@ extension ENExposureConfiguration {
         reportTypeRecursiveWeight = weight(of: from.reportTypeWeightRecursive)
         reportTypeSelfReportedWeight = weight(of: from.reportTypeWeightSelfReport)
         reportTypeNoneMap = ENDiagnosisReportType.confirmedTest
-    }
-}
-
-extension ExposureConfiguration {
-
-    func with(minimumRiskScore: Int) -> ExposureConfiguration {
-        return ExposureConfiguration(version: version,
-                                     reportTypeWeightConfirmedTest: reportTypeWeightConfirmedTest,
-                                     reportTypeWeightConfirmedClinicalDiagnosis: reportTypeWeightConfirmedClinicalDiagnosis,
-                                     reportTypeWeightSelfReport: reportTypeWeightSelfReport,
-                                     reportTypeWeightRecursive: reportTypeWeightRecursive,
-                                     infectiousnessWeightStandard: infectiousnessWeightStandard,
-                                     infectiousnessWeightHigh: infectiousnessWeightHigh,
-                                     attenuationBucketThresholdDb: attenuationBucketThresholdDb,
-                                     attenuationBucketWeights: attenuationBucketWeights,
-                                     daysSinceExposureThreshold: daysSinceExposureThreshold,
-                                     minimumWindowScore: Double(minimumRiskScore),
-                                     daysSinceOnsetToinfectiousness: daysSinceOnsetToinfectiousness,
-                                     infectiousnessWhenDaysSinceOnsetMissing: infectiousnessWhenDaysSinceOnsetMissing,
-                                     availableCountries: availableCountries)
-            
     }
 }

@@ -90,6 +90,7 @@
 "NotificationListViewController.Text.ItemTitle" = "Altistumisilmoitus %@";
 "NotificationListViewController.Text.ItemCountLabel" = "Mahdollisia altistumisia";
 "NotificationListViewController.Text.ItemCountValue" = "%@ kpl";
+"NotificationListViewController.Text.ItemDaysLabel" = "Mahdollisia uusia altistumisia";
 "NotificationListViewController.Text.ItemIntervalLabel" = "Aikavälillä";
 "NotificationListViewController.Text.ItemIntervalValue" = "%@";
 

@@ -71,7 +71,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
             Environment.default.exposureRepository.refreshStatus()
         }
         
-        LocalStore.shared.removeExpiredExposures()
+        Environment.default.exposureRepository.removeExpiredExposures()
     }
 
     func sceneWillResignActive(_ scene: UIScene) {

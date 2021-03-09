@@ -6,7 +6,47 @@ enum ExposureStatus: Equatable {
     case exposed(notificationCount: Int?)
 }
 
-struct ExposureNotification: Codable {
+protocol ExposureNotification: Codable {
+    var detectedOn: Date { get }
+    var expiresOn: Date { get }
+    var detectionInterval: DateInterval { get }
+}
+
+struct DaysExposureNotification: ExposureNotification {
+    let detectedOn: Date
+    let expiresOn: Date
+    let detectionInterval: DateInterval
+
+    let exposureDays: [Date]
+    let latestExposureDate: Date
+    var dayCount: Int { exposureDays.count }
+
+    init(detectedOn: Date = .init(), exposureDays: [Date]) {
+        self.detectedOn = detectedOn
+        self.latestExposureDate = exposureDays.max() ?? detectedOn
+        self.expiresOn = ExposureNotificationSpec.calculateRetentionTime(timeOfExposure: self.latestExposureDate)
+        self.detectionInterval = ExposureNotificationSpec.calculateDetectionInterval(from: detectedOn)
+        self.exposureDays = exposureDays
+    }
+}
+
+/// This is the old V1 way of storing exposure notifications.
+struct CountExposureNotification: ExposureNotification {
+    let detectedOn: Date
+    let expiresOn: Date
+    let detectionInterval: DateInterval
+
+    let exposureCount: Int
+    
+    init(detectionTime: Date, latestExposureOn: Date, exposureCount: Int) {
+        self.detectedOn = detectionTime
+        self.expiresOn = ExposureNotificationSpec.calculateRetentionTime(timeOfExposure: latestExposureOn)
+        self.detectionInterval = ExposureNotificationSpec.calculateDetectionInterval(from: detectionTime)
+        self.exposureCount = exposureCount
+    }
+}
+
+fileprivate struct ExposureNotificationSpec {
     typealias Days = Double
     
     /// The number of days an exposure notification is being shown after the exposure
@@ -22,18 +62,6 @@ struct ExposureNotification: Codable {
     /// to the V2 API.
     static let exposureDetectionInterval: Days = 14
     
-    let detectedOn: Date
-    let expiresOn: Date
-    let detectionInterval: DateInterval
-    let exposureCount: Int
-    
-    init(detectionTime: Date, latestExposureOn: Date, exposureCount: Int) {
-        self.detectedOn = detectionTime
-        self.expiresOn = ExposureNotification.calculateRetentionTime(timeOfExposure: latestExposureOn)
-        self.detectionInterval = ExposureNotification.calculateDetectionInterval(from: detectionTime)
-        self.exposureCount = exposureCount
-    }
-
     /// Determines the exposure notification retention time
     ///
     /// The official exposure retention time is calculated from the time of exposure.

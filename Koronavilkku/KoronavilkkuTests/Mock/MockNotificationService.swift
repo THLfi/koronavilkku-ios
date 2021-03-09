@@ -23,9 +23,11 @@ class MockNotificationService : NotificationService {
         showNotificationLog.append((title, body, delay, badgeNumber))
     }
     
-    var hideBadgeCalled = 0
+    var updateBadgeCalled = 0
+    var currentBadgeNumber: Int? = nil
     
-    func hideBadge() {
-        hideBadgeCalled += 1
+    func updateBadgeNumber(_ number: Int?) {
+        updateBadgeCalled += 1
+        currentBadgeNumber = number
     }
 }

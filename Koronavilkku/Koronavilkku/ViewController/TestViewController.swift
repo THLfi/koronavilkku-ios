@@ -13,9 +13,10 @@ class TestViewController: UIViewController {
     lazy var storeBatchIdButton = self.createButton(title: "Store batch id", action: #selector(storeBatchId))
     lazy var testBatchDownloadButton = self.createButton(title: "Test batch loading", action: #selector(batchDownloadPressed))
     lazy var downloadAndDetectButton = self.createButton(title: "Run exposure detection", action: #selector(downloadAndDetect))
-    lazy var addExposureButton = self.createButton(title: "Add exposure", action: #selector(addExposure))
+    lazy var addExposureButton = self.createButton(title: "Add exposures", action: #selector(addExposure))
     lazy var addExposureDelayedButton = self.createButton(title: "Add exposure, delayed", action: #selector(addExposureDelayed))
     lazy var addLegacyExposureButton = self.createButton(title: "Add legacy exposure", action: #selector(addLegacyExposure))
+    lazy var addCountExposureButton = self.createButton(title: "Add count exposure", action: #selector(addCountExposure))
     lazy var removeExposuresButton = self.createButton(title: "Remove exposures", action: #selector(removeExposures))
     lazy var radarStatus = self.createButton(title: "Radar status \(LocalStore.shared.uiStatus)", action: #selector(toggleRadarStatus))
     lazy var resetOnboardingButton = self.createButton(title: "Reset onboarding", action: #selector(resetOnboarding))
@@ -94,6 +95,7 @@ class TestViewController: UIViewController {
         appendButton(downloadAndDetectButton)
         appendButton(addExposureButton)
         appendButton(addExposureDelayedButton)
+        appendButton(addCountExposureButton)
         appendButton(addLegacyExposureButton)
         appendButton(removeExposuresButton)
         appendButton(radarStatus)
@@ -150,7 +152,7 @@ class TestViewController: UIViewController {
     }
     
     @objc func addExposure() {
-        addTestExposure()
+        addTestExposure(count: 2)
     }
     
     @objc func addLegacyExposure() {
@@ -158,19 +160,32 @@ class TestViewController: UIViewController {
         LocalStore.shared.exposures.append(exposure)
         Log.d("Created exposure \(exposure)")
     }
+    
+    @objc func addCountExposure() {
+        let notification = CountExposureNotification(detectionTime: Date(),
+                                                     latestExposureOn: Date().addingTimeInterval(.day * -3),
+                                                     exposureCount: Int.random(in: 1...5))
+
+        LocalStore.shared.countExposureNotifications.append(notification)
+        Log.d("Created exposure notification \(notification)")
+    }
 
     @objc func addExposureDelayed() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.addTestExposure()
+            self.addTestExposure(count: 1)
         }
     }
     
-    private func addTestExposure() {
-        let notification = ExposureNotification(detectionTime: Date(),
-                                                latestExposureOn: Date().addingTimeInterval(86_400 * -3),
-                                                exposureCount: Int.random(in: 1...5))
-        
-        LocalStore.shared.exposureNotifications.append(notification)
+    private func addTestExposure(count: Int) {
+        var days: [Date] = []
+
+        for delta in 1...count {
+            days.append(Date().addingTimeInterval(.day * Double(-delta)))
+        }
+
+        let notification = DaysExposureNotification(detectedOn: Date(), exposureDays: days)
+
+        LocalStore.shared.daysExposureNotifications.append(notification)
         LocalStore.shared.updateDateLastPerformedExposureDetection()
         exposureRepository.showExposureNotification(delay: nil)
         Log.d("Created exposure notification \(notification)")
@@ -178,7 +193,7 @@ class TestViewController: UIViewController {
     
     @objc func removeExposures() {
         LocalStore.shared.resetExposures()
-        notificationService.hideBadge()
+        notificationService.updateBadgeNumber(nil)
     }
     
     @objc func toggleRadarStatus() {

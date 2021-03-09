@@ -16,6 +16,8 @@ protocol ExposureRepository {
     func setStatus(enabled: Bool)
     func tryEnable(_ completionHandler: @escaping (ENError.Code?) -> Void)
     func deleteBatchFiles()
+    func removeExpiredExposures()
+    func showExposureNotification(delay: TimeInterval?)
 }
 
 struct ExposureRepositoryImpl : ExposureRepository {
@@ -79,8 +81,9 @@ struct ExposureRepositoryImpl : ExposureRepository {
     
     func exposureStatus() -> AnyPublisher<ExposureStatus, Never> {
         LocalStore.shared.$exposures.$wrappedValue
-            .combineLatest(LocalStore.shared.$exposureNotifications.$wrappedValue)
+            .combineLatest(getExposureNotifications())
             .map { exposures, notifications -> ExposureStatus in
+
                 if !notifications.isEmpty {
                     return .exposed(notificationCount: notifications.count)
                 }
@@ -94,7 +97,11 @@ struct ExposureRepositoryImpl : ExposureRepository {
     }
 
     func getExposureNotifications() -> AnyPublisher<[ExposureNotification], Never> {
-        LocalStore.shared.$exposureNotifications.$wrappedValue.eraseToAnyPublisher()
+        LocalStore.shared.$daysExposureNotifications.$wrappedValue
+            .combineLatest(LocalStore.shared.$countExposureNotifications.$wrappedValue)
+            .map { countNotifications, daysNotifications -> [ExposureNotification] in
+                return daysNotifications + countNotifications
+            }.eraseToAnyPublisher()
     }
     
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error> {
@@ -106,35 +113,34 @@ struct ExposureRepositoryImpl : ExposureRepository {
         let urls = ids.map { self.storage.getFileUrls(forBatchId: $0) }.flatMap { $0 }
         Log.d("Ids: \(ids), Config: \(config), Detecting with urls: \(urls)")
 
-        // iOS calculates attenuation buckets only from exposures equal or greater to minimumRiskScore
-        // Override the minimumRiskScore for detection only
-        return self.exposureManager.detectExposures(configuration: config.with(minimumRiskScore: 1),
+        return self.exposureManager.detectExposures(configuration: config,
                                                     diagnosisKeyURLs: urls)
-            .flatMap { summary -> AnyPublisher<[ENExposureInfo], Error> in
-                Log.d("Got summary: \(summary)")
-            
-                let maxScore = summary.daySummaries.reduce(0.0) { score, day in
-                    Log.d("Day \(day.date) summary: \(day.daySummary)")
-                    return day.daySummary.scoreSum > score ? day.daySummary.scoreSum : score
-                }
+            .flatMap { summary -> AnyPublisher<[Date], Error> in
+                Log.d("Got day summaries: \(summary.daySummaries)")
+
+                let currentExposureDays = LocalStore.shared.daysExposureNotifications
+                    .flatMap { $0.exposureDays }
                 
+                let newExposureDays = summary.daySummaries
+                    .filter { Int($0.daySummary.scoreSum) >= config.minimumDailyScore }
+                    .filter { !currentExposureDays.contains($0.date) }
+                    .map { $0.date }
+
                 if let latestId = ids.sorted().last {
                     LocalStore.shared.nextDiagnosisKeyFileIndex = latestId
                 }
-
-                if maxScore > 900 {
-                    let explanation = Translation.ExposureNotificationUserExplanation.localized
-                    return self.exposureManager.getExposureInfo(summary: summary,
-                                                                userExplanation: explanation)
-                }
                 
-                return Just([ENExposureInfo]()).setFailureType(to: Error.self).eraseToAnyPublisher()
+                return Just(newExposureDays).setFailureType(to: Error.self).eraseToAnyPublisher()
             }
             .receive(on: RunLoop.main)
-            .map { exposureInfos -> Bool in
-                guard !exposureInfos.isEmpty else { return false }
+            .map { newExposureDays -> Bool in
+                guard !newExposureDays.isEmpty else { return false }
 
-                exposureInfos.forEach { Log.d("ExposureInfo: \($0)") }
+                let notification = DaysExposureNotification(exposureDays: newExposureDays)
+                LocalStore.shared.removeExpiredExposures()
+                LocalStore.shared.daysExposureNotifications.append(notification)
+                showExposureNotification(delay: nil)
+
                 return true
             }
             .eraseToAnyPublisher()
@@ -262,11 +268,16 @@ struct ExposureRepositoryImpl : ExposureRepository {
         }
     }
 
+    func removeExpiredExposures() {
+        LocalStore.shared.removeExpiredExposures()
+        notificationService.updateBadgeNumber(LocalStore.shared.exposureNotificationCount)
+    }
+
     func showExposureNotification(delay: TimeInterval? = nil) {
         notificationService.showNotification(title: Translation.ExposureNotificationTitle.localized,
                                              body: Translation.ExposureNotificationBody.localized,
                                              delay: delay,
-                                             badgeNumber: LocalStore.shared.exposureNotifications.count)
+                                             badgeNumber: LocalStore.shared.exposureNotificationCount)
     }
 }
 

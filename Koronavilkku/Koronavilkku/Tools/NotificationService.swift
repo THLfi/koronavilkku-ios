@@ -8,7 +8,7 @@ protocol NotificationService {
     func isEnabled(completion: @escaping StatusCallback)
     func requestAuthorization(provisional: Bool, completion: StatusCallback?)
     func showNotification(title: String, body: String, delay: TimeInterval?, badgeNumber: Int?)
-    func hideBadge()
+    func updateBadgeNumber(_ number: Int?)
 }
 
 struct NotificationServiceImpl : NotificationService {
@@ -104,7 +104,7 @@ struct NotificationServiceImpl : NotificationService {
         }
     }
     
-    func hideBadge() {
-        UIApplication.shared.applicationIconBadgeNumber = 0
+    func updateBadgeNumber(_ number: Int?) {
+        UIApplication.shared.applicationIconBadgeNumber = number ?? 0
     }
 }

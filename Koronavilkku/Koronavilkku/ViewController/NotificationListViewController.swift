@@ -10,6 +10,8 @@ class NotificationListViewController: UIViewController {
         case ItemTitle
         case ItemCountLabel
         case ItemCountValue
+        case ItemDaysLabel
+        case ItemDaysValue
         case ItemIntervalLabel
         case ItemIntervalValue
     }
@@ -119,10 +121,18 @@ class NotificationListViewController: UIViewController {
             append(.createDivider(height: 1),
                    .init(top: 10, left: 20, right: 20))
             
-            append(createLineItem(label: .ItemCountLabel,
-                                  valueText: .ItemCountValue,
-                                  value: String(notification.exposureCount)),
-                   .init(top: 10, left: 20, right: 20))
+            if let dayNotification = notification as? DaysExposureNotification {
+                append(createLineItem(label: .ItemDaysLabel,
+                                      valueText: .ItemDaysValue,
+                                      value: dayNotification.dayCount),
+                       .init(top: 10, left: 20, right: 20))
+
+            } else if let countNotification = notification as? CountExposureNotification {
+                append(createLineItem(label: .ItemCountLabel,
+                                      valueText: .ItemCountValue,
+                                      value: String(countNotification.exposureCount)),
+                       .init(top: 10, left: 20, right: 20))
+            }
             
             let intervalFormatter = DateIntervalFormatter()
             intervalFormatter.timeStyle = .none
@@ -185,15 +195,17 @@ struct NotificationListViewController_Preview: PreviewProvider {
             timeFromLastCheck: Just(-10_000),
             exposureNotifications: Just(
                 [
-                    ExposureNotification(detectionTime: Date(timeIntervalSince1970: 1_609_700_000),
+                    CountExposureNotification(detectionTime: Date(timeIntervalSince1970: 1_609_700_000),
                                          latestExposureOn: Date(),
                                          exposureCount: 1),
                     
-                    ExposureNotification(detectionTime: Date(),
-                                         latestExposureOn: Date(),
-                                         exposureCount: 5),
+                    DaysExposureNotification(detectedOn: Date(),
+                                             exposureDays: [
+                                                Date().addingTimeInterval(.day * -3),
+                                                Date().addingTimeInterval(.day * -5)
+                                             ]),
                     
-                    ExposureNotification(detectionTime: Date().addingTimeInterval(86_400 * -1),
+                    CountExposureNotification(detectionTime: Date().addingTimeInterval(.day * -1),
                                          latestExposureOn: Date(),
                                          exposureCount: 3),
                 ]))
