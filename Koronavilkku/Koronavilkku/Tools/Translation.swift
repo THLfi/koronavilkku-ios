@@ -55,7 +55,6 @@ enum Translation: String, Localizable {
     case HeaderContinueByAcceptingExposureLogging
     
     /* Subtitles, labels, etc. less significant elements */
-    case ExposureNotificationUserExplanation
     case HowItWorksButton
     
     /* Buttons */
