@@ -17,10 +17,10 @@ class MockNotificationService : NotificationService {
         completion(isEnabled)
     }
     
-    var showExposureNotificationLog = [(exposureCount: Int?, delay: TimeInterval?)]()
+    var showNotificationLog = [(title: String, body: String, delay: TimeInterval?, badgeNumber: Int?)]()
     
-    func showExposureNotification(exposureCount: Int?, delay: TimeInterval?) {
-        showExposureNotificationLog.append((exposureCount, delay))
+    func showNotification(title: String, body: String, delay: TimeInterval?, badgeNumber: Int?) {
+        showNotificationLog.append((title, body, delay, badgeNumber))
     }
     
     var hideBadgeCalled = 0

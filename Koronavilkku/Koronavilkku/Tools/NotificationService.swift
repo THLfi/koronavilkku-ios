@@ -5,9 +5,9 @@ import UserNotifications
 protocol NotificationService {
     typealias StatusCallback = ((_ enabled: Bool) -> Void)
     
-    func requestAuthorization(provisional: Bool, completion: StatusCallback?)
     func isEnabled(completion: @escaping StatusCallback)
-    func showExposureNotification(exposureCount: Int?, delay: TimeInterval?)
+    func requestAuthorization(provisional: Bool, completion: StatusCallback?)
+    func showNotification(title: String, body: String, delay: TimeInterval?, badgeNumber: Int?)
     func hideBadge()
 }
 
@@ -34,25 +34,24 @@ struct NotificationServiceImpl : NotificationService {
             }
         }
     }
-    
-    func isEnabled(completion: @escaping (_ enabled: Bool) -> Void) {
+
+    /// Determines whether the user has notifications turned on or not
+    ///
+    /// Calls the completion handler with the notifications enabled status. We're only considering
+    /// authorized notifications as being enabled, even if the user has not turned off provisional
+    /// notifications. We could tighten this even further by requiring specific notification types,
+    /// but that should be very carefully communicated to the user.
+    func isEnabled(completion: @escaping StatusCallback) {
         let center = UNUserNotificationCenter.current()
         
         center.getNotificationSettings { settings in
             DispatchQueue.main.async {
-                completion(settings.notificationsEnabled())
+                completion(settings.authorizationStatus == .authorized)
             }
         }
     }
     
-    func showExposureNotification(exposureCount: Int?, delay: TimeInterval? = nil) {
-        showNotification(title: Translation.ExposureNotificationTitle.localized,
-                         body: Translation.ExposureNotificationBody.localized,
-                         delay: delay,
-                         badgeNumber: exposureCount)
-    }
-
-    private func showNotification(title: String, body: String, delay: TimeInterval? = nil, badgeNumber: Int? = nil) {
+    func showNotification(title: String, body: String, delay: TimeInterval? = nil, badgeNumber: Int? = nil) {
         let center = UNUserNotificationCenter.current()
 
         let doRequest = {
@@ -107,16 +106,5 @@ struct NotificationServiceImpl : NotificationService {
     
     func hideBadge() {
         UIApplication.shared.applicationIconBadgeNumber = 0
-    }
-}
-
-extension UNNotificationSettings {
-  
-    /// Returns `true` if notifications are enabled from this app's perspective.
-    func notificationsEnabled() -> Bool {
-        // .authorized is required so that the user reacts to the "enable notifications" state in main view (or in a notification
-        // shown with provisional authorization). For the latter condition the intent is to have a setting that would increase
-        // the likelihood of the user reacting to the notification at some point
-        return authorizationStatus == .authorized && (notificationCenterSetting == .enabled || badgeSetting == .enabled)
     }
 }

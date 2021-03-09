@@ -286,6 +286,13 @@ struct ExposureRepositoryImpl : ExposureRepository {
             }
         }
     }
+
+    func showExposureNotification(delay: TimeInterval? = nil) {
+        notificationService.showNotification(title: Translation.ExposureNotificationTitle.localized,
+                                             body: Translation.ExposureNotificationBody.localized,
+                                             delay: delay,
+                                             badgeNumber: LocalStore.shared.exposureNotifications.count)
+    }
 }
 
 extension Array where Element == NSNumber {

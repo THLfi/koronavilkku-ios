@@ -29,7 +29,7 @@ class TestViewController: UIViewController {
     // force downcast, because we're using the internals here
     var batchRepository = Environment.default.batchRepository as! BatchRepositoryImpl
     var exposureManager = ExposureManagerProvider.shared.manager
-    var exposureRepository = Environment.default.exposureRepository
+    var exposureRepository = Environment.default.exposureRepository as! ExposureRepositoryImpl
     var notificationService = Environment.default.notificationService
     
     override func viewDidLoad() {
@@ -172,7 +172,7 @@ class TestViewController: UIViewController {
         
         LocalStore.shared.exposureNotifications.append(notification)
         LocalStore.shared.updateDateLastPerformedExposureDetection()
-        notificationService.showExposureNotification(exposureCount: LocalStore.shared.exposureNotifications.count, delay: nil)
+        exposureRepository.showExposureNotification(delay: nil)
         Log.d("Created exposure notification \(notification)")
     }
     
@@ -241,7 +241,7 @@ class TestViewController: UIViewController {
     }
 
     @objc func showDelayedNotification() {
-        notificationService.showExposureNotification(exposureCount: nil, delay: 5)
+        exposureRepository.showExposureNotification(delay: 5)
     }
     
     private func showDialog(_ message: String, title: String = "Error") {

@@ -113,18 +113,24 @@ class SettingsViewController: UIViewController {
     }
     
     private func updateStatusItem() {
-        var value: Text = .StatusOff
-        var enabled = true
+        var value: Text
+        var enabled: Bool
         
         switch LocalStore.shared.uiStatus {
         case .on, .notificationsOff:
             value = .StatusOn
+            enabled = true
+
         case .off:
-            break
+            value = .StatusOff
+            enabled = true
+
         case .locked:
             value = .StatusLocked
             enabled = false
+
         case .btOff, .apiDisabled:
+            value = .StatusOff
             enabled = false
         }
 

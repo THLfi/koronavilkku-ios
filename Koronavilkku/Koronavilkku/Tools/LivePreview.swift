@@ -132,16 +132,16 @@ extension Environment {
         struct PreviewNotificationService: NotificationService {
             var enabled = true
             
-            func requestAuthorization(provisional: Bool, completion: StatusCallback?) {
-            }
-            
             func isEnabled(completion: @escaping StatusCallback) {
                 completion(enabled)
             }
 
-            func showExposureNotification(exposureCount: Int?, delay: TimeInterval?) {
+            func requestAuthorization(provisional: Bool, completion: StatusCallback?) {
             }
             
+            func showNotification(title: String, body: String, delay: TimeInterval?, badgeNumber: Int?) {
+            }
+
             func hideBadge() {
             }
         }
