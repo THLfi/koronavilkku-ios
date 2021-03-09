@@ -113,8 +113,8 @@ class SettingsViewController: UIViewController {
     }
     
     private func updateStatusItem() {
-        var value: Text
-        var enabled: Bool
+        let value: Text
+        let enabled: Bool
         
         switch LocalStore.shared.uiStatus {
         case .on, .notificationsOff:
