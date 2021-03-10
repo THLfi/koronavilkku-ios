@@ -118,9 +118,8 @@ struct ExposureRepositoryImpl : ExposureRepository {
             .flatMap { summary -> AnyPublisher<[Date], Error> in
                 Log.d("Got day summaries: \(summary.daySummaries)")
 
-                let currentExposureDays = LocalStore.shared.daysExposureNotifications
-                    .flatMap { $0.exposureDays }
-                
+                let currentExposureDays = LocalStore.shared.currentExposureDays()
+
                 let newExposureDays = summary.daySummaries
                     .filter { Int($0.daySummary.scoreSum) >= config.minimumDailyScore }
                     .filter { !currentExposureDays.contains($0.date) }
@@ -135,6 +134,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
             .receive(on: RunLoop.main)
             .map { newExposureDays -> Bool in
                 guard !newExposureDays.isEmpty else { return false }
+                Log.d("New exposures: \(newExposureDays)")
 
                 let notification = DaysExposureNotification(exposureDays: newExposureDays)
                 LocalStore.shared.removeExpiredExposures()

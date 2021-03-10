@@ -32,6 +32,7 @@ struct DaysExposureNotification: ExposureNotification {
 
 /// This is the old V1 way of storing exposure notifications.
 struct CountExposureNotification: ExposureNotification {
+    /// Defines when this app detected the exposure, i.e. approximately when detectExposures() was called.
     let detectedOn: Date
     let expiresOn: Date
     let detectionInterval: DateInterval
@@ -43,6 +44,13 @@ struct CountExposureNotification: ExposureNotification {
         self.expiresOn = ExposureNotificationSpec.calculateRetentionTime(timeOfExposure: latestExposureOn)
         self.detectionInterval = ExposureNotificationSpec.calculateDetectionInterval(from: detectionTime)
         self.exposureCount = exposureCount
+    }
+    
+    var latestExposureDate: Date {
+        // ExposureNotificationSpec.exposureNotificationValid isn't necessarily the correct value
+        // for this particular notification in case it is made with an old version that used 10d intervals.
+        let validDays = ((self.detectionInterval.duration + .day) / .day).rounded(.down)
+        return self.expiresOn.addingTimeInterval(-1 * .days(validDays + 1))
     }
 }
 
