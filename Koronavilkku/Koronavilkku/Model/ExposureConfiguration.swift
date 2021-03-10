@@ -21,7 +21,6 @@ struct ExposureConfiguration: Codable {
 
     let daysSinceOnsetToInfectiousness: [String: String]
     
-    /// Unused. daysSinceOnsetToInfectiousness should always be complete. EN API defaults to .none if infectiousness is undefined for an onset.
     let infectiousnessWhenDaysSinceOnsetMissing: String
 
     let availableCountries: [String]
@@ -37,12 +36,21 @@ struct ExposureConfiguration: Codable {
                 return .none
             }
         }
-        
-        return daysSinceOnsetToInfectiousness.reduce(into: [:]) { (list, item) in
+
+        var infectiousnessForDays: [Int: String] = daysSinceOnsetToInfectiousness.reduce(into: [:]) { (list, item) in
             if let day = Int(item.key) {
-                list[NSNumber(value: day)] = NSNumber(value: mapInfectiousness(item.value).rawValue)
+                list[day] = item.value
             }
         }
+
+        if #available(iOS 14.0, *) {
+            infectiousnessForDays[ENDaysSinceOnsetOfSymptomsUnknown] = infectiousnessWhenDaysSinceOnsetMissing
+        } else {
+            // ENDaysSinceOnsetOfSymptomsUnknown is not available in earlier versions of iOS; use an equivalent value.
+            infectiousnessForDays[NSIntegerMax] = infectiousnessWhenDaysSinceOnsetMissing
+        }
+
+        return infectiousnessForDays.mapValues { mapInfectiousness($0).rawValue } as [NSNumber: NSNumber]
     }
 }
 
