@@ -7,34 +7,18 @@ struct ExposureDetectionSummary: Codable, CustomStringConvertible {
     var description: String {
         return [
             "Creation time: \(creationTime)",
-            "attenuationDurations: \(attenuationDurations)",
-            "daysSinceLastExposure: \(daysSinceLastExposure)",
-            "matchedKeyCount: \(matchedKeyCount)",
-            "maximumRiskScore: \(maximumRiskScore)",
-            "maximumRiskScoreFullRange: \(maximumRiskScoreFullRange)",
-            "riskScoreSumFullRange: \(riskScoreSumFullRange)"
+            "daySummaries: \(daySummaries)",
             ].joined(separator: "\n")
     }
-    
 
     var creationTime = Date()
-    let attenuationDurations: [Double]
-    let daysSinceLastExposure: Int
-    let matchedKeyCount: UInt64
-    let maximumRiskScore: ENRiskScore
-    let maximumRiskScoreFullRange: Double
-    let riskScoreSumFullRange: Double
-    
+    let daySummaries: [String]
 }
 
 extension ENExposureDetectionSummary {
     
     func to() -> ExposureDetectionSummary {
-        return ExposureDetectionSummary(attenuationDurations: self.attenuationDurations.map { Double(truncating: $0) },
-                                        daysSinceLastExposure: self.daysSinceLastExposure,
-                                        matchedKeyCount: self.matchedKeyCount,
-                                        maximumRiskScore: self.maximumRiskScore,
-                                        maximumRiskScoreFullRange: self.maximumRiskScoreFullRange,
-                                        riskScoreSumFullRange: self.riskScoreSumFullRange)
+        // Only daySummaries is stored because in V2 the other values seem to be undefined.
+        return ExposureDetectionSummary(daySummaries: self.daySummaries.map { $0.description })
     }
 }

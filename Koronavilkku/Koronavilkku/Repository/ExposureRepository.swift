@@ -118,6 +118,15 @@ struct ExposureRepositoryImpl : ExposureRepository {
             .flatMap { summary -> AnyPublisher<[Date], Error> in
                 Log.d("Got day summaries: \(summary.daySummaries)")
 
+                if let latestId = ids.sorted().last {
+                    LocalStore.shared.nextDiagnosisKeyFileIndex = latestId
+                }
+
+                #if DEBUG
+                    // When debugging, store detection summary to local store for debugging purposes
+                    LocalStore.shared.detectionSummaries.append(summary.to())
+                #endif
+
                 let latestExposureDay = LocalStore.shared.currentExposureDays().max()
 
                 // Only show a notification if the score is great enough and
@@ -126,10 +135,6 @@ struct ExposureRepositoryImpl : ExposureRepository {
                     .filter { Int($0.daySummary.scoreSum) >= config.minimumDailyScore }
                     .filter { latestExposureDay == nil || $0.date > latestExposureDay! }
                     .map { $0.date }
-
-                if let latestId = ids.sorted().last {
-                    LocalStore.shared.nextDiagnosisKeyFileIndex = latestId
-                }
                 
                 return Just(newExposureDays).setFailureType(to: Error.self).eraseToAnyPublisher()
             }
