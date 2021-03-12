@@ -144,7 +144,6 @@ struct ExposureRepositoryImpl : ExposureRepository {
                 Log.d("New exposures: \(newExposureDays)")
 
                 let notification = DaysExposureNotification(exposureDays: newExposureDays)
-                LocalStore.shared.removeExpiredExposures()
                 LocalStore.shared.daysExposureNotifications.append(notification)
                 showExposureNotification(delay: nil)
 
