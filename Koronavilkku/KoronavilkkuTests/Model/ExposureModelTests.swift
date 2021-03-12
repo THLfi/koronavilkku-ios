@@ -2,49 +2,33 @@ import ExposureNotification
 import XCTest
 @testable import Koronavilkku
 
-class MockExposureInfo : ENExposureInfo {
-    private var exposureDate: Date
-    private var riskScore: ENRiskScore
-    
-    init(exposureDate: Date, riskScore: ENRiskScore) {
-        self.exposureDate = exposureDate
-        self.riskScore = riskScore
-    }
-    
-    override var date: Date {
-        exposureDate
-    }
-    
-    override var totalRiskScore: ENRiskScore {
-        riskScore
-    }
-}
-
 class ExposureModelTests: XCTestCase {
-    private let config = ExposureConfiguration(minimumRiskScore: 72,
-                                               attenuationScores: [],
-                                               daysSinceLastExposureScores: [],
-                                               durationScores: [],
-                                               transmissionRiskScores: [],
-                                               durationAtAttenuationThresholds: [],
-                                               durationAtAttenuationWeights: [],
-                                               exposureRiskDuration: 15,
-                                               participatingCountries: ["FI", "NL"])
-    
-    func testExposureNotificationDates() {
-        let exposureDate1 = Date().addingTimeInterval(86_400 * -3)
-        let exposureDate2 = Date().addingTimeInterval(86_400 * -7)
-        let exposureDate3 = Date().addingTimeInterval(86_400 * -12)
 
-        let details = [
-            MockExposureInfo(exposureDate: exposureDate1, riskScore: 50),
-            MockExposureInfo(exposureDate: exposureDate2, riskScore: 100),
-            MockExposureInfo(exposureDate: exposureDate3, riskScore: 200),
-        ]
-        
+    func testCountExposureNotificationDates() {
+        let exposureDate = Date().addingTimeInterval(.day * -7)
         let detectionTime = Date()
-        let notification = details.to(config: config, detectionTime: detectionTime)
+        let notification = CountExposureNotification(detectionTime: detectionTime, latestExposureOn: exposureDate, exposureCount: 2)
         
+        testCommonExposureNotificationDates(notification, detectionTime, exposureDate)
+        XCTAssertEqual(notification.exposureCount, 2)
+    }
+    
+    func testDaysExposureNotificationDates() {
+        let exposureDates = [
+            Date().addingTimeInterval(.day * -3),
+            Date().addingTimeInterval(.day * -7),
+            Date().addingTimeInterval(.day * -12)
+        ]
+        let latestExposure = exposureDates[0]
+
+        let detectionTime = Date()
+        let notification = DaysExposureNotification(detectedOn: detectionTime, exposureDays: exposureDates)
+        
+        testCommonExposureNotificationDates(notification, detectionTime, latestExposure)
+        XCTAssertEqual(notification.dayCount, exposureDates.count)
+    }
+    
+    private func testCommonExposureNotificationDates(_ notification: ExposureNotification, _ detectionTime: Date, _ latestExposure: Date) {
         XCTAssertEqual(
             notification.detectedOn,
             detectionTime,
@@ -64,55 +48,9 @@ class ExposureModelTests: XCTestCase {
         // to cover exposures that have happened during the day
         XCTAssertEqual(
             notification.expiresOn,
-            Calendar.current.date(byAdding: .day, value: 15, to: exposureDate2),
+            Calendar.current.date(byAdding: .day, value: 15, to: latestExposure),
             "The notification should expire after 14 days from the last detected exposure")
-
-        XCTAssertEqual(notification.exposureCount, 2)
-    }
-    
-    func testLongExposure() {
-        let detectionDate = Date()
-        let latestExposureDate = Date().addingTimeInterval(86_400 * -2)
         
-        let details = [
-            MockExposureInfo(exposureDate: Date().addingTimeInterval(86_400 * -14), riskScore: 40),
-            MockExposureInfo(exposureDate: Date().addingTimeInterval(86_400 * -5), riskScore: 20),
-            MockExposureInfo(exposureDate: latestExposureDate, riskScore: 10),
-            MockExposureInfo(exposureDate: Date().addingTimeInterval(86_400 * -9), riskScore: 30),
-            MockExposureInfo(exposureDate: Date().addingTimeInterval(86_400 * -20), riskScore: 50),
-        ]
-        
-        let notification = details.to(config: config, detectionTime: detectionDate)
-
-        XCTAssertEqual(
-            notification.expiresOn,
-            Calendar.current.date(byAdding: .day, value: 15, to: latestExposureDate),
-            "The expiration date should be relative to the latest exposure")
-        
-        XCTAssertEqual(
-            notification.exposureCount,
-            1,
-            "Should count as just one long exposure")
-    }
-    
-    /// No exposures
-    ///
-    /// This should be an impossible scenario because the EN API should not return an empty set
-    /// because we'd never call getExposureInfo() if there aren't exposures to fetch
-    func testNoExposures() {
-        let detectionDate = Date()
-        let details = Array<MockExposureInfo>()
-        let notification = details.to(config: config, detectionTime: detectionDate)
-        
-        // we have no other dates to fix this to
-        XCTAssertEqual(
-            notification.expiresOn,
-            Calendar.current.date(byAdding: .day, value: 15, to: detectionDate),
-            "The expiration date should be relative to the detection date")
-
-        XCTAssertEqual(
-            notification.exposureCount,
-            1,
-            "Counts as a long exposure, as we've already notified the user of an exposure")
+        XCTAssertEqual(notification.latestExposureDate, latestExposure)
     }
 }

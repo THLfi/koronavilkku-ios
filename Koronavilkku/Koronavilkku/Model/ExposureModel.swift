@@ -10,15 +10,16 @@ protocol ExposureNotification: Codable {
     var detectedOn: Date { get }
     var expiresOn: Date { get }
     var detectionInterval: DateInterval { get }
+    var latestExposureDate: Date { get }
 }
 
 struct DaysExposureNotification: ExposureNotification {
     let detectedOn: Date
     let expiresOn: Date
     let detectionInterval: DateInterval
+    let latestExposureDate: Date
 
     let exposureDays: [Date]
-    let latestExposureDate: Date
     var dayCount: Int { exposureDays.count }
 
     init(detectedOn: Date = .init(), exposureDays: [Date]) {
