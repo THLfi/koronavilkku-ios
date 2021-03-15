@@ -6,6 +6,7 @@ enum RadarStatus: Int, Codable {
     case locked
     case btOff
     case apiDisabled
+    case notificationsOff
 }
 
 extension RadarStatus {
@@ -42,7 +43,7 @@ struct DetectionStatus: Equatable {
         case .apiDisabled, .off, .locked:
             return false
             
-        case .btOff, .on:
+        case .btOff, .on, .notificationsOff:
             return true
         }
     }

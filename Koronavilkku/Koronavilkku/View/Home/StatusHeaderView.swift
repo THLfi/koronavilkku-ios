@@ -57,18 +57,25 @@ final class RadarAnimation : UIImageView {
     }
 }
 
+protocol StatusHeaderViewDelegate {
+    func statusHeaderViewButtonAction(status: RadarStatus)
+}
+
 final class StatusHeaderView: UIView {
     enum Text : String, Localizable {
         case TitleEnabled
         case TitleDisabled
         case TitleLocked
+        case TitleNotificationsOff
 
         case BodyEnabled
         case BodyDisabled
         case BodyLocked
         case BodyBTOff
+        case BodyNotificationsOff
         
         case EnableButton
+        case EnableNotificationsButton
     }
 
     private var radarContainer: UIView!
@@ -76,8 +83,6 @@ final class StatusHeaderView: UIView {
     private var bodyLabel: UILabel!
     private var button: UIButton!
     private var buttonConstraint: Constraint!
-
-    private let exposureRepository = Environment.default.exposureRepository
 
     private let verticalPadding = CGFloat(30)
     private let imageHeight = CGFloat(138)
@@ -93,8 +98,8 @@ final class StatusHeaderView: UIView {
         }
     }
     
-    var openSettingsHandler: ((_ type: OpenSettingsType) -> Void)? = nil
-
+    var delegate: StatusHeaderViewDelegate? = nil
+    
     init() {
         super.init(frame: .zero)
         createUI()
@@ -212,53 +217,15 @@ final class StatusHeaderView: UIView {
     }
 
     private func buttonAction() {
-        switch radarStatus {
-        case .btOff:
-            openSettings(.bluetooth)
-
-        case .apiDisabled:
-            // attempt to enable the disabled API first
-            // in some cases the system pops up a dialog where the user is able to
-            // activate the API, eg. after being completely turned off (in iOS 13.7+)
-            // or when another app is currently active (prior to iOS 13.7)
-            exposureRepository.tryEnable { [weak self] errorCode in
-                // API activated
-                guard let code = errorCode else {
-                    return
-                }
-                
-                // iOS 13.7+ we can no longer reliably determine anything from the error code;
-                // just show instructions how to enable the API in Settings.app
-                if #available(iOS 13.7, *) {
-                    self?.openSettings(.exposureNotifications)
-                } else {
-                    // in iOS prior to 13.7, attempting to enable the API results in .notAuthorized
-                    // when the API has been disabled and .restricted when the user rejects the
-                    // presented dialog; avoid showing instructions if the user rejected
-                    if code != .restricted {
-                        self?.openSettings(.exposureNotifications)
-                    }
-                }
-            }
-
-        case .off:
-            exposureRepository.setStatus(enabled: true)
-
-        default:
-            break
-        }
-    }
-    
-    private func openSettings(_ type: OpenSettingsType) {
-        guard let handler = self.openSettingsHandler else { return }
-        handler(type)
+        guard let radarStatus = radarStatus else { return }
+        delegate?.statusHeaderViewButtonAction(status: radarStatus)
     }
     
     private func getRadarView() -> UIImageView {
         switch radarStatus {
         case .on:
             return RadarAnimation()
-        case .off, .locked, .apiDisabled, .btOff, .none:
+        case .off, .locked, .apiDisabled, .btOff, .notificationsOff, .none:
             let imageView = UIImageView(image: UIImage(named: "radar-off"))
             imageView.contentMode = .scaleAspectFit
             return imageView
@@ -273,6 +240,8 @@ final class StatusHeaderView: UIView {
             return .TitleDisabled
         case .locked:
             return .TitleLocked
+        case .notificationsOff:
+            return .TitleNotificationsOff
         }
     }
     
@@ -286,6 +255,8 @@ final class StatusHeaderView: UIView {
             return .BodyLocked
         case .btOff:
             return .BodyBTOff
+        case .notificationsOff:
+            return .BodyNotificationsOff
         }
     }
     
@@ -293,7 +264,7 @@ final class StatusHeaderView: UIView {
         switch radarStatus {
         case .on:
             return UIColor.Primary.blue
-        case .off, .apiDisabled, .btOff, .none:
+        case .off, .apiDisabled, .btOff, .notificationsOff, .none:
             return UIColor.Primary.red
         case .locked:
             return UIColor.Greyscale.darkGrey
@@ -306,6 +277,8 @@ final class StatusHeaderView: UIView {
             return nil
         case .apiDisabled, .btOff, .off:
             return .EnableButton
+        case .notificationsOff:
+            return .EnableNotificationsButton
         }
     }
 }

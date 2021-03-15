@@ -65,6 +65,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
 
     let efgsRepository: EFGSRepository
     let exposureManager: ExposureManager
+    let notificationService: NotificationService
     let backend: Backend
     let storage: FileStorage
         
@@ -245,6 +246,18 @@ struct ExposureRepositoryImpl : ExposureRepository {
             status = RadarStatus.init(from: exposureManager.exposureNotificationStatus)
         }
         
+        switch status {
+        case .on:
+            notificationService.isEnabled { enabled in
+                applyStatus(status: enabled ? .on : .notificationsOff)
+            }
+                
+        default:
+            applyStatus(status: status)
+        }
+    }
+    
+    private func applyStatus(status: RadarStatus) {
         Log.d("Status=\(status)")
 
         if (LocalStore.shared.uiStatus != status) {
@@ -272,6 +285,13 @@ struct ExposureRepositoryImpl : ExposureRepository {
                 completionHandler(nil)
             }
         }
+    }
+
+    func showExposureNotification(delay: TimeInterval? = nil) {
+        notificationService.showNotification(title: Translation.ExposureNotificationTitle.localized,
+                                             body: Translation.ExposureNotificationBody.localized,
+                                             delay: delay,
+                                             badgeNumber: LocalStore.shared.exposureNotifications.count)
     }
 }
 

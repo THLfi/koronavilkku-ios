@@ -5,6 +5,9 @@ import Combine
 
 class OnboardingViewController: UINavigationController {
     
+    private let exposureRepository: ExposureRepository
+    private let notificationService: NotificationService
+    
     private var currentStep = 0
     private var button: RoundedButton?
     private var scrollIndicatorButton: UIButton?
@@ -29,6 +32,18 @@ class OnboardingViewController: UINavigationController {
                             header: Translation.OnboardingConceptTitle.localized,
                             content: Translation.OnboardingConceptText.localized,
                             extraContent: [ createGuideLink() ])
+        ),
+        Step(id: .enableNotifications,
+             buttonTitle: Translation.OnboardingNotificationsButtonLabel.localized,
+             view: StepView(image: UIImage(named: "notifications")!,
+                            header: Translation.OnboardingNotificationsTitle.localized,
+                            content: Translation.OnboardingNotificationsText.localized,
+                            extraContent: [ createGuideLink() ]),
+             requestPermission: { [unowned self] in
+                self.notificationService.requestAuthorization(provisional: false) { _ in
+                    self.stepDone()
+                }
+             }
         ),
         Step(id: .acceptTerms,
              showScrollIndicator: true,
@@ -71,6 +86,16 @@ class OnboardingViewController: UINavigationController {
              )
         ),
     ]
+    
+    init(env: Environment = .default) {
+        exposureRepository = env.exposureRepository
+        notificationService = env.notificationService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,18 +164,10 @@ class OnboardingViewController: UINavigationController {
                 LocalStore.shared.onboardingResumeStep = StepId.enableApiInstructions.rawValue
                 
             } else {
-                LocalStore.shared.uiStatus = .on
+                self?.exposureRepository.refreshStatus()
                 weakSelf.stepDone()
             }
         })
-    }
-    
-    private func requestNotificationPermission() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.badge, .sound, .alert]) { granted, error in
-            DispatchQueue.main.async {
-                self.stepDone()
-            }
-        }
     }
     
     private func stepDone() {
@@ -429,6 +446,7 @@ enum StepId: Int {
     case acceptTerms
     case enableApiInstructions
     case enableBluetooth
+    case enableNotifications
     
     var description: String { return "StepId(\(String(describing: self))" }
 }

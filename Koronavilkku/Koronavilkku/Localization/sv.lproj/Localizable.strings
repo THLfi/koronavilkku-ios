@@ -30,11 +30,14 @@
 "StatusHeaderView.Text.TitleEnabled" = "Coronablinkern är påkopplad";
 "StatusHeaderView.Text.TitleDisabled" = "Coronablinkern är bortkopplad";
 "StatusHeaderView.Text.TitleLocked" = "Coronablinkern är låst";
+"StatusHeaderView.Text.TitleNotificationsOff" = "Meddelanden är inte i bruk";
+"StatusHeaderView.Text.BodyNotificationsOff" = "Ta meddelandena i bruk för att Coronablinkern ska kunna meddela dig om eventuell exponering.";
 "StatusHeaderView.Text.BodyEnabled" = "Appen fungerar även om du stänger den.";
 "StatusHeaderView.Text.BodyDisabled" = "Koppla på exponerings\U00ADmeddelandena på nytt.";
 "StatusHeaderView.Text.BodyBTOff" = "Koppla på Bluetooth.";
 "StatusHeaderView.Text.BodyLocked" = "Tack för att du meddelade om din smitta. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
 "StatusHeaderView.Text.EnableButton" = "Koppla på";
+"StatusHeaderView.Text.EnableNotificationsButton" = "Ta i bruk";
 
 // MARK: ExposuresElement
 "ExposuresElement.Text.TitleNoExposures" = "Ingen exponering har upptäckts";
@@ -95,7 +98,7 @@
 "ReportInfectionViewController.Text.LockedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
 "ReportInfectionViewController.Text.DisabledText" = "Exponerings\U00ADmeddelandena måste vara påkopplade för att du ska kunna meddela att du har blivit smittad. Koppla på exponerings\U00ADmeddelandena i Coronablinkerns hemvy.";
 "ReportInfectionViewController.Text.ReportTitle" = "Meddela om din smitta";
-"ReportInfectionViewController.Text.ReportMessagePrimary" = "För att meddela om din smitta behöver du en startkod. Du får startkoden från en yrkesperson inom hälso- och sjukvården eller per textmeddelande från THL, om du i ett coronavirustest i Finland har konstateras vara smittad.";
+"ReportInfectionViewController.Text.ReportMessagePrimary" = "För att meddela om din smitta behöver du en startkod. Du får startkoden från en yrkesperson inom hälsovården eller per textmeddelande från THL, om du i ett coronavirustest i Finland har konstateras vara smittad.";
 "ReportInfectionViewController.Text.ReportMessageSecondary" = "Ange startkoden i den telefon som du vanligtvis har med dig. Coronablinkern meddelar om eventuell exponering till de användare av applikationen som har varit i din närhet under perioden som du sannolikt har varit smittsam. Det är inte möjligt att identifiera dig med hjälp av startkoden.";
 "ReportInfectionViewController.Text.ReportButton" = "Meddela om smitta";
 
@@ -124,7 +127,7 @@
 "ConfirmReportViewController.Text.HasTravelledMessage" = "Du har rest i dessa länder under de senaste 14 dygnen:";
 "ConfirmReportViewController.Text.OptionOther" = "Annat";
 "ConfirmReportViewController.Text.TermsSubtitle" = "Samtycke";
-"ConfirmReportViewController.Text.TermsCheckboxLocal" = "Mina mötesuppgifter samt information om min sannolika smittsamhets\U00ADperiod får lämnas ut för användning i Coronablinker-applikationen i syfte att bryta smittkedjorna.\n\nJag ger mitt samtycke frivilligt. Mitt samtycke har inte krävts i en kundbetjänings\U00ADsituation inom hälso- och sjukvården eller i ett myndighets\U00ADförfarande.";
+"ConfirmReportViewController.Text.TermsCheckboxLocal" = "Mina mötesuppgifter samt information om min sannolika smittsamhets\U00ADperiod får lämnas ut för användning i Coronablinker-applikationen i syfte att bryta smittkedjorna.\n\nJag ger mitt samtycke frivilligt. Mitt samtycke har inte krävts i en kundbetjänings\U00ADsituation inom hälsovården eller i ett myndighets\U00ADförfarande.";
 "ConfirmReportViewController.Text.TermsCheckboxEFGS" = "Mina mötesuppgifter, ovan valda reseuppgifter och information om min sannolika smittsamhets\U00ADperiod får lämnas ut för användning av corona-applikationer i EU- och EES-länderna samt Schweiz och Storbritannien i syfte att bryta smittkedjorna.";
 "ConfirmReportViewController.Text.TermsDisclaimer" = "När du sänt uppgifterna kan du inte längre återkalla ditt samtycke.";
 "ConfirmReportViewController.Text.Button" = "Ange din startkod";
@@ -228,6 +231,9 @@
 "OnboardingIntroText" = "Coronablinkern är en applikation (app) som Institutet för hälsa och välfärd ansvarar för. Med appen strävar man till att förebygga spridningen av coronaviruset. Appen skyddar effektivt din identitet.";
 "OnboardingConceptTitle" = "Så här fungerar appen";
 "OnboardingConceptText" = "Coronablinkern följer med de telefoner i din närhet, på vilka appen är installerad. Om en person som du tidigare mött meddelar om coronavirus\U00ADinfektion via Coronablinkern får du ett meddelande om att du blivit utsatt (exponerad) för smitta. Om du med ett coronavirustest konstateras ha fått smittan, kan du meddela om det här anonymt med appen.";
+"OnboardingNotificationsTitle" = "Ta meddelanden i bruk";
+"OnboardingNotificationsText" = "Ta meddelandena i bruk för att Coronablinkern ska kunna meddela dig om eventuell exponering även om applikationen är stängd.";
+"OnboardingNotificationsButtonLabel" = "Ta i bruk";
 "OnboardingYourPrivacyIsProtected" = "Din identitet är skyddad";
 "OnboardingHowYourPrivacyIsProtected" = "Coronablinkern skyddar dina personuppgifter och din identitet på flera sätt.";
 "OnboardingPrivacyTitle" = "Personuppgifter";
@@ -271,7 +277,7 @@
 
 "DisableTitle" = "COVID-19-exponerings\U00ADmeddelandena är påkopplade";
 "DisableText" = "Måste du koppla bort exponerings\U00ADmeddelandena?";
-"DisableInfo" = "I vissa situationer kan det vara nödvändigt att tillfälligt koppla bort exponerings\U00ADmeddelanden. Det här kan vara nödvändigt till exempel om du jobbar inom hälso- och sjukvården och inte vill använda appen på din arbetsplats.\n\nOm du kopplar bort exponerings\U00ADmeddelandena fungerar inte appen.";
+"DisableInfo" = "I vissa situationer kan det vara nödvändigt att tillfälligt koppla bort exponerings\U00ADmeddelanden. Det här kan vara nödvändigt till exempel om du jobbar inom hälsovården och inte vill använda appen på din arbetsplats.\n\nOm du kopplar bort exponerings\U00ADmeddelandena fungerar inte appen.";
 "DisableAttentionText" = "För att trygga din egen och dina närståendes hälsa rekommenderas du att inte koppla bort exponerings\U00ADmeddelandena om det inte är absolut nödvändigt. Du kommer väl ihåg att koppla på dem genast då det är möjligt?";
 "DisableButtonTitle" = "Koppla bort COVID-19-exponerings\U00ADmeddelandena";
 "DisableButtonLabel" = "Koppla bort";
@@ -283,6 +289,10 @@
 
 "BluetoothDisabledTitle" = "Koppla på Bluetooth";
 "BluetoothDisabledText" = "Utan Bluetooth kan Coronablinkern inte följa med eventuella exponeringar. Tillåt Bluetooth-uppkoppling i telefonens inställningar.";
+
+"NotificationsOffTitle" = "Meddelanden blockerade";
+"NotificationsOffText" = "Om du inte tar meddelandena i bruk kan Coronablinkern inte meddela dig om eventuell exponering när applikationen är stängd. Så här tar du meddelandena i bruk:";
+"NotificationsOffSteps" = "1. Öppna inställningarna i din telefon via knappen nedan.\n\n2. Välj Meddelanden.\n\n3. Aktivera Tillåt meddelanden.";
 
 "ENBlockedTitle" = "Exponerings\U00ADmeddelandena är bortkopplade";
 "ENBlockedText" = "Coronablinkern fungerar endast om du kopplar på exponerings\U00ADmeddelandena i telefonens inställningar. Gör så här för att koppla på exponerings\U00ADmeddelandena:";
@@ -298,3 +308,6 @@
 "ManualCheckErrorTitle" = "Det gick inte att ladda exponeringsdata";
 "ManualCheckErrorMessage" = "Exponeringsdata kunde inte laddas. Kontrollera din nätverksanslutning och försök på nytt.";
 "ManualCheckErrorButton" = "OK";
+
+"ExposureNotificationTitle" = "Eventuell exponering";
+"ExposureNotificationBody" = "Du kan ha exponerats för coronaviruset. Se anvisningar och kontakta hälsovården.";

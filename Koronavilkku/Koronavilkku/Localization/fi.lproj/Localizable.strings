@@ -30,11 +30,14 @@
 "StatusHeaderView.Text.TitleEnabled" = "Koronavilkku käytössä";
 "StatusHeaderView.Text.TitleDisabled" = "Koronavilkku ei käytössä";
 "StatusHeaderView.Text.TitleLocked" = "Koronavilkku lukittu";
+"StatusHeaderView.Text.TitleNotificationsOff" = "Ilmoitukset eivät ole käytössä";
+"StatusHeaderView.Text.BodyNotificationsOff" = "Ota ilmoitukset käyttöön, jotta Koronavilkku voi ilmoittaa sinulle mahdollisesta altistumisesta.";
 "StatusHeaderView.Text.BodyEnabled" = "Sovellus toimii, vaikka suljet sen.";
 "StatusHeaderView.Text.BodyDisabled" = "Ota altistumis\U00ADilmoitukset uudelleen käyttöön.";
 "StatusHeaderView.Text.BodyBTOff" = "Ota Bluetooth käyttöön.";
 "StatusHeaderView.Text.BodyLocked" = "Kiitos, että ilmoitit tartunnastasi. Sovellus ei enää kerää tietoja kohtaamisista. Pikaista paranemista!";
 "StatusHeaderView.Text.EnableButton" = "Ota käyttöön";
+"StatusHeaderView.Text.EnableNotificationsButton" = "Ota käyttöön";
 
 // MARK: ExposuresElement
 "ExposuresElement.Text.TitleNoExposures" = "Ei havaittuja altistumisia";
@@ -228,6 +231,9 @@
 "OnboardingIntroText" = "Koronavilkku on Terveyden ja hyvinvoinnin laitoksen tuottama sovellus, jonka avulla pyritään ehkäisemään koronavirustaudin leviämistä. Sovelluksessa yksityisyytesi on vahvasti suojattu.";
 "OnboardingConceptTitle" = "Näin sovellus toimii";
 "OnboardingConceptText" = "Koronavilkku seuraa lähelläsi olevia puhelimia, joihin on asennettu sama sovellus. Jos aiemmin kohtaamasi henkilö ilmoittaa tartunnastaan Koronavilkun avulla, saat ilmoituksen altistumisesta. Jos sinulla todetaan tartunta, voit ilmoittaa siitä sovelluksella nimettömästi.";
+"OnboardingNotificationsTitle" = "Ota ilmoitukset käyttöön";
+"OnboardingNotificationsText" = "Ota ilmoitukset käyttöön, jotta Koronavilkku voi ilmoittaa sinulle mahdollisesta altistumisesta, vaikka sovellus olisi suljettu.";
+"OnboardingNotificationsButtonLabel" = "Ota käyttöön";
 "OnboardingYourPrivacyIsProtected" = "Yksityisyytesi on suojattu";
 "OnboardingHowYourPrivacyIsProtected" = "Koronavilkku suojaa tietojasi ja yksityisyyttäsi monin tavoin.";
 "OnboardingPrivacyTitle" = "Henkilötiedot";
@@ -284,6 +290,10 @@
 "BluetoothDisabledTitle" = "Ota Bluetooth käyttöön";
 "BluetoothDisabledText" = "Ilman Bluetoothia Koronavilkku ei voi seurata mahdollisia altistumisia. Salli Bluetoothin käyttö puhelimesi asetuksissa.";
 
+"NotificationsOffTitle" = "Ilmoitukset estetty";
+"NotificationsOffText" = "Jos et ota ilmoituksia käyttöön, Koronavilkku ei voi ilmoittaa mahdollisesta altistumisesta, kun sovellus on suljettu. Ota ilmoitukset käyttöön näin:";
+"NotificationsOffSteps" = "1. Avaa puhelimesi asetukset alla olevasta painikkeesta.\n\n2. Valitse Ilmoitukset.\n\n3. Laita päälle Salli ilmoitukset.";
+
 "ENBlockedTitle" = "Altistumis­ilmoitukset eivät ole käytössä";
 "ENBlockedText" = "Koronavilkku ei toimi, jos et ota käyttöön puhelimesi käyttöjärjestelmän altistumis\U00ADilmoituksia. Näin otat ne käyttöön:";
 "ENBlockedSteps" = "1. Avaa puhelimesi asetukset alla olevasta painikkeesta.\n\n2. Laita COVID-19-altistusloki ja -ilmoitukset päälle.";
@@ -298,3 +308,6 @@
 "ManualCheckErrorTitle" = "Altistumistietoja ei voitu ladata";
 "ManualCheckErrorMessage" = "Altistumistietojen lataaminen ei onnistunut. Tarkista verkkoyhteys ja yritä uudelleen.";
 "ManualCheckErrorButton" = "OK";
+
+"ExposureNotificationTitle" = "Mahdollinen altistuminen";
+"ExposureNotificationBody" = "Olet saattanut altistua koronavirukselle. Katso toimintaohjeet ja ota yhteyttä terveydenhuoltoon.";

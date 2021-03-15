@@ -8,6 +8,7 @@ struct Environment {
     let efgsRepository: EFGSRepository
     let exposureRepository: ExposureRepository
     let municipalityRepository: MunicipalityRepository
+    let notificationService: NotificationService
 
     static var `default` = Environment.create()
 }
@@ -25,9 +26,11 @@ extension Environment {
                                                   storage: storage)
         
         let efgsRepository = EFGSRepositoryImpl(storage: storage)
+        let notificationService = NotificationServiceImpl()
 
         let exposureRepository = ExposureRepositoryImpl(efgsRepository: efgsRepository,
                                                         exposureManager: ExposureManagerProvider.shared.manager,
+                                                        notificationService: notificationService,
                                                         backend: backend,
                                                         storage: storage)
         
@@ -39,7 +42,8 @@ extension Environment {
                            batchRepository: batchRepository,
                            efgsRepository: efgsRepository,
                            exposureRepository: exposureRepository,
-                           municipalityRepository: municipalityRepository)
+                           municipalityRepository: municipalityRepository,
+                           notificationService: notificationService)
     }
     
     static func configureUrlSession(config: Configuration) -> URLSession {
