@@ -129,13 +129,31 @@ extension Environment {
             }
         }
         
+        struct PreviewNotificationService: NotificationService {
+            var enabled = true
+            
+            func isEnabled(completion: @escaping StatusCallback) {
+                completion(enabled)
+            }
+
+            func requestAuthorization(provisional: Bool, completion: StatusCallback?) {
+            }
+            
+            func showNotification(title: String, body: String, delay: TimeInterval?, badgeNumber: Int?) {
+            }
+
+            func hideBadge() {
+            }
+        }
+        
         let state = createState()
         
         return Environment(configuration: PreviewConfiguration(),
                            batchRepository: PreviewBatchRepository(),
                            efgsRepository: PreviewEFGSRepository(state: state),
                            exposureRepository: PreviewExposureRepository(state: state),
-                           municipalityRepository: PreviewMunicipalityRepository())
+                           municipalityRepository: PreviewMunicipalityRepository(),
+                           notificationService: PreviewNotificationService())
     }
 }
 

@@ -13,7 +13,7 @@ class ChangeRadarStatusViewController: UIViewController {
     }
     
     private func initUI() {
-        let isOn = LocalStore.shared.uiStatus == .on
+        let isOn = getEnabledStatus()
         let title, text, attentionText, buttonTitle, buttonLabel: Translation
         let info: Translation?
         let titleColor: UIColor
@@ -72,9 +72,12 @@ class ChangeRadarStatusViewController: UIViewController {
         buttonTitleLabel.textAlignment = .center
         appendView(buttonTitleLabel, spacing: 30)
 
-        let button = RoundedButton(title: buttonLabel.localized, backgroundColor: buttonColor, highlightedBackgroundColor: buttonHighlightedColor, action: { [unowned self] in
+        let button = RoundedButton(title: buttonLabel.localized,
+                                   backgroundColor: buttonColor,
+                                   highlightedBackgroundColor: buttonHighlightedColor) { [unowned self] in
             self.setStatus(enabled: isOn ? false : true)
-        })
+        }
+        
         content.addSubview(button)
         appendView(button, spacing: 20)
         
@@ -103,6 +106,16 @@ class ChangeRadarStatusViewController: UIViewController {
             
         } else {
             action()
+        }
+    }
+
+    func getEnabledStatus() -> Bool {
+        switch LocalStore.shared.uiStatus {
+        case .on, .notificationsOff:
+            return true
+            
+        default:
+            return false
         }
     }
 }

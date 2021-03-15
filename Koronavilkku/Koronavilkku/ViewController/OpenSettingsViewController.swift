@@ -126,6 +126,12 @@ class OpenSettingsViewController: UIViewController {
         let dismissCheck: (RadarStatus) -> Bool
         
         switch type {
+        case .notifications:
+            content = OpenSettingsContent(title: Translation.NotificationsOffTitle,
+                                          text: Translation.NotificationsOffText,
+                                          steps: Translation.NotificationsOffSteps)
+            dismissCheck = { status in status != .notificationsOff }
+        
         case .bluetooth:
             content = OpenSettingsContent(title: Translation.BluetoothDisabledTitle,
                                           text: Translation.BluetoothDisabledText,
@@ -160,5 +166,6 @@ struct OpenSettingsContent {
 
 enum OpenSettingsType {
     case bluetooth
+    case notifications
     case exposureNotifications
 }

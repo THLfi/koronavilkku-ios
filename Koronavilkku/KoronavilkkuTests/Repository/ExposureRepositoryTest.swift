@@ -4,11 +4,19 @@ import Combine
 @testable import Koronavilkku
 
 class ExposureRepositoryTest: XCTestCase {
-    let repository = ExposureRepositoryImpl(efgsRepository: MockEFGSRepository(),
+    
+    var notificationService: MockNotificationService!
+    var repository: ExposureRepositoryImpl!
+    
+    override func setUp() {
+        notificationService = MockNotificationService()
+        repository = ExposureRepositoryImpl(efgsRepository: MockEFGSRepository(),
                                             exposureManager: MockExposureManager(),
+                                            notificationService: notificationService,
                                             backend: BackendRestApi(config: LocalConfiguration(),
-                                                             urlSession: URLSession.shared),
+                                                                    urlSession: URLSession.shared),
                                             storage: MockFileStorage())
+    }
 
     func testKeyPadding() throws {
         let keys = repository.mapKeysToCorrectLength(enTemporaryExposureKeys: [])

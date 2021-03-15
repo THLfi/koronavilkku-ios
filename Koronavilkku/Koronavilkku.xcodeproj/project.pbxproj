@@ -72,6 +72,7 @@
 		D98EDD3324CDED29003E09A1 /* ChangeRadarStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD3224CDED29003E09A1 /* ChangeRadarStatusViewController.swift */; };
 		D98EDD3524CDF754003E09A1 /* AttentionLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD3424CDF754003E09A1 /* AttentionLabel.swift */; };
 		D98EDD3724CDF91F003E09A1 /* AttentionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD3624CDF91F003E09A1 /* AttentionCard.swift */; };
+		D9A09F5425EE4B4F00411208 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A09F5325EE4B4F00411208 /* NotificationService.swift */; };
 		EA07E41724E34C7D0097A9A0 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA07E41624E34C7D0097A9A0 /* URLSession.swift */; };
 		EA0D8B2124B33B25002F1BCD /* TemporaryExposureKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0D8B2024B33B25002F1BCD /* TemporaryExposureKey.swift */; };
 		EA0EB8CB25ED2CC800A6D0DC /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0EB8CA25ED2CC800A6D0DC /* InfoButton.swift */; };
@@ -103,6 +104,7 @@
 		EA4F905224F4EFAD0032D9D5 /* BackendRestApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */; };
 		EA5296AC251BE1B10089CFB4 /* Licenses.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA5296AB251BE1B10089CFB4 /* Licenses.strings */; };
 		EA5296B4251BE70E0089CFB4 /* LicenseListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5296B3251BE70E0089CFB4 /* LicenseListViewController.swift */; };
+		EA65446E25F2D563001AF861 /* MockNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA65446D25F2D563001AF861 /* MockNotificationService.swift */; };
 		EA6C1FCE257FB1C200E973E3 /* ReportInfectionFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C1FCD257FB1C200E973E3 /* ReportInfectionFlowViewController.swift */; };
 		EA6C1FDF257FC51100E973E3 /* ChooseDestinationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6C1FDE257FC51100E973E3 /* ChooseDestinationViewController.swift */; };
 		EA71E990251E25E900E66F64 /* ChangeLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA71E98F251E25E900E66F64 /* ChangeLanguageViewController.swift */; };
@@ -231,6 +233,7 @@
 		D98EDD3224CDED29003E09A1 /* ChangeRadarStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeRadarStatusViewController.swift; sourceTree = "<group>"; };
 		D98EDD3424CDF754003E09A1 /* AttentionLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionLabel.swift; sourceTree = "<group>"; };
 		D98EDD3624CDF91F003E09A1 /* AttentionCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttentionCard.swift; sourceTree = "<group>"; };
+		D9A09F5325EE4B4F00411208 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		EA07E41624E34C7D0097A9A0 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		EA0D8B2024B33B25002F1BCD /* TemporaryExposureKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryExposureKey.swift; sourceTree = "<group>"; };
 		EA0D8B2324B482CD002F1BCD /* Main.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Main.xcconfig; sourceTree = "<group>"; };
@@ -263,6 +266,7 @@
 		EA4F905124F4EFAD0032D9D5 /* BackendRestApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendRestApiTest.swift; sourceTree = "<group>"; };
 		EA5296AB251BE1B10089CFB4 /* Licenses.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Licenses.strings; sourceTree = "<group>"; };
 		EA5296B3251BE70E0089CFB4 /* LicenseListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseListViewController.swift; sourceTree = "<group>"; };
+		EA65446D25F2D563001AF861 /* MockNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNotificationService.swift; sourceTree = "<group>"; };
 		EA6C1FCD257FB1C200E973E3 /* ReportInfectionFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportInfectionFlowViewController.swift; sourceTree = "<group>"; };
 		EA6C1FDE257FC51100E973E3 /* ChooseDestinationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseDestinationViewController.swift; sourceTree = "<group>"; };
 		EA71E98F251E25E900E66F64 /* ChangeLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageViewController.swift; sourceTree = "<group>"; };
@@ -650,6 +654,7 @@
 			isa = PBXGroup;
 			children = (
 				EA8E2264258798CE0008EE92 /* MockEFGSRepository.swift */,
+				EA65446D25F2D563001AF861 /* MockNotificationService.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -731,6 +736,7 @@
 		EA92A07924A4E56F00CE7271 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				D9A09F5325EE4B4F00411208 /* NotificationService.swift */,
 				5695F6CD24D2AFB9008E06BC /* BackgroundTask.swift */,
 				32E0350524AB4AB000F48450 /* FileHelper.swift */,
 				EA92A07A24A4E59800CE7271 /* LivePreview.swift */,
@@ -922,6 +928,7 @@
 				560833BD24B8677C0078B75D /* Translation.swift in Sources */,
 				D92F18AF24CFF8F700F3FBCE /* OpenSettingsViewController.swift in Sources */,
 				D92F18AD24CEC0F300F3FBCE /* Log.swift in Sources */,
+				D9A09F5425EE4B4F00411208 /* NotificationService.swift in Sources */,
 				563D44B324AB4C6D008FE2BB /* TableViewHeader.swift in Sources */,
 				5612972C24C977420075161A /* HowItWorksViewController.swift in Sources */,
 				EA0EB8D025ED2D2F00A6D0DC /* NumberView.swift in Sources */,
@@ -1024,6 +1031,7 @@
 				EA4F905224F4EFAD0032D9D5 /* BackendRestApiTest.swift in Sources */,
 				56C2DBF324EE67050014F09D /* ExposureRepositoryTest.swift in Sources */,
 				EA92A05E24A3958600CE7271 /* KoronavilkkuTests.swift in Sources */,
+				EA65446E25F2D563001AF861 /* MockNotificationService.swift in Sources */,
 				EA1B814A24F57DC40041DED1 /* MockApi.swift in Sources */,
 				56EE9BD724F7DE9E0037A45D /* TemporaryExposureKeyTests.swift in Sources */,
 				5695F6D724D82D9B008E06BC /* MunicipalityModel.swift in Sources */,

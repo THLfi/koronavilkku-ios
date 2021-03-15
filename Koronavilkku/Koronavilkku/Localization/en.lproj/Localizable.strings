@@ -30,11 +30,14 @@
 "StatusHeaderView.Text.TitleEnabled" = "Koronavilkku is active";
 "StatusHeaderView.Text.TitleDisabled" = "Koronavilkku is disabled";
 "StatusHeaderView.Text.TitleLocked" = "Koronavilkku is locked";
+"StatusHeaderView.Text.TitleNotificationsOff" = "Notifications are blocked";
+"StatusHeaderView.Text.BodyNotificationsOff" = "Turn on notifications so that Koronavilkku can notify you of potential exposure.";
 "StatusHeaderView.Text.BodyEnabled" = "The app works even if you close it.";
 "StatusHeaderView.Text.BodyDisabled" = "Enable exposure notifications.";
 "StatusHeaderView.Text.BodyBTOff" = "Turn on Bluetooth.";
 "StatusHeaderView.Text.BodyLocked" = "Thank you for reporting your infection. The app will no longer collect information about encounters. We wish you a quick recovery!";
 "StatusHeaderView.Text.EnableButton" = "Enable";
+"StatusHeaderView.Text.EnableNotificationsButton" = "Turn on";
 
 // MARK: ExposuresElement
 "ExposuresElement.Text.TitleNoExposures" = "No observed exposures";
@@ -228,6 +231,9 @@
 "OnboardingIntroText" = "Koronavilkku is an application produced by the Finnish Institute for Health and Welfare. It aims to prevent the spread of COVID-19 disease. Your privacy is strongly protected in the application.";
 "OnboardingConceptTitle" = "How the app works";
 "OnboardingConceptText" = "Koronavilkku looks for nearby phones that have the same app installed. If someone you have previously met reports via Koronavilkku that they have COVID-19, you receive an exposure notification. If you are diagnosed with COVID-19, you can report this anonymously using the app.";
+"OnboardingNotificationsTitle" = "Turn on notifications";
+"OnboardingNotificationsText" = "Turn on notifications so that Koronavilkku can notify you of potential exposure even if the app is closed.";
+"OnboardingNotificationsButtonLabel" = "Turn on";
 "OnboardingYourPrivacyIsProtected" = "Your privacy is protected";
 "OnboardingHowYourPrivacyIsProtected" = "Koronavilkku protects your data and privacy in several ways.";
 "OnboardingPrivacyTitle" = "About personal information";
@@ -284,6 +290,10 @@
 "BluetoothDisabledTitle" = "Turn on Bluetooth";
 "BluetoothDisabledText" = "If Bluetooth is off, Koronavilkku cannot monitor your potential exposure to COVID-19. Allow the use of Bluetooth in your phone's settings.";
 
+"NotificationsOffTitle" = "Notifications are blocked";
+"NotificationsOffText" = "If you don't turn on notifications, Koronavilkku can't notify you of a potential exposure when the app is closed. Follow these instructions to turn notifications on:";
+"NotificationsOffSteps" = "1. Tap the button below to open your phone's settings.\n\n2. Select Notifications.\n\n3. Turn on Allow notifications.";
+
 "ENBlockedTitle" = "Exposure notifications are off";
 "ENBlockedText" = "Koronavilkku will not work unless you turn on the exposure notifications in your phone’s operating system. How to turn them on:";
 "ENBlockedSteps" = "1. Use the button below to access your phone's settings.\n\n2. Turn on COVID-19 exposure log and notifications.";
@@ -298,3 +308,6 @@
 "ManualCheckErrorTitle" = "Error loading exposure data";
 "ManualCheckErrorMessage" = "Exposure data could not be loaded. Please check your internet connection and try again.";
 "ManualCheckErrorButton" = "OK";
+
+"ExposureNotificationTitle" = "Potential exposure";
+"ExposureNotificationBody" = "You may have been exposed to the coronavirus. See the instructions and contact healthcare.";

@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+- NotificationService for handling notification permissions and displaying local notifications
+- New .notificationsOff RadarStatus when the app is functioning, but notifications are not authorized
+- New onboarding step for authorizing notifications
+- Main screen status view now prompts the user for notification permissions
+- New instructions screen that explains how to enable the notifications in app settings
+
 ## 2.2.0
 
 ### Added
