@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Added
+- NotificationService for handling notification permissions and displaying local notifications
+- New .notificationsOff RadarStatus when the app is functioning, but notifications are not authorized
+- New onboarding step for authorizing notifications
+- Main screen status view now prompts the user for notification permissions
+- New instructions screen that explains how to enable the notifications in app settings
+
+## 2.2.0
+
+### Added
 - New guide that explains what happens in case user receives an exposure notification in the future
 
 ### Changed
@@ -14,7 +23,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Replaced the narrow link buttons in the home screen with a footer element
 - Use new TTF font files that render more consistently with the reference design
 - Break ExposuresViewWrapper into multiple views and move the related views into separate files
-- Request permission to display notifications
 
 ## 2.0.1
 
