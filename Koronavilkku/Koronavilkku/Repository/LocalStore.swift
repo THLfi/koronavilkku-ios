@@ -94,12 +94,10 @@ class LocalStore : BatchIdCache {
         countExposureNotifications.count + daysExposureNotifications.count
     }
     
-    func currentExposureDays() -> [Date] {
-        var result = daysExposureNotifications.flatMap { $0.exposureDays }
-        // For countExposureNotifications we only have enough information to deduce the latest exposure date
-        // even though the instance itself might cover more than 1 exposure.
+    func latestExposureDate() -> Date? {
+        var result = daysExposureNotifications.map { $0.latestExposureDate }
         result.append(contentsOf: countExposureNotifications.map { $0.latestExposureDate })
         result.append(contentsOf: exposures.map { $0.date })
-        return result
-    }    
+        return result.max()
+    }
 }

@@ -13,21 +13,29 @@ protocol ExposureNotification: Codable {
     var latestExposureDate: Date { get }
 }
 
+extension ExposureNotification {
+
+    var latestExposureDate: Date {
+        // ExposureNotificationSpec.exposureNotificationValid isn't necessarily the correct value
+        // for this particular notification in case it is made with an old version that used 10d intervals.
+        let validDays = ((self.detectionInterval.duration + .day) / .day).rounded(.down)
+        return self.expiresOn.addingTimeInterval(-1 * .days(validDays + 1))
+    }
+}
+
 struct DaysExposureNotification: ExposureNotification {
     let detectedOn: Date
     let expiresOn: Date
     let detectionInterval: DateInterval
-    let latestExposureDate: Date
 
-    let exposureDays: [Date]
-    var dayCount: Int { exposureDays.count }
+    let dayCount: Int
 
     init(detectedOn: Date = .init(), exposureDays: [Date]) {
+        let latestExposureDate = exposureDays.max() ?? detectedOn
         self.detectedOn = detectedOn
-        self.latestExposureDate = exposureDays.max() ?? detectedOn
-        self.expiresOn = ExposureNotificationSpec.calculateRetentionTime(timeOfExposure: self.latestExposureDate)
+        self.expiresOn = ExposureNotificationSpec.calculateRetentionTime(timeOfExposure: latestExposureDate)
         self.detectionInterval = ExposureNotificationSpec.calculateDetectionInterval(from: detectedOn)
-        self.exposureDays = exposureDays
+        self.dayCount = exposureDays.count
     }
 }
 
@@ -45,13 +53,6 @@ struct CountExposureNotification: ExposureNotification {
         self.expiresOn = ExposureNotificationSpec.calculateRetentionTime(timeOfExposure: latestExposureOn)
         self.detectionInterval = ExposureNotificationSpec.calculateDetectionInterval(from: detectionTime)
         self.exposureCount = exposureCount
-    }
-    
-    var latestExposureDate: Date {
-        // ExposureNotificationSpec.exposureNotificationValid isn't necessarily the correct value
-        // for this particular notification in case it is made with an old version that used 10d intervals.
-        let validDays = ((self.detectionInterval.duration + .day) / .day).rounded(.down)
-        return self.expiresOn.addingTimeInterval(-1 * .days(validDays + 1))
     }
 }
 

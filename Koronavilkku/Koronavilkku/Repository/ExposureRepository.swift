@@ -127,7 +127,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
                     LocalStore.shared.detectionSummaries.append(summary.to())
                 #endif
 
-                let latestExposureDay = LocalStore.shared.currentExposureDays().max()
+                let latestExposureDay = LocalStore.shared.latestExposureDate()
 
                 // Only show a notification if the score is great enough and
                 // if the exposure date is after the newest previously known exposure's.
