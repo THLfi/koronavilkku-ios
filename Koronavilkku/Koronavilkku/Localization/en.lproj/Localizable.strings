@@ -89,7 +89,7 @@
 "NotificationListViewController.Text.ItemTitle" = "Notification about potential exposure %@";
 "NotificationListViewController.Text.ItemCountLabel" = "Potential exposures";
 "NotificationListViewController.Text.ItemCountValue" = "%@ pcs.";
-"NotificationListViewController.Text.ItemDaysLabel" = "Potential new exposures";
+"NotificationListViewController.Text.ItemDaysLabel" = "Days with new potential exposures";
 "NotificationListViewController.Text.ItemIntervalLabel" = "Time period";
 "NotificationListViewController.Text.ItemIntervalValue" = "%@";
 

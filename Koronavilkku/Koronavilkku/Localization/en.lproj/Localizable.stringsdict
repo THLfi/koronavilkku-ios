@@ -29,9 +29,9 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>d</string>
 			<key>one</key>
-			<string>%d day</string>
+			<string>%d pcs.</string>
 			<key>other</key>
-			<string>%d days</string>
+			<string>%d pcs.</string>
 		</dict>
 	</dict>
 </dict>
