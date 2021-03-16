@@ -36,19 +36,19 @@ class ExposureModelTests: XCTestCase {
         
         XCTAssertEqual(
             notification.detectionInterval.start,
-            Calendar.current.date(byAdding: .day, value: -14, to: detectionTime),
+            detectionTime.addingTimeInterval(.day * -14),
             "The detection interval starts from 14 days ago")
         
         XCTAssertEqual(
             notification.detectionInterval.end,
-            Calendar.current.date(byAdding: .day, value: -1, to: detectionTime),
+            detectionTime.addingTimeInterval(.day * -1),
             "The detection interval ends to yesterday")
 
         // because the exposure date is always UTC midnight, we need to extend it with one day
         // to cover exposures that have happened during the day
         XCTAssertEqual(
             notification.expiresOn,
-            Calendar.current.date(byAdding: .day, value: 15, to: latestExposure),
+            latestExposure.addingTimeInterval(.day * 15),
             "The notification should expire after 14 days from the last detected exposure")
         
         XCTAssertEqual(notification.latestExposureDate, latestExposure)
