@@ -145,7 +145,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
 
                 let notification = DaysExposureNotification(exposureDays: newExposureDays)
                 LocalStore.shared.daysExposureNotifications.append(notification)
-                showExposureNotification(delay: nil)
+                showExposureNotification()
 
                 return true
             }
