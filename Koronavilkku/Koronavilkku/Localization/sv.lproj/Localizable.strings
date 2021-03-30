@@ -90,6 +90,7 @@
 "NotificationListViewController.Text.ItemCountLabel" = "Eventuella exponeringar";
 "NotificationListViewController.Text.ItemCountValue" = "%@ st.";
 "NotificationListViewController.Text.ItemDaysLabel" = "Dagar med nya eventuella exponeringar";
+"NotificationListViewController.Text.ItemDaysValue" = "%d st.";
 "NotificationListViewController.Text.ItemIntervalLabel" = "Tidsperiod";
 "NotificationListViewController.Text.ItemIntervalValue" = "%@";
 
