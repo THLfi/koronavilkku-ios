@@ -55,7 +55,7 @@
 		56C2DBF324EE67050014F09D /* ExposureRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2DBF224EE67050014F09D /* ExposureRepositoryTest.swift */; };
 		56C2DBF724EFA8E20014F09D /* SceneDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56C2DBF624EFA8E20014F09D /* SceneDelegateTests.swift */; };
 		56DB5AE224A4B5BD0019C1A1 /* WideRowElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56DB5AE124A4B5BD0019C1A1 /* WideRowElement.swift */; };
-		56E3349224CB02C00017CD9A /* ExposureDetectionSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E3349124CB02C00017CD9A /* ExposureDetectionSummary.swift */; };
+		56E3349224CB02C00017CD9A /* ExposureDetectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E3349124CB02C00017CD9A /* ExposureDetectionData.swift */; };
 		56E3349424CB21760017CD9A /* MunicipalityContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E3349324CB21760017CD9A /* MunicipalityContactInfoViewController.swift */; };
 		56E3349624CCC0BB0017CD9A /* MunicipalityContactInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E3349524CCC0BB0017CD9A /* MunicipalityContactInformationView.swift */; };
 		56E3349A24CEC9290017CD9A /* ContactItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E3349924CEC9290017CD9A /* ContactItemCard.swift */; };
@@ -63,6 +63,7 @@
 		D92F18AD24CEC0F300F3FBCE /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92F18AC24CEC0F300F3FBCE /* Log.swift */; };
 		D92F18AF24CFF8F700F3FBCE /* OpenSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92F18AE24CFF8F700F3FBCE /* OpenSettingsViewController.swift */; };
 		D92F528E24E3FEF40099EBEC /* LinkLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92F528D24E3FEF40099EBEC /* LinkLanguageViewController.swift */; };
+		D946D1A9261708C40052D88B /* ExposureWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D946D1A8261708C30052D88B /* ExposureWindow.swift */; };
 		D98EDD2524CB3D5F003E09A1 /* CardElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD2424CB3D5F003E09A1 /* CardElement.swift */; };
 		D98EDD2724CB3E17003E09A1 /* LinkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD2624CB3E17003E09A1 /* LinkItem.swift */; };
 		D98EDD2B24CC7EBA003E09A1 /* SymptomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98EDD2A24CC7EBA003E09A1 /* SymptomsViewController.swift */; };
@@ -216,7 +217,7 @@
 		56C2DBF224EE67050014F09D /* ExposureRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureRepositoryTest.swift; sourceTree = "<group>"; };
 		56C2DBF624EFA8E20014F09D /* SceneDelegateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegateTests.swift; sourceTree = "<group>"; };
 		56DB5AE124A4B5BD0019C1A1 /* WideRowElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideRowElement.swift; sourceTree = "<group>"; };
-		56E3349124CB02C00017CD9A /* ExposureDetectionSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureDetectionSummary.swift; sourceTree = "<group>"; };
+		56E3349124CB02C00017CD9A /* ExposureDetectionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureDetectionData.swift; sourceTree = "<group>"; };
 		56E3349324CB21760017CD9A /* MunicipalityContactInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunicipalityContactInfoViewController.swift; sourceTree = "<group>"; };
 		56E3349524CCC0BB0017CD9A /* MunicipalityContactInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunicipalityContactInformationView.swift; sourceTree = "<group>"; };
 		56E3349924CEC9290017CD9A /* ContactItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactItemCard.swift; sourceTree = "<group>"; };
@@ -224,6 +225,7 @@
 		D92F18AC24CEC0F300F3FBCE /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		D92F18AE24CFF8F700F3FBCE /* OpenSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSettingsViewController.swift; sourceTree = "<group>"; };
 		D92F528D24E3FEF40099EBEC /* LinkLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkLanguageViewController.swift; sourceTree = "<group>"; };
+		D946D1A8261708C30052D88B /* ExposureWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExposureWindow.swift; sourceTree = "<group>"; };
 		D98EDD2424CB3D5F003E09A1 /* CardElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardElement.swift; sourceTree = "<group>"; };
 		D98EDD2624CB3E17003E09A1 /* LinkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkItem.swift; sourceTree = "<group>"; };
 		D98EDD2A24CC7EBA003E09A1 /* SymptomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymptomsViewController.swift; sourceTree = "<group>"; };
@@ -749,8 +751,9 @@
 		EAD8619924ADDCAB00809677 /* Exposure */ = {
 			isa = PBXGroup;
 			children = (
-				56E3349124CB02C00017CD9A /* ExposureDetectionSummary.swift */,
+				56E3349124CB02C00017CD9A /* ExposureDetectionData.swift */,
 				EAD8619A24ADDCC900809677 /* ExposureManager.swift */,
+				D946D1A8261708C30052D88B /* ExposureWindow.swift */,
 			);
 			path = Exposure;
 			sourceTree = "<group>";
@@ -969,6 +972,7 @@
 				EAF340D0258102120092ED6E /* FadeBlock.swift in Sources */,
 				D98EDD2B24CC7EBA003E09A1 /* SymptomsViewController.swift in Sources */,
 				3288A07724AC593300365B46 /* Backend.swift in Sources */,
+				D946D1A9261708C40052D88B /* ExposureWindow.swift in Sources */,
 				327C940224BED1C9003C8429 /* ApiResponses.swift in Sources */,
 				56C26BC124B4503E002F83C1 /* SelectMunicipalityViewController.swift in Sources */,
 				5695F6CE24D2AFB9008E06BC /* BackgroundTask.swift in Sources */,
@@ -1005,7 +1009,7 @@
 				EAF340C52580F1460092ED6E /* RadioButton.swift in Sources */,
 				563D44B924AB9CD3008FE2BB /* Dictionary+IndexSubscript.swift in Sources */,
 				EAC4CD1A25CC21CF001A4648 /* Footer.swift in Sources */,
-				56E3349224CB02C00017CD9A /* ExposureDetectionSummary.swift in Sources */,
+				56E3349224CB02C00017CD9A /* ExposureDetectionData.swift in Sources */,
 				EA71E990251E25E900E66F64 /* ChangeLanguageViewController.swift in Sources */,
 				EAC4CD0425CBD67C001A4648 /* NoExposuresView.swift in Sources */,
 				EA5296B4251BE70E0089CFB4 /* LicenseListViewController.swift in Sources */,

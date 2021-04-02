@@ -69,8 +69,8 @@ class LocalStore : BatchIdCache {
     @Persisted(userDefaultsKey: "uiStatus", notificationName: .init("LocalStoreUIStatus"), defaultValue: .on)
     var uiStatus: RadarStatus
     
-    @Persisted(userDefaultsKey: "detectionSummaries", notificationName: .init("LocalStoreDetectionSummaries"), defaultValue: [])
-    var detectionSummaries: [ExposureDetectionSummary]
+    @Persisted(userDefaultsKey: "detectionData", notificationName: .init("LocalStoreDetectionData"), defaultValue: [])
+    var detectionData: [ExposureDetectionData]
     
     func updateDateLastPerformedExposureDetection() {
         dateLastPerformedExposureDetection = Date()

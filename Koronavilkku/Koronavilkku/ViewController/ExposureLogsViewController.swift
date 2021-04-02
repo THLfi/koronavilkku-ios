@@ -22,7 +22,7 @@ class ExposureLogsViewController: UIViewController {
         
         logLabel.numberOfLines = 0
         logLabel.lineBreakMode = .byWordWrapping
-        logLabel.text = LocalStore.shared.detectionSummaries
+        logLabel.text = LocalStore.shared.detectionData
             .map { String(describing: $0) }
             .joined(separator: "\n\n")
         
@@ -32,5 +32,7 @@ class ExposureLogsViewController: UIViewController {
             make.right.equalTo(self.view).offset(-20)
             make.top.bottom.equalToSuperview().offset(20)
         }
+        
+        Log.d(logLabel.text ?? "") // In case one needs to copy the data elsewhere.
     }
 }

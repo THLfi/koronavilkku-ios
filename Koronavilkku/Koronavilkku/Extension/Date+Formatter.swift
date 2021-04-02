@@ -14,6 +14,10 @@ extension Date {
         return Date.shortLocalDate.string(from: self)
     }
     
+    func shortLocalDateTime() -> String {
+        return Date.shortLocalDateTime.string(from: self)
+    }
+    
     func toLocalizedRelativeFormat() -> String {
         return RelativeDateTimeFormatter().localizedString(for: self, relativeTo: Date())
     }
@@ -37,6 +41,13 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
+        return formatter
+    }()
+    
+    static let shortLocalDateTime: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
         return formatter
     }()
 }

@@ -115,7 +115,13 @@ struct ExposureRepositoryImpl : ExposureRepository {
 
         return self.exposureManager.detectExposures(configuration: config,
                                                     diagnosisKeyURLs: urls)
-            .flatMap { summary -> AnyPublisher<[Date], Error> in
+            .flatMap { summary in
+                Publishers.Zip(
+                    Just(summary).setFailureType(to: Error.self).eraseToAnyPublisher(),
+                    self.exposureManager.getExposureWindows(summary: summary)
+                )
+            }
+            .map { (summary, windows) -> [Date] in
                 Log.d("Got day summaries: \(summary.daySummaries)")
 
                 if let latestId = ids.sorted().last {
@@ -124,7 +130,10 @@ struct ExposureRepositoryImpl : ExposureRepository {
 
                 #if DEBUG
                     // When debugging, store detection summary to local store for debugging purposes
-                    LocalStore.shared.detectionSummaries.append(summary.to())
+                    let data = ExposureDetectionData(summary: summary, windows: windows)
+                    LocalStore.shared.detectionData.insert(data, at: 0)
+
+                    windows.forEach { window in Log.d("window=\(window), scanInstances=\(window.scanInstances)") }
                 #endif
 
                 let latestExposureDay = LocalStore.shared.latestExposureDate()
@@ -136,7 +145,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
                     .filter { latestExposureDay == nil || $0.date > latestExposureDay! }
                     .map { $0.date }
                 
-                return Just(newExposureDays).setFailureType(to: Error.self).eraseToAnyPublisher()
+                return newExposureDays
             }
             .receive(on: RunLoop.main)
             .map { newExposureDays -> Bool in
