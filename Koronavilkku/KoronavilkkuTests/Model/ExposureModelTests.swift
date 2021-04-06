@@ -11,6 +11,11 @@ class ExposureModelTests: XCTestCase {
         
         testCommonExposureNotificationDates(notification, detectionTime, exposureDate)
         XCTAssertEqual(notification.exposureCount, 2)
+        
+        XCTAssertEqual(
+            notification.detectionInterval.end,
+            detectionTime.addingTimeInterval(.day * -1),
+            "The detection interval ends to yesterday")
     }
     
     func testDaysExposureNotificationDates() {
@@ -26,6 +31,11 @@ class ExposureModelTests: XCTestCase {
         
         testCommonExposureNotificationDates(notification, detectionTime, latestExposure)
         XCTAssertEqual(notification.dayCount, exposureDates.count)
+        
+        XCTAssertEqual(
+            notification.detectionInterval.end,
+            detectionTime,
+            "The detection interval ends to yesterday")
     }
     
     private func testCommonExposureNotificationDates(_ notification: ExposureNotification, _ detectionTime: Date, _ latestExposure: Date) {
@@ -38,11 +48,6 @@ class ExposureModelTests: XCTestCase {
             notification.detectionInterval.start,
             detectionTime.addingTimeInterval(.day * -14),
             "The detection interval starts from 14 days ago")
-        
-        XCTAssertEqual(
-            notification.detectionInterval.end,
-            detectionTime.addingTimeInterval(.day * -1),
-            "The detection interval ends to yesterday")
 
         // because the exposure date is always UTC midnight, we need to extend it with one day
         // to cover exposures that have happened during the day
