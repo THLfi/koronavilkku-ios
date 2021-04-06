@@ -43,15 +43,18 @@ struct CountExposureNotification: ExposureNotification {
 
     let exposureCount: Int
     
+    var latestExposureDate: Date {
+        return ExposureNotificationSpec.calculateLatestExposureDate(from: self, shortenedRollingPeriod: false)
+    }
+}
+
+extension CountExposureNotification {
+    // Defined in an extension so that one doesn't need to declare the default initializer needed in a test :)
     init(detectionTime: Date, latestExposureOn: Date, exposureCount: Int) {
         self.detectedOn = detectionTime
         self.expiresOn = ExposureNotificationSpec.calculateRetentionTime(timeOfExposure: latestExposureOn)
         self.detectionInterval = ExposureNotificationSpec.calculateDetectionInterval(from: detectionTime, shortenedRollingPeriod: false)
         self.exposureCount = exposureCount
-    }
-    
-    var latestExposureDate: Date {
-        return ExposureNotificationSpec.calculateLatestExposureDate(from: self, shortenedRollingPeriod: false)
     }
 }
 

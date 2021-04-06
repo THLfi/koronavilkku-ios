@@ -38,6 +38,23 @@ class ExposureModelTests: XCTestCase {
             "The detection interval ends to yesterday")
     }
     
+    func testCountExposureNotificationWithRetentionOf10Days() {
+        let latestExposureOn = Date().addingTimeInterval(-3 * .day)
+        let detectedOn = Date()
+
+        // These definitions match the ones used when 10d retention time was used.
+        let retentionTime: TimeInterval = .days(10 + 1)
+        let detectionIntervalDuration: TimeInterval = .days(9)
+        let detectionIntervalStart: TimeInterval = .days(-10)
+        let detectionInterval = DateInterval(start: detectedOn.addingTimeInterval(detectionIntervalStart),
+                                             duration: detectionIntervalDuration)
+        let expiresOn = latestExposureOn.addingTimeInterval(retentionTime)
+
+        let notification = CountExposureNotification(detectedOn: detectedOn, expiresOn: expiresOn, detectionInterval: detectionInterval, exposureCount: 3)
+        
+        XCTAssertEqual(notification.latestExposureDate, latestExposureOn)
+    }
+    
     private func testCommonExposureNotificationDates(_ notification: ExposureNotification, _ detectionTime: Date, _ latestExposure: Date) {
         XCTAssertEqual(
             notification.detectedOn,
