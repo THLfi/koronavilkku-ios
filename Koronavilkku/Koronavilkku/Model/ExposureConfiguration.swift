@@ -20,8 +20,6 @@ struct ExposureConfiguration: Codable {
     let minimumDailyScore: Int
 
     let daysSinceOnsetToInfectiousness: [String: String]
-    
-    let infectiousnessWhenDaysSinceOnsetMissing: String
 
     let availableCountries: [String]
     
@@ -37,20 +35,15 @@ struct ExposureConfiguration: Codable {
             }
         }
 
-        var infectiousnessForDays: [Int: String] = daysSinceOnsetToInfectiousness.reduce(into: [:]) { (list, item) in
+        // The keys received from the backend always include the DSOS value so we don't need to
+        // assign a value (infectiousnessWhenDaysSinceOnsetMissing) for key ENDaysSinceOnsetOfSymptomsUnknown
+        // (which is deprecated on >=14).
+
+        return daysSinceOnsetToInfectiousness.reduce(into: [:]) { (list, item) in
             if let day = Int(item.key) {
-                list[day] = item.value
+                list[NSNumber(value: day)] = NSNumber(value: mapInfectiousness(item.value).rawValue)
             }
         }
-
-        if #available(iOS 14.0, *) {
-            infectiousnessForDays[ENDaysSinceOnsetOfSymptomsUnknown] = infectiousnessWhenDaysSinceOnsetMissing
-        } else {
-            // ENDaysSinceOnsetOfSymptomsUnknown is not available in earlier versions of iOS; use an equivalent value.
-            infectiousnessForDays[NSIntegerMax] = infectiousnessWhenDaysSinceOnsetMissing
-        }
-
-        return infectiousnessForDays.mapValues { mapInfectiousness($0).rawValue } as [NSNumber: NSNumber]
     }
 }
 
