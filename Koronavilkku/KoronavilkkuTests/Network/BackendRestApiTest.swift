@@ -59,7 +59,6 @@ class BackendRestApiTest : XCTestCase {
             daysSinceOnsetToInfectiousness: [
                 "-14": "NONE", "-13": "NONE", "-12": "NONE", "-11": "NONE", "-10": "NONE", "-9": "NONE", "-8": "NONE", "-7": "NONE", "-6": "NONE", "-5": "NONE", "-4": "NONE", "-3": "NONE", "-2": "NONE", "-1": "HIGH", "0": "HIGH", "1": "HIGH", "2": "HIGH", "3": "STANDARD", "4": "STANDARD", "5": "STANDARD", "6": "NONE", "7": "NONE", "8": "NONE", "9": "NONE", "10": "NONE", "11": "NONE", "12": "NONE", "13": "NONE", "14": "STANDARD",
             ],
-            infectiousnessWhenDaysSinceOnsetMissing: "STANDARD",
             availableCountries: ["DE", "EE", "FI"]
         )
         
@@ -82,7 +81,6 @@ class BackendRestApiTest : XCTestCase {
             XCTAssertEqual(input.minimumWindowScore, output.minimumWindowScore)
             XCTAssertEqual(input.minimumDailyScore, output.minimumDailyScore)
             XCTAssertEqual(input.daysSinceOnsetToInfectiousness, output.daysSinceOnsetToInfectiousness)
-            XCTAssertEqual(input.infectiousnessWhenDaysSinceOnsetMissing, output.infectiousnessWhenDaysSinceOnsetMissing)
             XCTAssertEqual(input.availableCountries, output.availableCountries)
         })
         
