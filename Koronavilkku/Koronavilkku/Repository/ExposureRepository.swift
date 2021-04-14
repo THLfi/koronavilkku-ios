@@ -25,7 +25,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
     static let manualCheckThreshold: TimeInterval = .days(1)
     
     private static let dummyPostToken = "000000000000"
-
+    
     /// Publisher logic cached here to avoid every subscriber running it separately
     static private var timeFromLastCheck: AnyPublisher<TimeInterval?, Never> = {
         // Create a timer based on the current exposure detection date
@@ -64,17 +64,17 @@ struct ExposureRepositoryImpl : ExposureRepository {
             .shareCurrent()
             .eraseToAnyPublisher()
     }()
-
+    
     let efgsRepository: EFGSRepository
     let exposureManager: ExposureManager
     let notificationService: NotificationService
     let backend: Backend
     let storage: FileStorage
-        
+    
     func detectionStatus() -> AnyPublisher<DetectionStatus, Never> {
         Self.detectionStatus
     }
-        
+    
     func timeFromLastCheck() -> AnyPublisher<TimeInterval?, Never> {
         Self.timeFromLastCheck
     }
@@ -83,7 +83,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
         LocalStore.shared.$exposures.$wrappedValue
             .combineLatest(getExposureNotifications())
             .map { exposures, notifications -> ExposureStatus in
-
+                
                 if !notifications.isEmpty {
                     return .exposed(notificationCount: notifications.count)
                 }
@@ -95,7 +95,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
                 return .unexposed
             }.eraseToAnyPublisher()
     }
-
+    
     func getExposureNotifications() -> AnyPublisher<[ExposureNotification], Never> {
         LocalStore.shared.$daysExposureNotifications.$wrappedValue
             .combineLatest(LocalStore.shared.$countExposureNotifications.$wrappedValue)
@@ -109,35 +109,33 @@ struct ExposureRepositoryImpl : ExposureRepository {
     }
     
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error> {
-
+        
         let urls = ids.map { self.storage.getFileUrls(forBatchId: $0) }.flatMap { $0 }
         Log.d("Ids: \(ids), Config: \(config), Detecting with urls: \(urls)")
-
+        
         return self.exposureManager.detectExposures(configuration: config,
                                                     diagnosisKeyURLs: urls)
             .flatMap { summary in
-                Publishers.Zip(
-                    Just(summary).setFailureType(to: Error.self).eraseToAnyPublisher(),
-                    self.exposureManager.getExposureWindows(summary: summary)
-                )
+                Just(summary).setFailureType(to: Error.self).zip(
+                    self.exposureManager.getExposureWindows(summary: summary))
             }
             .map { (summary, windows) -> [Date] in
                 Log.d("Got day summaries: \(summary.daySummaries)")
-
+                
                 if let latestId = ids.sorted().last {
                     LocalStore.shared.nextDiagnosisKeyFileIndex = latestId
                 }
-
+                
                 #if DEBUG
-                    // When debugging, store detection summary to local store for debugging purposes
-                    let data = ExposureDetectionData(summary: summary, windows: windows)
-                    LocalStore.shared.detectionData.insert(data, at: 0)
-
-                    windows.forEach { window in Log.d("window=\(window), scanInstances=\(window.scanInstances)") }
+                // When debugging, store detection summary to local store for debugging purposes
+                let data = ExposureDetectionData(summary: summary, windows: windows)
+                LocalStore.shared.detectionData.insert(data, at: 0)
+                
+                windows.forEach { window in Log.d("window=\(window), scanInstances=\(window.scanInstances)") }
                 #endif
-
+                
                 let latestExposureDay = LocalStore.shared.latestExposureDate()
-
+                
                 // Only show a notification if the score is great enough and
                 // if the exposure date is after the newest previously known exposure's.
                 let newExposureDays = summary.daySummaries
@@ -151,11 +149,11 @@ struct ExposureRepositoryImpl : ExposureRepository {
             .map { newExposureDays -> Bool in
                 guard !newExposureDays.isEmpty else { return false }
                 Log.d("New exposures: \(newExposureDays)")
-
+                
                 let notification = DaysExposureNotification(exposureDays: newExposureDays)
                 LocalStore.shared.daysExposureNotifications.append(notification)
                 showExposureNotification()
-
+                
                 return true
             }
             .eraseToAnyPublisher()
@@ -165,7 +163,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
         // Since we are only processing 1 batch set at a time, always clean up the entire batches directory.
         storage.deleteAllBatches()
     }
-        
+    
     func postExposureKeys(publishToken: String?,
                           visitedCountries: Set<EFGSCountry>,
                           shareWithEFGS: Bool) -> AnyPublisher<Void, Error> {
@@ -184,7 +182,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
             }
             .map { _ in
                 // strip away the response
-
+                
                 DispatchQueue.main.async {
                     LocalStore.shared.uiStatus = .locked
                     self.setStatus(enabled: false)
@@ -202,8 +200,8 @@ struct ExposureRepositoryImpl : ExposureRepository {
         
         Log.d("Dummy post \(keys.count) dummy keys")
         return self.backend.postDiagnosisKeys(publishToken: ExposureRepositoryImpl.dummyPostToken,
-                                                            publishRequest: publishRequest,
-                                                            isDummyRequest: true)
+                                              publishRequest: publishRequest,
+                                              isDummyRequest: true)
             .map { _ in
                 // strip away the response
             }
@@ -235,7 +233,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
         }
         
         let status: RadarStatus
-
+        
         if type(of: exposureManager).authorizationStatus != .authorized {
             status = .apiDisabled
         } else {
@@ -247,7 +245,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
             notificationService.isEnabled { enabled in
                 applyStatus(status: enabled ? .on : .notificationsOff)
             }
-                
+            
         default:
             applyStatus(status: status)
         }
@@ -255,7 +253,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
     
     private func applyStatus(status: RadarStatus) {
         Log.d("Status=\(status)")
-
+        
         if (LocalStore.shared.uiStatus != status) {
             LocalStore.shared.uiStatus = status
         }
@@ -282,12 +280,12 @@ struct ExposureRepositoryImpl : ExposureRepository {
             }
         }
     }
-
+    
     func removeExpiredExposures() {
         LocalStore.shared.removeExpiredExposures()
         notificationService.updateBadgeNumber(LocalStore.shared.exposureNotificationCount)
     }
-
+    
     func showExposureNotification(delay: TimeInterval? = nil) {
         notificationService.showNotification(title: Translation.ExposureNotificationTitle.localized,
                                              body: Translation.ExposureNotificationBody.localized,
@@ -297,7 +295,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
 }
 
 extension Array where Element == NSNumber {
-
+    
     func weighted(with weights: [Double]) -> [Double] {
         return self.enumerated().map { (index, duration) in
             let weight = index < weights.count ? weights[index] : 0.0
