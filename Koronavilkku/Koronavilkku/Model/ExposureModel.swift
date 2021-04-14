@@ -6,7 +6,59 @@ enum ExposureStatus: Equatable {
     case exposed(notificationCount: Int?)
 }
 
-struct ExposureNotification: Codable {
+protocol ExposureNotification: Codable {
+    var detectedOn: Date { get }
+    var expiresOn: Date { get }
+    var detectionInterval: DateInterval { get }
+    var latestExposureDate: Date { get }
+}
+
+struct DaysExposureNotification: ExposureNotification {
+    let detectedOn: Date
+    let expiresOn: Date
+    let detectionInterval: DateInterval
+
+    let dayCount: Int
+
+    init(detectedOn: Date = .init(), exposureDays: [Date]) {
+        let latestExposureDate = exposureDays.max() ?? detectedOn
+        self.detectedOn = detectedOn
+        self.expiresOn = ExposureNotificationSpec.calculateRetentionTime(timeOfExposure: latestExposureDate)
+        self.detectionInterval = ExposureNotificationSpec.calculateDetectionInterval(from: detectedOn, shortenedRollingPeriod: true)
+        self.dayCount = exposureDays.count
+    }
+
+    // Computed properties of a Codable aren't included in the encoded data.
+    var latestExposureDate: Date {
+        return ExposureNotificationSpec.calculateLatestExposureDate(from: self, shortenedRollingPeriod: true)
+    }
+}
+
+/// This is the old V1 way of storing exposure notifications.
+struct CountExposureNotification: ExposureNotification {
+    /// Defines when this app detected the exposure, i.e. approximately when detectExposures() was called.
+    let detectedOn: Date
+    let expiresOn: Date
+    let detectionInterval: DateInterval
+
+    let exposureCount: Int
+    
+    var latestExposureDate: Date {
+        return ExposureNotificationSpec.calculateLatestExposureDate(from: self, shortenedRollingPeriod: false)
+    }
+}
+
+extension CountExposureNotification {
+    // Defined in an extension so that one doesn't need to declare the default initializer needed in a test :)
+    init(detectionTime: Date, latestExposureOn: Date, exposureCount: Int) {
+        self.detectedOn = detectionTime
+        self.expiresOn = ExposureNotificationSpec.calculateRetentionTime(timeOfExposure: latestExposureOn)
+        self.detectionInterval = ExposureNotificationSpec.calculateDetectionInterval(from: detectionTime, shortenedRollingPeriod: false)
+        self.exposureCount = exposureCount
+    }
+}
+
+fileprivate struct ExposureNotificationSpec {
     typealias Days = Double
     
     /// The number of days an exposure notification is being shown after the exposure
@@ -22,18 +74,6 @@ struct ExposureNotification: Codable {
     /// to the V2 API.
     static let exposureDetectionInterval: Days = 14
     
-    let detectedOn: Date
-    let expiresOn: Date
-    let detectionInterval: DateInterval
-    let exposureCount: Int
-    
-    init(detectionTime: Date, latestExposureOn: Date, exposureCount: Int) {
-        self.detectedOn = detectionTime
-        self.expiresOn = ExposureNotification.calculateRetentionTime(timeOfExposure: latestExposureOn)
-        self.detectionInterval = ExposureNotification.calculateDetectionInterval(from: detectionTime)
-        self.exposureCount = exposureCount
-    }
-
     /// Determines the exposure notification retention time
     ///
     /// The official exposure retention time is calculated from the time of exposure.
@@ -46,35 +86,23 @@ struct ExposureNotification: Codable {
     
     /// Calculates the date range used to detect exposures from the detection time
     ///
-    /// The interval does not contain the current day, as our current implementation
-    /// creates the batch files from the TEK's issued in the previous day. Therefore the
-    /// interval is "one day shorter".
-    static func calculateDetectionInterval(from detectionTime: Date) -> DateInterval {
+    /// If shortenedRollingPeriod is false, then the interval does not contain the
+    /// current day, as our current implementation creates the batch files from
+    /// the TEK's issued in the previous day. Therefore the interval is "one day shorter".
+    static func calculateDetectionInterval(from detectionTime: Date, shortenedRollingPeriod: Bool) -> DateInterval {
         .init(start: detectionTime.addingTimeInterval(.days(0 - Self.exposureDetectionInterval)),
-              duration: .days(Self.exposureDetectionInterval - 1))
+              duration: .days(Self.exposureDetectionInterval - (shortenedRollingPeriod ? 0 : 1)))
     }
-}
-
-extension Collection where Element : ENExposureInfo {
-    func to(config: ExposureConfiguration, detectionTime: Date = .init()) -> ExposureNotification {
-        let exposures = filter { info in
-            info.totalRiskScore >= config.minimumRiskScore
-        }
-        
-        let latestExposureOn: Date
-        let exposureCount: Int
-        
-        if !exposures.isEmpty {
-            latestExposureOn = exposures.max { $0.date < $1.date }!.date
-            exposureCount = exposures.count
-        } else {
-            latestExposureOn = self.max { $0.date < $1.date }?.date ?? detectionTime
-            exposureCount = 1
-        }
-        
-        return ExposureNotification(detectionTime: detectionTime,
-                                    latestExposureOn: latestExposureOn,
-                                    exposureCount: exposureCount)
+    
+    /// Calculates latestExposureOn from the notification's detectionInterval and expiresOn.
+    ///
+    /// ExposureNotificationSpec.exposureNotificationValid isn't necessarily the correct value
+    /// for a particular notification in case it is made with an old version that used 10d intervals.
+    /// In the V2 era the 1d reduction is no longer needed in detection interval (shortenedRollingPeriod=true).
+    static func calculateLatestExposureDate(from notification: ExposureNotification, shortenedRollingPeriod: Bool) -> Date {
+        let retentionTime = notification.detectionInterval.duration + .day * (shortenedRollingPeriod ? 0 : 1)
+        let retentionDays = (retentionTime / .day).rounded(.down)
+        return notification.expiresOn.addingTimeInterval(-1 * .days(retentionDays + 1))
     }
 }
 

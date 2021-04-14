@@ -7,8 +7,8 @@ protocol ExposureManager {
     static var authorizationStatus: ENAuthorizationStatus { get }
     func activate(completionHandler: @escaping ENErrorHandler)
     func detectExposures(configuration: ExposureConfiguration, diagnosisKeyURLs: [URL]) -> AnyPublisher<ENExposureDetectionSummary, Error>
-    func getExposureInfo(summary: ENExposureDetectionSummary, userExplanation: String) -> AnyPublisher<[ENExposureInfo], Error>
     func getDiagnosisKeys() -> AnyPublisher<[ENTemporaryExposureKey], Error>
+    func getExposureWindows(summary: ENExposureDetectionSummary) -> AnyPublisher<[ENExposureWindow], Error>
     func setExposureNotificationEnabled(_ enabled: Bool, completionHandler: @escaping ENErrorHandler)
     func invalidate()
 }
@@ -52,6 +52,17 @@ class ExposureManagerProvider {
 }
 
 extension ENManager : ExposureManager {
+    func getExposureWindows(summary: ENExposureDetectionSummary) -> AnyPublisher<[ENExposureWindow], Error> {
+        Future { promise in
+            self.getExposureWindows(summary: summary) { (exposureWindows, error) in
+                if let error = error {
+                    promise(.failure(error))
+                }
+
+                promise(.success(exposureWindows ?? []))
+            }
+        }.eraseToAnyPublisher()
+    }
     
     func getDiagnosisKeys() -> AnyPublisher<[ENTemporaryExposureKey], Error> {
         Future { promise in
@@ -78,18 +89,6 @@ extension ENManager : ExposureManager {
             let _ = self.detectExposures(configuration: configuration, diagnosisKeyURLs: diagnosisKeyURLs) { summary, error in
                 if let summary = summary {
                     promise(.success(summary))
-                } else {
-                    promise(.failure(error ?? NSError(domain: "fi.thl.koronahaavi", code: 0, userInfo: nil)))
-                }
-            }
-        }.eraseToAnyPublisher()
-    }
-    
-    func getExposureInfo(summary: ENExposureDetectionSummary, userExplanation: String) -> AnyPublisher<[ENExposureInfo], Error> {
-        Future { promise in
-            let _ = self.getExposureInfo(summary: summary, userExplanation: userExplanation) { info, error in
-                if let info = info {
-                    promise(.success(info))
                 } else {
                     promise(.failure(error ?? NSError(domain: "fi.thl.koronahaavi", code: 0, userInfo: nil)))
                 }
@@ -177,10 +176,10 @@ class MockExposureManager : ExposureManager {
     func getTestDiagnosisKeys(completionHandler: @escaping ENGetDiagnosisKeysHandler) {
     }
     
-    func getExposureInfo(summary: ENExposureDetectionSummary, userExplanation: String) -> AnyPublisher<[ENExposureInfo], Error> {
-        return Just([ENExposureInfo()]).setFailureType(to: Error.self).eraseToAnyPublisher()
+    func getExposureWindows(summary: ENExposureDetectionSummary) -> AnyPublisher<[ENExposureWindow], Error> {
+        return Just([]).setFailureType(to: Error.self).eraseToAnyPublisher()
     }
-    
+
     func invalidate() {
     }
 }

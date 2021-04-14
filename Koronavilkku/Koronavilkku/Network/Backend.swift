@@ -61,13 +61,13 @@ enum BackendEndpoint : RestResource {
     var path: String {
         switch self {
         case .getCurrentBatchId:
-            return "/diagnosis/v1/current"
+            return "/diagnosis/v1/current?en-api-version=2"
         case .getNewBatchIds(let previousBatchId):
-            return "/diagnosis/v1/list?previous=\(previousBatchId)"
+            return "/diagnosis/v1/list?en-api-version=2&previous=\(previousBatchId)"
         case .getBatchFile(let batchId):
             return "/diagnosis/v1/batch/\(batchId)"
         case .getConfiguration:
-            return "/exposure/configuration/v1"
+            return "/exposure/configuration/v2"
         case .postDiagnosisKeys:
             return "/diagnosis/v1"
         }

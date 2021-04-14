@@ -94,6 +94,12 @@ extension Environment {
             
             func deleteBatchFiles() {
             }
+            
+            func removeExpiredExposures() {
+            }
+            
+            func showExposureNotification(delay: TimeInterval?) {
+            }
         }
 
         struct PreviewBatchRepository: BatchRepository {
@@ -142,7 +148,7 @@ extension Environment {
             func showNotification(title: String, body: String, delay: TimeInterval?, badgeNumber: Int?) {
             }
 
-            func hideBadge() {
+            func updateBadgeNumber(_ number: Int?) {
             }
         }
         

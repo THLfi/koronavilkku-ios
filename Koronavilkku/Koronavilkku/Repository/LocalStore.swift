@@ -57,7 +57,10 @@ class LocalStore : BatchIdCache {
     var exposures: [Exposure]
     
     @Persisted(userDefaultsKey: "exposureNotifications", notificationName: .init("LocalStoreExposureNotificationsDidChange"), defaultValue: [])
-    var exposureNotifications: [ExposureNotification]
+    var countExposureNotifications: [CountExposureNotification]
+    
+    @Persisted(userDefaultsKey: "daysExposureNotifications", notificationName: .init("LocalStoreExposuresBundlesDidChange"), defaultValue: [])
+    var daysExposureNotifications: [DaysExposureNotification]
     
     @Persisted(userDefaultsKey: "dateLastPerformedExposureDetection",
                notificationName: .init("LocalStoreDateLastPerformedExposureDetectionDidChange"), defaultValue: nil)
@@ -66,8 +69,8 @@ class LocalStore : BatchIdCache {
     @Persisted(userDefaultsKey: "uiStatus", notificationName: .init("LocalStoreUIStatus"), defaultValue: .on)
     var uiStatus: RadarStatus
     
-    @Persisted(userDefaultsKey: "detectionSummaries", notificationName: .init("LocalStoreDetectionSummaries"), defaultValue: [])
-    var detectionSummaries: [ExposureDetectionSummary]
+    @Persisted(userDefaultsKey: "detectionData", notificationName: .init("LocalStoreDetectionData"), defaultValue: [])
+    var detectionData: [ExposureDetectionData]
     
     func updateDateLastPerformedExposureDetection() {
         dateLastPerformedExposureDetection = Date()
@@ -76,12 +79,25 @@ class LocalStore : BatchIdCache {
     func removeExpiredExposures() {
         let now = Date()
         exposures.removeAll { $0.deleteDate < now }
-        exposureNotifications.removeAll { $0.expiresOn < now }
+        countExposureNotifications.removeAll { $0.expiresOn < now }
+        daysExposureNotifications.removeAll { $0.expiresOn < now }
     }
     
     func resetExposures() {
         exposures = []
-        exposureNotifications = []
+        countExposureNotifications = []
+        daysExposureNotifications = []
         dateLastPerformedExposureDetection = nil
+    }
+    
+    var exposureNotificationCount: Int {
+        countExposureNotifications.count + daysExposureNotifications.count
+    }
+    
+    func latestExposureDate() -> Date? {
+        var result = daysExposureNotifications.map { $0.latestExposureDate }
+        result.append(contentsOf: countExposureNotifications.map { $0.latestExposureDate })
+        result.append(contentsOf: exposures.map { $0.date })
+        return result.max()
     }
 }

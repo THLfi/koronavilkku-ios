@@ -11,7 +11,6 @@
 "TabReportInfection" = "Meddela din smitta";
 "TabSettings" = "Inställningar";
 
-"ExposureNotificationUserExplanation" = "Du kan ha exponerats för coronaviruset";
 "HowItWorksButton" = "Se mer information om Coronablinkern";
 
 // MARK: Checkbox
@@ -90,6 +89,8 @@
 "NotificationListViewController.Text.ItemTitle" = "Meddelande om eventuell exponering %@";
 "NotificationListViewController.Text.ItemCountLabel" = "Eventuella exponeringar";
 "NotificationListViewController.Text.ItemCountValue" = "%@ st.";
+"NotificationListViewController.Text.ItemDaysLabel" = "Dagar med nya eventuella exponeringar";
+"NotificationListViewController.Text.ItemDaysValue" = "%d st.";
 "NotificationListViewController.Text.ItemIntervalLabel" = "Tidsperiod";
 "NotificationListViewController.Text.ItemIntervalValue" = "%@";
 

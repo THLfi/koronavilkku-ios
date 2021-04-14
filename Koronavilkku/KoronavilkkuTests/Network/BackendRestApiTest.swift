@@ -17,7 +17,7 @@ class BackendRestApiTest : XCTestCase {
         let backend = BackendRestApi(config: config, urlSession: urlSession)
 
         testEndpoint(task: backend.getCurrentBatchId(), verifyRequest: { request in
-            XCTAssertEqual(request.url, URL(string: "http://mock/diagnosis/v1/current"))
+            XCTAssertEqual(request.url, URL(string: "http://mock/diagnosis/v1/current?en-api-version=2"))
             XCTAssertEqual(request.httpMethod, "GET")
             XCTAssertEqual(request.allHTTPHeaderFields, [:])
             XCTAssertEqual(request.readHttpBody(), nil)
@@ -26,7 +26,7 @@ class BackendRestApiTest : XCTestCase {
         })
 
         testEndpoint(task: backend.getNewBatchIds(since: "123"), verifyRequest: { request in
-            XCTAssertEqual(request.url, URL(string: "http://mock/diagnosis/v1/list?previous=123"))
+            XCTAssertEqual(request.url, URL(string: "http://mock/diagnosis/v1/list?en-api-version=2&previous=123"))
             XCTAssertEqual(request.httpMethod, "GET")
             XCTAssertEqual(request.allHTTPHeaderFields, [:])
             XCTAssertEqual(request.readHttpBody(), nil)
@@ -44,31 +44,44 @@ class BackendRestApiTest : XCTestCase {
         })
         
         let exposureConfiguration = ExposureConfiguration(
-            minimumRiskScore: 1,
-            attenuationScores: [1, 2],
-            daysSinceLastExposureScores: [4, 5],
-            durationScores: [7, 8],
-            transmissionRiskScores: [10, 11],
-            durationAtAttenuationThresholds: [13, 14, 15],
-            durationAtAttenuationWeights: [1.0, 0.5, 0.0],
-            exposureRiskDuration: 16,
-            participatingCountries: ["DE", "EE", "FI"]
+            version: 1,
+            reportTypeWeightConfirmedTest: 1.2,
+            reportTypeWeightConfirmedClinicalDiagnosis: 1.3,
+            reportTypeWeightSelfReport: 1.4,
+            reportTypeWeightRecursive: 1.5,
+            infectiousnessWeightStandard: 2.1,
+            infectiousnessWeightHigh: 2.2,
+            attenuationBucketThresholdDb: [60, 70, 80],
+            attenuationBucketWeights: [4.0, 3.0, 2.0, 1.0],
+            daysSinceExposureThreshold: 9,
+            minimumWindowScore: 10.0,
+            minimumDailyScore: 11,
+            daysSinceOnsetToInfectiousness: [
+                "-14": "NONE", "-13": "NONE", "-12": "NONE", "-11": "NONE", "-10": "NONE", "-9": "NONE", "-8": "NONE", "-7": "NONE", "-6": "NONE", "-5": "NONE", "-4": "NONE", "-3": "NONE", "-2": "NONE", "-1": "HIGH", "0": "HIGH", "1": "HIGH", "2": "HIGH", "3": "STANDARD", "4": "STANDARD", "5": "STANDARD", "6": "NONE", "7": "NONE", "8": "NONE", "9": "NONE", "10": "NONE", "11": "NONE", "12": "NONE", "13": "NONE", "14": "STANDARD",
+            ],
+            availableCountries: ["DE", "EE", "FI"]
         )
-
+        
         testEndpoint(task: backend.getConfiguration(), verifyRequest: { request in
-            XCTAssertEqual(request.url, URL(string: "http://mock/exposure/configuration/v1"))
+            XCTAssertEqual(request.url, URL(string: "http://mock/exposure/configuration/v2"))
             XCTAssertEqual(request.httpMethod, "GET")
             XCTAssertEqual(request.allHTTPHeaderFields, [:])
             XCTAssertEqual(request.readHttpBody(), nil)
         }, response: exposureConfiguration, verifyResponse: { input, output in
-            XCTAssertEqual(input.minimumRiskScore, output.minimumRiskScore)
-            XCTAssertEqual(input.attenuationScores, output.attenuationScores)
-            XCTAssertEqual(input.daysSinceLastExposureScores, output.daysSinceLastExposureScores)
-            XCTAssertEqual(input.durationScores, output.durationScores)
-            XCTAssertEqual(input.transmissionRiskScores, output.transmissionRiskScores)
-            XCTAssertEqual(input.durationAtAttenuationThresholds, output.durationAtAttenuationThresholds)
-            XCTAssertEqual(input.durationAtAttenuationWeights, output.durationAtAttenuationWeights)
-            XCTAssertEqual(input.exposureRiskDuration, output.exposureRiskDuration)
+            XCTAssertEqual(input.version, output.version)
+            XCTAssertEqual(input.reportTypeWeightConfirmedTest, output.reportTypeWeightConfirmedTest)
+            XCTAssertEqual(input.reportTypeWeightConfirmedClinicalDiagnosis, output.reportTypeWeightConfirmedClinicalDiagnosis)
+            XCTAssertEqual(input.reportTypeWeightSelfReport, output.reportTypeWeightSelfReport)
+            XCTAssertEqual(input.reportTypeWeightRecursive, output.reportTypeWeightRecursive)
+            XCTAssertEqual(input.infectiousnessWeightStandard, output.infectiousnessWeightStandard)
+            XCTAssertEqual(input.infectiousnessWeightHigh, output.infectiousnessWeightHigh)
+            XCTAssertEqual(input.attenuationBucketThresholdDb, output.attenuationBucketThresholdDb)
+            XCTAssertEqual(input.attenuationBucketWeights, output.attenuationBucketWeights)
+            XCTAssertEqual(input.daysSinceExposureThreshold, output.daysSinceExposureThreshold)
+            XCTAssertEqual(input.minimumWindowScore, output.minimumWindowScore)
+            XCTAssertEqual(input.minimumDailyScore, output.minimumDailyScore)
+            XCTAssertEqual(input.daysSinceOnsetToInfectiousness, output.daysSinceOnsetToInfectiousness)
+            XCTAssertEqual(input.availableCountries, output.availableCountries)
         })
         
         let diagnosisKeys = DiagnosisPublishRequest(keys: [], visitedCountries: ["EE": 1, "DE": 0], consentToShareWithEfgs: 1)

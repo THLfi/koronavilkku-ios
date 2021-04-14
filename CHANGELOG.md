@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+- Show the number of potential exposures as an app badge
+- As the stored exposure notification object had to be changed once again, added new `ExposureNotification` protocol and `DaysExposureNotification` type for handling different versions of exposure notifications
+
+### Changed
+- Switched to version 2 of the Exposure Notifications API
+- iOS Deployment Target raised to 13.7
+- Instead of displaying the number of potential exposures within an exposure notification, the app now displays the number of days with exposures
+- The app is now responsible for showing the actual notifications 
+
 ## 2.2.1
 
 ### Added

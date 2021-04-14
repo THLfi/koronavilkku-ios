@@ -11,7 +11,6 @@
 "TabReportInfection" = "Ilmoita tartunnastasi";
 "TabSettings" = "Asetukset";
 
-"ExposureNotificationUserExplanation" = "Olet saattanut altistua koronavirukselle";
 "HowItWorksButton" = "Katso lisätietoa Koronavilkusta";
 
 // MARK: Checkbox
@@ -90,6 +89,8 @@
 "NotificationListViewController.Text.ItemTitle" = "Altistumisilmoitus %@";
 "NotificationListViewController.Text.ItemCountLabel" = "Mahdollisia altistumisia";
 "NotificationListViewController.Text.ItemCountValue" = "%@ kpl";
+"NotificationListViewController.Text.ItemDaysLabel" = "Mahdollisia uusia altistumisia";
+"NotificationListViewController.Text.ItemDaysValue" = "%d päivänä";
 "NotificationListViewController.Text.ItemIntervalLabel" = "Aikavälillä";
 "NotificationListViewController.Text.ItemIntervalValue" = "%@";
 

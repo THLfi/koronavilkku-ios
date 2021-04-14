@@ -137,6 +137,9 @@ final class BackgroundTaskForNotifications: BackgroundTask {
         // prevent running checks in parallel
         self.backgroundTask?.cancel()
         self.detectionRunning = true
+        
+        // always remove expired exposures to keep the badge number up-to-date
+        exposureRepository.removeExpiredExposures()
 
         // run all required async tasks concurrently
         self.backgroundTask = Publishers.Zip3(

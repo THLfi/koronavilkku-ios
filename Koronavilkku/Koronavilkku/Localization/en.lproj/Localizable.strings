@@ -11,7 +11,6 @@
 "TabReportInfection" = "Report your infection";
 "TabSettings" = "Settings";
 
-"ExposureNotificationUserExplanation" = "You may have been exposed to the coronavirus";
 "HowItWorksButton" = "More information about Koronavilkku";
 
 // MARK: Checkbox
@@ -90,6 +89,8 @@
 "NotificationListViewController.Text.ItemTitle" = "Notification about potential exposure %@";
 "NotificationListViewController.Text.ItemCountLabel" = "Potential exposures";
 "NotificationListViewController.Text.ItemCountValue" = "%@ pcs.";
+"NotificationListViewController.Text.ItemDaysLabel" = "Days with new potential exposures";
+"NotificationListViewController.Text.ItemDaysValue" = "%d pcs.";
 "NotificationListViewController.Text.ItemIntervalLabel" = "Time period";
 "NotificationListViewController.Text.ItemIntervalValue" = "%@";
 
