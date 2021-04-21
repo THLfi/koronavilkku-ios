@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 2.3.0
+
 ### Added
 - Show the number of potential exposures as an app badge
 - As the stored exposure notification object had to be changed once again, added new `ExposureNotification` protocol and `DaysExposureNotification` type for handling different versions of exposure notifications
