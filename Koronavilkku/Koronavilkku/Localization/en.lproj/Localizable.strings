@@ -70,9 +70,11 @@
 "HasExposuresView.Text.InstructionsCoughing" = "If you cough or sneeze, use a disposable tissue to cover your mouth and nose. Put the used tissue in a waste bin and wash your hands with water and soap or use hand sanitiser. If you do not have a tissue, cough or sneeze into your sleeve.";
 "HasExposuresView.Text.InstructionsRemoteWork" = "Work remotely if possible.";
 "HasExposuresView.Text.InstructionsWhenAbroad" = "If you are not in Finland, follow any instructions given by local authorities.";
-"HasExposuresView.Text.InfoLinkTitle" = "See more detailed instructions";
+"HasExposuresView.Text.VaccinatedTitle" = "Have you received the coronavirus vaccine or had COVID-19?";
+"HasExposuresView.Text.VaccinatedBody" = "If you have received the coronavirus vaccine or had the coronavirus disease, see further instructions.";
+"HasExposuresView.Text.InfoLinkTitle" = "See further instructions";
 "HasExposuresView.Text.InfoLinkSubtitle" = "thl.fi";
-"HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/symptoms-and-treatment-coronavirus";
+"HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/en/web/infectious-diseases-and-vaccinations/what-s-new/coronavirus-covid-19-latest-updates/transmission-and-protection-coronavirus/contact-tracing-app-will-help-stop-chains-of-infection/koronavilkku-exposure-notifications-in-special-situations";
 
 "NoExposuresView.Text.Heading" = "No observed exposures";
 "NoExposuresView.Text.Subtitle" = "According to the information collected by Koronavilkku, you have not been near a person who has reported an infection within the last 14 days.";
@@ -170,6 +172,9 @@
 "SettingsViewController.Text.PrivacyLinkTitle" = "Privacy policy";
 "SettingsViewController.Text.PrivacyLinkName" = "koronavilkku.fi";
 "SettingsViewController.Text.PrivacyLinkURL" = "https://koronavilkku.fi/en/privacy/";
+"SettingsViewController.Text.AccessibilityLinkTitle" = "Accessibility statement";
+"SettingsViewController.Text.AccessibilityLinkName" = "koronavilkku.fi";
+"SettingsViewController.Text.AccessibilityLinkURL" = "https://koronavilkku.fi/en/accessibility-statement/";
 "SettingsViewController.Text.OpenSourceLicenses" = "Open source licenses";
 "SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@";
 
@@ -297,8 +302,7 @@
 
 "ENBlockedTitle" = "Exposure notifications are off";
 "ENBlockedText" = "Koronavilkku will not work unless you turn on the exposure notifications in your phone’s operating system. How to turn them on:";
-"ENBlockedSteps" = "1. Use the button below to access your phone's settings.\n\n2. Turn on COVID-19 exposure log and notifications.";
-"ENBlockedStepsNew" = "1. Use the button below to access your phone's settings.\n\n2. Select Exposure Notifications.\n\n3. Turn on Share Exposure Information.\n\n4. Set the Finnish Institute for Health and Welfare as the active region.";
+"ENBlockedSteps" = "1. Use the button below to access your phone's settings.\n\n2. Select Exposure Notifications.\n\n3. Turn on Share Exposure Information.\n\n4. Set the Finnish Institute for Health and Welfare as the active region.";
 
 "OpenSettingsButton" = "Open settings";
 

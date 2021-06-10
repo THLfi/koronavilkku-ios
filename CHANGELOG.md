@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+- In Settings, added a new link to the app accessibility statement
+- New instructions after potential exposure if the user has been vaccinated or already had COVID-19
+
+### Removed
+- Cleaned up inaccessible code paths due to previously raised deployment target
+
 ## 2.3.0
 
 ### Added

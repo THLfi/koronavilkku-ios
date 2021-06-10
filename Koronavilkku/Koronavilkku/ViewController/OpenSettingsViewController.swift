@@ -139,15 +139,9 @@ class OpenSettingsViewController: UIViewController {
             dismissCheck = { status in status != .btOff }
 
         case .exposureNotifications:
-            var steps = Translation.ENBlockedSteps
-            
-            if #available(iOS 13.7, *) {
-                steps = Translation.ENBlockedStepsNew
-            }
-            
             content = OpenSettingsContent(title: Translation.ENBlockedTitle,
                                           text: Translation.ENBlockedText,
-                                          steps: steps)
+                                          steps: Translation.ENBlockedSteps)
             dismissCheck = { status in status != .apiDisabled }
         }
 

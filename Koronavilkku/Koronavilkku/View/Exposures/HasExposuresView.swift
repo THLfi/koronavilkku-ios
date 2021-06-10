@@ -19,6 +19,11 @@ class HasExposuresView : ExposuresView, LocalizedView {
         case InstructionsCoughing
         case InstructionsRemoteWork
         case InstructionsWhenAbroad
+        case VaccinatedTitle
+        case VaccinatedBody
+        case InfoLinkTitle
+        case InfoLinkSubtitle
+        case InfoLinkURL
     }
 
     init(notificationCount: Int?) {
@@ -92,8 +97,30 @@ class HasExposuresView : ExposuresView, LocalizedView {
         whenAboardLabel.numberOfLines = 0
         top = appendView(whenAboardLabel, spacing: 20, top: top)
 
+        
+        let vaccinatedTitle = UILabel(label: text(key: .VaccinatedTitle),
+                                      font: .heading3,
+                                      color: .Greyscale.black)
+        
+        vaccinatedTitle.numberOfLines = 0
+        top = appendView(vaccinatedTitle, spacing: 20, top: top)
+        
+        let vaccinatedBody = UILabel(label: text(key: .VaccinatedBody),
+                                     font: .bodySmall,
+                                     color: .Greyscale.black)
+        
+        vaccinatedBody.numberOfLines = 0
+        top = appendView(vaccinatedBody, spacing: 20, top: top)
+        
+        let infoLink = LinkItemCard(title: text(key: .InfoLinkTitle),
+                                    linkName: text(key: .InfoLinkSubtitle)) { [unowned self] in
+            self.delegate?.openExternalLink(url: URL(string: text(key: .InfoLinkURL))!)
+        }
+        
+        top = appendView(infoLink, spacing: 20, top: top)
+
         self.snp.makeConstraints { make in
-            make.bottom.equalTo(whenAboardLabel.snp.bottom)
+            make.bottom.equalTo(infoLink.snp.bottom)
         }
     }
     
@@ -108,9 +135,9 @@ import SwiftUI
 
 struct HasExposuresView_Preview: PreviewProvider {
     static var previews: some View = Group {
-        createPreviewInContainer(for: HasExposuresView(notificationCount: nil), width: 375, height: 1000)
+        createPreviewInContainer(for: HasExposuresView(notificationCount: nil), width: 375, height: 1300)
 
-        createPreviewInContainer(for: HasExposuresView(notificationCount: 10), width: 375, height: 1000)
+        createPreviewInContainer(for: HasExposuresView(notificationCount: 10), width: 375, height: 1400)
     }
 }
 
