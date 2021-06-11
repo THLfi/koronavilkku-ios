@@ -48,7 +48,8 @@ class LocalizationTests: XCTestCase {
             // check too long words that need to be broken down
             if let range = translation.range(of: #"[\w]{20,}"#, options: .regularExpression) {
                 // except if they're used as accessibility labels
-                XCTAssertTrue(translationKey.contains("Accessibility"), "Non-accessibility translation for key \(translationKey) contains too long word \(translation[range])")
+                XCTAssertTrue(translationKey.contains("Accessibility") || translationKey.contains("URL"),
+                              "Non-accessibility translation for key \(translationKey) contains too long word \(translation[range])")
             }
         }
     }

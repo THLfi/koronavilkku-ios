@@ -296,22 +296,13 @@ extension MainViewController : StatusHeaderViewDelegate {
             // or when another app is currently active (prior to iOS 13.7)
             exposureRepository.tryEnable { [weak self] errorCode in
                 // API activated
-                guard let code = errorCode else {
+                if errorCode == nil {
                     return
                 }
                 
-                // iOS 13.7+ we can no longer reliably determine anything from the error code;
-                // just show instructions how to enable the API in Settings.app
-                if #available(iOS 13.7, *) {
-                    self?.openSettings(type: .exposureNotifications)
-                } else {
-                    // in iOS prior to 13.7, attempting to enable the API results in .notAuthorized
-                    // when the API has been disabled and .restricted when the user rejects the
-                    // presented dialog; avoid showing instructions if the user rejected
-                    if code != .restricted {
-                        self?.openSettings(type: .exposureNotifications)
-                    }
-                }
+                // In iOS 13.7+ we can no longer reliably determine anything from the
+                // error code; just show instructions how to enable the API in Settings.app
+                self?.openSettings(type: .exposureNotifications)
             }
 
         case .off:

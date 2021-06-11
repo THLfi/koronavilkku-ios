@@ -70,9 +70,11 @@
 "HasExposuresView.Text.InstructionsCoughing" = "Om du hostar eller nyser ska du skydda din mun och näsa med en engångsnäsduk. Kasta den använda näsduken i soporna och tvätta dina händer med tvål och vatten eller använd hand\U00ADdesinfektions\U00ADmedel. Om du inte har en näsduk till hands, hosta eller nys i armvecket.";
 "HasExposuresView.Text.InstructionsRemoteWork" = "Arbeta på distans, om möjligt.";
 "HasExposuresView.Text.InstructionsWhenAbroad" = "Om du inte befinner dig i Finland ska du följa de lokala myndigheternas anvisningar.";
+"HasExposuresView.Text.VaccinatedTitle" = "Har du fått coronavaccinet eller genomgått coronavirus\U00ADsjukdomen?";
+"HasExposuresView.Text.VaccinatedBody" = "Om du har fått coronavaccin eller haft coronavirus\U00ADsjukdomen, se närmare anvisningar.";
 "HasExposuresView.Text.InfoLinkTitle" = "Se närmare anvisningar";
 "HasExposuresView.Text.InfoLinkSubtitle" = "thl.fi";
-"HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/symtom-och-behandling-coronaviruset";
+"HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/smitta-och-skydd-coronaviruset/applikation-som-intensifierar-brytandet-av-smittokedjorna/coronablinkerns-exponeringsmeddelanden-vid-specialsituationer";
 
 "NoExposuresView.Text.Heading" = "Ingen exponering har upptäckts";
 "NoExposuresView.Text.Subtitle" = "Enligt uppgifter som samlats in av Coronablinkern har du inte varit i närheten av en person som meddelat om sin coronasmitta under de senaste 14 dagarna.";
@@ -170,6 +172,9 @@
 "SettingsViewController.Text.PrivacyLinkTitle" = "Datasekretess";
 "SettingsViewController.Text.PrivacyLinkName" = "koronavilkku.fi";
 "SettingsViewController.Text.PrivacyLinkURL" = "https://koronavilkku.fi/sv/dataskydd/";
+"SettingsViewController.Text.AccessibilityLinkTitle" = "Tillgänglighetsutlåtande";
+"SettingsViewController.Text.AccessibilityLinkName" = "koronavilkku.fi";
+"SettingsViewController.Text.AccessibilityLinkURL" = "https://koronavilkku.fi/sv/tillganglighetsutlatande/";
 "SettingsViewController.Text.OpenSourceLicenses" = "Licenser för öppen källkod";
 "SettingsViewController.Text.AppInfoWithVersion" = "Coronablinkern %@";
 
@@ -297,8 +302,7 @@
 
 "ENBlockedTitle" = "Exponerings\U00ADmeddelandena är bortkopplade";
 "ENBlockedText" = "Coronablinkern fungerar endast om du kopplar på exponerings\U00ADmeddelandena i telefonens inställningar. Gör så här för att koppla på exponerings\U00ADmeddelandena:";
-"ENBlockedSteps" = "1. Tryck på Inställningsknappen nedan.\n\n2. Koppla på COVID-19-exponeringsloggen och -meddelandena.";
-"ENBlockedStepsNew" = "1. Tryck på Inställnings\U00ADknappen nedan.\n\n2. Öppna Exponerings\U00ADnotiser.\n\n3. Koppla på Dela exponerings\U00ADinformation.\n\n4. Ställ in Institutet för hälsa och välfärd som aktiv region.";
+"ENBlockedSteps" = "1. Tryck på Inställnings\U00ADknappen nedan.\n\n2. Öppna Exponerings\U00ADnotiser.\n\n3. Koppla på Dela exponerings\U00ADinformation.\n\n4. Ställ in Institutet för hälsa och välfärd som aktiv region.";
 
 "OpenSettingsButton" = "Öppna Inställningar";
 

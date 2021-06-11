@@ -21,6 +21,9 @@ class SettingsViewController: UIViewController {
         case PrivacyLinkTitle
         case PrivacyLinkName
         case PrivacyLinkURL
+        case AccessibilityLinkTitle
+        case AccessibilityLinkName
+        case AccessibilityLinkURL
         case OpenSourceLicenses
         case AppInfoWithVersion
     }
@@ -151,10 +154,11 @@ class SettingsViewController: UIViewController {
         licenseLinkItem.accessibilityTraits = .button
 
         let items = [
-            linkItem(title: Text.FAQLinkTitle, linkName: Text.FAQLinkName, url: Text.FAQLinkURL),
             guideLinkItem,
+            linkItem(title: Text.FAQLinkTitle, linkName: Text.FAQLinkName, url: Text.FAQLinkURL),
             linkItem(title: Text.TermsLinkTitle, linkName: Text.TermsLinkName, url: Text.TermsLinkURL),
             linkItem(title: Text.PrivacyLinkTitle, linkName: Text.PrivacyLinkName, url: Text.PrivacyLinkURL),
+            linkItem(title: Text.AccessibilityLinkTitle, linkName: Text.AccessibilityLinkName, url: Text.AccessibilityLinkURL),
             licenseLinkItem,
         ]
 

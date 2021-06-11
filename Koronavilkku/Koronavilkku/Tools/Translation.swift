@@ -137,7 +137,6 @@ enum Translation: String, Localizable {
     case ENBlockedTitle
     case ENBlockedText
     case ENBlockedSteps
-    case ENBlockedStepsNew
     case OpenSettingsButton
     
     case ContactRequestItemTitle

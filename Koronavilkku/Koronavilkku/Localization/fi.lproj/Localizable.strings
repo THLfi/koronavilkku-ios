@@ -70,9 +70,11 @@
 "HasExposuresView.Text.InstructionsCoughing" = "Jos yskit tai aivastat, suojaa suusi ja nenäsi kertakäyttö\U00ADnenäliinalla. Laita käytetty nenäliina jäteastiaan ja pese kätesi vedellä ja saippualla tai käytä käsihuuhdetta. Jos sinulla ei ole nenäliinaa, yski tai aivasta hihaan.";
 "HasExposuresView.Text.InstructionsRemoteWork" = "Tee etätyötä, jos mahdollista.";
 "HasExposuresView.Text.InstructionsWhenAbroad" = "Jos et ole Suomessa, noudata paikallisten viranomaisten ohjeita.";
+"HasExposuresView.Text.VaccinatedTitle" = "Oletko saanut koronarokotteen tai sairastanut koronavirustaudin?";
+"HasExposuresView.Text.VaccinatedBody" = "Jos olet saanut koronarokotteen tai sairastanut koronavirustaudin, katso tarkemmat ohjeet.";
 "HasExposuresView.Text.InfoLinkTitle" = "Katso tarkemmat ohjeet";
 "HasExposuresView.Text.InfoLinkSubtitle" = "thl.fi";
-"HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/ajankohtaista-koronaviruksesta-covid-19/oireet-ja-hoito-koronavirus";
+"HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/ajankohtaista-koronaviruksesta-covid-19/tarttuminen-ja-suojautuminen-koronavirus/tartuntaketjujen-katkaisua-tehostava-sovellus/erityistilanteiden-altistumisilmoitukset-koronavilkussa";
 
 "NoExposuresView.Text.Heading" = "Ei havaittuja altistumisia";
 "NoExposuresView.Text.Subtitle" = "Koronavilkun keräämien tietojen mukaan et ole ollut tartunnasta ilmoittaneen henkilön lähellä viimeisten 14 päivän aikana.";
@@ -170,6 +172,9 @@
 "SettingsViewController.Text.PrivacyLinkTitle" = "Tietosuoja";
 "SettingsViewController.Text.PrivacyLinkName" = "koronavilkku.fi";
 "SettingsViewController.Text.PrivacyLinkURL" = "https://koronavilkku.fi/tietosuojaseloste/";
+"SettingsViewController.Text.AccessibilityLinkTitle" = "Saavutettavuusseloste";
+"SettingsViewController.Text.AccessibilityLinkName" = "koronavilkku.fi";
+"SettingsViewController.Text.AccessibilityLinkURL" = "https://koronavilkku.fi/saavutettavuusseloste/";
 "SettingsViewController.Text.OpenSourceLicenses" = "Avoimen lähdekoodin lisenssit";
 "SettingsViewController.Text.AppInfoWithVersion" = "Koronavilkku %@";
 
@@ -297,8 +302,7 @@
 
 "ENBlockedTitle" = "Altistumis­ilmoitukset eivät ole käytössä";
 "ENBlockedText" = "Koronavilkku ei toimi, jos et ota käyttöön puhelimesi käyttöjärjestelmän altistumis\U00ADilmoituksia. Näin otat ne käyttöön:";
-"ENBlockedSteps" = "1. Avaa puhelimesi asetukset alla olevasta painikkeesta.\n\n2. Laita COVID-19-altistusloki ja -ilmoitukset päälle.";
-"ENBlockedStepsNew" = "1. Avaa puhelimesi asetukset alla olevasta painikkeesta.\n\n2. Valitse Altistusilmoitukset.\n\n3. Laita päälle Jaa altistustiedot.\n\n4. Aseta aktiiviseksi alueeksi Terveyden ja hyvinvoinnin laitos.";
+"ENBlockedSteps" = "1. Avaa puhelimesi asetukset alla olevasta painikkeesta.\n\n2. Valitse Altistusilmoitukset.\n\n3. Laita päälle Jaa altistustiedot.\n\n4. Aseta aktiiviseksi alueeksi Terveyden ja hyvinvoinnin laitos.";
 
 "OpenSettingsButton" = "Avaa asetukset";
 
