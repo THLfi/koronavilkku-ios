@@ -10,6 +10,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - In Settings, added a new link to the app accessibility statement
 - New instructions after potential exposure if the user has been vaccinated or already had COVID-19
 
+### Fixed
+- Resolved a bug with the order of the onboarding steps being different from the runtime configuration
+
 ### Removed
 - Cleaned up inaccessible code paths due to previously raised deployment target
 
