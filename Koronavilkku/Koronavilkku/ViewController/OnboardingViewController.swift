@@ -16,7 +16,7 @@ class OnboardingViewController: UINavigationController {
     private var activationTask: AnyCancellable?
     private var onRemoveScrollIndicator: (() -> ())?
     
-    private lazy var steps: [Step] = [
+    private(set) lazy var steps: [Step] = [
         // Note that the steps and StepId values must be in the same order.
         Step(id: .intro,
              buttonTitle: Translation.ButtonNext.localized,
@@ -440,13 +440,13 @@ struct Step {
     }
 }
 
-enum StepId: Int {
+enum StepId: Int, CaseIterable {
     case intro = 0
     case concept
+    case enableNotifications
     case acceptTerms
     case enableApiInstructions
     case enableBluetooth
-    case enableNotifications
     
     var description: String { return "StepId(\(String(describing: self))" }
 }
