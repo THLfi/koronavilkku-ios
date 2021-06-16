@@ -9,7 +9,7 @@ protocol ExposuresViewDelegate: AnyObject {
     func makeContact()
     func startManualCheck()
     func showNotificationList()
-    func openExternalLink(url: URL)
+    func openLink(url: URL)
 }
 
 class ExposuresView : UIView {

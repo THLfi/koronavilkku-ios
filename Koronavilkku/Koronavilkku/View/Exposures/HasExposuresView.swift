@@ -114,7 +114,7 @@ class HasExposuresView : ExposuresView, LocalizedView {
         
         let infoLink = LinkItemCard(title: text(key: .InfoLinkTitle),
                                     linkName: text(key: .InfoLinkSubtitle)) { [unowned self] in
-            self.delegate?.openExternalLink(url: URL(string: text(key: .InfoLinkURL))!)
+            self.delegate?.openLink(url: URL(string: text(key: .InfoLinkURL))!)
         }
         
         top = appendView(infoLink, spacing: 20, top: top)
