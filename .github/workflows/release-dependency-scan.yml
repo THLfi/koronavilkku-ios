@@ -7,7 +7,7 @@ on:
 jobs:
   build-release-app:
     name: Build Koronavilkku-ios Latest Release
-    runs-on: macOS-latest
+    runs-on: macos-11
     steps:
       - uses: actions/checkout@v2
         with:
