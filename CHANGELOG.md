@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Changed
+- Reduced the exposure detection interval and notification retention time to 10 days
+- Updated the instruction texts (and an illustration) to match the reduced voluntary quarantine period 
+
+## 2.4.1
+
 ### Added
 - In Settings, added a new link to the app accessibility statement
 - New instructions after potential exposure if the user has been vaccinated or already had COVID-19

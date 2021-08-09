@@ -7,7 +7,7 @@ on:
 jobs:
   build-release-app:
     name: Build Koronavilkku-ios Latest Release
-    runs-on: macOS-latest
+    runs-on: macos-11
     steps:
       - uses: actions/checkout@v2
         with:
@@ -26,7 +26,7 @@ jobs:
           restore-keys: koronavilkku-ios-release-build1
       - name: Build app
         env:
-          DEVELOPER_DIR: /Applications/Xcode_12.app/Contents/Developer
+          DEVELOPER_DIR: /Applications/Xcode_12.5.1.app/Contents/Developer
         run: |
           xcodebuild -version
           xcodebuild build -workspace Koronavilkku.xcworkspace -scheme Koronavilkku -derivedDataPath DerivedData -configuration Debug CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO

@@ -65,14 +65,14 @@ fileprivate struct ExposureNotificationSpec {
     ///
     /// This property could be moved to the configuration, but as our UI texts are
     /// currently static, this is also fixed.
-    static let exposureNotificationValid: Days = 14
+    static let exposureNotificationValid: Days = 10
     
     /// The number of days exposure detection goes back in time to find potential exposures
     ///
     /// While this value could be determined from the EN configuration, V1 API does not
     /// provide enough granularity we need. We can revisit this issue later once we've moved
     /// to the V2 API.
-    static let exposureDetectionInterval: Days = 14
+    static let exposureDetectionInterval: Days = 10
     
     /// Determines the exposure notification retention time
     ///
