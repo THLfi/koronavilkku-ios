@@ -55,13 +55,13 @@
 // MARK: ExposuresViewController
 "ExposuresViewController.Text.TitleHasExposures" = "Mahdollinen altistuminen";
 
-"HasExposuresView.Text.Heading" = "Olet ollut viimeisten 14 vuorokauden aikana lähellä henkilöä, joka on ilmoittanut korona\U00ADtartunnastaan sovelluksen kautta.";
+"HasExposuresView.Text.Heading" = "Olet ollut viimeisten 10 vuorokauden aikana lähellä henkilöä, joka on ilmoittanut korona\U00ADtartunnastaan sovelluksen kautta.";
 "HasExposuresView.Text.ContactCardTitle" = "Ota yhteyttä terveydenhuoltoon";
 "HasExposuresView.Text.ContactCardText" = "Ota yhteyttä terveydenhuoltoon, vaikka sinulla ei olisikaan koronavirustautiin sopivia oireita. Saat terveydenhuollosta toimintaohjeet ja arvion koronavirustestin tarpeellisuudesta.";
 "HasExposuresView.Text.ContactButtonTitle" = "Ota yhteyttä";
 "HasExposuresView.Text.ExposuresButtonTitle" = "Katso altistumis\U00ADilmoitukset";
 "HasExposuresView.Text.InstructionsTitle" = "Toimi näin";
-"HasExposuresView.Text.InstructionsLede" = "Noudata seuraavia ohjeita 14 päivän ajan. Jatka ohjeiden noudattamista, vaikka saisit negatiivisen koronatestituloksen.";
+"HasExposuresView.Text.InstructionsLede" = "Noudata seuraavia ohjeita 10 päivän ajan. Jatka ohjeiden noudattamista, vaikka saisit negatiivisen koronatestituloksen.";
 "HasExposuresView.Text.InstructionsSymptoms" = "Tarkkaile vointiasi. Jos sinulla ilmenee yksikin koronavirustautiin sopiva oire, hakeudu koronavirustestiin, vaikka sinulle olisi tehty testi jo aiemmin. Koronavirustautiin sopivia oireita ovat haju- tai makuaistin muutos, hengitysvaikeus, yskä, kurkkukipu, nuha, kuume, päänsärky, lihaskivut, ripuli tai vatsakipu ilman muuta ilmeistä syytä.";
 "HasExposuresView.Text.InstructionsDistancing" = "Vältä tapaamasta muita ihmisiä.";
 "HasExposuresView.Text.InstructionsHygiene" = "Huolehdi käsihygieniastasi.";
@@ -77,7 +77,7 @@
 "HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/ajankohtaista-koronaviruksesta-covid-19/tarttuminen-ja-suojautuminen-koronavirus/tartuntaketjujen-katkaisua-tehostava-sovellus/erityistilanteiden-altistumisilmoitukset-koronavilkussa";
 
 "NoExposuresView.Text.Heading" = "Ei havaittuja altistumisia";
-"NoExposuresView.Text.Subtitle" = "Koronavilkun keräämien tietojen mukaan et ole ollut tartunnasta ilmoittaneen henkilön lähellä viimeisten 14 päivän aikana.";
+"NoExposuresView.Text.Subtitle" = "Koronavilkun keräämien tietojen mukaan et ole ollut tartunnasta ilmoittaneen henkilön lähellä viimeisten 10 päivän aikana.";
 "NoExposuresView.Text.DisclaimerText" = "Sovellus ei kuitenkaan tunnista kaikkia mahdollisia altistumis\U00ADtilanteita.";
 "NoExposuresView.Text.ExposureGuideButton" = "Jos saat altistumis\U00ADilmoituksen, toimi näin";
 "NoExposuresView.Text.AppGuideButton" = "Tietoa Koronavilkusta";
@@ -87,7 +87,7 @@
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "Altistumistietoja ei ole vielä tarkistettu";
 
 "NotificationListViewController.Text.Title" = "Altistumis\U00ADilmoitukset";
-"NotificationListViewController.Text.Disclaimer" = "Arvio altistumisesta perustuu Koronavilkun keräämiin kohtaamistietoihin viimeisten 14 vuorokauden ajalta. Altistumisen voimakkuutta ei voida täsmällisesti arvioida.";
+"NotificationListViewController.Text.Disclaimer" = "Arvio altistumisesta perustuu Koronavilkun keräämiin kohtaamistietoihin viimeisten 10 vuorokauden ajalta. Altistumisen voimakkuutta ei voida täsmällisesti arvioida.";
 "NotificationListViewController.Text.ItemTitle" = "Altistumisilmoitus %@";
 "NotificationListViewController.Text.ItemCountLabel" = "Mahdollisia altistumisia";
 "NotificationListViewController.Text.ItemCountValue" = "%@ kpl";

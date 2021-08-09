@@ -55,13 +55,13 @@
 // MARK: ExposuresViewController
 "ExposuresViewController.Text.TitleHasExposures" = "Eventuell exponering";
 
-"HasExposuresView.Text.Heading" = "Du har under de senaste 14 dygnen varit i närheten av en person som meddelat om sin coronasmitta via applikationen.";
+"HasExposuresView.Text.Heading" = "Du har under de senaste 10 dygnen varit i närheten av en person som meddelat om sin coronasmitta via applikationen.";
 "HasExposuresView.Text.ContactCardTitle" = "Kontakta hälsovården";
 "HasExposuresView.Text.ContactCardText" = "Kontakta hälsovården även om du inte har symtom som passar in på coronavirus\U00ADsjukdom. Hälsovården ger dig anvisningar och en bedömning av behovet av ett coronavirustest.";
 "HasExposuresView.Text.ContactButtonTitle" = "Ta kontakt";
 "HasExposuresView.Text.ExposuresButtonTitle" = "Visa exponerings\U00ADmeddelandena";
 "HasExposuresView.Text.InstructionsTitle" = "Gör så här";
-"HasExposuresView.Text.InstructionsLede" = "Följ anvisningar nedan i 14 dagar. Fortsätt att följa anvisningarna även om du får ett negativt coronatest\U00ADresultat.";
+"HasExposuresView.Text.InstructionsLede" = "Följ anvisningar nedan i 10 dagar. Fortsätt att följa anvisningarna även om du får ett negativt coronatest\U00ADresultat.";
 "HasExposuresView.Text.InstructionsSymptoms" = "Var uppmärksam på hur du mår. Om du har ens ett av symtomen som passar in på coronavirus\U00ADsjukdom, ska du göra ett coronavirustest även om du redan tidigare har blivit testad. Symtom som kan tyda på coronavirus\U00ADinfektion är förändringar i lukt- eller smaksinnet, andnings\U00ADsvårigheter, hosta, halsont, snuva, feber, huvudvärk, muskelvärk samt diarré eller magont utan annan uppenbar orsak.";
 "HasExposuresView.Text.InstructionsDistancing" = "Undvik att träffa andra människor.";
 "HasExposuresView.Text.InstructionsHygiene" = "Var noggrann med din handhygien.";
@@ -77,7 +77,7 @@
 "HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/smitta-och-skydd-coronaviruset/applikation-som-intensifierar-brytandet-av-smittokedjorna/coronablinkerns-exponeringsmeddelanden-vid-specialsituationer";
 
 "NoExposuresView.Text.Heading" = "Ingen exponering har upptäckts";
-"NoExposuresView.Text.Subtitle" = "Enligt uppgifter som samlats in av Coronablinkern har du inte varit i närheten av en person som meddelat om sin coronasmitta under de senaste 14 dagarna.";
+"NoExposuresView.Text.Subtitle" = "Enligt uppgifter som samlats in av Coronablinkern har du inte varit i närheten av en person som meddelat om sin coronasmitta under de senaste 10 dagarna.";
 "NoExposuresView.Text.DisclaimerText" = "Appen identifierar dock inte alla eventuella exponerings\U00ADsituationer.";
 "NoExposuresView.Text.ExposureGuideButton" = "Om du får ett exponerings\U00ADmeddelande, gör så här";
 "NoExposuresView.Text.AppGuideButton" = "Information om Coronablinkern";
@@ -87,7 +87,7 @@
 "ExposuresLastCheckedView.Text.NotCheckedYet" = "Ingen kontroll ännu";
 
 "NotificationListViewController.Text.Title" = "Exponerings\U00ADmeddelandena";
-"NotificationListViewController.Text.Disclaimer" = "Bedömningen om exponeringen bygger på den information om möten som Coronablinkern har samlat in under de senaste 14 dygnen. Coronablinkern ger ingen exakt bedömning av hur stor smittorisken är.";
+"NotificationListViewController.Text.Disclaimer" = "Bedömningen om exponeringen bygger på den information om möten som Coronablinkern har samlat in under de senaste 10 dygnen. Coronablinkern ger ingen exakt bedömning av hur stor smittorisken är.";
 "NotificationListViewController.Text.ItemTitle" = "Meddelande om eventuell exponering %@";
 "NotificationListViewController.Text.ItemCountLabel" = "Eventuella exponeringar";
 "NotificationListViewController.Text.ItemCountValue" = "%@ st.";
