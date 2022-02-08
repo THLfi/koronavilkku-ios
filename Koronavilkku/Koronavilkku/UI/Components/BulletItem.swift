@@ -37,32 +37,25 @@ class BulletItem: UILabel {
     
     func render() {
         guard let text = _text else { return }
-        
-        let attachment = NSTextAttachment(image: UIImage(named: "bullet")!.withTintColor(UIColor.Primary.blue))
-        attachment.bounds = Self.bulletBounds
-        let attachmentString = NSAttributedString(attachment: attachment)
 
-        let spacerString = NSAttributedString(string: "\u{200B}", attributes: [
-            NSAttributedString.Key.kern: Self.indentation - Self.bulletBounds.width
-        ])
-
-        let textString = NSAttributedString(string: text, attributes: [
-            NSAttributedString.Key.font: UIFont.bodySmall,
-            NSAttributedString.Key.foregroundColor: textColor ?? UIColor.Greyscale.black
-        ])
-        
         let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.firstLineHeadIndent = 0
+        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: Self.indentation)]
         paragraphStyle.headIndent = Self.indentation
         
-        let attributedString = NSMutableAttributedString(string: "\u{200B}", attributes: [
-            NSAttributedString.Key.paragraphStyle : paragraphStyle,
+        let finalString = NSMutableAttributedString(string: " ", attributes: [
+            .paragraphStyle: paragraphStyle,
         ])
 
-        attributedString.append(attachmentString)
-        attributedString.append(spacerString)
-        attributedString.append(textString)
+        let attachment = NSTextAttachment(image: UIImage(named: "bullet")!.withTintColor(UIColor.Primary.blue))
+        let attachmentString = NSAttributedString(attachment: attachment)
+        finalString.append(attachmentString)
 
-        self.attributedText = attributedString
+        let textString = NSAttributedString(string: "\t\(text)", attributes: [
+            .font: UIFont.bodySmall,
+            .foregroundColor: textColor ?? UIColor.Greyscale.black,
+        ])
+        finalString.append(textString)
+
+        self.attributedText = finalString
     }
 }
