@@ -113,6 +113,7 @@ class ExposuresViewController: UIViewController {
         }
         
         navController.navigationBar.standardAppearance = appearance
+        navController.navigationBar.scrollEdgeAppearance = appearance
         navController.setNavigationBarHidden(false, animated: false)
         navController.navigationBar.setNeedsLayout()
         setNeedsStatusBarAppearanceUpdate()
