@@ -86,6 +86,7 @@ class ReportInfectionViewController: UIViewController {
     private func showNotice(image: UIImage?, title: Text? = nil, text: Text) {
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationItem.title = nil
+        navigationItem.largeTitleDisplayMode = .never
         
         let margin = UIEdgeInsets(top: 100, left: 20, bottom: 20, right: 20)
         let contentView = view.addScrollableContentView(backgroundColor: UIColor.Secondary.blueBackdrop, margins: margin)
