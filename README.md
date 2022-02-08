@@ -21,13 +21,13 @@ Under _./Configuration_ you can find the default configuration file _Main.xcconf
 ## External dependencies
 Dependencies are managed with Swift Package Manager through Xcode. Required packages should be downloaded by Xcode automatically, but if not, select File → Swift Packages → Resolve Package Versions.
 
-### [SnapKit](https://github.com/SnapKit/SnapKit) version 5.0.1
+### [SnapKit](https://github.com/SnapKit/SnapKit)
 DSL for adding autolayout constraints to UIKit components
 
-### [ZipFoundation](https://github.com/weichsel/ZIPFoundation) version 0.9.11
+### [ZipFoundation](https://github.com/weichsel/ZIPFoundation)
 Library for easy Zip-file handling
 
-### [TrustKit](https://github.com/datatheorem/TrustKit) version 1.6.5
+### [TrustKit](https://github.com/datatheorem/TrustKit)
 Framework for SSL public key pinning and reporting
 
 ## Backend

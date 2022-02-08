@@ -5,8 +5,6 @@ import SnapKit
 class MunicipalityContactInfoViewController: UIViewController {
     
     enum Text : String, Localizable {
-        case ContactTitle
-        case ContactBody
         case SymptomAssesmentTitle
         case SymptomAssesmentDescription
         case SymptomAssesmentButton
@@ -71,15 +69,6 @@ class MunicipalityContactInfoViewController: UIViewController {
             
             messageLabel.numberOfLines = 0
             top = contentView.appendView(messageLabel, spacing: 10, top: top)
-        } else {
-            let titleLabel = UILabel(label: Text.ContactTitle.localized, font: .heading2, color: UIColor.Greyscale.black)
-            titleLabel.numberOfLines = 0
-            titleLabel.setLineHeight(0.95)
-            top = contentView.appendView(titleLabel, top: top)
-            
-            let bodyLabel = UILabel(label: Text.ContactBody.localized, font: .bodySmall, color: UIColor.Greyscale.black)
-            bodyLabel.numberOfLines = 0
-            top = contentView.appendView(bodyLabel, spacing: 20, top: top)
         }
 
         let contactInformationView = MunicipalityContactInformationView(municipality: municipality) { [unowned self] in

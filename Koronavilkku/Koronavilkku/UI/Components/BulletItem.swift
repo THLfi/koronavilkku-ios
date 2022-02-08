@@ -42,25 +42,21 @@ class BulletItem: UILabel {
         attachment.bounds = Self.bulletBounds
         let attachmentString = NSAttributedString(attachment: attachment)
 
-        let spacerString = NSAttributedString(string: "\u{200B}", attributes: [
-            NSAttributedString.Key.kern: Self.indentation - Self.bulletBounds.width
+        let textString = NSAttributedString(string: "\t\(text)", attributes: [
+            .font: UIFont.bodySmall,
+            .foregroundColor: textColor ?? UIColor.Greyscale.black,
         ])
 
-        let textString = NSAttributedString(string: text, attributes: [
-            NSAttributedString.Key.font: UIFont.bodySmall,
-            NSAttributedString.Key.foregroundColor: textColor ?? UIColor.Greyscale.black
-        ])
-        
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.firstLineHeadIndent = 0
+        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: Self.indentation)]
         paragraphStyle.headIndent = Self.indentation
         
-        let attributedString = NSMutableAttributedString(string: "\u{200B}", attributes: [
-            NSAttributedString.Key.paragraphStyle : paragraphStyle,
+        let attributedString = NSMutableAttributedString(string: " ", attributes: [
+            .paragraphStyle: paragraphStyle,
         ])
 
         attributedString.append(attachmentString)
-        attributedString.append(spacerString)
         attributedString.append(textString)
 
         self.attributedText = attributedString
