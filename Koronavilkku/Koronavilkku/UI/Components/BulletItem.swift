@@ -37,25 +37,28 @@ class BulletItem: UILabel {
     
     func render() {
         guard let text = _text else { return }
-
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: Self.indentation)]
-        paragraphStyle.headIndent = Self.indentation
         
-        let finalString = NSMutableAttributedString(string: " ", attributes: [
-            .paragraphStyle: paragraphStyle,
-        ])
-
         let attachment = NSTextAttachment(image: UIImage(named: "bullet")!.withTintColor(UIColor.Primary.blue))
+        attachment.bounds = Self.bulletBounds
         let attachmentString = NSAttributedString(attachment: attachment)
-        finalString.append(attachmentString)
 
         let textString = NSAttributedString(string: "\t\(text)", attributes: [
             .font: UIFont.bodySmall,
             .foregroundColor: textColor ?? UIColor.Greyscale.black,
         ])
-        finalString.append(textString)
 
-        self.attributedText = finalString
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.firstLineHeadIndent = 0
+        paragraphStyle.tabStops = [NSTextTab(textAlignment: .left, location: Self.indentation)]
+        paragraphStyle.headIndent = Self.indentation
+        
+        let attributedString = NSMutableAttributedString(string: " ", attributes: [
+            .paragraphStyle: paragraphStyle,
+        ])
+
+        attributedString.append(attachmentString)
+        attributedString.append(textString)
+
+        self.attributedText = attributedString
     }
 }
