@@ -34,7 +34,7 @@
 "StatusHeaderView.Text.BodyEnabled" = "Appen fungerar även om du stänger den.";
 "StatusHeaderView.Text.BodyDisabled" = "Koppla på exponerings\U00ADmeddelandena på nytt.";
 "StatusHeaderView.Text.BodyBTOff" = "Koppla på Bluetooth.";
-"StatusHeaderView.Text.BodyLocked" = "Tack för att du meddelade om din smitta. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
+"StatusHeaderView.Text.BodyLocked" = "Appen är låst eftersom du meddelat om din smitta. Om du vill ta appen i bruk igen ska du avinstallera den och installera den på nytt.";
 "StatusHeaderView.Text.EnableButton" = "Koppla på";
 "StatusHeaderView.Text.EnableNotificationsButton" = "Ta i bruk";
 
@@ -56,13 +56,12 @@
 "ExposuresViewController.Text.TitleHasExposures" = "Eventuell exponering";
 
 "HasExposuresView.Text.Heading" = "Du har under de senaste 10 dygnen varit i närheten av en person som meddelat om sin coronasmitta via applikationen.";
-"HasExposuresView.Text.ContactCardTitle" = "Kontakta hälsovården";
-"HasExposuresView.Text.ContactCardText" = "Kontakta hälsovården även om du inte har symtom som passar in på coronavirus\U00ADsjukdom. Hälsovården ger dig anvisningar och en bedömning av behovet av ett coronavirustest.";
+"HasExposuresView.Text.ContactCardTitle" = "Kontakta vid behov hälsovården";
+"HasExposuresView.Text.ContactCardText" = "Om du är symtomfri eller om dina symtom är lindriga och ditt allmäntillstånd är bra behöver du inte kontakta hälsovården eller gå och ta ett test.\n\nI en del situationer är det viktigt att kontakta hälsovården. Läs anvisningarna nedan och kontakta vid behov hälsovården.";
 "HasExposuresView.Text.ContactButtonTitle" = "Ta kontakt";
 "HasExposuresView.Text.ExposuresButtonTitle" = "Visa exponerings\U00ADmeddelandena";
 "HasExposuresView.Text.InstructionsTitle" = "Gör så här";
-"HasExposuresView.Text.InstructionsLede" = "Följ anvisningar nedan i 10 dagar. Fortsätt att följa anvisningarna även om du får ett negativt coronatest\U00ADresultat.";
-"HasExposuresView.Text.InstructionsSymptoms" = "Var uppmärksam på hur du mår. Om du har ens ett av symtomen som passar in på coronavirus\U00ADsjukdom, ska du göra ett coronavirustest även om du redan tidigare har blivit testad. Symtom som kan tyda på coronavirus\U00ADinfektion är förändringar i lukt- eller smaksinnet, andnings\U00ADsvårigheter, hosta, halsont, snuva, feber, huvudvärk, muskelvärk samt diarré eller magont utan annan uppenbar orsak.";
+"HasExposuresView.Text.InstructionsLede" = "Följ följande anvisningar i minst 5 dagar. Anvisningarna gäller även vaccinerade.";
 "HasExposuresView.Text.InstructionsDistancing" = "Undvik att träffa andra människor.";
 "HasExposuresView.Text.InstructionsHygiene" = "Var noggrann med din handhygien.";
 "HasExposuresView.Text.InstructionsAvoidTravel" = "Undvik offentliga platser och kollektivtrafik. Om du är tvungen att vistas på offentliga platser ska du hålla ett avstånd på minst två meter till andra människor. Använd även ansiktsmask.";
@@ -70,8 +69,8 @@
 "HasExposuresView.Text.InstructionsCoughing" = "Om du hostar eller nyser ska du skydda din mun och näsa med en engångsnäsduk. Kasta den använda näsduken i soporna och tvätta dina händer med tvål och vatten eller använd hand\U00ADdesinfektions\U00ADmedel. Om du inte har en näsduk till hands, hosta eller nys i armvecket.";
 "HasExposuresView.Text.InstructionsRemoteWork" = "Arbeta på distans, om möjligt.";
 "HasExposuresView.Text.InstructionsWhenAbroad" = "Om du inte befinner dig i Finland ska du följa de lokala myndigheternas anvisningar.";
-"HasExposuresView.Text.VaccinatedTitle" = "Har du fått coronavaccinet eller genomgått coronavirus\U00ADsjukdomen?";
-"HasExposuresView.Text.VaccinatedBody" = "Om du har fått coronavaccin eller haft coronavirus\U00ADsjukdomen, se närmare anvisningar.";
+"HasExposuresView.Text.TestingTitle" = "När bör man gå och ta ett coronatest?";
+"HasExposuresView.Text.TestingBody" = "I en del situationer är det viktigt att ta ett test hos hälsovården. Dessa situationer beskrivs närmare på THL:s webbplats.";
 "HasExposuresView.Text.InfoLinkTitle" = "Se närmare anvisningar";
 "HasExposuresView.Text.InfoLinkSubtitle" = "thl.fi";
 "HasExposuresView.Text.InfoLinkURL" = "https://thl.fi/sv/web/infektionssjukdomar-och-vaccinationer/aktuellt/aktuellt-om-coronaviruset-covid-19/smitta-och-skydd-coronaviruset/applikation-som-intensifierar-brytandet-av-smittokedjorna/coronablinkerns-exponeringsmeddelanden-vid-specialsituationer";
@@ -98,15 +97,15 @@
 
 // MARK: ReportInfectionViewController
 "ReportInfectionViewController.Text.LockedTitle" = "Du har redan meddelat om din smitta";
-"ReportInfectionViewController.Text.LockedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
+"ReportInfectionViewController.Text.LockedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Appen är låst eftersom du meddelat om din smitta. Om du vill ta appen i bruk igen ska du avinstallera den och installera den på nytt.";
 "ReportInfectionViewController.Text.DisabledText" = "Exponerings\U00ADmeddelandena måste vara påkopplade för att du ska kunna meddela att du har blivit smittad. Koppla på exponerings\U00ADmeddelandena i Coronablinkerns hemvy.";
 "ReportInfectionViewController.Text.ReportTitle" = "Meddela om din smitta";
-"ReportInfectionViewController.Text.ReportMessagePrimary" = "För att meddela om din smitta behöver du en startkod. Du får startkoden från en yrkesperson inom hälsovården eller per textmeddelande från THL, om du i ett coronavirustest i Finland har konstateras vara smittad.";
+"ReportInfectionViewController.Text.ReportMessagePrimary" = "För att meddela om din smitta behöver du en startkod.\n\nDu får startkoden från en yrkesperson inom hälsovården eller per textmeddelande från THL, om du i ett coronavirustest hos hälsovården i Finland har konstaterat vara smittad. Startkoder skickas inte i alla områden.";
 "ReportInfectionViewController.Text.ReportMessageSecondary" = "Ange startkoden i den telefon som du vanligtvis har med dig. Coronablinkern meddelar om eventuell exponering till de användare av applikationen som har varit i din närhet under perioden som du sannolikt har varit smittsam. Det är inte möjligt att identifiera dig med hjälp av startkoden.";
 "ReportInfectionViewController.Text.ReportButton" = "Meddela om smitta";
 
 // MARK: ChooseDestinationViewController
-"ChooseDestinationViewController.Text.Title" = "Vem vill du meddela din smitta till?";
+"ChooseDestinationViewController.Text.Title" = "Välj vem du vill att Coronablinkern meddelar om eventuell exponering.";
 "ChooseDestinationViewController.Text.DestinationEFGS" = "För användare av Coronablinkern och andra europeiska corona-applikationer.";
 "ChooseDestinationViewController.Text.DestinationLocal" = "Endast för användare av Coronablinkern.";
 "ChooseDestinationViewController.Text.PublishTokenReceived" = "Coronablinkern fick din startkod från textmeddelandet.";
@@ -144,7 +143,7 @@
 
 // MARK: ReportInfectionFlowViewController
 "ReportInfectionFlowViewController.Text.FinishedTitle" = "Tack för ditt meddelande";
-"ReportInfectionFlowViewController.Text.FinishedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Appen är nu låst. Coronablinkern samlar inte längre information om närliggande telefoner. Krya på dig!";
+"ReportInfectionFlowViewController.Text.FinishedText" = "De uppgifter du angett bidrar till att bekämpa coronavirusepidemin. Krya på dig!\n\nAppen är nu låst. Coronablinkern samlar inte längre information om närliggande telefoner. Om du vill ta appen i bruk igen ska du avinstallera den och installera den på nytt från appbutiken.";
 "ReportInfectionFlowViewController.Text.FinishedButton" = "OK";
 
 // MARK: SymptomsViewController
@@ -197,11 +196,9 @@
 "LinkLanguageViewController.Text.English" = "English";
 
 // MARK: MunicipalityContactInfoViewController
-"MunicipalityContactInfoViewController.Text.ContactTitle" = "Kontakta hälsovården";
-"MunicipalityContactInfoViewController.Text.ContactBody" = "Kontakta hälsovården även om du inte har symtom som passar in på coronavirus\U00ADsjukdom. Hälsovården ger dig anvisningar och bedömmer behovet av ett coronavirustest.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentTitle" = "Ta kontakt med hjälp av Omaolos symtombedömning";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentButton" = "Börja";
-"MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Gör en symtombedömning i tjänsten Omaolo så får du anvisningar och en bedömning av behovet av att ta ett coronavirustest. Gör en symtombedömning även om du inte har symtom som passar in på coronavirus\U00ADsjukdom. Det tar cirka 5–10 minuter att göra en symtombedömning.";
+"MunicipalityContactInfoViewController.Text.SymptomAssesmentDescription" = "Gör en symtombedömning i tjänsten Omaolo så får du anvisningar och en bedömning av behovet av att ta ett coronavirustest. Det tar cirka 5–10 minuter att göra en symtombedömning.";
 "MunicipalityContactInfoViewController.Text.SymptomAssesmentHelp" = "Om du är under 15 år, be din vårdnadshavare sköta dina ärenden i Omaolo för dig.";
 "MunicipalityContactInfoViewController.Text.SecondaryContactTitle" = "Övriga kontaktmetoder";
 "MunicipalityContactInfoViewController.Text.SecondaryContactBody" = "Alternativt kan du kontakta kommunens hälsovård på annat sätt:";
@@ -224,9 +221,9 @@
 "ExposureGuideViewController.Text.ButtonNext" = "Nästa";
 "ExposureGuideViewController.Text.Step1" = "Om du har varit i närheten av en person som har anmält om sin coronainfektion via appen får du ett meddelande om eventuell exponering till din telefon. Tryck på meddelandet så öppnas Coronablinkern.";
 "ExposureGuideViewController.Text.Step2" = "Tryck på den röda knappen Se anvisningar.";
-"ExposureGuideViewController.Text.Step3" = "Du får anvisningar om hur du ska förfara. Dessutom får du anvisningar om hur du kan kontakta hälsovården. Läs anvisningarna och tryck på Ta kontakt.";
-"ExposureGuideViewController.Text.Step4" = "Du får anvisningar om hur du ska förfara. Dessutom får du anvisningar om hur du kan kontakta hälsovården. Läs anvisningarna och tryck på Ta kontakt.";
-"ExposureGuideViewController.Text.Step5" = "Hälsovården ger dig närmare anvisningar och bedömmer behovet av ett coronavirustest.";
+"ExposureGuideViewController.Text.Step3" = "Du får anvisningar om hur du ska förfara. Se också de lokala anvisningarna på din kommuns webbplats. Om du behöver hälsovårdstjänster, tryck på Ta kontakt.";
+"ExposureGuideViewController.Text.Step4" = "Välj kommun. Du kan kontakta hälsovården på det sätt som kommunen erbjuder, till exempel via webbtjänsten Omaolo.";
+"ExposureGuideViewController.Text.Step5" = "Fortsätt följa anvisningarna i Coronablinkern i minst 5 dagar.";
 
 "HeaderContinueByAcceptingExposureLogging" = "Fortsätt aktiveringen genom att välja \"Tillåt\"";
 
@@ -265,7 +262,7 @@
 "GuideCompareTitle" = "Appen jämför användarnas koder";
 "GuideCompareText" = "Coronablinkern laddar flera gånger per dag ner en förteckning över koder som skickats från smittade personers telefoner med samma app. Coronablinkern jämför dessa med de koder som din telefon har samlat in från andra användare. På det här sättet kan appen avgöra om du har varit i närheten av en person som har coronavirus\U00ADinfektion.";
 "GuideNotificationTitle" = "Du får ett meddelande om eventuell virusexponering";
-"GuideNotificationText" = "Om koderna som din telefon samlat in motsvarar koderna som samlats in från personer som bär på smitta får du ett meddelande om eventuell exponering. I det här fallet kan du meddela dina kontaktuppgifter till hälsovården som ger dig närmare anvisningar.\n\nOm du misstänker att du smittats med coronaviruset kan du när som helst göra en symtombedömning i tjänsten Omaolo.";
+"GuideNotificationText" = "Om koderna som din telefon samlat in motsvarar koderna som samlats in från personer som bär på smitta får du ett meddelande om eventuell exponering och anvisningar.\n\nOm du misstänker att du smittats med coronaviruset kan du när som helst göra en symtombedömning i tjänsten Omaolo.";
 "GuideDiagnosisTitle" = "Om du konstateras ha coronavirus\U00ADinfektion";
 "GuideDiagnosisText" = "Om du konstaterats ha en coronavirus\U00ADinfektion med ett coronavirustest, får du en startkod från hälsovården. Med hjälp av koden kan du, om du vill, meddela via appen om att du har fått smittan. Om du delar informationen, skickar appen identifikations\U00ADkoder från din telefon till servern. Inga person- eller platsuppgifter skickas tillsammans med identifikations\U00ADkoderna, så du förblir anonym.";
 "GuidePrivacyTitle" = "Såhär skyddas din identitet";
@@ -315,4 +312,4 @@
 "ManualCheckErrorButton" = "OK";
 
 "ExposureNotificationTitle" = "Eventuell exponering";
-"ExposureNotificationBody" = "Du kan ha exponerats för coronaviruset. Se anvisningar och kontakta hälsovården.";
+"ExposureNotificationBody" = "Du kan ha exponerats för coronaviruset. Öppna Coronablinkern och se anvisningarna.";

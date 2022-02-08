@@ -11,7 +11,6 @@ class HasExposuresView : ExposuresView, LocalizedView {
         case ExposuresButtonNotificationCount
         case InstructionsTitle
         case InstructionsLede
-        case InstructionsSymptoms
         case InstructionsDistancing
         case InstructionsHygiene
         case InstructionsAvoidTravel
@@ -19,8 +18,8 @@ class HasExposuresView : ExposuresView, LocalizedView {
         case InstructionsCoughing
         case InstructionsRemoteWork
         case InstructionsWhenAbroad
-        case VaccinatedTitle
-        case VaccinatedBody
+        case TestingTitle
+        case TestingBody
         case InfoLinkTitle
         case InfoLinkSubtitle
         case InfoLinkURL
@@ -75,7 +74,6 @@ class HasExposuresView : ExposuresView, LocalizedView {
         top = appendView(bulletList, spacing: 10, top: top)
         
         let lastBulletBottom = [
-            .InstructionsSymptoms,
             .InstructionsDistancing,
             .InstructionsHygiene,
             .InstructionsAvoidTravel,
@@ -98,14 +96,14 @@ class HasExposuresView : ExposuresView, LocalizedView {
         top = appendView(whenAboardLabel, spacing: 20, top: top)
 
         
-        let vaccinatedTitle = UILabel(label: text(key: .VaccinatedTitle),
+        let vaccinatedTitle = UILabel(label: text(key: .TestingTitle),
                                       font: .heading3,
                                       color: .Greyscale.black)
         
         vaccinatedTitle.numberOfLines = 0
         top = appendView(vaccinatedTitle, spacing: 20, top: top)
         
-        let vaccinatedBody = UILabel(label: text(key: .VaccinatedBody),
+        let vaccinatedBody = UILabel(label: text(key: .TestingBody),
                                      font: .bodySmall,
                                      color: .Greyscale.black)
         

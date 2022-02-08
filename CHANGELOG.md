@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Changed
+- Text updates for exposure guidance and infection reporting screens
+- Correct UI behaviour on iOS 15: large title and scroll edge behaviour issues in the navigation bars, text alignment in attributed strings with attachments
+- Update TrustKit & ZipFoundation dependencies
+
+## 2.4.2
+
+### Changed
 - Reduced the exposure detection interval and notification retention time to 10 days
 - Updated the instruction texts (and an illustration) to match the reduced voluntary quarantine period 
 
