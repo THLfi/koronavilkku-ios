@@ -72,6 +72,9 @@ class LocalStore : BatchIdCache {
     @Persisted(userDefaultsKey: "detectionData", notificationName: .init("LocalStoreDetectionData"), defaultValue: [])
     var detectionData: [ExposureDetectionData]
     
+    @Persisted(userDefaultsKey: "endOfLifeStatisticsData", notificationName: .init("EndOfLifeStatisticsDataDidChange"), defaultValue: [])
+    var endOfLifeStatisticsData: [EndOfLifeStatistic]
+    
     func updateDateLastPerformedExposureDetection() {
         dateLastPerformedExposureDetection = Date()
     }

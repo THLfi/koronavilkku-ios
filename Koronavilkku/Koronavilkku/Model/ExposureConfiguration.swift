@@ -18,6 +18,10 @@ struct ExposureConfiguration: Codable {
     let daysSinceExposureThreshold: Int
     let minimumWindowScore: Double
     let minimumDailyScore: Int
+    
+    let endOfLifeReached: Bool
+    let endOfLifeStatistics: [EndOfLifeStatistic]
+   // let endOfLifeStatistics: [String : [String : String]]
 
     let daysSinceOnsetToInfectiousness: [String: String]
 
@@ -46,6 +50,17 @@ struct ExposureConfiguration: Codable {
         }
     }
 }
+
+// MARK: - EndOfLifeStatistic
+struct EndOfLifeStatistic: Codable {
+    let value, label: Languages
+}
+
+// MARK: - Label
+struct Languages: Codable {
+    let en, fi, sv: String
+}
+
 
 
 extension ENExposureConfiguration {
