@@ -60,8 +60,6 @@ class EndOfLifeViewController: UIViewController {
         containerView.addSubview(stackView)
         
         for stat in LocalStore.shared.endOfLifeStatisticsData {
-            print("*** ---- ***")
-            print(LocalStore.shared.endOfLifeStatisticsData)
             switch locale {
                 case "fi":
                     let statisticsElement = StatisticsCard(title: stat.value.fi, body: stat.label.fi)
