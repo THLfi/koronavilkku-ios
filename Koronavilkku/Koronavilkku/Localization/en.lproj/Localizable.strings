@@ -313,3 +313,7 @@
 
 "ExposureNotificationTitle" = "Potential exposure";
 "ExposureNotificationBody" = "You may have been exposed to the coronavirus. Open Koronavilkku and see instructions.";
+
+// MARK: EndOfLifeViewController
+"EndOfLifeTitle" = "Koronavilkku is no longer in use";
+"EndOfLifeMessage" = "You can now uninstall Koronavilkku from your phone. Thank you for using the app and doing your part in the fight against coronavirus!";

@@ -152,4 +152,7 @@ enum Translation: String, Localizable {
 
     case ExposureNotificationTitle
     case ExposureNotificationBody
+    
+    case EndOfLifeTitle
+    case EndOfLifeMessage
 }
