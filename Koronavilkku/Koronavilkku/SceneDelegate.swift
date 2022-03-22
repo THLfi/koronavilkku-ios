@@ -4,10 +4,16 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCenterDelegate {
     var window: UIWindow?
     var activationTask: AnyCancellable?
+    var configurationTask: AnyCancellable?
     
     override init() {
         super.init()
         UNUserNotificationCenter.current().delegate = self
+    }
+    
+    func performEndOfLifeCleanUp() {
+        Environment.default.notificationService.updateBadgeNumber(nil)
+        Environment.default.exposureRepository.setStatus(enabled: false)
     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -17,11 +23,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
-            // Check onboarding status
-            if !LocalStore.shared.isOnboarded {
-                window.rootViewController = OnboardingViewController()
+            if !LocalStore.shared.endOfLifeStatisticsData.isEmpty {
+                window.rootViewController = EndOfLifeViewController()
             } else {
-                window.rootViewController = RootViewController()
+                if !LocalStore.shared.isOnboarded {
+                    window.rootViewController = OnboardingViewController()
+                } else {
+                    window.rootViewController = RootViewController()
+                }
             }
             self.window = window
             window.makeKeyAndVisible()
@@ -67,8 +76,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
+        guard LocalStore.shared.endOfLifeStatisticsData.isEmpty else {
+            return
+        }
+
         activationTask = ExposureManagerProvider.shared.activated.sink { activated in
             Environment.default.exposureRepository.refreshStatus()
+        }
+        
+        configurationTask = Environment.default.exposureRepository.getConfiguration().sink { _ in } receiveValue: { config in
+            if (config.endOfLifeReached) {
+                DispatchQueue.main.async {
+                    LocalStore.shared.endOfLifeStatisticsData = config.endOfLifeStatistics
+                    self.window?.rootViewController = EndOfLifeViewController()
+                    self.performEndOfLifeCleanUp()
+                    return
+                }
+            }
         }
         
         Environment.default.exposureRepository.removeExpiredExposures()
