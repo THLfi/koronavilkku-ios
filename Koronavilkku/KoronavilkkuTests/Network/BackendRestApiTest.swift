@@ -56,6 +56,7 @@ class BackendRestApiTest : XCTestCase {
             daysSinceExposureThreshold: 9,
             minimumWindowScore: 10.0,
             minimumDailyScore: 11,
+            endOfLifeReached: false, endOfLifeStatistics: [EndOfLifeStatistic.init(value: Languages(en: "About 2.5 million", fi: "Noin 2,5 miljoonaa", sv: "Cirka 2,5 miljoner"), label: Languages(en: "users reported their infection with Koronavilkku.", fi: "käyttäjää ilmoitti tartunnastaan Koronavilkun kautta.", sv: "användare meddelade om sin smitta via Coronablinkern."))],
             daysSinceOnsetToInfectiousness: [
                 "-14": "NONE", "-13": "NONE", "-12": "NONE", "-11": "NONE", "-10": "NONE", "-9": "NONE", "-8": "NONE", "-7": "NONE", "-6": "NONE", "-5": "NONE", "-4": "NONE", "-3": "NONE", "-2": "NONE", "-1": "HIGH", "0": "HIGH", "1": "HIGH", "2": "HIGH", "3": "STANDARD", "4": "STANDARD", "5": "STANDARD", "6": "NONE", "7": "NONE", "8": "NONE", "9": "NONE", "10": "NONE", "11": "NONE", "12": "NONE", "13": "NONE", "14": "STANDARD",
             ],
