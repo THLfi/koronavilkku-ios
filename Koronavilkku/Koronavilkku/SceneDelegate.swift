@@ -10,11 +10,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         super.init()
         UNUserNotificationCenter.current().delegate = self
     }
-    
-    func performEndOfLifeCleanUp() {
-        Environment.default.notificationService.updateBadgeNumber(nil)
-        Environment.default.exposureRepository.setStatus(enabled: false)
-    }
+
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -23,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
-            if !LocalStore.shared.endOfLifeStatisticsData.isEmpty {
+            if Environment.default.exposureRepository.isEndOfLife() {
                 window.rootViewController = EndOfLifeViewController()
             } else {
                 if !LocalStore.shared.isOnboarded {
@@ -84,16 +80,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
             Environment.default.exposureRepository.refreshStatus()
         }
         
-        configurationTask = Environment.default.exposureRepository.getConfiguration().sink { _ in } receiveValue: { config in
-            if (config.endOfLifeReached) {
+       configurationTask = Environment.default.exposureRepository.getConfiguration().sink { _ in } receiveValue: { _ in
+           if (Environment.default.exposureRepository.isEndOfLife()) {
                 DispatchQueue.main.async {
-                    LocalStore.shared.endOfLifeStatisticsData = config.endOfLifeStatistics
                     self.window?.rootViewController = EndOfLifeViewController()
-                    self.performEndOfLifeCleanUp()
                     return
                 }
             }
-        }
+      }
         
         Environment.default.exposureRepository.removeExpiredExposures()
     }
