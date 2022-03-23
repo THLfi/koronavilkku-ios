@@ -48,6 +48,10 @@ extension Environment {
         }
 
         struct PreviewExposureRepository: ExposureRepository {
+            func isEndOfLife() -> Bool {
+                return false
+            }
+            
             let state: PreviewState
             
             func getExposureNotifications() -> AnyPublisher<[ExposureNotification], Never> {
