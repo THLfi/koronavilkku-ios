@@ -106,7 +106,7 @@ struct ExposureRepositoryImpl : ExposureRepository {
     }
     
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error> {
-        return backend.getConfiguration().map { config in
+        return backend.getConfiguration().receive(on: RunLoop.main).map { config in
             if config.endOfLifeReached {
                 LocalStore.shared.endOfLifeStatisticsData = config.endOfLifeStatistics
                 notificationService.updateBadgeNumber(nil)
