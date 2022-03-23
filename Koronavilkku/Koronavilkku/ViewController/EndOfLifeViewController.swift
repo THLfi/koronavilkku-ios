@@ -79,6 +79,10 @@ class EndOfLifeViewController: UIViewController {
         logoImageView.image = logoImage
         logoImageView.contentMode = .scaleAspectFit
         top = containerView.appendView(logoImageView, spacing: 30, top: top)
+        
+        logoImageView.snp.makeConstraints { make in
+            make.bottom.equalToSuperview()
+        }
  
     }
          
