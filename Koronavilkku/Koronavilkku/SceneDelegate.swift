@@ -72,7 +72,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {
-        guard LocalStore.shared.endOfLifeStatisticsData.isEmpty else {
+        guard !Environment.default.exposureRepository.isEndOfLife() else {
             return
         }
 
