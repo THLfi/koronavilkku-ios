@@ -10,7 +10,6 @@ class EndOfLifeViewController: UIViewController {
     
     let titleLabel = UILabel()
     let textLabel = UILabel()
-    
 
     var stackView = UIStackView()
     
@@ -21,7 +20,6 @@ class EndOfLifeViewController: UIViewController {
     var textLabelText = Translation.EndOfLifeMessage.localized
     
     
-        
     override func viewDidLoad() {
         super.viewDidLoad()
         createUI()
