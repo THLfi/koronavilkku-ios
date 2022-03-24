@@ -91,3 +91,16 @@ extension ENExposureConfiguration {
         reportTypeNoneMap = ENDiagnosisReportType.confirmedTest
     }
 }
+
+extension Languages {
+    func get(using locale: Locale = .current) -> String {
+        switch locale.languageCode {
+        case "fi":
+            return fi
+        case "sv":
+            return sv
+        default:
+            return en
+        }
+    }
+}

@@ -57,17 +57,8 @@ class EndOfLifeViewController: UIViewController {
         containerView.addSubview(stackView)
         
         for stat in LocalStore.shared.endOfLifeStatisticsData {
-            switch locale {
-                case "fi":
-                    let statisticsElement = StatisticsCard(title: stat.value.fi, body: stat.label.fi)
-                    stackView.addArrangedSubview(statisticsElement)
-                case "sv":
-                    let statisticsElement = StatisticsCard(title: stat.value.sv, body: stat.label.sv)
-                    stackView.addArrangedSubview(statisticsElement)
-                default:
-                    let statisticsElement = StatisticsCard(title: stat.value.en, body: stat.label.en)
-                    stackView.addArrangedSubview(statisticsElement)
-            }
+            let statisticsElement = StatisticsCard(title: stat.value.get(), body: stat.label.get())
+            stackView.addArrangedSubview(statisticsElement)
         }
     
         top = containerView.appendView(stackView, spacing: 20, top: top)
