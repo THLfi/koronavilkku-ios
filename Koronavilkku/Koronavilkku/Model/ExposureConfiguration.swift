@@ -21,7 +21,6 @@ struct ExposureConfiguration: Codable {
     
     let endOfLifeReached: Bool
     let endOfLifeStatistics: [EndOfLifeStatistic]
-   // let endOfLifeStatistics: [String : [String : String]]
 
     let daysSinceOnsetToInfectiousness: [String: String]
 
