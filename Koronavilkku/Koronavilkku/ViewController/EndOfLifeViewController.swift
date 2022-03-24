@@ -20,7 +20,6 @@ class EndOfLifeViewController: UIViewController {
     var titleText = Translation.EndOfLifeTitle.localized
     var textLabelText = Translation.EndOfLifeMessage.localized
     
-    var configurationTask: AnyCancellable?
     
         
     override func viewDidLoad() {
@@ -44,7 +43,7 @@ class EndOfLifeViewController: UIViewController {
         
         //Setup title
         titleLabel.text = titleText
-        titleLabel.font = .heading1
+        titleLabel.font = .heading2
         titleLabel.numberOfLines = 0
         top = containerView.appendView(titleLabel, spacing: 20, top: top)
         
