@@ -80,7 +80,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
             Environment.default.exposureRepository.refreshStatus()
         }
         
-       configurationTask = Environment.default.exposureRepository.getConfiguration().sink { _ in } receiveValue: { _ in
+        configurationTask = Environment.default.exposureRepository.getConfiguration().receive(on: RunLoop.main).sink { _ in } receiveValue: { _ in
            if (Environment.default.exposureRepository.isEndOfLife()) {
                 DispatchQueue.main.async {
                     self.window?.rootViewController = EndOfLifeViewController()
