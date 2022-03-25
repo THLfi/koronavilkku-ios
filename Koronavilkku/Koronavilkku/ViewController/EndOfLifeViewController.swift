@@ -27,8 +27,6 @@ class EndOfLifeViewController: UIViewController {
     
     private func createUI() {
         
-        let locale = Locale.current.languageCode
-
         let margin = UIEdgeInsets(top: 20, left: 20, bottom: 30, right: 20)
         let containerView = view.addScrollableContentView(backgroundColor: UIColor.Secondary.blueBackdrop,
                             margins: margin)
