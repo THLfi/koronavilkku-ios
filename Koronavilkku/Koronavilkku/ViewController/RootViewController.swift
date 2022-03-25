@@ -32,9 +32,6 @@ class RootViewController : UITabBarController {
             Environment.default.efgsRepository.updateCountryList(from: config)
         }
         
-        // Set every UILabel automagically respond to Dynamic Type changes
-        UILabel.appearance().adjustsFontForContentSizeCategory = true
-        
         viewControllers = [
             createTab(for: MainViewController()) {
                 UITabBarItem(

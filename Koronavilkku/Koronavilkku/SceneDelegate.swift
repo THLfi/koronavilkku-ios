@@ -19,6 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             
+            // Set every UILabel automatically respond to Dynamic Type changes
+            UILabel.appearance().adjustsFontForContentSizeCategory = true
+            
             if Environment.default.exposureRepository.isEndOfLife() {
                 window.rootViewController = EndOfLifeViewController()
             } else {
