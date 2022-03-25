@@ -2,7 +2,6 @@ import UIKit
 import Combine
 import SnapKit
 
-
 class EndOfLifeViewController: UIViewController {
     
     let radarImageView = UIImageView()
@@ -10,7 +9,7 @@ class EndOfLifeViewController: UIViewController {
     
     let titleLabel = UILabel()
     let textLabel = UILabel()
-
+    
     var stackView = UIStackView()
     
     var radarImage = UIImage(named: "radar-off")
@@ -18,7 +17,6 @@ class EndOfLifeViewController: UIViewController {
     
     var titleText = Translation.EndOfLifeTitle.localized
     var textLabelText = Translation.EndOfLifeMessage.localized
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +27,7 @@ class EndOfLifeViewController: UIViewController {
         
         let margin = UIEdgeInsets(top: 20, left: 20, bottom: 30, right: 20)
         let containerView = view.addScrollableContentView(backgroundColor: UIColor.Secondary.blueBackdrop,
-                            margins: margin)
+                                                          margins: margin)
         var top = containerView.snp.top
         
         //Setup header view
@@ -55,10 +53,11 @@ class EndOfLifeViewController: UIViewController {
         containerView.addSubview(stackView)
         
         for stat in LocalStore.shared.endOfLifeStatisticsData {
-            let statisticsElement = StatisticsCard(title: stat.value.get(), body: stat.label.get())
+            let statisticsElement = StatisticsCard(title: stat.value.localeString ?? "",
+                                                   body: stat.label.localeString ?? "")
             stackView.addArrangedSubview(statisticsElement)
         }
-    
+        
         top = containerView.appendView(stackView, spacing: 20, top: top)
         
         //Setup footer
@@ -69,7 +68,5 @@ class EndOfLifeViewController: UIViewController {
         logoImageView.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
         }
- 
     }
-         
 }

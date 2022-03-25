@@ -52,15 +52,8 @@ struct ExposureConfiguration: Codable {
 
 // MARK: - EndOfLifeStatistic
 struct EndOfLifeStatistic: Codable {
-    let value, label: Languages
+    let value, label: Localized
 }
-
-// MARK: - Label
-struct Languages: Codable {
-    let en, fi, sv: String
-}
-
-
 
 extension ENExposureConfiguration {
     convenience init(from: ExposureConfiguration) {
@@ -89,18 +82,5 @@ extension ENExposureConfiguration {
         reportTypeRecursiveWeight = weight(of: from.reportTypeWeightRecursive)
         reportTypeSelfReportedWeight = weight(of: from.reportTypeWeightSelfReport)
         reportTypeNoneMap = ENDiagnosisReportType.confirmedTest
-    }
-}
-
-extension Languages {
-    func get(using locale: Locale = .current) -> String {
-        switch locale.languageCode {
-        case "fi":
-            return fi
-        case "sv":
-            return sv
-        default:
-            return en
-        }
     }
 }
