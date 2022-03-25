@@ -10,8 +10,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         super.init()
         UNUserNotificationCenter.current().delegate = self
     }
-
-
+    
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -22,15 +22,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
             // Set every UILabel automatically respond to Dynamic Type changes
             UILabel.appearance().adjustsFontForContentSizeCategory = true
             
-            if Environment.default.exposureRepository.isEndOfLife() {
+            switch true {
+            case Environment.default.exposureRepository.isEndOfLife():
                 window.rootViewController = EndOfLifeViewController()
-            } else {
-                if !LocalStore.shared.isOnboarded {
-                    window.rootViewController = OnboardingViewController()
-                } else {
-                    window.rootViewController = RootViewController()
-                }
+                
+            case !LocalStore.shared.isOnboarded:
+                window.rootViewController = OnboardingViewController()
+                
+            default:
+                window.rootViewController = RootViewController()
             }
+            
             self.window = window
             window.makeKeyAndVisible()
             
@@ -38,7 +40,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
             if let activity = connectionOptions.userActivities
                 .filter({ $0.activityType == NSUserActivityTypeBrowsingWeb })
                 .first,
-                let code = extractCode(userActivity: activity) {
+               let code = extractCode(userActivity: activity) {
                 openCodeView(using: code)
             }
         }
@@ -60,10 +62,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
     
     func extractCode(userActivity: NSUserActivity) -> String? {
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-            let url = userActivity.webpageURL,
-            let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
-            let code = components.query,
-            let _ = UInt64(code) else { return nil }
+              let url = userActivity.webpageURL,
+              let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true),
+              let code = components.query,
+              let _ = UInt64(code) else { return nil }
         return code
     }
     
@@ -73,36 +75,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
     }
-
+    
     func sceneDidBecomeActive(_ scene: UIScene) {
         guard !Environment.default.exposureRepository.isEndOfLife() else {
             return
         }
-
+        
         activationTask = ExposureManagerProvider.shared.activated.sink { activated in
             Environment.default.exposureRepository.refreshStatus()
         }
         
-        configurationTask = Environment.default.exposureRepository.getConfiguration().receive(on: RunLoop.main).sink { _ in } receiveValue: { _ in
-           if (Environment.default.exposureRepository.isEndOfLife()) {
-                self.window?.rootViewController = EndOfLifeViewController()
-                return
+        configurationTask = Environment.default.exposureRepository.getConfiguration()
+            .receive(on: RunLoop.main)
+            .sink { _ in } receiveValue: { config in
+                if Environment.default.exposureRepository.isEndOfLife() {
+                    self.window?.rootViewController = EndOfLifeViewController()
+                } else {
+                    Environment.default.efgsRepository.updateCountryList(from: config)
+                }
             }
-      }
         
         Environment.default.exposureRepository.removeExpiredExposures()
     }
-
+    
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
     }
-
+    
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
     }
-
+    
     func sceneDidEnterBackground(_ scene: UIScene) {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
