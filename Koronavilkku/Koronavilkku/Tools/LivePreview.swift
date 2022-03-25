@@ -48,9 +48,8 @@ extension Environment {
         }
 
         struct PreviewExposureRepository: ExposureRepository {
-            func isEndOfLife() -> Bool {
-                return false
-            }
+            var isEndOfLife = false
+            var onEndOfLife = Just(()).eraseToAnyPublisher()
             
             let state: PreviewState
             

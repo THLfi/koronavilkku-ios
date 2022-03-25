@@ -5,12 +5,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
     var window: UIWindow?
     var activationTask: AnyCancellable?
     var configurationTask: AnyCancellable?
+    var endOfLifeTask: AnyCancellable?
     
     override init() {
         super.init()
         UNUserNotificationCenter.current().delegate = self
     }
-    
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
             UILabel.appearance().adjustsFontForContentSizeCategory = true
             
             switch true {
-            case Environment.default.exposureRepository.isEndOfLife():
+            case Environment.default.exposureRepository.isEndOfLife:
                 window.rootViewController = EndOfLifeViewController()
                 
             case !LocalStore.shared.isOnboarded:
@@ -77,25 +77,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate, UNUserNotificationCente
     }
     
     func sceneDidBecomeActive(_ scene: UIScene) {
-        guard !Environment.default.exposureRepository.isEndOfLife() else {
-            return
-        }
+        let exposureRepository = Environment.default.exposureRepository
         
-        activationTask = ExposureManagerProvider.shared.activated.sink { activated in
-            Environment.default.exposureRepository.refreshStatus()
-        }
-        
-        configurationTask = Environment.default.exposureRepository.getConfiguration()
+        guard !exposureRepository.isEndOfLife else { return }
+
+        // Detect when the end of life has been reached an update the UI accordingly
+        endOfLifeTask = exposureRepository.onEndOfLife
             .receive(on: RunLoop.main)
-            .sink { _ in } receiveValue: { config in
-                if Environment.default.exposureRepository.isEndOfLife() {
-                    self.window?.rootViewController = EndOfLifeViewController()
-                } else {
-                    Environment.default.efgsRepository.updateCountryList(from: config)
-                }
+            .sink { _ in
+                self.window?.rootViewController = EndOfLifeViewController()
             }
         
-        Environment.default.exposureRepository.removeExpiredExposures()
+        // Fetch configuration to refresh the EFGS country list and end of life data
+        configurationTask = exposureRepository.getConfiguration()
+            .sink { _ in } receiveValue: { config in
+                Environment.default.efgsRepository.updateCountryList(from: config)
+            }
+        
+        activationTask = ExposureManagerProvider.shared.activated.sink { activated in
+            exposureRepository.refreshStatus()
+        }
+
+        exposureRepository.removeExpiredExposures()
     }
     
     func sceneWillResignActive(_ scene: UIScene) {

@@ -18,7 +18,9 @@ protocol ExposureRepository {
     func deleteBatchFiles()
     func removeExpiredExposures()
     func showExposureNotification(delay: TimeInterval?)
-    func isEndOfLife() -> Bool
+    
+    var isEndOfLife: Bool { get }
+    var onEndOfLife: AnyPublisher<Void, Never> { get }
 }
 
 struct ExposureRepositoryImpl : ExposureRepository {
@@ -121,8 +123,15 @@ struct ExposureRepositoryImpl : ExposureRepository {
         .eraseToAnyPublisher()
     }
     
-    func isEndOfLife() -> Bool {
+    var isEndOfLife: Bool {
         !LocalStore.shared.endOfLifeStatisticsData.isEmpty
+    }
+    
+    var onEndOfLife: AnyPublisher<Void, Never> {
+        LocalStore.shared.$endOfLifeStatisticsData.$wrappedValue
+            .filter { !$0.isEmpty }
+            .map { _ in }
+            .eraseToAnyPublisher()
     }
         
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error> {

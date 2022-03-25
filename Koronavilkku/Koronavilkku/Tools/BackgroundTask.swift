@@ -85,9 +85,10 @@ final class BackgroundTaskForNotifications: BackgroundTask {
         BGTaskScheduler.shared.register(forTaskWithIdentifier: identifier, using: .main) { task in
             Log.d("Run background task for notifications")
             
-            guard !Environment.default.exposureRepository.isEndOfLife() else {
+            guard !Environment.default.exposureRepository.isEndOfLife else {
                 return task.setTaskCompleted(success: true)
             }
+            
             // reschedule first to prevent unexpected errors from breaking the chain
             self.schedule()
 
@@ -210,7 +211,7 @@ fileprivate final class BackgroundTaskForDummyPosting: BackgroundTask {
         BGTaskScheduler.shared.register(forTaskWithIdentifier: identifier, using: .main) { task in
             Log.d("Run background task for dummy posting")
 
-            guard !Environment.default.exposureRepository.isEndOfLife() else {
+            guard !Environment.default.exposureRepository.isEndOfLife else {
                 return task.setTaskCompleted(success: true)
             }
             
