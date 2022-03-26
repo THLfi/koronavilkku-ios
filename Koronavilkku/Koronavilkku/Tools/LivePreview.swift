@@ -49,7 +49,7 @@ extension Environment {
 
         struct PreviewExposureRepository: ExposureRepository {
             var isEndOfLife = false
-            var onEndOfLife = Just(()).eraseToAnyPublisher()
+            var onEndOfLife = Empty<Void, Never>().eraseToAnyPublisher()
             
             let state: PreviewState
             
