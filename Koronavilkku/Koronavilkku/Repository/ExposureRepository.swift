@@ -112,10 +112,13 @@ struct ExposureRepositoryImpl : ExposureRepository {
             if config.endOfLifeReached {
                 LocalStore.shared.endOfLifeStatisticsData = config.endOfLifeStatistics
                 notificationService.updateBadgeNumber(nil)
-                setStatus(enabled: false)
                 LocalStore.shared.exposures.removeAll()
                 LocalStore.shared.countExposureNotifications.removeAll()
                 LocalStore.shared.daysExposureNotifications.removeAll()
+                
+                if exposureManager.exposureNotificationStatus != .unauthorized {
+                    setStatus(enabled: false)
+                }
             }
       
             return config
