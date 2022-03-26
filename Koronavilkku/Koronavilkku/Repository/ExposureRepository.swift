@@ -18,6 +18,9 @@ protocol ExposureRepository {
     func deleteBatchFiles()
     func removeExpiredExposures()
     func showExposureNotification(delay: TimeInterval?)
+    
+    var isEndOfLife: Bool { get }
+    var onEndOfLife: AnyPublisher<Void, Never> { get }
 }
 
 struct ExposureRepositoryImpl : ExposureRepository {
@@ -105,9 +108,35 @@ struct ExposureRepositoryImpl : ExposureRepository {
     }
     
     func getConfiguration() -> AnyPublisher<ExposureConfiguration, Error> {
-        return backend.getConfiguration()
+        return backend.getConfiguration().receive(on: RunLoop.main).map { config in
+            if config.endOfLifeReached {
+                LocalStore.shared.endOfLifeStatisticsData = config.endOfLifeStatistics
+                notificationService.updateBadgeNumber(nil)
+                LocalStore.shared.exposures.removeAll()
+                LocalStore.shared.countExposureNotifications.removeAll()
+                LocalStore.shared.daysExposureNotifications.removeAll()
+                
+                if exposureManager.exposureNotificationStatus != .unauthorized {
+                    setStatus(enabled: false)
+                }
+            }
+      
+            return config
+        }
+        .eraseToAnyPublisher()
     }
     
+    var isEndOfLife: Bool {
+        !LocalStore.shared.endOfLifeStatisticsData.isEmpty
+    }
+    
+    var onEndOfLife: AnyPublisher<Void, Never> {
+        LocalStore.shared.$endOfLifeStatisticsData.$wrappedValue
+            .filter { !$0.isEmpty }
+            .map { _ in }
+            .eraseToAnyPublisher()
+    }
+        
     func detectExposures(ids: [String], config: ExposureConfiguration) -> AnyPublisher<Bool, Error> {
         
         let urls = ids.map { self.storage.getFileUrls(forBatchId: $0) }.flatMap { $0 }

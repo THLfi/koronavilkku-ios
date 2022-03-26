@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112CB85C27E31A0400960B59 /* EndOfLifeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CB85B27E31A0400960B59 /* EndOfLifeViewController.swift */; };
+		112CB86127E8B3DE00960B59 /* StatisticsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CB86027E8B3DE00960B59 /* StatisticsCard.swift */; };
 		327C940224BED1C9003C8429 /* ApiResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 327C940124BED1C9003C8429 /* ApiResponses.swift */; };
 		3288A07724AC593300365B46 /* Backend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3288A07624AC593300365B46 /* Backend.swift */; };
 		32899E4924C0680600CFFE27 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32899E4824C0680600CFFE27 /* UIViewController.swift */; };
@@ -168,6 +170,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		112CB85B27E31A0400960B59 /* EndOfLifeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndOfLifeViewController.swift; sourceTree = "<group>"; };
+		112CB86027E8B3DE00960B59 /* StatisticsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsCard.swift; sourceTree = "<group>"; };
 		327C940124BED1C9003C8429 /* ApiResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponses.swift; sourceTree = "<group>"; };
 		3288A07624AC593300365B46 /* Backend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backend.swift; sourceTree = "<group>"; };
 		32899E4824C0680600CFFE27 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -451,6 +455,7 @@
 				EA0EB8CF25ED2D2F00A6D0DC /* NumberView.swift */,
 				EAF340C42580F1460092ED6E /* RadioButton.swift */,
 				56C26BAF24AF3A0B002F83C1 /* RoundedButton.swift */,
+				112CB86027E8B3DE00960B59 /* StatisticsCard.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -574,6 +579,7 @@
 				D98EDD2C24CC9C93003E09A1 /* SettingsViewController.swift */,
 				D98EDD2A24CC7EBA003E09A1 /* SymptomsViewController.swift */,
 				32B5955D24AA21EC00CC386E /* TestViewController.swift */,
+				112CB85B27E31A0400960B59 /* EndOfLifeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -917,6 +923,7 @@
 				EA8E2251258250FF0008EE92 /* TravelStatusViewController.swift in Sources */,
 				EA7BEC9225712B56005DDF3D /* BulletItem.swift in Sources */,
 				561878AE24AD2BDE004B7563 /* PublishTokensViewController.swift in Sources */,
+				112CB85C27E31A0400960B59 /* EndOfLifeViewController.swift in Sources */,
 				56E3349624CCC0BB0017CD9A /* MunicipalityContactInformationView.swift in Sources */,
 				EA4A59432561C25800E65CFB /* Publisher.swift in Sources */,
 				D98EDD2724CB3E17003E09A1 /* LinkItem.swift in Sources */,
@@ -1009,6 +1016,7 @@
 				EAF340C52580F1460092ED6E /* RadioButton.swift in Sources */,
 				563D44B924AB9CD3008FE2BB /* Dictionary+IndexSubscript.swift in Sources */,
 				EAC4CD1A25CC21CF001A4648 /* Footer.swift in Sources */,
+				112CB86127E8B3DE00960B59 /* StatisticsCard.swift in Sources */,
 				56E3349224CB02C00017CD9A /* ExposureDetectionData.swift in Sources */,
 				EA71E990251E25E900E66F64 /* ChangeLanguageViewController.swift in Sources */,
 				EAC4CD0425CBD67C001A4648 /* NoExposuresView.swift in Sources */,

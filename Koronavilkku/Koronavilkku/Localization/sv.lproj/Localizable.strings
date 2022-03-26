@@ -313,3 +313,7 @@
 
 "ExposureNotificationTitle" = "Eventuell exponering";
 "ExposureNotificationBody" = "Du kan ha exponerats för coronaviruset. Öppna Coronablinkern och se anvisningarna.";
+
+// MARK: EndOfLifeViewController
+"EndOfLifeTitle" = "Coronablinkern har lagts ner";
+"EndOfLifeMessage" = "Nu kan du avlägsna Coronablinkern från din telefon. Tack för att du använde appen och deltog i bekämpningen av coronaviruset!";

@@ -313,3 +313,7 @@
 
 "ExposureNotificationTitle" = "Mahdollinen altistuminen";
 "ExposureNotificationBody" = "Olet saattanut altistua koronavirukselle. Avaa Koronavilkku ja katso toimintaohjeet.";
+
+// MARK: EndOfLifeViewController
+"EndOfLifeTitle" = "Koronavilkun toiminta on päättynyt";
+"EndOfLifeMessage" = "Voit nyt poistaa Koronavilkun puhelimestasi. Kiitos, että käytit sovellusta ja osallistuit koronaviruksen torjuntaan!";

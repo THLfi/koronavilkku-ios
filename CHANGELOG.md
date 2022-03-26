@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+### Added
+- In preparation of the app End of Life, check the configuration response for the EOL status and when it has been reached, clean up all exposure data, reset notifications and turn of the EN API and background checks
+- New screen that will be displayed after EOL instead of the normal UI
+
+### Changed
+- Onboarding flow also reflects to Dynamic Type changes in real time
+
 ## 2.4.3
 
 ### Changed

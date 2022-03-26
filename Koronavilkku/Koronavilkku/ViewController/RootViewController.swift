@@ -20,20 +20,10 @@ class RootViewController : UITabBarController {
         
         BackgroundTaskManager.shared.scheduleTasks()
 
-        updateTask = Publishers.Zip(
-            // In case a considerable amount of time (batch id changes) elapses before
-            // the background task is run the first time, attempt to fetch the current batch identifier separately.
-            Environment.default.batchRepository.getCurrentBatchId(),
-            
-            // Update the EFGS country list
-            Environment.default.exposureRepository.getConfiguration()
-        )
-        .sink { _ in } receiveValue: { _, config in
-            Environment.default.efgsRepository.updateCountryList(from: config)
-        }
-        
-        // Set every UILabel automagically respond to Dynamic Type changes
-        UILabel.appearance().adjustsFontForContentSizeCategory = true
+        // In case a considerable amount of time (batch id changes) elapses before the background
+        // task is run the first time, attempt to fetch the current batch identifier separately.
+        updateTask = Environment.default.batchRepository.getCurrentBatchId()
+            .sink { _ in } receiveValue: { _ in }
         
         viewControllers = [
             createTab(for: MainViewController()) {
