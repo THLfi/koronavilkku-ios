@@ -26,6 +26,9 @@ final class StatisticsCard: CardElement {
             make.top.equalTo(titleView.snp.bottom)
             make.bottom.left.right.equalToSuperview().inset(20)
         }
+        
+        isAccessibilityElement = true
+        accessibilityLabel = "\(title) \(body)"
     }
     
     required init?(coder: NSCoder) {
