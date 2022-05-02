@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## 2.5.0
+
 ### Added
 - In preparation of the app End of Life, check the configuration response for the EOL status and when it has been reached, clean up all exposure data, reset notifications and turn of the EN API and background checks
 - New screen that will be displayed after EOL instead of the normal UI
