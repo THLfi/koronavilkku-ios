@@ -1,8 +1,9 @@
 name: Check latest release dependencies
 
 on:
-  schedule:
-    - cron:  "30 5 * * *" # this is utc time
+  push:
+    branches-ignore:
+      - '**'
 
 jobs:
   build-release-app:
@@ -57,11 +58,3 @@ jobs:
         with:
           name: dependency-check-result
           path: ./dependency-check-report.html
-      - name: Notify to slack
-        if: ${{ failure() }}
-        uses: ./.github/docker-slack
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        with:
-          text: "OWASP dependency check - release"
-          status: ${{job.status}}
