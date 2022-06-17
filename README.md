@@ -1,5 +1,9 @@
 # Koronavilkku iOS app
 
+> **Note**
+> 
+> **As the application has been shut down, this project is no longer maintained.**
+
 Koronavilkku is the official COVID-19 Exposure Notifications app for Finland, maintained by the Finnish Institute for Health and Welfare (THL). It uses the ExposureNotification framework, a joint effort between Apple and Google to provide the core functionality for building iOS and Android apps to notify users of possible exposure to confirmed COVID-19 cases.
 
 https://developer.apple.com/exposure-notification/
